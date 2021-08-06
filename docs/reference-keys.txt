@@ -3,11 +3,11 @@ tab:nice-tab
 down-the-rabbit-hole
 intro
 literature
-the-pool-of-tears
 methods
 math-example
-a-caucus-race-and-a-long-tale
 applications
 example-one
 example-two
 final-words
+the-pool-of-tears
+a-caucus-race-and-a-long-tale
