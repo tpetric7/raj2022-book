@@ -1,6 +1,5 @@
 fig:nice-fig
 tab:nice-tab
-down-the-rabbit-hole
 intro
 literature
 methods
