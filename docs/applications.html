@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 8 Applications | RAJ 2022 Introduction Course</title>
-  <meta name="description" content="Kapitel 8 Applications | RAJ 2022 Introduction Course" />
+  <title>Kapitel 9 Applications | RAJ 2022 Introduction Course</title>
+  <meta name="description" content="Kapitel 9 Applications | RAJ 2022 Introduction Course" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 8 Applications | RAJ 2022 Introduction Course" />
+  <meta property="og:title" content="Kapitel 9 Applications | RAJ 2022 Introduction Course" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 8 Applications | RAJ 2022 Introduction Course" />
+  <meta name="twitter:title" content="Kapitel 9 Applications | RAJ 2022 Introduction Course" />
   
   
   
@@ -55,6 +55,11 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
 
 
 <style type="text/css">
@@ -211,17 +216,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>5.6.6</b> Vergleich mit Voyant Tools</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>6</b> Introduction</a></li>
-<li class="chapter" data-level="7" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>7</b> Methods</a>
+<li class="chapter" data-level="6" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>6</b> Textvergleich</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>7.1</b> math example</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>8</b> Applications</a>
+<li class="chapter" data-level="6.1" data-path="textvergleich.html"><a href="textvergleich.html#programi-1"><i class="fa fa-check"></i><b>6.1</b> Programi</a></li>
+<li class="chapter" data-level="6.2" data-path="textvergleich.html"><a href="textvergleich.html#preberemo-besedila"><i class="fa fa-check"></i><b>6.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="6.3" data-path="textvergleich.html"><a href="textvergleich.html#ustvarimo-korpus"><i class="fa fa-check"></i><b>6.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="6.4" data-path="textvergleich.html"><a href="textvergleich.html#tokenizacija"><i class="fa fa-check"></i><b>6.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="6.5" data-path="textvergleich.html"><a href="textvergleich.html#čiščenje"><i class="fa fa-check"></i><b>6.5</b> Čiščenje</a></li>
+<li class="chapter" data-level="6.6" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>6.6</b> Kwic</a></li>
+<li class="chapter" data-level="6.7" data-path="textvergleich.html"><a href="textvergleich.html#pogostnost"><i class="fa fa-check"></i><b>6.7</b> Pogostnost</a></li>
+<li class="chapter" data-level="6.8" data-path="textvergleich.html"><a href="textvergleich.html#kolokacije"><i class="fa fa-check"></i><b>6.8</b> Kolokacije</a></li>
+<li class="chapter" data-level="6.9" data-path="textvergleich.html"><a href="textvergleich.html#lematizacija"><i class="fa fa-check"></i><b>6.9</b> Lematizacija</a></li>
+<li class="chapter" data-level="6.10" data-path="textvergleich.html"><a href="textvergleich.html#besedni-oblaček"><i class="fa fa-check"></i><b>6.10</b> Besedni oblaček</a></li>
+<li class="chapter" data-level="6.11" data-path="textvergleich.html"><a href="textvergleich.html#položaj-v-besedilu-xray"><i class="fa fa-check"></i><b>6.11</b> Položaj v besedilu (xray)</a></li>
+<li class="chapter" data-level="6.12" data-path="textvergleich.html"><a href="textvergleich.html#slovarska-raznolikost"><i class="fa fa-check"></i><b>6.12</b> Slovarska raznolikost</a></li>
+<li class="chapter" data-level="6.13" data-path="textvergleich.html"><a href="textvergleich.html#podobnost-besedil"><i class="fa fa-check"></i><b>6.13</b> Podobnost besedil</a></li>
+<li class="chapter" data-level="6.14" data-path="textvergleich.html"><a href="textvergleich.html#ključne-besede"><i class="fa fa-check"></i><b>6.14</b> Ključne besede</a></li>
+<li class="chapter" data-level="6.15" data-path="textvergleich.html"><a href="textvergleich.html#razumljivost-besedil"><i class="fa fa-check"></i><b>6.15</b> Razumljivost besedil</a></li>
+<li class="chapter" data-level="6.16" data-path="textvergleich.html"><a href="textvergleich.html#omrežje-sopojavitev-fcm"><i class="fa fa-check"></i><b>6.16</b> Omrežje sopojavitev (FCM)</a></li>
+<li class="chapter" data-level="6.17" data-path="textvergleich.html"><a href="textvergleich.html#slovnična-analiza"><i class="fa fa-check"></i><b>6.17</b> Slovnična analiza</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>8.1</b> Example one</a></li>
-<li class="chapter" data-level="8.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>8.2</b> Example two</a></li>
+<li class="chapter" data-level="6.17.1" data-path="textvergleich.html"><a href="textvergleich.html#priprava"><i class="fa fa-check"></i><b>6.17.1</b> Priprava</a></li>
+<li class="chapter" data-level="6.17.2" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-noun-pron"><i class="fa fa-check"></i><b>6.17.2</b> Primerjava Noun : Pron</a></li>
+<li class="chapter" data-level="6.17.3" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-veznikov"><i class="fa fa-check"></i><b>6.17.3</b> Primerjava veznikov</a></li>
+<li class="chapter" data-level="6.17.4" data-path="textvergleich.html"><a href="textvergleich.html#slovarske-enote"><i class="fa fa-check"></i><b>6.17.4</b> Slovarske enote</a></li>
+<li class="chapter" data-level="6.17.5" data-path="textvergleich.html"><a href="textvergleich.html#korelacija-besed"><i class="fa fa-check"></i><b>6.17.5</b> Korelacija besed</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>9</b> Final Words</a></li>
+<li class="chapter" data-level="6.18" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>6.18</b> Sentiment</a>
+<ul>
+<li class="chapter" data-level="6.18.1" data-path="textvergleich.html"><a href="textvergleich.html#različica-1"><i class="fa fa-check"></i><b>6.18.1</b> Različica 1</a></li>
+<li class="chapter" data-level="6.18.2" data-path="textvergleich.html"><a href="textvergleich.html#različica-2"><i class="fa fa-check"></i><b>6.18.2</b> Različica 2</a></li>
+<li class="chapter" data-level="6.18.3" data-path="textvergleich.html"><a href="textvergleich.html#različica-3"><i class="fa fa-check"></i><b>6.18.3</b> Različica 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>8.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -243,14 +281,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="applications" class="section level1" number="8">
-<h1><span class="header-section-number">Kapitel 8</span> Applications</h1>
+<div id="applications" class="section level1" number="9">
+<h1><span class="header-section-number">Kapitel 9</span> Applications</h1>
 <p>Some <em>significant</em> applications are demonstrated in this chapter.</p>
-<div id="example-one" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Example one</h2>
+<div id="example-one" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Example one</h2>
 </div>
-<div id="example-two" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Example two</h2>
+<div id="example-two" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Example two</h2>
 
 </div>
 </div>
