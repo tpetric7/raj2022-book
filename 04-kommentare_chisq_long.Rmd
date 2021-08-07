@@ -1,8 +1,9 @@
 
 # Stichprobentests
-## Chi-Quadrat-Test 
+## Nominalskalierte Größen
 
-Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests, der zum Vergleich von  nominalskalierten Kategorien verwendet wird, z.B. 
+**Chi-Quadrat-Test** 
+Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests zum Vergleich von  nominalskalierten Kategorien, z.B. 
 
 * biologisches Geschlecht: Frauen vs. Männer, 
 * Größe: klein vs. groß
