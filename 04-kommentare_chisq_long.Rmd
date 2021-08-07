@@ -13,12 +13,13 @@ Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests, der zum Ve
 * Texte: Text A vs. Text B vs. Text C ...
 
 Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen. 
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
 library(tidyverse)
 library(janitor)
-# Datei laden und die Variablennamen vereinheitlichen
 kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t") %>% clean_names()
 ```
+
 Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten. 
 
 ### Programme
