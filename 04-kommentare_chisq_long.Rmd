@@ -1,8 +1,4 @@
 
-```{r setup04, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Stichprobentests
 ## Chi-Quadrat-Test 
 

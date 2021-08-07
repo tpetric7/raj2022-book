@@ -1,8 +1,4 @@
 
-```{r setup01, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## Programme
 
 In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel:

@@ -1,8 +1,4 @@
 
-```{r setup02, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Basic operations in R:
 * Download (zip) files
 * Extract compressed files to a folder

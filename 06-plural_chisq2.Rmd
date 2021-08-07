@@ -1,12 +1,7 @@
 
-```{r setup06, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+#### Zweite Version:
 
-
-Zweite Version:
-
-#### Ergebnisse summieren
+Ergebnisse summieren
 
 ```{r}
 (p <- plural_subj1 %>% 
@@ -16,7 +11,8 @@ Zweite Version:
 
 ```
 
-#### Chi-Quadrat-Test
+Chi-Quadrat-Test:
+
 Falls p < 0,05: es gilt H1 (Stichproben unterscheiden sich).
 Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
 
@@ -26,7 +22,7 @@ Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
 
 ```
 
-#### Beobachtete / erwartete Werte
+Beobachtete / erwartete Werte:
 
 ```{r}
 (tabelle <- as_tibble(cbind(chi$observed, chi$expected)) %>%

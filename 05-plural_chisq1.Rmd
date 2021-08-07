@@ -1,8 +1,4 @@
 
-```{r setup05, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ### Plural von Kunstwörtern
 
 #### Naložimo programe

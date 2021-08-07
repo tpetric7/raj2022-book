@@ -30,9 +30,7 @@ preberemo-podatkovni-niz-z-diska
 povzetek-in-hi-kvadrat-test
 naslednji-preizkusi
 tabela-2-x-3
-ergebnisse-summieren
-chi-quadrat-test-2
-beobachtete-erwartete-werte
+zweite-version
 intro
 methods
 math-example

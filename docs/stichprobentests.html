@@ -827,10 +827,10 @@ Rhyme
 ## data:  q[, -1]
 ## X-squared = 78.148, df = 2, p-value &lt; 2.2e-16</code></pre>
 
-<p>Zweite Version:</p>
 </div>
-<div id="ergebnisse-summieren" class="section level4" number="2.1.2.6">
-<h4><span class="header-section-number">2.1.2.6</span> Ergebnisse summieren</h4>
+<div id="zweite-version" class="section level4" number="2.1.2.6">
+<h4><span class="header-section-number">2.1.2.6</span> Zweite Version:</h4>
+<p>Ergebnisse summieren</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="stichprobentests.html#cb58-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> plural_subj1 <span class="sc">%&gt;%</span> </span>
 <span id="cb58-2"><a href="stichprobentests.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(WordType) <span class="sc">%&gt;%</span> </span>
 <span id="cb58-3"><a href="stichprobentests.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">En =</span> <span class="fu">sum</span>(En), <span class="at">E =</span> <span class="fu">sum</span> (E))</span>
@@ -840,9 +840,7 @@ Rhyme
 ##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
 ## 1 NoRhyme   1528  2169
 ## 2 Rhyme     1425  2172</code></pre>
-</div>
-<div id="chi-quadrat-test-2" class="section level4" number="2.1.2.7">
-<h4><span class="header-section-number">2.1.2.7</span> Chi-Quadrat-Test</h4>
+<p>Chi-Quadrat-Test:</p>
 <p>Falls p &lt; 0,05: es gilt H1 (Stichproben unterscheiden sich).
 Falls p &gt; 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="stichprobentests.html#cb60-1" aria-hidden="true" tabindex="-1"></a>(chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(p[,<span class="sc">-</span><span class="dv">1</span>])</span>
@@ -852,9 +850,7 @@ Falls p &gt; 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).</p>
 ## 
 ## data:  p[, -1]
 ## X-squared = 2.1535, df = 1, p-value = 0.1422</code></pre>
-</div>
-<div id="beobachtete-erwartete-werte" class="section level4" number="2.1.2.8">
-<h4><span class="header-section-number">2.1.2.8</span> Beobachtete / erwartete Werte</h4>
+<p>Beobachtete / erwartete Werte:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="stichprobentests.html#cb62-1" aria-hidden="true" tabindex="-1"></a>(tabelle <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">cbind</span>(chi<span class="sc">$</span>observed, chi<span class="sc">$</span>expected)) <span class="sc">%&gt;%</span></span>
 <span id="cb62-2"><a href="stichprobentests.html#cb62-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Wordtyp =</span> <span class="fu">unlist</span>(p[,<span class="dv">1</span>])) <span class="sc">%&gt;%</span> <span class="co"># Spalte wieder hinzufügen</span></span>
 <span id="cb62-3"><a href="stichprobentests.html#cb62-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Wordtyp =</span> <span class="fu">str_replace</span>(Wordtyp, <span class="st">&quot;NoRhyme&quot;</span>, <span class="st">&quot;Nicht-Reimwort&quot;</span>), <span class="co"># auf deutsch</span></span>
