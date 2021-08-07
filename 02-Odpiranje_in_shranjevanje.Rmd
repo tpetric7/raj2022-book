@@ -7,12 +7,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel:
 
-```{r}
-library(tidyverse)
-library(readtext)
-library(readxl)
-library(writexl)
-library(rmarkdown)
+```{r message=FALSE, warning=FALSE}
+library(tidyverse) # viele verschiedene Funktionen
+library(readtext) # Texte lesen
+library(readxl) # Excel-Tabellen lesen
+library(writexl) # Excel-Tabellen schreiben
+library(rmarkdown) # hier für besseres Tabellenformat
+library(kableExtra) # für besseres Tabellenformat 
 ```
 
 Načinov za odpiranje in shranjevanje datotek je veliko. Tule bom pokazal nekaj preprostih:
@@ -70,7 +71,7 @@ Funkcija *read_xlsx()* ali *read_excel()* omogoča odpiranje Excelove preglednic
 library(readxl)
 excel = read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", sheet = "A1-4_alle")
 head(excel) %>% 
-  rmarkdown::paged_table()
+  knitr::kable()
 
 ```
 

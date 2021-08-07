@@ -17,18 +17,21 @@ Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfu
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
 library(tidyverse)
 library(janitor)
+library(kableExtra)
 kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t") %>% clean_names()
+kommentare %>% knitr::kable()
 ```
 
 Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten. 
 
 ### Programme
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(janitor)
 library(scales)
 library(rmarkdown)
+library(kableExtra)
 ```
 
 
@@ -77,7 +80,7 @@ kommentare = kommentare %>%
 # Von der Festplatte laden
 kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t", fileEncoding = "UTF-8") %>% 
   clean_names()
-head(kommentare)
+head(kommentare) %>% knitr::kable()
 
 ```
 
@@ -103,13 +106,14 @@ Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteh
 library(tidyverse)
 library(scales)
 
-(kom_lang = kommentare %>% 
+kom_lang = kommentare %>% 
   as_tibble() %>% 
   pivot_longer(kurzer_kommentar:ausfuhrlicher_kommentar, 
                names_to = "Kommentar",
                values_to = "Fehler") %>% 
   mutate(pct = Fehler/sum(Fehler))
-)
+
+kom_lang %>% knitr::kable()
 
 kom_lang  %>%  ggplot(aes(Kommentar, pct, fill = neugeschriebener_satz)) +
   geom_col(position = "dodge") +

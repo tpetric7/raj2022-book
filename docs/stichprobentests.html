@@ -210,39 +210,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Texte: Text A vs. Text B vs. Text C …</li>
 </ul>
 <p>Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+neugeschriebener_satz
+</th>
+<th style="text-align:right;">
+kurzer_kommentar_a
+</th>
+<th style="text-align:right;">
+ausf_a_lhrlicher_kommentar
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+inkorrekt
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+korrekt
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+</tbody>
+</table>
 <p>Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten.</p>
 <div id="programme-1" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Programme</h3>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="stichprobentests.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb38-2"><a href="stichprobentests.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb38-3"><a href="stichprobentests.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;scales&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     discard</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     col_factor</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stichprobentests.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="stichprobentests.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb34-2"><a href="stichprobentests.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb34-3"><a href="stichprobentests.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb34-4"><a href="stichprobentests.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
+<span id="cb34-5"><a href="stichprobentests.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
 </div>
 <div id="kurzversion" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Kurzversion:</h3>
 <p>Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stichprobentests.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb43-2"><a href="stichprobentests.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb43-3"><a href="stichprobentests.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="stichprobentests.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Datei laden und die Variablennamen vereinheitlichen</span></span>
-<span id="cb43-5"><a href="stichprobentests.html#cb43-5" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-6"><a href="stichprobentests.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb43-7"><a href="stichprobentests.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-8"><a href="stichprobentests.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="stichprobentests.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb35-2"><a href="stichprobentests.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb35-3"><a href="stichprobentests.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="stichprobentests.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Datei laden und die Variablennamen vereinheitlichen</span></span>
+<span id="cb35-5"><a href="stichprobentests.html#cb35-5" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="stichprobentests.html#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb35-7"><a href="stichprobentests.html#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="stichprobentests.html#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare)</span></code></pre></div>
 <pre><code>##   neugeschriebener_satz kurzer_kommentar_a ausf_a_lhrlicher_kommentar
 ## 1             inkorrekt                 13                         29
 ## 2               korrekt                 67                         55</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stichprobentests.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb45-2"><a href="stichprobentests.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-Quadrat-Test</span></span>
-<span id="cb45-3"><a href="stichprobentests.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="stichprobentests.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb37-2"><a href="stichprobentests.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-Quadrat-Test</span></span>
+<span id="cb37-3"><a href="stichprobentests.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
@@ -257,26 +289,62 @@ zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied
 <div id="datei-laden" class="section level4" number="2.1.3.1">
 <h4><span class="header-section-number">2.1.3.1</span> Datei laden</h4>
 <p>Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="stichprobentests.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb47-2"><a href="stichprobentests.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="stichprobentests.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># von github laden</span></span>
-<span id="cb47-4"><a href="stichprobentests.html#cb47-4" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(</span>
-<span id="cb47-5"><a href="stichprobentests.html#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/chisq_kommentare.txt&quot;</span>,</span>
-<span id="cb47-6"><a href="stichprobentests.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb47-7"><a href="stichprobentests.html#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-8"><a href="stichprobentests.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb47-9"><a href="stichprobentests.html#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-10"><a href="stichprobentests.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Variablennamen konsequent schreiben</span></span>
-<span id="cb47-11"><a href="stichprobentests.html#cb47-11" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> kommentare <span class="sc">%&gt;%</span> </span>
-<span id="cb47-12"><a href="stichprobentests.html#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb47-13"><a href="stichprobentests.html#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-14"><a href="stichprobentests.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Von der Festplatte laden</span></span>
-<span id="cb47-15"><a href="stichprobentests.html#cb47-15" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-16"><a href="stichprobentests.html#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb47-17"><a href="stichprobentests.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare)</span></code></pre></div>
-<pre><code>##   neugeschriebener_satz kurzer_kommentar ausfuhrlicher_kommentar
-## 1             inkorrekt               13                      29
-## 2               korrekt               67                      55</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="stichprobentests.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb39-2"><a href="stichprobentests.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="stichprobentests.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># von github laden</span></span>
+<span id="cb39-4"><a href="stichprobentests.html#cb39-4" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(</span>
+<span id="cb39-5"><a href="stichprobentests.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/chisq_kommentare.txt&quot;</span>,</span>
+<span id="cb39-6"><a href="stichprobentests.html#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb39-7"><a href="stichprobentests.html#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="stichprobentests.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb39-9"><a href="stichprobentests.html#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="stichprobentests.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Variablennamen konsequent schreiben</span></span>
+<span id="cb39-11"><a href="stichprobentests.html#cb39-11" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> kommentare <span class="sc">%&gt;%</span> </span>
+<span id="cb39-12"><a href="stichprobentests.html#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb39-13"><a href="stichprobentests.html#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="stichprobentests.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Von der Festplatte laden</span></span>
+<span id="cb39-15"><a href="stichprobentests.html#cb39-15" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-16"><a href="stichprobentests.html#cb39-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb39-17"><a href="stichprobentests.html#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+neugeschriebener_satz
+</th>
+<th style="text-align:right;">
+kurzer_kommentar
+</th>
+<th style="text-align:right;">
+ausfuhrlicher_kommentar
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+inkorrekt
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+korrekt
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="chi-quadrat-test-1" class="section level4" number="2.1.3.2">
 <h4><span class="header-section-number">2.1.3.2</span> Chi-Quadrat-Test</h4>
@@ -285,8 +353,8 @@ zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied
 <li>H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).</li>
 <li>H1: Zwischen den beiden Stichproben besteht ein signifikanter Unterschied (Unterschiede nicht zufällig).</li>
 </ul>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="stichprobentests.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb49-2"><a href="stichprobentests.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="stichprobentests.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb40-2"><a href="stichprobentests.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
@@ -296,28 +364,98 @@ zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied
 </div>
 <div id="graphische-darstellung" class="section level4" number="2.1.3.3">
 <h4><span class="header-section-number">2.1.3.3</span> Graphische Darstellung</h4>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stichprobentests.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb51-2"><a href="stichprobentests.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb51-3"><a href="stichprobentests.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="stichprobentests.html#cb51-4" aria-hidden="true" tabindex="-1"></a>(<span class="at">kom_lang =</span> kommentare <span class="sc">%&gt;%</span> </span>
-<span id="cb51-5"><a href="stichprobentests.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb51-6"><a href="stichprobentests.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(kurzer_kommentar<span class="sc">:</span>ausfuhrlicher_kommentar, </span>
-<span id="cb51-7"><a href="stichprobentests.html#cb51-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Kommentar&quot;</span>,</span>
-<span id="cb51-8"><a href="stichprobentests.html#cb51-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehler&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-9"><a href="stichprobentests.html#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> Fehler<span class="sc">/</span><span class="fu">sum</span>(Fehler))</span>
-<span id="cb51-10"><a href="stichprobentests.html#cb51-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 4
-##   neugeschriebener_satz Kommentar               Fehler    pct
-##   &lt;chr&gt;                 &lt;chr&gt;                    &lt;int&gt;  &lt;dbl&gt;
-## 1 inkorrekt             kurzer_kommentar            13 0.0793
-## 2 inkorrekt             ausfuhrlicher_kommentar     29 0.177 
-## 3 korrekt               kurzer_kommentar            67 0.409 
-## 4 korrekt               ausfuhrlicher_kommentar     55 0.335</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="stichprobentests.html#cb53-1" aria-hidden="true" tabindex="-1"></a>kom_lang  <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Kommentar, pct, <span class="at">fill =</span> neugeschriebener_satz)) <span class="sc">+</span></span>
-<span id="cb53-2"><a href="stichprobentests.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb53-3"><a href="stichprobentests.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
-<span id="cb53-4"><a href="stichprobentests.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb53-5"><a href="stichprobentests.html#cb53-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stichprobentests.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb42-2"><a href="stichprobentests.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb42-3"><a href="stichprobentests.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="stichprobentests.html#cb42-4" aria-hidden="true" tabindex="-1"></a>kom_lang <span class="ot">=</span> kommentare <span class="sc">%&gt;%</span> </span>
+<span id="cb42-5"><a href="stichprobentests.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb42-6"><a href="stichprobentests.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(kurzer_kommentar<span class="sc">:</span>ausfuhrlicher_kommentar, </span>
+<span id="cb42-7"><a href="stichprobentests.html#cb42-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Kommentar&quot;</span>,</span>
+<span id="cb42-8"><a href="stichprobentests.html#cb42-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehler&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-9"><a href="stichprobentests.html#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> Fehler<span class="sc">/</span><span class="fu">sum</span>(Fehler))</span>
+<span id="cb42-10"><a href="stichprobentests.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="stichprobentests.html#cb42-11" aria-hidden="true" tabindex="-1"></a>kom_lang <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+neugeschriebener_satz
+</th>
+<th style="text-align:left;">
+Kommentar
+</th>
+<th style="text-align:right;">
+Fehler
+</th>
+<th style="text-align:right;">
+pct
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+inkorrekt
+</td>
+<td style="text-align:left;">
+kurzer_kommentar
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0.0792683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+inkorrekt
+</td>
+<td style="text-align:left;">
+ausfuhrlicher_kommentar
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+0.1768293
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+korrekt
+</td>
+<td style="text-align:left;">
+kurzer_kommentar
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+0.4085366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+korrekt
+</td>
+<td style="text-align:left;">
+ausfuhrlicher_kommentar
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+0.3353659
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stichprobentests.html#cb43-1" aria-hidden="true" tabindex="-1"></a>kom_lang  <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Kommentar, pct, <span class="at">fill =</span> neugeschriebener_satz)) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="stichprobentests.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="stichprobentests.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="stichprobentests.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb43-5"><a href="stichprobentests.html#cb43-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 
 </div>
