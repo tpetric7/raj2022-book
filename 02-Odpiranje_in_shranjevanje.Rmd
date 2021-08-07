@@ -1,9 +1,3 @@
----
-title: "Dateien öffnen und speichern"
-author: "Teodor Petrič"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
----
 
 ```{r setup01, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

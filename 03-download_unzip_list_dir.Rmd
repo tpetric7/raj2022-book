@@ -1,9 +1,3 @@
----
-title: "Download, unzip, dir & list"
-author: "Teodor Petrič"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
----
 
 ```{r setup02, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)

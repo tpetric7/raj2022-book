@@ -1,9 +1,3 @@
----
-title: "Lange und kurze Kommentare"
-author: "Teodor Petrič"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
----
 
 ```{r setup04, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
