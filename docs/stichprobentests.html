@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 2 Stichprobentests | Lange und kurze Kommentare</title>
+  <meta name="description" content="Kapitel 2 Stichprobentests | Lange und kurze Kommentare" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 2 Stichprobentests | Lange und kurze Kommentare" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 2 Stichprobentests | Lange und kurze Kommentare" />
+  
+  
+  
+
+<meta name="author" content="Teodor Petrič" />
+
+
+<meta name="date" content="2021-08-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="intro.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RAJ 2022 Intro</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#programme"><i class="fa fa-check"></i><b>1.1</b> Programme</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#textdatei-öffnen"><i class="fa fa-check"></i><b>1.2</b> Textdatei öffnen</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#mehrere-textdateien-öffnen"><i class="fa fa-check"></i><b>1.3</b> Mehrere Textdateien öffnen</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#tabelle-öffnen"><i class="fa fa-check"></i><b>1.4</b> Tabelle öffnen</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#excel-tabelle-öffnen"><i class="fa fa-check"></i><b>1.5</b> Excel-Tabelle öffnen</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#datei-speichern"><i class="fa fa-check"></i><b>1.6</b> Datei speichern</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#download"><i class="fa fa-check"></i><b>1.7</b> Download</a></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#check-create-directory"><i class="fa fa-check"></i><b>1.8</b> Check &amp; create directory</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#unzip"><i class="fa fa-check"></i><b>1.9</b> Unzip</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#create-subfolders"><i class="fa fa-check"></i><b>1.10</b> Create subfolders</a></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#list-files"><i class="fa fa-check"></i><b>1.11</b> List files</a></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#read-files"><i class="fa fa-check"></i><b>1.12</b> Read files</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#tidyverse"><i class="fa fa-check"></i><b>1.12.1</b> tidyverse:</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#base-r"><i class="fa fa-check"></i><b>1.12.2</b> Base R:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="stichprobentests.html"><a href="stichprobentests.html"><i class="fa fa-check"></i><b>2</b> Stichprobentests</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#chi-quadrat-test"><i class="fa fa-check"></i><b>2.1</b> Chi-Quadrat-Test</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#programme-1"><i class="fa fa-check"></i><b>2.1.1</b> Programme</a></li>
+<li class="chapter" data-level="2.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#kurzversion"><i class="fa fa-check"></i><b>2.1.2</b> Kurzversion:</a></li>
+<li class="chapter" data-level="2.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#längere-version"><i class="fa fa-check"></i><b>2.1.3</b> Längere Version</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>4.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lange und kurze Kommentare</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stichprobentests" class="section level1" number="2">
+<h1><span class="header-section-number">Kapitel 2</span> Stichprobentests</h1>
+<div id="chi-quadrat-test" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Chi-Quadrat-Test</h2>
+<p>Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests, der zum Vergleich von nominalskalierten Kategorien verwendet wird, z.B.</p>
+<ul>
+<li>biologisches Geschlecht: Frauen vs. Männer,</li>
+<li>Größe: klein vs. groß</li>
+<li>Texte: Text A vs. Text B vs. Text C …</li>
+</ul>
+<p>Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen.</p>
+<p>Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten.</p>
+<div id="programme-1" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Programme</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="stichprobentests.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-2"><a href="stichprobentests.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb38-3"><a href="stichprobentests.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stichprobentests.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+</div>
+<div id="kurzversion" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Kurzversion:</h3>
+<p>Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="stichprobentests.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb43-2"><a href="stichprobentests.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb43-3"><a href="stichprobentests.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="stichprobentests.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Datei laden und die Variablennamen vereinheitlichen</span></span>
+<span id="cb43-5"><a href="stichprobentests.html#cb43-5" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-6"><a href="stichprobentests.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb43-7"><a href="stichprobentests.html#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="stichprobentests.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare)</span></code></pre></div>
+<pre><code>##   neugeschriebener_satz kurzer_kommentar_a ausf_a_lhrlicher_kommentar
+## 1             inkorrekt                 13                         29
+## 2               korrekt                 67                         55</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stichprobentests.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb45-2"><a href="stichprobentests.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-Quadrat-Test</span></span>
+<span id="cb45-3"><a href="stichprobentests.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  kommentare[, -1]
+## X-squared = 6.2551, df = 1, p-value = 0.01238</code></pre>
+<p>Ergebnis:
+Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an:
+zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.</p>
+</div>
+<div id="längere-version" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Längere Version</h3>
+<div id="datei-laden" class="section level4" number="2.1.3.1">
+<h4><span class="header-section-number">2.1.3.1</span> Datei laden</h4>
+<p>Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="stichprobentests.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb47-2"><a href="stichprobentests.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="stichprobentests.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># von github laden</span></span>
+<span id="cb47-4"><a href="stichprobentests.html#cb47-4" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(</span>
+<span id="cb47-5"><a href="stichprobentests.html#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/chisq_kommentare.txt&quot;</span>,</span>
+<span id="cb47-6"><a href="stichprobentests.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb47-7"><a href="stichprobentests.html#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="stichprobentests.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb47-9"><a href="stichprobentests.html#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="stichprobentests.html#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Variablennamen konsequent schreiben</span></span>
+<span id="cb47-11"><a href="stichprobentests.html#cb47-11" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> kommentare <span class="sc">%&gt;%</span> </span>
+<span id="cb47-12"><a href="stichprobentests.html#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb47-13"><a href="stichprobentests.html#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="stichprobentests.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Von der Festplatte laden</span></span>
+<span id="cb47-15"><a href="stichprobentests.html#cb47-15" aria-hidden="true" tabindex="-1"></a>kommentare <span class="ot">=</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/chisq_kommentare.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-16"><a href="stichprobentests.html#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb47-17"><a href="stichprobentests.html#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(kommentare)</span></code></pre></div>
+<pre><code>##   neugeschriebener_satz kurzer_kommentar ausfuhrlicher_kommentar
+## 1             inkorrekt               13                      29
+## 2               korrekt               67                      55</code></pre>
+</div>
+<div id="chi-quadrat-test-1" class="section level4" number="2.1.3.2">
+<h4><span class="header-section-number">2.1.3.2</span> Chi-Quadrat-Test</h4>
+<p>Stichproben: kurzer Kommentar vs. langer Kommentar</p>
+<ul>
+<li>H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).</li>
+<li>H1: Zwischen den beiden Stichproben besteht ein signifikanter Unterschied (Unterschiede nicht zufällig).</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="stichprobentests.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb49-2"><a href="stichprobentests.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(kommentare[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  kommentare[, -1]
+## X-squared = 6.2551, df = 1, p-value = 0.01238</code></pre>
+<p>Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.</p>
+</div>
+<div id="graphische-darstellung" class="section level4" number="2.1.3.3">
+<h4><span class="header-section-number">2.1.3.3</span> Graphische Darstellung</h4>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stichprobentests.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-2"><a href="stichprobentests.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb51-3"><a href="stichprobentests.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="stichprobentests.html#cb51-4" aria-hidden="true" tabindex="-1"></a>(<span class="at">kom_lang =</span> kommentare <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="stichprobentests.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb51-6"><a href="stichprobentests.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(kurzer_kommentar<span class="sc">:</span>ausfuhrlicher_kommentar, </span>
+<span id="cb51-7"><a href="stichprobentests.html#cb51-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Kommentar&quot;</span>,</span>
+<span id="cb51-8"><a href="stichprobentests.html#cb51-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehler&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-9"><a href="stichprobentests.html#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> Fehler<span class="sc">/</span><span class="fu">sum</span>(Fehler))</span>
+<span id="cb51-10"><a href="stichprobentests.html#cb51-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   neugeschriebener_satz Kommentar               Fehler    pct
+##   &lt;chr&gt;                 &lt;chr&gt;                    &lt;int&gt;  &lt;dbl&gt;
+## 1 inkorrekt             kurzer_kommentar            13 0.0793
+## 2 inkorrekt             ausfuhrlicher_kommentar     29 0.177 
+## 3 korrekt               kurzer_kommentar            67 0.409 
+## 4 korrekt               ausfuhrlicher_kommentar     55 0.335</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="stichprobentests.html#cb53-1" aria-hidden="true" tabindex="-1"></a>kom_lang  <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Kommentar, pct, <span class="at">fill =</span> neugeschriebener_satz)) <span class="sc">+</span></span>
+<span id="cb53-2"><a href="stichprobentests.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="stichprobentests.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb53-4"><a href="stichprobentests.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb53-5"><a href="stichprobentests.html#cb53-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-kommentare_chisq_long.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/04-kommentare_chisq_long.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

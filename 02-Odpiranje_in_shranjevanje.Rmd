@@ -1,0 +1,108 @@
+---
+title: "Dateien öffnen und speichern"
+author: "Teodor Petrič"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+```{r setup01, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Programme
+
+In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel:
+
+```{r}
+library(tidyverse)
+library(readtext)
+library(readxl)
+library(writexl)
+library(rmarkdown)
+```
+
+Načinov za odpiranje in shranjevanje datotek je veliko. Tule bom pokazal nekaj preprostih:
+
+
+## Textdatei öffnen
+
+Funkcija *read_lines()*: odpremo besedilo v izbrani mapi in ga shranimo v spremenljivki (npr. "besedilo").
+
+Odpiranje besedila s spletnega naslova (url) je možen.
+
+```{r}
+library(tidyverse)
+besedilo = read_lines("data/books/tom.txt")
+
+```
+
+
+## Mehrere Textdateien öffnen
+
+Funkcija *readtext()*: če namesto imena datotek navedemo samo zvezdico + pripono datotek (npr. *.txt) v izbrani mapi (npr. "data/books/"), potem bo program odprl vse besedilne datoteke s to pripono in to zbirko shranil v spremenljivki (npr. "besedila"). Program ustvari tabelo odprtih besedil.
+
+readtext() odpira različne besedila z različnimi priponami: txt, csv, docx, pdf, xml, ...
+
+Odpiranje besedila s spletnega naslova (url) je možen.
+
+```{r}
+library(readtext)
+besedila = readtext("data/books/*.txt", encoding = "UTF-8")
+besedila
+
+```
+
+
+## Tabelle öffnen
+
+Funkcija *read_csv()* ali *read_csv2()* sta le dve izmed številnih funkcij za odpiranje preglednice s pripono "csv". 
+
+Odpiranje besedila s spletnega naslova (url) je možen.
+
+```{r}
+library(tidyverse)
+tabela = read_csv2("data/plural_Subj_sum.csv")
+head(tabela) %>% 
+  rmarkdown::paged_table()
+
+```
+
+
+## Excel-Tabelle öffnen
+
+Funkcija *read_xlsx()* ali *read_excel()* omogoča odpiranje Excelove preglednice s pripono "xlsx". 
+
+```{r}
+library(readxl)
+excel = read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", sheet = "A1-4_alle")
+head(excel) %>% 
+  rmarkdown::paged_table()
+
+```
+
+
+## Datei speichern
+
+Privzeto spodnji programi shranjujejo v obliki (codepage) encoding = "UTF-8" / fileEncoding = "UTF-8".
+
+```{r}
+library(tidyverse)
+
+# shranjevanje posamičnega besedila
+write_lines(besedilo, "moje_besedilo.txt")
+
+# shranjevanje tabele, v kateri je zbirka besedil
+write_csv2(besedila, "moja_tabela_z_besedili.csv")
+
+library(writexl)
+# shranjevanje preglednice
+write_xlsx(tabela, "moja_tabela.xlsx")
+
+# shranjevanje tabele, v kateri je zibrka besedil
+# Excel dovoljuje do 32767 znakov.
+# ta zbirko presega to mejo, zato je ne moremo shraniti v Excelovi preglednici
+
+# write_xlsx(besedila, "moja_tabela_z_besedili.xlsx")
+
+```
+

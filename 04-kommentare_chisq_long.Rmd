@@ -1,0 +1,126 @@
+---
+title: "Lange und kurze Kommentare"
+author: "Teodor Petrič"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+```{r setup04, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Stichprobentests
+## Chi-Quadrat-Test 
+
+Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests, der zum Vergleich von  nominalskalierten Kategorien verwendet wird, z.B. 
+
+* biologisches Geschlecht: Frauen vs. Männer, 
+* Größe: klein vs. groß
+* Texte: Text A vs. Text B vs. Text C ...
+
+Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen. 
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+library(janitor)
+# Datei laden und die Variablennamen vereinheitlichen
+kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t") %>% clean_names()
+```
+Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten. 
+
+### Programme
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(scales)
+library(rmarkdown)
+```
+
+
+### Kurzversion:
+Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+library(janitor)
+
+# Datei laden und die Variablennamen vereinheitlichen
+kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t") %>% 
+  clean_names()
+
+head(kommentare)
+
+library(janitor)
+# Chi-Quadrat-Test
+chisq.test(kommentare[,-1])
+
+```
+
+Ergebnis:
+Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an: 
+zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
+
+### Längere Version
+#### Datei laden
+
+Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+
+# von github laden
+kommentare = read.delim(
+  "https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/chisq_kommentare.txt",
+  sep = "\t", fileEncoding = "UTF-8")
+
+library(janitor)
+
+# Variablennamen konsequent schreiben
+kommentare = kommentare %>% 
+  clean_names()
+
+# Von der Festplatte laden
+kommentare = read.delim("data/chisq_kommentare.txt", sep = "\t", fileEncoding = "UTF-8") %>% 
+  clean_names()
+head(kommentare)
+
+```
+
+#### Chi-Quadrat-Test
+
+Stichproben: kurzer Kommentar vs. langer Kommentar
+
+* H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).
+* H1: Zwischen den beiden Stichproben besteht ein signifikanter Unterschied (Unterschiede nicht zufällig).
+
+```{r message=FALSE, warning=FALSE}
+library(janitor)
+chisq.test(kommentare[,-1])
+
+```
+
+Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
+
+
+#### Graphische Darstellung
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+library(tidyverse)
+library(scales)
+
+(kom_lang = kommentare %>% 
+  as_tibble() %>% 
+  pivot_longer(kurzer_kommentar:ausfuhrlicher_kommentar, 
+               names_to = "Kommentar",
+               values_to = "Fehler") %>% 
+  mutate(pct = Fehler/sum(Fehler))
+)
+
+kom_lang  %>%  ggplot(aes(Kommentar, pct, fill = neugeschriebener_satz)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = percent_format()) +
+  labs(x = "Neugeschriebener Satz", y = "",
+       title = "Wirksamkeit kurzer und langer Kommentare")
+
+```
+

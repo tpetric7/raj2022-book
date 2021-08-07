@@ -1,0 +1,3 @@
+neugeschriebener Satz	Kurzer Kommentar 	ausführlicher Kommentar
+inkorrekt	13	29
+korrekt	67	55
