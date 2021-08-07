@@ -162,9 +162,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#chi-quadrat-test"><i class="fa fa-check"></i><b>2.1</b> Chi-Quadrat-Test</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#programme-1"><i class="fa fa-check"></i><b>2.1.1</b> Programme</a></li>
-<li class="chapter" data-level="2.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#kurzversion"><i class="fa fa-check"></i><b>2.1.2</b> Kurzversion:</a></li>
-<li class="chapter" data-level="2.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#längere-version"><i class="fa fa-check"></i><b>2.1.3</b> Längere Version</a></li>
+<li class="chapter" data-level="2.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#lange-und-kurze-kommentare"><i class="fa fa-check"></i><b>2.1.1</b> Lange und kurze Kommentare</a></li>
+<li class="chapter" data-level="2.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#plural-von-kunstwörtern"><i class="fa fa-check"></i><b>2.1.2</b> Plural von Kunstwörtern</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
@@ -209,6 +208,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Größe: klein vs. groß</li>
 <li>Texte: Text A vs. Text B vs. Text C …</li>
 </ul>
+<div id="lange-und-kurze-kommentare" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Lange und kurze Kommentare</h3>
 <p>Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen.</p>
 <table>
 <thead>
@@ -250,16 +251,16 @@ korrekt
 </tbody>
 </table>
 <p>Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten.</p>
-<div id="programme-1" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Programme</h3>
+<div id="programme-1" class="section level4" number="2.1.1.1">
+<h4><span class="header-section-number">2.1.1.1</span> Programme</h4>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="stichprobentests.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb34-2"><a href="stichprobentests.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb34-3"><a href="stichprobentests.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb34-4"><a href="stichprobentests.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
 <span id="cb34-5"><a href="stichprobentests.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
 </div>
-<div id="kurzversion" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Kurzversion:</h3>
+<div id="kurzversion" class="section level4" number="2.1.1.2">
+<h4><span class="header-section-number">2.1.1.2</span> Kurzversion:</h4>
 <p>Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="stichprobentests.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb35-2"><a href="stichprobentests.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
@@ -284,10 +285,10 @@ korrekt
 Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an:
 zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.</p>
 </div>
-<div id="längere-version" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Längere Version</h3>
-<div id="datei-laden" class="section level4" number="2.1.3.1">
-<h4><span class="header-section-number">2.1.3.1</span> Datei laden</h4>
+<div id="längere-version" class="section level4" number="2.1.1.3">
+<h4><span class="header-section-number">2.1.1.3</span> Längere Version</h4>
+<div id="datei-laden" class="section level5" number="2.1.1.3.1">
+<h5><span class="header-section-number">2.1.1.3.1</span> Datei laden</h5>
 <p>Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="stichprobentests.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb39-2"><a href="stichprobentests.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -346,8 +347,8 @@ korrekt
 </tbody>
 </table>
 </div>
-<div id="chi-quadrat-test-1" class="section level4" number="2.1.3.2">
-<h4><span class="header-section-number">2.1.3.2</span> Chi-Quadrat-Test</h4>
+<div id="chi-quadrat-test-1" class="section level5" number="2.1.1.3.2">
+<h5><span class="header-section-number">2.1.1.3.2</span> Chi-Quadrat-Test</h5>
 <p>Stichproben: kurzer Kommentar vs. langer Kommentar</p>
 <ul>
 <li>H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).</li>
@@ -362,8 +363,8 @@ korrekt
 ## X-squared = 6.2551, df = 1, p-value = 0.01238</code></pre>
 <p>Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.</p>
 </div>
-<div id="graphische-darstellung" class="section level4" number="2.1.3.3">
-<h4><span class="header-section-number">2.1.3.3</span> Graphische Darstellung</h4>
+<div id="graphische-darstellung" class="section level5" number="2.1.1.3.3">
+<h5><span class="header-section-number">2.1.1.3.3</span> Graphische Darstellung</h5>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="stichprobentests.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb42-2"><a href="stichprobentests.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb42-3"><a href="stichprobentests.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -457,6 +458,416 @@ ausfuhrlicher_kommentar
 <span id="cb43-4"><a href="stichprobentests.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb43-5"><a href="stichprobentests.html#cb43-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+<div id="plural-von-kunstwörtern" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Plural von Kunstwörtern</h3>
+<div id="naložimo-programe" class="section level4" number="2.1.2.1">
+<h4><span class="header-section-number">2.1.2.1</span> Naložimo programe</h4>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="stichprobentests.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-2"><a href="stichprobentests.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb44-3"><a href="stichprobentests.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+<div id="preberemo-podatkovni-niz-z-diska" class="section level4" number="2.1.2.2">
+<h4><span class="header-section-number">2.1.2.2</span> Preberemo podatkovni niz z diska</h4>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="stichprobentests.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Branje datoteke je možno na več načinov</span></span>
+<span id="cb45-2"><a href="stichprobentests.html#cb45-2" aria-hidden="true" tabindex="-1"></a>plural_subj1 <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/plural_Subj_sum.csv&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb45-3"><a href="stichprobentests.html#cb45-3" aria-hidden="true" tabindex="-1"></a>plural_subj1 <span class="ot">=</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/plural_Subj_sum.csv&quot;</span>)</span>
+<span id="cb45-4"><a href="stichprobentests.html#cb45-4" aria-hidden="true" tabindex="-1"></a>plural_subj1 <span class="ot">=</span> <span class="fu">read_csv2</span>(<span class="st">&quot;data/plural_Subj_sum.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## i Using &quot;&#39;,&#39;&quot; as decimal and &quot;&#39;.&#39;&quot; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<pre><code>## Rows: 738 Columns: 9</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;;&quot;
+## chr (2): WordType, Genus
+## dbl (7): SubjID, Sigstark, En, E, Er, S, Z</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="stichprobentests.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pokaži prvih šest vrstic</span></span>
+<span id="cb50-2"><a href="stichprobentests.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(plural_subj1) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+SubjID
+</th>
+<th style="text-align:left;">
+WordType
+</th>
+<th style="text-align:left;">
+Genus
+</th>
+<th style="text-align:right;">
+Sigstark
+</th>
+<th style="text-align:right;">
+En
+</th>
+<th style="text-align:right;">
+E
+</th>
+<th style="text-align:right;">
+Er
+</th>
+<th style="text-align:right;">
+S
+</th>
+<th style="text-align:right;">
+Z
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NoRhyme
+</td>
+<td style="text-align:left;">
+Fem
+</td>
+<td style="text-align:right;">
+4.983333
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NoRhyme
+</td>
+<td style="text-align:left;">
+Masc
+</td>
+<td style="text-align:right;">
+4.600000
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NoRhyme
+</td>
+<td style="text-align:left;">
+Neut
+</td>
+<td style="text-align:right;">
+5.366667
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Rhyme
+</td>
+<td style="text-align:left;">
+Fem
+</td>
+<td style="text-align:right;">
+3.836667
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Rhyme
+</td>
+<td style="text-align:left;">
+Masc
+</td>
+<td style="text-align:right;">
+4.153333
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Rhyme
+</td>
+<td style="text-align:left;">
+Neut
+</td>
+<td style="text-align:right;">
+3.784167
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="povzetek-in-hi-kvadrat-test" class="section level4" number="2.1.2.3">
+<h4><span class="header-section-number">2.1.2.3</span> Povzetek in Hi-kvadrat test</h4>
+<p>Podatkovni niz preoblikujemo in povzemamo (agregacija).
+Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami).
+Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.</p>
+<p>H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
+H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).</p>
+<p>Če je p-vrednost &lt; 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake).</p>
+<p>Če p &gt; 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="stichprobentests.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Povzemamo (&quot;aggregate&quot;)</span></span>
+<span id="cb51-2"><a href="stichprobentests.html#cb51-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> plural_subj1 <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="stichprobentests.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(WordType) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-4"><a href="stichprobentests.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sigstark =</span> <span class="fu">mean</span>(Sigstark),</span>
+<span id="cb51-5"><a href="stichprobentests.html#cb51-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">En =</span> <span class="fu">sum</span>(En), <span class="at">E =</span> <span class="fu">sum</span>(E), <span class="at">Er =</span> <span class="fu">sum</span>(Er), <span class="at">S =</span> <span class="fu">sum</span>(S), <span class="at">Z =</span> <span class="fu">sum</span>(Z)) </span>
+<span id="cb51-6"><a href="stichprobentests.html#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="stichprobentests.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># izpis tabele</span></span>
+<span id="cb51-8"><a href="stichprobentests.html#cb51-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(p)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+WordType
+</th>
+<th style="text-align:right;">
+Sigstark
+</th>
+<th style="text-align:right;">
+En
+</th>
+<th style="text-align:right;">
+E
+</th>
+<th style="text-align:right;">
+Er
+</th>
+<th style="text-align:right;">
+S
+</th>
+<th style="text-align:right;">
+Z
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NoRhyme
+</td>
+<td style="text-align:right;">
+4.087337
+</td>
+<td style="text-align:right;">
+1528
+</td>
+<td style="text-align:right;">
+2169
+</td>
+<td style="text-align:right;">
+302
+</td>
+<td style="text-align:right;">
+307
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rhyme
+</td>
+<td style="text-align:right;">
+3.916109
+</td>
+<td style="text-align:right;">
+1425
+</td>
+<td style="text-align:right;">
+2172
+</td>
+<td style="text-align:right;">
+561
+</td>
+<td style="text-align:right;">
+244
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="stichprobentests.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Izberemo tri stolpce</span></span>
+<span id="cb52-2"><a href="stichprobentests.html#cb52-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> p <span class="sc">%&gt;%</span> <span class="fu">select</span>(WordType, E, S)</span>
+<span id="cb52-3"><a href="stichprobentests.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="stichprobentests.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Razlika med deleži množinskih pripon E in S (npr. Bal-e oder Bal-s)</span></span>
+<span id="cb52-5"><a href="stichprobentests.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(q[,<span class="sc">-</span><span class="dv">1</span>]) <span class="co"># prvi stolpec naj se ne upošteva, zato [, -1]</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  q[, -1]
+## X-squared = 6.2424, df = 1, p-value = 0.01247</code></pre>
+</div>
+<div id="naslednji-preizkusi" class="section level4" number="2.1.2.4">
+<h4><span class="header-section-number">2.1.2.4</span> Naslednji preizkus(i)</h4>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="stichprobentests.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Izberemo tri stolpce za naslednji preizkus</span></span>
+<span id="cb54-2"><a href="stichprobentests.html#cb54-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> p <span class="sc">%&gt;%</span> <span class="fu">select</span>(WordType, E, Er)</span>
+<span id="cb54-3"><a href="stichprobentests.html#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="stichprobentests.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Razlika med deleži množinskih pripon E in Er (npr. Bal-e oder Bal-er)</span></span>
+<span id="cb54-5"><a href="stichprobentests.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(q[,<span class="sc">-</span><span class="dv">1</span>]) <span class="co"># prvi stolpec naj se ne upošteva, zato [, -1]</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  q[, -1]
+## X-squared = 64.106, df = 1, p-value = 1.179e-15</code></pre>
+</div>
+<div id="tabela-2-x-3" class="section level4" number="2.1.2.5">
+<h4><span class="header-section-number">2.1.2.5</span> Tabela 2 x 3</h4>
+<p>Možno je tudi testiranje treh ali več vzorcev, vendar nam test ne pove, kateri vzorec je različen od drugega.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="stichprobentests.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Izberemo tri stolpce za naslednji preizkus</span></span>
+<span id="cb56-2"><a href="stichprobentests.html#cb56-2" aria-hidden="true" tabindex="-1"></a>q <span class="ot">=</span> p <span class="sc">%&gt;%</span> <span class="fu">select</span>(WordType, Er, E, S)</span>
+<span id="cb56-3"><a href="stichprobentests.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="stichprobentests.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Razlika med deleži množinskih pripon E in Er (npr. Bal-e oder Bal-er)</span></span>
+<span id="cb56-5"><a href="stichprobentests.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(q[,<span class="sc">-</span><span class="dv">1</span>]) <span class="co"># prvi stolpec naj se ne upošteva, zato [, -1]</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  q[, -1]
+## X-squared = 78.148, df = 2, p-value &lt; 2.2e-16</code></pre>
+
+<p>Zweite Version:</p>
+</div>
+<div id="ergebnisse-summieren" class="section level4" number="2.1.2.6">
+<h4><span class="header-section-number">2.1.2.6</span> Ergebnisse summieren</h4>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="stichprobentests.html#cb58-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> plural_subj1 <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="stichprobentests.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(WordType) <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="stichprobentests.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">En =</span> <span class="fu">sum</span>(En), <span class="at">E =</span> <span class="fu">sum</span> (E))</span>
+<span id="cb58-4"><a href="stichprobentests.html#cb58-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 3
+##   WordType    En     E
+##   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+## 1 NoRhyme   1528  2169
+## 2 Rhyme     1425  2172</code></pre>
+</div>
+<div id="chi-quadrat-test-2" class="section level4" number="2.1.2.7">
+<h4><span class="header-section-number">2.1.2.7</span> Chi-Quadrat-Test</h4>
+<p>Falls p &lt; 0,05: es gilt H1 (Stichproben unterscheiden sich).
+Falls p &gt; 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="stichprobentests.html#cb60-1" aria-hidden="true" tabindex="-1"></a>(chi <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(p[,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb60-2"><a href="stichprobentests.html#cb60-2" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  p[, -1]
+## X-squared = 2.1535, df = 1, p-value = 0.1422</code></pre>
+</div>
+<div id="beobachtete-erwartete-werte" class="section level4" number="2.1.2.8">
+<h4><span class="header-section-number">2.1.2.8</span> Beobachtete / erwartete Werte</h4>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="stichprobentests.html#cb62-1" aria-hidden="true" tabindex="-1"></a>(tabelle <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">cbind</span>(chi<span class="sc">$</span>observed, chi<span class="sc">$</span>expected)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="stichprobentests.html#cb62-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Wordtyp =</span> <span class="fu">unlist</span>(p[,<span class="dv">1</span>])) <span class="sc">%&gt;%</span> <span class="co"># Spalte wieder hinzufügen</span></span>
+<span id="cb62-3"><a href="stichprobentests.html#cb62-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">Wordtyp =</span> <span class="fu">str_replace</span>(Wordtyp, <span class="st">&quot;NoRhyme&quot;</span>, <span class="st">&quot;Nicht-Reimwort&quot;</span>), <span class="co"># auf deutsch</span></span>
+<span id="cb62-4"><a href="stichprobentests.html#cb62-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">Wordtyp =</span> <span class="fu">str_replace</span>(Wordtyp, <span class="st">&quot;Rhyme&quot;</span>, <span class="st">&quot;Reimwort&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># auf deutsch</span></span>
+<span id="cb62-5"><a href="stichprobentests.html#cb62-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(<span class="at">En_erwartet =</span> V3, <span class="at">E_erwartet =</span> V4) <span class="sc">%&gt;%</span>  <span class="co"># erwartete Werte, wenn H0 richtig ist</span></span>
+<span id="cb62-6"><a href="stichprobentests.html#cb62-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(Wordtyp, En, E, En_erwartet, E_erwartet)) <span class="co"># Reihenfolge der Variablen verändern</span></span></code></pre></div>
+<pre><code>## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
+## Using compatibility `.name_repair`.</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   Wordtyp           En     E En_erwartet E_erwartet
+##   &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Nicht-Reimwort  1528  2169       1497.      2200.
+## 2 Reimwort        1425  2172       1456.      2141.</code></pre>
 
 </div>
 </div>

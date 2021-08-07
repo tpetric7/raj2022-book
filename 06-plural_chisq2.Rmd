@@ -1,0 +1,40 @@
+
+```{r setup06, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Zweite Version:
+
+#### Ergebnisse summieren
+
+```{r}
+(p <- plural_subj1 %>% 
+  group_by(WordType) %>% 
+  summarise(En = sum(En), E = sum (E))
+)
+
+```
+
+#### Chi-Quadrat-Test
+Falls p < 0,05: es gilt H1 (Stichproben unterscheiden sich).
+Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
+
+```{r}
+(chi <- chisq.test(p[,-1])
+)
+
+```
+
+#### Beobachtete / erwartete Werte
+
+```{r}
+(tabelle <- as_tibble(cbind(chi$observed, chi$expected)) %>%
+   mutate(Wordtyp = unlist(p[,1])) %>% # Spalte wieder hinzufügen
+   mutate(Wordtyp = str_replace(Wordtyp, "NoRhyme", "Nicht-Reimwort"), # auf deutsch
+          Wordtyp = str_replace(Wordtyp, "Rhyme", "Reimwort")) %>% # auf deutsch
+   rename(En_erwartet = V3, E_erwartet = V4) %>%  # erwartete Werte, wenn H0 richtig ist
+   select(Wordtyp, En, E, En_erwartet, E_erwartet)) # Reihenfolge der Variablen verändern
+
+```
+

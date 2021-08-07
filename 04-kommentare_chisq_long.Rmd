@@ -12,6 +12,8 @@ Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests, der zum Ve
 * Größe: klein vs. groß
 * Texte: Text A vs. Text B vs. Text C ...
 
+### Lange und kurze Kommentare
+
 Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
@@ -24,7 +26,7 @@ kommentare %>% knitr::kable()
 
 Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten. 
 
-### Programme
+#### Programme
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -35,7 +37,7 @@ library(kableExtra)
 ```
 
 
-### Kurzversion:
+#### Kurzversion:
 Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?
 
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
@@ -58,8 +60,8 @@ Ergebnis:
 Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an: 
 zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
 
-### Längere Version
-#### Datei laden
+#### Längere Version
+##### Datei laden
 
 Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).
 
@@ -84,7 +86,7 @@ head(kommentare) %>% knitr::kable()
 
 ```
 
-#### Chi-Quadrat-Test
+##### Chi-Quadrat-Test
 
 Stichproben: kurzer Kommentar vs. langer Kommentar
 
@@ -100,7 +102,7 @@ chisq.test(kommentare[,-1])
 Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
 
 
-#### Graphische Darstellung
+##### Graphische Darstellung
 
 ```{r message=FALSE, warning=FALSE, paged.print=TRUE}
 library(tidyverse)
