@@ -5,8 +5,12 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-```{r setup_index, echo=FALSE, message=FALSE, warning=FALSE, include = TRUE, fig.show='asis'}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup00, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, fig.keep='all'}
 knitr::include_graphics("pictures/hayiti__wcloud_lemmas.png")
 ```
 
