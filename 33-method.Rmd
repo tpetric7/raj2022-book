@@ -1,4 +1,4 @@
-# Methods
+# Rmarkdown Math
 
 We describe our methods in this chapter.
 

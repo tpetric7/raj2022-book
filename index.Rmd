@@ -3,6 +3,11 @@ title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=6in,height=5in]{pictures/hayiti__wcloud_lemmas.png}\LARGE\\}
+  - \posttitle{\end{center}}
 ---
 
 ```{r setup00, include=FALSE}
