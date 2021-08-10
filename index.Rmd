@@ -12,7 +12,11 @@ header-includes:
 
 ```{r setup00, include=FALSE}
 library(knitr)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
 ```
 
 ```{r echo=FALSE, fig.keep='all'}
