@@ -3,11 +3,10 @@ title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=6in,height=5in]{pictures/hayiti__wcloud_lemmas.png}\LARGE\\}
-  - \posttitle{\end{center}}
+link-citations: yes
+colorlinks: yes 
+graphics: yes 
+cover-image: "pictures/hayiti__wcloud_lemmas.png" 
 ---
 
 ```{r setup00, include=FALSE}
@@ -19,11 +18,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+# Einführung
 ```{r echo=FALSE, fig.keep='all'}
 knitr::include_graphics("pictures/hayiti__wcloud_lemmas.png")
 ```
-
-# Einführung
 
 In diesem Einführungskurs machen wir Sie mit quantitativen Methoden zur Erfassung von linguistischen Merkmalen in deutschen, englischen und slowenischen Texten bekannt.
 
@@ -34,3 +32,4 @@ In mehreren Kurseinheiten beschäftigen wir uns mit kleineren Datensätzen aus d
 In einer Kurseinheit vergleichen wir Ermittlungsfunktionen in *R* und *Microsoft Excel*, einem beliebten Tabellenprogramm.
 
 Das Thema mehrerer Kurseinheiten ist die Zerlegung von Texten in kleinere Einheiten und ihre Bearbeitung auf verschiedenen linguistischen Ebenen: auf phonetischer, graphematischer, morphologischer und syntaktischer Ebene.
+

@@ -11,7 +11,7 @@
   <meta property="og:title" content="Kapitel 7 Original und Übersetzung | RAJ 2022 Introduction Course" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
   
   
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Kapitel 7 Original und Übersetzung | RAJ 2022 Introduction Course" />
   
   
-  
+  <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
 
 <meta name="author" content="Teodor Petrič" />
 
@@ -854,7 +854,7 @@ po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="original-und-übersetzung.html#cb539-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_en, <span class="co"># jezikovni model</span></span>
 <span id="cb539-2"><a href="original-und-übersetzung.html#cb539-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt2<span class="sc">$</span>text,  <span class="co"># izbran je le angleški izvirnik</span></span>
 <span id="cb539-3"><a href="original-und-übersetzung.html#cb539-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-08-10 17:31:46 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-08-10 20:30:22 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="original-und-übersetzung.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb541-2"><a href="original-und-übersetzung.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>
@@ -910,7 +910,7 @@ po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="original-und-übersetzung.html#cb546-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_de, <span class="co"># jezikovni model</span></span>
 <span id="cb546-2"><a href="original-und-übersetzung.html#cb546-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt1<span class="sc">$</span>text,  <span class="co"># izbran je le nemški prevod romana</span></span>
 <span id="cb546-3"><a href="original-und-übersetzung.html#cb546-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-08-10 17:33:59 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-08-10 20:33:56 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="original-und-übersetzung.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb548-2"><a href="original-und-übersetzung.html#cb548-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>

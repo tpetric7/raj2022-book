@@ -1,6 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[
 ]{article}
@@ -38,7 +39,11 @@
 \hypersetup{
   pdftitle={RAJ 2022 Introduction Course},
   pdfauthor={Teodor Petrič},
-  hidelinks,
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
@@ -125,20 +130,33 @@
 
 \title{RAJ 2022 Introduction Course}
 \author{Teodor Petrič}
-\date{2021-08-07}
+\date{2021-08-10}
 
 \begin{document}
 \maketitle
 
 {
+\hypersetup{linkcolor=}
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-\hypertarget{down-the-rabbit-hole}{%
-\section{Down the rabbit-hole}\label{down-the-rabbit-hole}}
+\hypertarget{einfuxfchrung}{%
+\section{Einführung}\label{einfuxfchrung}}
+
+\includegraphics[width=13.89in]{pictures/hayiti__wcloud_lemmas}
+
+In diesem Einführungskurs machen wir Sie mit quantitativen Methoden zur Erfassung von linguistischen Merkmalen in deutschen, englischen und slowenischen Texten bekannt.
+
+Unseren Kurs beginnen wir mit wichtigen Grundlagen für die Verwendung der Benutzeroberfläche \emph{RStudio} und die Manipulation von Dateien und Datensätzen. Neben einigen \emph{Base-R}-Funktionen lernen wir vor allem, mit den Funktionen des Programmbündels \emph{tidyverse} umzugehen.
+
+In mehreren Kurseinheiten beschäftigen wir uns mit kleineren Datensätzen aus dem Bereich Sprachverwendung und einigen grundlegenden statistischen Testmethoden.
+
+In einer Kurseinheit vergleichen wir Ermittlungsfunktionen in \emph{R} und \emph{Microsoft Excel}, einem beliebten Tabellenprogramm.
+
+Das Thema mehrerer Kurseinheiten ist die Zerlegung von Texten in kleinere Einheiten und ihre Bearbeitung auf verschiedenen linguistischen Ebenen: auf phonetischer, graphematischer, morphologischer und syntaktischer Ebene.
 
 \hypertarget{intro}{%
-\section{Introduction}\label{intro}}
+\section{Bookdown intro}\label{intro}}
 
 You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{intro}. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \ref{methods}.
 
@@ -208,8 +226,8 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 
 You can write citations, too. For example, we are using the \textbf{bookdown} package \citep{R-bookdown} in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\hypertarget{rmarkdown-math}{%
+\section{Rmarkdown Math}\label{rmarkdown-math}}
 
 We describe our methods in this chapter.
 
@@ -232,8 +250,8 @@ We will approximate standard error to 0.027\footnote{\(p\) is unknown but expect
   SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
   \]}
 
-\hypertarget{applications}{%
-\section{Applications}\label{applications}}
+\hypertarget{demonstration-chapters}{%
+\section{Demonstration chapters}\label{demonstration-chapters}}
 
 Some \emph{significant} applications are demonstrated in this chapter.
 
@@ -247,16 +265,5 @@ Some \emph{significant} applications are demonstrated in this chapter.
 \section{Final Words}\label{final-words}}
 
 We have finished a nice book.
-
-\hypertarget{the-pool-of-tears}{%
-\section{The pool of tears}\label{the-pool-of-tears}}
-
-\hypertarget{a-caucus-race-and-a-long-tale}{%
-\section{A caucus-race and a long tale}\label{a-caucus-race-and-a-long-tale}}
-
-\hypertarget{literature}{%
-\section{Literature}\label{literature}}
-
-Here is a review of existing methods.
 
 \end{document}
