@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
 
 <body>
@@ -1113,7 +1114,7 @@ $ na koncu vrstice</p>
 <span id="cb691-9"><a href="regularni-izrazi-in-quanteda.html#cb691-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb691-10"><a href="regularni-izrazi-in-quanteda.html#cb691-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
 <span id="cb691-11"><a href="regularni-izrazi-in-quanteda.html#cb691-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-379-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-379-1.svg" width="672" /></p>
 </div>
 <div id="pripona--ung" class="section level3" number="8.5.4">
 <h3><span class="header-section-number">8.5.4</span> Pripona -ung</h3>
@@ -1148,7 +1149,7 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 <div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="regularni-izrazi-in-quanteda.html#cb696-1" aria-hidden="true" tabindex="-1"></a>kwic_ung <span class="ot">=</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
 <span id="cb696-2"><a href="regularni-izrazi-in-quanteda.html#cb696-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb696-3"><a href="regularni-izrazi-in-quanteda.html#cb696-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_xray</span>(kwic_ung)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-382-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-382-1.svg" width="672" /></p>
 <p>Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje “(kriminalno) pravo”, v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.</p>
 <div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="regularni-izrazi-in-quanteda.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
 <span id="cb697-2"><a href="regularni-izrazi-in-quanteda.html#cb697-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_ung =</span> nomen_ung <span class="sc">%&gt;%</span> </span>
@@ -1178,7 +1179,7 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 <span id="cb699-4"><a href="regularni-izrazi-in-quanteda.html#cb699-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb699-5"><a href="regularni-izrazi-in-quanteda.html#cb699-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
 <span id="cb699-6"><a href="regularni-izrazi-in-quanteda.html#cb699-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-383-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-383-1.svg" width="672" /></p>
 <p>Iskanje besednih zvez s funkcijo <em>kwic()</em> in <em>phrase()</em> - funkcijske glagolske zveze (Funktionsverbgefüge) in frazemi:</p>
 <div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="regularni-izrazi-in-quanteda.html#cb700-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">fvg1 =</span>  <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">phrase</span>(</span>
 <span id="cb700-2"><a href="regularni-izrazi-in-quanteda.html#cb700-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;zur|in .+ung (ge)komm.+|(ge)brach.+|bring.+&quot;</span>)),</span>

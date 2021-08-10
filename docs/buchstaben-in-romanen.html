@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
 
 <body>
@@ -511,7 +512,7 @@ Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbünd
 <span id="cb756-3"><a href="buchstaben-in-romanen.html#cb756-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
 <span id="cb756-4"><a href="buchstaben-in-romanen.html#cb756-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb756-5"><a href="buchstaben-in-romanen.html#cb756-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-423-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-423-1.svg" width="10" height="8" /></p>
 <p>Eine bessere Vorstellung von den Zahlenverhältnissen erhalten wir, wenn wir die mehrstelligen Zahlenwerte in Prozente umwandeln.</p>
 <div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="buchstaben-in-romanen.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb757-2"><a href="buchstaben-in-romanen.html#cb757-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
@@ -522,7 +523,7 @@ Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbünd
 <span id="cb757-7"><a href="buchstaben-in-romanen.html#cb757-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb757-8"><a href="buchstaben-in-romanen.html#cb757-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb757-9"><a href="buchstaben-in-romanen.html#cb757-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-424-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-424-1.svg" width="10" height="8" /></p>
 <p>Getrennte tabellarische Darstellung für die Texte:</p>
 <div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="buchstaben-in-romanen.html#cb758-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
 <span id="cb758-2"><a href="buchstaben-in-romanen.html#cb758-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
@@ -547,7 +548,7 @@ Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbünd
 <span id="cb759-10"><a href="buchstaben-in-romanen.html#cb759-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb759-11"><a href="buchstaben-in-romanen.html#cb759-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb759-12"><a href="buchstaben-in-romanen.html#cb759-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> doc_id, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-426-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-426-1.svg" width="10" height="8" /></p>
 <div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb760-1"><a href="buchstaben-in-romanen.html#cb760-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
 <pre><code>## &lt;ScaleContinuousPosition&gt;
 ##  Range:  
@@ -570,7 +571,7 @@ Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das 
 <span id="cb763-9"><a href="buchstaben-in-romanen.html#cb763-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb763-10"><a href="buchstaben-in-romanen.html#cb763-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb763-11"><a href="buchstaben-in-romanen.html#cb763-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.05</span>)) <span class="co"># Prozent-Format</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-428-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-428-1.svg" width="10" height="8" /></p>
 <p>Am häufigsten kommt der Buchstabe “e” in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten “y”, welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.</p>
 </div>
 <div id="konsonanten" class="section level2" number="10.6">
@@ -588,7 +589,7 @@ Zum Filtern verwenden wir wiederum die Vokalliste, dieses Mal allerdings mit Neg
 <span id="cb764-9"><a href="buchstaben-in-romanen.html#cb764-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb764-10"><a href="buchstaben-in-romanen.html#cb764-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb764-11"><a href="buchstaben-in-romanen.html#cb764-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.02</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-429-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-429-1.svg" width="10" height="8" /></p>
 <p>Der Buchstabe “n” kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: “r, s, t, h, d”.
 Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 </div>
@@ -623,7 +624,7 @@ Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 <span id="cb769-8"><a href="buchstaben-in-romanen.html#cb769-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb769-9"><a href="buchstaben-in-romanen.html#cb769-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale / Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb769-10"><a href="buchstaben-in-romanen.html#cb769-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-432-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-432-1.svg" width="10" height="8" /></p>
 <p>Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche.</p>
 </div>
 <div id="anzahl-der-silben" class="section level2" number="10.8">
@@ -656,7 +657,7 @@ Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 <span id="cb773-6"><a href="buchstaben-in-romanen.html#cb773-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb773-7"><a href="buchstaben-in-romanen.html#cb773-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
 <span id="cb773-8"><a href="buchstaben-in-romanen.html#cb773-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-435-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-435-1.svg" width="10" height="8" /></p>
 <p>Berücksichtig man lediglich distinktive Wortformen (also keine Wortwiederholungen), dann ergibt sich die folgende Verteilung, in der die Zweisilber (mehr als 30%) und Dreisilber (fast 30%) den größten Anteil haben.</p>
 <div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="buchstaben-in-romanen.html#cb774-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
 <span id="cb774-2"><a href="buchstaben-in-romanen.html#cb774-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
@@ -667,7 +668,7 @@ Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 <span id="cb774-7"><a href="buchstaben-in-romanen.html#cb774-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb774-8"><a href="buchstaben-in-romanen.html#cb774-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
 <span id="cb774-9"><a href="buchstaben-in-romanen.html#cb774-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-436-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-436-1.svg" width="10" height="8" /></p>
 </div>
 <div id="mittlere-wortlänge" class="section level2" number="10.9">
 <h2><span class="header-section-number">10.9</span> Mittlere Wortlänge</h2>
@@ -875,7 +876,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 ##  prozess      tom 
 ## 1.613350 1.561307</code></pre>
 <div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="buchstaben-in-romanen.html#cb795-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-446-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-446-1.svg" width="10" height="8" /></p>
 <p>Ergebnisse in Tabellenform:</p>
 <div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="buchstaben-in-romanen.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)) <span class="sc">%&gt;%</span> </span>
 <span id="cb796-2"><a href="buchstaben-in-romanen.html#cb796-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
@@ -895,7 +896,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <span id="cb797-8"><a href="buchstaben-in-romanen.html#cb797-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb797-9"><a href="buchstaben-in-romanen.html#cb797-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb797-10"><a href="buchstaben-in-romanen.html#cb797-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Roman&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-448-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-448-1.svg" width="10" height="8" /></p>
 <p>Boxplot anhand der zusammengefassten Daten (Durchschnitt, Standardabweichung):</p>
 <div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="buchstaben-in-romanen.html#cb798-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
 <span id="cb798-2"><a href="buchstaben-in-romanen.html#cb798-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
@@ -909,7 +910,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <span id="cb798-10"><a href="buchstaben-in-romanen.html#cb798-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
 <span id="cb798-11"><a href="buchstaben-in-romanen.html#cb798-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb798-12"><a href="buchstaben-in-romanen.html#cb798-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-449-1.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-449-1.svg" width="10" height="8" /></p>
 <div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="buchstaben-in-romanen.html#cb799-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
 <span id="cb799-2"><a href="buchstaben-in-romanen.html#cb799-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">lower =</span> Avg_Silben <span class="sc">-</span> Stdev_Silben, <span class="at">upper =</span> Avg_Silben <span class="sc">+</span> Stdev_Silben,</span>
 <span id="cb799-3"><a href="buchstaben-in-romanen.html#cb799-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">middle =</span> Avg_Silben,</span>
@@ -917,7 +918,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <span id="cb799-5"><a href="buchstaben-in-romanen.html#cb799-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
 <span id="cb799-6"><a href="buchstaben-in-romanen.html#cb799-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
 <span id="cb799-7"><a href="buchstaben-in-romanen.html#cb799-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-449-2.png" width="10" height="8" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-449-2.svg" width="10" height="8" /></p>
 </div>
 </div>
 <div id="quanteda-funktionen" class="section level2" number="10.11">

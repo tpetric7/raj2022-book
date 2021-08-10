@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
 
 <body>
@@ -438,8 +439,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb714-3"><a href="suffixe-und-stemming.html#cb714-3" aria-hidden="true" tabindex="-1"></a>demodel <span class="ot">=</span> <span class="fu">udpipe_load_model</span>(model<span class="sc">$</span>file_model)</span></code></pre></div>
 <p>Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.</p>
 <div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="suffixe-und-stemming.html#cb715-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe_annotate</span>(demodel, novels_txt<span class="sc">$</span>text, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 2021-08-10 14:44:13 Annotating text fragment 1/2
-## 2021-08-10 14:46:03 Annotating text fragment 2/2</code></pre>
+<pre><code>## 2021-08-10 17:46:35 Annotating text fragment 1/2
+## 2021-08-10 17:48:25 Annotating text fragment 2/2</code></pre>
 <div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="suffixe-und-stemming.html#cb717-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
 <p>Wir filtern Interpunktionszeichen heraus, die für unser Ziel nicht relevant sind. Die Spalte “upos” enthält die dafür relevante Kategorie (“PUNCT”).</p>
 <p>In einem weiteren Schritt fügen wir mit <em>mutate</em> eine neue Spalte (“word”) hinzu, welche die tokens der Texte enthält, aber kleingeschrieben gewerden sollen, was mit <em>tolower()</em> erreicht werden kann.</p>
@@ -578,7 +579,7 @@ Zuletzt verändern wir mit <em>pivot_wider()</em> das Tabellenformat, so dass di
 <span id="cb729-12"><a href="suffixe-und-stemming.html#cb729-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="sc">+</span></span>
 <span id="cb729-13"><a href="suffixe-und-stemming.html#cb729-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Endungen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb729-14"><a href="suffixe-und-stemming.html#cb729-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> title, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-404-1.svg" width="672" /></p>
 <div id="suffix--lich" class="section level3" number="9.5.1">
 <h3><span class="header-section-number">9.5.1</span> Suffix -lich</h3>
 <p>Vergleichen wir mal die Häufigkeit der Endung “-lich” in den Romanen! Da dieses Wortbildungssuffix mit adjektivischen Stämmen verknüpft wird, filtern die entsprechende Wortklasse heraus.</p>
@@ -627,7 +628,7 @@ Zuletzt verändern wir mit <em>pivot_wider()</em> das Tabellenformat, so dass di
 <span id="cb735-2"><a href="suffixe-und-stemming.html#cb735-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(prozess_pct<span class="sc">:</span>tom_pct, <span class="at">names_to =</span> <span class="st">&quot;title&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;pct&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb735-3"><a href="suffixe-und-stemming.html#cb735-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, pct, <span class="at">fill =</span> lich)) <span class="sc">+</span></span>
 <span id="cb735-4"><a href="suffixe-und-stemming.html#cb735-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-408-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-408-1.svg" width="672" /></p>
 <p>Das Suffix “-lich” gehört zu den produktiven Wortbildungsmitteln im Deutschen. Warum sind im “prozess” mehr davon zu finden als im anderen Roman? Zur Klärung dieser Frage müssten wir zuerst mehr über die semantischen Eigenschaften und Verknüpfungsmöglichkeiten (oder -einschränkungen) mit verschiedenen Wortstämmen erfahren.</p>
 <div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="suffixe-und-stemming.html#cb736-1" aria-hidden="true" tabindex="-1"></a>novels_full_words <span class="sc">%&gt;%</span> </span>
 <span id="cb736-2"><a href="suffixe-und-stemming.html#cb736-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(doc_id, lemma, word, upos, diffs) <span class="sc">%&gt;%</span></span>
@@ -686,7 +687,7 @@ Zuletzt verändern wir mit <em>pivot_wider()</em> das Tabellenformat, so dass di
 <span id="cb739-7"><a href="suffixe-und-stemming.html#cb739-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
 <span id="cb739-8"><a href="suffixe-und-stemming.html#cb739-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="sc">+</span></span>
 <span id="cb739-9"><a href="suffixe-und-stemming.html#cb739-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-412-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-412-1.svg" width="672" /></p>
 </div>
 <div id="nicht-verwendete-tabelle" class="section level3" number="9.5.3">
 <h3><span class="header-section-number">9.5.3</span> Nicht verwendete Tabelle</h3>

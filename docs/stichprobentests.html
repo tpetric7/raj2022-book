@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
 
 <body>
@@ -663,7 +664,7 @@ ausfuhrlicher_kommentar
 <span id="cb34-3"><a href="stichprobentests.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb34-4"><a href="stichprobentests.html#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb34-5"><a href="stichprobentests.html#cb34-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
 
 </div>
 </div>
@@ -1109,7 +1110,7 @@ Gebrauchsfrequenzen (Tokenfrequenzen) der Modalkonstruktionen
 <span id="cb54-4"><a href="stichprobentests.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
 <span id="cb54-5"><a href="stichprobentests.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb54-6"><a href="stichprobentests.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Modalkonstruktion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Gebrauchsfrequenz&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Vrsta besedila&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
 <p>Die Modalkonstruktion “morati + Infinitiv” scheint in den alltagssprachlich näherstehenden Funktionalstilen Belletristik (leposlovje), Internet und Sachtexten (stvarna besedila) etwas häufiger belegt zu sein als die Modalkonstruktion “biti + treba + Infinitiv”, dafür aber in Zeitungen (Časopisi) etwas seltener.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="stichprobentests.html#cb55-1" aria-hidden="true" tabindex="-1"></a>naklonska2 <span class="sc">%&gt;%</span></span>
 <span id="cb55-2"><a href="stichprobentests.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(treba<span class="sc">:</span>morati, <span class="at">names_to =</span> <span class="st">&quot;konstruktion&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;freq&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -1117,7 +1118,7 @@ Gebrauchsfrequenzen (Tokenfrequenzen) der Modalkonstruktionen
 <span id="cb55-4"><a href="stichprobentests.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
 <span id="cb55-5"><a href="stichprobentests.html#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb55-6"><a href="stichprobentests.html#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Modalkonstruktion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Gebrauchsfrequenz&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Vrsta besedila&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.svg" width="672" /></p>
 </div>
 <div id="chi-quadrat-test-1" class="section level4" number="3.1.3.4">
 <h4><span class="header-section-number">3.1.3.4</span> Chi-Quadrat-Test</h4>
@@ -1176,7 +1177,7 @@ Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?</p>
 ## 9.906271 7.897201</code></pre>
 <p>Graphische Darstellung</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="stichprobentests.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">tapply</span>(Resultat, <span class="fu">list</span>(Methode), mean), <span class="at">col=</span><span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-40-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-1.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1235,7 +1236,7 @@ Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?</p>
 ##     A     B 
 ## 32.65 31.55</code></pre>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="stichprobentests.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.svg" width="672" /></p>
 
 </div>
 </div>
@@ -1455,7 +1456,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb106-5"><a href="stichprobentests.html#cb106-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">c</span>(<span class="fl">202.5</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb106-6"><a href="stichprobentests.html#cb106-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">c</span>(<span class="fl">184.3</span>), <span class="at">lty =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb106-7"><a href="stichprobentests.html#cb106-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-63-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="stichprobentests.html#cb107-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, <span class="at">data =</span> politeness)</span>
 <span id="cb107-2"><a href="stichprobentests.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
 <span id="cb107-3"><a href="stichprobentests.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
@@ -1467,7 +1468,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##      inf 260.6857 144.4905
 ##      pol 233.2857 132.9800</code></pre>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="stichprobentests.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-2.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1519,7 +1520,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 </div>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="stichprobentests.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
 <span id="cb117-2"><a href="stichprobentests.html#cb117-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-70-1.svg" width="672" /></p>
 <p>Bild speichern</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="stichprobentests.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
 <span id="cb118-2"><a href="stichprobentests.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_boxplot.jpg&quot;</span>, </span>
@@ -1529,7 +1530,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb118-6"><a href="stichprobentests.html#cb118-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
 <span id="cb118-7"><a href="stichprobentests.html#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
 <span id="cb118-8"><a href="stichprobentests.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
+<pre><code>## svg 
 ##   2</code></pre>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="stichprobentests.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
 <span id="cb120-2"><a href="stichprobentests.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_boxplot.pdf&quot;</span>) </span>
@@ -1538,14 +1539,14 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb120-5"><a href="stichprobentests.html#cb120-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
 <span id="cb120-6"><a href="stichprobentests.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
 <span id="cb120-7"><a href="stichprobentests.html#cb120-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
-<pre><code>## png 
+<pre><code>## svg 
 ##   2</code></pre>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="stichprobentests.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect relationships between pairs of variables</span></span>
 <span id="cb122-2"><a href="stichprobentests.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MASS)</span></span></code></pre></div>
 <p>Inspect relationships between pairs of variables</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="stichprobentests.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb123-2"><a href="stichprobentests.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(polite[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>)])</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-74-1.svg" width="672" /></p>
 <p>Ordinary Least Squares Regression (OLS)</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="stichprobentests.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 1</span></span>
 <span id="cb124-2"><a href="stichprobentests.html#cb124-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> subject <span class="sc">+</span> scenario, <span class="at">data =</span> polite)</span>
@@ -1619,7 +1620,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##      inf      pol 
 ## 203.2408 183.6875</code></pre>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="stichprobentests.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-78-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-2.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1632,7 +1633,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb131-6"><a href="stichprobentests.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
 <span id="cb131-7"><a href="stichprobentests.html#cb131-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
 <span id="cb131-8"><a href="stichprobentests.html#cb131-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
+<pre><code>## svg 
 ##   2</code></pre>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="stichprobentests.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 3 (with interaction)</span></span>
 <span id="cb133-2"><a href="stichprobentests.html#cb133-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude, <span class="at">data=</span>polite)</span>
@@ -1668,7 +1669,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##      F 260.6857 233.2857
 ##      M 144.4905 132.9800</code></pre>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="stichprobentests.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-82-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-3.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1681,7 +1682,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb138-6"><a href="stichprobentests.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
 <span id="cb138-7"><a href="stichprobentests.html#cb138-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
 <span id="cb138-8"><a href="stichprobentests.html#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<pre><code>## png 
+<pre><code>## svg 
 ##   2</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="stichprobentests.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
 <span id="cb140-2"><a href="stichprobentests.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_effects.pdf&quot;</span>) </span>
@@ -1689,7 +1690,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb140-4"><a href="stichprobentests.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
 <span id="cb140-5"><a href="stichprobentests.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
 <span id="cb140-6"><a href="stichprobentests.html#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
-<pre><code>## png 
+<pre><code>## svg 
 ##   2</code></pre>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="stichprobentests.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot diagnostic diagrams</span></span>
 <span id="cb142-2"><a href="stichprobentests.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
@@ -1699,7 +1700,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb142-6"><a href="stichprobentests.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">4</span>) <span class="co"># Cook&#39;s distance (outliers / influencing data points?)</span></span>
 <span id="cb142-7"><a href="stichprobentests.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">5</span>) <span class="co"># Leverage vs. standardized variance of residuals</span></span>
 <span id="cb142-8"><a href="stichprobentests.html#cb142-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">6</span>) <span class="co"># Cook&#39;s distance vs. Leverage</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-85-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="stichprobentests.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-4.png" alt="" />
@@ -1718,7 +1719,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <span id="cb145-3"><a href="stichprobentests.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>)</span>
 <span id="cb145-4"><a href="stichprobentests.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb145-5"><a href="stichprobentests.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">3</span>], <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-87-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="stichprobentests.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-5.png" alt="" />
@@ -1954,7 +1955,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##      inf      pol 
 ## 203.2497 183.8414</code></pre>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="stichprobentests.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-6.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1976,7 +1977,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##      inf      pol 
 ## 203.2424 183.4286</code></pre>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="stichprobentests.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-102-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-7.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -2116,7 +2117,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## boundary (singular) fit: see ?isSingular</code></pre>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="stichprobentests.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model asumptions</span></span>
 <span id="cb181-2"><a href="stichprobentests.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-110-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-8.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -2199,7 +2200,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## boundary (singular) fit: see ?isSingular</code></pre>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="stichprobentests.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-Check model asumptions</span></span>
 <span id="cb200-2"><a href="stichprobentests.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-121-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-9.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>

@@ -135,6 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
 
 <body>
@@ -656,7 +657,7 @@ Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich gr
 <span id="cb267-3"><a href="textzerlegung.html#cb267-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n)) <span class="sc">+</span></span>
 <span id="cb267-4"><a href="textzerlegung.html#cb267-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">&quot;magenta&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
 <span id="cb267-5"><a href="textzerlegung.html#cb267-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Anzahl der Buchstaben&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Dichte&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-154-1.svg" width="672" /></p>
 <p>Folgt die Äußerungslänge (in Buchstaben gemessen) einer Zipf-Verteilung?</p>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="textzerlegung.html#cb268-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb268-2"><a href="textzerlegung.html#cb268-2" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
@@ -666,7 +667,7 @@ Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich gr
 <span id="cb268-6"><a href="textzerlegung.html#cb268-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, n)) <span class="sc">+</span></span>
 <span id="cb268-7"><a href="textzerlegung.html#cb268-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb268-8"><a href="textzerlegung.html#cb268-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Anzahl der Buchstaben&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Rangfolge&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-155-1.svg" width="672" /></p>
 <p>Im Vergleich dazu unten: so sähe die entsprechende Zipf-Verteilung (Power-Law-Distribution) aus, die für ausreichend lange Texte gültig ist.</p>
 <p>In einer Zipfverteilung käme die zweithäufigste Äußerungslänge etwa nur noch halb so häufig vor wie die häufigste Äußerungslänge, die dritthäufigste nur noch ein Drittel der ersthäufigsten, die vierthäufigste nur noch ein Viertel der ersthäufigsten usw.</p>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="textzerlegung.html#cb269-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">1</span></span>
@@ -678,7 +679,7 @@ Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich gr
 <span id="cb269-7"><a href="textzerlegung.html#cb269-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(rank, zipfs_freq)) <span class="sc">+</span></span>
 <span id="cb269-8"><a href="textzerlegung.html#cb269-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb269-9"><a href="textzerlegung.html#cb269-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Anzahl der Buchstaben&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Rangfolge&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-156-1.svg" width="672" /></p>
 <p>Wenn man die beiden Variablen (Rang und Häufigkeit) in einer Zipfverteilung logarithmiert, ist das Ergebnis eine Gerade. Die Äußerungslänge (hier: Buchstabenanzahl) im Roman “Tom Sawyer” scheint davon abzuweichen. Die mittellangen Äußerungen kommen häufiger vor, als nach der Zipfverteilung erwartet wird.</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="textzerlegung.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb270-2"><a href="textzerlegung.html#cb270-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -695,7 +696,7 @@ Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich gr
 <span id="cb270-13"><a href="textzerlegung.html#cb270-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Anzahl der Buchstaben&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rangfolge&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Verteilung&quot;</span>) <span class="sc">+</span></span>
 <span id="cb270-14"><a href="textzerlegung.html#cb270-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb270-15"><a href="textzerlegung.html#cb270-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-157-1.svg" width="672" /></p>
 <p>Welche Buchstaben kommen im Text häufiger / seltener vor?
 Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter den auf Konsonanten bezogenen das “n”.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="textzerlegung.html#cb271-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">1</span></span>
@@ -723,7 +724,7 @@ Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter 
 <span id="cb273-5"><a href="textzerlegung.html#cb273-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, char, <span class="at">fill =</span> char)) <span class="sc">+</span></span>
 <span id="cb273-6"><a href="textzerlegung.html#cb273-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb273-7"><a href="textzerlegung.html#cb273-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-159-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="textzerlegung.html#cb274-1" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb274-2"><a href="textzerlegung.html#cb274-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(char, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb274-3"><a href="textzerlegung.html#cb274-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(char, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> <span class="co"># sortieren !</span></span>
@@ -737,7 +738,7 @@ Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter 
 <span id="cb274-11"><a href="textzerlegung.html#cb274-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Anzahl der Buchstaben&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rangfolge&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Verteilung&quot;</span>) <span class="sc">+</span></span>
 <span id="cb274-12"><a href="textzerlegung.html#cb274-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb274-13"><a href="textzerlegung.html#cb274-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-160-1.svg" width="672" /></p>
 </div>
 <div id="worthäufigkeiten" class="section level3" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Worthäufigkeiten</h3>
@@ -808,7 +809,7 @@ In der folgenden Tabelle sind folgende Größen zu sehen:
 <span id="cb279-11"><a href="textzerlegung.html#cb279-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Worthäufigkeit&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rangfolge&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Verteilung&quot;</span>) <span class="sc">+</span></span>
 <span id="cb279-12"><a href="textzerlegung.html#cb279-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb279-13"><a href="textzerlegung.html#cb279-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-163-1.svg" width="672" /></p>
 </div>
 <div id="wortschatzdichte" class="section level3" number="5.6.3">
 <h3><span class="header-section-number">5.6.3</span> Wortschatzdichte</h3>
@@ -850,7 +851,7 @@ Da wir bei der Auszählung auch einige der als “0000” kodierten Ziffern ber�
 <span id="cb284-9"><a href="textzerlegung.html#cb284-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n)) <span class="sc">+</span></span>
 <span id="cb284-10"><a href="textzerlegung.html#cb284-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">binwidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb284-11"><a href="textzerlegung.html#cb284-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Anzahl der Wörter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Anzahl der Äußerungen&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-166-1.svg" width="672" /></p>
 <p>Logarithmiert:</p>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="textzerlegung.html#cb285-1" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb285-2"><a href="textzerlegung.html#cb285-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word_id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
@@ -864,7 +865,7 @@ Da wir bei der Auszählung auch einige der als “0000” kodierten Ziffern ber�
 <span id="cb285-10"><a href="textzerlegung.html#cb285-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">binwidth =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
 <span id="cb285-11"><a href="textzerlegung.html#cb285-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb285-12"><a href="textzerlegung.html#cb285-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Anzahl der Wörter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Anzahl der Äußerungen&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-167-1.svg" width="672" /></p>
 <p>Tabelle mit Anzahl der Wörter pro Äußerung (n), Rangfolge (rank) und die theoretische Frequenz gemäß Zipfverteilung (zipfs_freq).</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="textzerlegung.html#cb286-1" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb286-2"><a href="textzerlegung.html#cb286-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word_id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
@@ -897,7 +898,7 @@ Da wir bei der Auszählung auch einige der als “0000” kodierten Ziffern ber�
 <span id="cb287-13"><a href="textzerlegung.html#cb287-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;WAnzahl der Wörter&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rangfolge&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Verteilung&quot;</span>) <span class="sc">+</span></span>
 <span id="cb287-14"><a href="textzerlegung.html#cb287-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb287-15"><a href="textzerlegung.html#cb287-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-169-1.svg" width="672" /></p>
 </div>
 <div id="vergleich-mit-quanteda" class="section level3" number="5.6.5">
 <h3><span class="header-section-number">5.6.5</span> Vergleich mit quanteda</h3>
@@ -994,7 +995,7 @@ Da wir bei der Auszählung auch einige der als “0000” kodierten Ziffern ber�
 <span id="cb302-3"><a href="textzerlegung.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
 <span id="cb302-4"><a href="textzerlegung.html#cb302-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb302-5"><a href="textzerlegung.html#cb302-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="textzerlegung.html#cb303-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb303-2"><a href="textzerlegung.html#cb303-2" aria-hidden="true" tabindex="-1"></a>term_count_rank <span class="sc">%&gt;%</span></span>
 <span id="cb303-3"><a href="textzerlegung.html#cb303-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">as.integer</span>(<span class="fu">rank</span>(<span class="fu">length</span>(term) <span class="sc">-</span> <span class="st">`</span><span class="at">term frequency</span><span class="st">`</span> <span class="sc">+</span> <span class="dv">1</span>, <span class="at">ties.method =</span> <span class="st">&quot;average&quot;</span>)), </span>
@@ -1007,7 +1008,7 @@ Da wir bei der Auszählung auch einige der als “0000” kodierten Ziffern ber�
 <span id="cb303-10"><a href="textzerlegung.html#cb303-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Termfrequenz&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Rangfolge&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Verteilung&quot;</span>) <span class="sc">+</span></span>
 <span id="cb303-11"><a href="textzerlegung.html#cb303-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
 <span id="cb303-12"><a href="textzerlegung.html#cb303-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-181-1.svg" width="672" /></p>
 </div>
 <div id="vergleich-mit-voyant-tools" class="section level3" number="5.6.6">
 <h3><span class="header-section-number">5.6.6</span> Vergleich mit Voyant Tools</h3>
