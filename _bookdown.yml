@@ -1,5 +1,6 @@
 book_filename: "bookdownproj"
 output_dir: docs
+new_session: true
 delete_merged_file: true
 edit: https://github.com/tpetric7/raj2022-book/edit/master/%s
 view: https://github.com/tpetric7/raj2022-book/blob/master/%s

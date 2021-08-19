@@ -2,6 +2,14 @@
 
 Politeness data (B. Winter tutorial)
 
+Programme laden
+
+```{r}
+library(tidyverse)
+
+```
+
+
 Datei laden
 
 ```{r}

@@ -186,7 +186,7 @@ zur-theoretischen-begründung
 programme-2
 texte-lesen
 flesch-reading-ease---deutsche-version
-romane-ins-deutsche-übersetzt
+romane-deutsche-oder-ins-deutsche-übersetzte
 zeitungen
 statistische-tests-news
 datensätze-vereinen

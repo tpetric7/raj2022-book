@@ -618,7 +618,7 @@ topfeat_de = de_df_cleaned %>%
   as_tibble()
 
 # Oblaček
-set.seed(1320)
+set.seed(1321)
 library(wordcloud2)
 wordcloud2(topfeat_de)
 
@@ -800,10 +800,10 @@ besedilom (reference).
 
 ```{r}
 key_tom_de <- textstat_keyness(matrika, target = "tom_de.txt")
-key_tom_de
+key_tom_de %>% rmarkdown::paged_table()
 
 key_tom_en <- textstat_keyness(matrika, target = "tom_en.txt")
-key_tom_en
+key_tom_en %>% rmarkdown::paged_table()
 
 ```
 

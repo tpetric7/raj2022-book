@@ -188,7 +188,7 @@ Možno je iskati posamezne besede, besedne zveze, uporabljamo pa lahko tudi
 nadomestne znake (npr. \*).
 
 ```{r}
-kwic(woerter, pattern = c("Frau", "Herr"))
+kwic(woerter, pattern = c("Frau", "Herr")) %>% head(3)
 
 ```
 
@@ -201,9 +201,10 @@ velikimi in malimi črkami. Privzeta vrednost je "TRUE", tj. da tega ne razlikuj
 (tako kot Excel).
 
 ```{r}
-(konkordanca = kwic(woerter, pattern = c("Frau", "Herr"), case_insensitive = FALSE) %>% 
+konkordanca = kwic(woerter, pattern = c("Frau", "Herr"), case_insensitive = FALSE) %>% 
   as_tibble()
-)
+
+konkordanca %>% rmarkdown::paged_table()
 
 ```
 
@@ -222,7 +223,6 @@ osebna imena (npr. Ärztin, Köchin, ...).
 (konkordanca2 = kwic(woerter, pattern = c("*in"), case_insensitive = FALSE) %>% 
   as_tibble()
 )
-
 ```
 
 Žal vsebuje gornji seznam sobesedil veliko besednih oblik, ki niso ženska osebna
@@ -236,7 +236,7 @@ preizkušate in se učite regularnih izrazov.
 Poizvedovanje s pomočjo regularnih izrazov: \*in.
 
 ```{r}
-(konkordanca2 = kwic(woerter, pattern = "\\A[A-Z][a-z]+[^Eae]in\\b",
+konkordanca2 = kwic(woerter, pattern = "\\A[A-Z][a-z]+[^Eae]in\\b",
                       valuetype = "regex", case_insensitive = FALSE) %>% 
   as_tibble() %>% 
   filter(keyword != "Immerhin", 
@@ -249,7 +249,8 @@ Poizvedovanje s pomočjo regularnih izrazov: \*in.
          keyword != "Musselin",
          keyword != "Benjamin",
          keyword != "Franklin")
-)
+
+konkordanca2 %>% rmarkdown::paged_table()
 
 ```
 
@@ -317,8 +318,9 @@ njihove pogostnosti, tj. textstat_frequency().
 library(quanteda.textstats)
 library(quanteda.textplots)
 
-(pogostnost = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt"))
-)
+pogostnost = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt"))
+
+pogostnost %>% rmarkdown::paged_table()
 
 ```
 
@@ -340,39 +342,41 @@ Po potrebi lahko seznam besednih pogostnosti oblik razdelimo na dva posebna
 seznama, in sicer s funkcijo filter().
 
 ```{r}
-(pogost_tom = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt")) %>% 
+pogost_tom = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt")) %>% 
   filter(group == "tom.txt")
-)
 
-(pogost_prozess = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt")) %>% 
+pogost_tom %>% rmarkdown::paged_table()
+
+pogost_prozess = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt")) %>% 
   filter(group == "prozess.txt")
-)
+
+pogost_prozess %>% rmarkdown::paged_table()
 
 ```
 
 Glagoli rekanja in mišljenja: kateri so v izbranih besedilih pogostnejši?
 
 ```{r}
-(sagen = pogostnost %>%
+sagen = pogostnost %>%
    filter(str_detect(feature, "^(ge)?sag*"))
-)
+sagen %>% rmarkdown::paged_table()
 
-(reden = pogostnost %>% 
+reden = pogostnost %>% 
     filter(str_detect(feature, "^(ge)?rede*"))
-)
+reden %>% rmarkdown::paged_table()
 
-(fragen = pogostnost %>% 
+fragen = pogostnost %>% 
     filter(str_detect(feature, "^(ge)?frag*"))
-)
+fragen %>% rmarkdown::paged_table()
 
-(antworten = pogostnost %>% 
+antworten = pogostnost %>% 
     filter(str_detect(feature, "^(ge)?antwort*"))
-)
+antworten %>% rmarkdown::paged_table()
 
-(rufen = pogostnost %>% 
+rufen = pogostnost %>% 
     filter(str_detect(feature, pattern = "^(ge)?ruf*", negate = FALSE)) %>% 
     filter(!str_detect(feature, "ruh|run|rum|rui|ruch"))
-)
+rufen %>% rmarkdown::paged_table()
 
 ```
 
@@ -408,7 +412,7 @@ Pet majhnih tabel lahko združimo v večjo tabelo, tj. s funkcijo rbind().
 
 ```{r}
 glagoli = rbind(verb1, verb2, verb3, verb4, verb5)
-glagoli
+glagoli %>% rmarkdown::paged_table()
 
 ```
 
@@ -427,7 +431,7 @@ Tabelo lahko tudi prerazporedimo, npr. zaradi lažje primerjave besedil takole:
 
 ```{r}
 glagoli %>% 
-  pivot_wider(id_cols = verb, names_from = group, values_from = freq)
+  pivot_wider(id_cols = verb, names_from = group, values_from = freq) %>% rmarkdown::paged_table()
 
 ```
 
@@ -448,22 +452,25 @@ Funkcija textstat_collocations() v programu quanteda.
 zgoraj.
 
 ```{r}
-(coll_2 = textstat_collocations(woerter, size = 2, tolower = TRUE) # naredi male črke !
-)
+coll_2 = textstat_collocations(woerter, size = 2, tolower = TRUE) # naredi male črke !
+
+coll_2 %>% rmarkdown::paged_table()
 
 ```
 
 Kolokacije s tremi členi.
 
 ```{r}
-(coll_3 = textstat_collocations(woerter, size = 3, tolower = FALSE)
-)
+coll_3 = textstat_collocations(woerter, size = 3, tolower = FALSE)
+
+coll_3 %>% rmarkdown::paged_table()
 
 ```
 
 ```{r}
-(coll_4 = textstat_collocations(woerter, size = 4, tolower = FALSE)
-)
+coll_4 = textstat_collocations(woerter, size = 4, tolower = FALSE)
+
+coll_4 %>% rmarkdown::paged_table()
 
 ```
 
@@ -471,13 +478,13 @@ Sopomenski vprašalnici "warum" in "wieso: s katerimi besednimi oblikami se
 sopojavljata?
 
 ```{r}
-(warum <- coll_2 %>% 
+warum <- coll_2 %>% 
   filter(str_detect(collocation, "^warum"))
-)
+warum %>% rmarkdown::paged_table()
 
-(wieso <- coll_2 %>% 
+wieso <- coll_2 %>% 
   filter(str_detect(collocation, "^wieso"))
-)
+wieso %>% rmarkdown::paged_table()
 
 ```
 
@@ -492,7 +499,8 @@ woerter_caps = tokens_select(woerter, pattern = "^[A-Z]",
                                 padding = TRUE)
 
 coll_caps2 = textstat_collocations(woerter_caps, size = 2, tolower = FALSE, min_count = 5)
-head(coll_caps2, 100)
+
+coll_caps2 %>% rmarkdown::paged_table()
 
 ```
 
@@ -515,7 +523,8 @@ woerter_caps = tokens_select(woerter_small, pattern = "^[A-Z]",
                                 padding = TRUE)
 
 coll_caps2 = textstat_collocations(woerter_caps, size = 2, tolower = FALSE, min_count = 5)
-head(coll_caps2, 100)
+
+coll_caps2 %>% rmarkdown::paged_table()
 
 ```
 
@@ -578,11 +587,11 @@ wordcloud2(topfeat)
 ```{r}
 matrika_lem_tom = matrika_lem[2,]
 
-set.seed(1320)
+set.seed(1321)
 library(wordcloud2)
-topfeat <- as.data.frame(topfeatures(matrika_lem_tom, 100))
-topfeat <- rownames_to_column(topfeat, var = "word")
-wordcloud2(topfeat)
+topfeat2 <- as.data.frame(topfeatures(matrika_lem_tom, 100))
+topfeat2 <- rownames_to_column(topfeat2, var = "word")
+wordcloud2(topfeat2)
 
 ```
 
@@ -659,10 +668,10 @@ besedilom (reference).
 
 ```{r}
 key_tom <- textstat_keyness(matrika, target = "tom.txt")
-key_tom
+key_tom %>% rmarkdown::paged_table()
 
 key_prozess <- textstat_keyness(matrika, target = "prozess.txt")
-key_prozess
+key_prozess %>% rmarkdown::paged_table()
 
 ```
 
@@ -771,7 +780,7 @@ str(x)
 Podatkovni niz ima tako obliko:
 
 ```{r}
-x
+head(x, 10) %>% rmarkdown::paged_table()
 
 ```
 
@@ -1073,8 +1082,9 @@ sentiment1 = cbind(tom_v, tom_values, ntoken(tom_v)) %>%
          values = tom_values) %>% 
   mutate(doc_id = "tom.txt") %>% 
   rowid_to_column(var = "sentence")
-head(sentiment1)
-View(sentiment1)
+
+# View(sentiment1)
+sentiment1 %>% rmarkdown::paged_table()
 
 ```
 
@@ -1091,8 +1101,9 @@ sentiment2 = cbind(prozess_v, prozess_values, ntoken(prozess_v)) %>%
          values = prozess_values) %>% 
   mutate(doc_id = "prozess.txt") %>% 
   rowid_to_column(var = "sentence")
-head(sentiment2)
-View(sentiment2)
+
+# View(sentiment2)
+sentiment2 %>% rmarkdown::paged_table()
 
 ```
 
@@ -1105,7 +1116,8 @@ sentiment = rbind(sentiment1, sentiment2) %>% as_tibble() %>%
   mutate(values = parse_number(values),
          words = parse_number(words)) %>%
   dplyr::select(doc_id, sentence, words, values, text)
-head(sentiment)
+
+sentiment %>% rmarkdown::paged_table()
 
 ```
 
@@ -1143,7 +1155,8 @@ Poglejmo še nekaj povedi, ki so bile ocenjene negativno:
 
 ```{r}
 sentiment1 %>% 
-  filter(negative > 0)
+  filter(negative > 0) %>% 
+  rmarkdown::paged_table()
 ```
 
 ### Različica 2
@@ -1158,7 +1171,7 @@ head(tom_v[tom_joy_items], 4)
 
 ```{r}
 nrc_sentiment = as.data.frame(cbind(tom_v, tom_nrc_values))
-head(nrc_sentiment)
+nrc_sentiment %>% rmarkdown::paged_table()
 
 ```
 
@@ -1177,7 +1190,7 @@ bawlr <- read.delim2("data/BAWLR_utf8.txt", sep = "\t", dec = ",", fileEncoding 
 # bawlr$EmoVal <- gsub('NEG', '-1', bawlr$EmoVal)
 # bawlr$EmoVal <- gsub('POS', '1', bawlr$EmoVal)
 # bawlr$EmoVal <- as.numeric(bawlr$EmoVal)
-head(bawlr)
+bawlr %>% rmarkdown::paged_table()
 
 ```
 
@@ -1242,7 +1255,7 @@ skupno izraženih:
 result = result %>% mutate(sentiment1=(positive - negative) / (positive + negative))
 result = result %>% mutate(sentiment2=(positive - negative) / length)
 result = result %>% mutate(subjektivnost=(positive + negative) / length)
-result
+result %>% rmarkdown::paged_table()
 
 ```
 
