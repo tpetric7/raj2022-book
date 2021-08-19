@@ -5,6 +5,7 @@ date: "2021-08-19"
 site: bookdown::bookdown_site
 link-citations: yes
 colorlinks: yes 
+always_allow_html: true
 graphics: yes 
 cover-image: "pictures/hayiti__wcloud_lemmas.png" 
 ---

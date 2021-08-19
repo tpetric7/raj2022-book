@@ -438,7 +438,7 @@ novels_ch %>%
   labs(x = "Anzahl der Buchstaben", y = "Dichte")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-17-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 Folgt die Äußerungslänge (in Buchstaben gemessen) einer Zipf-Verteilung?
 
@@ -454,7 +454,7 @@ novels_ch %>%
   labs(y = "Anzahl der Buchstaben", x = "Rangfolge")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-18-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 Im Vergleich dazu unten: so sähe die entsprechende Zipf-Verteilung (Power-Law-Distribution) aus, die für ausreichend lange Texte gültig ist. 
 
@@ -473,7 +473,7 @@ novels_ch %>%
   labs(y = "Anzahl der Buchstaben", x = "Rangfolge")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-19-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 Wenn man die beiden Variablen (Rang und Häufigkeit) in einer Zipfverteilung logarithmiert, ist das Ergebnis eine Gerade. Die Äußerungslänge (hier: Buchstabenanzahl) im Roman "Tom Sawyer" scheint davon abzuweichen. Die mittellangen Äußerungen kommen häufiger vor, als nach der Zipfverteilung erwartet wird.
 
@@ -515,7 +515,7 @@ novels_ch %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-20-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 Welche Buchstaben kommen im Text häufiger / seltener vor?
 Unter den auf Vokale bezogenen Buchstaben ist das "e" am häufigsten, unter den auf Konsonanten bezogenen das "n".
@@ -557,7 +557,7 @@ novels_ch %>%
   theme(legend.position = "none")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 
 
@@ -577,7 +577,7 @@ novels_ch %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-23-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 
 ### Worthäufigkeiten
@@ -673,7 +673,7 @@ novels_ch %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 
 ### Wortschatzdichte
@@ -738,7 +738,7 @@ novels_ch %>%
   labs(x = "Anzahl der Wörter", y = "Anzahl der Äußerungen")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-29-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-29-1.png" width="672" />
 
 Logarithmiert:
 
@@ -758,7 +758,7 @@ novels_ch %>%
   labs(x = "Anzahl der Wörter", y = "Anzahl der Äußerungen")
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-30-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 
 Tabelle mit Anzahl der Wörter pro Äußerung (n), Rangfolge (rank) und die theoretische Frequenz gemäß Zipfverteilung (zipfs_freq). 
@@ -804,7 +804,7 @@ novels_ch %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-32-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 
 ### Vergleich mit quanteda
@@ -995,7 +995,7 @@ term_count_rank %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-43-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 
 ```r
@@ -1013,7 +1013,7 @@ term_count_rank %>%
   scale_y_log10()
 ```
 
-<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-44-1.svg" width="672" />
+<img src="11-Textzerlegung_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 
 

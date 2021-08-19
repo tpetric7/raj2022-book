@@ -1,461 +1,140 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course</title>
-  <meta name="description" content="Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course" />
-  
-  
-  <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
-
-<meta name="author" content="Teodor Petrič" />
-
-
-<meta name="date" content="2021-08-19" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="index.html"/>
-<link rel="next" href="stichprobentests.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
-<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
-<script src="libs/wordcloud2-0.0.1/hover.js"></script>
-<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
-<link rel="stylesheet" href="TMwR.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course</title>
+<meta name="author" content="Teodor Petrič">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 2 R &amp; RStudio | RAJ 2022 Introduction Course">
+<meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script><script src="libs/wordcloud2-0.0.1/hover.js"></script><script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><meta name="description" content="2.1 Programme In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel: library(tidyverse) # viele verschiedene Funktionen library(readtext) # Texte lesen library(readxl) #...">
+<meta property="og:description" content="2.1 Programme In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel: library(tidyverse) # viele verschiedene Funktionen library(readtext) # Texte lesen library(readxl) #...">
+<meta name="twitter:description" content="2.1 Programme In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel: library(tidyverse) # viele verschiedene Funktionen library(readtext) # Texte lesen library(readxl) #...">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">RAJ 2022 Intro</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
-<li class="chapter" data-level="2" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>2</b> R &amp; RStudio</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="r-rstudio.html"><a href="r-rstudio.html#programme"><i class="fa fa-check"></i><b>2.1</b> Programme</a></li>
-<li class="chapter" data-level="2.2" data-path="r-rstudio.html"><a href="r-rstudio.html#textdatei-öffnen"><i class="fa fa-check"></i><b>2.2</b> Textdatei öffnen</a></li>
-<li class="chapter" data-level="2.3" data-path="r-rstudio.html"><a href="r-rstudio.html#mehrere-textdateien-öffnen"><i class="fa fa-check"></i><b>2.3</b> Mehrere Textdateien öffnen</a></li>
-<li class="chapter" data-level="2.4" data-path="r-rstudio.html"><a href="r-rstudio.html#tabelle-öffnen"><i class="fa fa-check"></i><b>2.4</b> Tabelle öffnen</a></li>
-<li class="chapter" data-level="2.5" data-path="r-rstudio.html"><a href="r-rstudio.html#excel-tabelle-öffnen"><i class="fa fa-check"></i><b>2.5</b> Excel-Tabelle öffnen</a></li>
-<li class="chapter" data-level="2.6" data-path="r-rstudio.html"><a href="r-rstudio.html#datei-speichern"><i class="fa fa-check"></i><b>2.6</b> Datei speichern</a></li>
-<li class="chapter" data-level="2.7" data-path="r-rstudio.html"><a href="r-rstudio.html#download"><i class="fa fa-check"></i><b>2.7</b> Download</a></li>
-<li class="chapter" data-level="2.8" data-path="r-rstudio.html"><a href="r-rstudio.html#check-create-directory"><i class="fa fa-check"></i><b>2.8</b> Check &amp; create directory</a></li>
-<li class="chapter" data-level="2.9" data-path="r-rstudio.html"><a href="r-rstudio.html#unzip"><i class="fa fa-check"></i><b>2.9</b> Unzip</a></li>
-<li class="chapter" data-level="2.10" data-path="r-rstudio.html"><a href="r-rstudio.html#create-subfolders"><i class="fa fa-check"></i><b>2.10</b> Create subfolders</a></li>
-<li class="chapter" data-level="2.11" data-path="r-rstudio.html"><a href="r-rstudio.html#list-files"><i class="fa fa-check"></i><b>2.11</b> List files</a></li>
-<li class="chapter" data-level="2.12" data-path="r-rstudio.html"><a href="r-rstudio.html#read-files"><i class="fa fa-check"></i><b>2.12</b> Read files</a>
-<ul>
-<li class="chapter" data-level="2.12.1" data-path="r-rstudio.html"><a href="r-rstudio.html#tidyverse"><i class="fa fa-check"></i><b>2.12.1</b> tidyverse:</a></li>
-<li class="chapter" data-level="2.12.2" data-path="r-rstudio.html"><a href="r-rstudio.html#base-r"><i class="fa fa-check"></i><b>2.12.2</b> Base R:</a></li>
-</ul></li>
-<li class="chapter" data-level="2.13" data-path="r-rstudio.html"><a href="r-rstudio.html#konversion"><i class="fa fa-check"></i><b>2.13</b> Konversion</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="stichprobentests.html"><a href="stichprobentests.html"><i class="fa fa-check"></i><b>3</b> Stichprobentests</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="stichprobentests.html"><a href="stichprobentests.html#nominalskalierte-größen"><i class="fa fa-check"></i><b>3.1</b> Nominalskalierte Größen</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#lange-und-kurze-kommentare"><i class="fa fa-check"></i><b>3.1.1</b> Lange und kurze Kommentare</a></li>
-<li class="chapter" data-level="3.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#plural-von-kunstwörtern"><i class="fa fa-check"></i><b>3.1.2</b> Plural von Kunstwörtern</a></li>
-<li class="chapter" data-level="3.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#modalkonstruktionen-morati-vs.-treba"><i class="fa fa-check"></i><b>3.1.3</b> Modalkonstruktionen (morati vs. treba)</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="stichprobentests.html"><a href="stichprobentests.html#intervallskalierte-größen"><i class="fa fa-check"></i><b>3.2</b> Intervallskalierte Größen</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#wirkung-von-unterrichtsmethoden"><i class="fa fa-check"></i><b>3.2.1</b> Wirkung von Unterrichtsmethoden</a></li>
-<li class="chapter" data-level="3.2.2" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>3.2.2</b> Höflichkeit und Grundfrequenz</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html"><i class="fa fa-check"></i><b>4</b> Excel vs. R</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#programi"><i class="fa fa-check"></i><b>4.1</b> Programi</a></li>
-<li class="chapter" data-level="4.2" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#podatki"><i class="fa fa-check"></i><b>4.2</b> Podatki</a></li>
-<li class="chapter" data-level="4.3" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#število-podatkov-v-nizu"><i class="fa fa-check"></i><b>4.3</b> Število podatkov v nizu</a></li>
-<li class="chapter" data-level="4.4" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#lookup-excel"><i class="fa fa-check"></i><b>4.4</b> Lookup (Excel)</a></li>
-<li class="chapter" data-level="4.5" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#vlookup-concat"><i class="fa fa-check"></i><b>4.5</b> Vlookup, &amp;, Concat</a></li>
-<li class="chapter" data-level="4.6" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#transpose"><i class="fa fa-check"></i><b>4.6</b> Transpose</a></li>
-<li class="chapter" data-level="4.7" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#dvojniki-razdružitev"><i class="fa fa-check"></i><b>4.7</b> Dvojniki, razdružitev</a></li>
-<li class="chapter" data-level="4.8" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#xlookup"><i class="fa fa-check"></i><b>4.8</b> Xlookup</a></li>
-<li class="chapter" data-level="4.9" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#index-match"><i class="fa fa-check"></i><b>4.9</b> Index, Match</a></li>
-<li class="chapter" data-level="4.10" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#filtriranje"><i class="fa fa-check"></i><b>4.10</b> Filtriranje</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>5</b> Textzerlegung</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>5.1</b> Packages</a></li>
-<li class="chapter" data-level="5.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>5.2</b> Text öffnen</a></li>
-<li class="chapter" data-level="5.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>5.3</b> Zerlegung des Textes</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle"><i class="fa fa-check"></i><b>5.3.1</b> Tabelle</a></li>
-<li class="chapter" data-level="5.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>5.3.2</b> Äußerungen</a></li>
-<li class="chapter" data-level="5.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>5.3.3</b> Wörter</a></li>
-<li class="chapter" data-level="5.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>5.3.4</b> Buchstaben</a></li>
-<li class="chapter" data-level="5.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>5.3.5</b> Ziffern umwandeln</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>5.4</b> Tabelle speichern</a></li>
-<li class="chapter" data-level="5.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen-1"><i class="fa fa-check"></i><b>5.5</b> Tabelle öffnen</a></li>
-<li class="chapter" data-level="5.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>5.6</b> Zählen</a>
-<ul>
-<li class="chapter" data-level="5.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>5.6.1</b> Buchstaben</a></li>
-<li class="chapter" data-level="5.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>5.6.2</b> Worthäufigkeiten</a></li>
-<li class="chapter" data-level="5.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>5.6.3</b> Wortschatzdichte</a></li>
-<li class="chapter" data-level="5.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>5.6.4</b> Äußerungslänge</a></li>
-<li class="chapter" data-level="5.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>5.6.5</b> Vergleich mit quanteda</a></li>
-<li class="chapter" data-level="5.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>5.6.6</b> Vergleich mit Voyant Tools</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>6</b> Textvergleich</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="textvergleich.html"><a href="textvergleich.html#programi-1"><i class="fa fa-check"></i><b>6.1</b> Programi</a></li>
-<li class="chapter" data-level="6.2" data-path="textvergleich.html"><a href="textvergleich.html#preberemo-besedila"><i class="fa fa-check"></i><b>6.2</b> Preberemo besedila</a></li>
-<li class="chapter" data-level="6.3" data-path="textvergleich.html"><a href="textvergleich.html#ustvarimo-korpus"><i class="fa fa-check"></i><b>6.3</b> Ustvarimo korpus</a></li>
-<li class="chapter" data-level="6.4" data-path="textvergleich.html"><a href="textvergleich.html#tokenizacija"><i class="fa fa-check"></i><b>6.4</b> Tokenizacija</a></li>
-<li class="chapter" data-level="6.5" data-path="textvergleich.html"><a href="textvergleich.html#čiščenje"><i class="fa fa-check"></i><b>6.5</b> Čiščenje</a></li>
-<li class="chapter" data-level="6.6" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>6.6</b> Kwic</a></li>
-<li class="chapter" data-level="6.7" data-path="textvergleich.html"><a href="textvergleich.html#pogostnost"><i class="fa fa-check"></i><b>6.7</b> Pogostnost</a></li>
-<li class="chapter" data-level="6.8" data-path="textvergleich.html"><a href="textvergleich.html#kolokacije"><i class="fa fa-check"></i><b>6.8</b> Kolokacije</a></li>
-<li class="chapter" data-level="6.9" data-path="textvergleich.html"><a href="textvergleich.html#lematizacija"><i class="fa fa-check"></i><b>6.9</b> Lematizacija</a></li>
-<li class="chapter" data-level="6.10" data-path="textvergleich.html"><a href="textvergleich.html#besedni-oblaček"><i class="fa fa-check"></i><b>6.10</b> Besedni oblaček</a></li>
-<li class="chapter" data-level="6.11" data-path="textvergleich.html"><a href="textvergleich.html#položaj-v-besedilu-xray"><i class="fa fa-check"></i><b>6.11</b> Položaj v besedilu (xray)</a></li>
-<li class="chapter" data-level="6.12" data-path="textvergleich.html"><a href="textvergleich.html#slovarska-raznolikost"><i class="fa fa-check"></i><b>6.12</b> Slovarska raznolikost</a></li>
-<li class="chapter" data-level="6.13" data-path="textvergleich.html"><a href="textvergleich.html#podobnost-besedil"><i class="fa fa-check"></i><b>6.13</b> Podobnost besedil</a></li>
-<li class="chapter" data-level="6.14" data-path="textvergleich.html"><a href="textvergleich.html#ključne-besede"><i class="fa fa-check"></i><b>6.14</b> Ključne besede</a></li>
-<li class="chapter" data-level="6.15" data-path="textvergleich.html"><a href="textvergleich.html#razumljivost-besedil"><i class="fa fa-check"></i><b>6.15</b> Razumljivost besedil</a></li>
-<li class="chapter" data-level="6.16" data-path="textvergleich.html"><a href="textvergleich.html#omrežje-sopojavitev-fcm"><i class="fa fa-check"></i><b>6.16</b> Omrežje sopojavitev (FCM)</a></li>
-<li class="chapter" data-level="6.17" data-path="textvergleich.html"><a href="textvergleich.html#slovnična-analiza"><i class="fa fa-check"></i><b>6.17</b> Slovnična analiza</a>
-<ul>
-<li class="chapter" data-level="6.17.1" data-path="textvergleich.html"><a href="textvergleich.html#priprava"><i class="fa fa-check"></i><b>6.17.1</b> Priprava</a></li>
-<li class="chapter" data-level="6.17.2" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-noun-pron"><i class="fa fa-check"></i><b>6.17.2</b> Primerjava Noun : Pron</a></li>
-<li class="chapter" data-level="6.17.3" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-veznikov"><i class="fa fa-check"></i><b>6.17.3</b> Primerjava veznikov</a></li>
-<li class="chapter" data-level="6.17.4" data-path="textvergleich.html"><a href="textvergleich.html#slovarske-enote"><i class="fa fa-check"></i><b>6.17.4</b> Slovarske enote</a></li>
-<li class="chapter" data-level="6.17.5" data-path="textvergleich.html"><a href="textvergleich.html#korelacija-besed"><i class="fa fa-check"></i><b>6.17.5</b> Korelacija besed</a></li>
-</ul></li>
-<li class="chapter" data-level="6.18" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>6.18</b> Sentiment</a>
-<ul>
-<li class="chapter" data-level="6.18.1" data-path="textvergleich.html"><a href="textvergleich.html#različica-1"><i class="fa fa-check"></i><b>6.18.1</b> Različica 1</a></li>
-<li class="chapter" data-level="6.18.2" data-path="textvergleich.html"><a href="textvergleich.html#različica-2"><i class="fa fa-check"></i><b>6.18.2</b> Različica 2</a></li>
-<li class="chapter" data-level="6.18.3" data-path="textvergleich.html"><a href="textvergleich.html#različica-3"><i class="fa fa-check"></i><b>6.18.3</b> Različica 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html"><i class="fa fa-check"></i><b>7</b> Original und Übersetzung</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#programi-2"><i class="fa fa-check"></i><b>7.1</b> Programi</a></li>
-<li class="chapter" data-level="7.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#preberemo-besedila-1"><i class="fa fa-check"></i><b>7.2</b> Preberemo besedila</a></li>
-<li class="chapter" data-level="7.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ustvarimo-korpus-1"><i class="fa fa-check"></i><b>7.3</b> Ustvarimo korpus</a></li>
-<li class="chapter" data-level="7.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#tokenizacija-1"><i class="fa fa-check"></i><b>7.4</b> Tokenizacija</a></li>
-<li class="chapter" data-level="7.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#čiščenje-1"><i class="fa fa-check"></i><b>7.5</b> Čiščenje</a></li>
-<li class="chapter" data-level="7.6" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kwic-1"><i class="fa fa-check"></i><b>7.6</b> Kwic</a></li>
-<li class="chapter" data-level="7.7" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#pogostnost-1"><i class="fa fa-check"></i><b>7.7</b> Pogostnost</a></li>
-<li class="chapter" data-level="7.8" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kolokacije-1"><i class="fa fa-check"></i><b>7.8</b> Kolokacije</a></li>
-<li class="chapter" data-level="7.9" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lematizacija-1"><i class="fa fa-check"></i><b>7.9</b> Lematizacija</a>
-<ul>
-<li class="chapter" data-level="7.9.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lasten-seznam"><i class="fa fa-check"></i><b>7.9.1</b> Lasten seznam</a></li>
-<li class="chapter" data-level="7.9.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#udpipe"><i class="fa fa-check"></i><b>7.9.2</b> Udpipe</a></li>
-</ul></li>
-<li class="chapter" data-level="7.10" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#besedni-oblaček-1"><i class="fa fa-check"></i><b>7.10</b> Besedni oblaček</a></li>
-<li class="chapter" data-level="7.11" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#položaj-v-besedilu-xray-1"><i class="fa fa-check"></i><b>7.11</b> Položaj v besedilu (xray)</a></li>
-<li class="chapter" data-level="7.12" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarska-raznolikost-1"><i class="fa fa-check"></i><b>7.12</b> Slovarska raznolikost</a></li>
-<li class="chapter" data-level="7.13" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podobnost-besedil-1"><i class="fa fa-check"></i><b>7.13</b> Podobnost besedil</a></li>
-<li class="chapter" data-level="7.14" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ključne-besede-1"><i class="fa fa-check"></i><b>7.14</b> Ključne besede</a></li>
-<li class="chapter" data-level="7.15" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#razumljivost-besedil-1"><i class="fa fa-check"></i><b>7.15</b> Razumljivost besedil</a></li>
-<li class="chapter" data-level="7.16" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#omrežje-sopojavitev-fcm-1"><i class="fa fa-check"></i><b>7.16</b> Omrežje sopojavitev (FCM)</a></li>
-<li class="chapter" data-level="7.17" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovnična-analiza-1"><i class="fa fa-check"></i><b>7.17</b> Slovnična analiza</a>
-<ul>
-<li class="chapter" data-level="7.17.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podatkovna-niza"><i class="fa fa-check"></i><b>7.17.1</b> Podatkovna niza</a></li>
-<li class="chapter" data-level="7.17.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-noun-pron-1"><i class="fa fa-check"></i><b>7.17.2</b> Primerjava Noun : Pron</a></li>
-<li class="chapter" data-level="7.17.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-veznikov-1"><i class="fa fa-check"></i><b>7.17.3</b> Primerjava veznikov</a></li>
-<li class="chapter" data-level="7.17.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarske-enote-1"><i class="fa fa-check"></i><b>7.17.4</b> Slovarske enote</a></li>
-<li class="chapter" data-level="7.17.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#korelacija-besed-1"><i class="fa fa-check"></i><b>7.17.5</b> Korelacija besed</a></li>
-</ul></li>
-<li class="chapter" data-level="7.18" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#sentiment-1"><i class="fa fa-check"></i><b>7.18</b> Sentiment</a>
-<ul>
-<li class="chapter" data-level="7.18.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-1-1"><i class="fa fa-check"></i><b>7.18.1</b> Različica 1</a></li>
-<li class="chapter" data-level="7.18.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-2-1"><i class="fa fa-check"></i><b>7.18.2</b> Različica 2</a></li>
-<li class="chapter" data-level="7.18.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-3-1"><i class="fa fa-check"></i><b>7.18.3</b> Različica 3</a></li>
-<li class="chapter" data-level="7.18.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#barvno-označevanje-1"><i class="fa fa-check"></i><b>7.18.4</b> Barvno označevanje</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html"><i class="fa fa-check"></i><b>8</b> Regularni izrazi in quanteda</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#programi-3"><i class="fa fa-check"></i><b>8.1</b> Programi</a></li>
-<li class="chapter" data-level="8.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#preberemo-besedila-2"><i class="fa fa-check"></i><b>8.2</b> Preberemo besedila</a></li>
-<li class="chapter" data-level="8.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#ustvarimo-korpus-2"><i class="fa fa-check"></i><b>8.3</b> Ustvarimo korpus</a></li>
-<li class="chapter" data-level="8.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tokenizacija-2"><i class="fa fa-check"></i><b>8.4</b> Tokenizacija</a></li>
-<li class="chapter" data-level="8.5" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#kwic-2"><i class="fa fa-check"></i><b>8.5</b> Kwic</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#frau-mann"><i class="fa fa-check"></i><b>8.5.1</b> Frau, Mann</a></li>
-<li class="chapter" data-level="8.5.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--in"><i class="fa fa-check"></i><b>8.5.2</b> Pripona -in</a></li>
-<li class="chapter" data-level="8.5.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--er"><i class="fa fa-check"></i><b>8.5.3</b> Pripona -er</a></li>
-<li class="chapter" data-level="8.5.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--ung"><i class="fa fa-check"></i><b>8.5.4</b> Pripona -ung</a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tidytext"><i class="fa fa-check"></i><b>8.6</b> tidytext</a>
-<ul>
-<li class="chapter" data-level="8.6.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besede"><i class="fa fa-check"></i><b>8.6.1</b> Besede</a></li>
-<li class="chapter" data-level="8.6.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besedne-zveze"><i class="fa fa-check"></i><b>8.6.2</b> Besedne zveze</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>9</b> Suffixe und Stemming</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>9.1</b> Packages</a></li>
-<li class="chapter" data-level="9.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>9.2</b> Dateien einlesen</a></li>
-<li class="chapter" data-level="9.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung"><i class="fa fa-check"></i><b>9.3</b> Lemmatisierung</a></li>
-<li class="chapter" data-level="9.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>9.4</b> Stemming</a></li>
-<li class="chapter" data-level="9.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>9.5</b> Wortbildungsanalyse</a>
-<ul>
-<li class="chapter" data-level="9.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>9.5.1</b> Suffix -lich</a></li>
-<li class="chapter" data-level="9.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>9.5.2</b> Mehrere ADJ Suffixe</a></li>
-<li class="chapter" data-level="9.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>9.5.3</b> Nicht verwendete Tabelle</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>10</b> Buchstaben in Romanen</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>10.1</b> Packages</a></li>
-<li class="chapter" data-level="10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>10.2</b> Datensatz lesen</a></li>
-<li class="chapter" data-level="10.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>10.3</b> Buchstaben extrahieren</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>10.3.1</b> aus Liste</a></li>
-<li class="chapter" data-level="10.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>10.3.2</b> aus Datensatz</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>10.4</b> Buchstaben zählen</a></li>
-<li class="chapter" data-level="10.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>10.5</b> Vokale</a></li>
-<li class="chapter" data-level="10.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>10.6</b> Konsonanten</a></li>
-<li class="chapter" data-level="10.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>10.7</b> Vokal-Konsonant-Verhältnis</a></li>
-<li class="chapter" data-level="10.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>10.8</b> Anzahl der Silben</a></li>
-<li class="chapter" data-level="10.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>10.9</b> Mittlere Wortlänge</a></li>
-<li class="chapter" data-level="10.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>10.10</b> Testen von Mittelwertunterschieden</a>
-<ul>
-<li class="chapter" data-level="10.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>10.10.1</b> t-Test</a></li>
-<li class="chapter" data-level="10.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-2"><i class="fa fa-check"></i><b>10.10.2</b> Lineare Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="10.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>10.11</b> Quanteda-Funktionen</a></li>
-<li class="chapter" data-level="10.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>10.12</b> Konsonantenverbindungen</a></li>
-<li class="chapter" data-level="10.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>10.13</b> Datensatz-Variante</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>11</b> Lesbarkeitsindices</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>11.1</b> Zur theoretischen Begründung</a></li>
-<li class="chapter" data-level="11.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-2"><i class="fa fa-check"></i><b>11.2</b> Programme</a></li>
-<li class="chapter" data-level="11.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>11.3</b> Texte lesen</a></li>
-<li class="chapter" data-level="11.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>11.4</b> Flesch Reading Ease - deutsche Version</a></li>
-<li class="chapter" data-level="11.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>11.5</b> Romane (deutsche oder ins Deutsche übersetzte)</a></li>
-<li class="chapter" data-level="11.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>11.6</b> Zeitungen</a></li>
-<li class="chapter" data-level="11.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>11.7</b> Statistische Tests: News</a></li>
-<li class="chapter" data-level="11.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen"><i class="fa fa-check"></i><b>11.8</b> Datensätze vereinen</a></li>
-<li class="chapter" data-level="11.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>11.9</b> Zeitungen im Vergleich</a></li>
-<li class="chapter" data-level="11.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>11.10</b> Alle Texte im Vergleich</a></li>
-<li class="chapter" data-level="11.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>11.11</b> Flesch-Kincade Grade Level (USA, GB)</a></li>
-<li class="chapter" data-level="11.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>11.12</b> Wiener Sachtextformel</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>12</b> Vokalformanten im Deutschen als Fremdsprache</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>12.1</b> Programme starten</a></li>
-<li class="chapter" data-level="12.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden"><i class="fa fa-check"></i><b>12.2</b> Daten laden</a></li>
-<li class="chapter" data-level="12.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>12.3</b> IPA syms</a></li>
-<li class="chapter" data-level="12.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>12.4</b> Vergleich der Vokalformanten</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Bookdown intro</a></li>
-<li class="chapter" data-level="14" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html"><i class="fa fa-check"></i><b>14</b> Rmarkdown Math</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html#math-example"><i class="fa fa-check"></i><b>14.1</b> math example</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html"><i class="fa fa-check"></i><b>15</b> Demonstration chapters</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
-<li class="chapter" data-level="15.2" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">RAJ 2022 Introduction Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAJ 2022 Introduction Course</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Einführung</a></li>
+<li><a class="active" href="r-rstudio.html"><span class="header-section-number">2</span> R &amp; RStudio</a></li>
+<li><a class="" href="stichprobentests.html"><span class="header-section-number">3</span> Stichprobentests</a></li>
+<li><a class="" href="excel-vs.-r.html"><span class="header-section-number">4</span> Excel vs. R</a></li>
+<li><a class="" href="textzerlegung.html"><span class="header-section-number">5</span> Textzerlegung</a></li>
+<li><a class="" href="textvergleich.html"><span class="header-section-number">6</span> Textvergleich</a></li>
+<li><a class="" href="original-und-%C3%BCbersetzung.html"><span class="header-section-number">7</span> Original und Übersetzung</a></li>
+<li><a class="" href="regularni-izrazi-in-quanteda.html"><span class="header-section-number">8</span> Regularni izrazi in quanteda</a></li>
+<li><a class="" href="suffixe-und-stemming.html"><span class="header-section-number">9</span> Suffixe und Stemming</a></li>
+<li><a class="" href="buchstaben-in-romanen.html"><span class="header-section-number">10</span> Buchstaben in Romanen</a></li>
+<li><a class="" href="lesbarkeitsindices.html"><span class="header-section-number">11</span> Lesbarkeitsindices</a></li>
+<li><a class="" href="vokalformanten-im-deutschen-als-fremdsprache.html"><span class="header-section-number">12</span> Vokalformanten im Deutschen als Fremdsprache</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">13</span> Bookdown intro</a></li>
+<li><a class="" href="rmarkdown-math.html"><span class="header-section-number">14</span> Rmarkdown Math</a></li>
+<li><a class="" href="demonstration-chapters.html"><span class="header-section-number">15</span> Demonstration chapters</a></li>
+<li><a class="" href="final-words.html"><span class="header-section-number">16</span> Final Words</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="r-rstudio" class="section level1" number="2">
-<h1><span class="header-section-number">Kapitel 2</span> R &amp; RStudio</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-rstudio" class="section level1" number="2">
+<h1>
+<span class="header-section-number">Kapitel 2</span> R &amp; RStudio<a class="anchor" aria-label="anchor" href="#r-rstudio"><i class="fas fa-link"></i></a>
+</h1>
 <div id="programme" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Programme</h2>
+<h2>
+<span class="header-section-number">2.1</span> Programme<a class="anchor" aria-label="anchor" href="#programme"><i class="fas fa-link"></i></a>
+</h2>
 <p>In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-rstudio.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># viele verschiedene Funktionen</span></span>
-<span id="cb1-2"><a href="r-rstudio.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext) <span class="co"># Texte lesen</span></span>
-<span id="cb1-3"><a href="r-rstudio.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># Excel-Tabellen lesen</span></span>
-<span id="cb1-4"><a href="r-rstudio.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl) <span class="co"># Excel-Tabellen schreiben</span></span>
-<span id="cb1-5"><a href="r-rstudio.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown) <span class="co"># hier für besseres Tabellenformat</span></span>
-<span id="cb1-6"><a href="r-rstudio.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># für besseres Tabellenformat </span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># viele verschiedene Funktionen</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quanteda/readtext">readtext</a></span><span class="op">)</span> <span class="co"># Texte lesen</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span> <span class="co"># Excel-Tabellen lesen</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span> <span class="co"># Excel-Tabellen schreiben</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rmarkdown">rmarkdown</a></span><span class="op">)</span> <span class="co"># hier für besseres Tabellenformat</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span> <span class="co"># für besseres Tabellenformat </span></code></pre></div>
 <p>Načinov za odpiranje in shranjevanje datotek je veliko. Tule bom pokazal nekaj preprostih:</p>
 </div>
 <div id="textdatei-öffnen" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Textdatei öffnen</h2>
+<h2>
+<span class="header-section-number">2.2</span> Textdatei öffnen<a class="anchor" aria-label="anchor" href="#textdatei-%C3%B6ffnen"><i class="fas fa-link"></i></a>
+</h2>
 <p>Funkcija <em>read_lines()</em>: odpremo besedilo v izbrani mapi in ga shranimo v spremenljivki (npr. “besedilo”).</p>
 <p>Odpiranje besedila s spletnega naslova (url) je možen.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="r-rstudio.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="r-rstudio.html#cb2-2" aria-hidden="true" tabindex="-1"></a>besedilo <span class="ot">=</span> <span class="fu">read_lines</span>(<span class="st">&quot;data/books/tom.txt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">besedilo</span> <span class="op">=</span> <span class="fu">read_lines</span><span class="op">(</span><span class="st">"data/books/tom.txt"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="mehrere-textdateien-öffnen" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Mehrere Textdateien öffnen</h2>
+<h2>
+<span class="header-section-number">2.3</span> Mehrere Textdateien öffnen<a class="anchor" aria-label="anchor" href="#mehrere-textdateien-%C3%B6ffnen"><i class="fas fa-link"></i></a>
+</h2>
 <p>Funkcija <em>readtext()</em>: če namesto imena datotek navedemo samo zvezdico + pripono datotek (npr. *.txt) v izbrani mapi (npr. “data/books/”), potem bo program odprl vse besedilne datoteke s to pripono in to zbirko shranil v spremenljivki (npr. “besedila”). Program ustvari tabelo odprtih besedil.</p>
 <p>readtext() odpira različne besedila z različnimi priponami: txt, csv, docx, pdf, xml, …</p>
 <p>Odpiranje besedila s spletnega naslova (url) je možen.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-rstudio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
-<span id="cb3-2"><a href="r-rstudio.html#cb3-2" aria-hidden="true" tabindex="-1"></a>besedila <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb3-3"><a href="r-rstudio.html#cb3-3" aria-hidden="true" tabindex="-1"></a>besedila</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quanteda/readtext">readtext</a></span><span class="op">)</span>
+<span class="va">besedila</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/readtext/man/readtext.html">readtext</a></span><span class="op">(</span><span class="st">"data/books/*.txt"</span>, encoding <span class="op">=</span> <span class="st">"UTF-8"</span><span class="op">)</span>
+<span class="va">besedila</span></code></pre></div>
 <pre><code>## readtext object consisting of 2 documents and 0 docvars.
 ## # Description: df [2 x 2]
 ##   doc_id      text               
 ##   &lt;chr&gt;       &lt;chr&gt;              
-## 1 prozess.txt &quot;\&quot;Der Prozes\&quot;...&quot;
-## 2 tom.txt     &quot;\&quot;Tom Sawyer\&quot;...&quot;</code></pre>
+## 1 prozess.txt "\"Der Prozes\"..."
+## 2 tom.txt     "\"Tom Sawyer\"..."</code></pre>
 </div>
 <div id="tabelle-öffnen" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Tabelle öffnen</h2>
+<h2>
+<span class="header-section-number">2.4</span> Tabelle öffnen<a class="anchor" aria-label="anchor" href="#tabelle-%C3%B6ffnen"><i class="fas fa-link"></i></a>
+</h2>
 <p>Funkcija <em>read_csv()</em> ali <em>read_csv2()</em> sta le dve izmed številnih funkcij za odpiranje preglednice s pripono “csv”.</p>
 <p>Odpiranje besedila s spletnega naslova (url) je možen.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="r-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a>tabela <span class="ot">=</span> <span class="fu">read_csv2</span>(<span class="st">&quot;data/plural_Subj_sum.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## i Using &quot;&#39;,&#39;&quot; as decimal and &quot;&#39;.&#39;&quot; as grouping mark. Use `read_delim()` for more control.</code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">tabela</span> <span class="op">=</span> <span class="fu">read_csv2</span><span class="op">(</span><span class="st">"data/plural_Subj_sum.csv"</span><span class="op">)</span></code></pre></div>
+<pre><code>## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.</code></pre>
 <pre><code>## Rows: 738 Columns: 9</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;;&quot;
+## Delimiter: ";"
 ## chr (2): WordType, Genus
 ## dbl (7): SubjID, Sigstark, En, E, Er, S, Z</code></pre>
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-rstudio.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tabela) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="r-rstudio.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tabela</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["SubjID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["WordType"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Genus"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Sigstark"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["En"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["E"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Er"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["S"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Z"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"NoRhyme","3":"Fem","4":"4.983333","5":"8","6":"4","7":"0","8":"0","9":"0"},{"1":"1","2":"NoRhyme","3":"Masc","4":"4.600000","5":"6","6":"6","7":"0","8":"0","9":"0"},{"1":"1","2":"NoRhyme","3":"Neut","4":"5.366667","5":"10","6":"2","7":"0","8":"0","9":"0"},{"1":"1","2":"Rhyme","3":"Fem","4":"3.836667","5":"3","6":"8","7":"0","8":"0","9":"1"},{"1":"1","2":"Rhyme","3":"Masc","4":"4.153333","5":"5","6":"5","7":"1","8":"0","9":"1"},{"1":"1","2":"Rhyme","3":"Neut","4":"3.784167","5":"3","6":"7","7":"1","8":"0","9":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -463,12 +142,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="excel-tabelle-öffnen" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Excel-Tabelle öffnen</h2>
+<h2>
+<span class="header-section-number">2.5</span> Excel-Tabelle öffnen<a class="anchor" aria-label="anchor" href="#excel-tabelle-%C3%B6ffnen"><i class="fas fa-link"></i></a>
+</h2>
 <p>Funkcija <em>read_xlsx()</em> ali <em>read_excel()</em> omogoča odpiranje Excelove preglednice s pripono “xlsx”.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb11-2"><a href="r-rstudio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>excel <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/S03_Vokalformanten_Diagramme.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;A1-4_alle&quot;</span>)</span>
-<span id="cb11-3"><a href="r-rstudio.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(excel) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="r-rstudio.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span>
+<span class="va">excel</span> <span class="op">=</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"data/S03_Vokalformanten_Diagramme.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"A1-4_alle"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">excel</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html">paged_table</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["Studierende"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Phrase"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Wort"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Vokal"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Dauer"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Länge"],"name":[6],"type":["chr"],"align":["left"]},{"label":["F1"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["F2"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Sprecherin"],"name":[9],"type":["chr"],"align":["left"]},{"label":["L1_L2"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"Monika","2":"Phrase 014","3":"Stadt","4":"a","5":"88","6":"kurz","7":"764","8":"1746","9":"Deutsche","10":"L1"},{"1":"Metka","2":"Phrase 014","3":"Stadt","4":"a","5":"104","6":"kurz","7":"724","8":"1741","9":"Deutsche","10":"L1"},{"1":"Adelina","2":"Phrase 014","3":"Stadt","4":"a","5":"55","6":"kurz","7":"810","8":"1740","9":"Deutsche","10":"L1"},{"1":"Jasmina","2":"Phrase 014","3":"Stadt","4":"a","5":"99","6":"kurz","7":"735","8":"1741","9":"Deutsche","10":"L1"},{"1":"Donna","2":"Phrase 014","3":"Stadt","4":"a","5":"59","6":"kurz","7":"1346","8":"2487","9":"Deutsche","10":"L1"},{"1":"Mateja","2":"Phrase 014","3":"Stadt","4":"a","5":"162","6":"kurz","7":"242","8":"2236","9":"Deutsche","10":"L1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -476,25 +158,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="datei-speichern" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Datei speichern</h2>
+<h2>
+<span class="header-section-number">2.6</span> Datei speichern<a class="anchor" aria-label="anchor" href="#datei-speichern"><i class="fas fa-link"></i></a>
+</h2>
 <p>Privzeto spodnji programi shranjujejo v obliki (codepage) encoding = “UTF-8” / fileEncoding = “UTF-8”.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb12-2"><a href="r-rstudio.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="r-rstudio.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shranjevanje posamičnega besedila</span></span>
-<span id="cb12-4"><a href="r-rstudio.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_lines</span>(besedilo, <span class="st">&quot;moje_besedilo.txt&quot;</span>)</span>
-<span id="cb12-5"><a href="r-rstudio.html#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="r-rstudio.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># shranjevanje tabele, v kateri je zbirka besedil</span></span>
-<span id="cb12-7"><a href="r-rstudio.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv2</span>(besedila, <span class="st">&quot;moja_tabela_z_besedili.csv&quot;</span>)</span>
-<span id="cb12-8"><a href="r-rstudio.html#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="r-rstudio.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
-<span id="cb12-10"><a href="r-rstudio.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># shranjevanje preglednice</span></span>
-<span id="cb12-11"><a href="r-rstudio.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(tabela, <span class="st">&quot;moja_tabela.xlsx&quot;</span>)</span>
-<span id="cb12-12"><a href="r-rstudio.html#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="r-rstudio.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># shranjevanje tabele, v kateri je zibrka besedil</span></span>
-<span id="cb12-14"><a href="r-rstudio.html#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Excel dovoljuje do 32767 znakov.</span></span>
-<span id="cb12-15"><a href="r-rstudio.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ta zbirko presega to mejo, zato je ne moremo shraniti v Excelovi preglednici</span></span>
-<span id="cb12-16"><a href="r-rstudio.html#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="r-rstudio.html#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># write_xlsx(besedila, &quot;moja_tabela_z_besedili.xlsx&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+
+<span class="co"># shranjevanje posamičnega besedila</span>
+<span class="fu">write_lines</span><span class="op">(</span><span class="va">besedilo</span>, <span class="st">"moje_besedilo.txt"</span><span class="op">)</span>
+
+<span class="co"># shranjevanje tabele, v kateri je zbirka besedil</span>
+<span class="fu">write_csv2</span><span class="op">(</span><span class="va">besedila</span>, <span class="st">"moja_tabela_z_besedili.csv"</span><span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/writexl/">writexl</a></span><span class="op">)</span>
+<span class="co"># shranjevanje preglednice</span>
+<span class="fu"><a href="https://docs.ropensci.org/writexl/reference/write_xlsx.html">write_xlsx</a></span><span class="op">(</span><span class="va">tabela</span>, <span class="st">"moja_tabela.xlsx"</span><span class="op">)</span>
+
+<span class="co"># shranjevanje tabele, v kateri je zibrka besedil</span>
+<span class="co"># Excel dovoljuje do 32767 znakov.</span>
+<span class="co"># ta zbirko presega to mejo, zato je ne moremo shraniti v Excelovi preglednici</span>
+
+<span class="co"># write_xlsx(besedila, "moja_tabela_z_besedili.xlsx")</span></code></pre></div>
 <p>Basic operations in R:
 * Download (zip) files
 * Extract compressed files to a folder
@@ -502,157 +187,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 * List &amp; Read files in a folder</p>
 </div>
 <div id="download" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Download</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-rstudio.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://github.com/tpetric7/tpetric7.github.io/archive/refs/heads/main.zip&quot;</span>,</span>
-<span id="cb13-2"><a href="r-rstudio.html#cb13-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;d:/Users/teodo/Downloads/tpetric7-master.zip&quot;</span>)</span></code></pre></div>
+<h2>
+<span class="header-section-number">2.7</span> Download<a class="anchor" aria-label="anchor" href="#download"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/tpetric7/tpetric7.github.io/archive/refs/heads/main.zip"</span>,
+              <span class="st">"d:/Users/teodo/Downloads/tpetric7-master.zip"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="check-create-directory" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Check &amp; create directory</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-rstudio.html#cb14-1" aria-hidden="true" tabindex="-1"></a>pot <span class="ot">&lt;-</span> <span class="st">&quot;d:/Users/teodo/Downloads/tpetric7-master&quot;</span></span>
-<span id="cb14-2"><a href="r-rstudio.html#cb14-2" aria-hidden="true" tabindex="-1"></a>exist <span class="ot">&lt;-</span> <span class="fu">dir.exists</span>(pot)</span>
-<span id="cb14-3"><a href="r-rstudio.html#cb14-3" aria-hidden="true" tabindex="-1"></a>exist</span></code></pre></div>
+<h2>
+<span class="header-section-number">2.8</span> Check &amp; create directory<a class="anchor" aria-label="anchor" href="#check-create-directory"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pot</span> <span class="op">&lt;-</span> <span class="st">"d:/Users/teodo/Downloads/tpetric7-master"</span>
+<span class="va">exist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="va">pot</span><span class="op">)</span>
+<span class="va">exist</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-rstudio.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(exist <span class="sc">==</span> <span class="cn">FALSE</span>, </span>
-<span id="cb16-2"><a href="r-rstudio.html#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">dir.create</span>(pot, <span class="at">showWarnings =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb16-3"><a href="r-rstudio.html#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;directory already exists&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;directory already exists&quot;</code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">exist</span> <span class="op">==</span> <span class="cn">FALSE</span>, 
+       <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="va">pot</span>, showWarnings <span class="op">=</span> <span class="cn">TRUE</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, 
+       <span class="st">"directory already exists"</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "directory already exists"</code></pre>
 </div>
 <div id="unzip" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Unzip</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-rstudio.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;d:/Users/teodo/Downloads/tpetric7-master.zip&quot;</span>, <span class="at">exdir =</span> pot)</span></code></pre></div>
+<h2>
+<span class="header-section-number">2.9</span> Unzip<a class="anchor" aria-label="anchor" href="#unzip"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html">unzip</a></span><span class="op">(</span><span class="st">"d:/Users/teodo/Downloads/tpetric7-master.zip"</span>, exdir <span class="op">=</span> <span class="va">pot</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="create-subfolders" class="section level2" number="2.10">
-<h2><span class="header-section-number">2.10</span> Create subfolders</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-rstudio.html#cb19-1" aria-hidden="true" tabindex="-1"></a>subfolder_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span>) </span>
-<span id="cb19-2"><a href="r-rstudio.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(subfolder_names)){</span>
-<span id="cb19-3"><a href="r-rstudio.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  folder <span class="ot">&lt;-</span> <span class="fu">dir.create</span>(<span class="fu">paste0</span>(pot, <span class="st">&quot;/&quot;</span>, subfolder_names[i]))</span>
-<span id="cb19-4"><a href="r-rstudio.html#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning in dir.create(paste0(pot, &quot;/&quot;, subfolder_names[i])): &#39;d:
-## \Users\teodo\Downloads\tpetric7-master\a&#39; already exists</code></pre>
-<pre><code>## Warning in dir.create(paste0(pot, &quot;/&quot;, subfolder_names[i])): &#39;d:
-## \Users\teodo\Downloads\tpetric7-master\b&#39; already exists</code></pre>
-<pre><code>## Warning in dir.create(paste0(pot, &quot;/&quot;, subfolder_names[i])): &#39;d:
-## \Users\teodo\Downloads\tpetric7-master\c&#39; already exists</code></pre>
-<pre><code>## Warning in dir.create(paste0(pot, &quot;/&quot;, subfolder_names[i])): &#39;d:
-## \Users\teodo\Downloads\tpetric7-master\d&#39; already exists</code></pre>
+<h2>
+<span class="header-section-number">2.10</span> Create subfolders<a class="anchor" aria-label="anchor" href="#create-subfolders"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">subfolder_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span><span class="op">)</span> 
+<span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">subfolder_names</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+  <span class="va">folder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">pot</span>, <span class="st">"/"</span>, <span class="va">subfolder_names</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<pre><code>## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
+## \Users\teodo\Downloads\tpetric7-master\a' already exists</code></pre>
+<pre><code>## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
+## \Users\teodo\Downloads\tpetric7-master\b' already exists</code></pre>
+<pre><code>## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
+## \Users\teodo\Downloads\tpetric7-master\c' already exists</code></pre>
+<pre><code>## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
+## \Users\teodo\Downloads\tpetric7-master\d' already exists</code></pre>
 </div>
 <div id="list-files" class="section level2" number="2.11">
-<h2><span class="header-section-number">2.11</span> List files</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-rstudio.html#cb24-1" aria-hidden="true" tabindex="-1"></a>seznam <span class="ot">&lt;-</span> <span class="fu">list.files</span>(pot, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.txt$&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-2"><a href="r-rstudio.html#cb24-2" aria-hidden="true" tabindex="-1"></a>seznam</span></code></pre></div>
-<pre><code>##  [1] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/BAWLR_utf8.txt&quot;                                                                     
-##  [2] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/prozess.txt&quot;                                                                  
-##  [3] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/tom.txt&quot;                                                                      
-##  [4] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/metamorph/metamorphosis.txt&quot;                                     
-##  [5] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/metamorph/verwandlung.txt&quot;                                       
-##  [6] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/prozess/prozess.txt&quot;                                             
-##  [7] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/prozess/trial.txt&quot;                                               
-##  [8] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/sawyer/tom_de.txt&quot;                                               
-##  [9] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/sawyer/tom_en.txt&quot;                                               
-## [10] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/verwandlung/verwandlung.txt&quot;                                                  
-## [11] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/chisq_kommentare.txt&quot;                                                               
-## [12] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/lemmatization_de.txt&quot;                                                               
-## [13] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/stopwords_de_voyant_tools.txt&quot;                                                      
-## [14] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/moje_besedilo.txt&quot;                                                                       
-## [15] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/pictures/vokalformanten_interaktiv_l1_l2_lang_kurz_files/jquery-3.5.1/jquery-AUTHORS.txt&quot;
-## [16] &quot;d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/tmp_files/jquery-3.5.1/jquery-AUTHORS.txt&quot;</code></pre>
+<h2>
+<span class="header-section-number">2.11</span> List files<a class="anchor" aria-label="anchor" href="#list-files"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">seznam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="va">pot</span>, pattern <span class="op">=</span> <span class="st">"\\.txt$"</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">seznam</span></code></pre></div>
+<pre><code>##  [1] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/BAWLR_utf8.txt"                                                                     
+##  [2] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/prozess.txt"                                                                  
+##  [3] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/tom.txt"                                                                      
+##  [4] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/metamorph/metamorphosis.txt"                                     
+##  [5] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/metamorph/verwandlung.txt"                                       
+##  [6] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/prozess/prozess.txt"                                             
+##  [7] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/prozess/trial.txt"                                               
+##  [8] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/sawyer/tom_de.txt"                                               
+##  [9] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/translations/sawyer/tom_en.txt"                                               
+## [10] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/books/verwandlung/verwandlung.txt"                                                  
+## [11] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/chisq_kommentare.txt"                                                               
+## [12] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/lemmatization_de.txt"                                                               
+## [13] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/data/stopwords_de_voyant_tools.txt"                                                      
+## [14] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/moje_besedilo.txt"                                                                       
+## [15] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/pictures/vokalformanten_interaktiv_l1_l2_lang_kurz_files/jquery-3.5.1/jquery-AUTHORS.txt"
+## [16] "d:/Users/teodo/Downloads/tpetric7-master/tpetric7.github.io-main/tmp_files/jquery-3.5.1/jquery-AUTHORS.txt"</code></pre>
 </div>
 <div id="read-files" class="section level2" number="2.12">
-<h2><span class="header-section-number">2.12</span> Read files</h2>
+<h2>
+<span class="header-section-number">2.12</span> Read files<a class="anchor" aria-label="anchor" href="#read-files"><i class="fas fa-link"></i></a>
+</h2>
 <div id="tidyverse" class="section level3" number="2.12.1">
-<h3><span class="header-section-number">2.12.1</span> tidyverse:</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="r-rstudio.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb26-2"><a href="r-rstudio.html#cb26-2" aria-hidden="true" tabindex="-1"></a>alltxt <span class="ot">&lt;-</span> seznam <span class="sc">%&gt;%</span> <span class="fu">map</span>(read_lines)</span>
-<span id="cb26-3"><a href="r-rstudio.html#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="r-rstudio.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(alltxt[<span class="dv">1</span>], <span class="dv">1</span>, <span class="dv">50</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;c(\&quot;EmoVal\\tFreq\\tWORD\\tWORD_LOWER\\tWORD_CLASS\\tEMO&quot;</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="r-rstudio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(alltxt[<span class="dv">2</span>], <span class="dv">1</span>, <span class="dv">70</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Der Prozess by Franz Kafka Aligned by : bilingual-texts.com ( fully re&quot;</code></pre>
+<h3>
+<span class="header-section-number">2.12.1</span> tidyverse:<a class="anchor" aria-label="anchor" href="#tidyverse"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">alltxt</span> <span class="op">&lt;-</span> <span class="va">seznam</span> <span class="op">%&gt;%</span> <span class="fu">map</span><span class="op">(</span><span class="va">read_lines</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="va">alltxt</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1</span>, <span class="fl">50</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "c(\"EmoVal\\tFreq\\tWORD\\tWORD_LOWER\\tWORD_CLASS\\tEMO"</code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="va">alltxt</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">1</span>, <span class="fl">70</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Der Prozess by Franz Kafka Aligned by : bilingual-texts.com ( fully re"</code></pre>
 </div>
 <div id="base-r" class="section level3" number="2.12.2">
-<h3><span class="header-section-number">2.12.2</span> Base R:</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="r-rstudio.html#cb30-1" aria-hidden="true" tabindex="-1"></a>alltxt <span class="ot">&lt;-</span> <span class="fu">lapply</span>(seznam, readLines)</span>
-<span id="cb30-2"><a href="r-rstudio.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="r-rstudio.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(alltxt[<span class="dv">1</span>], <span class="dv">1</span>, <span class="dv">50</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;c(\&quot;EmoVal\\tFreq\\tWORD\\tWORD_LOWER\\tWORD_CLASS\\tEMO&quot;</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="r-rstudio.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(alltxt[<span class="dv">2</span>], <span class="dv">1</span>, <span class="dv">70</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Der Prozess by Franz Kafka Aligned by : bilingual-texts.com ( fully re&quot;</code></pre>
+<h3>
+<span class="header-section-number">2.12.2</span> Base R:<a class="anchor" aria-label="anchor" href="#base-r"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">alltxt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">seznam</span>, <span class="va">readLines</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="va">alltxt</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">1</span>, <span class="fl">50</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "c(\"EmoVal\\tFreq\\tWORD\\tWORD_LOWER\\tWORD_CLASS\\tEMO"</code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span><span class="op">(</span><span class="va">alltxt</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">1</span>, <span class="fl">70</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Der Prozess by Franz Kafka Aligned by : bilingual-texts.com ( fully re"</code></pre>
 </div>
 </div>
 <div id="konversion" class="section level2" number="2.13">
-<h2><span class="header-section-number">2.13</span> Konversion</h2>
+<h2>
+<span class="header-section-number">2.13</span> Konversion<a class="anchor" aria-label="anchor" href="#konversion"><i class="fas fa-link"></i></a>
+</h2>
 <p>R scripts kann man ins Rmd-Dateiformat umwandeln (konvertieren), und zwar mittels:</p>
 <ul>
-<li><em>[Ctrl + Shift + K]</em> oder</li>
+<li>
+<em>[Ctrl + Shift + K]</em> oder</li>
 <li><em>knitr::spin(“t_preskus.R”)</em></li>
 </ul>
 <p>Da beide Dateiformate Textdateien darstellen, ist es auch relativ leicht, sie in andere Formate umwandeln.</p>
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Einführung</a></div>
+<div class="next"><a href="stichprobentests.html"><span class="header-section-number">3</span> Stichprobentests</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-rstudio"><span class="header-section-number">2</span> R &amp; RStudio</a></li>
+<li><a class="nav-link" href="#programme"><span class="header-section-number">2.1</span> Programme</a></li>
+<li><a class="nav-link" href="#textdatei-%C3%B6ffnen"><span class="header-section-number">2.2</span> Textdatei öffnen</a></li>
+<li><a class="nav-link" href="#mehrere-textdateien-%C3%B6ffnen"><span class="header-section-number">2.3</span> Mehrere Textdateien öffnen</a></li>
+<li><a class="nav-link" href="#tabelle-%C3%B6ffnen"><span class="header-section-number">2.4</span> Tabelle öffnen</a></li>
+<li><a class="nav-link" href="#excel-tabelle-%C3%B6ffnen"><span class="header-section-number">2.5</span> Excel-Tabelle öffnen</a></li>
+<li><a class="nav-link" href="#datei-speichern"><span class="header-section-number">2.6</span> Datei speichern</a></li>
+<li><a class="nav-link" href="#download"><span class="header-section-number">2.7</span> Download</a></li>
+<li><a class="nav-link" href="#check-create-directory"><span class="header-section-number">2.8</span> Check &amp; create directory</a></li>
+<li><a class="nav-link" href="#unzip"><span class="header-section-number">2.9</span> Unzip</a></li>
+<li><a class="nav-link" href="#create-subfolders"><span class="header-section-number">2.10</span> Create subfolders</a></li>
+<li><a class="nav-link" href="#list-files"><span class="header-section-number">2.11</span> List files</a></li>
+<li>
+<a class="nav-link" href="#read-files"><span class="header-section-number">2.12</span> Read files</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tidyverse"><span class="header-section-number">2.12.1</span> tidyverse:</a></li>
+<li><a class="nav-link" href="#base-r"><span class="header-section-number">2.12.2</span> Base R:</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#konversion"><span class="header-section-number">2.13</span> Konversion</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stichprobentests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>RAJ 2022 Introduction Course</strong>" was written by Teodor Petrič. It was last built on 2021-08-19.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-Odpiranje_in_shranjevanje.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": "https://github.com/tpetric7/raj2022-book/blob/master/02-Odpiranje_in_shranjevanje.Rmd",
-"text": null
-},
-"download": ["bookdownproj.pdf", "bookdownproj.epub"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -664,7 +365,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

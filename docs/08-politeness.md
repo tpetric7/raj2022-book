@@ -413,7 +413,7 @@ politeness %>%
 ## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
-<img src="08-politeness_files/figure-html/unnamed-chunk-18-1.svg" width="672" />
+<img src="08-politeness_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 ```r
@@ -448,7 +448,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="08-politeness_files/figure-html/unnamed-chunk-19-1.svg" width="672" />
+<img src="08-politeness_files/figure-html/unnamed-chunk-19-1.png" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 

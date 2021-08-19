@@ -95,7 +95,7 @@ model = udpipe_download_model(language = "german")
 ```
 
 ```
-## Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/german-gsd-ud-2.5-191206.udpipe to D:/Users/teodo/Documents/R/raj2022-book-master/german-gsd-ud-2.5-191206.udpipe
+## Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/german-gsd-ud-2.5-191206.udpipe to D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe
 ```
 
 ```
@@ -115,7 +115,7 @@ model = udpipe_download_model(language = "german")
 ```
 
 ```
-## Downloading finished, model stored at 'D:/Users/teodo/Documents/R/raj2022-book-master/german-gsd-ud-2.5-191206.udpipe'
+## Downloading finished, model stored at 'D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe'
 ```
 
 ```r
@@ -130,8 +130,8 @@ x = udpipe_annotate(demodel, novels_txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-08-19 21:58:50 Annotating text fragment 1/2
-## 2021-08-19 22:00:39 Annotating text fragment 2/2
+## 2021-08-19 23:47:29 Annotating text fragment 1/2
+## 2021-08-19 23:49:23 Annotating text fragment 2/2
 ```
 
 ```r
@@ -349,7 +349,7 @@ novels_diffs %>%
   facet_wrap(~ title, scales = "free")
 ```
 
-<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-16-1.svg" width="672" />
+<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 
 ### Suffix -lich
@@ -427,7 +427,7 @@ lichtab2 %>%
   geom_col()
 ```
 
-<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-20-1.svg" width="672" />
+<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 Das Suffix "-lich" gehört zu den produktiven Wortbildungsmitteln im Deutschen. Warum sind im "prozess" mehr davon zu finden als im anderen Roman? Zur Klärung dieser Frage müssten wir zuerst mehr über die semantischen Eigenschaften und Verknüpfungsmöglichkeiten (oder -einschränkungen) mit verschiedenen Wortstämmen erfahren.
 
@@ -510,7 +510,7 @@ adj_tab %>%
   theme(legend.position = "top")
 ```
 
-<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
+<img src="15-Romane_Suffixe_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 
 ### Nicht verwendete Tabelle

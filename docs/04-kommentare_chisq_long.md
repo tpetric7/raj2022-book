@@ -222,5 +222,5 @@ kom_lang  %>%  ggplot(aes(Kommentar, pct, fill = neugeschriebener_satz)) +
        title = "Wirksamkeit kurzer und langer Kommentare")
 ```
 
-<img src="04-kommentare_chisq_long_files/figure-html/unnamed-chunk-6-1.svg" width="672" />
+<img src="04-kommentare_chisq_long_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
