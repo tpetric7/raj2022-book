@@ -41,6 +41,14 @@ knitr::include_graphics(
 
 ```
 
+```{r}
+flres_de = readxl::read_xlsx("data/Flesch-Reading-Ease-Score-deutsch.xlsx")
+flres_de %>% 
+  mutate(`Verständlich für` = replace_na(`Verständlich für`," ")) %>%
+  rmarkdown::paged_table()
+```
+
+
 ## Romane (deutsche oder ins Deutsche übersetzte)
 
 ```{r}
