@@ -102,7 +102,7 @@ boxplot(frequency ~ attitude*gender,
         col=c("red","green"), data = polite)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-7-1.svg" width="672" />
 
 Bild speichern
 
@@ -119,7 +119,7 @@ dev.off()
 ```
 
 ```
-## png 
+## svg 
 ##   2
 ```
 
@@ -135,7 +135,7 @@ dev.off()
 ```
 
 ```
-## png 
+## svg 
 ##   2
 ```
 
@@ -168,7 +168,7 @@ library(psych)
 pairs.panels(polite[c(2,4,5)])
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-11-1.svg" width="672" />
 
 Ordinary Least Squares Regression (OLS)
 
@@ -284,7 +284,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-15-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
@@ -301,7 +301,7 @@ dev.off()
 ```
 
 ```
-## png 
+## svg 
 ##   2
 ```
 
@@ -360,7 +360,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-19-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png)
 
@@ -377,7 +377,7 @@ dev.off()
 ```
 
 ```
-## png 
+## svg 
 ##   2
 ```
 
@@ -393,7 +393,7 @@ dev.off()
 ```
 
 ```
-## png 
+## svg 
 ##   2
 ```
 
@@ -410,7 +410,7 @@ plot(m, which = 5) # Leverage vs. standardized variance of residuals
 plot(m, which = 6) # Cook's distance vs. Leverage
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
 
 ```r
 par(mfrow = c(1,1))
@@ -441,7 +441,7 @@ plot(d[,2], col = "blue")
 plot(d[,3], col = "purple")
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
 
 ```r
 par(mfrow = c(1,1))
@@ -770,7 +770,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-36-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-6.png)
 
@@ -812,7 +812,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-39-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-7.png)
 
@@ -1010,7 +1010,7 @@ summary(m)
 mcp.fnc(m)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-47-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-8.png)
 
@@ -1174,7 +1174,7 @@ summary(m)
 mcp.fnc(m)
 ```
 
-<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-58-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-9.png)
 

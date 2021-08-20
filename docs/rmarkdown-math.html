@@ -1,128 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course</title>
-<meta name="author" content="Teodor Petrič">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
-<meta property="og:title" content="Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course">
-<meta property="og:type" content="book">
-<meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course">
-<meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
-<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script><script src="libs/wordcloud2-0.0.1/hover.js"></script><script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><meta name="description" content="We describe our methods in this chapter. Math can be added in body using usual syntax like this  14.1 math example \(p\) is unknown but expected to be around 1/3. Standard error will be...">
-<meta property="og:description" content="We describe our methods in this chapter. Math can be added in body using usual syntax like this  14.1 math example \(p\) is unknown but expected to be around 1/3. Standard error will be...">
-<meta name="twitter:description" content="We describe our methods in this chapter. Math can be added in body using usual syntax like this  14.1 math example \(p\) is unknown but expected to be around 1/3. Standard error will be...">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course</title>
+  <meta name="description" content="Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 14 Rmarkdown Math | RAJ 2022 Introduction Course" />
+  
+  
+  <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+
+<meta name="author" content="Teodor Petrič" />
+
+
+<meta name="date" content="2021-08-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="demonstration-chapters.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">RAJ 2022 Introduction Course</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Einführung</a></li>
-<li><a class="" href="r-rstudio.html"><span class="header-section-number">2</span> R &amp; RStudio</a></li>
-<li><a class="" href="stichprobentests.html"><span class="header-section-number">3</span> Stichprobentests</a></li>
-<li><a class="" href="excel-vs.-r.html"><span class="header-section-number">4</span> Excel vs. R</a></li>
-<li><a class="" href="textzerlegung.html"><span class="header-section-number">5</span> Textzerlegung</a></li>
-<li><a class="" href="textvergleich.html"><span class="header-section-number">6</span> Textvergleich</a></li>
-<li><a class="" href="original-und-%C3%BCbersetzung.html"><span class="header-section-number">7</span> Original und Übersetzung</a></li>
-<li><a class="" href="regularni-izrazi-in-quanteda.html"><span class="header-section-number">8</span> Regularni izrazi in quanteda</a></li>
-<li><a class="" href="suffixe-und-stemming.html"><span class="header-section-number">9</span> Suffixe und Stemming</a></li>
-<li><a class="" href="buchstaben-in-romanen.html"><span class="header-section-number">10</span> Buchstaben in Romanen</a></li>
-<li><a class="" href="lesbarkeitsindices.html"><span class="header-section-number">11</span> Lesbarkeitsindices</a></li>
-<li><a class="" href="vokalformanten-im-deutschen-als-fremdsprache.html"><span class="header-section-number">12</span> Vokalformanten im Deutschen als Fremdsprache</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">13</span> Bookdown intro</a></li>
-<li><a class="active" href="rmarkdown-math.html"><span class="header-section-number">14</span> Rmarkdown Math</a></li>
-<li><a class="" href="demonstration-chapters.html"><span class="header-section-number">15</span> Demonstration chapters</a></li>
-<li><a class="" href="final-words.html"><span class="header-section-number">16</span> Final Words</a></li>
-<li><a class="" href="references.html">References</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RAJ 2022 Intro</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
+<li class="chapter" data-level="2" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>2</b> R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="r-rstudio.html"><a href="r-rstudio.html#programme"><i class="fa fa-check"></i><b>2.1</b> Programme</a></li>
+<li class="chapter" data-level="2.2" data-path="r-rstudio.html"><a href="r-rstudio.html#textdatei-öffnen"><i class="fa fa-check"></i><b>2.2</b> Textdatei öffnen</a></li>
+<li class="chapter" data-level="2.3" data-path="r-rstudio.html"><a href="r-rstudio.html#mehrere-textdateien-öffnen"><i class="fa fa-check"></i><b>2.3</b> Mehrere Textdateien öffnen</a></li>
+<li class="chapter" data-level="2.4" data-path="r-rstudio.html"><a href="r-rstudio.html#tabelle-öffnen"><i class="fa fa-check"></i><b>2.4</b> Tabelle öffnen</a></li>
+<li class="chapter" data-level="2.5" data-path="r-rstudio.html"><a href="r-rstudio.html#excel-tabelle-öffnen"><i class="fa fa-check"></i><b>2.5</b> Excel-Tabelle öffnen</a></li>
+<li class="chapter" data-level="2.6" data-path="r-rstudio.html"><a href="r-rstudio.html#datei-speichern"><i class="fa fa-check"></i><b>2.6</b> Datei speichern</a></li>
+<li class="chapter" data-level="2.7" data-path="r-rstudio.html"><a href="r-rstudio.html#download"><i class="fa fa-check"></i><b>2.7</b> Download</a></li>
+<li class="chapter" data-level="2.8" data-path="r-rstudio.html"><a href="r-rstudio.html#check-create-directory"><i class="fa fa-check"></i><b>2.8</b> Check &amp; create directory</a></li>
+<li class="chapter" data-level="2.9" data-path="r-rstudio.html"><a href="r-rstudio.html#unzip"><i class="fa fa-check"></i><b>2.9</b> Unzip</a></li>
+<li class="chapter" data-level="2.10" data-path="r-rstudio.html"><a href="r-rstudio.html#create-subfolders"><i class="fa fa-check"></i><b>2.10</b> Create subfolders</a></li>
+<li class="chapter" data-level="2.11" data-path="r-rstudio.html"><a href="r-rstudio.html#list-files"><i class="fa fa-check"></i><b>2.11</b> List files</a></li>
+<li class="chapter" data-level="2.12" data-path="r-rstudio.html"><a href="r-rstudio.html#read-files"><i class="fa fa-check"></i><b>2.12</b> Read files</a>
+<ul>
+<li class="chapter" data-level="2.12.1" data-path="r-rstudio.html"><a href="r-rstudio.html#tidyverse"><i class="fa fa-check"></i><b>2.12.1</b> tidyverse:</a></li>
+<li class="chapter" data-level="2.12.2" data-path="r-rstudio.html"><a href="r-rstudio.html#base-r"><i class="fa fa-check"></i><b>2.12.2</b> Base R:</a></li>
+</ul></li>
+<li class="chapter" data-level="2.13" data-path="r-rstudio.html"><a href="r-rstudio.html#konversion"><i class="fa fa-check"></i><b>2.13</b> Konversion</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="stichprobentests.html"><a href="stichprobentests.html"><i class="fa fa-check"></i><b>3</b> Stichprobentests</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="stichprobentests.html"><a href="stichprobentests.html#nominalskalierte-größen"><i class="fa fa-check"></i><b>3.1</b> Nominalskalierte Größen</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#lange-und-kurze-kommentare"><i class="fa fa-check"></i><b>3.1.1</b> Lange und kurze Kommentare</a></li>
+<li class="chapter" data-level="3.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#plural-von-kunstwörtern"><i class="fa fa-check"></i><b>3.1.2</b> Plural von Kunstwörtern</a></li>
+<li class="chapter" data-level="3.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#modalkonstruktionen-morati-vs.-treba"><i class="fa fa-check"></i><b>3.1.3</b> Modalkonstruktionen (morati vs. treba)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="stichprobentests.html"><a href="stichprobentests.html#intervallskalierte-größen"><i class="fa fa-check"></i><b>3.2</b> Intervallskalierte Größen</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#wirkung-von-unterrichtsmethoden"><i class="fa fa-check"></i><b>3.2.1</b> Wirkung von Unterrichtsmethoden</a></li>
+<li class="chapter" data-level="3.2.2" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>3.2.2</b> Höflichkeit und Grundfrequenz</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html"><i class="fa fa-check"></i><b>4</b> Excel vs. R</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#programi"><i class="fa fa-check"></i><b>4.1</b> Programi</a></li>
+<li class="chapter" data-level="4.2" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#podatki"><i class="fa fa-check"></i><b>4.2</b> Podatki</a></li>
+<li class="chapter" data-level="4.3" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#število-podatkov-v-nizu"><i class="fa fa-check"></i><b>4.3</b> Število podatkov v nizu</a></li>
+<li class="chapter" data-level="4.4" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#lookup-excel"><i class="fa fa-check"></i><b>4.4</b> Lookup (Excel)</a></li>
+<li class="chapter" data-level="4.5" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#vlookup-concat"><i class="fa fa-check"></i><b>4.5</b> Vlookup, &amp;, Concat</a></li>
+<li class="chapter" data-level="4.6" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#transpose"><i class="fa fa-check"></i><b>4.6</b> Transpose</a></li>
+<li class="chapter" data-level="4.7" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#dvojniki-razdružitev"><i class="fa fa-check"></i><b>4.7</b> Dvojniki, razdružitev</a></li>
+<li class="chapter" data-level="4.8" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#xlookup"><i class="fa fa-check"></i><b>4.8</b> Xlookup</a></li>
+<li class="chapter" data-level="4.9" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#index-match"><i class="fa fa-check"></i><b>4.9</b> Index, Match</a></li>
+<li class="chapter" data-level="4.10" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#filtriranje"><i class="fa fa-check"></i><b>4.10</b> Filtriranje</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>5</b> Textzerlegung</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>5.1</b> Packages</a></li>
+<li class="chapter" data-level="5.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>5.2</b> Text öffnen</a></li>
+<li class="chapter" data-level="5.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>5.3</b> Zerlegung des Textes</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle"><i class="fa fa-check"></i><b>5.3.1</b> Tabelle</a></li>
+<li class="chapter" data-level="5.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>5.3.2</b> Äußerungen</a></li>
+<li class="chapter" data-level="5.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>5.3.3</b> Wörter</a></li>
+<li class="chapter" data-level="5.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>5.3.4</b> Buchstaben</a></li>
+<li class="chapter" data-level="5.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>5.3.5</b> Ziffern umwandeln</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>5.4</b> Tabelle speichern</a></li>
+<li class="chapter" data-level="5.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen-1"><i class="fa fa-check"></i><b>5.5</b> Tabelle öffnen</a></li>
+<li class="chapter" data-level="5.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>5.6</b> Zählen</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>5.6.1</b> Buchstaben</a></li>
+<li class="chapter" data-level="5.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>5.6.2</b> Worthäufigkeiten</a></li>
+<li class="chapter" data-level="5.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>5.6.3</b> Wortschatzdichte</a></li>
+<li class="chapter" data-level="5.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>5.6.4</b> Äußerungslänge</a></li>
+<li class="chapter" data-level="5.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>5.6.5</b> Vergleich mit quanteda</a></li>
+<li class="chapter" data-level="5.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>5.6.6</b> Vergleich mit Voyant Tools</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>6</b> Textvergleich</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="textvergleich.html"><a href="textvergleich.html#programi-1"><i class="fa fa-check"></i><b>6.1</b> Programi</a></li>
+<li class="chapter" data-level="6.2" data-path="textvergleich.html"><a href="textvergleich.html#preberemo-besedila"><i class="fa fa-check"></i><b>6.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="6.3" data-path="textvergleich.html"><a href="textvergleich.html#ustvarimo-korpus"><i class="fa fa-check"></i><b>6.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="6.4" data-path="textvergleich.html"><a href="textvergleich.html#tokenizacija"><i class="fa fa-check"></i><b>6.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="6.5" data-path="textvergleich.html"><a href="textvergleich.html#čiščenje"><i class="fa fa-check"></i><b>6.5</b> Čiščenje</a></li>
+<li class="chapter" data-level="6.6" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>6.6</b> Kwic</a></li>
+<li class="chapter" data-level="6.7" data-path="textvergleich.html"><a href="textvergleich.html#pogostnost"><i class="fa fa-check"></i><b>6.7</b> Pogostnost</a></li>
+<li class="chapter" data-level="6.8" data-path="textvergleich.html"><a href="textvergleich.html#kolokacije"><i class="fa fa-check"></i><b>6.8</b> Kolokacije</a></li>
+<li class="chapter" data-level="6.9" data-path="textvergleich.html"><a href="textvergleich.html#lematizacija"><i class="fa fa-check"></i><b>6.9</b> Lematizacija</a></li>
+<li class="chapter" data-level="6.10" data-path="textvergleich.html"><a href="textvergleich.html#besedni-oblaček"><i class="fa fa-check"></i><b>6.10</b> Besedni oblaček</a></li>
+<li class="chapter" data-level="6.11" data-path="textvergleich.html"><a href="textvergleich.html#položaj-v-besedilu-xray"><i class="fa fa-check"></i><b>6.11</b> Položaj v besedilu (xray)</a></li>
+<li class="chapter" data-level="6.12" data-path="textvergleich.html"><a href="textvergleich.html#slovarska-raznolikost"><i class="fa fa-check"></i><b>6.12</b> Slovarska raznolikost</a></li>
+<li class="chapter" data-level="6.13" data-path="textvergleich.html"><a href="textvergleich.html#podobnost-besedil"><i class="fa fa-check"></i><b>6.13</b> Podobnost besedil</a></li>
+<li class="chapter" data-level="6.14" data-path="textvergleich.html"><a href="textvergleich.html#ključne-besede"><i class="fa fa-check"></i><b>6.14</b> Ključne besede</a></li>
+<li class="chapter" data-level="6.15" data-path="textvergleich.html"><a href="textvergleich.html#razumljivost-besedil"><i class="fa fa-check"></i><b>6.15</b> Razumljivost besedil</a></li>
+<li class="chapter" data-level="6.16" data-path="textvergleich.html"><a href="textvergleich.html#omrežje-sopojavitev-fcm"><i class="fa fa-check"></i><b>6.16</b> Omrežje sopojavitev (FCM)</a></li>
+<li class="chapter" data-level="6.17" data-path="textvergleich.html"><a href="textvergleich.html#slovnična-analiza"><i class="fa fa-check"></i><b>6.17</b> Slovnična analiza</a>
+<ul>
+<li class="chapter" data-level="6.17.1" data-path="textvergleich.html"><a href="textvergleich.html#priprava"><i class="fa fa-check"></i><b>6.17.1</b> Priprava</a></li>
+<li class="chapter" data-level="6.17.2" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-noun-pron"><i class="fa fa-check"></i><b>6.17.2</b> Primerjava Noun : Pron</a></li>
+<li class="chapter" data-level="6.17.3" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-veznikov"><i class="fa fa-check"></i><b>6.17.3</b> Primerjava veznikov</a></li>
+<li class="chapter" data-level="6.17.4" data-path="textvergleich.html"><a href="textvergleich.html#slovarske-enote"><i class="fa fa-check"></i><b>6.17.4</b> Slovarske enote</a></li>
+<li class="chapter" data-level="6.17.5" data-path="textvergleich.html"><a href="textvergleich.html#korelacija-besed"><i class="fa fa-check"></i><b>6.17.5</b> Korelacija besed</a></li>
+</ul></li>
+<li class="chapter" data-level="6.18" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>6.18</b> Sentiment</a>
+<ul>
+<li class="chapter" data-level="6.18.1" data-path="textvergleich.html"><a href="textvergleich.html#različica-1"><i class="fa fa-check"></i><b>6.18.1</b> Različica 1</a></li>
+<li class="chapter" data-level="6.18.2" data-path="textvergleich.html"><a href="textvergleich.html#različica-2"><i class="fa fa-check"></i><b>6.18.2</b> Različica 2</a></li>
+<li class="chapter" data-level="6.18.3" data-path="textvergleich.html"><a href="textvergleich.html#različica-3"><i class="fa fa-check"></i><b>6.18.3</b> Različica 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html"><i class="fa fa-check"></i><b>7</b> Original und Übersetzung</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#programi-2"><i class="fa fa-check"></i><b>7.1</b> Programi</a></li>
+<li class="chapter" data-level="7.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#preberemo-besedila-1"><i class="fa fa-check"></i><b>7.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="7.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ustvarimo-korpus-1"><i class="fa fa-check"></i><b>7.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="7.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#tokenizacija-1"><i class="fa fa-check"></i><b>7.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="7.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#čiščenje-1"><i class="fa fa-check"></i><b>7.5</b> Čiščenje</a></li>
+<li class="chapter" data-level="7.6" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kwic-1"><i class="fa fa-check"></i><b>7.6</b> Kwic</a></li>
+<li class="chapter" data-level="7.7" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#pogostnost-1"><i class="fa fa-check"></i><b>7.7</b> Pogostnost</a></li>
+<li class="chapter" data-level="7.8" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kolokacije-1"><i class="fa fa-check"></i><b>7.8</b> Kolokacije</a></li>
+<li class="chapter" data-level="7.9" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lematizacija-1"><i class="fa fa-check"></i><b>7.9</b> Lematizacija</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lasten-seznam"><i class="fa fa-check"></i><b>7.9.1</b> Lasten seznam</a></li>
+<li class="chapter" data-level="7.9.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#udpipe"><i class="fa fa-check"></i><b>7.9.2</b> Udpipe</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#besedni-oblaček-1"><i class="fa fa-check"></i><b>7.10</b> Besedni oblaček</a></li>
+<li class="chapter" data-level="7.11" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#položaj-v-besedilu-xray-1"><i class="fa fa-check"></i><b>7.11</b> Položaj v besedilu (xray)</a></li>
+<li class="chapter" data-level="7.12" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarska-raznolikost-1"><i class="fa fa-check"></i><b>7.12</b> Slovarska raznolikost</a></li>
+<li class="chapter" data-level="7.13" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podobnost-besedil-1"><i class="fa fa-check"></i><b>7.13</b> Podobnost besedil</a></li>
+<li class="chapter" data-level="7.14" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ključne-besede-1"><i class="fa fa-check"></i><b>7.14</b> Ključne besede</a></li>
+<li class="chapter" data-level="7.15" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#razumljivost-besedil-1"><i class="fa fa-check"></i><b>7.15</b> Razumljivost besedil</a></li>
+<li class="chapter" data-level="7.16" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#omrežje-sopojavitev-fcm-1"><i class="fa fa-check"></i><b>7.16</b> Omrežje sopojavitev (FCM)</a></li>
+<li class="chapter" data-level="7.17" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovnična-analiza-1"><i class="fa fa-check"></i><b>7.17</b> Slovnična analiza</a>
+<ul>
+<li class="chapter" data-level="7.17.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podatkovna-niza"><i class="fa fa-check"></i><b>7.17.1</b> Podatkovna niza</a></li>
+<li class="chapter" data-level="7.17.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-noun-pron-1"><i class="fa fa-check"></i><b>7.17.2</b> Primerjava Noun : Pron</a></li>
+<li class="chapter" data-level="7.17.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-veznikov-1"><i class="fa fa-check"></i><b>7.17.3</b> Primerjava veznikov</a></li>
+<li class="chapter" data-level="7.17.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarske-enote-1"><i class="fa fa-check"></i><b>7.17.4</b> Slovarske enote</a></li>
+<li class="chapter" data-level="7.17.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#korelacija-besed-1"><i class="fa fa-check"></i><b>7.17.5</b> Korelacija besed</a></li>
+</ul></li>
+<li class="chapter" data-level="7.18" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#sentiment-1"><i class="fa fa-check"></i><b>7.18</b> Sentiment</a>
+<ul>
+<li class="chapter" data-level="7.18.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-1-1"><i class="fa fa-check"></i><b>7.18.1</b> Različica 1</a></li>
+<li class="chapter" data-level="7.18.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-2-1"><i class="fa fa-check"></i><b>7.18.2</b> Različica 2</a></li>
+<li class="chapter" data-level="7.18.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-3-1"><i class="fa fa-check"></i><b>7.18.3</b> Različica 3</a></li>
+<li class="chapter" data-level="7.18.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#barvno-označevanje-1"><i class="fa fa-check"></i><b>7.18.4</b> Barvno označevanje</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html"><i class="fa fa-check"></i><b>8</b> Regularni izrazi in quanteda</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#programi-3"><i class="fa fa-check"></i><b>8.1</b> Programi</a></li>
+<li class="chapter" data-level="8.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#preberemo-besedila-2"><i class="fa fa-check"></i><b>8.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="8.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#ustvarimo-korpus-2"><i class="fa fa-check"></i><b>8.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="8.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tokenizacija-2"><i class="fa fa-check"></i><b>8.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="8.5" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#kwic-2"><i class="fa fa-check"></i><b>8.5</b> Kwic</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#frau-mann"><i class="fa fa-check"></i><b>8.5.1</b> Frau, Mann</a></li>
+<li class="chapter" data-level="8.5.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--in"><i class="fa fa-check"></i><b>8.5.2</b> Pripona -in</a></li>
+<li class="chapter" data-level="8.5.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--er"><i class="fa fa-check"></i><b>8.5.3</b> Pripona -er</a></li>
+<li class="chapter" data-level="8.5.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--ung"><i class="fa fa-check"></i><b>8.5.4</b> Pripona -ung</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tidytext"><i class="fa fa-check"></i><b>8.6</b> tidytext</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besede"><i class="fa fa-check"></i><b>8.6.1</b> Besede</a></li>
+<li class="chapter" data-level="8.6.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besedne-zveze"><i class="fa fa-check"></i><b>8.6.2</b> Besedne zveze</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>9</b> Suffixe und Stemming</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>9.1</b> Packages</a></li>
+<li class="chapter" data-level="9.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>9.2</b> Dateien einlesen</a></li>
+<li class="chapter" data-level="9.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung"><i class="fa fa-check"></i><b>9.3</b> Lemmatisierung</a></li>
+<li class="chapter" data-level="9.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>9.4</b> Stemming</a></li>
+<li class="chapter" data-level="9.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>9.5</b> Wortbildungsanalyse</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>9.5.1</b> Suffix -lich</a></li>
+<li class="chapter" data-level="9.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>9.5.2</b> Mehrere ADJ Suffixe</a></li>
+<li class="chapter" data-level="9.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>9.5.3</b> Nicht verwendete Tabelle</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>10</b> Buchstaben in Romanen</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>10.1</b> Packages</a></li>
+<li class="chapter" data-level="10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>10.2</b> Datensatz lesen</a></li>
+<li class="chapter" data-level="10.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>10.3</b> Buchstaben extrahieren</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>10.3.1</b> aus Liste</a></li>
+<li class="chapter" data-level="10.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>10.3.2</b> aus Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>10.4</b> Buchstaben zählen</a></li>
+<li class="chapter" data-level="10.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>10.5</b> Vokale</a></li>
+<li class="chapter" data-level="10.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>10.6</b> Konsonanten</a></li>
+<li class="chapter" data-level="10.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>10.7</b> Vokal-Konsonant-Verhältnis</a></li>
+<li class="chapter" data-level="10.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>10.8</b> Anzahl der Silben</a></li>
+<li class="chapter" data-level="10.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>10.9</b> Mittlere Wortlänge</a></li>
+<li class="chapter" data-level="10.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>10.10</b> Testen von Mittelwertunterschieden</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>10.10.1</b> t-Test</a></li>
+<li class="chapter" data-level="10.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-2"><i class="fa fa-check"></i><b>10.10.2</b> Lineare Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>10.11</b> Quanteda-Funktionen</a></li>
+<li class="chapter" data-level="10.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>10.12</b> Konsonantenverbindungen</a></li>
+<li class="chapter" data-level="10.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>10.13</b> Datensatz-Variante</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>11</b> Lesbarkeitsindices</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>11.1</b> Zur theoretischen Begründung</a></li>
+<li class="chapter" data-level="11.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-2"><i class="fa fa-check"></i><b>11.2</b> Programme</a></li>
+<li class="chapter" data-level="11.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>11.3</b> Texte lesen</a></li>
+<li class="chapter" data-level="11.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>11.4</b> Flesch Reading Ease - deutsche Version</a></li>
+<li class="chapter" data-level="11.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>11.5</b> Romane (deutsche oder ins Deutsche übersetzte)</a></li>
+<li class="chapter" data-level="11.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>11.6</b> Zeitungen</a></li>
+<li class="chapter" data-level="11.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>11.7</b> Statistische Tests: News</a></li>
+<li class="chapter" data-level="11.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen"><i class="fa fa-check"></i><b>11.8</b> Datensätze vereinen</a></li>
+<li class="chapter" data-level="11.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>11.9</b> Zeitungen im Vergleich</a></li>
+<li class="chapter" data-level="11.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>11.10</b> Alle Texte im Vergleich</a></li>
+<li class="chapter" data-level="11.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>11.11</b> Flesch-Kincade Grade Level (USA, GB)</a></li>
+<li class="chapter" data-level="11.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>11.12</b> Wiener Sachtextformel</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>12</b> Vokalformanten im Deutschen als Fremdsprache</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>12.1</b> Programme starten</a></li>
+<li class="chapter" data-level="12.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden"><i class="fa fa-check"></i><b>12.2</b> Daten laden</a></li>
+<li class="chapter" data-level="12.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>12.3</b> IPA syms</a></li>
+<li class="chapter" data-level="12.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>12.4</b> Vergleich der Vokalformanten</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>13</b> Bookdown intro</a></li>
+<li class="chapter" data-level="14" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html"><i class="fa fa-check"></i><b>14</b> Rmarkdown Math</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html#math-example"><i class="fa fa-check"></i><b>14.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html"><i class="fa fa-check"></i><b>15</b> Demonstration chapters</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-one"><i class="fa fa-check"></i><b>15.1</b> Example one</a></li>
+<li class="chapter" data-level="15.2" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-two"><i class="fa fa-check"></i><b>15.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>16</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rmarkdown-math" class="section level1" number="14">
-<h1>
-<span class="header-section-number">Kapitel 14</span> Rmarkdown Math<a class="anchor" aria-label="anchor" href="#rmarkdown-math"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAJ 2022 Introduction Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rmarkdown-math" class="section level1" number="14">
+<h1><span class="header-section-number">Kapitel 14</span> Rmarkdown Math</h1>
 <p>We describe our methods in this chapter.</p>
 <p>Math can be added in body using usual syntax like this</p>
 <div id="math-example" class="section level2" number="14.1">
-<h2>
-<span class="header-section-number">14.1</span> math example<a class="anchor" aria-label="anchor" href="#math-example"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">14.1</span> math example</h2>
 <p><span class="math inline">\(p\)</span> is unknown but expected to be around 1/3. Standard error will be approximated</p>
 <p><span class="math display">\[
 SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
 \]</span></p>
-<p>You can also use math in footnotes like this<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;where we mention &lt;span class="math inline"&gt;\(p = \frac{a}{b}\)&lt;/span&gt;&lt;/p&gt;'><sup>2</sup></a>.</p>
-<p>We will approximate standard error to 0.027<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(p\)&lt;/span&gt; is unknown but expected to be around 1/3. Standard error will be approximated&lt;/p&gt;&lt;p&gt;&lt;span class="math display"&gt;\[
+<p>You can also use math in footnotes like this<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>We will approximate standard error to 0.027<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>where we mention <span class="math inline">\(p = \frac{a}{b}\)</span><a href="rmarkdown-math.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(p\)</span> is unknown but expected to be around 1/3. Standard error will be approximated</p>
+<p><span class="math display">\[
 SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
-\]&lt;/span&gt;&lt;/p&gt;'><sup>3</sup></a></p>
-
+\]</span><a href="rmarkdown-math.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
-</div>
+            </section>
 
-  <div class="chapter-nav">
-<div class="prev"><a href="intro.html"><span class="header-section-number">13</span> Bookdown intro</a></div>
-<div class="next"><a href="demonstration-chapters.html"><span class="header-section-number">15</span> Demonstration chapters</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rmarkdown-math"><span class="header-section-number">14</span> Rmarkdown Math</a></li>
-<li><a class="nav-link" href="#math-example"><span class="header-section-number">14.1</span> math example</a></li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>RAJ 2022 Introduction Course</strong>" was written by Teodor Petrič. It was last built on 2021-08-19.</p>
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="demonstration-chapters.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/33-method.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/33-method.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -134,22 +503,7 @@ SE = \sqrt(\frac{p(1-p)}{n}) \approx \sqrt{\frac{1/3 (1 - 1/3)} {300}} = 0.027
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>

@@ -62,7 +62,7 @@ Graphische Darstellung
 barplot(tapply(Resultat, list(Methode), mean), col=c(3:2))
 ```
 
-<img src="07-t_preskus_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="07-t_preskus_files/figure-html/unnamed-chunk-4-1.svg" width="672" />
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
@@ -161,7 +161,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
-<img src="07-t_preskus_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="07-t_preskus_files/figure-html/unnamed-chunk-9-1.svg" width="672" />
 
 
 

@@ -507,7 +507,7 @@ as_tibble(pogostnost) %>%
   facet_wrap(~ group, scales = "free_y")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-17-1.svg" width="672" />
 
 
 ## Kolokacije
@@ -824,7 +824,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-08-19 23:34:01 Annotating text fragment 1/1
+## 2021-08-20 11:59:03 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -937,7 +937,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-08-19 23:35:27 Annotating text fragment 1/1
+## 2021-08-20 12:00:51 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -1094,7 +1094,7 @@ textplot_wordcloud(matrika_lem_en, # le nemški prevod
                    max_words = 250) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-39-1.svg" width="672" />
 
 Priprava seznama nemških slovarskih enot, ki smo jih pridobili z *udpipe*, in prikaz s funkcijo textplot_wordcloud().
 
@@ -1123,7 +1123,7 @@ textplot_wordcloud(matrika_lem_de, # le nemški prevod
                    max_words = 250) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-40-1.svg" width="672" />
 
 Združimo matriki s funkcijo *rbind()*.
 
@@ -1168,7 +1168,7 @@ textplot_wordcloud(matrika_lem_de_en,
                    max_words = 120) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-43-1.svg" width="672" />
 
 
 ## Položaj v besedilu (xray)
@@ -1186,7 +1186,7 @@ kwic_tom = kwic(besede,
 textplot_xray(kwic_tom)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-44-1.svg" width="672" />
 
 
 ## Slovarska raznolikost
@@ -1313,7 +1313,7 @@ dist1 = textstat_dist(romane3_dfm, method = "euclidean", margin = "documents")
 plot(hclust(as.dist(dist1)))
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-50-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-50-1.svg" width="672" />
 
 
 ## Ključne besede
@@ -1371,7 +1371,7 @@ textplot_keyness(key_tom_de, key_tom_de$n_target == 1)
 ## length > 1 and only the first element will be used
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-1.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_de, key_tom_en$n_target == 1)
@@ -1397,19 +1397,19 @@ textplot_keyness(key_tom_de, key_tom_en$n_target == 1)
 ## length > 1 and only the first element will be used
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-2.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-2.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_de)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-3.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-3.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_en)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-4.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-4.svg" width="672" />
 
 
 ## Razumljivost besedil
@@ -1493,7 +1493,7 @@ textplot_network(top_fcm_de,
                  edge_size = 5)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-55-1.svg" width="672" />
 
 ## Slovnična analiza
 
@@ -1635,7 +1635,7 @@ tabela %>%
   labs(x = "Število pojavnic", y = "")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-58-1.svg" width="672" />
 
 Izračun deležev:
 
@@ -1966,7 +1966,7 @@ tabela2 %>%
   labs(x = "Anteil", y = "Wortklasse")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-68-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-68-1.svg" width="672" />
 
 
 ### Korelacija besed
@@ -2027,7 +2027,7 @@ correlations %>%
        subtitle = "Among elements that appeared in at least 2 sentences")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-70-1.svg" width="672" />
 
 
 ## Sentiment

@@ -67,7 +67,7 @@ naklonska %>%
   labs(x = "Modalkonstruktion", y = "Gebrauchsfrequenz", fill = "Vrsta besedila")
 ```
 
-<img src="06-Modalkonstruktionen_chisq3_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="06-Modalkonstruktionen_chisq3_files/figure-html/unnamed-chunk-4-1.svg" width="672" />
 
 Die Modalkonstruktion "morati + Infinitiv" scheint in den alltagssprachlich näherstehenden Funktionalstilen Belletristik (leposlovje), Internet und Sachtexten (stvarna besedila) etwas häufiger belegt zu sein als die Modalkonstruktion "biti + treba + Infinitiv", dafür aber in Zeitungen (Časopisi) etwas seltener. 
 
@@ -81,7 +81,7 @@ naklonska2 %>%
   labs(x = "Modalkonstruktion", y = "Gebrauchsfrequenz", fill = "Vrsta besedila")
 ```
 
-<img src="06-Modalkonstruktionen_chisq3_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="06-Modalkonstruktionen_chisq3_files/figure-html/unnamed-chunk-5-1.svg" width="672" />
 
 
 #### Chi-Quadrat-Test

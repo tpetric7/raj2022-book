@@ -224,7 +224,7 @@ char_freq %>%
   theme(legend.position = "none")
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-10-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-10-1.svg" width="10" height="8" />
 
 Eine bessere Vorstellung von den Zahlenverhältnissen erhalten wir, wenn wir die mehrstelligen Zahlenwerte in Prozente umwandeln.
 
@@ -241,7 +241,7 @@ char_freq %>%
   scale_x_continuous(labels = percent) # Prozent-Format
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-11-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-11-1.svg" width="10" height="8" />
 
 Getrennte tabellarische Darstellung für die Texte:
 
@@ -279,7 +279,7 @@ novels_character %>%
   facet_wrap(~ doc_id, scales = "free")
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-13-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-13-1.svg" width="10" height="8" />
 
 ```r
   scale_x_continuous(labels = percent) # Prozent-Format
@@ -319,7 +319,7 @@ char_freq %>%
   scale_x_continuous(labels = percent, breaks = seq(0, 0.50, 0.05)) # Prozent-Format
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-15-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-15-1.svg" width="10" height="8" />
 
 Am häufigsten kommt der Buchstabe "e" in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten "y", welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.
 
@@ -344,7 +344,7 @@ char_freq %>%
   scale_x_continuous(labels = percent, breaks = seq(0, 0.50, 0.02)) # Prozent-Format und Einheiten
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-16-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-16-1.svg" width="10" height="8" />
 
 Der Buchstabe "n" kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: "r, s, t, h, d".
 Selten sind die Buchstaben: "x, q, p, ß, v".
@@ -403,7 +403,7 @@ char_freq %>%
   scale_x_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-19-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-19-1.svg" width="10" height="8" />
 
 Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche. 
 
@@ -461,7 +461,7 @@ novels_words %>%
 ## Warning: Removed 1 rows containing missing values (position_stack).
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-22-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-22-1.svg" width="10" height="8" />
 
 Berücksichtig man lediglich distinktive Wortformen (also keine Wortwiederholungen), dann ergibt sich die folgende Verteilung, in der die Zweisilber (mehr als 30%) und Dreisilber (fast 30%) den größten Anteil haben.
 
@@ -482,7 +482,7 @@ novels_words %>%
 ## Warning: Removed 1 rows containing missing values (position_stack).
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-23-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-23-1.svg" width="10" height="8" />
 
 
 ## Mittlere Wortlänge
@@ -793,7 +793,7 @@ allEffects(m)
 plot(allEffects(m))
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-33-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-33-1.svg" width="10" height="8" />
 
 Ergebnisse in Tabellenform:
 
@@ -845,7 +845,7 @@ novels_words %>%
 ## Warning: Removed 2 rows containing missing values (geom_segment).
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-35-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-35-1.svg" width="10" height="8" />
 
 Boxplot anhand der zusammengefassten Daten (Durchschnitt, Standardabweichung):
 
@@ -865,7 +865,7 @@ df %>% ggplot(aes(title, Avg_Silben, fill = title, group = title)) +
   labs(y = "Mittlere Wortlänge (in Silben)")
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-1.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-1.svg" width="10" height="8" />
 
 ```r
 df %>% ggplot(aes(title, fill = title, group = title)) +
@@ -877,7 +877,7 @@ df %>% ggplot(aes(title, fill = title, group = title)) +
   labs(y = "Mittlere Wortlänge (in Silben)")
 ```
 
-<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-2.png" width="10" height="8" />
+<img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-2.svg" width="10" height="8" />
 
 ## Quanteda-Funktionen
 

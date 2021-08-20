@@ -423,5 +423,5 @@ zdruzena_nova %>%
   labs(x="", y="", title = "Percentage of orders by employee")
 ```
 
-<img src="10-Excel_vs_R_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="10-Excel_vs_R_files/figure-html/unnamed-chunk-13-1.svg" width="672" />
 

@@ -869,7 +869,7 @@ nomina_er %>%
   labs(x = "Frequenz", y = "")
 ```
 
-<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-16-1.svg" width="672" />
 
 
 ### Pripona -ung
@@ -924,7 +924,7 @@ kwic_ung = kwic(woerter, pattern = "\\b[A-Z].+ung\\b",
 textplot_xray(kwic_ung)
 ```
 
-<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-19-1.svg" width="672" />
 
 
 Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje "(kriminalno) pravo", v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.
@@ -967,7 +967,7 @@ nomina_ung %>%
   labs(x = "Frequenz", y = "")
 ```
 
-<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-20-1.svg" width="672" />
 
 Iskanje besednih zvez s funkcijo *kwic()* in *phrase()* - funkcijske glagolske zveze (Funktionsverbgefüge) in frazemi:
 
