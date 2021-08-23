@@ -12,51 +12,28 @@ Znak \# v programskem bloku (chunk) pomeni, da se ta vrstica ne izvaja. Odstrani
 ```r
 # # Programe, ki jih še nimate, lahko namestite tudi na ta način (odstranite #):
 # install.packages("readtext")
-# install.packages("quanteda")
-# install.packages("quanteda.textstats")
-# install.packages("quanteda.textplots")
-# install.packages("tidyverse")
-# install.packages("wordcloud2")
-# install.packages("tidytext")
-# install.packages("udpipe")
-# install.packages("janitor")
-# install.packages("scales")
-# install.packages("widyr")
-# install.packages("syuzhet")
-# install.packages("corpustools")
-```
+# ...
 
+## First specify the packages of interest
+packages = c("tidyverse", "quanteda", "quanteda.textplots", 
+             "quanteda.textstats", "wordcloud2", "tidytext", 
+             "udpipe", "janitor", "scales", "widyr", "syuzhet", 
+             "corpustools", "readtext")
 
-Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
-
-
-```r
-library(readtext)
-library(quanteda)
+## Now load or install&load all
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
 ```
 
 ```
-## Warning: package 'quanteda' was built under R version 4.1.1
-```
-
-```
-## Package version: 3.1.0
-## Unicode version: 13.0
-## ICU version: 69.1
-```
-
-```
-## Parallel computing: 12 of 12 threads used.
-```
-
-```
-## See https://quanteda.io for tutorials and examples.
-```
-
-```r
-library(quanteda.textstats)
-library(quanteda.textplots)
-library(tidyverse)
+## Loading required package: tidyverse
 ```
 
 ```
@@ -80,11 +57,50 @@ library(tidyverse)
 ## x dplyr::lag()    masks stats::lag()
 ```
 
-```r
-library(tidytext)
-library(wordcloud2)
-library(udpipe)
-library(janitor)
+```
+## Loading required package: quanteda
+```
+
+```
+## Warning: package 'quanteda' was built under R version 4.1.1
+```
+
+```
+## Package version: 3.1.0
+## Unicode version: 13.0
+## ICU version: 69.1
+```
+
+```
+## Parallel computing: 12 of 12 threads used.
+```
+
+```
+## See https://quanteda.io for tutorials and examples.
+```
+
+```
+## Loading required package: quanteda.textplots
+```
+
+```
+## Loading required package: quanteda.textstats
+```
+
+```
+## Loading required package: wordcloud2
+```
+
+```
+## Loading required package: tidytext
+```
+
+```
+## Loading required package: udpipe
+```
+
+```
+## Loading required package: janitor
 ```
 
 ```
@@ -98,8 +114,8 @@ library(janitor)
 ##     chisq.test, fisher.test
 ```
 
-```r
-library(scales)
+```
+## Loading required package: scales
 ```
 
 ```
@@ -119,16 +135,16 @@ library(scales)
 ##     col_factor
 ```
 
-```r
-library(widyr)
+```
+## Loading required package: widyr
 ```
 
 ```
 ## Warning: package 'widyr' was built under R version 4.1.1
 ```
 
-```r
-library(syuzhet)
+```
+## Loading required package: syuzhet
 ```
 
 ```
@@ -142,8 +158,8 @@ library(syuzhet)
 ##     rescale
 ```
 
-```r
-library(corpustools)
+```
+## Loading required package: corpustools
 ```
 
 ```
@@ -155,6 +171,30 @@ library(corpustools)
 ## The following object is masked from 'package:tidytext':
 ## 
 ##     get_stopwords
+```
+
+```
+## Loading required package: readtext
+```
+
+
+Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
+
+
+```r
+library(readtext)
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(tidyverse)
+library(tidytext)
+library(wordcloud2)
+library(udpipe)
+library(janitor)
+library(scales)
+library(widyr)
+library(syuzhet)
+library(corpustools)
 ```
 
 
@@ -824,7 +864,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-08-23 16:45:10 Annotating text fragment 1/1
+## 2021-08-23 17:40:50 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -937,7 +977,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-08-23 16:46:46 Annotating text fragment 1/1
+## 2021-08-23 17:42:11 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:

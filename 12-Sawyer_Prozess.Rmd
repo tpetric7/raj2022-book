@@ -11,18 +11,23 @@ Znak \# v programskem bloku (chunk) pomeni, da se ta vrstica ne izvaja. Odstrani
 ```{r}
 # # Programe, ki jih še nimate, lahko namestite tudi na ta način (odstranite #):
 # install.packages("readtext")
-# install.packages("quanteda")
-# install.packages("quanteda.textstats")
-# install.packages("quanteda.textplots")
-# install.packages("tidyverse")
-# install.packages("wordcloud2")
-# install.packages("tidytext")
-# install.packages("udpipe")
-# install.packages("janitor")
-# install.packages("scales")
-# install.packages("widyr")
-# install.packages("syuzhet")
-# install.packages("corpustools")
+# ...
+
+## First specify the packages of interest
+packages = c("tidyverse", "quanteda", "quanteda.textplots", 
+             "quanteda.textstats", "wordcloud2", "tidytext", 
+             "udpipe", "janitor", "scales", "widyr", "syuzhet", 
+             "corpustools", "readtext")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
 
 ```
 
