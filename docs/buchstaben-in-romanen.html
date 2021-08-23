@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-20" />
+<meta name="date" content="2021-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,7 +408,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Kapitel 10</span> Buchstaben in Romanen</h1>
 <div id="packages-3" class="section level2" number="10.1">
 <h2><span class="header-section-number">10.1</span> Packages</h2>
-<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="buchstaben-in-romanen.html#cb914-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="buchstaben-in-romanen.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
 ## v tibble  3.1.3     v dplyr   1.0.7
@@ -418,8 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb919-1"><a href="buchstaben-in-romanen.html#cb919-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb919-2"><a href="buchstaben-in-romanen.html#cb919-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="buchstaben-in-romanen.html#cb952-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb952-2"><a href="buchstaben-in-romanen.html#cb952-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;scales&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
@@ -428,19 +428,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     col_factor</code></pre>
-<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="buchstaben-in-romanen.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
-<span id="cb923-2"><a href="buchstaben-in-romanen.html#cb923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
-<span id="cb923-3"><a href="buchstaben-in-romanen.html#cb923-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(qdap) # syllable_count and syllable_sum</span></span>
-<span id="cb923-4"><a href="buchstaben-in-romanen.html#cb923-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(quanteda) # nsyllable(tokens(txt))</span></span></code></pre></div>
+<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="buchstaben-in-romanen.html#cb956-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
+<span id="cb956-2"><a href="buchstaben-in-romanen.html#cb956-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
+<span id="cb956-3"><a href="buchstaben-in-romanen.html#cb956-3" aria-hidden="true" tabindex="-1"></a><span class="co"># library(qdap) # syllable_count and syllable_sum</span></span>
+<span id="cb956-4"><a href="buchstaben-in-romanen.html#cb956-4" aria-hidden="true" tabindex="-1"></a><span class="co"># library(quanteda) # nsyllable(tokens(txt))</span></span></code></pre></div>
 </div>
 <div id="datensatz-lesen" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Datensatz lesen</h2>
 <p>Die <em>readtext()</em>-Funktion erlaubt Einlesen von mehreren Dateien auf einfache Art und Weise.
 Mit <em>docvarsfrom</em> erhalten wird eine neue Spalte in der Tabelle, die wir mit der Funktion <em>rename()</em> umbenennen.
 Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text kodiert ist (Code Page).</p>
-<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb924-1"><a href="buchstaben-in-romanen.html#cb924-1" aria-hidden="true" tabindex="-1"></a>novels_txt <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">docvarsfrom =</span> <span class="st">&quot;filenames&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb924-2"><a href="buchstaben-in-romanen.html#cb924-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> docvar1)</span>
-<span id="cb924-3"><a href="buchstaben-in-romanen.html#cb924-3" aria-hidden="true" tabindex="-1"></a>novels_txt</span></code></pre></div>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="buchstaben-in-romanen.html#cb957-1" aria-hidden="true" tabindex="-1"></a>novels_txt <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">docvarsfrom =</span> <span class="st">&quot;filenames&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb957-2"><a href="buchstaben-in-romanen.html#cb957-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">title =</span> docvar1)</span>
+<span id="cb957-3"><a href="buchstaben-in-romanen.html#cb957-3" aria-hidden="true" tabindex="-1"></a>novels_txt</span></code></pre></div>
 <pre><code>## readtext object consisting of 2 documents and 1 docvar.
 ## # Description: df [2 x 3]
 ##   doc_id      text                title  
@@ -455,23 +455,23 @@ Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text ko
 <p>Der reguläre Ausdruck <em>[a-zA-Z]</em> extrahiert nur Buchstaben des englischen Alphabets, <em>[:alpha:]</em> extrahiert dagegen auch nicht-englische Buchstaben, z.B. deutsche oder slowenische Sonderzeichen. Zahlen und andere spezielle Zeichen (z.B. Interpunktion) werden auf diese Weise nicht extrahiert.</p>
 <p>Regex <em>{1}</em> (= default) extrahiert Einzelbuchstaben. Bei Verwendung von <em>{2}</em> werden jeweils zwei aufeinander folgende Buchstaben extrahiert.</p>
 <p>Die Funktion <em>tolower()</em> sorgt dafür, dass Großbuchstaben in Kleinbuchstaben umgewandelt werden. Falls zwischen großen und kleinen Buchstaben unterschieden werden soll, entfernen wir diese Funktion aus dem Programmkode.</p>
-<div class="sourceCode" id="cb926"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb926-1"><a href="buchstaben-in-romanen.html#cb926-1" aria-hidden="true" tabindex="-1"></a>letters <span class="ot">=</span> <span class="fu">tolower</span>(novels_txt<span class="sc">$</span>text) <span class="sc">%&gt;%</span> <span class="fu">str_extract_all</span>(<span class="at">pattern =</span> <span class="st">&quot;[:alpha:]{1}&quot;</span>)</span>
-<span id="cb926-2"><a href="buchstaben-in-romanen.html#cb926-2" aria-hidden="true" tabindex="-1"></a>letters[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="buchstaben-in-romanen.html#cb959-1" aria-hidden="true" tabindex="-1"></a>letters <span class="ot">=</span> <span class="fu">tolower</span>(novels_txt<span class="sc">$</span>text) <span class="sc">%&gt;%</span> <span class="fu">str_extract_all</span>(<span class="at">pattern =</span> <span class="st">&quot;[:alpha:]{1}&quot;</span>)</span>
+<span id="cb959-2"><a href="buchstaben-in-romanen.html#cb959-2" aria-hidden="true" tabindex="-1"></a>letters[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;d&quot; &quot;e&quot; &quot;r&quot; &quot;p&quot; &quot;r&quot; &quot;o&quot; &quot;z&quot; &quot;e&quot; &quot;s&quot; &quot;s&quot;</code></pre>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="buchstaben-in-romanen.html#cb928-1" aria-hidden="true" tabindex="-1"></a>letters[[<span class="dv">2</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="buchstaben-in-romanen.html#cb961-1" aria-hidden="true" tabindex="-1"></a>letters[[<span class="dv">2</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;t&quot; &quot;o&quot; &quot;m&quot; &quot;s&quot; &quot;a&quot; &quot;w&quot; &quot;y&quot; &quot;e&quot; &quot;r&quot;</code></pre>
 </div>
 <div id="aus-datensatz" class="section level3" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> aus Datensatz</h3>
 <p>Tabellen und Graphiken erstellen ist leichter, wenn wir die Texte in Datensätze umwandeln, und zwar mit der Funktion <em>as.data.frame()</em>.</p>
-<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb930-1"><a href="buchstaben-in-romanen.html#cb930-1" aria-hidden="true" tabindex="-1"></a>novels <span class="ot">=</span> <span class="fu">as.data.frame</span>(novels_txt)</span></code></pre></div>
+<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="buchstaben-in-romanen.html#cb963-1" aria-hidden="true" tabindex="-1"></a>novels <span class="ot">=</span> <span class="fu">as.data.frame</span>(novels_txt)</span></code></pre></div>
 <p>Mit der Funktion <em>unnest_tokens()</em> können wir auch Buchstaben isolieren und anschließend auszählen.</p>
-<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="buchstaben-in-romanen.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb931-2"><a href="buchstaben-in-romanen.html#cb931-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb931-3"><a href="buchstaben-in-romanen.html#cb931-3" aria-hidden="true" tabindex="-1"></a>novels_character <span class="ot">&lt;-</span> novels <span class="sc">%&gt;%</span></span>
-<span id="cb931-4"><a href="buchstaben-in-romanen.html#cb931-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(character, text, <span class="at">token =</span> <span class="st">&quot;characters&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T)</span>
-<span id="cb931-5"><a href="buchstaben-in-romanen.html#cb931-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb931-6"><a href="buchstaben-in-romanen.html#cb931-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_character)</span></code></pre></div>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="buchstaben-in-romanen.html#cb964-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb964-2"><a href="buchstaben-in-romanen.html#cb964-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb964-3"><a href="buchstaben-in-romanen.html#cb964-3" aria-hidden="true" tabindex="-1"></a>novels_character <span class="ot">&lt;-</span> novels <span class="sc">%&gt;%</span></span>
+<span id="cb964-4"><a href="buchstaben-in-romanen.html#cb964-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(character, text, <span class="at">token =</span> <span class="st">&quot;characters&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T)</span>
+<span id="cb964-5"><a href="buchstaben-in-romanen.html#cb964-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb964-6"><a href="buchstaben-in-romanen.html#cb964-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_character)</span></code></pre></div>
 <pre><code>##        doc_id   title character
 ## 1 prozess.txt prozess         d
 ## 2 prozess.txt prozess         e
@@ -484,19 +484,19 @@ Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text ko
 <div id="buchstaben-zählen" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> Buchstaben zählen</h2>
 <p>Mit <em>count()</em> können wir die Häufigkeit einer Variable (hier: der Buchstaben) auszählen.</p>
-<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="buchstaben-in-romanen.html#cb933-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
-<span id="cb933-2"><a href="buchstaben-in-romanen.html#cb933-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb933-3"><a href="buchstaben-in-romanen.html#cb933-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="buchstaben-in-romanen.html#cb966-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
+<span id="cb966-2"><a href="buchstaben-in-romanen.html#cb966-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb966-3"><a href="buchstaben-in-romanen.html#cb966-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"e","2":"114769"},{"1":"n","2":"70151"},{"1":"i","2":"52767"},{"1":"r","2":"47937"},{"1":"s","2":"42610"},{"1":"t","2":"42057"},{"1":"a","2":"39825"},{"1":"h","2":"38600"},{"1":"d","2":"33683"},{"1":"u","2":"26309"},{"1":"c","2":"24770"},{"1":"l","2":"24434"},{"1":"g","2":"21247"},{"1":"m","2":"18532"},{"1":"o","2":"15270"},{"1":"b","2":"13261"},{"1":"w","2":"13068"},{"1":"f","2":"11021"},{"1":"k","2":"10054"},{"1":"z","2":"8725"},{"1":"ü","2":"5224"},{"1":"v","2":"5003"},{"1":"ä","2":"3801"},{"1":"ß","2":"3594"},{"1":"p","2":"3584"},{"1":"ö","2":"2045"},{"1":"j","2":"1757"},{"1":"y","2":"347"},{"1":"q","2":"67"},{"1":"x","2":"44"},{"1":"1","2":"5"},{"1":"0","2":"4"},{"1":"4","2":"4"},{"1":"7","2":"4"},{"1":"2","2":"3"},{"1":"5","2":"3"},{"1":"6","2":"2"},{"1":"8","2":"2"},{"1":"é","2":"2"},{"1":"3","2":"1"},{"1":"9","2":"1"},{"1":"á","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Der tidytext-Tokenizer hat nicht nur Buchstaben, sondern auch Zahlen extrahiert. Da wir nur an der Häufigkeit von Buchstaben interessiert sind, filtern wir die Zahlen und andere Zeichen heraus. Dazu verwenden wir die Funktionen <em>filter()</em> und zusätzlich <em>str_detect()</em>, da wir für diese Aufgabe einen regulären Ausdruck nutzen wollen.</p>
-<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb934-1"><a href="buchstaben-in-romanen.html#cb934-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
-<span id="cb934-2"><a href="buchstaben-in-romanen.html#cb934-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb934-3"><a href="buchstaben-in-romanen.html#cb934-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb934-4"><a href="buchstaben-in-romanen.html#cb934-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="buchstaben-in-romanen.html#cb967-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
+<span id="cb967-2"><a href="buchstaben-in-romanen.html#cb967-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb967-3"><a href="buchstaben-in-romanen.html#cb967-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb967-4"><a href="buchstaben-in-romanen.html#cb967-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"e","2":"114769"},{"1":"n","2":"70151"},{"1":"i","2":"52767"},{"1":"r","2":"47937"},{"1":"s","2":"42610"},{"1":"t","2":"42057"},{"1":"a","2":"39825"},{"1":"h","2":"38600"},{"1":"d","2":"33683"},{"1":"u","2":"26309"},{"1":"c","2":"24770"},{"1":"l","2":"24434"},{"1":"g","2":"21247"},{"1":"m","2":"18532"},{"1":"o","2":"15270"},{"1":"b","2":"13261"},{"1":"w","2":"13068"},{"1":"f","2":"11021"},{"1":"k","2":"10054"},{"1":"z","2":"8725"},{"1":"ü","2":"5224"},{"1":"v","2":"5003"},{"1":"ä","2":"3801"},{"1":"ß","2":"3594"},{"1":"p","2":"3584"},{"1":"ö","2":"2045"},{"1":"j","2":"1757"},{"1":"y","2":"347"},{"1":"q","2":"67"},{"1":"x","2":"44"},{"1":"é","2":"2"},{"1":"á","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -504,12 +504,12 @@ Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text ko
 </div>
 <p>Ein paar Zeichen, die nicht zum deutschen Alphabet gehören und mit dem vorherigen Programm-Schritt nicht herausfiltern konnten, werden im nächsten Schritt ebenfalls herausgefiltert.</p>
 <p>Wir speichern das Ergebnis als neue Tabelle mit dem Namen “char_freq”.</p>
-<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="buchstaben-in-romanen.html#cb935-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="ot">=</span> novels_character <span class="sc">%&gt;%</span> </span>
-<span id="cb935-2"><a href="buchstaben-in-romanen.html#cb935-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb935-3"><a href="buchstaben-in-romanen.html#cb935-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, <span class="st">&quot;é|á&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb935-4"><a href="buchstaben-in-romanen.html#cb935-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> T)</span>
-<span id="cb935-5"><a href="buchstaben-in-romanen.html#cb935-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb935-6"><a href="buchstaben-in-romanen.html#cb935-6" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb968-1"><a href="buchstaben-in-romanen.html#cb968-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="ot">=</span> novels_character <span class="sc">%&gt;%</span> </span>
+<span id="cb968-2"><a href="buchstaben-in-romanen.html#cb968-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb968-3"><a href="buchstaben-in-romanen.html#cb968-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, <span class="st">&quot;é|á&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb968-4"><a href="buchstaben-in-romanen.html#cb968-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> T)</span>
+<span id="cb968-5"><a href="buchstaben-in-romanen.html#cb968-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb968-6"><a href="buchstaben-in-romanen.html#cb968-6" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"e","2":"114769"},{"1":"n","2":"70151"},{"1":"i","2":"52767"},{"1":"r","2":"47937"},{"1":"s","2":"42610"},{"1":"t","2":"42057"},{"1":"a","2":"39825"},{"1":"h","2":"38600"},{"1":"d","2":"33683"},{"1":"u","2":"26309"},{"1":"c","2":"24770"},{"1":"l","2":"24434"},{"1":"g","2":"21247"},{"1":"m","2":"18532"},{"1":"o","2":"15270"},{"1":"b","2":"13261"},{"1":"w","2":"13068"},{"1":"f","2":"11021"},{"1":"k","2":"10054"},{"1":"z","2":"8725"},{"1":"ü","2":"5224"},{"1":"v","2":"5003"},{"1":"ä","2":"3801"},{"1":"ß","2":"3594"},{"1":"p","2":"3584"},{"1":"ö","2":"2045"},{"1":"j","2":"1757"},{"1":"y","2":"347"},{"1":"q","2":"67"},{"1":"x","2":"44"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -517,56 +517,56 @@ Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text ko
 </div>
 <p>Insgesamt haben wir 30 Buchstaben des deutschen Alphabets in den Romanen unterschieden.
 Aus wie vielen Buchstaben des deutschen Alphabets bestehen die Romane? Die Summe erhalten wir mit der Funktion <em>summarise()</em> - fast 700 Tausend.</p>
-<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="buchstaben-in-romanen.html#cb936-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb936-2"><a href="buchstaben-in-romanen.html#cb936-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="buchstaben-in-romanen.html#cb969-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb969-2"><a href="buchstaben-in-romanen.html#cb969-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <pre><code>##    total
 ## 1 694556</code></pre>
 <p>Es ist nun wirklich Zeit, mal ein Bild zu malen!
 Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbündel <em>tidyverse</em> enthalten ist.</p>
 <p>Das Diagramm zeigt sehr deutlich, dass gewaltige Häufigkeitsunterschiede im deutschen Alphabet bestehen.</p>
-<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="buchstaben-in-romanen.html#cb938-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb938-2"><a href="buchstaben-in-romanen.html#cb938-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, n)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Frequenz</span></span>
-<span id="cb938-3"><a href="buchstaben-in-romanen.html#cb938-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
-<span id="cb938-4"><a href="buchstaben-in-romanen.html#cb938-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb938-5"><a href="buchstaben-in-romanen.html#cb938-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="buchstaben-in-romanen.html#cb971-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb971-2"><a href="buchstaben-in-romanen.html#cb971-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, n)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Frequenz</span></span>
+<span id="cb971-3"><a href="buchstaben-in-romanen.html#cb971-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
+<span id="cb971-4"><a href="buchstaben-in-romanen.html#cb971-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb971-5"><a href="buchstaben-in-romanen.html#cb971-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-10-1.svg" width="10" height="8" /></p>
 <p>Eine bessere Vorstellung von den Zahlenverhältnissen erhalten wir, wenn wir die mehrstelligen Zahlenwerte in Prozente umwandeln.</p>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="buchstaben-in-romanen.html#cb939-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb939-2"><a href="buchstaben-in-romanen.html#cb939-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb939-3"><a href="buchstaben-in-romanen.html#cb939-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
-<span id="cb939-4"><a href="buchstaben-in-romanen.html#cb939-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb939-5"><a href="buchstaben-in-romanen.html#cb939-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
-<span id="cb939-6"><a href="buchstaben-in-romanen.html#cb939-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
-<span id="cb939-7"><a href="buchstaben-in-romanen.html#cb939-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb939-8"><a href="buchstaben-in-romanen.html#cb939-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb939-9"><a href="buchstaben-in-romanen.html#cb939-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
+<div class="sourceCode" id="cb972"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb972-1"><a href="buchstaben-in-romanen.html#cb972-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb972-2"><a href="buchstaben-in-romanen.html#cb972-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb972-3"><a href="buchstaben-in-romanen.html#cb972-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
+<span id="cb972-4"><a href="buchstaben-in-romanen.html#cb972-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb972-5"><a href="buchstaben-in-romanen.html#cb972-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
+<span id="cb972-6"><a href="buchstaben-in-romanen.html#cb972-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
+<span id="cb972-7"><a href="buchstaben-in-romanen.html#cb972-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb972-8"><a href="buchstaben-in-romanen.html#cb972-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb972-9"><a href="buchstaben-in-romanen.html#cb972-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-11-1.svg" width="10" height="8" /></p>
 <p>Getrennte tabellarische Darstellung für die Texte:</p>
-<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="buchstaben-in-romanen.html#cb940-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
-<span id="cb940-2"><a href="buchstaben-in-romanen.html#cb940-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb940-3"><a href="buchstaben-in-romanen.html#cb940-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb940-4"><a href="buchstaben-in-romanen.html#cb940-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> doc_id, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span> </span>
-<span id="cb940-5"><a href="buchstaben-in-romanen.html#cb940-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="buchstaben-in-romanen.html#cb973-1" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
+<span id="cb973-2"><a href="buchstaben-in-romanen.html#cb973-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb973-3"><a href="buchstaben-in-romanen.html#cb973-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb973-4"><a href="buchstaben-in-romanen.html#cb973-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> doc_id, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span> </span>
+<span id="cb973-5"><a href="buchstaben-in-romanen.html#cb973-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prozess.txt"],"name":[2],"type":["int"],"align":["right"]},{"label":["tom.txt"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"e","2":"60978","3":"53791"},{"1":"n","2":"36237","3":"33914"},{"1":"i","2":"28426","3":"24341"},{"1":"r","2":"25884","3":"22053"},{"1":"t","2":"21751","3":"20306"},{"1":"s","2":"21690","3":"20920"},{"1":"a","2":"20817","3":"19008"},{"1":"h","2":"20095","3":"18505"},{"1":"d","2":"17247","3":"16436"},{"1":"u","2":"12636","3":"13673"},{"1":"c","2":"12691","3":"12079"},{"1":"l","2":"12463","3":"11971"},{"1":"g","2":"11563","3":"9684"},{"1":"m","2":"9252","3":"9280"},{"1":"o","2":"7426","3":"7844"},{"1":"b","2":"6936","3":"6325"},{"1":"w","2":"6398","3":"6670"},{"1":"f","2":"5882","3":"5139"},{"1":"k","2":"5576","3":"4478"},{"1":"z","2":"4552","3":"4173"},{"1":"ü","2":"2983","3":"2241"},{"1":"v","2":"2862","3":"2141"},{"1":"ä","2":"2119","3":"1682"},{"1":"p","2":"1635","3":"1949"},{"1":"ß","2":"1894","3":"1700"},{"1":"ö","2":"1009","3":"1036"},{"1":"j","2":"734","3":"1023"},{"1":"y","2":"8","3":"339"},{"1":"q","2":"26","3":"41"},{"1":"x","2":"6","3":"38"},{"1":"0","2":"1","3":"3"},{"1":"1","2":"2","3":"3"},{"1":"4","2":"1","3":"3"},{"1":"7","2":"1","3":"3"},{"1":"2","2":"1","3":"2"},{"1":"5","2":"1","3":"2"},{"1":"3","2":"1","3":"NA"},{"1":"6","2":"1","3":"1"},{"1":"8","2":"1","3":"1"},{"1":"9","2":"1","3":"NA"},{"1":"é","2":"1","3":"1"},{"1":"á","2":"NA","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Getrennte graphische Darstellung für die Texte:</p>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="buchstaben-in-romanen.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb941-2"><a href="buchstaben-in-romanen.html#cb941-2" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
-<span id="cb941-3"><a href="buchstaben-in-romanen.html#cb941-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb941-4"><a href="buchstaben-in-romanen.html#cb941-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb941-5"><a href="buchstaben-in-romanen.html#cb941-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
-<span id="cb941-6"><a href="buchstaben-in-romanen.html#cb941-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb941-7"><a href="buchstaben-in-romanen.html#cb941-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
-<span id="cb941-8"><a href="buchstaben-in-romanen.html#cb941-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Prozent <span class="sc">&gt;</span> <span class="fl">0.0001</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb941-9"><a href="buchstaben-in-romanen.html#cb941-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
-<span id="cb941-10"><a href="buchstaben-in-romanen.html#cb941-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb941-11"><a href="buchstaben-in-romanen.html#cb941-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb941-12"><a href="buchstaben-in-romanen.html#cb941-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> doc_id, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="buchstaben-in-romanen.html#cb974-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb974-2"><a href="buchstaben-in-romanen.html#cb974-2" aria-hidden="true" tabindex="-1"></a>novels_character <span class="sc">%&gt;%</span> </span>
+<span id="cb974-3"><a href="buchstaben-in-romanen.html#cb974-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb974-4"><a href="buchstaben-in-romanen.html#cb974-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(character, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb974-5"><a href="buchstaben-in-romanen.html#cb974-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
+<span id="cb974-6"><a href="buchstaben-in-romanen.html#cb974-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb974-7"><a href="buchstaben-in-romanen.html#cb974-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
+<span id="cb974-8"><a href="buchstaben-in-romanen.html#cb974-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Prozent <span class="sc">&gt;</span> <span class="fl">0.0001</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb974-9"><a href="buchstaben-in-romanen.html#cb974-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
+<span id="cb974-10"><a href="buchstaben-in-romanen.html#cb974-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb974-11"><a href="buchstaben-in-romanen.html#cb974-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb974-12"><a href="buchstaben-in-romanen.html#cb974-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> doc_id, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>)</span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-13-1.svg" width="10" height="8" /></p>
-<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb942-1"><a href="buchstaben-in-romanen.html#cb942-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
+<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="buchstaben-in-romanen.html#cb975-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent) <span class="co"># Prozent-Format</span></span></code></pre></div>
 <pre><code>## &lt;ScaleContinuousPosition&gt;
 ##  Range:  
 ##  Limits:    0 --    1</code></pre>
@@ -575,19 +575,19 @@ Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbünd
 <h2><span class="header-section-number">10.5</span> Vokale</h2>
 <p>Betrachten wir zunächst nur die Buchstaben, die Vokale symbolisieren!
 Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das “oder”-Zeichen ein: den <em>logischen Operator</em> “|”.</p>
-<div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb944-1"><a href="buchstaben-in-romanen.html#cb944-1" aria-hidden="true" tabindex="-1"></a>vokale <span class="ot">=</span> <span class="st">&quot;a|e|i|o|u|ä|ö|ü|y&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="buchstaben-in-romanen.html#cb977-1" aria-hidden="true" tabindex="-1"></a>vokale <span class="ot">=</span> <span class="st">&quot;a|e|i|o|u|ä|ö|ü|y&quot;</span></span></code></pre></div>
 <p>Die Vokalliste “vokale” verwenden wir mit den Funktionen <em>filter()</em> und <em>str_detect()</em>.</p>
-<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="buchstaben-in-romanen.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb945-2"><a href="buchstaben-in-romanen.html#cb945-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb945-3"><a href="buchstaben-in-romanen.html#cb945-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, vokale)) <span class="sc">%&gt;%</span> </span>
-<span id="cb945-4"><a href="buchstaben-in-romanen.html#cb945-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
-<span id="cb945-5"><a href="buchstaben-in-romanen.html#cb945-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb945-6"><a href="buchstaben-in-romanen.html#cb945-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
-<span id="cb945-7"><a href="buchstaben-in-romanen.html#cb945-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
-<span id="cb945-8"><a href="buchstaben-in-romanen.html#cb945-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb945-9"><a href="buchstaben-in-romanen.html#cb945-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb945-10"><a href="buchstaben-in-romanen.html#cb945-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb945-11"><a href="buchstaben-in-romanen.html#cb945-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.05</span>)) <span class="co"># Prozent-Format</span></span></code></pre></div>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="buchstaben-in-romanen.html#cb978-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb978-2"><a href="buchstaben-in-romanen.html#cb978-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb978-3"><a href="buchstaben-in-romanen.html#cb978-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, vokale)) <span class="sc">%&gt;%</span> </span>
+<span id="cb978-4"><a href="buchstaben-in-romanen.html#cb978-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
+<span id="cb978-5"><a href="buchstaben-in-romanen.html#cb978-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb978-6"><a href="buchstaben-in-romanen.html#cb978-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
+<span id="cb978-7"><a href="buchstaben-in-romanen.html#cb978-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
+<span id="cb978-8"><a href="buchstaben-in-romanen.html#cb978-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb978-9"><a href="buchstaben-in-romanen.html#cb978-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb978-10"><a href="buchstaben-in-romanen.html#cb978-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb978-11"><a href="buchstaben-in-romanen.html#cb978-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.05</span>)) <span class="co"># Prozent-Format</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-15-1.svg" width="10" height="8" /></p>
 <p>Am häufigsten kommt der Buchstabe “e” in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten “y”, welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.</p>
 </div>
@@ -595,17 +595,17 @@ Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das 
 <h2><span class="header-section-number">10.6</span> Konsonanten</h2>
 <p>Welche Buchstaben, die Konsonanten symbolisieren, kommen am häufigsten vor?
 Zum Filtern verwenden wir wiederum die Vokalliste, dieses Mal allerdings mit Negationszeichen “!”.</p>
-<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="buchstaben-in-romanen.html#cb946-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb946-2"><a href="buchstaben-in-romanen.html#cb946-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb946-3"><a href="buchstaben-in-romanen.html#cb946-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, vokale)) <span class="sc">%&gt;%</span> <span class="co"># Negationszeichen, daher Konsonanten beibehalten</span></span>
-<span id="cb946-4"><a href="buchstaben-in-romanen.html#cb946-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
-<span id="cb946-5"><a href="buchstaben-in-romanen.html#cb946-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb946-6"><a href="buchstaben-in-romanen.html#cb946-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
-<span id="cb946-7"><a href="buchstaben-in-romanen.html#cb946-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
-<span id="cb946-8"><a href="buchstaben-in-romanen.html#cb946-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb946-9"><a href="buchstaben-in-romanen.html#cb946-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb946-10"><a href="buchstaben-in-romanen.html#cb946-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb946-11"><a href="buchstaben-in-romanen.html#cb946-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.02</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
+<div class="sourceCode" id="cb979"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb979-1"><a href="buchstaben-in-romanen.html#cb979-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb979-2"><a href="buchstaben-in-romanen.html#cb979-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb979-3"><a href="buchstaben-in-romanen.html#cb979-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, vokale)) <span class="sc">%&gt;%</span> <span class="co"># Negationszeichen, daher Konsonanten beibehalten</span></span>
+<span id="cb979-4"><a href="buchstaben-in-romanen.html#cb979-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Umwandlung in Prozente</span></span>
+<span id="cb979-5"><a href="buchstaben-in-romanen.html#cb979-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb979-6"><a href="buchstaben-in-romanen.html#cb979-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">character =</span> <span class="fu">fct_reorder</span>(character, Prozent)) <span class="sc">%&gt;%</span> <span class="co"># Sortieren nach Prozenten</span></span>
+<span id="cb979-7"><a href="buchstaben-in-romanen.html#cb979-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Prozent, character, <span class="at">fill =</span> character)) <span class="sc">+</span></span>
+<span id="cb979-8"><a href="buchstaben-in-romanen.html#cb979-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb979-9"><a href="buchstaben-in-romanen.html#cb979-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb979-10"><a href="buchstaben-in-romanen.html#cb979-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb979-11"><a href="buchstaben-in-romanen.html#cb979-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.02</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-16-1.svg" width="10" height="8" /></p>
 <p>Der Buchstabe “n” kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: “r, s, t, h, d”.
 Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
@@ -614,33 +614,33 @@ Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 <h2><span class="header-section-number">10.7</span> Vokal-Konsonant-Verhältnis</h2>
 <p>Welches Zahlenverhältnis besteht zwischen den Vokalen und Konsonanten?</p>
 <p>21 konsonantische Buchstaben und 9 vokalische Buchstaben. Pro Silbe sind in den deutschen Texten 1 Vokal und ungefähr 2 Konsonanten zu erwarten, also Silbenstrukturen wie z.B. KVK, KKV, VKK.</p>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="buchstaben-in-romanen.html#cb947-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb947-2"><a href="buchstaben-in-romanen.html#cb947-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb947-3"><a href="buchstaben-in-romanen.html#cb947-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(buchstabe)</span></code></pre></div>
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="buchstaben-in-romanen.html#cb980-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb980-2"><a href="buchstaben-in-romanen.html#cb980-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb980-3"><a href="buchstaben-in-romanen.html#cb980-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(buchstabe)</span></code></pre></div>
 <pre><code>##   buchstabe  n
 ## 1 Konsonant 21
 ## 2     Vokal  9</code></pre>
 <p>Der höhere Anteil der Konsonanten entspricht der größeren Konsonantenmenge.</p>
-<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="buchstaben-in-romanen.html#cb949-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb949-2"><a href="buchstaben-in-romanen.html#cb949-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb949-3"><a href="buchstaben-in-romanen.html#cb949-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb949-4"><a href="buchstaben-in-romanen.html#cb949-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(buchstabe) <span class="sc">%&gt;%</span> </span>
-<span id="cb949-5"><a href="buchstaben-in-romanen.html#cb949-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Prozent =</span> <span class="fu">sum</span>(Prozent))</span></code></pre></div>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="buchstaben-in-romanen.html#cb982-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb982-2"><a href="buchstaben-in-romanen.html#cb982-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb982-3"><a href="buchstaben-in-romanen.html#cb982-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb982-4"><a href="buchstaben-in-romanen.html#cb982-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(buchstabe) <span class="sc">%&gt;%</span> </span>
+<span id="cb982-5"><a href="buchstaben-in-romanen.html#cb982-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Prozent =</span> <span class="fu">sum</span>(Prozent))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   buchstabe Avg_Prozent
 ##   &lt;chr&gt;           &lt;dbl&gt;
 ## 1 Konsonant       0.625
 ## 2 Vokal           0.375</code></pre>
-<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="buchstaben-in-romanen.html#cb951-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
-<span id="cb951-2"><a href="buchstaben-in-romanen.html#cb951-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb951-3"><a href="buchstaben-in-romanen.html#cb951-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb951-4"><a href="buchstaben-in-romanen.html#cb951-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(buchstabe) <span class="sc">%&gt;%</span> </span>
-<span id="cb951-5"><a href="buchstaben-in-romanen.html#cb951-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Prozent =</span> <span class="fu">sum</span>(Prozent)) <span class="sc">%&gt;%</span> </span>
-<span id="cb951-6"><a href="buchstaben-in-romanen.html#cb951-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Avg_Prozent, buchstabe, <span class="at">fill =</span> buchstabe)) <span class="sc">+</span></span>
-<span id="cb951-7"><a href="buchstaben-in-romanen.html#cb951-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb951-8"><a href="buchstaben-in-romanen.html#cb951-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb951-9"><a href="buchstaben-in-romanen.html#cb951-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale / Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb951-10"><a href="buchstaben-in-romanen.html#cb951-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
+<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="buchstaben-in-romanen.html#cb984-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
+<span id="cb984-2"><a href="buchstaben-in-romanen.html#cb984-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb984-3"><a href="buchstaben-in-romanen.html#cb984-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb984-4"><a href="buchstaben-in-romanen.html#cb984-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(buchstabe) <span class="sc">%&gt;%</span> </span>
+<span id="cb984-5"><a href="buchstaben-in-romanen.html#cb984-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Prozent =</span> <span class="fu">sum</span>(Prozent)) <span class="sc">%&gt;%</span> </span>
+<span id="cb984-6"><a href="buchstaben-in-romanen.html#cb984-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Avg_Prozent, buchstabe, <span class="at">fill =</span> buchstabe)) <span class="sc">+</span></span>
+<span id="cb984-7"><a href="buchstaben-in-romanen.html#cb984-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb984-8"><a href="buchstaben-in-romanen.html#cb984-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb984-9"><a href="buchstaben-in-romanen.html#cb984-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale / Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb984-10"><a href="buchstaben-in-romanen.html#cb984-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-19-1.svg" width="10" height="8" /></p>
 <p>Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche.</p>
 </div>
@@ -648,44 +648,44 @@ Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
 <h2><span class="header-section-number">10.8</span> Anzahl der Silben</h2>
 <p>Wie viele Silben kommen in den Romanen schätzungsweise vor und wie viele Buchstaben pro Silbe? Die genaue Bestimmung der Silbenanzahl für eine bestimmte Sprache kann aufgrund zahlreicher Besonderheiten ziemlich kompliziert sein. Die Anzahl der Silben schätzen wir daher mit einer Funktion des Programms <em>nsyllable</em> (Alternatives Programm: <em>qdap</em>).</p>
 <p>Da wir die Silbenzählfunktion nur ein einziges Mal bemühen, rufen wir sie in der unten sichtbaren Form auf: <em>nsyllable::nsyllable(buchstabenfolge)</em>.</p>
-<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb952-1"><a href="buchstaben-in-romanen.html#cb952-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="ot">=</span> novels <span class="sc">%&gt;%</span></span>
-<span id="cb952-2"><a href="buchstaben-in-romanen.html#cb952-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb952-3"><a href="buchstaben-in-romanen.html#cb952-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">syllables =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(<span class="fu">as.character</span>(word), <span class="at">language =</span> <span class="st">&quot;en&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb952-4"><a href="buchstaben-in-romanen.html#cb952-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">letters =</span> <span class="fu">nchar</span>(word))</span>
-<span id="cb952-5"><a href="buchstaben-in-romanen.html#cb952-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb952-6"><a href="buchstaben-in-romanen.html#cb952-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_words) <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="buchstaben-in-romanen.html#cb985-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="ot">=</span> novels <span class="sc">%&gt;%</span></span>
+<span id="cb985-2"><a href="buchstaben-in-romanen.html#cb985-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb985-3"><a href="buchstaben-in-romanen.html#cb985-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">syllables =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(<span class="fu">as.character</span>(word), <span class="at">language =</span> <span class="st">&quot;en&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb985-4"><a href="buchstaben-in-romanen.html#cb985-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">letters =</span> <span class="fu">nchar</span>(word))</span>
+<span id="cb985-5"><a href="buchstaben-in-romanen.html#cb985-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb985-6"><a href="buchstaben-in-romanen.html#cb985-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_words) <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["doc_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["title"],"name":[2],"type":["chr"],"align":["left"]},{"label":["word"],"name":[3],"type":["chr"],"align":["left"]},{"label":["syllables"],"name":[4],"type":["int"],"align":["right"]},{"label":["letters"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"prozess.txt","2":"prozess","3":"der","4":"1","5":"3","_rn_":"1"},{"1":"prozess.txt","2":"prozess","3":"prozess","4":"2","5":"7","_rn_":"2"},{"1":"prozess.txt","2":"prozess","3":"by","4":"1","5":"2","_rn_":"3"},{"1":"prozess.txt","2":"prozess","3":"franz","4":"1","5":"5","_rn_":"4"},{"1":"prozess.txt","2":"prozess","3":"kafka","4":"2","5":"5","_rn_":"5"},{"1":"prozess.txt","2":"prozess","3":"aligned","4":"2","5":"7","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Insgesamt (d.h. kumulativ gesehen) fast 139 Tausend Silben in den Romanen. Diese Zahl bietet einen möglichen Ausgangspunkt für Textvergleiche.</p>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="buchstaben-in-romanen.html#cb953-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb953-2"><a href="buchstaben-in-romanen.html#cb953-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb953-3"><a href="buchstaben-in-romanen.html#cb953-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Silben =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="buchstaben-in-romanen.html#cb986-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb986-2"><a href="buchstaben-in-romanen.html#cb986-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb986-3"><a href="buchstaben-in-romanen.html#cb986-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Silben =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <pre><code>##   Silben
 ## 1 138811</code></pre>
 <p>Die meisten Wortformen in den Romanen bestehen aus einer Silbe (fast 60%) oder zwei Silben (fast 30%). Das ist typisch für deutsche Texte. Kurze Funktionswörter (meist eine Silbe) kommen wesentlich häufiger vor als andere Wortklassen (Substantive, Verben, Adjektive, Adverbien).</p>
-<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="buchstaben-in-romanen.html#cb955-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb955-2"><a href="buchstaben-in-romanen.html#cb955-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb955-3"><a href="buchstaben-in-romanen.html#cb955-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb955-4"><a href="buchstaben-in-romanen.html#cb955-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(syllables, Prozent, <span class="at">fill =</span> <span class="fu">factor</span>(syllables))) <span class="sc">+</span></span>
-<span id="cb955-5"><a href="buchstaben-in-romanen.html#cb955-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb955-6"><a href="buchstaben-in-romanen.html#cb955-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb955-7"><a href="buchstaben-in-romanen.html#cb955-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
-<span id="cb955-8"><a href="buchstaben-in-romanen.html#cb955-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
+<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb988-1"><a href="buchstaben-in-romanen.html#cb988-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb988-2"><a href="buchstaben-in-romanen.html#cb988-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb988-3"><a href="buchstaben-in-romanen.html#cb988-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb988-4"><a href="buchstaben-in-romanen.html#cb988-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(syllables, Prozent, <span class="at">fill =</span> <span class="fu">factor</span>(syllables))) <span class="sc">+</span></span>
+<span id="cb988-5"><a href="buchstaben-in-romanen.html#cb988-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb988-6"><a href="buchstaben-in-romanen.html#cb988-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb988-7"><a href="buchstaben-in-romanen.html#cb988-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
+<span id="cb988-8"><a href="buchstaben-in-romanen.html#cb988-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (position_stack).</code></pre>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-22-1.svg" width="10" height="8" /></p>
 <p>Berücksichtig man lediglich distinktive Wortformen (also keine Wortwiederholungen), dann ergibt sich die folgende Verteilung, in der die Zweisilber (mehr als 30%) und Dreisilber (fast 30%) den größten Anteil haben.</p>
-<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="buchstaben-in-romanen.html#cb957-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb957-2"><a href="buchstaben-in-romanen.html#cb957-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb957-3"><a href="buchstaben-in-romanen.html#cb957-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb957-4"><a href="buchstaben-in-romanen.html#cb957-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb957-5"><a href="buchstaben-in-romanen.html#cb957-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(syllables, Prozent, <span class="at">fill =</span> <span class="fu">factor</span>(syllables))) <span class="sc">+</span></span>
-<span id="cb957-6"><a href="buchstaben-in-romanen.html#cb957-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb957-7"><a href="buchstaben-in-romanen.html#cb957-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb957-8"><a href="buchstaben-in-romanen.html#cb957-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
-<span id="cb957-9"><a href="buchstaben-in-romanen.html#cb957-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
+<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="buchstaben-in-romanen.html#cb990-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb990-2"><a href="buchstaben-in-romanen.html#cb990-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb990-3"><a href="buchstaben-in-romanen.html#cb990-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb990-4"><a href="buchstaben-in-romanen.html#cb990-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Prozent =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb990-5"><a href="buchstaben-in-romanen.html#cb990-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(syllables, Prozent, <span class="at">fill =</span> <span class="fu">factor</span>(syllables))) <span class="sc">+</span></span>
+<span id="cb990-6"><a href="buchstaben-in-romanen.html#cb990-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb990-7"><a href="buchstaben-in-romanen.html#cb990-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb990-8"><a href="buchstaben-in-romanen.html#cb990-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Silben&quot;</span>) <span class="sc">+</span></span>
+<span id="cb990-9"><a href="buchstaben-in-romanen.html#cb990-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.75</span>, <span class="fl">0.1</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (position_stack).</code></pre>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-23-1.svg" width="10" height="8" /></p>
 </div>
@@ -701,28 +701,28 @@ Die Mittelwerte oder arithmetischen Mittel können mit der Programmfunktion <em>
 Die Standardabweichungen sind notwendig zur Feststellung nicht-zufälliger Unterschiede zwischen den Stichproben (d.h. den Romanen).
 Bei der Berechnung der Mittelwerte und Standardabweichungen geben wir dem Programm auch die Instruktion, etwaige leere Datenzeilen (<em>NA</em>) herauszufiltern, und zwar mit Hilfe von <em>na.rm = TRUE</em>. Wird dies unterlassen, kann dies dazu führen, dass ein Mittelwert bzw. Standardabweichung nicht berechnet werden kann.</p>
 <p>In der folgenden Tabelle werden nur distinktive Wortformen (Types) berücksichtigt, d.h. als ob jede Wortform nur einmal pro Roman vorkommt.</p>
-<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="buchstaben-in-romanen.html#cb959-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb959-2"><a href="buchstaben-in-romanen.html#cb959-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb959-3"><a href="buchstaben-in-romanen.html#cb959-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb959-4"><a href="buchstaben-in-romanen.html#cb959-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
-<span id="cb959-5"><a href="buchstaben-in-romanen.html#cb959-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb959-6"><a href="buchstaben-in-romanen.html#cb959-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb959-7"><a href="buchstaben-in-romanen.html#cb959-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb959-8"><a href="buchstaben-in-romanen.html#cb959-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb959-9"><a href="buchstaben-in-romanen.html#cb959-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="buchstaben-in-romanen.html#cb992-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb992-2"><a href="buchstaben-in-romanen.html#cb992-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb992-3"><a href="buchstaben-in-romanen.html#cb992-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb992-4"><a href="buchstaben-in-romanen.html#cb992-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb992-5"><a href="buchstaben-in-romanen.html#cb992-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb992-6"><a href="buchstaben-in-romanen.html#cb992-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb992-7"><a href="buchstaben-in-romanen.html#cb992-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb992-8"><a href="buchstaben-in-romanen.html#cb992-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb992-9"><a href="buchstaben-in-romanen.html#cb992-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["title"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Avg_Silben"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Stdev_Silben"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Avg_Buchstaben"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Stdev_Buchstaben"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"prozess","2":"2.598953","3":"1.115207","4":"8.753136","5":"3.165985"},{"1":"tom","2":"2.440148","3":"1.072319","4":"8.325600","5":"3.039245"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Die durchschnittliche Anzahl der Silben und Buchstaben pro Wortform (Token), bei Berücksichtigung von Wortwiederholungen in den Romanen, ist in der folgenden Tabelle zu sehen.</p>
-<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="buchstaben-in-romanen.html#cb960-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb960-2"><a href="buchstaben-in-romanen.html#cb960-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb960-3"><a href="buchstaben-in-romanen.html#cb960-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb960-4"><a href="buchstaben-in-romanen.html#cb960-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb960-5"><a href="buchstaben-in-romanen.html#cb960-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb960-6"><a href="buchstaben-in-romanen.html#cb960-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb960-7"><a href="buchstaben-in-romanen.html#cb960-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="buchstaben-in-romanen.html#cb993-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb993-2"><a href="buchstaben-in-romanen.html#cb993-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb993-3"><a href="buchstaben-in-romanen.html#cb993-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb993-4"><a href="buchstaben-in-romanen.html#cb993-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb993-5"><a href="buchstaben-in-romanen.html#cb993-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb993-6"><a href="buchstaben-in-romanen.html#cb993-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb993-7"><a href="buchstaben-in-romanen.html#cb993-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["title"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Avg_Silben"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Stdev_Silben"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Avg_Buchstaben"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Stdev_Buchstaben"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"prozess","2":"1.613350","3":"0.8752739","4":"5.048860","5":"2.818319"},{"1":"tom","2":"1.561307","3":"0.8176069","4":"4.975304","5":"2.634651"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -735,15 +735,15 @@ Bei der Berechnung der Mittelwerte und Standardabweichungen geben wir dem Progra
 <h3><span class="header-section-number">10.10.1</span> t-Test</h3>
 <p>Sind die berechneten Unterschiede zwischen den Mittelwerten relevant bzw. nicht-zufällig? Um diese Frage zu klären, kann man einen statistischen Test bemühen. Da wir lediglich zwei Samples (zwei Romanen) vergleichen wollen, kann uns ein parametrischer Test wie z.B. der t-Test Klarheit verschaffen. Wir verwenden die Programmfunktion <em>t.test()</em>.
 Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wörter aufweist (2,59 Silben pro Wort gegenüber 2,44 Silben pro Wort in “Tom Sawyer”) - wenn Anzahl distinktiver Wortformen verwendet.</p>
-<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="buchstaben-in-romanen.html#cb961-1" aria-hidden="true" tabindex="-1"></a>syls <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb961-2"><a href="buchstaben-in-romanen.html#cb961-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb961-3"><a href="buchstaben-in-romanen.html#cb961-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb961-4"><a href="buchstaben-in-romanen.html#cb961-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
-<span id="cb961-5"><a href="buchstaben-in-romanen.html#cb961-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb961-6"><a href="buchstaben-in-romanen.html#cb961-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(title, word, syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb961-7"><a href="buchstaben-in-romanen.html#cb961-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> title, <span class="at">values_from =</span> syllables)</span>
-<span id="cb961-8"><a href="buchstaben-in-romanen.html#cb961-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb961-9"><a href="buchstaben-in-romanen.html#cb961-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(syls<span class="sc">$</span>prozess, syls<span class="sc">$</span>tom) <span class="co"># significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="buchstaben-in-romanen.html#cb994-1" aria-hidden="true" tabindex="-1"></a>syls <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb994-2"><a href="buchstaben-in-romanen.html#cb994-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb994-3"><a href="buchstaben-in-romanen.html#cb994-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb994-4"><a href="buchstaben-in-romanen.html#cb994-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb994-5"><a href="buchstaben-in-romanen.html#cb994-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb994-6"><a href="buchstaben-in-romanen.html#cb994-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(title, word, syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb994-7"><a href="buchstaben-in-romanen.html#cb994-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> title, <span class="at">values_from =</span> syllables)</span>
+<span id="cb994-8"><a href="buchstaben-in-romanen.html#cb994-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb994-9"><a href="buchstaben-in-romanen.html#cb994-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(syls<span class="sc">$</span>prozess, syls<span class="sc">$</span>tom) <span class="co"># significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -757,7 +757,7 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ##  2.598953  2.440148</code></pre>
 <p>Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test ebenfalls einen signifikanten Unterschied zwischen den beiden Texten. Die durchschnittliche Anzahl der Wortsilben ist niedriger, da kürzere Wortformen (solche von Konjunktionen, Präpositionen, Artikeln und anderen Funktionswörtern) häufig vorkommen.</p>
 <p>Schnelle Form des t-Tests:</p>
-<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="buchstaben-in-romanen.html#cb963-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span></code></pre></div>
+<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="buchstaben-in-romanen.html#cb996-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -770,16 +770,16 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ## mean in group prozess     mean in group tom 
 ##              1.613350              1.561307</code></pre>
 <p>Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:</p>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="buchstaben-in-romanen.html#cb965-1" aria-hidden="true" tabindex="-1"></a>prozess_syl <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb965-2"><a href="buchstaben-in-romanen.html#cb965-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;prozess&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb965-3"><a href="buchstaben-in-romanen.html#cb965-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb965-4"><a href="buchstaben-in-romanen.html#cb965-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> syllables)</span>
-<span id="cb965-5"><a href="buchstaben-in-romanen.html#cb965-5" aria-hidden="true" tabindex="-1"></a>tom_syl <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb965-6"><a href="buchstaben-in-romanen.html#cb965-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;tom&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb965-7"><a href="buchstaben-in-romanen.html#cb965-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(syllables) <span class="sc">%&gt;%</span> </span>
-<span id="cb965-8"><a href="buchstaben-in-romanen.html#cb965-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> syllables)</span>
-<span id="cb965-9"><a href="buchstaben-in-romanen.html#cb965-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb965-10"><a href="buchstaben-in-romanen.html#cb965-10" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(prozess_syl, tom_syl) <span class="co"># significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="buchstaben-in-romanen.html#cb998-1" aria-hidden="true" tabindex="-1"></a>prozess_syl <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb998-2"><a href="buchstaben-in-romanen.html#cb998-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;prozess&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb998-3"><a href="buchstaben-in-romanen.html#cb998-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb998-4"><a href="buchstaben-in-romanen.html#cb998-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> syllables)</span>
+<span id="cb998-5"><a href="buchstaben-in-romanen.html#cb998-5" aria-hidden="true" tabindex="-1"></a>tom_syl <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb998-6"><a href="buchstaben-in-romanen.html#cb998-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;tom&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb998-7"><a href="buchstaben-in-romanen.html#cb998-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(syllables) <span class="sc">%&gt;%</span> </span>
+<span id="cb998-8"><a href="buchstaben-in-romanen.html#cb998-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> syllables)</span>
+<span id="cb998-9"><a href="buchstaben-in-romanen.html#cb998-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb998-10"><a href="buchstaben-in-romanen.html#cb998-10" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(prozess_syl, tom_syl) <span class="co"># significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -792,15 +792,15 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ## mean of x mean of y 
 ##  1.613350  1.561307</code></pre>
 <p>Der nächste t-Test bestätigt ebenfalls, dass “Der Prozess” im Durchschnitt längere Wörter aufweist (8,79 Buchstaben pro Wort gegenüber 8.36 Buchstaben pro Wort in “Tom Sawyer”.) Berücksichtigt wurden distinkte Wortformen (keine wiederholten Wortformen).</p>
-<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="buchstaben-in-romanen.html#cb967-1" aria-hidden="true" tabindex="-1"></a>lets <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb967-2"><a href="buchstaben-in-romanen.html#cb967-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb967-3"><a href="buchstaben-in-romanen.html#cb967-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb967-4"><a href="buchstaben-in-romanen.html#cb967-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
-<span id="cb967-5"><a href="buchstaben-in-romanen.html#cb967-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb967-6"><a href="buchstaben-in-romanen.html#cb967-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(title, word, letters) <span class="sc">%&gt;%</span> </span>
-<span id="cb967-7"><a href="buchstaben-in-romanen.html#cb967-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> title, <span class="at">values_from =</span> letters)</span>
-<span id="cb967-8"><a href="buchstaben-in-romanen.html#cb967-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb967-9"><a href="buchstaben-in-romanen.html#cb967-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(lets<span class="sc">$</span>prozess, lets<span class="sc">$</span>tom) <span class="co"># significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="buchstaben-in-romanen.html#cb1000-1" aria-hidden="true" tabindex="-1"></a>lets <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb1000-2"><a href="buchstaben-in-romanen.html#cb1000-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb1000-3"><a href="buchstaben-in-romanen.html#cb1000-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb1000-4"><a href="buchstaben-in-romanen.html#cb1000-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_count</span>(word) <span class="sc">%&gt;%</span> </span>
+<span id="cb1000-5"><a href="buchstaben-in-romanen.html#cb1000-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1000-6"><a href="buchstaben-in-romanen.html#cb1000-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(title, word, letters) <span class="sc">%&gt;%</span> </span>
+<span id="cb1000-7"><a href="buchstaben-in-romanen.html#cb1000-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> title, <span class="at">values_from =</span> letters)</span>
+<span id="cb1000-8"><a href="buchstaben-in-romanen.html#cb1000-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1000-9"><a href="buchstaben-in-romanen.html#cb1000-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(lets<span class="sc">$</span>prozess, lets<span class="sc">$</span>tom) <span class="co"># significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -814,7 +814,7 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ##  8.785878  8.363122</code></pre>
 <p>Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test wiederum einen signifikanten Unterschied zwischen den beiden Texten. Die durchschnittliche Anzahl der Buchstaben pro Wort ist niedriger, da kürzere Wortformen (solche von Konjunktionen, Präpositionen, Artikeln und anderen Funktionswörtern) häufig vorkommen.</p>
 <p>Schnelle Form des t-Tests:</p>
-<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="buchstaben-in-romanen.html#cb969-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(letters <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span></code></pre></div>
+<div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="buchstaben-in-romanen.html#cb1002-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(letters <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -827,16 +827,16 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ## mean in group prozess     mean in group tom 
 ##              5.048860              4.975304</code></pre>
 <p>Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:</p>
-<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="buchstaben-in-romanen.html#cb971-1" aria-hidden="true" tabindex="-1"></a>prozess_let <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb971-2"><a href="buchstaben-in-romanen.html#cb971-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;prozess&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb971-3"><a href="buchstaben-in-romanen.html#cb971-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(letters) <span class="sc">%&gt;%</span> </span>
-<span id="cb971-4"><a href="buchstaben-in-romanen.html#cb971-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> letters)</span>
-<span id="cb971-5"><a href="buchstaben-in-romanen.html#cb971-5" aria-hidden="true" tabindex="-1"></a>tom_let <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb971-6"><a href="buchstaben-in-romanen.html#cb971-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;tom&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb971-7"><a href="buchstaben-in-romanen.html#cb971-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(letters) <span class="sc">%&gt;%</span> </span>
-<span id="cb971-8"><a href="buchstaben-in-romanen.html#cb971-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> letters)</span>
-<span id="cb971-9"><a href="buchstaben-in-romanen.html#cb971-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb971-10"><a href="buchstaben-in-romanen.html#cb971-10" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(prozess_let, tom_let) <span class="co"># significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="buchstaben-in-romanen.html#cb1004-1" aria-hidden="true" tabindex="-1"></a>prozess_let <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-2"><a href="buchstaben-in-romanen.html#cb1004-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;prozess&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-3"><a href="buchstaben-in-romanen.html#cb1004-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(letters) <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-4"><a href="buchstaben-in-romanen.html#cb1004-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> letters)</span>
+<span id="cb1004-5"><a href="buchstaben-in-romanen.html#cb1004-5" aria-hidden="true" tabindex="-1"></a>tom_let <span class="ot">&lt;-</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-6"><a href="buchstaben-in-romanen.html#cb1004-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(title <span class="sc">==</span> <span class="st">&quot;tom&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-7"><a href="buchstaben-in-romanen.html#cb1004-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(letters) <span class="sc">%&gt;%</span> </span>
+<span id="cb1004-8"><a href="buchstaben-in-romanen.html#cb1004-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">prozess =</span> letters)</span>
+<span id="cb1004-9"><a href="buchstaben-in-romanen.html#cb1004-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1004-10"><a href="buchstaben-in-romanen.html#cb1004-10" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(prozess_let, tom_let) <span class="co"># significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -855,8 +855,8 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 <p>Hier folgt eine Demonstration anhand des bereits gehabten Datensatzes mit zwei Stichproben (Romanen).
 Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) ist bei zwei Stichproben gleich dem Mittelwert der ersten Stichprobe (title = “prozess”), d.h. 1,613350. Der geschätzte Mittelwert (Estimate) der zweiten Stichprobe (title = “tom”) ist um den Wert 0,052042 niedriger, d.h. 1,613350 - 0,052042 = 1,561308 (Dezimalkommas statt Dezimalpunkte!).</p>
 <p>Der R-Quadrat-Wert (R-squared) ist allerdings sehr klein, d.h. dass der Prädiktor “title” (Roman) nur einen Bruchteil der festgestellten Mittelwertvarianz (Veränderungen der Mittelwerte) zu erklären vermag. Möglicherweise gibt es andere Prädiktoren, die die Mittelwertvarianz besser erklären.</p>
-<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="buchstaben-in-romanen.html#cb973-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span>
-<span id="cb973-2"><a href="buchstaben-in-romanen.html#cb973-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="buchstaben-in-romanen.html#cb1006-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)</span>
+<span id="cb1006-2"><a href="buchstaben-in-romanen.html#cb1006-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = syllables ~ title, data = novels_words)
@@ -876,7 +876,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 ##   (1406 observations deleted due to missingness)
 ## Multiple R-squared:  0.00094,    Adjusted R-squared:  0.0009327 
 ## F-statistic: 129.3 on 1 and 137403 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="buchstaben-in-romanen.html#cb975-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="buchstaben-in-romanen.html#cb1008-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: syllables
@@ -886,38 +886,38 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Graphische Darstellung: der Mittelwertunterschied ist gering (nur 0,05 Silben), aber aufgrund der großen Stichproben statistisch signifikant. Der Faktor “title” erklärt nur einen verschwinded kleinen Bruchteil der Mittelwertunterschiede.</p>
-<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="buchstaben-in-romanen.html#cb977-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
+<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="buchstaben-in-romanen.html#cb1010-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## lattice theme set by effectsTheme()
 ## See ?effectsTheme for details.</code></pre>
-<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="buchstaben-in-romanen.html#cb980-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1013-1"><a href="buchstaben-in-romanen.html#cb1013-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
 <pre><code>##  model: syllables ~ title
 ## 
 ##  title effect
 ## title
 ##  prozess      tom 
 ## 1.613350 1.561307</code></pre>
-<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="buchstaben-in-romanen.html#cb982-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m))</span></code></pre></div>
+<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1015-1"><a href="buchstaben-in-romanen.html#cb1015-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m))</span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-33-1.svg" width="10" height="8" /></p>
 <p>Ergebnisse in Tabellenform:</p>
-<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb983-1"><a href="buchstaben-in-romanen.html#cb983-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)) <span class="sc">%&gt;%</span> </span>
-<span id="cb983-2"><a href="buchstaben-in-romanen.html#cb983-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="buchstaben-in-romanen.html#cb1016-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(syllables <span class="sc">~</span> title, <span class="at">data =</span> novels_words)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1016-2"><a href="buchstaben-in-romanen.html#cb1016-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"1.61334968","3":"0.003183071","4":"506.85317","5":"0.00000e+00"},{"1":"titletom","2":"-0.05204227","3":"0.004577133","4":"-11.37006","5":"6.07959e-30"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Boxplot mit Jitterplot anhand des vollen Datensatzes: der Mittelwert ist hier der Median <em>median()</em> (d.h. ein Wert, der genau in der Mitte jeder Stichprobe liegt), das arithmetische Mittel / der Durchschnitt wird hier mit einem roten Quadrat symbolisiert. Der Median liegt in beiden Stichproben beim Wert 1, also weit unter dem jeweiligen Durchschnittswert. Dies zeigt, dass die Wortlängen nicht normalverteilt sind. Der Jitterplot veranschaulicht, dass der “Prozess” über mehr Wortformen mit 6, 7 oder 8 Silben verfügt.</p>
-<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="buchstaben-in-romanen.html#cb984-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb984-2"><a href="buchstaben-in-romanen.html#cb984-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb984-3"><a href="buchstaben-in-romanen.html#cb984-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, syllables, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
-<span id="cb984-4"><a href="buchstaben-in-romanen.html#cb984-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>) <span class="sc">+</span></span>
-<span id="cb984-5"><a href="buchstaben-in-romanen.html#cb984-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb984-6"><a href="buchstaben-in-romanen.html#cb984-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">shape =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
-<span id="cb984-7"><a href="buchstaben-in-romanen.html#cb984-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb984-8"><a href="buchstaben-in-romanen.html#cb984-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb984-9"><a href="buchstaben-in-romanen.html#cb984-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb984-10"><a href="buchstaben-in-romanen.html#cb984-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Roman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1017-1"><a href="buchstaben-in-romanen.html#cb1017-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb1017-2"><a href="buchstaben-in-romanen.html#cb1017-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb1017-3"><a href="buchstaben-in-romanen.html#cb1017-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, syllables, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
+<span id="cb1017-4"><a href="buchstaben-in-romanen.html#cb1017-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1017-5"><a href="buchstaben-in-romanen.html#cb1017-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb1017-6"><a href="buchstaben-in-romanen.html#cb1017-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y=</span><span class="st">&quot;mean&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">shape =</span> <span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb1017-7"><a href="buchstaben-in-romanen.html#cb1017-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1017-8"><a href="buchstaben-in-romanen.html#cb1017-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1017-9"><a href="buchstaben-in-romanen.html#cb1017-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1017-10"><a href="buchstaben-in-romanen.html#cb1017-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Roman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
 <pre><code>## Warning: Removed 1406 rows containing non-finite values (stat_boxplot).</code></pre>
 <pre><code>## Warning: Removed 1406 rows containing non-finite values (stat_summary).</code></pre>
@@ -925,26 +925,26 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_segment).</code></pre>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-35-1.svg" width="10" height="8" /></p>
 <p>Boxplot anhand der zusammengefassten Daten (Durchschnitt, Standardabweichung):</p>
-<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="buchstaben-in-romanen.html#cb990-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
-<span id="cb990-2"><a href="buchstaben-in-romanen.html#cb990-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
-<span id="cb990-3"><a href="buchstaben-in-romanen.html#cb990-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb990-4"><a href="buchstaben-in-romanen.html#cb990-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb990-5"><a href="buchstaben-in-romanen.html#cb990-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb990-6"><a href="buchstaben-in-romanen.html#cb990-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb990-7"><a href="buchstaben-in-romanen.html#cb990-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb990-8"><a href="buchstaben-in-romanen.html#cb990-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, Avg_Silben, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
-<span id="cb990-9"><a href="buchstaben-in-romanen.html#cb990-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Avg_Silben <span class="sc">-</span> Stdev_Silben, <span class="at">ymax =</span> Avg_Silben <span class="sc">+</span> Stdev_Silben),</span>
-<span id="cb990-10"><a href="buchstaben-in-romanen.html#cb990-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb990-11"><a href="buchstaben-in-romanen.html#cb990-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb990-12"><a href="buchstaben-in-romanen.html#cb990-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="buchstaben-in-romanen.html#cb1023-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
+<span id="cb1023-2"><a href="buchstaben-in-romanen.html#cb1023-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
+<span id="cb1023-3"><a href="buchstaben-in-romanen.html#cb1023-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Avg_Silben =</span> <span class="fu">mean</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1023-4"><a href="buchstaben-in-romanen.html#cb1023-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Silben =</span> <span class="fu">sd</span>(syllables, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1023-5"><a href="buchstaben-in-romanen.html#cb1023-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Avg_Buchstaben =</span> <span class="fu">mean</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1023-6"><a href="buchstaben-in-romanen.html#cb1023-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Stdev_Buchstaben =</span> <span class="fu">sd</span>(letters, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1023-7"><a href="buchstaben-in-romanen.html#cb1023-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1023-8"><a href="buchstaben-in-romanen.html#cb1023-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, Avg_Silben, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
+<span id="cb1023-9"><a href="buchstaben-in-romanen.html#cb1023-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Avg_Silben <span class="sc">-</span> Stdev_Silben, <span class="at">ymax =</span> Avg_Silben <span class="sc">+</span> Stdev_Silben),</span>
+<span id="cb1023-10"><a href="buchstaben-in-romanen.html#cb1023-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1023-11"><a href="buchstaben-in-romanen.html#cb1023-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1023-12"><a href="buchstaben-in-romanen.html#cb1023-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-1.svg" width="10" height="8" /></p>
-<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="buchstaben-in-romanen.html#cb991-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
-<span id="cb991-2"><a href="buchstaben-in-romanen.html#cb991-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">lower =</span> Avg_Silben <span class="sc">-</span> Stdev_Silben, <span class="at">upper =</span> Avg_Silben <span class="sc">+</span> Stdev_Silben,</span>
-<span id="cb991-3"><a href="buchstaben-in-romanen.html#cb991-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">middle =</span> Avg_Silben,</span>
-<span id="cb991-4"><a href="buchstaben-in-romanen.html#cb991-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ymin =</span> Avg_Silben <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>Stdev_Silben, <span class="at">ymax =</span> Avg_Silben <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>Stdev_Silben),</span>
-<span id="cb991-5"><a href="buchstaben-in-romanen.html#cb991-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb991-6"><a href="buchstaben-in-romanen.html#cb991-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb991-7"><a href="buchstaben-in-romanen.html#cb991-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="buchstaben-in-romanen.html#cb1024-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, <span class="at">fill =</span> title, <span class="at">group =</span> title)) <span class="sc">+</span></span>
+<span id="cb1024-2"><a href="buchstaben-in-romanen.html#cb1024-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">lower =</span> Avg_Silben <span class="sc">-</span> Stdev_Silben, <span class="at">upper =</span> Avg_Silben <span class="sc">+</span> Stdev_Silben,</span>
+<span id="cb1024-3"><a href="buchstaben-in-romanen.html#cb1024-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">middle =</span> Avg_Silben,</span>
+<span id="cb1024-4"><a href="buchstaben-in-romanen.html#cb1024-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">ymin =</span> Avg_Silben <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span>Stdev_Silben, <span class="at">ymax =</span> Avg_Silben <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>Stdev_Silben),</span>
+<span id="cb1024-5"><a href="buchstaben-in-romanen.html#cb1024-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1024-6"><a href="buchstaben-in-romanen.html#cb1024-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1024-7"><a href="buchstaben-in-romanen.html#cb1024-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Mittlere Wortlänge (in Silben)&quot;</span>)</span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-36-2.svg" width="10" height="8" /></p>
 </div>
 </div>
@@ -952,26 +952,26 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <h2><span class="header-section-number">10.11</span> Quanteda-Funktionen</h2>
 <p>Eine alternative Berechnung der Anzahl der Buchstaben pro Wort mit <em>quanteda</em> (ohne t-Test).</p>
 <p>Die Durchschnittswerte, die uns quanteda liefert, sind etwas höher als die tidyverse-Werte. Aber auch hier ist der Mittelwert für den “Prozess” höher als für “Tom Sawyer”.</p>
-<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="buchstaben-in-romanen.html#cb992-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code></pre></div>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="buchstaben-in-romanen.html#cb1025-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code></pre></div>
 <pre><code>## Warning: package &#39;quanteda&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## Package version: 3.1.0
 ## Unicode version: 13.0
 ## ICU version: 69.1</code></pre>
 <pre><code>## Parallel computing: 12 of 12 threads used.</code></pre>
 <pre><code>## See https://quanteda.io for tutorials and examples.</code></pre>
-<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb997-1"><a href="buchstaben-in-romanen.html#cb997-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
-<span id="cb997-2"><a href="buchstaben-in-romanen.html#cb997-2" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">=</span> <span class="fu">corpus</span>(novels_txt)</span>
-<span id="cb997-3"><a href="buchstaben-in-romanen.html#cb997-3" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">=</span> <span class="fu">textstat_summary</span>(corp)</span>
-<span id="cb997-4"><a href="buchstaben-in-romanen.html#cb997-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb997-5"><a href="buchstaben-in-romanen.html#cb997-5" aria-hidden="true" tabindex="-1"></a>stats <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="buchstaben-in-romanen.html#cb1030-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb1030-2"><a href="buchstaben-in-romanen.html#cb1030-2" aria-hidden="true" tabindex="-1"></a>corp <span class="ot">=</span> <span class="fu">corpus</span>(novels_txt)</span>
+<span id="cb1030-3"><a href="buchstaben-in-romanen.html#cb1030-3" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">=</span> <span class="fu">textstat_summary</span>(corp)</span>
+<span id="cb1030-4"><a href="buchstaben-in-romanen.html#cb1030-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1030-5"><a href="buchstaben-in-romanen.html#cb1030-5" aria-hidden="true" tabindex="-1"></a>stats <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["document"],"name":[1],"type":["chr"],"align":["left"]},{"label":["chars"],"name":[2],"type":["int"],"align":["right"]},{"label":["sents"],"name":[3],"type":["int"],"align":["right"]},{"label":["tokens"],"name":[4],"type":["int"],"align":["right"]},{"label":["types"],"name":[5],"type":["int"],"align":["right"]},{"label":["puncts"],"name":[6],"type":["int"],"align":["right"]},{"label":["numbers"],"name":[7],"type":["int"],"align":["right"]},{"label":["symbols"],"name":[8],"type":["int"],"align":["right"]},{"label":["urls"],"name":[9],"type":["int"],"align":["right"]},{"label":["tags"],"name":[10],"type":["int"],"align":["right"]},{"label":["emojis"],"name":[11],"type":["int"],"align":["right"]}],"data":[{"1":"prozess.txt","2":"482722","3":"3845","4":"88010","5":"7907","6":"16380","7":"10","8":"0","9":"0","10":"0","11":"0","_rn_":"1"},{"1":"tom.txt","2":"460249","3":"4652","4":"85841","5":"9860","6":"18785","7":"9","8":"0","9":"0","10":"0","11":"0","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="buchstaben-in-romanen.html#cb998-1" aria-hidden="true" tabindex="-1"></a>stats <span class="sc">%&gt;%</span> </span>
-<span id="cb998-2"><a href="buchstaben-in-romanen.html#cb998-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(document) <span class="sc">%&gt;%</span> </span>
-<span id="cb998-3"><a href="buchstaben-in-romanen.html#cb998-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">buchstaben =</span> (chars<span class="sc">-</span>puncts)<span class="sc">/</span>tokens) <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1031-1"><a href="buchstaben-in-romanen.html#cb1031-1" aria-hidden="true" tabindex="-1"></a>stats <span class="sc">%&gt;%</span> </span>
+<span id="cb1031-2"><a href="buchstaben-in-romanen.html#cb1031-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(document) <span class="sc">%&gt;%</span> </span>
+<span id="cb1031-3"><a href="buchstaben-in-romanen.html#cb1031-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(<span class="at">buchstaben =</span> (chars<span class="sc">-</span>puncts)<span class="sc">/</span>tokens) <span class="sc">%&gt;%</span> <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["document"],"name":[1],"type":["chr"],"align":["left"]},{"label":["buchstaben"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"prozess.txt","2":"5.298739"},{"1":"tom.txt","2":"5.142811"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -984,18 +984,18 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <p>Welche Konsonantenverbindungen (Buchstabenverbindungen) kommen häufiger vor in den Texten?
 Wir zerlegen die Texte im Korpus in kleinere Einheiten (mittels <em>tokens</em>()), aber dieses Mal in alphanumerische Zeichen (Buchstaben).
 Anschließend wenden wir <em>char_ngrams()</em>-Funktion an, mit der man Verknüpfungen von Zeichen feststellen kann.</p>
-<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="buchstaben-in-romanen.html#cb999-1" aria-hidden="true" tabindex="-1"></a>tok_ch <span class="ot">=</span> <span class="fu">tokens</span>(corp, <span class="at">what =</span> <span class="st">&quot;character&quot;</span>, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_symbols =</span> T, <span class="at">remove_numbers =</span> T, <span class="at">remove_url =</span> T, <span class="at">remove_separators =</span> T)</span>
-<span id="cb999-2"><a href="buchstaben-in-romanen.html#cb999-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb999-3"><a href="buchstaben-in-romanen.html#cb999-3" aria-hidden="true" tabindex="-1"></a>ngrams_ch <span class="ot">=</span> <span class="fu">char_ngrams</span>(<span class="fu">as.character</span>(tok_ch), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">concatenator =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1032-1"><a href="buchstaben-in-romanen.html#cb1032-1" aria-hidden="true" tabindex="-1"></a>tok_ch <span class="ot">=</span> <span class="fu">tokens</span>(corp, <span class="at">what =</span> <span class="st">&quot;character&quot;</span>, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_symbols =</span> T, <span class="at">remove_numbers =</span> T, <span class="at">remove_url =</span> T, <span class="at">remove_separators =</span> T)</span>
+<span id="cb1032-2"><a href="buchstaben-in-romanen.html#cb1032-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1032-3"><a href="buchstaben-in-romanen.html#cb1032-3" aria-hidden="true" tabindex="-1"></a>ngrams_ch <span class="ot">=</span> <span class="fu">char_ngrams</span>(<span class="fu">as.character</span>(tok_ch), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">concatenator =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>Wir wandeln die ngram-Liste in einen Datensatz um (mittels <em>tibble()</em>), was das Zählen mit einer <em>tidyverse</em>-Funktion ermöglicht.</p>
-<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="buchstaben-in-romanen.html#cb1000-1" aria-hidden="true" tabindex="-1"></a>ngrams_char <span class="ot">=</span> ngrams_ch <span class="sc">%&gt;%</span> </span>
-<span id="cb1000-2"><a href="buchstaben-in-romanen.html#cb1000-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1000-3"><a href="buchstaben-in-romanen.html#cb1000-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">cluster =</span> value)</span>
-<span id="cb1000-4"><a href="buchstaben-in-romanen.html#cb1000-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1000-5"><a href="buchstaben-in-romanen.html#cb1000-5" aria-hidden="true" tabindex="-1"></a>ngrams_char <span class="sc">%&gt;%</span> </span>
-<span id="cb1000-6"><a href="buchstaben-in-romanen.html#cb1000-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cluster, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1000-7"><a href="buchstaben-in-romanen.html#cb1000-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1000-8"><a href="buchstaben-in-romanen.html#cb1000-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1033-1"><a href="buchstaben-in-romanen.html#cb1033-1" aria-hidden="true" tabindex="-1"></a>ngrams_char <span class="ot">=</span> ngrams_ch <span class="sc">%&gt;%</span> </span>
+<span id="cb1033-2"><a href="buchstaben-in-romanen.html#cb1033-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1033-3"><a href="buchstaben-in-romanen.html#cb1033-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">cluster =</span> value)</span>
+<span id="cb1033-4"><a href="buchstaben-in-romanen.html#cb1033-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1033-5"><a href="buchstaben-in-romanen.html#cb1033-5" aria-hidden="true" tabindex="-1"></a>ngrams_char <span class="sc">%&gt;%</span> </span>
+<span id="cb1033-6"><a href="buchstaben-in-romanen.html#cb1033-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cluster, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1033-7"><a href="buchstaben-in-romanen.html#cb1033-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1033-8"><a href="buchstaben-in-romanen.html#cb1033-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["cluster"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"en","2":"26084"},{"1":"er","2":"23737"},{"1":"ch","2":"22570"},{"1":"te","2":"15489"},{"1":"ei","2":"14106"},{"1":"nd","2":"12972"},{"1":"de","2":"12831"},{"1":"ie","2":"11753"},{"1":"in","2":"11525"},{"1":"ic","2":"10119"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1005,15 +1005,15 @@ Anschließend wenden wir <em>char_ngrams()</em>-Funktion an, mit der man Verknü
 </div>
 <div id="datensatz-variante" class="section level2" number="10.13">
 <h2><span class="header-section-number">10.13</span> Datensatz-Variante</h2>
-<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="buchstaben-in-romanen.html#cb1001-1" aria-hidden="true" tabindex="-1"></a>novels_words_char <span class="ot">&lt;-</span> novels <span class="sc">%&gt;%</span></span>
-<span id="cb1001-2"><a href="buchstaben-in-romanen.html#cb1001-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb1001-3"><a href="buchstaben-in-romanen.html#cb1001-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Silben =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(<span class="fu">as.character</span>(word), <span class="at">language =</span> <span class="st">&quot;en&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1001-4"><a href="buchstaben-in-romanen.html#cb1001-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(character, word, <span class="at">token =</span> <span class="st">&quot;characters&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span> </span>
-<span id="cb1001-5"><a href="buchstaben-in-romanen.html#cb1001-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>))</span>
-<span id="cb1001-6"><a href="buchstaben-in-romanen.html#cb1001-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1001-7"><a href="buchstaben-in-romanen.html#cb1001-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_words_char) <span class="sc">%&gt;%</span> </span>
-<span id="cb1001-8"><a href="buchstaben-in-romanen.html#cb1001-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1001-9"><a href="buchstaben-in-romanen.html#cb1001-9" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="buchstaben-in-romanen.html#cb1034-1" aria-hidden="true" tabindex="-1"></a>novels_words_char <span class="ot">&lt;-</span> novels <span class="sc">%&gt;%</span></span>
+<span id="cb1034-2"><a href="buchstaben-in-romanen.html#cb1034-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-3"><a href="buchstaben-in-romanen.html#cb1034-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Silben =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(<span class="fu">as.character</span>(word), <span class="at">language =</span> <span class="st">&quot;en&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-4"><a href="buchstaben-in-romanen.html#cb1034-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(character, word, <span class="at">token =</span> <span class="st">&quot;characters&quot;</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-5"><a href="buchstaben-in-romanen.html#cb1034-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">buchstabe =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(character, vokale), <span class="st">&quot;Vokal&quot;</span>, <span class="st">&quot;Konsonant&quot;</span>))</span>
+<span id="cb1034-6"><a href="buchstaben-in-romanen.html#cb1034-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1034-7"><a href="buchstaben-in-romanen.html#cb1034-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(novels_words_char) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-8"><a href="buchstaben-in-romanen.html#cb1034-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1034-9"><a href="buchstaben-in-romanen.html#cb1034-9" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["doc_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["title"],"name":[2],"type":["chr"],"align":["left"]},{"label":["word"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Silben"],"name":[4],"type":["int"],"align":["right"]},{"label":["character"],"name":[5],"type":["chr"],"align":["left"]},{"label":["buchstabe"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"prozess.txt","2":"prozess","3":"der","4":"1","5":"d","6":"Konsonant","_rn_":"1"},{"1":"prozess.txt","2":"prozess","3":"der","4":"1","5":"e","6":"Vokal","_rn_":"2"},{"1":"prozess.txt","2":"prozess","3":"der","4":"1","5":"r","6":"Konsonant","_rn_":"3"},{"1":"prozess.txt","2":"prozess","3":"prozess","4":"2","5":"p","6":"Konsonant","_rn_":"4"},{"1":"prozess.txt","2":"prozess","3":"prozess","4":"2","5":"r","6":"Konsonant","_rn_":"5"},{"1":"prozess.txt","2":"prozess","3":"prozess","4":"2","5":"o","6":"Vokal","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}

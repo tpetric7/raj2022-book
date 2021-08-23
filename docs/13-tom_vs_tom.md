@@ -824,7 +824,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-08-20 11:59:03 Annotating text fragment 1/1
+## 2021-08-23 16:45:10 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -937,7 +937,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-08-20 12:00:51 Annotating text fragment 1/1
+## 2021-08-23 16:46:46 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:

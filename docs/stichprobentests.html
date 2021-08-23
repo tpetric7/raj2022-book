@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-20" />
+<meta name="date" content="2021-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1531,6 +1531,106 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <img src="figure/unnamed-chunk-1-2.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="stichprobentests.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by &#39;parameters&#39;:
+##   method                           from      
+##   as.double.parameters_kurtosis    datawizard
+##   as.double.parameters_skewness    datawizard
+##   as.double.parameters_smoothness  datawizard
+##   as.numeric.parameters_kurtosis   datawizard
+##   as.numeric.parameters_skewness   datawizard
+##   as.numeric.parameters_smoothness datawizard
+##   print.parameters_distribution    datawizard
+##   print.parameters_kurtosis        datawizard
+##   print.parameters_skewness        datawizard
+##   summary.parameters_kurtosis      datawizard
+##   summary.parameters_skewness      datawizard</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="stichprobentests.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)</span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;see&#39;:
+##   method                    from      
+##   plot.visualisation_recipe datawizard</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="stichprobentests.html#cb158-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">plot</span>(<span class="fu">parameters</span>(m)) <span class="sc">+</span></span>
+<span id="cb158-2"><a href="stichprobentests.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A Dot-and-Whisker Plot&quot;</span>)</span>
+<span id="cb158-3"><a href="stichprobentests.html#cb158-3" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="stichprobentests.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb159-2"><a href="stichprobentests.html#cb159-2" aria-hidden="true" tabindex="-1"></a>check <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(m)</span></code></pre></div>
+<pre><code>## OK: residuals appear as normally distributed (p = 0.396).</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="stichprobentests.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Non-normality of residuals detected (p = 0.016).</span></span>
+<span id="cb161-2"><a href="stichprobentests.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-3"><a href="stichprobentests.html#cb161-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">plot</span>(check, <span class="at">type =</span> <span class="st">&quot;qq&quot;</span>)</span>
+<span id="cb161-4"><a href="stichprobentests.html#cb161-4" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="stichprobentests.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb162-2"><a href="stichprobentests.html#cb162-2" aria-hidden="true" tabindex="-1"></a>check <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(m, <span class="at">effects =</span> <span class="st">&quot;fixed&quot;</span>)</span></code></pre></div>
+<pre><code>## OK: residuals appear as normally distributed (p = 0.396).</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="stichprobentests.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Non-normality of residuals detected (p = 0.016).</span></span>
+<span id="cb164-2"><a href="stichprobentests.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="stichprobentests.html#cb164-3" aria-hidden="true" tabindex="-1"></a>p2a <span class="ot">=</span> <span class="fu">plot</span>(check, <span class="at">type =</span> <span class="st">&quot;pp&quot;</span>)</span>
+<span id="cb164-4"><a href="stichprobentests.html#cb164-4" aria-hidden="true" tabindex="-1"></a>p2a</span></code></pre></div>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-22-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="stichprobentests.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span>
+<span id="cb165-2"><a href="stichprobentests.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)</span>
+<span id="cb165-3"><a href="stichprobentests.html#cb165-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-4"><a href="stichprobentests.html#cb165-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">aov</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, <span class="at">data =</span> politeness)</span>
+<span id="cb165-5"><a href="stichprobentests.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-6"><a href="stichprobentests.html#cb165-6" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">=</span> <span class="fu">plot</span>(<span class="fu">omega_squared</span>(m))</span>
+<span id="cb165-7"><a href="stichprobentests.html#cb165-7" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-23-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="stichprobentests.html#cb166-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb166-2"><a href="stichprobentests.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>() <span class="sc">+</span></span>
+<span id="cb166-3"><a href="stichprobentests.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_modern</span>()</span>
+<span id="cb166-4"><a href="stichprobentests.html#cb166-4" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-24-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="stichprobentests.html#cb168-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, </span>
+<span id="cb168-2"><a href="stichprobentests.html#cb168-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb168-3"><a href="stichprobentests.html#cb168-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb168-4"><a href="stichprobentests.html#cb168-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_modern</span>(<span class="at">axis.text.angle =</span> <span class="dv">45</span>) <span class="sc">+</span></span>
+<span id="cb168-5"><a href="stichprobentests.html#cb168-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_material_d</span>(<span class="at">palette =</span> <span class="st">&quot;ice&quot;</span>)</span>
+<span id="cb168-6"><a href="stichprobentests.html#cb168-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-7"><a href="stichprobentests.html#cb168-7" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_ydensity).</code></pre>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="stichprobentests.html#cb170-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, </span>
+<span id="cb170-2"><a href="stichprobentests.html#cb170-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb170-3"><a href="stichprobentests.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violindot</span>(<span class="at">fill_dots =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb170-4"><a href="stichprobentests.html#cb170-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.05</span>) <span class="sc">+</span></span>
+<span id="cb170-5"><a href="stichprobentests.html#cb170-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_modern</span>() <span class="sc">+</span></span>
+<span id="cb170-6"><a href="stichprobentests.html#cb170-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_material_d</span>()</span>
+<span id="cb170-7"><a href="stichprobentests.html#cb170-7" aria-hidden="true" tabindex="-1"></a>p5</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_ydensity).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_bindot).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="stichprobentests.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plots</span>(p1,p2,p3,p4, </span>
+<span id="cb174-2"><a href="stichprobentests.html#cb174-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">n_columns =</span> <span class="dv">2</span>, </span>
+<span id="cb174-3"><a href="stichprobentests.html#cb174-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">tags =</span> <span class="fu">paste0</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_ydensity).</code></pre>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="stichprobentests.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayestestR)</span>
+<span id="cb176-2"><a href="stichprobentests.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)</span></code></pre></div>
+<pre><code>## Loading required package: Rcpp</code></pre>
+<pre><code>## This is rstanarm version 2.21.1</code></pre>
+<pre><code>## - See https://mc-stan.org/rstanarm/articles/priors for changes to default priors!</code></pre>
+<pre><code>## - Default priors may change, so it&#39;s safest to specify priors, even if equivalent to the defaults.</code></pre>
+<pre><code>## - For execution on a local, multicore CPU with excess RAM we recommend calling</code></pre>
+<pre><code>##   options(mc.cores = parallel::detectCores())</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rstanarm&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:performance&#39;:
+## 
+##     pp_check</code></pre>
+<pre><code>## The following object is masked from &#39;package:parameters&#39;:
+## 
+##     compare_models</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="stichprobentests.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)</span>
+<span id="cb186-2"><a href="stichprobentests.html#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-3"><a href="stichprobentests.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb186-4"><a href="stichprobentests.html#cb186-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">stan_glm</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, <span class="at">data =</span> politeness, <span class="at">refresh =</span> <span class="dv">0</span>)</span>
+<span id="cb186-5"><a href="stichprobentests.html#cb186-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">hdi</span>(m, <span class="at">ci =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.89</span>, <span class="fl">0.95</span>))</span>
+<span id="cb186-6"><a href="stichprobentests.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result)</span></code></pre></div>
+<p><img src="08-politeness_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
 </div>
 <div id="schluss" class="section level4" number="3.2.2.6">
 <h4><span class="header-section-number">3.2.2.6</span> Schluss</h4>
@@ -1541,7 +1641,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <h4><span class="header-section-number">3.2.2.7</span> Lineare Regression</h4>
 <p>Politeness data (B. Winter tutorial)</p>
 <p>Programme laden</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="stichprobentests.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="stichprobentests.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
 ## v tibble  3.1.3     v dplyr   1.0.7
@@ -1552,11 +1652,11 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>Datei laden</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="stichprobentests.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD</span></span>
-<span id="cb159-2"><a href="stichprobentests.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>)) <span class="co"># clear memory</span></span>
-<span id="cb159-3"><a href="stichprobentests.html#cb159-3" aria-hidden="true" tabindex="-1"></a>polite <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/politeness_data.csv&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="stichprobentests.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOAD</span></span>
+<span id="cb192-2"><a href="stichprobentests.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>)) <span class="co"># clear memory</span></span>
+<span id="cb192-3"><a href="stichprobentests.html#cb192-3" aria-hidden="true" tabindex="-1"></a>polite <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/politeness_data.csv&quot;</span>, <span class="at">dec=</span><span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <p>Ansicht der Datenlage</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="stichprobentests.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(polite)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="stichprobentests.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(polite)</span></code></pre></div>
 <pre><code>##   subject gender scenario attitude frequency
 ## 1      F1      F        1      pol     213.3
 ## 2      F1      F        1      inf     204.5
@@ -1565,66 +1665,66 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## 5      F1      F        3      pol     203.9
 ## 6      F1      F        3      inf     286.9</code></pre>
 <p>Variablen festlegen</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="stichprobentests.html#cb162-1" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>frequency <span class="ot">=</span> <span class="fu">as.numeric</span>(polite<span class="sc">$</span>frequency)</span>
-<span id="cb162-2"><a href="stichprobentests.html#cb162-2" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>scenario <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>scenario)</span>
-<span id="cb162-3"><a href="stichprobentests.html#cb162-3" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>subject <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>subject)</span>
-<span id="cb162-4"><a href="stichprobentests.html#cb162-4" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>gender <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>gender)</span>
-<span id="cb162-5"><a href="stichprobentests.html#cb162-5" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>attitude <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>attitude)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="stichprobentests.html#cb195-1" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>frequency <span class="ot">=</span> <span class="fu">as.numeric</span>(polite<span class="sc">$</span>frequency)</span>
+<span id="cb195-2"><a href="stichprobentests.html#cb195-2" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>scenario <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>scenario)</span>
+<span id="cb195-3"><a href="stichprobentests.html#cb195-3" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>subject <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>subject)</span>
+<span id="cb195-4"><a href="stichprobentests.html#cb195-4" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>gender <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>gender)</span>
+<span id="cb195-5"><a href="stichprobentests.html#cb195-5" aria-hidden="true" tabindex="-1"></a>polite<span class="sc">$</span>attitude <span class="ot">=</span> <span class="fu">as.factor</span>(polite<span class="sc">$</span>attitude)</span></code></pre></div>
 <p>Kontraste für den statistischen Test setzen</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="stichprobentests.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In this session we use contr. sum contrasts</span></span>
-<span id="cb163-2"><a href="stichprobentests.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">&#39;contr.sum&#39;</span>, <span class="st">&#39;contr.poly&#39;</span>))</span>
-<span id="cb163-3"><a href="stichprobentests.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;contrasts&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="stichprobentests.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In this session we use contr. sum contrasts</span></span>
+<span id="cb196-2"><a href="stichprobentests.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">&#39;contr.sum&#39;</span>, <span class="st">&#39;contr.poly&#39;</span>))</span>
+<span id="cb196-3"><a href="stichprobentests.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;contrasts&quot;</span>)</span></code></pre></div>
 <pre><code>## $contrasts
 ## [1] &quot;contr.sum&quot;  &quot;contr.poly&quot;</code></pre>
 <p>Kontraste zurücksetzen</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="stichprobentests.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To reset default settings run: </span></span>
-<span id="cb165-2"><a href="stichprobentests.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">&#39;contr.treatment&#39;</span>, <span class="st">&#39;contr.poly&#39;</span>)) </span>
-<span id="cb165-3"><a href="stichprobentests.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (all afex functions should be unaffected by this)</span></span>
-<span id="cb165-4"><a href="stichprobentests.html#cb165-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-5"><a href="stichprobentests.html#cb165-5" aria-hidden="true" tabindex="-1"></a><span class="co"># # Setting contrasts of chosen variables only</span></span>
-<span id="cb165-6"><a href="stichprobentests.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co"># contrasts(polite$attitude) &lt;- contr.treatment(2, base = 1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="stichprobentests.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To reset default settings run: </span></span>
+<span id="cb198-2"><a href="stichprobentests.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">contrasts=</span><span class="fu">c</span>(<span class="st">&#39;contr.treatment&#39;</span>, <span class="st">&#39;contr.poly&#39;</span>)) </span>
+<span id="cb198-3"><a href="stichprobentests.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (all afex functions should be unaffected by this)</span></span>
+<span id="cb198-4"><a href="stichprobentests.html#cb198-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-5"><a href="stichprobentests.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="co"># # Setting contrasts of chosen variables only</span></span>
+<span id="cb198-6"><a href="stichprobentests.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="co"># contrasts(polite$attitude) &lt;- contr.treatment(2, base = 1)</span></span></code></pre></div>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-1.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="stichprobentests.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
-<span id="cb166-2"><a href="stichprobentests.html#cb166-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="stichprobentests.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
+<span id="cb199-2"><a href="stichprobentests.html#cb199-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
 <p>Bild speichern</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="stichprobentests.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
-<span id="cb167-2"><a href="stichprobentests.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_boxplot.jpg&quot;</span>, </span>
-<span id="cb167-3"><a href="stichprobentests.html#cb167-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
-<span id="cb167-4"><a href="stichprobentests.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
-<span id="cb167-5"><a href="stichprobentests.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
-<span id="cb167-6"><a href="stichprobentests.html#cb167-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
-<span id="cb167-7"><a href="stichprobentests.html#cb167-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
-<span id="cb167-8"><a href="stichprobentests.html#cb167-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="stichprobentests.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
+<span id="cb200-2"><a href="stichprobentests.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_boxplot.jpg&quot;</span>, </span>
+<span id="cb200-3"><a href="stichprobentests.html#cb200-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
+<span id="cb200-4"><a href="stichprobentests.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
+<span id="cb200-5"><a href="stichprobentests.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
+<span id="cb200-6"><a href="stichprobentests.html#cb200-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
+<span id="cb200-7"><a href="stichprobentests.html#cb200-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
+<span id="cb200-8"><a href="stichprobentests.html#cb200-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## svg 
 ##   2</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="stichprobentests.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
-<span id="cb169-2"><a href="stichprobentests.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_boxplot.pdf&quot;</span>) </span>
-<span id="cb169-3"><a href="stichprobentests.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a plot</span></span>
-<span id="cb169-4"><a href="stichprobentests.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
-<span id="cb169-5"><a href="stichprobentests.html#cb169-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
-<span id="cb169-6"><a href="stichprobentests.html#cb169-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
-<span id="cb169-7"><a href="stichprobentests.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="stichprobentests.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
+<span id="cb202-2"><a href="stichprobentests.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_boxplot.pdf&quot;</span>) </span>
+<span id="cb202-3"><a href="stichprobentests.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a plot</span></span>
+<span id="cb202-4"><a href="stichprobentests.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
+<span id="cb202-5"><a href="stichprobentests.html#cb202-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite) </span>
+<span id="cb202-6"><a href="stichprobentests.html#cb202-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
+<span id="cb202-7"><a href="stichprobentests.html#cb202-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <pre><code>## svg 
 ##   2</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="stichprobentests.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect relationships between pairs of variables</span></span>
-<span id="cb171-2"><a href="stichprobentests.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MASS)</span></span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="stichprobentests.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect relationships between pairs of variables</span></span>
+<span id="cb204-2"><a href="stichprobentests.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="co"># library(MASS)</span></span></code></pre></div>
 <p>Inspect relationships between pairs of variables</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="stichprobentests.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="stichprobentests.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;psych&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:ggplot2&#39;:
 ## 
 ##     %+%, alpha</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="stichprobentests.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(polite[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="stichprobentests.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(polite[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>)])</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
 <p>Ordinary Least Squares Regression (OLS)</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="stichprobentests.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 1</span></span>
-<span id="cb176-2"><a href="stichprobentests.html#cb176-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> subject <span class="sc">+</span> scenario, <span class="at">data =</span> polite)</span>
-<span id="cb176-3"><a href="stichprobentests.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="stichprobentests.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 1</span></span>
+<span id="cb209-2"><a href="stichprobentests.html#cb209-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> subject <span class="sc">+</span> scenario, <span class="at">data =</span> polite)</span>
+<span id="cb209-3"><a href="stichprobentests.html#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = frequency ~ gender + attitude + subject + scenario, 
@@ -1657,9 +1757,9 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##   (1 observation deleted due to missingness)
 ## Multiple R-squared:  0.8716, Adjusted R-squared:  0.8496 
 ## F-statistic: 39.61 on 12 and 70 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="stichprobentests.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 2</span></span>
-<span id="cb178-2"><a href="stichprobentests.html#cb178-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude, <span class="at">data=</span>polite)</span>
-<span id="cb178-3"><a href="stichprobentests.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="stichprobentests.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 2</span></span>
+<span id="cb211-2"><a href="stichprobentests.html#cb211-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude, <span class="at">data=</span>polite)</span>
+<span id="cb211-3"><a href="stichprobentests.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = frequency ~ gender + attitude, data = polite)
@@ -1680,11 +1780,11 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##   (1 observation deleted due to missingness)
 ## Multiple R-squared:  0.7109, Adjusted R-squared:  0.7037 
 ## F-statistic: 98.38 on 2 and 80 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="stichprobentests.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="stichprobentests.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
 <pre><code>## lattice theme set by effectsTheme()
 ## See ?effectsTheme for details.</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="stichprobentests.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="stichprobentests.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
 <pre><code>##  model: frequency ~ gender + attitude
 ## 
 ##  gender effect
@@ -1696,25 +1796,25 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitude
 ##      inf      pol 
 ## 203.2408 183.6875</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="stichprobentests.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="stichprobentests.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-15-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-2.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="stichprobentests.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
-<span id="cb186-2"><a href="stichprobentests.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
-<span id="cb186-3"><a href="stichprobentests.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_lineplot.jpg&quot;</span>, </span>
-<span id="cb186-4"><a href="stichprobentests.html#cb186-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
-<span id="cb186-5"><a href="stichprobentests.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
-<span id="cb186-6"><a href="stichprobentests.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
-<span id="cb186-7"><a href="stichprobentests.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
-<span id="cb186-8"><a href="stichprobentests.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="stichprobentests.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
+<span id="cb219-2"><a href="stichprobentests.html#cb219-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
+<span id="cb219-3"><a href="stichprobentests.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_lineplot.jpg&quot;</span>, </span>
+<span id="cb219-4"><a href="stichprobentests.html#cb219-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
+<span id="cb219-5"><a href="stichprobentests.html#cb219-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
+<span id="cb219-6"><a href="stichprobentests.html#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
+<span id="cb219-7"><a href="stichprobentests.html#cb219-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
+<span id="cb219-8"><a href="stichprobentests.html#cb219-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## svg 
 ##   2</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="stichprobentests.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 3 (with interaction)</span></span>
-<span id="cb188-2"><a href="stichprobentests.html#cb188-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude, <span class="at">data=</span>polite)</span>
-<span id="cb188-3"><a href="stichprobentests.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="stichprobentests.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 3 (with interaction)</span></span>
+<span id="cb221-2"><a href="stichprobentests.html#cb221-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude, <span class="at">data=</span>polite)</span>
+<span id="cb221-3"><a href="stichprobentests.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = frequency ~ gender * attitude, data = polite)
@@ -1736,8 +1836,8 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##   (1 observation deleted due to missingness)
 ## Multiple R-squared:  0.7147, Adjusted R-squared:  0.7038 
 ## F-statistic: 65.95 on 3 and 79 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="stichprobentests.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb190-2"><a href="stichprobentests.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="stichprobentests.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb223-2"><a href="stichprobentests.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
 <pre><code>##  model: frequency ~ gender * attitude
 ## 
 ##  gender*attitude effect
@@ -1745,59 +1845,59 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## gender      inf      pol
 ##      F 260.6857 233.2857
 ##      M 144.4905 132.9800</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="stichprobentests.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="stichprobentests.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-3.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="stichprobentests.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
-<span id="cb193-2"><a href="stichprobentests.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
-<span id="cb193-3"><a href="stichprobentests.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_effects.jpg&quot;</span>, </span>
-<span id="cb193-4"><a href="stichprobentests.html#cb193-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
-<span id="cb193-5"><a href="stichprobentests.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
-<span id="cb193-6"><a href="stichprobentests.html#cb193-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
-<span id="cb193-7"><a href="stichprobentests.html#cb193-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
-<span id="cb193-8"><a href="stichprobentests.html#cb193-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="stichprobentests.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
+<span id="cb226-2"><a href="stichprobentests.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
+<span id="cb226-3"><a href="stichprobentests.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="fu">jpeg</span>(<span class="st">&quot;pictures/politeness_effects.jpg&quot;</span>, </span>
+<span id="cb226-4"><a href="stichprobentests.html#cb226-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">width =</span> <span class="dv">840</span>, <span class="at">height =</span> <span class="dv">535</span>)</span>
+<span id="cb226-5"><a href="stichprobentests.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create the plot</span></span>
+<span id="cb226-6"><a href="stichprobentests.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
+<span id="cb226-7"><a href="stichprobentests.html#cb226-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Close the file</span></span>
+<span id="cb226-8"><a href="stichprobentests.html#cb226-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## svg 
 ##   2</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="stichprobentests.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
-<span id="cb195-2"><a href="stichprobentests.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_effects.pdf&quot;</span>) </span>
-<span id="cb195-3"><a href="stichprobentests.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a plot</span></span>
-<span id="cb195-4"><a href="stichprobentests.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
-<span id="cb195-5"><a href="stichprobentests.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
-<span id="cb195-6"><a href="stichprobentests.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="stichprobentests.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a pdf file</span></span>
+<span id="cb228-2"><a href="stichprobentests.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&quot;pictures/politeness_effects.pdf&quot;</span>) </span>
+<span id="cb228-3"><a href="stichprobentests.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create a plot</span></span>
+<span id="cb228-4"><a href="stichprobentests.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span>
+<span id="cb228-5"><a href="stichprobentests.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the pdf file</span></span>
+<span id="cb228-6"><a href="stichprobentests.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() </span></code></pre></div>
 <pre><code>## svg 
 ##   2</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="stichprobentests.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot diagnostic diagrams</span></span>
-<span id="cb197-2"><a href="stichprobentests.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb197-3"><a href="stichprobentests.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">1</span>) <span class="co"># variance of residuals vs. fitted values?</span></span>
-<span id="cb197-4"><a href="stichprobentests.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">2</span>) <span class="co"># normal distributed residuals?</span></span>
-<span id="cb197-5"><a href="stichprobentests.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">3</span>) <span class="co"># variance of residuals standardized</span></span>
-<span id="cb197-6"><a href="stichprobentests.html#cb197-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">4</span>) <span class="co"># Cook&#39;s distance (outliers / influencing data points?)</span></span>
-<span id="cb197-7"><a href="stichprobentests.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">5</span>) <span class="co"># Leverage vs. standardized variance of residuals</span></span>
-<span id="cb197-8"><a href="stichprobentests.html#cb197-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">6</span>) <span class="co"># Cook&#39;s distance vs. Leverage</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="stichprobentests.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot diagnostic diagrams</span></span>
+<span id="cb230-2"><a href="stichprobentests.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb230-3"><a href="stichprobentests.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">1</span>) <span class="co"># variance of residuals vs. fitted values?</span></span>
+<span id="cb230-4"><a href="stichprobentests.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">2</span>) <span class="co"># normal distributed residuals?</span></span>
+<span id="cb230-5"><a href="stichprobentests.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">3</span>) <span class="co"># variance of residuals standardized</span></span>
+<span id="cb230-6"><a href="stichprobentests.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">4</span>) <span class="co"># Cook&#39;s distance (outliers / influencing data points?)</span></span>
+<span id="cb230-7"><a href="stichprobentests.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">5</span>) <span class="co"># Leverage vs. standardized variance of residuals</span></span>
+<span id="cb230-8"><a href="stichprobentests.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">6</span>) <span class="co"># Cook&#39;s distance vs. Leverage</span></span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-22-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="stichprobentests.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="stichprobentests.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-4.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="stichprobentests.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change of estimates if one datapoint is removed from the model</span></span>
-<span id="cb199-2"><a href="stichprobentests.html#cb199-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dfbetas</span>(m)</span>
-<span id="cb199-3"><a href="stichprobentests.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d) <span class="sc">%&gt;%</span> as.data.frame <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="stichprobentests.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change of estimates if one datapoint is removed from the model</span></span>
+<span id="cb232-2"><a href="stichprobentests.html#cb232-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">dfbetas</span>(m)</span>
+<span id="cb232-3"><a href="stichprobentests.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d) <span class="sc">%&gt;%</span> as.data.frame <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["(Intercept)"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["genderM"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["attitudepol"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["genderM:attitudepol"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"4.628647e-16","2":"-4.518405e-16","3":"-0.090392640","4":"0.063521473","_rn_":"1"},{"1":"-3.646937e-01","2":"2.578774e-01","3":"0.257877355","4":"-0.181217733","_rn_":"2"},{"1":"6.358180e-17","2":"-2.139049e-16","3":"0.237209532","4":"-0.166693867","_rn_":"3"},{"1":"-6.291782e-03","2":"4.448962e-03","3":"0.004448962","4":"-0.003126412","_rn_":"4"},{"1":"6.068721e-17","2":"-1.784827e-17","3":"-0.133232266","4":"0.093626093","_rn_":"5"},{"1":"1.679279e-01","2":"-1.187430e-01","3":"-0.118742974","4":"0.083444057","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="stichprobentests.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the dfbetas (are there any outliers or data points with high influence?)</span></span>
-<span id="cb200-2"><a href="stichprobentests.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb200-3"><a href="stichprobentests.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>)</span>
-<span id="cb200-4"><a href="stichprobentests.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb200-5"><a href="stichprobentests.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">3</span>], <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="stichprobentests.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the dfbetas (are there any outliers or data points with high influence?)</span></span>
+<span id="cb233-2"><a href="stichprobentests.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb233-3"><a href="stichprobentests.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>)</span>
+<span id="cb233-4"><a href="stichprobentests.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb233-5"><a href="stichprobentests.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">3</span>], <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-24-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="stichprobentests.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="stichprobentests.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-5.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
@@ -1806,14 +1906,14 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 <div id="regression-mit-gemischten-effekten" class="section level4" number="3.2.2.8">
 <h4><span class="header-section-number">3.2.2.8</span> Regression mit gemischten Effekten</h4>
 <p>(Mixed effects Regression)</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="stichprobentests.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The variables &#39;subject&#39; and &#39;scenario&#39; have been chosen as random effects</span></span>
-<span id="cb202-2"><a href="stichprobentests.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span></code></pre></div>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="stichprobentests.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random intercepts model</span></span>
-<span id="cb203-2"><a href="stichprobentests.html#cb203-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> </span>
-<span id="cb203-3"><a href="stichprobentests.html#cb203-3" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb203-4"><a href="stichprobentests.html#cb203-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
-<span id="cb203-5"><a href="stichprobentests.html#cb203-5" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> m</span>
-<span id="cb203-6"><a href="stichprobentests.html#cb203-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="stichprobentests.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The variables &#39;subject&#39; and &#39;scenario&#39; have been chosen as random effects</span></span>
+<span id="cb235-2"><a href="stichprobentests.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(afex)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="stichprobentests.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># random intercepts model</span></span>
+<span id="cb236-2"><a href="stichprobentests.html#cb236-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> </span>
+<span id="cb236-3"><a href="stichprobentests.html#cb236-3" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb236-4"><a href="stichprobentests.html#cb236-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
+<span id="cb236-5"><a href="stichprobentests.html#cb236-5" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> m</span>
+<span id="cb236-6"><a href="stichprobentests.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: frequency ~ gender + (1 | subject) + (1 | scenario)
@@ -1843,11 +1943,11 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## Correlation of Fixed Effects:
 ##         (Intr)
 ## genderM -0.651</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="stichprobentests.html#cb205-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb205-2"><a href="stichprobentests.html#cb205-2" aria-hidden="true" tabindex="-1"></a>          (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb205-3"><a href="stichprobentests.html#cb205-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
-<span id="cb205-4"><a href="stichprobentests.html#cb205-4" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> m</span>
-<span id="cb205-5"><a href="stichprobentests.html#cb205-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="stichprobentests.html#cb238-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb238-2"><a href="stichprobentests.html#cb238-2" aria-hidden="true" tabindex="-1"></a>          (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb238-3"><a href="stichprobentests.html#cb238-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
+<span id="cb238-4"><a href="stichprobentests.html#cb238-4" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> m</span>
+<span id="cb238-5"><a href="stichprobentests.html#cb238-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: frequency ~ gender + attitude + (1 | subject) + (1 | scenario)
@@ -1879,11 +1979,11 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ##             (Intr) gendrM
 ## genderM     -0.635       
 ## attitudepol -0.201  0.004</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="stichprobentests.html#cb207-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude <span class="sc">+</span> </span>
-<span id="cb207-2"><a href="stichprobentests.html#cb207-2" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb207-3"><a href="stichprobentests.html#cb207-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
-<span id="cb207-4"><a href="stichprobentests.html#cb207-4" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> m</span>
-<span id="cb207-5"><a href="stichprobentests.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="stichprobentests.html#cb240-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude <span class="sc">+</span> </span>
+<span id="cb240-2"><a href="stichprobentests.html#cb240-2" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb240-3"><a href="stichprobentests.html#cb240-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span>
+<span id="cb240-4"><a href="stichprobentests.html#cb240-4" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> m</span>
+<span id="cb240-5"><a href="stichprobentests.html#cb240-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: frequency ~ gender * attitude + (1 | subject) + (1 | scenario)
@@ -1918,7 +2018,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitudepol -0.273  0.209       
 ## gndrM:tttdp  0.192 -0.293 -0.702</code></pre>
 <p>Vergleich der Modelle:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="stichprobentests.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m0,m1,m2)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="stichprobentests.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m0,m1,m2)</span></code></pre></div>
 <pre><code>## Data: polite
 ## Models:
 ## m0: frequency ~ gender + (1 | subject) + (1 | scenario)
@@ -1930,16 +2030,16 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## m2    7 807.11 824.04 -396.55   793.11  1.9963  1  0.1576796    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="stichprobentests.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co"># politeness affected pitch (χ2(1)=11.62, p=0.00065), </span></span>
-<span id="cb211-2"><a href="stichprobentests.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lowering it by about 19.7 Hz ± 5.6 (standard errors) </span></span>
-<span id="cb211-3"><a href="stichprobentests.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-4"><a href="stichprobentests.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co"># random slopes model</span></span>
-<span id="cb211-5"><a href="stichprobentests.html#cb211-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> </span>
-<span id="cb211-6"><a href="stichprobentests.html#cb211-6" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb211-7"><a href="stichprobentests.html#cb211-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="stichprobentests.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># politeness affected pitch (χ2(1)=11.62, p=0.00065), </span></span>
+<span id="cb244-2"><a href="stichprobentests.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lowering it by about 19.7 Hz ± 5.6 (standard errors) </span></span>
+<span id="cb244-3"><a href="stichprobentests.html#cb244-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb244-4"><a href="stichprobentests.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="co"># random slopes model</span></span>
+<span id="cb244-5"><a href="stichprobentests.html#cb244-5" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> </span>
+<span id="cb244-6"><a href="stichprobentests.html#cb244-6" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb244-7"><a href="stichprobentests.html#cb244-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="stichprobentests.html#cb213-1" aria-hidden="true" tabindex="-1"></a>m00 <span class="ot">&lt;-</span> m</span>
-<span id="cb213-2"><a href="stichprobentests.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="stichprobentests.html#cb246-1" aria-hidden="true" tabindex="-1"></a>m00 <span class="ot">&lt;-</span> m</span>
+<span id="cb246-2"><a href="stichprobentests.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: frequency ~ gender + (attitude + 1 | subject) + (attitude + 1 |  
@@ -1974,12 +2074,12 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## genderM -0.650
 ## optimizer (nloptwrap) convergence code: 0 (OK)
 ## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="stichprobentests.html#cb215-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb215-2"><a href="stichprobentests.html#cb215-2" aria-hidden="true" tabindex="-1"></a>          (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb215-3"><a href="stichprobentests.html#cb215-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="stichprobentests.html#cb248-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb248-2"><a href="stichprobentests.html#cb248-2" aria-hidden="true" tabindex="-1"></a>          (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb248-3"><a href="stichprobentests.html#cb248-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="stichprobentests.html#cb217-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
-<span id="cb217-2"><a href="stichprobentests.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="stichprobentests.html#cb250-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
+<span id="cb250-2"><a href="stichprobentests.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: 
@@ -2017,12 +2117,12 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitudepol -0.105  0.003
 ## optimizer (nloptwrap) convergence code: 0 (OK)
 ## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="stichprobentests.html#cb219-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb219-2"><a href="stichprobentests.html#cb219-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject), </span>
-<span id="cb219-3"><a href="stichprobentests.html#cb219-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="stichprobentests.html#cb252-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb252-2"><a href="stichprobentests.html#cb252-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject), </span>
+<span id="cb252-3"><a href="stichprobentests.html#cb252-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="stichprobentests.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb221-2"><a href="stichprobentests.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="stichprobentests.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb254-2"><a href="stichprobentests.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
 <pre><code>##  model: frequency ~ gender + attitude
 ## 
 ##  gender effect
@@ -2034,18 +2134,18 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitude
 ##      inf      pol 
 ## 203.2497 183.8414</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="stichprobentests.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="stichprobentests.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-36-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-6.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="stichprobentests.html#cb224-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb224-2"><a href="stichprobentests.html#cb224-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb224-3"><a href="stichprobentests.html#cb224-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="stichprobentests.html#cb257-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb257-2"><a href="stichprobentests.html#cb257-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb257-3"><a href="stichprobentests.html#cb257-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="stichprobentests.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb226-2"><a href="stichprobentests.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="stichprobentests.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb259-2"><a href="stichprobentests.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">allEffects</span>(m)</span></code></pre></div>
 <pre><code>##  model: frequency ~ gender + attitude
 ## 
 ##  gender effect
@@ -2057,18 +2157,18 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitude
 ##      inf      pol 
 ## 203.2424 183.4286</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="stichprobentests.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="stichprobentests.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-39-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-7.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="stichprobentests.html#cb229-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude <span class="sc">+</span> </span>
-<span id="cb229-2"><a href="stichprobentests.html#cb229-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb229-3"><a href="stichprobentests.html#cb229-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="stichprobentests.html#cb262-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude <span class="sc">+</span> </span>
+<span id="cb262-2"><a href="stichprobentests.html#cb262-2" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb262-3"><a href="stichprobentests.html#cb262-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="stichprobentests.html#cb231-1" aria-hidden="true" tabindex="-1"></a>m02 <span class="ot">&lt;-</span> m</span>
-<span id="cb231-2"><a href="stichprobentests.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="stichprobentests.html#cb264-1" aria-hidden="true" tabindex="-1"></a>m02 <span class="ot">&lt;-</span> m</span>
+<span id="cb264-2"><a href="stichprobentests.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: 
@@ -2109,7 +2209,7 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## optimizer (nloptwrap) convergence code: 0 (OK)
 ## boundary (singular) fit: see ?isSingular</code></pre>
 <p>Vergleich der Modelle:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="stichprobentests.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m00,m01,m02)</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="stichprobentests.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m00,m01,m02)</span></code></pre></div>
 <pre><code>## Data: polite
 ## Models:
 ## m00: frequency ~ gender + (attitude + 1 | subject) + (attitude + 1 | scenario)
@@ -2121,9 +2221,9 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## m02   11 814.89 841.50 -396.45   792.89 2.0023  1   0.157060   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="stichprobentests.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
-<span id="cb235-2"><a href="stichprobentests.html#cb235-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">step</span>(m)</span></code></pre></div>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="stichprobentests.html#cb236-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="stichprobentests.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb268-2"><a href="stichprobentests.html#cb268-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">step</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="stichprobentests.html#cb269-1" aria-hidden="true" tabindex="-1"></a>s</span></code></pre></div>
 <pre><code>## Backward reduced random-effect table:
 ## 
 ##                                       Eliminated npar  logLik    AIC     LRT Df
@@ -2153,14 +2253,14 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## 
 ## Model found:
 ## frequency ~ gender + attitude + (1 | subject) + (1 | scenario)</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="stichprobentests.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LMERConvenienceFunctions)</span>
-<span id="cb238-2"><a href="stichprobentests.html#cb238-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-3"><a href="stichprobentests.html#cb238-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb238-4"><a href="stichprobentests.html#cb238-4" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb238-5"><a href="stichprobentests.html#cb238-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="stichprobentests.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LMERConvenienceFunctions)</span>
+<span id="cb271-2"><a href="stichprobentests.html#cb271-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-3"><a href="stichprobentests.html#cb271-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb271-4"><a href="stichprobentests.html#cb271-4" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb271-5"><a href="stichprobentests.html#cb271-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>polite)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="stichprobentests.html#cb240-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
-<span id="cb240-2"><a href="stichprobentests.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="stichprobentests.html#cb273-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
+<span id="cb273-2"><a href="stichprobentests.html#cb273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: 
@@ -2198,53 +2298,53 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitudepol -0.105  0.003
 ## optimizer (nloptwrap) convergence code: 0 (OK)
 ## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="stichprobentests.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model asumptions</span></span>
-<span id="cb242-2"><a href="stichprobentests.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="stichprobentests.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model asumptions</span></span>
+<span id="cb275-2"><a href="stichprobentests.html#cb275-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-47-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-8.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="stichprobentests.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> attitude, polite)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="stichprobentests.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> attitude, polite)</span></code></pre></div>
 <pre><code>## 
 ##  Fligner-Killeen test of homogeneity of variances
 ## 
 ## data:  frequency by attitude
 ## Fligner-Killeen:med chi-squared = 0.21737, df = 1, p-value = 0.6411</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="stichprobentests.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> gender, polite)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="stichprobentests.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> gender, polite)</span></code></pre></div>
 <pre><code>## 
 ##  Fligner-Killeen test of homogeneity of variances
 ## 
 ## data:  frequency by gender
 ## Fligner-Killeen:med chi-squared = 0.7388, df = 1, p-value = 0.39</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="stichprobentests.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(polite<span class="sc">$</span>frequency)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="stichprobentests.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(polite<span class="sc">$</span>frequency)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  polite$frequency
 ## W = 0.94456, p-value = 0.001347</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="stichprobentests.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(polite<span class="sc">$</span>frequency)) </span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="stichprobentests.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(polite<span class="sc">$</span>frequency)) </span></code></pre></div>
 <pre><code>## [1] 39</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="stichprobentests.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete NA from data frame in row 39</span></span>
-<span id="cb251-2"><a href="stichprobentests.html#cb251-2" aria-hidden="true" tabindex="-1"></a>polite1 <span class="ot">&lt;-</span> polite[<span class="sc">-</span><span class="dv">39</span>,]</span>
-<span id="cb251-3"><a href="stichprobentests.html#cb251-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb251-4"><a href="stichprobentests.html#cb251-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove outliers</span></span>
-<span id="cb251-5"><a href="stichprobentests.html#cb251-5" aria-hidden="true" tabindex="-1"></a>freqout <span class="ot">&lt;-</span> <span class="fu">romr.fnc</span>(m, polite1, <span class="at">trim=</span><span class="fl">2.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="stichprobentests.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete NA from data frame in row 39</span></span>
+<span id="cb284-2"><a href="stichprobentests.html#cb284-2" aria-hidden="true" tabindex="-1"></a>polite1 <span class="ot">&lt;-</span> polite[<span class="sc">-</span><span class="dv">39</span>,]</span>
+<span id="cb284-3"><a href="stichprobentests.html#cb284-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb284-4"><a href="stichprobentests.html#cb284-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove outliers</span></span>
+<span id="cb284-5"><a href="stichprobentests.html#cb284-5" aria-hidden="true" tabindex="-1"></a>freqout <span class="ot">&lt;-</span> <span class="fu">romr.fnc</span>(m, polite1, <span class="at">trim=</span><span class="fl">2.5</span>)</span></code></pre></div>
 <pre><code>## n.removed = 1 
 ## percent.removed = 1.204819</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="stichprobentests.html#cb253-1" aria-hidden="true" tabindex="-1"></a>freqout<span class="sc">$</span>n.removed</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="stichprobentests.html#cb286-1" aria-hidden="true" tabindex="-1"></a>freqout<span class="sc">$</span>n.removed</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="stichprobentests.html#cb255-1" aria-hidden="true" tabindex="-1"></a>freqout<span class="sc">$</span>percent.removed</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="stichprobentests.html#cb288-1" aria-hidden="true" tabindex="-1"></a>freqout<span class="sc">$</span>percent.removed</span></code></pre></div>
 <pre><code>## [1] 1.204819</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="stichprobentests.html#cb257-1" aria-hidden="true" tabindex="-1"></a>freqout <span class="ot">&lt;-</span> freqout<span class="sc">$</span>data</span>
-<span id="cb257-2"><a href="stichprobentests.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(freqout)</span></code></pre></div>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="stichprobentests.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update model</span></span>
-<span id="cb258-2"><a href="stichprobentests.html#cb258-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
-<span id="cb258-3"><a href="stichprobentests.html#cb258-3" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
-<span id="cb258-4"><a href="stichprobentests.html#cb258-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>freqout)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="stichprobentests.html#cb290-1" aria-hidden="true" tabindex="-1"></a>freqout <span class="ot">&lt;-</span> freqout<span class="sc">$</span>data</span>
+<span id="cb290-2"><a href="stichprobentests.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(freqout)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="stichprobentests.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># update model</span></span>
+<span id="cb291-2"><a href="stichprobentests.html#cb291-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender <span class="sc">+</span> attitude <span class="sc">+</span> </span>
+<span id="cb291-3"><a href="stichprobentests.html#cb291-3" aria-hidden="true" tabindex="-1"></a>            (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
+<span id="cb291-4"><a href="stichprobentests.html#cb291-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">REML=</span>F, <span class="at">data=</span>freqout)</span></code></pre></div>
 <pre><code>## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="stichprobentests.html#cb260-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
-<span id="cb260-2"><a href="stichprobentests.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="stichprobentests.html#cb293-1" aria-hidden="true" tabindex="-1"></a>m01 <span class="ot">&lt;-</span> m</span>
+<span id="cb293-2"><a href="stichprobentests.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite&#39;s
 ##   method [lmerModLmerTest]
 ## Formula: 
@@ -2282,26 +2382,26 @@ Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflic
 ## attitudepol -0.164  0.008
 ## optimizer (nloptwrap) convergence code: 0 (OK)
 ## boundary (singular) fit: see ?isSingular</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="stichprobentests.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-Check model asumptions</span></span>
-<span id="cb262-2"><a href="stichprobentests.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="stichprobentests.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-Check model asumptions</span></span>
+<span id="cb295-2"><a href="stichprobentests.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
 <p><img src="09-politeness_mixed_effects_files/figure-html/unnamed-chunk-58-1.svg" width="672" /></p>
 <div class="figure">
 <img src="figure/unnamed-chunk-1-9.png" alt="" />
 <p class="caption">plot of chunk unnamed-chunk-1</p>
 </div>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="stichprobentests.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> attitude, freqout)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="stichprobentests.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> attitude, freqout)</span></code></pre></div>
 <pre><code>## 
 ##  Fligner-Killeen test of homogeneity of variances
 ## 
 ## data:  frequency by attitude
 ## Fligner-Killeen:med chi-squared = 0.34994, df = 1, p-value = 0.5541</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="stichprobentests.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> gender, freqout)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="stichprobentests.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> gender, freqout)</span></code></pre></div>
 <pre><code>## 
 ##  Fligner-Killeen test of homogeneity of variances
 ## 
 ## data:  frequency by gender
 ## Fligner-Killeen:med chi-squared = 0.25815, df = 1, p-value = 0.6114</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="stichprobentests.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(freqout<span class="sc">$</span>frequency)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="stichprobentests.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(freqout<span class="sc">$</span>frequency)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
