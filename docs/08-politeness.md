@@ -452,6 +452,227 @@ plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
+
+```r
+library(parameters)
+```
+
+```
+## Registered S3 methods overwritten by 'parameters':
+##   method                           from      
+##   as.double.parameters_kurtosis    datawizard
+##   as.double.parameters_skewness    datawizard
+##   as.double.parameters_smoothness  datawizard
+##   as.numeric.parameters_kurtosis   datawizard
+##   as.numeric.parameters_skewness   datawizard
+##   as.numeric.parameters_smoothness datawizard
+##   print.parameters_distribution    datawizard
+##   print.parameters_kurtosis        datawizard
+##   print.parameters_skewness        datawizard
+##   summary.parameters_kurtosis      datawizard
+##   summary.parameters_skewness      datawizard
+```
+
+```r
+library(see)
+```
+
+```
+## Registered S3 method overwritten by 'see':
+##   method                    from      
+##   plot.visualisation_recipe datawizard
+```
+
+```r
+p1 = plot(parameters(m)) +
+  ggplot2::labs(title = "A Dot-and-Whisker Plot")
+p1
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-20-1.svg" width="672" />
+
+
+```r
+library(performance)
+check <- check_normality(m)
+```
+
+```
+## OK: residuals appear as normally distributed (p = 0.396).
+```
+
+```r
+## Warning: Non-normality of residuals detected (p = 0.016).
+
+p2 = plot(check, type = "qq")
+p2
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-21-1.svg" width="672" />
+
+
+```r
+library(performance)
+check <- check_normality(m, effects = "fixed")
+```
+
+```
+## OK: residuals appear as normally distributed (p = 0.396).
+```
+
+```r
+## Warning: Non-normality of residuals detected (p = 0.016).
+
+p2a = plot(check, type = "pp")
+p2a
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
+
+
+
+```r
+library(effectsize)
+library(see)
+
+m <- aov(frequency ~ attitude*gender, data = politeness)
+
+p3 = plot(omega_squared(m))
+p3
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-23-1.svg" width="672" />
+
+
+```r
+p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
+  geom_point2() +
+  theme_modern()
+p4
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
+
+
+```r
+p4 = ggplot(politeness, 
+            aes(x = attitude, y = frequency, fill = gender)) +
+  geom_violin() +
+  theme_modern(axis.text.angle = 45) +
+  scale_fill_material_d(palette = "ice")
+
+p4
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
+
+
+```r
+p5 = ggplot(politeness, 
+            aes(x = attitude, y = frequency, fill = gender)) +
+  geom_violindot(fill_dots = "black") +
+  geom_jitter(width = 0.05) +
+  theme_modern() +
+  scale_fill_material_d()
+p5
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_bindot).
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
+
+
+
+```r
+plots(p1,p2,p3,p4, 
+      n_columns = 2, 
+      tags = paste0("B", 1:4))
+```
+
+```
+## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
+
+
+
+```r
+library(bayestestR)
+library(rstanarm)
+```
+
+```
+## Loading required package: Rcpp
+```
+
+```
+## This is rstanarm version 2.21.1
+```
+
+```
+## - See https://mc-stan.org/rstanarm/articles/priors for changes to default priors!
+```
+
+```
+## - Default priors may change, so it's safest to specify priors, even if equivalent to the defaults.
+```
+
+```
+## - For execution on a local, multicore CPU with excess RAM we recommend calling
+```
+
+```
+##   options(mc.cores = parallel::detectCores())
+```
+
+```
+## 
+## Attaching package: 'rstanarm'
+```
+
+```
+## The following object is masked from 'package:performance':
+## 
+##     pp_check
+```
+
+```
+## The following object is masked from 'package:parameters':
+## 
+##     compare_models
+```
+
+```r
+library(see)
+
+set.seed(123)
+m <- stan_glm(frequency ~ attitude*gender, data = politeness, refresh = 0)
+result <- hdi(m, ci = c(0.5, 0.75, 0.89, 0.95))
+plot(result)
+```
+
+<img src="08-politeness_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
+
+
 #### Schluss
 
 Die Regressionsanalyse hat H1 bestätigt, d.h. die Grundfrequenz beim höflichen Sprechen unterscheidet sich vom informellen Sprechen. Beim höflichen Sprechen sprachen die Versuchspersonen mit einer durchschnittlich 19,5 Hz tieferen Stimme (bei den weiblichen Versuchspersonen ca. 27 Hz, bei den männlichen mehr als 11 Hz).

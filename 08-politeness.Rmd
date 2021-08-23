@@ -214,6 +214,91 @@ plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
+```{r}
+library(parameters)
+library(see)
+p1 = plot(parameters(m)) +
+  ggplot2::labs(title = "A Dot-and-Whisker Plot")
+p1
+```
+
+```{r}
+library(performance)
+check <- check_normality(m)
+## Warning: Non-normality of residuals detected (p = 0.016).
+
+p2 = plot(check, type = "qq")
+p2
+```
+
+```{r}
+library(performance)
+check <- check_normality(m, effects = "fixed")
+## Warning: Non-normality of residuals detected (p = 0.016).
+
+p2a = plot(check, type = "pp")
+p2a
+```
+
+
+```{r}
+library(effectsize)
+library(see)
+
+m <- aov(frequency ~ attitude*gender, data = politeness)
+
+p3 = plot(omega_squared(m))
+p3
+```
+
+```{r}
+p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
+  geom_point2() +
+  theme_modern()
+p4
+```
+
+```{r}
+p4 = ggplot(politeness, 
+            aes(x = attitude, y = frequency, fill = gender)) +
+  geom_violin() +
+  theme_modern(axis.text.angle = 45) +
+  scale_fill_material_d(palette = "ice")
+
+p4
+
+```
+
+```{r}
+p5 = ggplot(politeness, 
+            aes(x = attitude, y = frequency, fill = gender)) +
+  geom_violindot(fill_dots = "black") +
+  geom_jitter(width = 0.05) +
+  theme_modern() +
+  scale_fill_material_d()
+p5
+```
+
+
+```{r}
+plots(p1,p2,p3,p4, 
+      n_columns = 2, 
+      tags = paste0("B", 1:4))
+```
+
+
+```{r}
+library(bayestestR)
+library(rstanarm)
+library(see)
+
+set.seed(123)
+m <- stan_glm(frequency ~ attitude*gender, data = politeness, refresh = 0)
+result <- hdi(m, ci = c(0.5, 0.75, 0.89, 0.95))
+plot(result)
+```
+
+
 #### Schluss
 
 Die Regressionsanalyse hat H1 bestätigt, d.h. die Grundfrequenz beim höflichen Sprechen unterscheidet sich vom informellen Sprechen. Beim höflichen Sprechen sprachen die Versuchspersonen mit einer durchschnittlich 19,5 Hz tieferen Stimme (bei den weiblichen Versuchspersonen ca. 27 Hz, bei den männlichen mehr als 11 Hz).
