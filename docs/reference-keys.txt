@@ -206,3 +206,9 @@ demonstration-chapters
 example-one
 example-two
 final-words
+vokalformanten-im-deutschen-als-fremdsprache-1
+programme-starten-1
+daten-laden-1
+ipa-syms-1
+vergleich-der-vokalformanten-1
+untertitel
