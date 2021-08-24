@@ -5,15 +5,156 @@
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(scales)
-library(readxl)
-library(writexl)
-
+library(udpipe)
+stringsAsFactors = FALSE
 ```
 
 ## Daten laden
 
+Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina*, die slowenischen Untertitel stammen von der Webseite *abc*. 
+
+Zuerst laden wir die Untertitel zum Film *Avatar* in englischer, deutscher und slowenischer Sprache. 
+
 ```{r}
+library(tidyverse)
+avatar_eng = read_lines("data/sub/Avatar_eng.txt")
+avatar_deu = read_lines("data/sub/Avatar_deu.txt")
+avatar_slv = read_lines("data/sub/Avatar_slv.txt")
 
 ```
 
+
+```{r}
+head(avatar_eng); head(avatar_deu); head(avatar_slv)
+```
+
+Untertitel haben ein besonderes Format. Recht einfach sind Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.
+
+```{r}
+a1 = avatar_eng %>% 
+  as_tibble() %>% 
+  mutate(row_tc = row_number()) %>% 
+  filter(str_detect(value, "-->")) %>% 
+  rename(timecode = value)
+a2 = avatar_eng %>% 
+  as_tibble() %>% 
+  mutate(row_txt = row_number()) %>% 
+  filter(str_detect(value, "[a-zA-Z]")) %>% 
+  rename(text = value) %>% 
+  mutate(language = "eng")
+
+avatar_eng = bind_cols(a1,a2) %>% 
+  select(timecode, text) %>% 
+  separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
+tail(avatar_eng)
+```
+
+Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.
+
+```{r}
+b1 = avatar_deu %>% 
+  as_tibble() %>% 
+  mutate(row_tc = row_number()) %>% 
+  filter(str_detect(value, "-->")) %>% 
+  rename(timecode = value)
+b2 = avatar_deu %>% 
+  as_tibble() %>% 
+  mutate(row_txt = row_number()) %>% 
+  filter(str_detect(value, "[a-zA-Z]")) %>% 
+  rename(text = value) %>% 
+  mutate(language = "deu")
+# avatar_deu = bind_cols(a1,a2)
+#   select(timecode, text) %>% 
+#   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
+# tail(avatar_deu)
+```
+
+```{r}
+c1 = avatar_slv %>% 
+  as_tibble() %>% 
+  mutate(row_tc = row_number()) %>% 
+  filter(str_detect(value, "-->")) %>% 
+  rename(timecode = value)
+c2 = avatar_slv %>% 
+  as_tibble() %>% 
+  mutate(row_txt = row_number()) %>% 
+  filter(str_detect(value, "[a-zA-Z]")) %>% 
+  rename(text = value) %>% 
+  mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
+  mutate(text = str_replace(text, "\\</i\\>", "")) %>% 
+  mutate(language = "slv")
+# avatar_slv = bind_cols(a1,a2)
+#   select(timecode, text) %>% 
+#   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
+# tail(avatar_slv)
+
+```
+
+Nun verknüpfen wir die drei Datensätze zu einem einzigen.
+
+```{r}
+avatar = bind_rows(a2,b2,c2)
+
+```
+
+Mit Hilfe von quanteda-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.
+
+```{r}
+avatar = avatar %>% 
+  mutate(txt = str_replace_all(text, "[:punct:]", "")) %>% 
+  mutate(sentlen = quanteda::ntoken(txt)) %>% 
+  mutate(syllables = nsyllable::nsyllable(txt)) %>% 
+  mutate(types = quanteda::ntype(txt)) %>% 
+  mutate(wordlen = syllables/sentlen) %>% 
+  mutate(ttr = types/sentlen) %>% 
+  select(-txt)
+```
+
+*kwic* - Konkordanz-Tool in *quanteda*:
+
+```{r}
+x = quanteda::corpus(avatar, text_field = "text") %>% 
+  quanteda::tokens()
+quanteda::kwic(x, pattern = "planet") %>% as_tibble()
+```
+
+Zerlegung der Untertitellinien in Wörter: 
+
+```{r}
+library(tidytext)
+
+avatar_words = avatar %>% 
+  unnest_tokens(word, text, drop = FALSE) %>% 
+  select(-text)
+head(avatar_words)  
+```
+
+Analyse der Wortformen mit **udpipe**:
+
+```{r}
+library(udpipe)
+
+file_model = "english-ewt-ud-2.5-191206.udpipe"
+engmod <- udpipe_load_model(file_model)
+
+x = udpipe_annotate(engmod, x = avatar$text[avatar$language == "eng"], trace = FALSE)
+udeng = as.data.frame(x)
+```
+
+```{r}
+file_model = "german-gsd-ud-2.5-191206.udpipe"
+deumod <- udpipe_load_model(file_model)
+
+x = udpipe_annotate(deumod, x = avatar$text[avatar$language == "deu"], trace = F)
+uddeu = as.data.frame(x)
+```
+
+
+```{r}
+file_model = "german-gsd-ud-2.5-191206.udpipe"
+slvmod <- udpipe_load_model(file_model)
+
+x = udpipe_annotate(slvmod, x = avatar$text[avatar$language == "slv"], trace = F)
+udslv = as.data.frame(x)
+```
 
