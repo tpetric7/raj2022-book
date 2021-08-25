@@ -28,6 +28,10 @@ avatar_slv = read_lines("data/sub/Avatar_slv.txt")
 head(avatar_eng); head(avatar_deu); head(avatar_slv)
 ```
 
+## Datensätze vorbereiten
+
+### Textspalte vorbereiten
+
 Untertitel haben ein besonderes Format. Recht einfach sind Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.
 
 ```{r}
@@ -38,7 +42,7 @@ a1 = avatar_eng %>%
   rename(timecode = value)
 a2 = avatar_eng %>% 
   as_tibble() %>% 
-  mutate(row_txt = row_number()) %>% 
+  mutate(row_id = row_number()) %>% 
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
   mutate(language = "eng")
@@ -47,6 +51,10 @@ avatar_eng = bind_cols(a1,a2) %>%
   select(timecode, text) %>% 
   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
 tail(avatar_eng)
+
+a2a = a2 %>% 
+  mutate(sentence_id = row_number())
+  
 ```
 
 Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.
@@ -59,7 +67,7 @@ b1 = avatar_deu %>%
   rename(timecode = value)
 b2 = avatar_deu %>% 
   as_tibble() %>% 
-  mutate(row_txt = row_number()) %>% 
+  mutate(row_id = row_number()) %>% 
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
   mutate(language = "deu")
@@ -67,7 +75,12 @@ b2 = avatar_deu %>%
 #   select(timecode, text) %>% 
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
 # tail(avatar_deu)
+
+b2a = b2 %>% 
+  mutate(sentence_id = row_number())
+
 ```
+
 
 ```{r}
 c1 = avatar_slv %>% 
@@ -77,7 +90,7 @@ c1 = avatar_slv %>%
   rename(timecode = value)
 c2 = avatar_slv %>% 
   as_tibble() %>% 
-  mutate(row_txt = row_number()) %>% 
+  mutate(row_id = row_number()) %>% 
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
   mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
@@ -88,16 +101,25 @@ c2 = avatar_slv %>%
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
 # tail(avatar_slv)
 
+c2a = c2 %>% 
+  mutate(sentence_id = row_number())
+
 ```
+
+
+### Datensätze verknüpfen
 
 Nun verknüpfen wir die drei Datensätze zu einem einzigen.
 
 ```{r}
-avatar = bind_rows(a2,b2,c2)
+avatar = bind_rows(a2a,b2a,c2a)
 
 ```
 
-Mit Hilfe von quanteda-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.
+
+### Merkmale hinzufügen
+
+Mit Hilfe von *quanteda*-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.
 
 ```{r}
 avatar = avatar %>% 
@@ -110,13 +132,17 @@ avatar = avatar %>%
   select(-txt)
 ```
 
-*kwic* - Konkordanz-Tool in *quanteda*:
+### Konkordanzrecherche
+
+Ein Beispiel einer Konkordanzrecherche mit Hilfe von *kwic* - dem Konkordanz-Tool in *quanteda*:
 
 ```{r}
 x = quanteda::corpus(avatar, text_field = "text") %>% 
   quanteda::tokens()
 quanteda::kwic(x, pattern = "planet") %>% as_tibble()
 ```
+
+### Textzerlegung
 
 Zerlegung der Untertitellinien in Wörter: 
 
@@ -129,7 +155,9 @@ avatar_words = avatar %>%
 head(avatar_words)  
 ```
 
-Analyse der Wortformen mit **udpipe**:
+### Zerlegung und Annotation
+
+Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um für jede der drei Untertitelversionen eine morphosyntaktische Annotation vorzunehmen.
 
 ```{r}
 library(udpipe)
@@ -141,8 +169,11 @@ x = udpipe_annotate(engmod, x = avatar$text[avatar$language == "eng"], trace = F
 udeng = as.data.frame(x)
 ```
 
+
 ```{r}
-file_model = "german-gsd-ud-2.5-191206.udpipe"
+# file_model = udpipe_download_model("german-hdt")
+# file_model = "german-gsd-ud-2.5-191206.udpipe"
+file_model = "german-hdt-ud-2.5-191206.udpipe"
 deumod <- udpipe_load_model(file_model)
 
 x = udpipe_annotate(deumod, x = avatar$text[avatar$language == "deu"], trace = F)
@@ -151,10 +182,226 @@ uddeu = as.data.frame(x)
 
 
 ```{r}
-file_model = "german-gsd-ud-2.5-191206.udpipe"
+file_model = "slovenian-ssj-ud-2.5-191206.udpipe"
 slvmod <- udpipe_load_model(file_model)
 
 x = udpipe_annotate(slvmod, x = avatar$text[avatar$language == "slv"], trace = F)
 udslv = as.data.frame(x)
 ```
 
+Die Datensätze wollen wir für anderweitige Verwendungen speichern, und zwar sowohl im *conllu*-Format als auch im *csv*-Format. In beiden Fällen erhalten wir Textdateien.
+
+```{r}
+write.table(as_conllu(udeng), file = "data/Avatar_ud_eng.conllu", 
+            sep = "\t", quote = F, row.names = F)
+write.table(as_conllu(uddeu), file = "data/Avatar_ud_deu.conllu", 
+            sep = "\t", quote = F, row.names = F)
+write.table(as_conllu(udslv), file = "data/Avatar_ud_slv.conllu", 
+            sep = "\t", quote = F, row.names = F)
+```
+
+```{r}
+write_csv(udeng, "data/Avatar_ud_eng.csv")
+write_csv(uddeu, "data/Avatar_ud_deu.csv")
+write_csv(udslv, "data/Avatar_ud_slv.csv")
+```
+
+Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale hinzufügen (und zwar mit den *mutate()*-Befehlen, in denen auch einfache *quanteda*-Funktionen verwendet werden). Außerdem soll die komplexe Tabellenspalte *feats* (features) in einzelne Spalten aufgeteilt werden (und zwar mit der *cbind_morphological()*-Funktion von *udpipe*). 
+
+Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die Spalten "word, token, feats, sentence" zur Verfügung stehen:
+
+```{r}
+tokenize_annotate = function(tbl){
+  tbl %>% 
+  unnest_tokens(word, token, drop = F) %>% 
+  cbind_morphological(term = "feats",  
+                      which = c("PronType","NumType","Poss","Reflex",
+                                "Foreign","Abbr","Typo",
+                                "Gender","Animacy","NounClass",
+                                "Case","Number","Definite","Degree",
+                                "VerbForm","Person","Tense","Mood",
+                                "Aspect","Voice","Evident",
+                                "Polarity","Polite","Clusivity")) %>% 
+  mutate(txt = str_replace_all(sentence, "[:punct:]", "")) %>% 
+  mutate(sentlen = quanteda::ntoken(txt)) %>% 
+  mutate(syllables = nsyllable::nsyllable(txt)) %>% 
+  mutate(types = quanteda::ntype(txt)) %>% 
+  mutate(wordlen = syllables/sentlen) %>% 
+  mutate(ttr = types/sentlen) %>% 
+  select(-txt, -feats)
+}
+
+```
+
+Die für die Verwendung der Funktion entsprechenden Tabellen sind die zuvor gebildeten Tabellen "udeng", "uddeu" und "udslv". Nach der Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.
+
+```{r}
+avatar_eng_udpiped <- udeng %>% 
+  tokenize_annotate() %>% mutate(language = "eng")
+avatar_deu_udpiped <- uddeu %>% 
+  tokenize_annotate() %>% mutate(language = "deu")
+avatar_slv_udpiped <- udslv %>% 
+  tokenize_annotate() %>% mutate(language = "slv")
+avatar_words_udpiped = bind_rows(avatar_eng_udpiped,
+                                 avatar_deu_udpiped,
+                                 avatar_slv_udpiped)
+avatar_words_udpiped
+
+```
+
+Für spätere Verwendungen speichern wir den Datensatz in zwei verschiedenen Formaten.
+
+```{r}
+write_rds(avatar_words_udpiped, "data/avatar_words_udpiped.rds")
+write_csv(avatar_words_udpiped, "data/avatar_words_udpiped.csv")
+```
+
+
+## Morphologie der Untertitel
+
+Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir nur die *filter()*- und die *select()*-Funktion einzugeben. Beispielsweise das Lemma "brother" in den englischen Untertiteln:
+
+```{r}
+avatar_words_udpiped %>% 
+  filter(lemma == "brother") %>% 
+  select(sentence, token, lemma, upos, dep_rel)
+
+```
+
+Dasselbe mit dem deutschen "Bruder" und dem slowenischen "brat":
+
+```{r}
+avatar_words_udpiped %>% 
+  filter(lemma == "Bruder") %>% 
+  select(sentence, token, lemma, upos, dep_rel)
+
+```
+
+
+```{r}
+avatar_words_udpiped %>% 
+  filter(lemma == "brat") %>% 
+  select(sentence, token, lemma, upos, dep_rel)
+
+```
+
+Das Lemma "brother" bzw. scheint in den englischen Untertiteln ein wenig häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung  "Bruder"  bzw. "brat". 
+
+
+### XRay Brother
+
+An welchen Stellen kommt das Wort in den Untertiteln vor?
+
+```{r}
+quanteda.textplots::textplot_xray(
+  quanteda::kwic(avatar %>% pull(text), 
+                 pattern = c("brother","Bruder","brat")), 
+  scale = "relative")
+
+```
+
+Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir drei *xray*-Diagramme erstellen und sie mit Hilfe von *patchwork* zusammenkleben.
+
+```{r}
+p1 = quanteda.textplots::textplot_xray(
+  quanteda::kwic(avatar %>% filter(language == "eng") %>% pull(text), 
+                 pattern = "brother"), scale = "relative")
+
+p2 = quanteda.textplots::textplot_xray(
+  quanteda::kwic(avatar %>% filter(language == "deu") %>% pull(text), 
+                 pattern = "Bruder"), scale = "relative")
+
+p3 = quanteda.textplots::textplot_xray(
+  quanteda::kwic(avatar %>% filter(language == "slv") %>% pull(text), 
+                 pattern = "brat"), scale = "relative")
+
+library(patchwork)
+p1|p2|p3
+```
+
+### Substantive im Plural
+
+Als nächstes wollen wir alle als Substantive (Noun) identifizierte Einheiten herausfinden, die im Plural auftreten.
+
+```{r}
+#Find all plural nouns (tokens)
+avatar_words_udpiped %>% 
+  filter(language == "eng" & 
+           upos == "NOUN" & 
+           morph_number == "Plur") %>% 
+  select(sentence, token, lemma, upos, morph_number)
+```
+
+```{r}
+avatar_words_udpiped %>% 
+  filter(language == "deu" & 
+           upos == "NOUN" & 
+           morph_number == "Plur") %>% 
+  select(sentence, token, lemma, upos, morph_number)
+```
+
+```{r}
+avatar_words_udpiped %>% 
+  filter(language == "slv" & 
+           upos == "NOUN" & 
+           morph_number == "Plur") %>% 
+  select(sentence, token, lemma, upos, morph_number)
+```
+
+
+```{r}
+avatar_words_udpiped %>% 
+  select(language, token, lemma, upos, morph_number) %>% 
+  group_by(language) %>% 
+  filter(upos == "NOUN") %>% 
+  count(morph_number) %>% 
+  pivot_wider(names_from = language, values_from = n) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate(morph_number = 
+           str_replace(morph_number, "0", "Unknown")) %>% 
+  mutate(morph_number = 
+           fct_relevel(
+             morph_number, levels =
+                         c("Sing","Plur","Dual","Unknown")))
+
+```
+
+
+### Adjektive im Komparativ
+
+In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven ausfindig machen und ihre Stelle im Untertitel.
+
+Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil einiger Wortarten in den slowenischen Untertiteln größer ist als in den anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht obligatorisch auftreten müssen).
+
+```{r}
+# Frequencies of parts of speech
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  count(upos, sort = TRUE) %>% 
+  mutate(pct = round(100*n/sum(n),2)) %>% 
+  pivot_wider(names_from = language, values_from = c(n, pct))
+
+```
+
+In den englischen Untertiteln wurden 17 Komparativformen identifiziert, in den deutschen 20 und in den slownischen 4. Der Anteil der Komparativformen ist also in den englischen und deutschen Untertiteln größer als in den slowenischen. 
+
+Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%), englisch (14 = 2,77%), slowenisch (6 = 1,65)
+
+```{r}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(upos == "ADJ") %>% 
+  count(morph_degree, sort = TRUE) %>% 
+  mutate(pct = round(100*n/sum(n),2)) %>% 
+  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate(morph_degree = 
+           str_replace(morph_degree, "0", "Unknown"))
+
+```
+
+Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante: "german-gsd") enthält diese Kategorie nicht. Wir haben daher die "german-hdt"-Variante gewählt.
+
+https://universaldependencies.org/u/pos/index.html
+https://universaldependencies.org/u/feat/index.html
+http://lindat.mff.cuni.cz/services/udpipe/
