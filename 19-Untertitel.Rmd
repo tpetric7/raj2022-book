@@ -11,7 +11,7 @@ stringsAsFactors = FALSE
 
 ## Daten laden
 
-Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina*, die slowenischen Untertitel stammen von der Webseite *abc*. 
+Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina* [@levshina2015linguistics], die slowenischen Untertitel stammen von der Webseite *nachschauen*. 
 
 Zuerst laden wir die Untertitel zum Film *Avatar* in englischer, deutscher und slowenischer Sprache. 
 
@@ -132,6 +132,18 @@ avatar = avatar %>%
   select(-txt)
 ```
 
+Speichern für spätere Verwendung.
+
+```{r}
+write_rds(avatar, "data/avatar.rds")
+write_csv(avatar, "data/avatar.csv")
+```
+
+
+```{r}
+avatar = read_rds("data/avatar.rds")
+```
+
 ### Konkordanzrecherche
 
 Ein Beispiel einer Konkordanzrecherche mit Hilfe von *kwic* - dem Konkordanz-Tool in *quanteda*:
@@ -206,6 +218,12 @@ write_csv(uddeu, "data/Avatar_ud_deu.csv")
 write_csv(udslv, "data/Avatar_ud_slv.csv")
 ```
 
+```{r}
+udeng = read_csv("data/Avatar_ud_eng.csv")
+uddeu = read_csv("data/Avatar_ud_deu.csv")
+udslv = read_csv("data/Avatar_ud_slv.csv")
+```
+
 Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale hinzufügen (und zwar mit den *mutate()*-Befehlen, in denen auch einfache *quanteda*-Funktionen verwendet werden). Außerdem soll die komplexe Tabellenspalte *feats* (features) in einzelne Spalten aufgeteilt werden (und zwar mit der *cbind_morphological()*-Funktion von *udpipe*). 
 
 Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die Spalten "word, token, feats, sentence" zur Verfügung stehen:
@@ -256,6 +274,11 @@ write_rds(avatar_words_udpiped, "data/avatar_words_udpiped.rds")
 write_csv(avatar_words_udpiped, "data/avatar_words_udpiped.csv")
 ```
 
+
+```{r}
+avatar_words_udpiped = read_rds("data/avatar_words_udpiped.rds")
+
+```
 
 ## Morphologie der Untertitel
 
@@ -405,3 +428,4 @@ Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante: "german-gsd")
 https://universaldependencies.org/u/pos/index.html
 https://universaldependencies.org/u/feat/index.html
 http://lindat.mff.cuni.cz/services/udpipe/
+
