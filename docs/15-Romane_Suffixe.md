@@ -130,8 +130,8 @@ x = udpipe_annotate(demodel, novels_txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-08-27 19:58:27 Annotating text fragment 1/2
-## 2021-08-27 20:00:16 Annotating text fragment 2/2
+## 2021-08-27 22:32:39 Annotating text fragment 1/2
+## 2021-08-27 22:34:32 Annotating text fragment 2/2
 ```
 
 ```r

@@ -481,7 +481,7 @@ für die Annotation: [Universal Stanford Dependencies: A cross-linguistic
 typology (de Marneffe et al.
 2014)](https://universaldependencies.org/u/dep/index.html).
 
-```{r message=FALSE, warning=FALSE, out.width=100%}
+```{r message=FALSE, warning=FALSE, out.width="100%"}
 knitr::include_graphics("pictures/Screenshot 2021-08-27 at 12-14-22 Universal Dependency Relations.png")
 ```
 
