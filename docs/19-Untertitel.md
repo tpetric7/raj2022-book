@@ -13,9 +13,12 @@ stringsAsFactors = FALSE
 
 ## Daten laden
 
-Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina* [@levshina2015linguistics], die slowenischen Untertitel stammen von der Webseite *nachschauen*. 
+Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus
+der Datensammlung von *Natalia Levshina* [@levshina2015linguistics], die
+slowenischen Untertitel stammen von der Webseite *nachschauen*.
 
-Zuerst laden wir die Untertitel zum Film *Avatar* in englischer, deutscher und slowenischer Sprache. 
+Zuerst laden wir die Untertitel zum Film *Avatar* in englischer,
+deutscher und slowenischer Sprache.
 
 
 ```r
@@ -24,7 +27,6 @@ avatar_eng = read_lines("data/sub/Avatar_eng.txt")
 avatar_deu = read_lines("data/sub/Avatar_deu.txt")
 avatar_slv = read_lines("data/sub/Avatar_slv.txt")
 ```
-
 
 
 ```r
@@ -62,7 +64,10 @@ head(avatar_eng); head(avatar_deu); head(avatar_slv)
 
 ### Textspalte vorbereiten
 
-Untertitel haben ein besonderes Format. Recht einfach sind Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.
+Untertitel haben ein besonderes Format. Recht einfach sind
+Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für
+ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann
+können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.
 
 
 ```r
@@ -101,7 +106,8 @@ a2a = a2 %>%
   mutate(sentence_id = row_number())
 ```
 
-Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.
+Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht
+übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.
 
 
 ```r
@@ -116,6 +122,7 @@ b2 = avatar_deu %>%
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
   mutate(language = "deu")
+
 # avatar_deu = bind_cols(a1,a2)
 #   select(timecode, text) %>% 
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
@@ -124,7 +131,6 @@ b2 = avatar_deu %>%
 b2a = b2 %>% 
   mutate(sentence_id = row_number())
 ```
-
 
 
 ```r
@@ -141,6 +147,7 @@ c2 = avatar_slv %>%
   mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
   mutate(text = str_replace(text, "\\</i\\>", "")) %>% 
   mutate(language = "slv")
+
 # avatar_slv = bind_cols(a1,a2)
 #   select(timecode, text) %>% 
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
@@ -149,7 +156,6 @@ c2 = avatar_slv %>%
 c2a = c2 %>% 
   mutate(sentence_id = row_number())
 ```
-
 
 ### Datensätze verknüpfen
 
@@ -160,10 +166,14 @@ Nun verknüpfen wir die drei Datensätze zu einem einzigen.
 avatar = bind_rows(a2a,b2a,c2a)
 ```
 
-
 ### Merkmale hinzufügen
 
-Mit Hilfe von *quanteda*-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.
+Mit Hilfe von *quanteda*-Funktionen fügen wir dem Datensatz noch weitere
+Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder
+Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung
+(syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen
+Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für
+lexikalische Diversität.
 
 
 ```r
@@ -186,14 +196,14 @@ write_csv(avatar, "data/avatar.csv")
 ```
 
 
-
 ```r
 avatar = read_rds("data/avatar.rds")
 ```
 
 ### Konkordanzrecherche
 
-Ein Beispiel einer Konkordanzrecherche mit Hilfe von *kwic* - dem Konkordanz-Tool in *quanteda*:
+Ein Beispiel einer Konkordanzrecherche mit Hilfe von *kwic* - dem
+Konkordanz-Tool in *quanteda*:
 
 
 ```r
@@ -212,7 +222,7 @@ quanteda::kwic(x, pattern = "planet") %>% as_tibble()
 
 ### Textzerlegung
 
-Zerlegung der Untertitellinien in Wörter: 
+Zerlegung der Untertitellinien in Wörter:
 
 
 ```r
@@ -238,7 +248,9 @@ head(avatar_words)
 
 ### Zerlegung und Annotation
 
-Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um für jede der drei Untertitelversionen eine morphosyntaktische Annotation vorzunehmen.
+Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um
+für jede der drei Untertitelversionen eine morphosyntaktische Annotation
+vorzunehmen.
 
 
 ```r
@@ -252,7 +264,6 @@ udeng = as.data.frame(x)
 ```
 
 
-
 ```r
 # file_model = udpipe_download_model("german-hdt")
 # file_model = "german-gsd-ud-2.5-191206.udpipe"
@@ -264,7 +275,6 @@ uddeu = as.data.frame(x)
 ```
 
 
-
 ```r
 file_model = "slovenian-ssj-ud-2.5-191206.udpipe"
 slvmod <- udpipe_load_model(file_model)
@@ -273,7 +283,9 @@ x = udpipe_annotate(slvmod, x = avatar$text[avatar$language == "slv"], trace = F
 udslv = as.data.frame(x)
 ```
 
-Die Datensätze wollen wir für anderweitige Verwendungen speichern, und zwar sowohl im *conllu*-Format als auch im *csv*-Format. In beiden Fällen erhalten wir Textdateien.
+Die Datensätze wollen wir für anderweitige Verwendungen speichern, und
+zwar sowohl im *conllu*-Format als auch im *csv*-Format. In beiden
+Fällen erhalten wir Textdateien.
 
 
 ```r
@@ -295,73 +307,19 @@ write_csv(udslv, "data/Avatar_ud_slv.csv")
 
 ```r
 udeng = read_csv("data/Avatar_ud_eng.csv")
-```
-
-```
-## Rows: 12788 Columns: 14
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 uddeu = read_csv("data/Avatar_ud_deu.csv")
-```
-
-```
-## Rows: 11732 Columns: 14
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 udslv = read_csv("data/Avatar_ud_slv.csv")
 ```
 
-```
-## Rows: 8124 Columns: 14
-```
+Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale
+hinzufügen (und zwar mit den *mutate()*-Befehlen, in denen auch einfache
+*quanteda*-Funktionen verwendet werden). Außerdem soll die komplexe
+Tabellenspalte *feats* (features) in einzelne Spalten aufgeteilt werden
+(und zwar mit der *cbind_morphological()*-Funktion von *udpipe*).
 
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ","
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale hinzufügen (und zwar mit den *mutate()*-Befehlen, in denen auch einfache *quanteda*-Funktionen verwendet werden). Außerdem soll die komplexe Tabellenspalte *feats* (features) in einzelne Spalten aufgeteilt werden (und zwar mit der *cbind_morphological()*-Funktion von *udpipe*). 
-
-Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die Spalten "word, token, feats, sentence" zur Verfügung stehen:
+Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine
+Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die
+Spalten "word, token, feats, sentence" zur Verfügung stehen:
 
 
 ```r
@@ -386,7 +344,9 @@ tokenize_annotate = function(tbl){
 }
 ```
 
-Die für die Verwendung der Funktion entsprechenden Tabellen sind die zuvor gebildeten Tabellen "udeng", "uddeu" und "udslv". Nach der Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.
+Die für die Verwendung der Funktion entsprechenden Tabellen sind die
+zuvor gebildeten Tabellen "udeng", "uddeu" und "udslv". Nach der
+Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.
 
 
 ```r
@@ -22636,7 +22596,8 @@ avatar_words_udpiped
 ##  [ reached 'max' / getOption("max.print") -- omitted 22434 rows ]
 ```
 
-Für spätere Verwendungen speichern wir den Datensatz in zwei verschiedenen Formaten.
+Für spätere Verwendungen speichern wir den Datensatz in zwei
+verschiedenen Formaten.
 
 
 ```r
@@ -22645,14 +22606,15 @@ write_csv(avatar_words_udpiped, "data/avatar_words_udpiped.csv")
 ```
 
 
-
 ```r
 avatar_words_udpiped = read_rds("data/avatar_words_udpiped.rds")
 ```
 
 ## Morphologie der Untertitel
 
-Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir nur die *filter()*- und die *select()*-Funktion einzugeben. Beispielsweise das Lemma "brother" in den englischen Untertiteln:
+Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir
+nur die *filter()*- und die *select()*-Funktion einzugeben.
+Beispielsweise das Lemma "brother" in den englischen Untertiteln:
 
 
 ```r
@@ -22724,7 +22686,6 @@ avatar_words_udpiped %>%
 ```
 
 
-
 ```r
 avatar_words_udpiped %>% 
   filter(lemma == "brat") %>% 
@@ -22745,8 +22706,9 @@ avatar_words_udpiped %>%
 ## 10                         Brat, me slišiš?   Brat  brat VERB    root
 ```
 
-Das Lemma "brother" bzw. scheint in den englischen Untertiteln ein wenig häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung  "Bruder"  bzw. "brat". 
-
+Das Lemma "brother" bzw. scheint in den englischen Untertiteln ein wenig
+häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung
+"Bruder" bzw. "brat".
 
 ### XRay Brother
 
@@ -22760,46 +22722,26 @@ quanteda.textplots::textplot_xray(
   scale = "relative")
 ```
 
-```
-## Warning: 'kwic.character()' is deprecated. Use 'tokens()' first.
-```
-
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
 
-Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir drei *xray*-Diagramme erstellen und sie mit Hilfe von *patchwork* zusammenkleben.
+Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir
+drei *xray*-Diagramme erstellen und sie mit Hilfe von *patchwork*
+zusammenkleben.
 
 
 ```r
 p1 = quanteda.textplots::textplot_xray(
   quanteda::kwic(avatar %>% filter(language == "eng") %>% pull(text), 
                  pattern = "brother"), scale = "relative")
-```
 
-```
-## Warning: 'kwic.character()' is deprecated. Use 'tokens()' first.
-```
-
-```r
 p2 = quanteda.textplots::textplot_xray(
   quanteda::kwic(avatar %>% filter(language == "deu") %>% pull(text), 
                  pattern = "Bruder"), scale = "relative")
-```
 
-```
-## Warning: 'kwic.character()' is deprecated. Use 'tokens()' first.
-```
-
-```r
 p3 = quanteda.textplots::textplot_xray(
   quanteda::kwic(avatar %>% filter(language == "slv") %>% pull(text), 
                  pattern = "brat"), scale = "relative")
-```
 
-```
-## Warning: 'kwic.character()' is deprecated. Use 'tokens()' first.
-```
-
-```r
 library(patchwork)
 p1|p2|p3
 ```
@@ -22808,7 +22750,8 @@ p1|p2|p3
 
 ### Substantive im Plural
 
-Als nächstes wollen wir alle als Substantive (Noun) identifizierte Einheiten herausfinden, die im Plural auftreten.
+Als nächstes wollen wir alle als Substantive (Noun) identifizierte
+Einheiten herausfinden, die im Plural auftreten.
 
 
 ```r
@@ -24578,7 +24521,6 @@ avatar_words_udpiped %>%
 ```
 
 
-
 ```r
 avatar_words_udpiped %>% 
   select(language, token, lemma, upos, morph_number) %>% 
@@ -24592,29 +24534,26 @@ avatar_words_udpiped %>%
   mutate(morph_number = 
            fct_relevel(
              morph_number, levels =
-                         c("Sing","Plur","Dual","Unknown")))
+                         c("Sing","Plur","Dual","Unknown"))) %>% 
+  rmarkdown::paged_table()
 ```
 
-```
-## Warning: Outer names are only allowed for unnamed scalar atomic inputs
-```
-
-```
-## # A tibble: 4 x 4
-##   morph_number   deu   eng   slv
-##   <fct>        <dbl> <dbl> <dbl>
-## 1 Plur           300   310   252
-## 2 Sing           987  1110   897
-## 3 Unknown         25     0     0
-## 4 Dual             0     0     7
-```
-
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["morph_number"],"name":[1],"type":["fct"],"align":["left"]},{"label":["deu"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eng"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["slv"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Plur","2":"300","3":"310","4":"252"},{"1":"Sing","2":"987","3":"1110","4":"897"},{"1":"Unknown","2":"25","3":"0","4":"0"},{"1":"Dual","2":"0","3":"0","4":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
 ### Adjektive im Komparativ
 
-In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven ausfindig machen und ihre Stelle im Untertitel.
+In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven
+ausfindig machen und ihre Stelle im Untertitel.
 
-Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil einiger Wortarten in den slowenischen Untertiteln größer ist als in den anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht obligatorisch auftreten müssen).
+Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil
+einiger Wortarten in den slowenischen Untertiteln größer ist als in den
+anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen
+jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht
+obligatorisch auftreten müssen).
 
 
 ```r
@@ -24649,9 +24588,13 @@ avatar_words_udpiped %>%
 ## 17 PUNCT     1     1     1    0.01    0.01    0.02
 ```
 
-In den englischen Untertiteln wurden 17 Komparativformen identifiziert, in den deutschen 20 und in den slownischen 4. Der Anteil der Komparativformen ist also in den englischen und deutschen Untertiteln größer als in den slowenischen. 
+In den englischen Untertiteln wurden 17 Komparativformen identifiziert,
+in den deutschen 20 und in den slownischen 4. Der Anteil der
+Komparativformen ist also in den englischen und deutschen Untertiteln
+größer als in den slowenischen.
 
-Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%), englisch (14 = 2,77%), slowenisch (6 = 1,65)
+Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%),
+englisch (14 = 2,77%), slowenisch (6 = 1,65)
 
 
 ```r
@@ -24676,11 +24619,18 @@ avatar_words_udpiped %>%
 ## 4 Cmp             20    17     4    3.43    3.36    1.1
 ```
 
-Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante: "german-gsd") enthält diese Kategorie nicht. Wir haben daher die "german-hdt"-Variante gewählt.
+Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante:
+"german-gsd") enthält diese Kategorie nicht. Wir haben daher die
+"german-hdt"-Variante gewählt.
 
 ## Syntax: Dependenz
 
-Programme wie *udpipe* oder *spacyr* sind auch in der Lage, syntaktische Dependenzrelationen gemäß der Stanforder sprachübergreifenden Typologie zu identifizieren und als Annotation auszugeben. Typologische Grundlage für die Annotation: [Universal Stanford Dependencies: A cross-linguistic typology (de Marneffe et al. 2014)](https://universaldependencies.org/u/dep/index.html).
+Programme wie *udpipe* oder *spacyr* sind auch in der Lage, syntaktische
+Dependenzrelationen gemäß der Stanforder sprachübergreifenden Typologie
+zu identifizieren und als Annotation auszugeben. Typologische Grundlage
+für die Annotation: [Universal Stanford Dependencies: A cross-linguistic
+typology (de Marneffe et al.
+2014)](https://universaldependencies.org/u/dep/index.html).
 
 
 ```r
@@ -24689,11 +24639,11 @@ knitr::include_graphics("pictures/Screenshot 2021-08-27 at 12-14-22 Universal De
 
 <img src="pictures/Screenshot 2021-08-27 at 12-14-22 Universal Dependency Relations.png" width="410" />
 
+Mehr über das Datenformat: [CoNLL-U
+Format](https://universaldependencies.org/format.html)
 
-Mehr über das Datenformat:
-[CoNLL-U Format](https://universaldependencies.org/format.html)
-
-Frequenzwerte der syntaktischen Abhängigkeitsrelationen in den Avatar-Untertiteln (englisch, deutsch, slowenisch):
+Frequenzwerte der syntaktischen Abhängigkeitsrelationen in den
+Avatar-Untertiteln (englisch, deutsch, slowenisch):
 
 
 ```r
@@ -24724,63 +24674,37 @@ avatar_words_udpiped %>%
 ## # ... with 33 more rows
 ```
 
-Gemäß *udpipe* erscheinen in den englischen und deutschen Untertiteln die Dependenzrelationen *root, nsubj, advmod, det, obj* am häufigsten. In den slowenischen Untertiteln haben die Relationen *root, advmod, obj, case, nsubj* die größten Frequenzwerte.
+Gemäß *udpipe* erscheinen in den englischen und deutschen Untertiteln
+die Dependenzrelationen *root, nsubj, advmod, det, obj* am häufigsten.
+In den slowenischen Untertiteln haben die Relationen *root, advmod, obj,
+case, nsubj* die größten Frequenzwerte.
 
-Die Dependenzrelation *root* gibt uns Auskunft darüber, ob eine Wortfolge als Satz identifiziert wurde. Sie wird gewöhnlich mit Hilfe des (finiten) Verbs im Satz bestimmt. In elliptischen Sätzen wird eine der vorkommenden Wortformen mit *root* assoziiert. 
+Die Dependenzrelation *root* gibt uns Auskunft darüber, ob eine
+Wortfolge als Satz identifiziert wurde. Sie wird gewöhnlich mit Hilfe
+des (finiten) Verbs im Satz bestimmt. In elliptischen Sätzen wird eine
+der vorkommenden Wortformen mit *root* assoziiert.
 
-In der Tabelle ist (unter *root*) zu sehen, dass in den englischen Untertiteln 2026 satzwertige Einheiten identifiziert wurden, in den deutschen 2366 und in den slowenischen 1807.
+In der Tabelle ist (unter *root*) zu sehen, dass in den englischen
+Untertiteln 2026 satzwertige Einheiten identifiziert wurden, in den
+deutschen 2366 und in den slowenischen 1807.
 
-In der Tabelle zeigen die Prozentzahlen beispielsweise einen bemerkenswerten Unterschied in der Häufigkeit der Dependenzrelation *nsubj*, d.h. die Anzahl der identifizierten Subjekte. In den slowenischen Untertiteln liegt der Anteil deutlich unter dem in den englischen und deutschen. Das hängt damit zusammen, dass Slowenisch eine Pro-drop-Sprache ist, dass also unbetonte Personalpronomen (in Subjekt-Funktion) nicht sprachlich realisiert zu sein brauchen. Besonder deutlich wird dies, wenn wir einen Beispielsatz aus allen drei Texten visualisieren. 
+In der Tabelle zeigen die Prozentzahlen beispielsweise einen
+bemerkenswerten Unterschied in der Häufigkeit der Dependenzrelation
+*nsubj*, d.h. die Anzahl der identifizierten Subjekte. In den
+slowenischen Untertiteln liegt der Anteil deutlich unter dem in den
+englischen und deutschen. Das hängt damit zusammen, dass Slowenisch eine
+Pro-drop-Sprache ist, dass also unbetonte Personalpronomen (in
+Subjekt-Funktion) nicht sprachlich realisiert zu sein brauchen. Besonder
+deutlich wird dies, wenn wir einen Beispielsatz aus allen drei Texten
+visualisieren.
 
-Mit Hilfe der folgenden Funktion können wir die Dependenzrelationen im Satz visualisieren. Wir geben der Funktion den Namen *plot_annotation()*.
+Mit Hilfe der folgenden Funktion können wir die Dependenzrelationen im
+Satz visualisieren. Wir geben der Funktion den Namen
+*plot_annotation()*.
 
 
 ```r
 library(igraph)
-```
-
-```
-## 
-## Attaching package: 'igraph'
-```
-
-```
-## The following objects are masked from 'package:dplyr':
-## 
-##     as_data_frame, groups, union
-```
-
-```
-## The following objects are masked from 'package:purrr':
-## 
-##     compose, simplify
-```
-
-```
-## The following object is masked from 'package:tidyr':
-## 
-##     crossing
-```
-
-```
-## The following object is masked from 'package:tibble':
-## 
-##     as_data_frame
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     decompose, spectrum
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     union
-```
-
-```r
 library(ggraph)
 library(ggplot2)
 
@@ -24806,7 +24730,9 @@ plot_annotation <- function(x, size = 3){
 }
 ```
 
-Hier ist ein Beispiel eines Avatar-Untertitels in drei Sprachen. Wegen der deutschen bzw. slowenischen Sonderzeichen wandeln wir den Text mit Hilfe der Funktion *enc2utf8()* ins erforderliche UTF8-Format um.
+Hier ist ein Beispiel eines Avatar-Untertitels in drei Sprachen. Wegen
+der deutschen bzw. slowenischen Sonderzeichen wandeln wir den Text mit
+Hilfe der Funktion *enc2utf8()* ins erforderliche UTF8-Format um.
 
 
 ```r
@@ -24824,15 +24750,30 @@ x3 = plot_annotation(x, size = 3)
 ```
 
 Englischer Satz:
-* PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
-* NOUN, VERB: Substantiv, Verb
-* AUX: das Hilfs- oder Auxiliarverb
-* xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das Prädikat des Satzes bilden
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* obj: Objektfunktion (hier ist "these dreams" das Objekt des Verbs "have")
-* SCONJ: subordinierende Konjunktion (aber hier wäre "prep" für Präposition angebracht)
-* acl: gewöhnlich bezogen auf einen finiten oder infiniten Satz, der eine Nominalphrase modifiziert (im Kontrast zu advcl, die ein Prädikat modifizieren)
-* mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet
+
+-   PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
+
+-   NOUN, VERB: Substantiv, Verb
+
+-   AUX: das Hilfs- oder Auxiliarverb
+
+-   xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das
+    Prädikat des Satzes bilden
+
+-   DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+    handelt es sich um einen Artikel)
+
+-   obj: Objektfunktion (hier ist "these dreams" das Objekt des Verbs
+    "have")
+
+-   SCONJ: subordinierende Konjunktion (aber hier wäre "prep" für
+    Präposition angebracht)
+
+-   acl: gewöhnlich bezogen auf einen finiten oder infiniten Satz, der
+    eine Nominalphrase modifiziert (im Kontrast zu advcl, die ein
+    Prädikat modifizieren)
+
+-   mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet.
 
 
 ```r
@@ -24842,12 +24783,23 @@ x1
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-38-1.svg" width="672" />
 
 Deutscher Satz:
-* PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
-* NOUN, VERB, ADP, ADV: Substantiv, Verb, Adposition (hier: Präposition), Adverb
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als Präpositionalobjekt klassifizert (hier ist "vom Fliegen" das Objekt des Verbs "have")
-* case: Element, das den Kasus einer Phrase regiert (z.B. "von" regiert den Dativ der Nominalphrase "dem Fliegen")
-* advmod: Element, das das Prädikat modifizert (Adverbialphrase)
+
+-   PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
+
+-   NOUN, VERB, ADP, ADV: Substantiv, Verb, Adposition (hier:
+    Präposition), Adverb
+
+-   DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+    handelt es sich um einen Artikel)
+
+-   obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als
+    Präpositionalobjekt klassifizert (hier ist "vom Fliegen" das Objekt
+    des Verbs "have")
+
+-   case: Element, das den Kasus einer Phrase regiert (z.B. "von"
+    regiert den Dativ der Nominalphrase "dem Fliegen")
+
+-   advmod: Element, das das Prädikat modifizert (Adverbialphrase).
 
 
 ```r
@@ -24857,14 +24809,30 @@ x2
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-39-1.svg" width="672" />
 
 Slowenischer Satz:
-* Das Personalpronomen mit Subjekt-Funktion fehlt, daher auch keine Subjekt-Relation (nsubj) angezeigt. 
-* In slowenischen Nominalphrasen sind Begleiter (DET) nicht obligatorisch bzw. default (slow. "privzeto") wie etwa im Englischen oder Deutschen.
-* NOUN, VERB, ADP: Substantiv, Verb, Adposition (hier: Präposition)
-* AUX: das Hilfs- oder Auxiliarverb
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das Prädikat des Satzes bilden ("začel sanjati")
-* obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als Präpositionalobjekt klassifizert (hier ist "o letenju" das Objekt des Verbs "sanjati")
-* case: Element, das den Kasus einer Phrase regiert (z.B. die Präposition "o" regiert den Dativ der Nominalphrase "letenju")
+
+-   Das Personalpronomen mit Subjekt-Funktion fehlt, daher auch keine
+    Subjekt-Relation (nsubj) angezeigt.
+
+-   In slowenischen Nominalphrasen sind Begleiter (DET) nicht
+    obligatorisch bzw. default (slow. "privzeto") wie etwa im Englischen
+    oder Deutschen.
+
+-   NOUN, VERB, ADP: Substantiv, Verb, Adposition (hier: Präposition)
+
+-   AUX: das Hilfs- oder Auxiliarverb
+
+-   DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+    handelt es sich um einen Artikel)
+
+-   xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das
+    Prädikat des Satzes bilden ("začel sanjati")
+
+-   obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als
+    Präpositionalobjekt klassifizert (hier ist "o letenju" das Objekt
+    des Verbs "sanjati")
+
+-   case: Element, das den Kasus einer Phrase regiert (z.B. die
+    Präposition "o" regiert den Dativ der Nominalphrase "letenju").
 
 
 ```r
@@ -24873,21 +24841,42 @@ x3
 
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-40-1.svg" width="672" />
 
-Aus den drei Diagrammen ist ersichtlich, dass die Subjekt-Relation (nsubj) im englischen und deutschen Satz mittels eines Personalpronomens (PRON) realisiert wird, während das Subjekt im slowenischen Satz mittels der finiten Verbform, einem Hilfs- oder Auxiliarverbs (AUX), (mit)ausgedrückt wird, also im Hilfsverb "versteckt" auftritt. Im slowenischen Satz ist PRON syntaktisch nicht notwendig, im englischen und deutschen schon. Das wirkt sich natürlich auf die Frequenzwerte bzw. den Pronzenanteil aus (s. Tabelle).
+Aus den drei Diagrammen ist ersichtlich, dass die Subjekt-Relation
+(nsubj) im englischen und deutschen Satz mittels eines Personalpronomens
+(PRON) realisiert wird, während das Subjekt im slowenischen Satz mittels
+der finiten Verbform, einem Hilfs- oder Auxiliarverbs (AUX),
+(mit)ausgedrückt wird, also im Hilfsverb "versteckt" auftritt. Im
+slowenischen Satz ist PRON syntaktisch nicht notwendig, im englischen
+und deutschen schon. Das wirkt sich natürlich auf die Frequenzwerte bzw.
+den Pronzenanteil aus (s. Tabelle).
 
-Die Diagramme zeigen strukturelle Ähnlichkeiten und Unterschiede zwischen den Sprachversionen:
-* sowohl im englischen Untertitel als auch in der slowenischen Version wird eine xcomp-Relation angegeben, d.h. dass das Satzprädikat mit Hilfe von zwei Verben konstituiert wird ("started having" vs. "začel sanjati"). Die Verben "started" bzw. "začeti" modifizeren das Hauptverb "have" bzw. "sanjati" temporal. Im deutschen Untertitel wird stattdessen ein einfaches Prädikat ("träumte") verwendet, dass durch eine Adverbialphrase ("auf einmal") temporal modifiziert wird.
-* das englische Substantiv "dream" wird im deutschen und slowenischen Untertitel im Satzprädikat ausgedrückt ("träumte", "sanjati")
-* der englische Subordinationsmarker "of", der sich sowohl auf Nominalphrasen als auch auf Sätze beziehen kann, wird im deutschen und slowenischen Untertitel mit einer spezifischeren Wortklasse ausgedrückt, nämlich mit einer Präposition (ADP, Adposition).
+Die Diagramme zeigen strukturelle Ähnlichkeiten und Unterschiede
+zwischen den Sprachversionen: \* sowohl im englischen Untertitel als
+auch in der slowenischen Version wird eine xcomp-Relation angegeben,
+d.h. dass das Satzprädikat mit Hilfe von zwei Verben konstituiert wird
+("started having" vs. "začel sanjati"). Die Verben "started" bzw.
+"začeti" modifizeren das Hauptverb "have" bzw. "sanjati" temporal. Im
+deutschen Untertitel wird stattdessen ein einfaches Prädikat ("träumte")
+verwendet, dass durch eine Adverbialphrase ("auf einmal") temporal
+modifiziert wird. \* das englische Substantiv "dream" wird im deutschen
+und slowenischen Untertitel im Satzprädikat ausgedrückt ("träumte",
+"sanjati") \* der englische Subordinationsmarker "of", der sich sowohl
+auf Nominalphrasen als auch auf Sätze beziehen kann, wird im deutschen
+und slowenischen Untertitel mit einer spezifischeren Wortklasse
+ausgedrückt, nämlich mit einer Präposition (ADP, Adposition).
 
-* [Universal POS tags](https://universaldependencies.org/u/pos/index.html)
-* [Universal features](https://universaldependencies.org/u/feat/index.html)
-* [UDPipe](http://lindat.mff.cuni.cz/services/udpipe/)
+-   [Universal POS
+    tags](https://universaldependencies.org/u/pos/index.html)
+-   [Universal
+    features](https://universaldependencies.org/u/feat/index.html)
+-   [UDPipe](http://lindat.mff.cuni.cz/services/udpipe/)
 
 ### Aktiv und Passiv
 
-Wie groß ist der Anteil aktivischer und passivischer Sätze in den drei Sprachversionen? Dies können wir mit Hilfe der nsubj-Relation erfahren.
-In den englischen und deutschen Untertiteln wurden je 34 passivische Subjekte identifizert, in den slowenischen keiner.
+Wie groß ist der Anteil aktivischer und passivischer Sätze in den drei
+Sprachversionen? Dies können wir mit Hilfe der nsubj-Relation erfahren.
+In den englischen und deutschen Untertiteln wurden je 34 passivische
+Subjekte identifizert, in den slowenischen keiner.
 
 
 ```r
@@ -24935,10 +24924,11 @@ avatar_words_udpiped %>%
 ## 5 You're not used to your avatar body.                                         1
 ```
 
-* Wir wählen einen englischen Untertitel als Beispiel, und zwar:
-"And the concept is that ervery driver matched to his own avatar".
-* Deutsche Version: "Die Idee ist, dass jeder Operator auf seinen eigenen Avatar abgestimmt wird".
-* Slowenische Version: "Vsak upravljavec dobi svojega avatarja".
+-   Wir wählen einen englischen Untertitel als Beispiel, und zwar: "And
+    the concept is that ervery driver is matched to his own avatar*".
+-   Deutsche Version: "*Die Idee ist, dass jeder Operator auf seinen
+    eigenen Avatar abgestimmt wird*".
+-   Slowenische Version: "*Vsak upravljavec dobi svojega avatarja*".
 
 
 ```r
@@ -24989,13 +24979,11 @@ x3 = plot_annotation(x, size = 3)
 ```
 
 
-
 ```r
 x1
 ```
 
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-46-1.svg" width="672" />
-
 
 
 ```r
@@ -25005,40 +24993,55 @@ x2
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-47-1.svg" width="672" />
 
 
-
 ```r
 x3
 ```
 
 <img src="19-Untertitel_files/figure-html/unnamed-chunk-48-1.svg" width="672" />
 
-Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt). Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens (der im Nebensatz ausgedrückt wird) in ein Gedankenschema oder Frame dient.
+Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt). Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens (der im Nebensatz ausgedrückt wird)
+in ein Gedankenschema oder Frame dient.
 
-Die passivische Relation, die im englischen und deutschen Untertitel mittels passivischer Verbformen realisiert wird, wird im slowenischen Untertitel mit dem Verb "dobiti" zum Ausdruck gebracht (deutsch: "bekommen", englisch: "get"). Das Subjekt des slowenischen Verb "dobiti" (hier: "vsak upravljalec") ist semantisch gesehen ein Benefaktiv oder Nutznießer (benefaktive Relation), also ein Rezipient, für den eine Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für das deutsche bekommen-Passiv (z.B. "jeder Operator bekommt einen Avatar".
+Die passivische Relation, die im englischen und deutschen Untertitel
+mittels passivischer Verbformen realisiert wird, wird im slowenischen
+Untertitel mit dem Verb "dobiti" zum Ausdruck gebracht (deutsch:
+"bekommen", englisch: "get"). Das Subjekt des slowenischen Verb "dobiti" (hier: "vsak upravljalec") ist semantisch gesehen ein Benefaktiv oder Nutznießer (benefaktive Relation), also ein Rezipient, für den eine Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für das deutsche bekommen-Passiv (z.B. "jeder Operator bekommt einen Avatar".
 
-Die Ausdrucksweise im slowenischen Untertitel ist im Vergleich zu den anderen Sprachversionen umgangssprachlicher, die Ausdrucksweise im englischen und deutschen Untertitel dagegen spezifischer, d.h. es handelt sich um eher eine technische (fachbezogene) Ausdrucksweise (engl. "matching", deutsch "Abstimmung"). 
+Die Ausdrucksweise im slowenischen Untertitel ist im Vergleich zu den
+anderen Sprachversionen umgangssprachlicher, die Ausdrucksweise im
+englischen und deutschen Untertitel dagegen spezifischer, d.h. es
+handelt sich um eher eine technische (fachbezogene) Ausdrucksweise
+(engl. "matching", deutsch "Abstimmung").
 
-Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator (driver, upravljalec) sind so wie das gerittene Tier lediglich Reagentien im Prozess. Das ist in allen drei Sprachversionen deckungsgleich. 
+Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator (driver, upravljalec) sind so wie das gerittene Tier lediglich
+Reagentien im Prozess. Das ist in allen drei Sprachversionen
+deckungsgleich.
 
-In allen drei Sprachversionen wird wird der (menschliche) Benefaktiv (d.h. das syntaktische Subjekt) als Ausgangspunkt einer neuen oder wichtigen Information verwendet.  Die neue Information "seinen eigenen Avatar" wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht. Die typische Verteilung Thema vor Rhema wird hiermit in allen drei Sprachversionen gewahrt. Außerdem wird damit auch die häufigere Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt es sich um ein direktes Objekt (Akkusativobjekt), im englischen und deutschen dagegen um ein Präpositionalobjekt ("match to ...", "abstimmen auf ...").
+In allen drei Sprachversionen wird wird der (menschliche) Benefaktiv
+(d.h. das syntaktische Subjekt) als Ausgangspunkt einer neuen oder
+wichtigen Information verwendet. Die neue Information "seinen eigenen
+Avatar" wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht. Die typische Verteilung Thema vor Rhema wird hiermit in allen drei Sprachversionen gewahrt. Außerdem wird damit auch die häufigere
+Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt es sich um ein direktes Objekt (Akkusativobjekt), im englischen und deutschen dagegen um ein Präpositionalobjekt ("match to ...", "abstimmen
+auf ...").
 
 ### Passiv: Substantiv vs. Pronomen
 
-Combining different conditions. How many are nouns and how many are pronouns?
+Combining different conditions. How many are nouns and how many are
+pronouns?
 
 length(which(x$dep_rel == "nsubj" & x$upos == "NOUN"))
 length(which(x$dep_rel == "nsubj" & x$upos == "PRON"))
 
-Exercise 5: how many passive subjects are nouns, and how many of them are pronouns?
+Exercise 5: how many passive subjects are nouns, and how many of them
+are pronouns?
 
-Let's extract the lemmas of all objects
-x$lemma[x$dep_rel == "obj"]
+Let's extract the lemmas of all objects x$lemma[x$dep_rel == "obj"]
 
-lemmas of all objects that are pronouns
-x$lemma[x$dep_rel == "obj" & x$upos == "PRON"]
+lemmas of all objects that are pronouns x$lemma[x$dep_rel == "obj" &
+x\$upos == "PRON"]
 
-Lemmas of all objects that are common nouns:
-x$lemma[x$dep_rel == "obj" & x$upos == "NOUN"]
+Lemmas of all objects that are common nouns: x$lemma[x$dep_rel == "obj"
+& x\$upos == "NOUN"]
 
 How many such objects are there?
 length(which(x$dep_rel == "obj" & x$upos == "NOUN"))

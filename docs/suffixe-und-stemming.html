@@ -487,8 +487,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="suffixe-und-stemming.html#cb920-1" aria-hidden="true" tabindex="-1"></a>demodel <span class="ot">=</span> <span class="fu">udpipe_load_model</span>(model<span class="sc">$</span>file_model)</span></code></pre></div>
 <p>Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.</p>
 <div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb921-1"><a href="suffixe-und-stemming.html#cb921-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe_annotate</span>(demodel, novels_txt<span class="sc">$</span>text, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 2021-08-27 17:53:03 Annotating text fragment 1/2
-## 2021-08-27 17:57:34 Annotating text fragment 2/2</code></pre>
+<pre><code>## 2021-08-27 19:58:27 Annotating text fragment 1/2
+## 2021-08-27 20:00:16 Annotating text fragment 2/2</code></pre>
 <div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="suffixe-und-stemming.html#cb923-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
 <p>Wir filtern Interpunktionszeichen heraus, die für unser Ziel nicht relevant sind. Die Spalte “upos” enthält die dafür relevante Kategorie (“PUNCT”).</p>
 <p>In einem weiteren Schritt fügen wir mit <em>mutate</em> eine neue Spalte (“word”) hinzu, welche die tokens der Texte enthält, aber kleingeschrieben gewerden sollen, was mit <em>tolower()</em> erreicht werden kann.</p>

@@ -441,8 +441,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="daten-laden-1" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> Daten laden</h2>
-<p>Die englischen und deutschen Untertitel zum Film <em>Avatar</em> stammen aus der Datensammlung von <em>Natalia Levshina</em> <span class="citation">[@levshina2015linguistics]</span>, die slowenischen Untertitel stammen von der Webseite <em>nachschauen</em>.</p>
-<p>Zuerst laden wir die Untertitel zum Film <em>Avatar</em> in englischer, deutscher und slowenischer Sprache.</p>
+<p>Die englischen und deutschen Untertitel zum Film <em>Avatar</em> stammen aus
+der Datensammlung von <em>Natalia Levshina</em> <span class="citation">[@levshina2015linguistics]</span>, die
+slowenischen Untertitel stammen von der Webseite <em>nachschauen</em>.</p>
+<p>Zuerst laden wir die Untertitel zum Film <em>Avatar</em> in englischer,
+deutscher und slowenischer Sprache.</p>
 <div class="sourceCode" id="cb1214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1214-1"><a href="untertitel.html#cb1214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1214-2"><a href="untertitel.html#cb1214-2" aria-hidden="true" tabindex="-1"></a>avatar_eng <span class="ot">=</span> <span class="fu">read_lines</span>(<span class="st">&quot;data/sub/Avatar_eng.txt&quot;</span>)</span>
 <span id="cb1214-3"><a href="untertitel.html#cb1214-3" aria-hidden="true" tabindex="-1"></a>avatar_deu <span class="ot">=</span> <span class="fu">read_lines</span>(<span class="st">&quot;data/sub/Avatar_deu.txt&quot;</span>)</span>
@@ -471,7 +474,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.3</span> Datensätze vorbereiten</h2>
 <div id="textspalte-vorbereiten" class="section level3" number="13.3.1">
 <h3><span class="header-section-number">13.3.1</span> Textspalte vorbereiten</h3>
-<p>Untertitel haben ein besonderes Format. Recht einfach sind Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.</p>
+<p>Untertitel haben ein besonderes Format. Recht einfach sind
+Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für
+ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann
+können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.</p>
 <div class="sourceCode" id="cb1219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1219-1"><a href="untertitel.html#cb1219-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="ot">=</span> avatar_eng <span class="sc">%&gt;%</span> </span>
 <span id="cb1219-2"><a href="untertitel.html#cb1219-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb1219-3"><a href="untertitel.html#cb1219-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_tc =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> </span>
@@ -499,7 +505,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 &quot;02:50:14,926 &quot; &quot; 02:50:17,256&quot; This is Jake Sully signing off.</code></pre>
 <div class="sourceCode" id="cb1221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1221-1"><a href="untertitel.html#cb1221-1" aria-hidden="true" tabindex="-1"></a>a2a <span class="ot">=</span> a2 <span class="sc">%&gt;%</span> </span>
 <span id="cb1221-2"><a href="untertitel.html#cb1221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentence_id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
-<p>Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.</p>
+<p>Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht
+übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.</p>
 <div class="sourceCode" id="cb1222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1222-1"><a href="untertitel.html#cb1222-1" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> avatar_deu <span class="sc">%&gt;%</span> </span>
 <span id="cb1222-2"><a href="untertitel.html#cb1222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb1222-3"><a href="untertitel.html#cb1222-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_tc =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> </span>
@@ -511,13 +518,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1222-9"><a href="untertitel.html#cb1222-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(value, <span class="st">&quot;[a-zA-Z]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb1222-10"><a href="untertitel.html#cb1222-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">text =</span> value) <span class="sc">%&gt;%</span> </span>
 <span id="cb1222-11"><a href="untertitel.html#cb1222-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;deu&quot;</span>)</span>
-<span id="cb1222-12"><a href="untertitel.html#cb1222-12" aria-hidden="true" tabindex="-1"></a><span class="co"># avatar_deu = bind_cols(a1,a2)</span></span>
-<span id="cb1222-13"><a href="untertitel.html#cb1222-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(timecode, text) %&gt;% </span></span>
-<span id="cb1222-14"><a href="untertitel.html#cb1222-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   separate(timecode, into = c(&quot;start&quot;, &quot;end&quot;), sep = &quot;\\-\\-\\&gt;&quot;)</span></span>
-<span id="cb1222-15"><a href="untertitel.html#cb1222-15" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(avatar_deu)</span></span>
-<span id="cb1222-16"><a href="untertitel.html#cb1222-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1222-17"><a href="untertitel.html#cb1222-17" aria-hidden="true" tabindex="-1"></a>b2a <span class="ot">=</span> b2 <span class="sc">%&gt;%</span> </span>
-<span id="cb1222-18"><a href="untertitel.html#cb1222-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentence_id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<span id="cb1222-12"><a href="untertitel.html#cb1222-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1222-13"><a href="untertitel.html#cb1222-13" aria-hidden="true" tabindex="-1"></a><span class="co"># avatar_deu = bind_cols(a1,a2)</span></span>
+<span id="cb1222-14"><a href="untertitel.html#cb1222-14" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(timecode, text) %&gt;% </span></span>
+<span id="cb1222-15"><a href="untertitel.html#cb1222-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   separate(timecode, into = c(&quot;start&quot;, &quot;end&quot;), sep = &quot;\\-\\-\\&gt;&quot;)</span></span>
+<span id="cb1222-16"><a href="untertitel.html#cb1222-16" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(avatar_deu)</span></span>
+<span id="cb1222-17"><a href="untertitel.html#cb1222-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1222-18"><a href="untertitel.html#cb1222-18" aria-hidden="true" tabindex="-1"></a>b2a <span class="ot">=</span> b2 <span class="sc">%&gt;%</span> </span>
+<span id="cb1222-19"><a href="untertitel.html#cb1222-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentence_id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
 <div class="sourceCode" id="cb1223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1223-1"><a href="untertitel.html#cb1223-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">=</span> avatar_slv <span class="sc">%&gt;%</span> </span>
 <span id="cb1223-2"><a href="untertitel.html#cb1223-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb1223-3"><a href="untertitel.html#cb1223-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_tc =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span> </span>
@@ -531,13 +539,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1223-11"><a href="untertitel.html#cb1223-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&lt;i</span><span class="sc">\\</span><span class="st">&gt;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb1223-12"><a href="untertitel.html#cb1223-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">text =</span> <span class="fu">str_replace</span>(text, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">&lt;/i</span><span class="sc">\\</span><span class="st">&gt;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb1223-13"><a href="untertitel.html#cb1223-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;slv&quot;</span>)</span>
-<span id="cb1223-14"><a href="untertitel.html#cb1223-14" aria-hidden="true" tabindex="-1"></a><span class="co"># avatar_slv = bind_cols(a1,a2)</span></span>
-<span id="cb1223-15"><a href="untertitel.html#cb1223-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(timecode, text) %&gt;% </span></span>
-<span id="cb1223-16"><a href="untertitel.html#cb1223-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   separate(timecode, into = c(&quot;start&quot;, &quot;end&quot;), sep = &quot;\\-\\-\\&gt;&quot;)</span></span>
-<span id="cb1223-17"><a href="untertitel.html#cb1223-17" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(avatar_slv)</span></span>
-<span id="cb1223-18"><a href="untertitel.html#cb1223-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1223-19"><a href="untertitel.html#cb1223-19" aria-hidden="true" tabindex="-1"></a>c2a <span class="ot">=</span> c2 <span class="sc">%&gt;%</span> </span>
-<span id="cb1223-20"><a href="untertitel.html#cb1223-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentence_id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
+<span id="cb1223-14"><a href="untertitel.html#cb1223-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1223-15"><a href="untertitel.html#cb1223-15" aria-hidden="true" tabindex="-1"></a><span class="co"># avatar_slv = bind_cols(a1,a2)</span></span>
+<span id="cb1223-16"><a href="untertitel.html#cb1223-16" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(timecode, text) %&gt;% </span></span>
+<span id="cb1223-17"><a href="untertitel.html#cb1223-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   separate(timecode, into = c(&quot;start&quot;, &quot;end&quot;), sep = &quot;\\-\\-\\&gt;&quot;)</span></span>
+<span id="cb1223-18"><a href="untertitel.html#cb1223-18" aria-hidden="true" tabindex="-1"></a><span class="co"># tail(avatar_slv)</span></span>
+<span id="cb1223-19"><a href="untertitel.html#cb1223-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1223-20"><a href="untertitel.html#cb1223-20" aria-hidden="true" tabindex="-1"></a>c2a <span class="ot">=</span> c2 <span class="sc">%&gt;%</span> </span>
+<span id="cb1223-21"><a href="untertitel.html#cb1223-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentence_id =</span> <span class="fu">row_number</span>())</span></code></pre></div>
 </div>
 <div id="datensätze-verknüpfen" class="section level3" number="13.3.2">
 <h3><span class="header-section-number">13.3.2</span> Datensätze verknüpfen</h3>
@@ -546,7 +555,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="merkmale-hinzufügen" class="section level3" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Merkmale hinzufügen</h3>
-<p>Mit Hilfe von <em>quanteda</em>-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.</p>
+<p>Mit Hilfe von <em>quanteda</em>-Funktionen fügen wir dem Datensatz noch weitere
+Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder
+Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung
+(syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen
+Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für
+lexikalische Diversität.</p>
 <div class="sourceCode" id="cb1225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1225-1"><a href="untertitel.html#cb1225-1" aria-hidden="true" tabindex="-1"></a>avatar <span class="ot">=</span> avatar <span class="sc">%&gt;%</span> </span>
 <span id="cb1225-2"><a href="untertitel.html#cb1225-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">txt =</span> <span class="fu">str_replace_all</span>(text, <span class="st">&quot;[:punct:]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb1225-3"><a href="untertitel.html#cb1225-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentlen =</span> quanteda<span class="sc">::</span><span class="fu">ntoken</span>(txt)) <span class="sc">%&gt;%</span> </span>
@@ -562,7 +576,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="konkordanzrecherche" class="section level3" number="13.3.4">
 <h3><span class="header-section-number">13.3.4</span> Konkordanzrecherche</h3>
-<p>Ein Beispiel einer Konkordanzrecherche mit Hilfe von <em>kwic</em> - dem Konkordanz-Tool in <em>quanteda</em>:</p>
+<p>Ein Beispiel einer Konkordanzrecherche mit Hilfe von <em>kwic</em> - dem
+Konkordanz-Tool in <em>quanteda</em>:</p>
 <div class="sourceCode" id="cb1228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1228-1"><a href="untertitel.html#cb1228-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(avatar, <span class="at">text_field =</span> <span class="st">&quot;text&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1228-2"><a href="untertitel.html#cb1228-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">tokens</span>()</span>
 <span id="cb1228-3"><a href="untertitel.html#cb1228-3" aria-hidden="true" tabindex="-1"></a>quanteda<span class="sc">::</span><span class="fu">kwic</span>(x, <span class="at">pattern =</span> <span class="st">&quot;planet&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
@@ -593,7 +608,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="zerlegung-und-annotation" class="section level3" number="13.3.6">
 <h3><span class="header-section-number">13.3.6</span> Zerlegung und Annotation</h3>
-<p>Zuerst müssen wir für jede Sprache ein <strong>udpipe</strong>-Sprachmodell laden, um für jede der drei Untertitelversionen eine morphosyntaktische Annotation vorzunehmen.</p>
+<p>Zuerst müssen wir für jede Sprache ein <strong>udpipe</strong>-Sprachmodell laden, um
+für jede der drei Untertitelversionen eine morphosyntaktische Annotation
+vorzunehmen.</p>
 <div class="sourceCode" id="cb1232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1232-1"><a href="untertitel.html#cb1232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
 <span id="cb1232-2"><a href="untertitel.html#cb1232-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1232-3"><a href="untertitel.html#cb1232-3" aria-hidden="true" tabindex="-1"></a>file_model <span class="ot">=</span> <span class="st">&quot;english-ewt-ud-2.5-191206.udpipe&quot;</span></span>
@@ -613,7 +630,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1234-3"><a href="untertitel.html#cb1234-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1234-4"><a href="untertitel.html#cb1234-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe_annotate</span>(slvmod, <span class="at">x =</span> avatar<span class="sc">$</span>text[avatar<span class="sc">$</span>language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span>], <span class="at">trace =</span> F)</span>
 <span id="cb1234-5"><a href="untertitel.html#cb1234-5" aria-hidden="true" tabindex="-1"></a>udslv <span class="ot">=</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
-<p>Die Datensätze wollen wir für anderweitige Verwendungen speichern, und zwar sowohl im <em>conllu</em>-Format als auch im <em>csv</em>-Format. In beiden Fällen erhalten wir Textdateien.</p>
+<p>Die Datensätze wollen wir für anderweitige Verwendungen speichern, und
+zwar sowohl im <em>conllu</em>-Format als auch im <em>csv</em>-Format. In beiden
+Fällen erhalten wir Textdateien.</p>
 <div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1235-1"><a href="untertitel.html#cb1235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">as_conllu</span>(udeng), <span class="at">file =</span> <span class="st">&quot;data/Avatar_ud_eng.conllu&quot;</span>, </span>
 <span id="cb1235-2"><a href="untertitel.html#cb1235-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> F)</span>
 <span id="cb1235-3"><a href="untertitel.html#cb1235-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(<span class="fu">as_conllu</span>(uddeu), <span class="at">file =</span> <span class="st">&quot;data/Avatar_ud_deu.conllu&quot;</span>, </span>
@@ -623,68 +642,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="untertitel.html#cb1236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(udeng, <span class="st">&quot;data/Avatar_ud_eng.csv&quot;</span>)</span>
 <span id="cb1236-2"><a href="untertitel.html#cb1236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(uddeu, <span class="st">&quot;data/Avatar_ud_deu.csv&quot;</span>)</span>
 <span id="cb1236-3"><a href="untertitel.html#cb1236-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(udslv, <span class="st">&quot;data/Avatar_ud_slv.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1237-1"><a href="untertitel.html#cb1237-1" aria-hidden="true" tabindex="-1"></a>udeng <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_eng.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 12788 Columns: 14</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps</code></pre>
-<pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="untertitel.html#cb1241-1" aria-hidden="true" tabindex="-1"></a>uddeu <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_deu.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 11732 Columns: 14</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps</code></pre>
-<pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="untertitel.html#cb1245-1" aria-hidden="true" tabindex="-1"></a>udslv <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_slv.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 8124 Columns: 14</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (9): doc_id, sentence, token, lemma, upos, xpos, feats, dep_rel, misc
-## dbl (4): paragraph_id, sentence_id, token_id, head_token_id
-## lgl (1): deps</code></pre>
-<pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<p>Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale hinzufügen (und zwar mit den <em>mutate()</em>-Befehlen, in denen auch einfache <em>quanteda</em>-Funktionen verwendet werden). Außerdem soll die komplexe Tabellenspalte <em>feats</em> (features) in einzelne Spalten aufgeteilt werden (und zwar mit der <em>cbind_morphological()</em>-Funktion von <em>udpipe</em>).</p>
-<p>Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die Spalten “word, token, feats, sentence” zur Verfügung stehen:</p>
-<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="untertitel.html#cb1249-1" aria-hidden="true" tabindex="-1"></a>tokenize_annotate <span class="ot">=</span> <span class="cf">function</span>(tbl){</span>
-<span id="cb1249-2"><a href="untertitel.html#cb1249-2" aria-hidden="true" tabindex="-1"></a>  tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-3"><a href="untertitel.html#cb1249-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, token, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-4"><a href="untertitel.html#cb1249-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind_morphological</span>(<span class="at">term =</span> <span class="st">&quot;feats&quot;</span>,  </span>
-<span id="cb1249-5"><a href="untertitel.html#cb1249-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;PronType&quot;</span>,<span class="st">&quot;NumType&quot;</span>,<span class="st">&quot;Poss&quot;</span>,<span class="st">&quot;Reflex&quot;</span>,</span>
-<span id="cb1249-6"><a href="untertitel.html#cb1249-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Foreign&quot;</span>,<span class="st">&quot;Abbr&quot;</span>,<span class="st">&quot;Typo&quot;</span>,</span>
-<span id="cb1249-7"><a href="untertitel.html#cb1249-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Gender&quot;</span>,<span class="st">&quot;Animacy&quot;</span>,<span class="st">&quot;NounClass&quot;</span>,</span>
-<span id="cb1249-8"><a href="untertitel.html#cb1249-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Case&quot;</span>,<span class="st">&quot;Number&quot;</span>,<span class="st">&quot;Definite&quot;</span>,<span class="st">&quot;Degree&quot;</span>,</span>
-<span id="cb1249-9"><a href="untertitel.html#cb1249-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;VerbForm&quot;</span>,<span class="st">&quot;Person&quot;</span>,<span class="st">&quot;Tense&quot;</span>,<span class="st">&quot;Mood&quot;</span>,</span>
-<span id="cb1249-10"><a href="untertitel.html#cb1249-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Aspect&quot;</span>,<span class="st">&quot;Voice&quot;</span>,<span class="st">&quot;Evident&quot;</span>,</span>
-<span id="cb1249-11"><a href="untertitel.html#cb1249-11" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Polarity&quot;</span>,<span class="st">&quot;Polite&quot;</span>,<span class="st">&quot;Clusivity&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-12"><a href="untertitel.html#cb1249-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">txt =</span> <span class="fu">str_replace_all</span>(sentence, <span class="st">&quot;[:punct:]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-13"><a href="untertitel.html#cb1249-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentlen =</span> quanteda<span class="sc">::</span><span class="fu">ntoken</span>(txt)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-14"><a href="untertitel.html#cb1249-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">syllables =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(txt)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-15"><a href="untertitel.html#cb1249-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">types =</span> quanteda<span class="sc">::</span><span class="fu">ntype</span>(txt)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-16"><a href="untertitel.html#cb1249-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wordlen =</span> syllables<span class="sc">/</span>sentlen) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-17"><a href="untertitel.html#cb1249-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ttr =</span> types<span class="sc">/</span>sentlen) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-18"><a href="untertitel.html#cb1249-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>txt, <span class="sc">-</span>feats)</span>
-<span id="cb1249-19"><a href="untertitel.html#cb1249-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Die für die Verwendung der Funktion entsprechenden Tabellen sind die zuvor gebildeten Tabellen “udeng”, “uddeu” und “udslv”. Nach der Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.</p>
-<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="untertitel.html#cb1250-1" aria-hidden="true" tabindex="-1"></a>avatar_eng_udpiped <span class="ot">&lt;-</span> udeng <span class="sc">%&gt;%</span> </span>
-<span id="cb1250-2"><a href="untertitel.html#cb1250-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;eng&quot;</span>)</span>
-<span id="cb1250-3"><a href="untertitel.html#cb1250-3" aria-hidden="true" tabindex="-1"></a>avatar_deu_udpiped <span class="ot">&lt;-</span> uddeu <span class="sc">%&gt;%</span> </span>
-<span id="cb1250-4"><a href="untertitel.html#cb1250-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;deu&quot;</span>)</span>
-<span id="cb1250-5"><a href="untertitel.html#cb1250-5" aria-hidden="true" tabindex="-1"></a>avatar_slv_udpiped <span class="ot">&lt;-</span> udslv <span class="sc">%&gt;%</span> </span>
-<span id="cb1250-6"><a href="untertitel.html#cb1250-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;slv&quot;</span>)</span>
-<span id="cb1250-7"><a href="untertitel.html#cb1250-7" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="ot">=</span> <span class="fu">bind_rows</span>(avatar_eng_udpiped,</span>
-<span id="cb1250-8"><a href="untertitel.html#cb1250-8" aria-hidden="true" tabindex="-1"></a>                                 avatar_deu_udpiped,</span>
-<span id="cb1250-9"><a href="untertitel.html#cb1250-9" aria-hidden="true" tabindex="-1"></a>                                 avatar_slv_udpiped)</span>
-<span id="cb1250-10"><a href="untertitel.html#cb1250-10" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped</span></code></pre></div>
+<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1237-1"><a href="untertitel.html#cb1237-1" aria-hidden="true" tabindex="-1"></a>udeng <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_eng.csv&quot;</span>)</span>
+<span id="cb1237-2"><a href="untertitel.html#cb1237-2" aria-hidden="true" tabindex="-1"></a>uddeu <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_deu.csv&quot;</span>)</span>
+<span id="cb1237-3"><a href="untertitel.html#cb1237-3" aria-hidden="true" tabindex="-1"></a>udslv <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Avatar_ud_slv.csv&quot;</span>)</span></code></pre></div>
+<p>Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale
+hinzufügen (und zwar mit den <em>mutate()</em>-Befehlen, in denen auch einfache
+<em>quanteda</em>-Funktionen verwendet werden). Außerdem soll die komplexe
+Tabellenspalte <em>feats</em> (features) in einzelne Spalten aufgeteilt werden
+(und zwar mit der <em>cbind_morphological()</em>-Funktion von <em>udpipe</em>).</p>
+<p>Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine
+Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die
+Spalten “word, token, feats, sentence” zur Verfügung stehen:</p>
+<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="untertitel.html#cb1238-1" aria-hidden="true" tabindex="-1"></a>tokenize_annotate <span class="ot">=</span> <span class="cf">function</span>(tbl){</span>
+<span id="cb1238-2"><a href="untertitel.html#cb1238-2" aria-hidden="true" tabindex="-1"></a>  tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-3"><a href="untertitel.html#cb1238-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, token, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-4"><a href="untertitel.html#cb1238-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind_morphological</span>(<span class="at">term =</span> <span class="st">&quot;feats&quot;</span>,  </span>
+<span id="cb1238-5"><a href="untertitel.html#cb1238-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;PronType&quot;</span>,<span class="st">&quot;NumType&quot;</span>,<span class="st">&quot;Poss&quot;</span>,<span class="st">&quot;Reflex&quot;</span>,</span>
+<span id="cb1238-6"><a href="untertitel.html#cb1238-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Foreign&quot;</span>,<span class="st">&quot;Abbr&quot;</span>,<span class="st">&quot;Typo&quot;</span>,</span>
+<span id="cb1238-7"><a href="untertitel.html#cb1238-7" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Gender&quot;</span>,<span class="st">&quot;Animacy&quot;</span>,<span class="st">&quot;NounClass&quot;</span>,</span>
+<span id="cb1238-8"><a href="untertitel.html#cb1238-8" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Case&quot;</span>,<span class="st">&quot;Number&quot;</span>,<span class="st">&quot;Definite&quot;</span>,<span class="st">&quot;Degree&quot;</span>,</span>
+<span id="cb1238-9"><a href="untertitel.html#cb1238-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;VerbForm&quot;</span>,<span class="st">&quot;Person&quot;</span>,<span class="st">&quot;Tense&quot;</span>,<span class="st">&quot;Mood&quot;</span>,</span>
+<span id="cb1238-10"><a href="untertitel.html#cb1238-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Aspect&quot;</span>,<span class="st">&quot;Voice&quot;</span>,<span class="st">&quot;Evident&quot;</span>,</span>
+<span id="cb1238-11"><a href="untertitel.html#cb1238-11" aria-hidden="true" tabindex="-1"></a>                                <span class="st">&quot;Polarity&quot;</span>,<span class="st">&quot;Polite&quot;</span>,<span class="st">&quot;Clusivity&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-12"><a href="untertitel.html#cb1238-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">txt =</span> <span class="fu">str_replace_all</span>(sentence, <span class="st">&quot;[:punct:]&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-13"><a href="untertitel.html#cb1238-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sentlen =</span> quanteda<span class="sc">::</span><span class="fu">ntoken</span>(txt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-14"><a href="untertitel.html#cb1238-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">syllables =</span> nsyllable<span class="sc">::</span><span class="fu">nsyllable</span>(txt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-15"><a href="untertitel.html#cb1238-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">types =</span> quanteda<span class="sc">::</span><span class="fu">ntype</span>(txt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-16"><a href="untertitel.html#cb1238-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wordlen =</span> syllables<span class="sc">/</span>sentlen) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-17"><a href="untertitel.html#cb1238-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ttr =</span> types<span class="sc">/</span>sentlen) <span class="sc">%&gt;%</span> </span>
+<span id="cb1238-18"><a href="untertitel.html#cb1238-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>txt, <span class="sc">-</span>feats)</span>
+<span id="cb1238-19"><a href="untertitel.html#cb1238-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Die für die Verwendung der Funktion entsprechenden Tabellen sind die
+zuvor gebildeten Tabellen “udeng”, “uddeu” und “udslv”. Nach der
+Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.</p>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1239-1"><a href="untertitel.html#cb1239-1" aria-hidden="true" tabindex="-1"></a>avatar_eng_udpiped <span class="ot">&lt;-</span> udeng <span class="sc">%&gt;%</span> </span>
+<span id="cb1239-2"><a href="untertitel.html#cb1239-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;eng&quot;</span>)</span>
+<span id="cb1239-3"><a href="untertitel.html#cb1239-3" aria-hidden="true" tabindex="-1"></a>avatar_deu_udpiped <span class="ot">&lt;-</span> uddeu <span class="sc">%&gt;%</span> </span>
+<span id="cb1239-4"><a href="untertitel.html#cb1239-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;deu&quot;</span>)</span>
+<span id="cb1239-5"><a href="untertitel.html#cb1239-5" aria-hidden="true" tabindex="-1"></a>avatar_slv_udpiped <span class="ot">&lt;-</span> udslv <span class="sc">%&gt;%</span> </span>
+<span id="cb1239-6"><a href="untertitel.html#cb1239-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokenize_annotate</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">language =</span> <span class="st">&quot;slv&quot;</span>)</span>
+<span id="cb1239-7"><a href="untertitel.html#cb1239-7" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="ot">=</span> <span class="fu">bind_rows</span>(avatar_eng_udpiped,</span>
+<span id="cb1239-8"><a href="untertitel.html#cb1239-8" aria-hidden="true" tabindex="-1"></a>                                 avatar_deu_udpiped,</span>
+<span id="cb1239-9"><a href="untertitel.html#cb1239-9" aria-hidden="true" tabindex="-1"></a>                                 avatar_slv_udpiped)</span>
+<span id="cb1239-10"><a href="untertitel.html#cb1239-10" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped</span></code></pre></div>
 <pre><code>##      doc_id paragraph_id sentence_id
 ## 1      doc1            1           1
 ## 2      doc1            1           1
@@ -22916,18 +22916,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2221      eng
 ## 2222      eng
 ##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 22434 rows ]</code></pre>
-<p>Für spätere Verwendungen speichern wir den Datensatz in zwei verschiedenen Formaten.</p>
-<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="untertitel.html#cb1252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(avatar_words_udpiped, <span class="st">&quot;data/avatar_words_udpiped.rds&quot;</span>)</span>
-<span id="cb1252-2"><a href="untertitel.html#cb1252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(avatar_words_udpiped, <span class="st">&quot;data/avatar_words_udpiped.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="untertitel.html#cb1253-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="ot">=</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/avatar_words_udpiped.rds&quot;</span>)</span></code></pre></div>
+<p>Für spätere Verwendungen speichern wir den Datensatz in zwei
+verschiedenen Formaten.</p>
+<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="untertitel.html#cb1241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(avatar_words_udpiped, <span class="st">&quot;data/avatar_words_udpiped.rds&quot;</span>)</span>
+<span id="cb1241-2"><a href="untertitel.html#cb1241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(avatar_words_udpiped, <span class="st">&quot;data/avatar_words_udpiped.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="untertitel.html#cb1242-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="ot">=</span> <span class="fu">read_rds</span>(<span class="st">&quot;data/avatar_words_udpiped.rds&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="morphologie-der-untertitel" class="section level2" number="13.4">
 <h2><span class="header-section-number">13.4</span> Morphologie der Untertitel</h2>
-<p>Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir nur die <em>filter()</em>- und die <em>select()</em>-Funktion einzugeben. Beispielsweise das Lemma “brother” in den englischen Untertiteln:</p>
-<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="untertitel.html#cb1254-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1254-2"><a href="untertitel.html#cb1254-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;brother&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1254-3"><a href="untertitel.html#cb1254-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
+<p>Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir
+nur die <em>filter()</em>- und die <em>select()</em>-Funktion einzugeben.
+Beispielsweise das Lemma “brother” in den englischen Untertiteln:</p>
+<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1243-1"><a href="untertitel.html#cb1243-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1243-2"><a href="untertitel.html#cb1243-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;brother&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1243-3"><a href="untertitel.html#cb1243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
 <pre><code>##                                                           sentence    token
 ## 1                                         It&#39;s about your brother.  brother
 ## 2               Your brother represented a significant investment.  brother
@@ -22963,9 +22966,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15 brother PROPN     conj
 ## 16 brother  NOUN     root</code></pre>
 <p>Dasselbe mit dem deutschen “Bruder” und dem slowenischen “brat”:</p>
-<div class="sourceCode" id="cb1256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1256-1"><a href="untertitel.html#cb1256-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1256-2"><a href="untertitel.html#cb1256-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;Bruder&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1256-3"><a href="untertitel.html#cb1256-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
+<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="untertitel.html#cb1245-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-2"><a href="untertitel.html#cb1245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;Bruder&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-3"><a href="untertitel.html#cb1245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
 <pre><code>##                               sentence  token  lemma upos dep_rel
 ## 1             Es geht um Ihren Bruder. Bruder Bruder NOUN     obl
 ## 2                       Ihr Bruder war Bruder Bruder NOUN    root
@@ -22979,9 +22982,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10              Bruder, hörst du mich? Bruder Bruder NOUN    root
 ## 11              Ich sehe dich, Bruder. Bruder Bruder NOUN   appos
 ## 12               Und wir waren Brüder. Brüder Bruder NOUN    root</code></pre>
-<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="untertitel.html#cb1258-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1258-2"><a href="untertitel.html#cb1258-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;brat&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1258-3"><a href="untertitel.html#cb1258-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
+<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1247-1"><a href="untertitel.html#cb1247-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-2"><a href="untertitel.html#cb1247-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lemma <span class="sc">==</span> <span class="st">&quot;brat&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1247-3"><a href="untertitel.html#cb1247-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, dep_rel)</span></code></pre></div>
 <pre><code>##                                    sentence  token lemma upos dep_rel
 ## 1                      Za vašega brata gre.  brata  brat NOUN     obl
 ## 2         Vaš brat je bil pomembna naložba.   brat  brat NOUN   nsubj
@@ -22993,42 +22996,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8                              Moji bratje! bratje  brat NOUN    root
 ## 9                      Brat, prebil se bom.   Brat  brat NOUN    root
 ## 10                         Brat, me slišiš?   Brat  brat VERB    root</code></pre>
-<p>Das Lemma “brother” bzw. scheint in den englischen Untertiteln ein wenig häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung “Bruder” bzw. “brat”.</p>
+<p>Das Lemma “brother” bzw. scheint in den englischen Untertiteln ein wenig
+häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung
+“Bruder” bzw. “brat”.</p>
 <div id="xray-brother" class="section level3" number="13.4.1">
 <h3><span class="header-section-number">13.4.1</span> XRay Brother</h3>
 <p>An welchen Stellen kommt das Wort in den Untertiteln vor?</p>
-<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1260-1"><a href="untertitel.html#cb1260-1" aria-hidden="true" tabindex="-1"></a>quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
-<span id="cb1260-2"><a href="untertitel.html#cb1260-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
-<span id="cb1260-3"><a href="untertitel.html#cb1260-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;brother&quot;</span>,<span class="st">&quot;Bruder&quot;</span>,<span class="st">&quot;brat&quot;</span>)), </span>
-<span id="cb1260-4"><a href="untertitel.html#cb1260-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: &#39;kwic.character()&#39; is deprecated. Use &#39;tokens()&#39; first.</code></pre>
+<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="untertitel.html#cb1249-1" aria-hidden="true" tabindex="-1"></a>quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
+<span id="cb1249-2"><a href="untertitel.html#cb1249-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
+<span id="cb1249-3"><a href="untertitel.html#cb1249-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;brother&quot;</span>,<span class="st">&quot;Bruder&quot;</span>,<span class="st">&quot;brat&quot;</span>)), </span>
+<span id="cb1249-4"><a href="untertitel.html#cb1249-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span></code></pre></div>
 <p><img src="19-Untertitel_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
-<p>Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir drei <em>xray</em>-Diagramme erstellen und sie mit Hilfe von <em>patchwork</em> zusammenkleben.</p>
-<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1262-1"><a href="untertitel.html#cb1262-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
-<span id="cb1262-2"><a href="untertitel.html#cb1262-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
-<span id="cb1262-3"><a href="untertitel.html#cb1262-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;brother&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: &#39;kwic.character()&#39; is deprecated. Use &#39;tokens()&#39; first.</code></pre>
-<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1264-1"><a href="untertitel.html#cb1264-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
-<span id="cb1264-2"><a href="untertitel.html#cb1264-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
-<span id="cb1264-3"><a href="untertitel.html#cb1264-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;Bruder&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: &#39;kwic.character()&#39; is deprecated. Use &#39;tokens()&#39; first.</code></pre>
-<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1266-1"><a href="untertitel.html#cb1266-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
-<span id="cb1266-2"><a href="untertitel.html#cb1266-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
-<span id="cb1266-3"><a href="untertitel.html#cb1266-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;brat&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: &#39;kwic.character()&#39; is deprecated. Use &#39;tokens()&#39; first.</code></pre>
-<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1268-1"><a href="untertitel.html#cb1268-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1268-2"><a href="untertitel.html#cb1268-2" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">|</span>p2<span class="sc">|</span>p3</span></code></pre></div>
+<p>Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir
+drei <em>xray</em>-Diagramme erstellen und sie mit Hilfe von <em>patchwork</em>
+zusammenkleben.</p>
+<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="untertitel.html#cb1250-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
+<span id="cb1250-2"><a href="untertitel.html#cb1250-2" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
+<span id="cb1250-3"><a href="untertitel.html#cb1250-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;brother&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span>
+<span id="cb1250-4"><a href="untertitel.html#cb1250-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1250-5"><a href="untertitel.html#cb1250-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
+<span id="cb1250-6"><a href="untertitel.html#cb1250-6" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
+<span id="cb1250-7"><a href="untertitel.html#cb1250-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;Bruder&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span>
+<span id="cb1250-8"><a href="untertitel.html#cb1250-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1250-9"><a href="untertitel.html#cb1250-9" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">=</span> quanteda.textplots<span class="sc">::</span><span class="fu">textplot_xray</span>(</span>
+<span id="cb1250-10"><a href="untertitel.html#cb1250-10" aria-hidden="true" tabindex="-1"></a>  quanteda<span class="sc">::</span><span class="fu">kwic</span>(avatar <span class="sc">%&gt;%</span> <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(text), </span>
+<span id="cb1250-11"><a href="untertitel.html#cb1250-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pattern =</span> <span class="st">&quot;brat&quot;</span>), <span class="at">scale =</span> <span class="st">&quot;relative&quot;</span>)</span>
+<span id="cb1250-12"><a href="untertitel.html#cb1250-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1250-13"><a href="untertitel.html#cb1250-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1250-14"><a href="untertitel.html#cb1250-14" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">|</span>p2<span class="sc">|</span>p3</span></code></pre></div>
 <p><img src="19-Untertitel_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
 </div>
 <div id="substantive-im-plural" class="section level3" number="13.4.2">
 <h3><span class="header-section-number">13.4.2</span> Substantive im Plural</h3>
-<p>Als nächstes wollen wir alle als Substantive (Noun) identifizierte Einheiten herausfinden, die im Plural auftreten.</p>
-<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1269-1"><a href="untertitel.html#cb1269-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Find all plural nouns (tokens)</span></span>
-<span id="cb1269-2"><a href="untertitel.html#cb1269-2" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1269-3"><a href="untertitel.html#cb1269-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1269-4"><a href="untertitel.html#cb1269-4" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1269-5"><a href="untertitel.html#cb1269-5" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1269-6"><a href="untertitel.html#cb1269-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
+<p>Als nächstes wollen wir alle als Substantive (Noun) identifizierte
+Einheiten herausfinden, die im Plural auftreten.</p>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="untertitel.html#cb1251-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Find all plural nouns (tokens)</span></span>
+<span id="cb1251-2"><a href="untertitel.html#cb1251-2" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1251-3"><a href="untertitel.html#cb1251-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1251-4"><a href="untertitel.html#cb1251-4" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1251-5"><a href="untertitel.html#cb1251-5" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1251-6"><a href="untertitel.html#cb1251-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
 <pre><code>##                                                                             sentence
 ## 1                                           I started having these dreams of flying.
 ## 2                                      but not on vet benefits, not in this economy.
@@ -23651,11 +23658,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 308       People      People NOUN         Plur
 ## 309     brothers     brother NOUN         Plur
 ## 310       aliens       alien NOUN         Plur</code></pre>
-<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1271-1"><a href="untertitel.html#cb1271-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1271-2"><a href="untertitel.html#cb1271-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1271-3"><a href="untertitel.html#cb1271-3" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1271-4"><a href="untertitel.html#cb1271-4" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1271-5"><a href="untertitel.html#cb1271-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
+<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="untertitel.html#cb1253-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1253-2"><a href="untertitel.html#cb1253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1253-3"><a href="untertitel.html#cb1253-3" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1253-4"><a href="untertitel.html#cb1253-4" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1253-5"><a href="untertitel.html#cb1253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
 <pre><code>##                                         sentence              token
 ## 1                         Die Rente und 12 Mäuse              Mäuse
 ## 2            Jahren ausgestorben, ist wieder da.             Jahren
@@ -24258,11 +24265,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 298           Sekunde NOUN         Plur
 ## 299            Bruder NOUN         Plur
 ## 300             Alien NOUN         Plur</code></pre>
-<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1273-1"><a href="untertitel.html#cb1273-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1273-2"><a href="untertitel.html#cb1273-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1273-3"><a href="untertitel.html#cb1273-3" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb1273-4"><a href="untertitel.html#cb1273-4" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1273-5"><a href="untertitel.html#cb1273-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
+<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1255-1"><a href="untertitel.html#cb1255-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1255-2"><a href="untertitel.html#cb1255-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1255-3"><a href="untertitel.html#cb1255-3" aria-hidden="true" tabindex="-1"></a>           upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb1255-4"><a href="untertitel.html#cb1255-4" aria-hidden="true" tabindex="-1"></a>           morph_number <span class="sc">==</span> <span class="st">&quot;Plur&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1255-5"><a href="untertitel.html#cb1255-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, token, lemma, upos, morph_number)</span></code></pre></div>
 <pre><code>##                                         sentence         token         lemma
 ## 1                        Ne zdi se kot šest let.           let          leto
 ## 2                             in najti odgovore.      odgovore       odgovor
@@ -24769,38 +24776,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 250 NOUN         Plur
 ## 251 NOUN         Plur
 ## 252 NOUN         Plur</code></pre>
-<div class="sourceCode" id="cb1275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1275-1"><a href="untertitel.html#cb1275-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-2"><a href="untertitel.html#cb1275-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(language, token, lemma, upos, morph_number) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-3"><a href="untertitel.html#cb1275-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-4"><a href="untertitel.html#cb1275-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-5"><a href="untertitel.html#cb1275-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(morph_number) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-6"><a href="untertitel.html#cb1275-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-7"><a href="untertitel.html#cb1275-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-8"><a href="untertitel.html#cb1275-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_number =</span> </span>
-<span id="cb1275-9"><a href="untertitel.html#cb1275-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(morph_number, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1275-10"><a href="untertitel.html#cb1275-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_number =</span> </span>
-<span id="cb1275-11"><a href="untertitel.html#cb1275-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">fct_relevel</span>(</span>
-<span id="cb1275-12"><a href="untertitel.html#cb1275-12" aria-hidden="true" tabindex="-1"></a>             morph_number, <span class="at">levels =</span></span>
-<span id="cb1275-13"><a href="untertitel.html#cb1275-13" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">c</span>(<span class="st">&quot;Sing&quot;</span>,<span class="st">&quot;Plur&quot;</span>,<span class="st">&quot;Dual&quot;</span>,<span class="st">&quot;Unknown&quot;</span>)))</span></code></pre></div>
-<pre><code>## Warning: Outer names are only allowed for unnamed scalar atomic inputs</code></pre>
-<pre><code>## # A tibble: 4 x 4
-##   morph_number   deu   eng   slv
-##   &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Plur           300   310   252
-## 2 Sing           987  1110   897
-## 3 Unknown         25     0     0
-## 4 Dual             0     0     7</code></pre>
+<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="untertitel.html#cb1257-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-2"><a href="untertitel.html#cb1257-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(language, token, lemma, upos, morph_number) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-3"><a href="untertitel.html#cb1257-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-4"><a href="untertitel.html#cb1257-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;NOUN&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-5"><a href="untertitel.html#cb1257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(morph_number) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-6"><a href="untertitel.html#cb1257-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-7"><a href="untertitel.html#cb1257-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-8"><a href="untertitel.html#cb1257-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_number =</span> </span>
+<span id="cb1257-9"><a href="untertitel.html#cb1257-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(morph_number, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-10"><a href="untertitel.html#cb1257-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_number =</span> </span>
+<span id="cb1257-11"><a href="untertitel.html#cb1257-11" aria-hidden="true" tabindex="-1"></a>           <span class="fu">fct_relevel</span>(</span>
+<span id="cb1257-12"><a href="untertitel.html#cb1257-12" aria-hidden="true" tabindex="-1"></a>             morph_number, <span class="at">levels =</span></span>
+<span id="cb1257-13"><a href="untertitel.html#cb1257-13" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">c</span>(<span class="st">&quot;Sing&quot;</span>,<span class="st">&quot;Plur&quot;</span>,<span class="st">&quot;Dual&quot;</span>,<span class="st">&quot;Unknown&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-14"><a href="untertitel.html#cb1257-14" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["morph_number"],"name":[1],"type":["fct"],"align":["left"]},{"label":["deu"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["eng"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["slv"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Plur","2":"300","3":"310","4":"252"},{"1":"Sing","2":"987","3":"1110","4":"897"},{"1":"Unknown","2":"25","3":"0","4":"0"},{"1":"Dual","2":"0","3":"0","4":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 <div id="adjektive-im-komparativ" class="section level3" number="13.4.3">
 <h3><span class="header-section-number">13.4.3</span> Adjektive im Komparativ</h3>
-<p>In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven ausfindig machen und ihre Stelle im Untertitel.</p>
-<p>Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil einiger Wortarten in den slowenischen Untertiteln größer ist als in den anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht obligatorisch auftreten müssen).</p>
-<div class="sourceCode" id="cb1278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1278-1"><a href="untertitel.html#cb1278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequencies of parts of speech</span></span>
-<span id="cb1278-2"><a href="untertitel.html#cb1278-2" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1278-3"><a href="untertitel.html#cb1278-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1278-4"><a href="untertitel.html#cb1278-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(upos, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1278-5"><a href="untertitel.html#cb1278-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1278-6"><a href="untertitel.html#cb1278-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct))</span></code></pre></div>
+<p>In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven
+ausfindig machen und ihre Stelle im Untertitel.</p>
+<p>Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil
+einiger Wortarten in den slowenischen Untertiteln größer ist als in den
+anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen
+jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht
+obligatorisch auftreten müssen).</p>
+<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="untertitel.html#cb1258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequencies of parts of speech</span></span>
+<span id="cb1258-2"><a href="untertitel.html#cb1258-2" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1258-3"><a href="untertitel.html#cb1258-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1258-4"><a href="untertitel.html#cb1258-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(upos, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1258-5"><a href="untertitel.html#cb1258-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1258-6"><a href="untertitel.html#cb1258-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct))</span></code></pre></div>
 <pre><code>## # A tibble: 17 x 7
 ##    upos  n_eng n_deu n_slv pct_eng pct_deu pct_slv
 ##    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -24821,17 +24831,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15 X         3    71    33    0.03    0.8     0.55
 ## 16 SYM       2    NA    NA    0.02   NA      NA   
 ## 17 PUNCT     1     1     1    0.01    0.01    0.02</code></pre>
-<p>In den englischen Untertiteln wurden 17 Komparativformen identifiziert, in den deutschen 20 und in den slownischen 4. Der Anteil der Komparativformen ist also in den englischen und deutschen Untertiteln größer als in den slowenischen.</p>
-<p>Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%), englisch (14 = 2,77%), slowenisch (6 = 1,65)</p>
-<div class="sourceCode" id="cb1280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1280-1"><a href="untertitel.html#cb1280-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-2"><a href="untertitel.html#cb1280-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-3"><a href="untertitel.html#cb1280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;ADJ&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-4"><a href="untertitel.html#cb1280-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(morph_degree, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-5"><a href="untertitel.html#cb1280-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-6"><a href="untertitel.html#cb1280-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-7"><a href="untertitel.html#cb1280-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb1280-8"><a href="untertitel.html#cb1280-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_degree =</span> </span>
-<span id="cb1280-9"><a href="untertitel.html#cb1280-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(morph_degree, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
+<p>In den englischen Untertiteln wurden 17 Komparativformen identifiziert,
+in den deutschen 20 und in den slownischen 4. Der Anteil der
+Komparativformen ist also in den englischen und deutschen Untertiteln
+größer als in den slowenischen.</p>
+<p>Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%),
+englisch (14 = 2,77%), slowenisch (6 = 1,65)</p>
+<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1260-1"><a href="untertitel.html#cb1260-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-2"><a href="untertitel.html#cb1260-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-3"><a href="untertitel.html#cb1260-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;ADJ&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-4"><a href="untertitel.html#cb1260-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(morph_degree, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-5"><a href="untertitel.html#cb1260-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-6"><a href="untertitel.html#cb1260-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-7"><a href="untertitel.html#cb1260-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1260-8"><a href="untertitel.html#cb1260-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">morph_degree =</span> </span>
+<span id="cb1260-9"><a href="untertitel.html#cb1260-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(morph_degree, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 7
 ##   morph_degree n_deu n_eng n_slv pct_deu pct_eng pct_slv
 ##   &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -24839,25 +24853,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 Sup             35    14     6    6       2.77    1.65
 ## 3 Unknown         25     0    19    4.29    0       5.23
 ## 4 Cmp             20    17     4    3.43    3.36    1.1</code></pre>
-<p>Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante: “german-gsd”) enthält diese Kategorie nicht. Wir haben daher die “german-hdt”-Variante gewählt.</p>
+<p>Anmerkung: Die Klassifzierung für die deutsche Sprache (Variante:
+“german-gsd”) enthält diese Kategorie nicht. Wir haben daher die
+“german-hdt”-Variante gewählt.</p>
 </div>
 </div>
 <div id="syntax-dependenz" class="section level2" number="13.5">
 <h2><span class="header-section-number">13.5</span> Syntax: Dependenz</h2>
-<p>Programme wie <em>udpipe</em> oder <em>spacyr</em> sind auch in der Lage, syntaktische Dependenzrelationen gemäß der Stanforder sprachübergreifenden Typologie zu identifizieren und als Annotation auszugeben. Typologische Grundlage für die Annotation: <a href="https://universaldependencies.org/u/dep/index.html">Universal Stanford Dependencies: A cross-linguistic typology (de Marneffe et al. 2014)</a>.</p>
-<div class="sourceCode" id="cb1282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1282-1"><a href="untertitel.html#cb1282-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;pictures/Screenshot 2021-08-27 at 12-14-22 Universal Dependency Relations.png&quot;</span>)</span></code></pre></div>
+<p>Programme wie <em>udpipe</em> oder <em>spacyr</em> sind auch in der Lage, syntaktische
+Dependenzrelationen gemäß der Stanforder sprachübergreifenden Typologie
+zu identifizieren und als Annotation auszugeben. Typologische Grundlage
+für die Annotation: <a href="https://universaldependencies.org/u/dep/index.html">Universal Stanford Dependencies: A cross-linguistic
+typology (de Marneffe et al.
+2014)</a>.</p>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1262-1"><a href="untertitel.html#cb1262-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;pictures/Screenshot 2021-08-27 at 12-14-22 Universal Dependency Relations.png&quot;</span>)</span></code></pre></div>
 <p><img src="pictures/Screenshot%202021-08-27%20at%2012-14-22%20Universal%20Dependency%20Relations.png" width="410" /></p>
-<p>Mehr über das Datenformat:
-<a href="https://universaldependencies.org/format.html">CoNLL-U Format</a></p>
-<p>Frequenzwerte der syntaktischen Abhängigkeitsrelationen in den Avatar-Untertiteln (englisch, deutsch, slowenisch):</p>
-<div class="sourceCode" id="cb1283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1283-1"><a href="untertitel.html#cb1283-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-2"><a href="untertitel.html#cb1283-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-3"><a href="untertitel.html#cb1283-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dep_rel, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-4"><a href="untertitel.html#cb1283-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-5"><a href="untertitel.html#cb1283-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-6"><a href="untertitel.html#cb1283-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb1283-7"><a href="untertitel.html#cb1283-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_rel =</span> </span>
-<span id="cb1283-8"><a href="untertitel.html#cb1283-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(dep_rel, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
+<p>Mehr über das Datenformat: <a href="https://universaldependencies.org/format.html">CoNLL-U
+Format</a></p>
+<p>Frequenzwerte der syntaktischen Abhängigkeitsrelationen in den
+Avatar-Untertiteln (englisch, deutsch, slowenisch):</p>
+<div class="sourceCode" id="cb1263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1263-1"><a href="untertitel.html#cb1263-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-2"><a href="untertitel.html#cb1263-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-3"><a href="untertitel.html#cb1263-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dep_rel, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-4"><a href="untertitel.html#cb1263-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-5"><a href="untertitel.html#cb1263-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-6"><a href="untertitel.html#cb1263-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1263-7"><a href="untertitel.html#cb1263-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_rel =</span> </span>
+<span id="cb1263-8"><a href="untertitel.html#cb1263-8" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(dep_rel, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 43 x 7
 ##    dep_rel n_deu n_eng n_slv pct_deu pct_eng pct_slv
 ##    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -24872,136 +24894,182 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 obl       246   315   256    2.76    3.22    4.28
 ## 10 mark      156   289   154    1.75    2.96    2.58
 ## # ... with 33 more rows</code></pre>
-<p>Gemäß <em>udpipe</em> erscheinen in den englischen und deutschen Untertiteln die Dependenzrelationen <em>root, nsubj, advmod, det, obj</em> am häufigsten. In den slowenischen Untertiteln haben die Relationen <em>root, advmod, obj, case, nsubj</em> die größten Frequenzwerte.</p>
-<p>Die Dependenzrelation <em>root</em> gibt uns Auskunft darüber, ob eine Wortfolge als Satz identifiziert wurde. Sie wird gewöhnlich mit Hilfe des (finiten) Verbs im Satz bestimmt. In elliptischen Sätzen wird eine der vorkommenden Wortformen mit <em>root</em> assoziiert.</p>
-<p>In der Tabelle ist (unter <em>root</em>) zu sehen, dass in den englischen Untertiteln 2026 satzwertige Einheiten identifiziert wurden, in den deutschen 2366 und in den slowenischen 1807.</p>
-<p>In der Tabelle zeigen die Prozentzahlen beispielsweise einen bemerkenswerten Unterschied in der Häufigkeit der Dependenzrelation <em>nsubj</em>, d.h. die Anzahl der identifizierten Subjekte. In den slowenischen Untertiteln liegt der Anteil deutlich unter dem in den englischen und deutschen. Das hängt damit zusammen, dass Slowenisch eine Pro-drop-Sprache ist, dass also unbetonte Personalpronomen (in Subjekt-Funktion) nicht sprachlich realisiert zu sein brauchen. Besonder deutlich wird dies, wenn wir einen Beispielsatz aus allen drei Texten visualisieren.</p>
-<p>Mit Hilfe der folgenden Funktion können wir die Dependenzrelationen im Satz visualisieren. Wir geben der Funktion den Namen <em>plot_annotation()</em>.</p>
-<div class="sourceCode" id="cb1285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1285-1"><a href="untertitel.html#cb1285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;igraph&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     as_data_frame, groups, union</code></pre>
-<pre><code>## The following objects are masked from &#39;package:purrr&#39;:
-## 
-##     compose, simplify</code></pre>
-<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-## 
-##     crossing</code></pre>
-<pre><code>## The following object is masked from &#39;package:tibble&#39;:
-## 
-##     as_data_frame</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     decompose, spectrum</code></pre>
-<pre><code>## The following object is masked from &#39;package:base&#39;:
-## 
-##     union</code></pre>
-<div class="sourceCode" id="cb1293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1293-1"><a href="untertitel.html#cb1293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb1293-2"><a href="untertitel.html#cb1293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1293-3"><a href="untertitel.html#cb1293-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1293-4"><a href="untertitel.html#cb1293-4" aria-hidden="true" tabindex="-1"></a>plot_annotation <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">size =</span> <span class="dv">3</span>){</span>
-<span id="cb1293-5"><a href="untertitel.html#cb1293-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(x) <span class="sc">&amp;</span> <span class="fu">all</span>(<span class="fu">c</span>(<span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>, <span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>) <span class="sc">%in%</span> <span class="fu">colnames</span>(x)))</span>
-<span id="cb1293-6"><a href="untertitel.html#cb1293-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x<span class="sc">$</span>head_token_id), ]</span>
-<span id="cb1293-7"><a href="untertitel.html#cb1293-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[x<span class="sc">$</span>sentence_id <span class="sc">%in%</span> <span class="fu">min</span>(x<span class="sc">$</span>sentence_id), ]</span>
-<span id="cb1293-8"><a href="untertitel.html#cb1293-8" aria-hidden="true" tabindex="-1"></a>  edges <span class="ot">&lt;-</span> x[x<span class="sc">$</span>head_token_id <span class="sc">!=</span> <span class="dv">0</span>, <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>)]</span>
-<span id="cb1293-9"><a href="untertitel.html#cb1293-9" aria-hidden="true" tabindex="-1"></a>  edges<span class="sc">$</span>label <span class="ot">&lt;-</span> edges<span class="sc">$</span>dep_rel</span>
-<span id="cb1293-10"><a href="untertitel.html#cb1293-10" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges,</span>
-<span id="cb1293-11"><a href="untertitel.html#cb1293-11" aria-hidden="true" tabindex="-1"></a>                             <span class="at">vertices =</span> x[, <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>)],</span>
-<span id="cb1293-12"><a href="untertitel.html#cb1293-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1293-13"><a href="untertitel.html#cb1293-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">windowsFonts</span>(<span class="st">&quot;Arial Narrow&quot;</span> <span class="ot">=</span> <span class="fu">windowsFont</span>(<span class="st">&quot;Arial&quot;</span>))</span>
-<span id="cb1293-14"><a href="untertitel.html#cb1293-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1293-15"><a href="untertitel.html#cb1293-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_arc</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> dep_rel, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.20</span>),</span>
-<span id="cb1293-16"><a href="untertitel.html#cb1293-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">&#39;mm&#39;</span>), <span class="at">ends =</span> <span class="st">&quot;last&quot;</span>, <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>),</span>
-<span id="cb1293-17"><a href="untertitel.html#cb1293-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">end_cap =</span> ggraph<span class="sc">::</span><span class="fu">label_rect</span>(<span class="st">&quot;wordswordswords&quot;</span>),</span>
-<span id="cb1293-18"><a href="untertitel.html#cb1293-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">label_colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="at">label_size =</span> size) <span class="sc">+</span></span>
-<span id="cb1293-19"><a href="untertitel.html#cb1293-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_label</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> token), <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> size, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1293-20"><a href="untertitel.html#cb1293-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> upos), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">size =</span> size) <span class="sc">+</span></span>
-<span id="cb1293-21"><a href="untertitel.html#cb1293-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1293-22"><a href="untertitel.html#cb1293-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;udpipe output&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;tokenisation, parts of speech tagging &amp; dependency relations&quot;</span>)</span>
-<span id="cb1293-23"><a href="untertitel.html#cb1293-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Hier ist ein Beispiel eines Avatar-Untertitels in drei Sprachen. Wegen der deutschen bzw. slowenischen Sonderzeichen wandeln wir den Text mit Hilfe der Funktion <em>enc2utf8()</em> ins erforderliche UTF8-Format um.</p>
-<div class="sourceCode" id="cb1294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1294-1"><a href="untertitel.html#cb1294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># English</span></span>
-<span id="cb1294-2"><a href="untertitel.html#cb1294-2" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="fu">udpipe</span>(<span class="st">&quot;I started having these dreams of flying&quot;</span>, <span class="st">&quot;english&quot;</span>)</span>
-<span id="cb1294-3"><a href="untertitel.html#cb1294-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">plot_annotation</span>(mytext, <span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb1294-4"><a href="untertitel.html#cb1294-4" aria-hidden="true" tabindex="-1"></a><span class="co"># German</span></span>
-<span id="cb1294-5"><a href="untertitel.html#cb1294-5" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Ich träumte auf einmal vom Fliegen&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
-<span id="cb1294-6"><a href="untertitel.html#cb1294-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;german&quot;</span>)</span>
-<span id="cb1294-7"><a href="untertitel.html#cb1294-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb1294-8"><a href="untertitel.html#cb1294-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Slovenian</span></span>
-<span id="cb1294-9"><a href="untertitel.html#cb1294-9" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Začel sem sanjati o letenju&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
-<span id="cb1294-10"><a href="untertitel.html#cb1294-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;slovenian&quot;</span>)</span>
-<span id="cb1294-11"><a href="untertitel.html#cb1294-11" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p>Englischer Satz:
-* PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
-* NOUN, VERB: Substantiv, Verb
-* AUX: das Hilfs- oder Auxiliarverb
-* xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das Prädikat des Satzes bilden
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* obj: Objektfunktion (hier ist “these dreams” das Objekt des Verbs “have”)
-* SCONJ: subordinierende Konjunktion (aber hier wäre “prep” für Präposition angebracht)
-* acl: gewöhnlich bezogen auf einen finiten oder infiniten Satz, der eine Nominalphrase modifiziert (im Kontrast zu advcl, die ein Prädikat modifizieren)
-* mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet</p>
-<div class="sourceCode" id="cb1295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1295-1"><a href="untertitel.html#cb1295-1" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
-<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-38-1.svg" width="672" /></p>
-<p>Deutscher Satz:
-* PRON: Personalpronomen mit Subjekt-Funktion (nsubj)
-* NOUN, VERB, ADP, ADV: Substantiv, Verb, Adposition (hier: Präposition), Adverb
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als Präpositionalobjekt klassifizert (hier ist “vom Fliegen” das Objekt des Verbs “have”)
-* case: Element, das den Kasus einer Phrase regiert (z.B. “von” regiert den Dativ der Nominalphrase “dem Fliegen”)
-* advmod: Element, das das Prädikat modifizert (Adverbialphrase)</p>
-<div class="sourceCode" id="cb1296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1296-1"><a href="untertitel.html#cb1296-1" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
-<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-39-1.svg" width="672" /></p>
-<p>Slowenischer Satz:
-* Das Personalpronomen mit Subjekt-Funktion fehlt, daher auch keine Subjekt-Relation (nsubj) angezeigt.
-* In slowenischen Nominalphrasen sind Begleiter (DET) nicht obligatorisch bzw. default (slow. “privzeto”) wie etwa im Englischen oder Deutschen.
-* NOUN, VERB, ADP: Substantiv, Verb, Adposition (hier: Präposition)
-* AUX: das Hilfs- oder Auxiliarverb
-* DET: Determiner (Determinans), Begleiter eines Substantivs (meist handelt es sich um einen Artikel)
-* xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das Prädikat des Satzes bilden (“začel sanjati”)
-* obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als Präpositionalobjekt klassifizert (hier ist “o letenju” das Objekt des Verbs “sanjati”)
-* case: Element, das den Kasus einer Phrase regiert (z.B. die Präposition “o” regiert den Dativ der Nominalphrase “letenju”)</p>
-<div class="sourceCode" id="cb1297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1297-1"><a href="untertitel.html#cb1297-1" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
-<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-40-1.svg" width="672" /></p>
-<p>Aus den drei Diagrammen ist ersichtlich, dass die Subjekt-Relation (nsubj) im englischen und deutschen Satz mittels eines Personalpronomens (PRON) realisiert wird, während das Subjekt im slowenischen Satz mittels der finiten Verbform, einem Hilfs- oder Auxiliarverbs (AUX), (mit)ausgedrückt wird, also im Hilfsverb “versteckt” auftritt. Im slowenischen Satz ist PRON syntaktisch nicht notwendig, im englischen und deutschen schon. Das wirkt sich natürlich auf die Frequenzwerte bzw. den Pronzenanteil aus (s. Tabelle).</p>
-<p>Die Diagramme zeigen strukturelle Ähnlichkeiten und Unterschiede zwischen den Sprachversionen:
-* sowohl im englischen Untertitel als auch in der slowenischen Version wird eine xcomp-Relation angegeben, d.h. dass das Satzprädikat mit Hilfe von zwei Verben konstituiert wird (“started having” vs. “začel sanjati”). Die Verben “started” bzw. “začeti” modifizeren das Hauptverb “have” bzw. “sanjati” temporal. Im deutschen Untertitel wird stattdessen ein einfaches Prädikat (“träumte”) verwendet, dass durch eine Adverbialphrase (“auf einmal”) temporal modifiziert wird.
-* das englische Substantiv “dream” wird im deutschen und slowenischen Untertitel im Satzprädikat ausgedrückt (“träumte”, “sanjati”)
-* der englische Subordinationsmarker “of”, der sich sowohl auf Nominalphrasen als auch auf Sätze beziehen kann, wird im deutschen und slowenischen Untertitel mit einer spezifischeren Wortklasse ausgedrückt, nämlich mit einer Präposition (ADP, Adposition).</p>
+<p>Gemäß <em>udpipe</em> erscheinen in den englischen und deutschen Untertiteln
+die Dependenzrelationen <em>root, nsubj, advmod, det, obj</em> am häufigsten.
+In den slowenischen Untertiteln haben die Relationen <em>root, advmod, obj,
+case, nsubj</em> die größten Frequenzwerte.</p>
+<p>Die Dependenzrelation <em>root</em> gibt uns Auskunft darüber, ob eine
+Wortfolge als Satz identifiziert wurde. Sie wird gewöhnlich mit Hilfe
+des (finiten) Verbs im Satz bestimmt. In elliptischen Sätzen wird eine
+der vorkommenden Wortformen mit <em>root</em> assoziiert.</p>
+<p>In der Tabelle ist (unter <em>root</em>) zu sehen, dass in den englischen
+Untertiteln 2026 satzwertige Einheiten identifiziert wurden, in den
+deutschen 2366 und in den slowenischen 1807.</p>
+<p>In der Tabelle zeigen die Prozentzahlen beispielsweise einen
+bemerkenswerten Unterschied in der Häufigkeit der Dependenzrelation
+<em>nsubj</em>, d.h. die Anzahl der identifizierten Subjekte. In den
+slowenischen Untertiteln liegt der Anteil deutlich unter dem in den
+englischen und deutschen. Das hängt damit zusammen, dass Slowenisch eine
+Pro-drop-Sprache ist, dass also unbetonte Personalpronomen (in
+Subjekt-Funktion) nicht sprachlich realisiert zu sein brauchen. Besonder
+deutlich wird dies, wenn wir einen Beispielsatz aus allen drei Texten
+visualisieren.</p>
+<p>Mit Hilfe der folgenden Funktion können wir die Dependenzrelationen im
+Satz visualisieren. Wir geben der Funktion den Namen
+<em>plot_annotation()</em>.</p>
+<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1265-1"><a href="untertitel.html#cb1265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1265-2"><a href="untertitel.html#cb1265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb1265-3"><a href="untertitel.html#cb1265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1265-4"><a href="untertitel.html#cb1265-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1265-5"><a href="untertitel.html#cb1265-5" aria-hidden="true" tabindex="-1"></a>plot_annotation <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">size =</span> <span class="dv">3</span>){</span>
+<span id="cb1265-6"><a href="untertitel.html#cb1265-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.data.frame</span>(x) <span class="sc">&amp;</span> <span class="fu">all</span>(<span class="fu">c</span>(<span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>, <span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>) <span class="sc">%in%</span> <span class="fu">colnames</span>(x)))</span>
+<span id="cb1265-7"><a href="untertitel.html#cb1265-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x<span class="sc">$</span>head_token_id), ]</span>
+<span id="cb1265-8"><a href="untertitel.html#cb1265-8" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[x<span class="sc">$</span>sentence_id <span class="sc">%in%</span> <span class="fu">min</span>(x<span class="sc">$</span>sentence_id), ]</span>
+<span id="cb1265-9"><a href="untertitel.html#cb1265-9" aria-hidden="true" tabindex="-1"></a>  edges <span class="ot">&lt;-</span> x[x<span class="sc">$</span>head_token_id <span class="sc">!=</span> <span class="dv">0</span>, <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>)]</span>
+<span id="cb1265-10"><a href="untertitel.html#cb1265-10" aria-hidden="true" tabindex="-1"></a>  edges<span class="sc">$</span>label <span class="ot">&lt;-</span> edges<span class="sc">$</span>dep_rel</span>
+<span id="cb1265-11"><a href="untertitel.html#cb1265-11" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(edges,</span>
+<span id="cb1265-12"><a href="untertitel.html#cb1265-12" aria-hidden="true" tabindex="-1"></a>                             <span class="at">vertices =</span> x[, <span class="fu">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>)],</span>
+<span id="cb1265-13"><a href="untertitel.html#cb1265-13" aria-hidden="true" tabindex="-1"></a>                             <span class="at">directed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1265-14"><a href="untertitel.html#cb1265-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">windowsFonts</span>(<span class="st">&quot;Arial Narrow&quot;</span> <span class="ot">=</span> <span class="fu">windowsFont</span>(<span class="st">&quot;Arial&quot;</span>))</span>
+<span id="cb1265-15"><a href="untertitel.html#cb1265-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1265-16"><a href="untertitel.html#cb1265-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_edge_arc</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> dep_rel, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.20</span>),</span>
+<span id="cb1265-17"><a href="untertitel.html#cb1265-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">arrow =</span> grid<span class="sc">::</span><span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">4</span>, <span class="st">&#39;mm&#39;</span>), <span class="at">ends =</span> <span class="st">&quot;last&quot;</span>, <span class="at">type =</span> <span class="st">&quot;closed&quot;</span>),</span>
+<span id="cb1265-18"><a href="untertitel.html#cb1265-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">end_cap =</span> ggraph<span class="sc">::</span><span class="fu">label_rect</span>(<span class="st">&quot;wordswordswords&quot;</span>),</span>
+<span id="cb1265-19"><a href="untertitel.html#cb1265-19" aria-hidden="true" tabindex="-1"></a>                  <span class="at">label_colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="at">label_size =</span> size) <span class="sc">+</span></span>
+<span id="cb1265-20"><a href="untertitel.html#cb1265-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_label</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> token), <span class="at">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">size =</span> size, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1265-21"><a href="untertitel.html#cb1265-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_node_text</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">label =</span> upos), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="fl">0.35</span>, <span class="at">size =</span> size) <span class="sc">+</span></span>
+<span id="cb1265-22"><a href="untertitel.html#cb1265-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_graph</span>(<span class="at">base_family =</span> <span class="st">&quot;Arial Narrow&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1265-23"><a href="untertitel.html#cb1265-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;udpipe output&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;tokenisation, parts of speech tagging &amp; dependency relations&quot;</span>)</span>
+<span id="cb1265-24"><a href="untertitel.html#cb1265-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Hier ist ein Beispiel eines Avatar-Untertitels in drei Sprachen. Wegen
+der deutschen bzw. slowenischen Sonderzeichen wandeln wir den Text mit
+Hilfe der Funktion <em>enc2utf8()</em> ins erforderliche UTF8-Format um.</p>
+<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1266-1"><a href="untertitel.html#cb1266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># English</span></span>
+<span id="cb1266-2"><a href="untertitel.html#cb1266-2" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="fu">udpipe</span>(<span class="st">&quot;I started having these dreams of flying&quot;</span>, <span class="st">&quot;english&quot;</span>)</span>
+<span id="cb1266-3"><a href="untertitel.html#cb1266-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">plot_annotation</span>(mytext, <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb1266-4"><a href="untertitel.html#cb1266-4" aria-hidden="true" tabindex="-1"></a><span class="co"># German</span></span>
+<span id="cb1266-5"><a href="untertitel.html#cb1266-5" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Ich träumte auf einmal vom Fliegen&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
+<span id="cb1266-6"><a href="untertitel.html#cb1266-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;german&quot;</span>)</span>
+<span id="cb1266-7"><a href="untertitel.html#cb1266-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb1266-8"><a href="untertitel.html#cb1266-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Slovenian</span></span>
+<span id="cb1266-9"><a href="untertitel.html#cb1266-9" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Začel sem sanjati o letenju&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
+<span id="cb1266-10"><a href="untertitel.html#cb1266-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;slovenian&quot;</span>)</span>
+<span id="cb1266-11"><a href="untertitel.html#cb1266-11" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p>Englischer Satz:</p>
 <ul>
-<li><a href="https://universaldependencies.org/u/pos/index.html">Universal POS tags</a></li>
-<li><a href="https://universaldependencies.org/u/feat/index.html">Universal features</a></li>
+<li><p>PRON: Personalpronomen mit Subjekt-Funktion (nsubj)</p></li>
+<li><p>NOUN, VERB: Substantiv, Verb</p></li>
+<li><p>AUX: das Hilfs- oder Auxiliarverb</p></li>
+<li><p>xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das
+Prädikat des Satzes bilden</p></li>
+<li><p>DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+handelt es sich um einen Artikel)</p></li>
+<li><p>obj: Objektfunktion (hier ist “these dreams” das Objekt des Verbs
+“have”)</p></li>
+<li><p>SCONJ: subordinierende Konjunktion (aber hier wäre “prep” für
+Präposition angebracht)</p></li>
+<li><p>acl: gewöhnlich bezogen auf einen finiten oder infiniten Satz, der
+eine Nominalphrase modifiziert (im Kontrast zu advcl, die ein
+Prädikat modifizieren)</p></li>
+<li><p>mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet.</p></li>
+</ul>
+<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1267-1"><a href="untertitel.html#cb1267-1" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
+<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-38-1.svg" width="672" /></p>
+<p>Deutscher Satz:</p>
+<ul>
+<li><p>PRON: Personalpronomen mit Subjekt-Funktion (nsubj)</p></li>
+<li><p>NOUN, VERB, ADP, ADV: Substantiv, Verb, Adposition (hier:
+Präposition), Adverb</p></li>
+<li><p>DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+handelt es sich um einen Artikel)</p></li>
+<li><p>obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als
+Präpositionalobjekt klassifizert (hier ist “vom Fliegen” das Objekt
+des Verbs “have”)</p></li>
+<li><p>case: Element, das den Kasus einer Phrase regiert (z.B. “von”
+regiert den Dativ der Nominalphrase “dem Fliegen”)</p></li>
+<li><p>advmod: Element, das das Prädikat modifizert (Adverbialphrase).</p></li>
+</ul>
+<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1268-1"><a href="untertitel.html#cb1268-1" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
+<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-39-1.svg" width="672" /></p>
+<p>Slowenischer Satz:</p>
+<ul>
+<li><p>Das Personalpronomen mit Subjekt-Funktion fehlt, daher auch keine
+Subjekt-Relation (nsubj) angezeigt.</p></li>
+<li><p>In slowenischen Nominalphrasen sind Begleiter (DET) nicht
+obligatorisch bzw. default (slow. “privzeto”) wie etwa im Englischen
+oder Deutschen.</p></li>
+<li><p>NOUN, VERB, ADP: Substantiv, Verb, Adposition (hier: Präposition)</p></li>
+<li><p>AUX: das Hilfs- oder Auxiliarverb</p></li>
+<li><p>DET: Determiner (Determinans), Begleiter eines Substantivs (meist
+handelt es sich um einen Artikel)</p></li>
+<li><p>xcomp: hier eine Relation zwischen zwei Verben, die gemeinsam das
+Prädikat des Satzes bilden (“začel sanjati”)</p></li>
+<li><p>obl: eine Art von Adjunkt, in der Valenzgrammatik gewöhnlich als
+Präpositionalobjekt klassifizert (hier ist “o letenju” das Objekt
+des Verbs “sanjati”)</p></li>
+<li><p>case: Element, das den Kasus einer Phrase regiert (z.B. die
+Präposition “o” regiert den Dativ der Nominalphrase “letenju”).</p></li>
+</ul>
+<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1269-1"><a href="untertitel.html#cb1269-1" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
+<p><img src="19-Untertitel_files/figure-html/unnamed-chunk-40-1.svg" width="672" /></p>
+<p>Aus den drei Diagrammen ist ersichtlich, dass die Subjekt-Relation
+(nsubj) im englischen und deutschen Satz mittels eines Personalpronomens
+(PRON) realisiert wird, während das Subjekt im slowenischen Satz mittels
+der finiten Verbform, einem Hilfs- oder Auxiliarverbs (AUX),
+(mit)ausgedrückt wird, also im Hilfsverb “versteckt” auftritt. Im
+slowenischen Satz ist PRON syntaktisch nicht notwendig, im englischen
+und deutschen schon. Das wirkt sich natürlich auf die Frequenzwerte bzw.
+den Pronzenanteil aus (s. Tabelle).</p>
+<p>Die Diagramme zeigen strukturelle Ähnlichkeiten und Unterschiede
+zwischen den Sprachversionen: * sowohl im englischen Untertitel als
+auch in der slowenischen Version wird eine xcomp-Relation angegeben,
+d.h. dass das Satzprädikat mit Hilfe von zwei Verben konstituiert wird
+(“started having” vs. “začel sanjati”). Die Verben “started” bzw.
+“začeti” modifizeren das Hauptverb “have” bzw. “sanjati” temporal. Im
+deutschen Untertitel wird stattdessen ein einfaches Prädikat (“träumte”)
+verwendet, dass durch eine Adverbialphrase (“auf einmal”) temporal
+modifiziert wird. * das englische Substantiv “dream” wird im deutschen
+und slowenischen Untertitel im Satzprädikat ausgedrückt (“träumte”,
+“sanjati”) * der englische Subordinationsmarker “of”, der sich sowohl
+auf Nominalphrasen als auch auf Sätze beziehen kann, wird im deutschen
+und slowenischen Untertitel mit einer spezifischeren Wortklasse
+ausgedrückt, nämlich mit einer Präposition (ADP, Adposition).</p>
+<ul>
+<li><a href="https://universaldependencies.org/u/pos/index.html">Universal POS
+tags</a></li>
+<li><a href="https://universaldependencies.org/u/feat/index.html">Universal
+features</a></li>
 <li><a href="http://lindat.mff.cuni.cz/services/udpipe/">UDPipe</a></li>
 </ul>
 <div id="aktiv-und-passiv" class="section level3" number="13.5.1">
 <h3><span class="header-section-number">13.5.1</span> Aktiv und Passiv</h3>
-<p>Wie groß ist der Anteil aktivischer und passivischer Sätze in den drei Sprachversionen? Dies können wir mit Hilfe der nsubj-Relation erfahren.
-In den englischen und deutschen Untertiteln wurden je 34 passivische Subjekte identifizert, in den slowenischen keiner.</p>
-<div class="sourceCode" id="cb1298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1298-1"><a href="untertitel.html#cb1298-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-2"><a href="untertitel.html#cb1298-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-3"><a href="untertitel.html#cb1298-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(dep_rel, <span class="st">&quot;nsubj&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-4"><a href="untertitel.html#cb1298-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dep_rel, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-5"><a href="untertitel.html#cb1298-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-6"><a href="untertitel.html#cb1298-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-7"><a href="untertitel.html#cb1298-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb1298-8"><a href="untertitel.html#cb1298-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_rel =</span> </span>
-<span id="cb1298-9"><a href="untertitel.html#cb1298-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(dep_rel, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
+<p>Wie groß ist der Anteil aktivischer und passivischer Sätze in den drei
+Sprachversionen? Dies können wir mit Hilfe der nsubj-Relation erfahren.
+In den englischen und deutschen Untertiteln wurden je 34 passivische
+Subjekte identifizert, in den slowenischen keiner.</p>
+<div class="sourceCode" id="cb1270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1270-1"><a href="untertitel.html#cb1270-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-2"><a href="untertitel.html#cb1270-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-3"><a href="untertitel.html#cb1270-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(dep_rel, <span class="st">&quot;nsubj&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-4"><a href="untertitel.html#cb1270-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dep_rel, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-5"><a href="untertitel.html#cb1270-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span><span class="sc">*</span>n<span class="sc">/</span><span class="fu">sum</span>(n),<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-6"><a href="untertitel.html#cb1270-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> language, <span class="at">values_from =</span> <span class="fu">c</span>(n, pct)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-7"><a href="untertitel.html#cb1270-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">replace_na</span>(.x, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb1270-8"><a href="untertitel.html#cb1270-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dep_rel =</span> </span>
+<span id="cb1270-9"><a href="untertitel.html#cb1270-9" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_replace</span>(dep_rel, <span class="st">&quot;0&quot;</span>, <span class="st">&quot;Unknown&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 7
 ##   dep_rel    n_deu n_eng n_slv pct_deu pct_eng pct_slv
 ##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 nsubj       1263  1254   378   97.4    97.4      100
 ## 2 nsubj:pass    34    34     0    2.62    2.64       0</code></pre>
 <p>Schauen wir uns ein paar dieser Untertitel in allen drei Sprachen an:</p>
-<div class="sourceCode" id="cb1300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1300-1"><a href="untertitel.html#cb1300-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-2"><a href="untertitel.html#cb1300-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-3"><a href="untertitel.html#cb1300-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-4"><a href="untertitel.html#cb1300-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(dep_rel, <span class="st">&quot;nsubj:pass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-5"><a href="untertitel.html#cb1300-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-6"><a href="untertitel.html#cb1300-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, sentence_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-7"><a href="untertitel.html#cb1300-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1300-8"><a href="untertitel.html#cb1300-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1272-1"><a href="untertitel.html#cb1272-1" aria-hidden="true" tabindex="-1"></a>avatar_words_udpiped <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-2"><a href="untertitel.html#cb1272-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(language) <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-3"><a href="untertitel.html#cb1272-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;eng&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-4"><a href="untertitel.html#cb1272-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(dep_rel, <span class="st">&quot;nsubj:pass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-5"><a href="untertitel.html#cb1272-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-6"><a href="untertitel.html#cb1272-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sentence, sentence_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-7"><a href="untertitel.html#cb1272-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1272-8"><a href="untertitel.html#cb1272-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   sentence                                                           sentence_id
 ##   &lt;chr&gt;                                                                    &lt;dbl&gt;
@@ -25011,64 +25079,81 @@ In den englischen und deutschen Untertiteln wurden je 34 passivische Subjekte id
 ## 4 You are cleared for south departure.                                         2
 ## 5 You&#39;re not used to your avatar body.                                         1</code></pre>
 <ul>
-<li>Wir wählen einen englischen Untertitel als Beispiel, und zwar:
-“And the concept is that ervery driver matched to his own avatar”.</li>
-<li>Deutsche Version: “Die Idee ist, dass jeder Operator auf seinen eigenen Avatar abgestimmt wird”.</li>
-<li>Slowenische Version: “Vsak upravljavec dobi svojega avatarja”.</li>
+<li>Wir wählen einen englischen Untertitel als Beispiel, und zwar: "And
+the concept is that ervery driver is matched to his own avatar*".</li>
+<li>Deutsche Version: “<em>Die Idee ist, dass jeder Operator auf seinen
+eigenen Avatar abgestimmt wird</em>”.</li>
+<li>Slowenische Version: “<em>Vsak upravljavec dobi svojega avatarja</em>”.</li>
 </ul>
-<div class="sourceCode" id="cb1302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1302-1"><a href="untertitel.html#cb1302-1" aria-hidden="true" tabindex="-1"></a>avatar <span class="sc">%&gt;%</span> </span>
-<span id="cb1302-2"><a href="untertitel.html#cb1302-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1302-3"><a href="untertitel.html#cb1302-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;jeder Operator auf&quot;</span>) <span class="sc">|</span> <span class="fu">str_detect</span>(text, <span class="st">&quot;Avatar abgestimmt&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1302-4"><a href="untertitel.html#cb1302-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(text)</span></code></pre></div>
+<div class="sourceCode" id="cb1274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1274-1"><a href="untertitel.html#cb1274-1" aria-hidden="true" tabindex="-1"></a>avatar <span class="sc">%&gt;%</span> </span>
+<span id="cb1274-2"><a href="untertitel.html#cb1274-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;deu&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1274-3"><a href="untertitel.html#cb1274-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;jeder Operator auf&quot;</span>) <span class="sc">|</span> <span class="fu">str_detect</span>(text, <span class="st">&quot;Avatar abgestimmt&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1274-4"><a href="untertitel.html#cb1274-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(text)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 1
 ##   text                                  
 ##   &lt;chr&gt;                                 
 ## 1 Die Idee ist, dass jeder Operator auf 
 ## 2 seinen eigenen Avatar abgestimmt wird,</code></pre>
-<div class="sourceCode" id="cb1304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1304-1"><a href="untertitel.html#cb1304-1" aria-hidden="true" tabindex="-1"></a>avatar <span class="sc">%&gt;%</span> </span>
-<span id="cb1304-2"><a href="untertitel.html#cb1304-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1304-3"><a href="untertitel.html#cb1304-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;dobi svojega avatarja&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1304-4"><a href="untertitel.html#cb1304-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(text)</span></code></pre></div>
+<div class="sourceCode" id="cb1276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1276-1"><a href="untertitel.html#cb1276-1" aria-hidden="true" tabindex="-1"></a>avatar <span class="sc">%&gt;%</span> </span>
+<span id="cb1276-2"><a href="untertitel.html#cb1276-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(language <span class="sc">==</span> <span class="st">&quot;slv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1276-3"><a href="untertitel.html#cb1276-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">&quot;dobi svojega avatarja&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1276-4"><a href="untertitel.html#cb1276-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(text)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 1
 ##   text                                   
 ##   &lt;chr&gt;                                  
 ## 1 Vsak upravljavec dobi svojega avatarja,</code></pre>
 <p>Wiederum visualisieren wir die drei Sprachversionen.</p>
-<div class="sourceCode" id="cb1306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1306-1"><a href="untertitel.html#cb1306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># English</span></span>
-<span id="cb1306-2"><a href="untertitel.html#cb1306-2" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="fu">udpipe</span>(<span class="st">&quot;And the concept is that ervery driver is matched to his own avatar&quot;</span>, <span class="st">&quot;english&quot;</span>)</span>
-<span id="cb1306-3"><a href="untertitel.html#cb1306-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">plot_annotation</span>(mytext, <span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb1306-4"><a href="untertitel.html#cb1306-4" aria-hidden="true" tabindex="-1"></a><span class="co"># German</span></span>
-<span id="cb1306-5"><a href="untertitel.html#cb1306-5" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Die Idee ist, dass jeder Operator auf seinen eigenen Avatar abgestimmt wird&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
-<span id="cb1306-6"><a href="untertitel.html#cb1306-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;german&quot;</span>)</span>
-<span id="cb1306-7"><a href="untertitel.html#cb1306-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span>
-<span id="cb1306-8"><a href="untertitel.html#cb1306-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Slovenian</span></span>
-<span id="cb1306-9"><a href="untertitel.html#cb1306-9" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Vsak upravljavec dobi svojega avatarja&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
-<span id="cb1306-10"><a href="untertitel.html#cb1306-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;slovenian&quot;</span>)</span>
-<span id="cb1306-11"><a href="untertitel.html#cb1306-11" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1307-1"><a href="untertitel.html#cb1307-1" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
+<div class="sourceCode" id="cb1278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1278-1"><a href="untertitel.html#cb1278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># English</span></span>
+<span id="cb1278-2"><a href="untertitel.html#cb1278-2" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="fu">udpipe</span>(<span class="st">&quot;And the concept is that ervery driver is matched to his own avatar&quot;</span>, <span class="st">&quot;english&quot;</span>)</span>
+<span id="cb1278-3"><a href="untertitel.html#cb1278-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">plot_annotation</span>(mytext, <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb1278-4"><a href="untertitel.html#cb1278-4" aria-hidden="true" tabindex="-1"></a><span class="co"># German</span></span>
+<span id="cb1278-5"><a href="untertitel.html#cb1278-5" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Die Idee ist, dass jeder Operator auf seinen eigenen Avatar abgestimmt wird&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
+<span id="cb1278-6"><a href="untertitel.html#cb1278-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;german&quot;</span>)</span>
+<span id="cb1278-7"><a href="untertitel.html#cb1278-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span>
+<span id="cb1278-8"><a href="untertitel.html#cb1278-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Slovenian</span></span>
+<span id="cb1278-9"><a href="untertitel.html#cb1278-9" aria-hidden="true" tabindex="-1"></a>mytext <span class="ot">=</span> <span class="st">&quot;Vsak upravljavec dobi svojega avatarja&quot;</span> <span class="sc">%&gt;%</span> <span class="fu">enc2utf8</span>()</span>
+<span id="cb1278-10"><a href="untertitel.html#cb1278-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe</span>(mytext, <span class="st">&quot;slovenian&quot;</span>)</span>
+<span id="cb1278-11"><a href="untertitel.html#cb1278-11" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">=</span> <span class="fu">plot_annotation</span>(x, <span class="at">size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1279-1"><a href="untertitel.html#cb1279-1" aria-hidden="true" tabindex="-1"></a>x1</span></code></pre></div>
 <p><img src="19-Untertitel_files/figure-html/unnamed-chunk-46-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1308-1"><a href="untertitel.html#cb1308-1" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
+<div class="sourceCode" id="cb1280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1280-1"><a href="untertitel.html#cb1280-1" aria-hidden="true" tabindex="-1"></a>x2</span></code></pre></div>
 <p><img src="19-Untertitel_files/figure-html/unnamed-chunk-47-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1309-1"><a href="untertitel.html#cb1309-1" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
+<div class="sourceCode" id="cb1281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1281-1"><a href="untertitel.html#cb1281-1" aria-hidden="true" tabindex="-1"></a>x3</span></code></pre></div>
 <p><img src="19-Untertitel_files/figure-html/unnamed-chunk-48-1.svg" width="672" /></p>
-<p>Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt). Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens (der im Nebensatz ausgedrückt wird) in ein Gedankenschema oder Frame dient.</p>
-<p>Die passivische Relation, die im englischen und deutschen Untertitel mittels passivischer Verbformen realisiert wird, wird im slowenischen Untertitel mit dem Verb “dobiti” zum Ausdruck gebracht (deutsch: “bekommen”, englisch: “get”). Das Subjekt des slowenischen Verb “dobiti” (hier: “vsak upravljalec”) ist semantisch gesehen ein Benefaktiv oder Nutznießer (benefaktive Relation), also ein Rezipient, für den eine Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für das deutsche bekommen-Passiv (z.B. “jeder Operator bekommt einen Avatar”.</p>
-<p>Die Ausdrucksweise im slowenischen Untertitel ist im Vergleich zu den anderen Sprachversionen umgangssprachlicher, die Ausdrucksweise im englischen und deutschen Untertitel dagegen spezifischer, d.h. es handelt sich um eher eine technische (fachbezogene) Ausdrucksweise (engl. “matching”, deutsch “Abstimmung”).</p>
-<p>Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator (driver, upravljalec) sind so wie das gerittene Tier lediglich Reagentien im Prozess. Das ist in allen drei Sprachversionen deckungsgleich.</p>
-<p>In allen drei Sprachversionen wird wird der (menschliche) Benefaktiv (d.h. das syntaktische Subjekt) als Ausgangspunkt einer neuen oder wichtigen Information verwendet. Die neue Information “seinen eigenen Avatar” wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht. Die typische Verteilung Thema vor Rhema wird hiermit in allen drei Sprachversionen gewahrt. Außerdem wird damit auch die häufigere Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt es sich um ein direktes Objekt (Akkusativobjekt), im englischen und deutschen dagegen um ein Präpositionalobjekt (“match to …”, “abstimmen auf …”).</p>
+<p>Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt). Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens (der im Nebensatz ausgedrückt wird)
+in ein Gedankenschema oder Frame dient.</p>
+<p>Die passivische Relation, die im englischen und deutschen Untertitel
+mittels passivischer Verbformen realisiert wird, wird im slowenischen
+Untertitel mit dem Verb “dobiti” zum Ausdruck gebracht (deutsch:
+“bekommen”, englisch: “get”). Das Subjekt des slowenischen Verb “dobiti” (hier: “vsak upravljalec”) ist semantisch gesehen ein Benefaktiv oder Nutznießer (benefaktive Relation), also ein Rezipient, für den eine Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für das deutsche bekommen-Passiv (z.B. “jeder Operator bekommt einen Avatar”.</p>
+<p>Die Ausdrucksweise im slowenischen Untertitel ist im Vergleich zu den
+anderen Sprachversionen umgangssprachlicher, die Ausdrucksweise im
+englischen und deutschen Untertitel dagegen spezifischer, d.h. es
+handelt sich um eher eine technische (fachbezogene) Ausdrucksweise
+(engl. “matching”, deutsch “Abstimmung”).</p>
+<p>Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator (driver, upravljalec) sind so wie das gerittene Tier lediglich
+Reagentien im Prozess. Das ist in allen drei Sprachversionen
+deckungsgleich.</p>
+<p>In allen drei Sprachversionen wird wird der (menschliche) Benefaktiv
+(d.h. das syntaktische Subjekt) als Ausgangspunkt einer neuen oder
+wichtigen Information verwendet. Die neue Information “seinen eigenen
+Avatar” wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht. Die typische Verteilung Thema vor Rhema wird hiermit in allen drei Sprachversionen gewahrt. Außerdem wird damit auch die häufigere
+Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt es sich um ein direktes Objekt (Akkusativobjekt), im englischen und deutschen dagegen um ein Präpositionalobjekt (“match to …”, “abstimmen
+auf …”).</p>
 </div>
 <div id="passiv-substantiv-vs.-pronomen" class="section level3" number="13.5.2">
 <h3><span class="header-section-number">13.5.2</span> Passiv: Substantiv vs. Pronomen</h3>
-<p>Combining different conditions. How many are nouns and how many are pronouns?</p>
+<p>Combining different conditions. How many are nouns and how many are
+pronouns?</p>
 <p>length(which(x<span class="math inline">\(dep_rel == &quot;nsubj&quot; &amp; x\)</span>upos == “NOUN”))
 length(which(x<span class="math inline">\(dep_rel == &quot;nsubj&quot; &amp; x\)</span>upos == “PRON”))</p>
-<p>Exercise 5: how many passive subjects are nouns, and how many of them are pronouns?</p>
-<p>Let’s extract the lemmas of all objects
-x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj”]</p>
-<p>lemmas of all objects that are pronouns
-x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj” &amp; x$upos == “PRON”]</p>
-<p>Lemmas of all objects that are common nouns:
-x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj” &amp; x$upos == “NOUN”]</p>
+<p>Exercise 5: how many passive subjects are nouns, and how many of them
+are pronouns?</p>
+<p>Let’s extract the lemmas of all objects x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj”]</p>
+<p>lemmas of all objects that are pronouns x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj” &amp;
+x$upos == “PRON”]</p>
+<p>Lemmas of all objects that are common nouns: x<span class="math inline">\(lemma[x\)</span>dep_rel == “obj”
+&amp; x$upos == “NOUN”]</p>
 <p>How many such objects are there?
 length(which(x<span class="math inline">\(dep_rel == &quot;obj&quot; &amp; x\)</span>upos == “NOUN”))</p>
 <p>Which cross-linguistic tendency do these results confirm?</p>

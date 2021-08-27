@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Untertitel
 
 ## Programme starten
@@ -25,7 +19,7 @@ slowenischen Untertitel stammen von der Webseite *nachschauen*.
 Zuerst laden wir die Untertitel zum Film *Avatar* in englischer,
 deutscher und slowenischer Sprache.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 avatar_eng = read_lines("data/sub/Avatar_eng.txt")
 avatar_deu = read_lines("data/sub/Avatar_deu.txt")
@@ -61,8 +55,8 @@ a2 = avatar_eng %>%
 
 avatar_eng = bind_cols(a1,a2) %>% 
   select(timecode, text) %>% 
-  separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
-tail(avatar_eng)
+  separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>") %>% 
+  rmarkdown::paged_table()
 
 a2a = a2 %>% 
   mutate(sentence_id = row_number())
@@ -84,6 +78,7 @@ b2 = avatar_deu %>%
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
   mutate(language = "deu")
+
 # avatar_deu = bind_cols(a1,a2)
 #   select(timecode, text) %>% 
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
@@ -108,6 +103,7 @@ c2 = avatar_slv %>%
   mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
   mutate(text = str_replace(text, "\\</i\\>", "")) %>% 
   mutate(language = "slv")
+
 # avatar_slv = bind_cols(a1,a2)
 #   select(timecode, text) %>% 
 #   separate(timecode, into = c("start", "end"), sep = "\\-\\-\\>")
@@ -163,23 +159,26 @@ avatar = read_rds("data/avatar.rds")
 Ein Beispiel einer Konkordanzrecherche mit Hilfe von *kwic* - dem
 Konkordanz-Tool in *quanteda*:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = quanteda::corpus(avatar, text_field = "text") %>% 
   quanteda::tokens()
-quanteda::kwic(x, pattern = "planet") %>% as_tibble()
+
+quanteda::kwic(x, pattern = "planet") %>% as_tibble() %>% 
+  rmarkdown::paged_table()
 ```
 
 ### Textzerlegung
 
 Zerlegung der Untertitellinien in Wörter:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 
 avatar_words = avatar %>% 
   unnest_tokens(word, text, drop = FALSE) %>% 
   select(-text)
-head(avatar_words)  
+
+avatar_words %>% rmarkdown::paged_table()
 ```
 
 ### Zerlegung und Annotation
@@ -188,7 +187,7 @@ Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um
 für jede der drei Untertitelversionen eine morphosyntaktische Annotation
 vorzunehmen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 
 file_model = "english-ewt-ud-2.5-191206.udpipe"
@@ -235,7 +234,7 @@ write_csv(uddeu, "data/Avatar_ud_deu.csv")
 write_csv(udslv, "data/Avatar_ud_slv.csv")
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 udeng = read_csv("data/Avatar_ud_eng.csv")
 uddeu = read_csv("data/Avatar_ud_deu.csv")
 udslv = read_csv("data/Avatar_ud_slv.csv")
@@ -288,7 +287,8 @@ avatar_slv_udpiped <- udslv %>%
 avatar_words_udpiped = bind_rows(avatar_eng_udpiped,
                                  avatar_deu_udpiped,
                                  avatar_slv_udpiped)
-avatar_words_udpiped
+
+avatar_words_udpiped %>% rmarkdown::paged_table()
 
 ```
 
@@ -307,14 +307,14 @@ avatar_words_udpiped = read_rds("data/avatar_words_udpiped.rds")
 
 ## Morphologie der Untertitel
 
-Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir
-nur die *filter()*- und die *select()*-Funktion einzugeben.
+Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir nur die *filter()*- und die *select()*-Funktion einzugeben.
 Beispielsweise das Lemma "brother" in den englischen Untertiteln:
 
 ```{r}
 avatar_words_udpiped %>% 
   filter(lemma == "brother") %>% 
-  select(sentence, token, lemma, upos, dep_rel)
+  select(sentence, token, lemma, upos, dep_rel) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -323,14 +323,16 @@ Dasselbe mit dem deutschen "Bruder" und dem slowenischen "brat":
 ```{r}
 avatar_words_udpiped %>% 
   filter(lemma == "Bruder") %>% 
-  select(sentence, token, lemma, upos, dep_rel)
+  select(sentence, token, lemma, upos, dep_rel) %>% 
+  rmarkdown::paged_table()
 
 ```
 
 ```{r}
 avatar_words_udpiped %>% 
   filter(lemma == "brat") %>% 
-  select(sentence, token, lemma, upos, dep_rel)
+  select(sentence, token, lemma, upos, dep_rel) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -342,7 +344,7 @@ häufiger vorzukommen als die deutsche bzw. slowenische Entsprechung
 
 An welchen Stellen kommt das Wort in den Untertiteln vor?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 quanteda.textplots::textplot_xray(
   quanteda::kwic(avatar %>% pull(text), 
                  pattern = c("brother","Bruder","brat")), 
@@ -354,7 +356,7 @@ Um die Stellen aus drei Texten besser vergleichen zu können, müssen wir
 drei *xray*-Diagramme erstellen und sie mit Hilfe von *patchwork*
 zusammenkleben.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 p1 = quanteda.textplots::textplot_xray(
   quanteda::kwic(avatar %>% filter(language == "eng") %>% pull(text), 
                  pattern = "brother"), scale = "relative")
@@ -382,7 +384,8 @@ avatar_words_udpiped %>%
   filter(language == "eng" & 
            upos == "NOUN" & 
            morph_number == "Plur") %>% 
-  select(sentence, token, lemma, upos, morph_number)
+  select(sentence, token, lemma, upos, morph_number) %>% 
+  rmarkdown::paged_table()
 ```
 
 ```{r}
@@ -390,7 +393,8 @@ avatar_words_udpiped %>%
   filter(language == "deu" & 
            upos == "NOUN" & 
            morph_number == "Plur") %>% 
-  select(sentence, token, lemma, upos, morph_number)
+  select(sentence, token, lemma, upos, morph_number) %>% 
+  rmarkdown::paged_table()
 ```
 
 ```{r}
@@ -398,10 +402,11 @@ avatar_words_udpiped %>%
   filter(language == "slv" & 
            upos == "NOUN" & 
            morph_number == "Plur") %>% 
-  select(sentence, token, lemma, upos, morph_number)
+  select(sentence, token, lemma, upos, morph_number) %>% 
+  rmarkdown::paged_table()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   select(language, token, lemma, upos, morph_number) %>% 
   group_by(language) %>% 
@@ -414,7 +419,8 @@ avatar_words_udpiped %>%
   mutate(morph_number = 
            fct_relevel(
              morph_number, levels =
-                         c("Sing","Plur","Dual","Unknown")))
+                         c("Sing","Plur","Dual","Unknown"))) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -435,7 +441,8 @@ avatar_words_udpiped %>%
   group_by(language) %>% 
   count(upos, sort = TRUE) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
-  pivot_wider(names_from = language, values_from = c(n, pct))
+  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -456,7 +463,8 @@ avatar_words_udpiped %>%
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
   mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
   mutate(morph_degree = 
-           str_replace(morph_degree, "0", "Unknown"))
+           str_replace(morph_degree, "0", "Unknown")) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -473,7 +481,7 @@ für die Annotation: [Universal Stanford Dependencies: A cross-linguistic
 typology (de Marneffe et al.
 2014)](https://universaldependencies.org/u/dep/index.html).
 
-```{r}
+```{r message=FALSE, warning=FALSE, out.width=100%}
 knitr::include_graphics("pictures/Screenshot 2021-08-27 at 12-14-22 Universal Dependency Relations.png")
 ```
 
@@ -491,7 +499,8 @@ avatar_words_udpiped %>%
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
   mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
   mutate(dep_rel = 
-           str_replace(dep_rel, "0", "Unknown"))
+           str_replace(dep_rel, "0", "Unknown")) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -523,7 +532,7 @@ Mit Hilfe der folgenden Funktion können wir die Dependenzrelationen im
 Satz visualisieren. Wir geben der Funktion den Namen
 *plot_annotation()*.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(igraph)
 library(ggraph)
 library(ggplot2)
@@ -594,7 +603,7 @@ Englischer Satz:
     eine Nominalphrase modifiziert (im Kontrast zu advcl, die ein
     Prädikat modifizieren)
 
--   mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet
+-   mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet.
 
 ```{r}
 x1
@@ -699,7 +708,8 @@ avatar_words_udpiped %>%
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
   mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
   mutate(dep_rel = 
-           str_replace(dep_rel, "0", "Unknown"))
+           str_replace(dep_rel, "0", "Unknown")) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -713,12 +723,12 @@ avatar_words_udpiped %>%
   ungroup() %>% 
   select(sentence, sentence_id) %>% 
   distinct() %>% 
-  head(5)
+  head(5) %>% rmarkdown::paged_table()
   
 ```
 
--   Wir wählen einen englischen Untertitel als Beispiel, und zwar: "*And
-    the concept is that ervery driver matched to his own avatar*".
+-   Wir wählen einen englischen Untertitel als Beispiel, und zwar: "And
+    the concept is that ervery driver is matched to his own avatar*".
 -   Deutsche Version: "*Die Idee ist, dass jeder Operator auf seinen
     eigenen Avatar abgestimmt wird*".
 -   Slowenische Version: "*Vsak upravljavec dobi svojega avatarja*".
@@ -727,14 +737,14 @@ avatar_words_udpiped %>%
 avatar %>% 
   filter(language == "deu") %>% 
   filter(str_detect(text, "jeder Operator auf") | str_detect(text, "Avatar abgestimmt")) %>% 
-  select(text)
+  select(text) %>% rmarkdown::paged_table()
 ```
 
 ```{r}
 avatar %>% 
   filter(language == "slv") %>% 
   filter(str_detect(text, "dobi svojega avatarja")) %>% 
-  select(text)
+  select(text) %>% rmarkdown::paged_table()
 ```
 
 Wiederum visualisieren wir die drei Sprachversionen.
@@ -766,25 +776,13 @@ x2
 x3
 ```
 
-Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht
-lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel
-dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche
-Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt).
-Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ
-betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als
-Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens
-(der im Nebensatz ausgedrückt wird) in ein Gedankenschema oder Frame
-dient.
+Die slowenische Version ist syntaktisch am einfachsten, denn sie besteht lediglich aus einem Hauptsatz, im englischen und deutschen Untertitel dagegen aus Haupt- und Nebensatz, wobei letztere die hauptsächliche Information trägt (die auch im slowenischen Hauptsatz zu Tage tritt). Der Hauptsatz im englischen und deutschen Untertitel kann kommunikativ betrachtet als Vorreiter oder Vorschaltung eingeordnet werden, also als Ausdruck, der vor allem zur Orientierung oder Einordnung eines Gedankens (der im Nebensatz ausgedrückt wird)
+in ein Gedankenschema oder Frame dient.
 
 Die passivische Relation, die im englischen und deutschen Untertitel
 mittels passivischer Verbformen realisiert wird, wird im slowenischen
 Untertitel mit dem Verb "dobiti" zum Ausdruck gebracht (deutsch:
-"bekommen", englisch: "get"). Das Subjekt des slowenischen Verb "dobiti"
-(hier: "vsak upravljalec") ist semantisch gesehen ein Benefaktiv oder
-Nutznießer (benefaktive Relation), also ein Rezipient, für den eine
-Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für
-das deutsche bekommen-Passiv (z.B. "jeder Operator bekommt einen
-Avatar".
+"bekommen", englisch: "get"). Das Subjekt des slowenischen Verb "dobiti" (hier: "vsak upravljalec") ist semantisch gesehen ein Benefaktiv oder Nutznießer (benefaktive Relation), also ein Rezipient, für den eine Handlung vorteilhaft oder nutzbringend ist. Entsprechendes gilt auch für das deutsche bekommen-Passiv (z.B. "jeder Operator bekommt einen Avatar".
 
 Die Ausdrucksweise im slowenischen Untertitel ist im Vergleich zu den
 anderen Sprachversionen umgangssprachlicher, die Ausdrucksweise im
@@ -792,21 +790,15 @@ englischen und deutschen Untertitel dagegen spezifischer, d.h. es
 handelt sich um eher eine technische (fachbezogene) Ausdrucksweise
 (engl. "matching", deutsch "Abstimmung").
 
-Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es
-keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator
-(driver, upravljalec) sind so wie das gerittene Tier lediglich
+Da es sich in diesem Fall um einen Vorgang oder Prozess handelt, gibt es keinen menschlichen Verursacher der Abstimmung, denn sowohl der Operator (driver, upravljalec) sind so wie das gerittene Tier lediglich
 Reagentien im Prozess. Das ist in allen drei Sprachversionen
 deckungsgleich.
 
 In allen drei Sprachversionen wird wird der (menschliche) Benefaktiv
 (d.h. das syntaktische Subjekt) als Ausgangspunkt einer neuen oder
 wichtigen Information verwendet. Die neue Information "seinen eigenen
-Avatar" wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht.
-Die typische Verteilung Thema vor Rhema wird hiermit in allen drei
-Sprachversionen gewahrt. Außerdem wird damit auch die häufigere
-Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt
-es sich um ein direktes Objekt (Akkusativobjekt), im englischen und
-deutschen dagegen um ein Präpositionalobjekt ("match to ...", "abstimmen
+Avatar" wird ins Rampenlicht gerückt, also zum Rhema des Satzes gemacht. Die typische Verteilung Thema vor Rhema wird hiermit in allen drei Sprachversionen gewahrt. Außerdem wird damit auch die häufigere
+Reihenfolge Subjekt vor Objekt eingehalten. Im slowenischen Satz handelt es sich um ein direktes Objekt (Akkusativobjekt), im englischen und deutschen dagegen um ein Präpositionalobjekt ("match to ...", "abstimmen
 auf ...").
 
 ### Passiv: Substantiv vs. Pronomen
