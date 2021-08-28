@@ -91,35 +91,15 @@ Unser Ziel ist die Extrahierung von Wortbildungsmorphemen. Daher führen wir mit
 
 ```r
 library(udpipe)
-model = udpipe_download_model(language = "german")
-```
+destfile = "german-gsd-ud-2.5-191206.udpipe"
 
-```
-## Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/german-gsd-ud-2.5-191206.udpipe to D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe
-```
-
-```
-##  - This model has been trained on version 2.5 of data from https://universaldependencies.org
-```
-
-```
-##  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
-```
-
-```
-##  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
-```
-
-```
-##  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-```
-
-```
-## Downloading finished, model stored at 'D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe'
-```
-
-```r
-demodel = udpipe_load_model(model$file_model)
+if(!file.exists(destfile)){
+   model <- udpipe_download_model(language = "german")
+   demodel <- udpipe_load_model(model$file_model)
+   } else {
+  file_model = destfile
+  demodel <- udpipe_load_model(file_model)
+}
 ```
 
 Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.
@@ -130,8 +110,8 @@ x = udpipe_annotate(demodel, novels_txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-08-27 22:32:39 Annotating text fragment 1/2
-## 2021-08-27 22:34:32 Annotating text fragment 2/2
+## 2021-08-28 22:01:56 Annotating text fragment 1/2
+## 2021-08-28 22:03:44 Annotating text fragment 2/2
 ```
 
 ```r

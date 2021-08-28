@@ -737,28 +737,30 @@ Program udpipe je na voljo za številne jezike, tudi za nemščino in slovenšč
 ### Priprava
 
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
+V naslednjem koraku naložimo jezikovni model v pomnilnik: *udpipe_load_model()*
 
 ```{r}
 library(udpipe)
-sprachmodell <- udpipe_download_model(language = "german")
+destfile = "german-gsd-ud-2.5-191206.udpipe"
 
-```
-
-V naslednjem koraku naložimo jezikovni model v pomnilnik.
-
-```{r}
-udmodel_de <- udpipe_load_model(sprachmodell$file_model)
+if(!file.exists(destfile)){
+   sprachmodell <- udpipe_download_model(language = "german")
+   udmodel_de <- udpipe_load_model(sprachmodell$file_model)
+   } else {
+  file_model = destfile
+  udmodel_de <- udpipe_load_model(file_model)
+}
 
 ```
 
 Če je jezikovni model že v naši delovni mapi, download ni potreben, saj ga lahko
-takoj naložimo z diska v pomnilnik.
+takoj naložimo z diska v pomnilnik:
 
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 file_model = "german-gsd-ud-2.5-191206.udpipe"
 udmodel_de <- udpipe_load_model(file_model)
-
 ```
+
 
 Naslednji korak je *udpipe_annotate()*: program udpipe označuje besedne oblike
 po več merilih.

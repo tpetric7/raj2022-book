@@ -801,53 +801,30 @@ matrika_lem_de
 Lematizacijo angleškega izvirnika bomo opravili s programom *udpipe*, ki je na voljo za številne jezike (tudi slovenščino).
 
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
-
-
-```r
-# install.packages("udpipe)
-library(udpipe)
-language_model <- udpipe_download_model(language = "english")
-```
-
-```
-## Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/english-ewt-ud-2.5-191206.udpipe to D:/Users/teodo/Documents/R/raj2022-book/english-ewt-ud-2.5-191206.udpipe
-```
-
-```
-##  - This model has been trained on version 2.5 of data from https://universaldependencies.org
-```
-
-```
-##  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
-```
-
-```
-##  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
-```
-
-```
-##  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-```
-
-```
-## Downloading finished, model stored at 'D:/Users/teodo/Documents/R/raj2022-book/english-ewt-ud-2.5-191206.udpipe'
-```
-
 V naslednjem koraku naložimo jezikovni model v pomnilnik.
 
 
-```r
-ud_en <- udpipe_load_model(language_model$file_model)
-```
 
 Če je jezikovni model že v naši delovni mapi, download ni potreben, saj ga lahko
 takoj naložimo z diska v pomnilnik.
 
 
+
+
+
 ```r
-file_model = "english-ewt-ud-2.5-191206.udpipe"
-ud_en <- udpipe_load_model(file_model)
+library(udpipe)
+destfile = "english-ewt-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "english")
+   ud_en <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  ud_en <- udpipe_load_model(file_model)
+}
 ```
+
 
 Naslednji korak je *udpipe_annotate()*: program udpipe označuje besedne oblike
 po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.
@@ -864,7 +841,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-08-27 22:19:27 Annotating text fragment 1/1
+## 2021-08-28 21:44:27 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -914,52 +891,28 @@ head(en_df)
 Lematizacijo nemškega prevod bomo tokrat opravili s programom *udpipe*.
 
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
-
-
-```r
-# install.packages("udpipe)
-library(udpipe)
-sprachmodell <- udpipe_download_model(language = "german")
-```
-
-```
-## Downloading udpipe model from https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/master/inst/udpipe-ud-2.5-191206/german-gsd-ud-2.5-191206.udpipe to D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe
-```
-
-```
-##  - This model has been trained on version 2.5 of data from https://universaldependencies.org
-```
-
-```
-##  - The model is distributed under the CC-BY-SA-NC license: https://creativecommons.org/licenses/by-nc-sa/4.0
-```
-
-```
-##  - Visit https://github.com/jwijffels/udpipe.models.ud.2.5 for model license details.
-```
-
-```
-##  - For a list of all models and their licenses (most models you can download with this package have either a CC-BY-SA or a CC-BY-SA-NC license) read the documentation at ?udpipe_download_model. For building your own models: visit the documentation by typing vignette('udpipe-train', package = 'udpipe')
-```
-
-```
-## Downloading finished, model stored at 'D:/Users/teodo/Documents/R/raj2022-book/german-gsd-ud-2.5-191206.udpipe'
-```
-
 V naslednjem koraku naložimo jezikovni model v pomnilnik.
 
 
-```r
-ud_de <- udpipe_load_model(sprachmodell$file_model)
-```
 
 Če je jezikovni model že v naši delovni mapi, download ni potreben, saj ga lahko
 takoj naložimo z diska v pomnilnik.
 
 
+
+
+
 ```r
-file_model = "german-gsd-ud-2.5-191206.udpipe"
-ud_de <- udpipe_load_model(file_model)
+library(udpipe)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "german")
+   ud_de <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  ud_de <- udpipe_load_model(file_model)
+}
 ```
 
 Naslednji korak je *udpipe_annotate()*: program udpipe označuje besedne oblike
@@ -977,7 +930,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-08-27 22:20:59 Annotating text fragment 1/1
+## 2021-08-28 21:46:49 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:

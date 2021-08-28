@@ -183,34 +183,71 @@ avatar_words %>% rmarkdown::paged_table()
 
 ### Zerlegung und Annotation
 
-Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um
-für jede der drei Untertitelversionen eine morphosyntaktische Annotation
-vorzunehmen.
+Zuerst müssen wir für jede Sprache ein **udpipe**-Sprachmodell laden, um für jede der drei Untertitelversionen eine morphosyntaktische Annotation vorzunehmen.
+
+Englisch:
 
 ```{r message=FALSE, warning=FALSE}
 library(udpipe)
+destfile = "english-ewt-ud-2.5-191206.udpipe"
 
-file_model = "english-ewt-ud-2.5-191206.udpipe"
-engmod <- udpipe_load_model(file_model)
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "english")
+   engmod <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  engmod <- udpipe_load_model(file_model)
+}
 
+```
+
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(engmod, x = avatar$text[avatar$language == "eng"], trace = FALSE)
 udeng = as.data.frame(x)
 ```
 
-```{r}
-# file_model = udpipe_download_model("german-hdt")
-# file_model = "german-gsd-ud-2.5-191206.udpipe"
-file_model = "german-hdt-ud-2.5-191206.udpipe"
-deumod <- udpipe_load_model(file_model)
+Deutsch:
 
+```{r message=FALSE, warning=FALSE}
+library(udpipe)
+destfile = "german-hdt-ud-2.5-191206.udpipe"
+# destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "german")
+   deumod <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  deumod <- udpipe_load_model(file_model)
+}
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(deumod, x = avatar$text[avatar$language == "deu"], trace = F)
 uddeu = as.data.frame(x)
 ```
 
-```{r}
-file_model = "slovenian-ssj-ud-2.5-191206.udpipe"
-slvmod <- udpipe_load_model(file_model)
+Slowenisch:
 
+```{r message=FALSE, warning=FALSE}
+library(udpipe)
+destfile = "slovenian-ssj-ud-2.5-191206.udpipe"
+# destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "slovenian")
+   slvmod <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  slvmod <- udpipe_load_model(file_model)
+}
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(slvmod, x = avatar$text[avatar$language == "slv"], trace = F)
 udslv = as.data.frame(x)
 ```

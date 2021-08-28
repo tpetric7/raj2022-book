@@ -459,17 +459,12 @@ matrika_lem_de
 Lematizacijo angleškega izvirnika bomo opravili s programom *udpipe*, ki je na voljo za številne jezike (tudi slovenščino).
 
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
+V naslednjem koraku naložimo jezikovni model v pomnilnik.
 
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 # install.packages("udpipe)
 library(udpipe)
 language_model <- udpipe_download_model(language = "english")
-
-```
-
-V naslednjem koraku naložimo jezikovni model v pomnilnik.
-
-```{r}
 ud_en <- udpipe_load_model(language_model$file_model)
 
 ```
@@ -477,11 +472,27 @@ ud_en <- udpipe_load_model(language_model$file_model)
 Če je jezikovni model že v naši delovni mapi, download ni potreben, saj ga lahko
 takoj naložimo z diska v pomnilnik.
 
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 file_model = "english-ewt-ud-2.5-191206.udpipe"
 ud_en <- udpipe_load_model(file_model)
 
 ```
+
+
+```{r}
+library(udpipe)
+destfile = "english-ewt-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "english")
+   ud_en <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  ud_en <- udpipe_load_model(file_model)
+}
+
+```
+
 
 Naslednji korak je *udpipe_annotate()*: program udpipe označuje besedne oblike
 po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.
@@ -513,27 +524,36 @@ head(en_df)
 Lematizacijo nemškega prevod bomo tokrat opravili s programom *udpipe*.
 
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
-
-```{r}
-# install.packages("udpipe)
-library(udpipe)
-sprachmodell <- udpipe_download_model(language = "german")
-
-```
-
 V naslednjem koraku naložimo jezikovni model v pomnilnik.
 
-```{r}
-ud_de <- udpipe_load_model(sprachmodell$file_model)
-
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+# install.packages("udpipe)
+library(udpipe)
+language_model <- udpipe_download_model(language = "german")
+ud_de <- udpipe_load_model(language_model$file_model)
 ```
 
 Če je jezikovni model že v naši delovni mapi, download ni potreben, saj ga lahko
 takoj naložimo z diska v pomnilnik.
 
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 file_model = "german-gsd-ud-2.5-191206.udpipe"
 ud_de <- udpipe_load_model(file_model)
+
+```
+
+
+```{r}
+library(udpipe)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   language_model <- udpipe_download_model(language = "german")
+   ud_de <- udpipe_load_model(language_model$file_model)
+   } else {
+  file_model = destfile
+  ud_de <- udpipe_load_model(file_model)
+}
 
 ```
 

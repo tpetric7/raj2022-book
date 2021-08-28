@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-27" />
+<meta name="date" content="2021-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -371,6 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden"><i class="fa fa-check"></i><b>12.2</b> Daten laden</a></li>
 <li class="chapter" data-level="12.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>12.3</b> IPA syms</a></li>
 <li class="chapter" data-level="12.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>12.4</b> Vergleich der Vokalformanten</a></li>
+<li class="chapter" data-level="12.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregated"><i class="fa fa-check"></i><b>12.5</b> Aggregated</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>13</b> Untertitel</a>
 <ul>
@@ -434,18 +435,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="programi-3" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Programi</h2>
 <p>Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.</p>
-<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="regularni-izrazi-in-quanteda.html#cb843-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
-<span id="cb843-2"><a href="regularni-izrazi-in-quanteda.html#cb843-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code></pre></div>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="regularni-izrazi-in-quanteda.html#cb819-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
+<span id="cb819-2"><a href="regularni-izrazi-in-quanteda.html#cb819-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code></pre></div>
 <pre><code>## Warning: package &#39;quanteda&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## Package version: 3.1.0
 ## Unicode version: 13.0
 ## ICU version: 69.1</code></pre>
 <pre><code>## Parallel computing: 12 of 12 threads used.</code></pre>
 <pre><code>## See https://quanteda.io for tutorials and examples.</code></pre>
-<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb848-1"><a href="regularni-izrazi-in-quanteda.html#cb848-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
-<span id="cb848-2"><a href="regularni-izrazi-in-quanteda.html#cb848-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
-<span id="cb848-3"><a href="regularni-izrazi-in-quanteda.html#cb848-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb848-4"><a href="regularni-izrazi-in-quanteda.html#cb848-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="regularni-izrazi-in-quanteda.html#cb824-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb824-2"><a href="regularni-izrazi-in-quanteda.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb824-3"><a href="regularni-izrazi-in-quanteda.html#cb824-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb824-4"><a href="regularni-izrazi-in-quanteda.html#cb824-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
 ## v tibble  3.1.3     v dplyr   1.0.7
@@ -455,12 +456,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="regularni-izrazi-in-quanteda.html#cb853-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code></pre></div>
+<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb829-1"><a href="regularni-izrazi-in-quanteda.html#cb829-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span></code></pre></div>
 </div>
 <div id="preberemo-besedila-2" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Preberemo besedila</h2>
-<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb854-1"><a href="regularni-izrazi-in-quanteda.html#cb854-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb854-2"><a href="regularni-izrazi-in-quanteda.html#cb854-2" aria-hidden="true" tabindex="-1"></a>txt</span></code></pre></div>
+<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="regularni-izrazi-in-quanteda.html#cb830-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb830-2"><a href="regularni-izrazi-in-quanteda.html#cb830-2" aria-hidden="true" tabindex="-1"></a>txt</span></code></pre></div>
 <pre><code>## readtext object consisting of 2 documents and 0 docvars.
 ## # Description: df [2 x 2]
 ##   doc_id      text               
@@ -471,11 +472,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ustvarimo-korpus-2" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Ustvarimo korpus</h2>
 <p>Ustvarimo korpus ali jezikovno gradivo. Ukaz v programu “quanteda” je corpus().</p>
-<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="regularni-izrazi-in-quanteda.html#cb856-1" aria-hidden="true" tabindex="-1"></a>romane <span class="ot">=</span> <span class="fu">corpus</span>(txt)</span></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="regularni-izrazi-in-quanteda.html#cb832-1" aria-hidden="true" tabindex="-1"></a>romane <span class="ot">=</span> <span class="fu">corpus</span>(txt)</span></code></pre></div>
 </div>
 <div id="tokenizacija-2" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Tokenizacija</h2>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb857-1"><a href="regularni-izrazi-in-quanteda.html#cb857-1" aria-hidden="true" tabindex="-1"></a>woerter <span class="ot">=</span> <span class="fu">tokens</span>(romane)</span></code></pre></div>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="regularni-izrazi-in-quanteda.html#cb833-1" aria-hidden="true" tabindex="-1"></a>woerter <span class="ot">=</span> <span class="fu">tokens</span>(romane)</span></code></pre></div>
 </div>
 <div id="kwic-2" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Kwic</h2>
@@ -483,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Možno je iskati posamezne besede, besedne zveze, uporabljamo pa lahko tudi nadomestne znake (npr. *).</p>
 <div id="frau-mann" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Frau, Mann</h3>
-<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="regularni-izrazi-in-quanteda.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;Frau&quot;</span>, <span class="st">&quot;Herr&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="regularni-izrazi-in-quanteda.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;Frau&quot;</span>, <span class="st">&quot;Herr&quot;</span>))</span></code></pre></div>
 <pre><code>## Keyword-in-context with 226 matches.                                                                      
 ##     [prozess.txt, 23]              1 Verhaftung, Gespräch mit | Frau |
 ##     [prozess.txt, 55]               verhaftet. Die Köchin der | Frau |
@@ -940,9 +941,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Richter - in der Höhle</code></pre>
 <p>Konkordanco bomo pretvorili v podatkovno zbirko, tj. <em>data.frame</em> ali <em>tibble()</em>. Prednost je npr., da tako pridobimo imena stolpcev (tj. spremenljivk).</p>
 <p><em>kwic()</em> ima več možnosti, npr. “case_insensitive = FALSE” razlikuje med velikimi in malimi črkami. Privzeta vrednost je “TRUE”, tj. da tega ne razlikuje (tako kot Excel).</p>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="regularni-izrazi-in-quanteda.html#cb860-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">konkordanca =</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;Frau&quot;</span>, <span class="st">&quot;Herr&quot;</span>), <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb860-2"><a href="regularni-izrazi-in-quanteda.html#cb860-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb860-3"><a href="regularni-izrazi-in-quanteda.html#cb860-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="regularni-izrazi-in-quanteda.html#cb836-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">konkordanca =</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;Frau&quot;</span>, <span class="st">&quot;Herr&quot;</span>), <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb836-2"><a href="regularni-izrazi-in-quanteda.html#cb836-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb836-3"><a href="regularni-izrazi-in-quanteda.html#cb836-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 226 x 7
 ##    docname      from    to pre                keyword post               pattern
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;   &lt;chr&gt;              &lt;fct&gt;  
@@ -958,8 +959,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 prozess.txt  2869  2869 war , so konnte er Frau    Grubach als Zeugi~ Frau   
 ## # ... with 216 more rows</code></pre>
 <p>Z ukazom <em>count()</em> lahko preštejemo, koliko pojavnic je <em>kwic()</em> našel v jezikovnem gradivu.</p>
-<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb862-1"><a href="regularni-izrazi-in-quanteda.html#cb862-1" aria-hidden="true" tabindex="-1"></a>konkordanca <span class="sc">%&gt;%</span> </span>
-<span id="cb862-2"><a href="regularni-izrazi-in-quanteda.html#cb862-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword)</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="regularni-izrazi-in-quanteda.html#cb838-1" aria-hidden="true" tabindex="-1"></a>konkordanca <span class="sc">%&gt;%</span> </span>
+<span id="cb838-2"><a href="regularni-izrazi-in-quanteda.html#cb838-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   keyword     n
 ##   &lt;chr&gt;   &lt;int&gt;
@@ -969,9 +970,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pripona--in" class="section level3" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> Pripona -in</h3>
 <p>Poiskati želimo besede s pripono “-in” za samostalnike, ki označujejo ženska osebna imena (npr. Ärztin, Köchin, …).</p>
-<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="regularni-izrazi-in-quanteda.html#cb864-1" aria-hidden="true" tabindex="-1"></a>(konkordanca2 <span class="ot">&lt;-</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;*in&quot;</span>), <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb864-2"><a href="regularni-izrazi-in-quanteda.html#cb864-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb864-3"><a href="regularni-izrazi-in-quanteda.html#cb864-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="regularni-izrazi-in-quanteda.html#cb840-1" aria-hidden="true" tabindex="-1"></a>(konkordanca2 <span class="ot">&lt;-</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;*in&quot;</span>), <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb840-2"><a href="regularni-izrazi-in-quanteda.html#cb840-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb840-3"><a href="regularni-izrazi-in-quanteda.html#cb840-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 4,100 x 7
 ##    docname      from    to pre                           keyword  post   pattern
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;                         &lt;chr&gt;    &lt;chr&gt;  &lt;fct&gt;  
@@ -1007,20 +1008,20 @@ $ na koncu vrstice</p>
 <li>en ali več znakov
 . poljuben znak (razen: nova vrstica )</li>
 </ul>
-<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="regularni-izrazi-in-quanteda.html#cb866-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">konkordanca2 =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+[^ae]in</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
-<span id="cb866-2"><a href="regularni-izrazi-in-quanteda.html#cb866-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb866-3"><a href="regularni-izrazi-in-quanteda.html#cb866-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(keyword <span class="sc">!=</span> <span class="st">&quot;Immerhin&quot;</span>, </span>
-<span id="cb866-4"><a href="regularni-izrazi-in-quanteda.html#cb866-4" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Darin&quot;</span>,</span>
-<span id="cb866-5"><a href="regularni-izrazi-in-quanteda.html#cb866-5" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Termin&quot;</span>,</span>
-<span id="cb866-6"><a href="regularni-izrazi-in-quanteda.html#cb866-6" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Worin&quot;</span>,</span>
-<span id="cb866-7"><a href="regularni-izrazi-in-quanteda.html#cb866-7" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Robin&quot;</span>,</span>
-<span id="cb866-8"><a href="regularni-izrazi-in-quanteda.html#cb866-8" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Medizin&quot;</span>,</span>
-<span id="cb866-9"><a href="regularni-izrazi-in-quanteda.html#cb866-9" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Disziplin&quot;</span>,</span>
-<span id="cb866-10"><a href="regularni-izrazi-in-quanteda.html#cb866-10" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Austin&quot;</span>,</span>
-<span id="cb866-11"><a href="regularni-izrazi-in-quanteda.html#cb866-11" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Musselin&quot;</span>,</span>
-<span id="cb866-12"><a href="regularni-izrazi-in-quanteda.html#cb866-12" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Benjamin&quot;</span>,</span>
-<span id="cb866-13"><a href="regularni-izrazi-in-quanteda.html#cb866-13" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Franklin&quot;</span>)</span>
-<span id="cb866-14"><a href="regularni-izrazi-in-quanteda.html#cb866-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="regularni-izrazi-in-quanteda.html#cb842-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">konkordanca2 =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+[^ae]in</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
+<span id="cb842-2"><a href="regularni-izrazi-in-quanteda.html#cb842-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb842-3"><a href="regularni-izrazi-in-quanteda.html#cb842-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(keyword <span class="sc">!=</span> <span class="st">&quot;Immerhin&quot;</span>, </span>
+<span id="cb842-4"><a href="regularni-izrazi-in-quanteda.html#cb842-4" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Darin&quot;</span>,</span>
+<span id="cb842-5"><a href="regularni-izrazi-in-quanteda.html#cb842-5" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Termin&quot;</span>,</span>
+<span id="cb842-6"><a href="regularni-izrazi-in-quanteda.html#cb842-6" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Worin&quot;</span>,</span>
+<span id="cb842-7"><a href="regularni-izrazi-in-quanteda.html#cb842-7" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Robin&quot;</span>,</span>
+<span id="cb842-8"><a href="regularni-izrazi-in-quanteda.html#cb842-8" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Medizin&quot;</span>,</span>
+<span id="cb842-9"><a href="regularni-izrazi-in-quanteda.html#cb842-9" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Disziplin&quot;</span>,</span>
+<span id="cb842-10"><a href="regularni-izrazi-in-quanteda.html#cb842-10" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Austin&quot;</span>,</span>
+<span id="cb842-11"><a href="regularni-izrazi-in-quanteda.html#cb842-11" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Musselin&quot;</span>,</span>
+<span id="cb842-12"><a href="regularni-izrazi-in-quanteda.html#cb842-12" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Benjamin&quot;</span>,</span>
+<span id="cb842-13"><a href="regularni-izrazi-in-quanteda.html#cb842-13" aria-hidden="true" tabindex="-1"></a>         keyword <span class="sc">!=</span> <span class="st">&quot;Franklin&quot;</span>)</span>
+<span id="cb842-14"><a href="regularni-izrazi-in-quanteda.html#cb842-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 46 x 7
 ##    docname      from    to pre                             keyword post  pattern
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;                           &lt;chr&gt;   &lt;chr&gt; &lt;fct&gt;  
@@ -1043,12 +1044,12 @@ $ na koncu vrstice</p>
 <p>Glede na to, da se pripona -er uporablja v mnoge druge namene, bo najbolje, če
 - najprej odstranimo funkcijske in druge pogoste besede (seznam stopwords)
 - in šele potem poizvedujemo s funkcijo kwic()</p>
-<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="regularni-izrazi-in-quanteda.html#cb868-1" aria-hidden="true" tabindex="-1"></a>wortformen <span class="ot">=</span> <span class="fu">tokens_select</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">&quot;de&quot;</span>), <span class="st">&quot;bisher&quot;</span>,<span class="st">&quot;immer&quot;</span>), </span>
-<span id="cb868-2"><a href="regularni-izrazi-in-quanteda.html#cb868-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">selection =</span> <span class="st">&quot;remove&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="regularni-izrazi-in-quanteda.html#cb844-1" aria-hidden="true" tabindex="-1"></a>wortformen <span class="ot">=</span> <span class="fu">tokens_select</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">&quot;de&quot;</span>), <span class="st">&quot;bisher&quot;</span>,<span class="st">&quot;immer&quot;</span>), </span>
+<span id="cb844-2"><a href="regularni-izrazi-in-quanteda.html#cb844-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">selection =</span> <span class="st">&quot;remove&quot;</span>)</span></code></pre></div>
 <p>Približno 500 besednih oblik manj, kot če ne bi izločili “stopwords”.</p>
-<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="regularni-izrazi-in-quanteda.html#cb869-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomen_er =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(wortformen, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+er</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
-<span id="cb869-2"><a href="regularni-izrazi-in-quanteda.html#cb869-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb869-3"><a href="regularni-izrazi-in-quanteda.html#cb869-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="regularni-izrazi-in-quanteda.html#cb845-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomen_er =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(wortformen, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+er</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
+<span id="cb845-2"><a href="regularni-izrazi-in-quanteda.html#cb845-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb845-3"><a href="regularni-izrazi-in-quanteda.html#cb845-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 2,270 x 7
 ##    docname      from    to pre               keyword   post            pattern  
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt;           &lt;fct&gt;    
@@ -1064,8 +1065,8 @@ $ na koncu vrstice</p>
 ## 10 prozess.txt   399   399 stehengeblieben ~ Fenster   erblickte alte~ &quot;\\b[A-Z~
 ## # ... with 2,260 more rows</code></pre>
 <p>462 je besednih oblik, ki se konča na -er, vendar med njimi niso samo samostalniki, ki bi se nanašali na osebe moškega spola.</p>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb871-1"><a href="regularni-izrazi-in-quanteda.html#cb871-1" aria-hidden="true" tabindex="-1"></a>nomen_er <span class="sc">%&gt;%</span> </span>
-<span id="cb871-2"><a href="regularni-izrazi-in-quanteda.html#cb871-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="regularni-izrazi-in-quanteda.html#cb847-1" aria-hidden="true" tabindex="-1"></a>nomen_er <span class="sc">%&gt;%</span> </span>
+<span id="cb847-2"><a href="regularni-izrazi-in-quanteda.html#cb847-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 462 x 2
 ##    keyword                  n
 ##    &lt;chr&gt;                &lt;int&gt;
@@ -1081,15 +1082,15 @@ $ na koncu vrstice</p>
 ## 10 Potter                  40
 ## # ... with 452 more rows</code></pre>
 <p>Še vedno je potrebno posamično filtriranje: bodisi zaradi pomena bodisi zaradi besedotvornega vzorca. Zaradi prej izločenih nezaželenih besed (stopwords) je filtrirni seznam nekoliko krajši.</p>
-<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="regularni-izrazi-in-quanteda.html#cb873-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_er =</span> nomen_er <span class="sc">%&gt;%</span></span>
-<span id="cb873-2"><a href="regularni-izrazi-in-quanteda.html#cb873-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(keyword, </span>
-<span id="cb873-3"><a href="regularni-izrazi-in-quanteda.html#cb873-3" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">&quot;[Z|z]immer|[P|p]apier|[F|f]inger|[W|w]asser|[H|h]äuser|[B|b]ücher|spritzer|[G|g]itter|[K|k]ammer|[W|w]etter&quot;</span>)),</span>
-<span id="cb873-4"><a href="regularni-izrazi-in-quanteda.html#cb873-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span>keyword <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Kinder&quot;</span>,<span class="st">&quot;Messer&quot;</span>,<span class="st">&quot;Blätter&quot;</span>,<span class="st">&quot;Kleider&quot;</span>,<span class="st">&quot;Bilder&quot;</span>,<span class="st">&quot;Nummer&quot;</span>,<span class="st">&quot;Koffer&quot;</span>,<span class="st">&quot;Fenster&quot;</span>,</span>
-<span id="cb873-5"><a href="regularni-izrazi-in-quanteda.html#cb873-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Feuer&quot;</span>,<span class="st">&quot;Körper&quot;</span>,<span class="st">&quot;Gesichter&quot;</span>,<span class="st">&quot;Kummer&quot;</span>,<span class="st">&quot;Abenteuer&quot;</span>,<span class="st">&quot;Schulter&quot;</span>,<span class="st">&quot;Tier&quot;</span>,</span>
-<span id="cb873-6"><a href="regularni-izrazi-in-quanteda.html#cb873-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Theater&quot;</span>,<span class="st">&quot;Fehler&quot;</span>,<span class="st">&quot;Gelächter&quot;</span>,<span class="st">&quot;Mutter&quot;</span>,<span class="st">&quot;Seufzer&quot;</span>,<span class="st">&quot;Vater&quot;</span>,<span class="st">&quot;Wunder&quot;</span>,<span class="st">&quot;Atelier&quot;</span>,</span>
-<span id="cb873-7"><a href="regularni-izrazi-in-quanteda.html#cb873-7" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Geister&quot;</span>,<span class="st">&quot;Mauer&quot;</span>,<span class="st">&quot;Ufer&quot;</span>,<span class="st">&quot;Bruder&quot;</span>,<span class="st">&quot;Hunger&quot;</span>,<span class="st">&quot;Lichter&quot;</span>,<span class="st">&quot;Eimer&quot;</span>,<span class="st">&quot;Lager&quot;</span>,</span>
-<span id="cb873-8"><a href="regularni-izrazi-in-quanteda.html#cb873-8" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Meter&quot;</span>,<span class="st">&quot;Trauer&quot;</span>,<span class="st">&quot;Polster&quot;</span>,<span class="st">&quot;Manier&quot;</span>))</span>
-<span id="cb873-9"><a href="regularni-izrazi-in-quanteda.html#cb873-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="regularni-izrazi-in-quanteda.html#cb849-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_er =</span> nomen_er <span class="sc">%&gt;%</span></span>
+<span id="cb849-2"><a href="regularni-izrazi-in-quanteda.html#cb849-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(keyword, </span>
+<span id="cb849-3"><a href="regularni-izrazi-in-quanteda.html#cb849-3" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">&quot;[Z|z]immer|[P|p]apier|[F|f]inger|[W|w]asser|[H|h]äuser|[B|b]ücher|spritzer|[G|g]itter|[K|k]ammer|[W|w]etter&quot;</span>)),</span>
+<span id="cb849-4"><a href="regularni-izrazi-in-quanteda.html#cb849-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span>keyword <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Kinder&quot;</span>,<span class="st">&quot;Messer&quot;</span>,<span class="st">&quot;Blätter&quot;</span>,<span class="st">&quot;Kleider&quot;</span>,<span class="st">&quot;Bilder&quot;</span>,<span class="st">&quot;Nummer&quot;</span>,<span class="st">&quot;Koffer&quot;</span>,<span class="st">&quot;Fenster&quot;</span>,</span>
+<span id="cb849-5"><a href="regularni-izrazi-in-quanteda.html#cb849-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Feuer&quot;</span>,<span class="st">&quot;Körper&quot;</span>,<span class="st">&quot;Gesichter&quot;</span>,<span class="st">&quot;Kummer&quot;</span>,<span class="st">&quot;Abenteuer&quot;</span>,<span class="st">&quot;Schulter&quot;</span>,<span class="st">&quot;Tier&quot;</span>,</span>
+<span id="cb849-6"><a href="regularni-izrazi-in-quanteda.html#cb849-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Theater&quot;</span>,<span class="st">&quot;Fehler&quot;</span>,<span class="st">&quot;Gelächter&quot;</span>,<span class="st">&quot;Mutter&quot;</span>,<span class="st">&quot;Seufzer&quot;</span>,<span class="st">&quot;Vater&quot;</span>,<span class="st">&quot;Wunder&quot;</span>,<span class="st">&quot;Atelier&quot;</span>,</span>
+<span id="cb849-7"><a href="regularni-izrazi-in-quanteda.html#cb849-7" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Geister&quot;</span>,<span class="st">&quot;Mauer&quot;</span>,<span class="st">&quot;Ufer&quot;</span>,<span class="st">&quot;Bruder&quot;</span>,<span class="st">&quot;Hunger&quot;</span>,<span class="st">&quot;Lichter&quot;</span>,<span class="st">&quot;Eimer&quot;</span>,<span class="st">&quot;Lager&quot;</span>,</span>
+<span id="cb849-8"><a href="regularni-izrazi-in-quanteda.html#cb849-8" aria-hidden="true" tabindex="-1"></a>                         <span class="st">&quot;Meter&quot;</span>,<span class="st">&quot;Trauer&quot;</span>,<span class="st">&quot;Polster&quot;</span>,<span class="st">&quot;Manier&quot;</span>))</span>
+<span id="cb849-9"><a href="regularni-izrazi-in-quanteda.html#cb849-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,461 x 7
 ##    docname      from    to pre              keyword  post             pattern   
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;    &lt;chr&gt;            &lt;fct&gt;     
@@ -1104,9 +1105,9 @@ $ na koncu vrstice</p>
 ##  9 prozess.txt  1054  1054 lieber Himmel !~ Wächter  . » Lage fügen ~ &quot;\\b[A-Z]~
 ## 10 prozess.txt  1124  1124 ? « rief schon ~ Wächter  . » führen ärge~ &quot;\\b[A-Z]~
 ## # ... with 1,451 more rows</code></pre>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="regularni-izrazi-in-quanteda.html#cb875-1" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
-<span id="cb875-2"><a href="regularni-izrazi-in-quanteda.html#cb875-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
-<span id="cb875-3"><a href="regularni-izrazi-in-quanteda.html#cb875-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="regularni-izrazi-in-quanteda.html#cb851-1" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
+<span id="cb851-2"><a href="regularni-izrazi-in-quanteda.html#cb851-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
+<span id="cb851-3"><a href="regularni-izrazi-in-quanteda.html#cb851-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 398 x 3
 ## # Groups:   docname [2]
 ##    docname     keyword                  n
@@ -1123,10 +1124,10 @@ $ na koncu vrstice</p>
 ## 10 tom.txt     Thatcher                36
 ## # ... with 388 more rows</code></pre>
 <p>Za grafični prikaz obdržimo samo po 20 najpogostnejših izrazov iz vsakega besedila.</p>
-<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="regularni-izrazi-in-quanteda.html#cb877-1" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
-<span id="cb877-2"><a href="regularni-izrazi-in-quanteda.html#cb877-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
-<span id="cb877-3"><a href="regularni-izrazi-in-quanteda.html#cb877-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb877-4"><a href="regularni-izrazi-in-quanteda.html#cb877-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="regularni-izrazi-in-quanteda.html#cb853-1" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
+<span id="cb853-2"><a href="regularni-izrazi-in-quanteda.html#cb853-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
+<span id="cb853-3"><a href="regularni-izrazi-in-quanteda.html#cb853-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb853-4"><a href="regularni-izrazi-in-quanteda.html#cb853-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 40 x 3
 ## # Groups:   docname [2]
 ##    docname     keyword                     n
@@ -1143,24 +1144,24 @@ $ na koncu vrstice</p>
 ## 10 prozess.txt Direktor-Stellvertreter    35
 ## # ... with 30 more rows</code></pre>
 <p>V romanu Tom Sawyer so priimki na -er na vrhu lestvice, roman Prozess vsebuje bistvenih več splošnih samostalnikov, ki se končajo s pripono -er in se nanašajo na moške osebe. Edini Priimek je Bürstner.</p>
-<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="regularni-izrazi-in-quanteda.html#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb879-2"><a href="regularni-izrazi-in-quanteda.html#cb879-2" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
-<span id="cb879-3"><a href="regularni-izrazi-in-quanteda.html#cb879-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
-<span id="cb879-4"><a href="regularni-izrazi-in-quanteda.html#cb879-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb879-5"><a href="regularni-izrazi-in-quanteda.html#cb879-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb879-6"><a href="regularni-izrazi-in-quanteda.html#cb879-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">keyword =</span> <span class="fu">reorder_within</span>(keyword, n, n, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb879-7"><a href="regularni-izrazi-in-quanteda.html#cb879-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, keyword, <span class="at">fill =</span> keyword)) <span class="sc">+</span></span>
-<span id="cb879-8"><a href="regularni-izrazi-in-quanteda.html#cb879-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb879-9"><a href="regularni-izrazi-in-quanteda.html#cb879-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb879-10"><a href="regularni-izrazi-in-quanteda.html#cb879-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
-<span id="cb879-11"><a href="regularni-izrazi-in-quanteda.html#cb879-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb855-1"><a href="regularni-izrazi-in-quanteda.html#cb855-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb855-2"><a href="regularni-izrazi-in-quanteda.html#cb855-2" aria-hidden="true" tabindex="-1"></a>nomina_er <span class="sc">%&gt;%</span> </span>
+<span id="cb855-3"><a href="regularni-izrazi-in-quanteda.html#cb855-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-4"><a href="regularni-izrazi-in-quanteda.html#cb855-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-5"><a href="regularni-izrazi-in-quanteda.html#cb855-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-6"><a href="regularni-izrazi-in-quanteda.html#cb855-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">keyword =</span> <span class="fu">reorder_within</span>(keyword, n, n, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb855-7"><a href="regularni-izrazi-in-quanteda.html#cb855-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, keyword, <span class="at">fill =</span> keyword)) <span class="sc">+</span></span>
+<span id="cb855-8"><a href="regularni-izrazi-in-quanteda.html#cb855-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb855-9"><a href="regularni-izrazi-in-quanteda.html#cb855-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb855-10"><a href="regularni-izrazi-in-quanteda.html#cb855-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb855-11"><a href="regularni-izrazi-in-quanteda.html#cb855-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p><img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-16-1.svg" width="672" /></p>
 </div>
 <div id="pripona--ung" class="section level3" number="8.5.4">
 <h3><span class="header-section-number">8.5.4</span> Pripona -ung</h3>
-<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="regularni-izrazi-in-quanteda.html#cb880-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomen_ung =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
-<span id="cb880-2"><a href="regularni-izrazi-in-quanteda.html#cb880-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb880-3"><a href="regularni-izrazi-in-quanteda.html#cb880-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="regularni-izrazi-in-quanteda.html#cb856-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomen_ung =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
+<span id="cb856-2"><a href="regularni-izrazi-in-quanteda.html#cb856-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb856-3"><a href="regularni-izrazi-in-quanteda.html#cb856-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,025 x 7
 ##    docname      from    to pre                        keyword  post     pattern 
 ##    &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;                      &lt;chr&gt;    &lt;chr&gt;    &lt;fct&gt;   
@@ -1177,27 +1178,27 @@ $ na koncu vrstice</p>
 ## # ... with 1,015 more rows</code></pre>
 <p>V romanu Prozess je število pojavnic samostalnikov na -ung skoraj enkrat večje kot v Tomu.
 Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkretni samostalniki.</p>
-<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="regularni-izrazi-in-quanteda.html#cb882-1" aria-hidden="true" tabindex="-1"></a>nomen_ung <span class="sc">%&gt;%</span> </span>
-<span id="cb882-2"><a href="regularni-izrazi-in-quanteda.html#cb882-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span></span>
-<span id="cb882-3"><a href="regularni-izrazi-in-quanteda.html#cb882-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb882-4"><a href="regularni-izrazi-in-quanteda.html#cb882-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="regularni-izrazi-in-quanteda.html#cb858-1" aria-hidden="true" tabindex="-1"></a>nomen_ung <span class="sc">%&gt;%</span> </span>
+<span id="cb858-2"><a href="regularni-izrazi-in-quanteda.html#cb858-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span></span>
+<span id="cb858-3"><a href="regularni-izrazi-in-quanteda.html#cb858-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb858-4"><a href="regularni-izrazi-in-quanteda.html#cb858-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Freq =</span> <span class="fu">sum</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   docname      Freq
 ##   &lt;chr&gt;       &lt;int&gt;
 ## 1 prozess.txt   672
 ## 2 tom.txt       353</code></pre>
-<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="regularni-izrazi-in-quanteda.html#cb884-1" aria-hidden="true" tabindex="-1"></a>kwic_ung <span class="ot">=</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
-<span id="cb884-2"><a href="regularni-izrazi-in-quanteda.html#cb884-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb884-3"><a href="regularni-izrazi-in-quanteda.html#cb884-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_xray</span>(kwic_ung)</span></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="regularni-izrazi-in-quanteda.html#cb860-1" aria-hidden="true" tabindex="-1"></a>kwic_ung <span class="ot">=</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
+<span id="cb860-2"><a href="regularni-izrazi-in-quanteda.html#cb860-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb860-3"><a href="regularni-izrazi-in-quanteda.html#cb860-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_xray</span>(kwic_ung)</span></code></pre></div>
 <p><img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <p>Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje “(kriminalno) pravo”, v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.</p>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="regularni-izrazi-in-quanteda.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb885-2"><a href="regularni-izrazi-in-quanteda.html#cb885-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_ung =</span> nomen_ung <span class="sc">%&gt;%</span> </span>
-<span id="cb885-3"><a href="regularni-izrazi-in-quanteda.html#cb885-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
-<span id="cb885-4"><a href="regularni-izrazi-in-quanteda.html#cb885-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb885-5"><a href="regularni-izrazi-in-quanteda.html#cb885-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb885-6"><a href="regularni-izrazi-in-quanteda.html#cb885-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">keyword =</span> <span class="fu">reorder_within</span>(keyword, n, n, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>))</span>
-<span id="cb885-7"><a href="regularni-izrazi-in-quanteda.html#cb885-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="regularni-izrazi-in-quanteda.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb861-2"><a href="regularni-izrazi-in-quanteda.html#cb861-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_ung =</span> nomen_ung <span class="sc">%&gt;%</span> </span>
+<span id="cb861-3"><a href="regularni-izrazi-in-quanteda.html#cb861-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>
+<span id="cb861-4"><a href="regularni-izrazi-in-quanteda.html#cb861-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(keyword, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb861-5"><a href="regularni-izrazi-in-quanteda.html#cb861-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb861-6"><a href="regularni-izrazi-in-quanteda.html#cb861-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">keyword =</span> <span class="fu">reorder_within</span>(keyword, n, n, <span class="at">sep =</span> <span class="st">&quot;: &quot;</span>))</span>
+<span id="cb861-7"><a href="regularni-izrazi-in-quanteda.html#cb861-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 40 x 3
 ## # Groups:   docname [2]
 ##    docname     keyword               n
@@ -1213,18 +1214,18 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 ##  9 prozess.txt Bedeutung: 14        14
 ## 10 prozess.txt Verbindung: 14       14
 ## # ... with 30 more rows</code></pre>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="regularni-izrazi-in-quanteda.html#cb887-1" aria-hidden="true" tabindex="-1"></a>nomina_ung <span class="sc">%&gt;%</span> </span>
-<span id="cb887-2"><a href="regularni-izrazi-in-quanteda.html#cb887-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, keyword, <span class="at">fill =</span> keyword)) <span class="sc">+</span></span>
-<span id="cb887-3"><a href="regularni-izrazi-in-quanteda.html#cb887-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb887-4"><a href="regularni-izrazi-in-quanteda.html#cb887-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb887-5"><a href="regularni-izrazi-in-quanteda.html#cb887-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
-<span id="cb887-6"><a href="regularni-izrazi-in-quanteda.html#cb887-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb863-1"><a href="regularni-izrazi-in-quanteda.html#cb863-1" aria-hidden="true" tabindex="-1"></a>nomina_ung <span class="sc">%&gt;%</span> </span>
+<span id="cb863-2"><a href="regularni-izrazi-in-quanteda.html#cb863-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(n, keyword, <span class="at">fill =</span> keyword)) <span class="sc">+</span></span>
+<span id="cb863-3"><a href="regularni-izrazi-in-quanteda.html#cb863-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb863-4"><a href="regularni-izrazi-in-quanteda.html#cb863-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb863-5"><a href="regularni-izrazi-in-quanteda.html#cb863-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> docname, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb863-6"><a href="regularni-izrazi-in-quanteda.html#cb863-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Frequenz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p><img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
 <p>Iskanje besednih zvez s funkcijo <em>kwic()</em> in <em>phrase()</em> - funkcijske glagolske zveze (Funktionsverbgefüge) in frazemi:</p>
-<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="regularni-izrazi-in-quanteda.html#cb888-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">fvg1 =</span>  <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">phrase</span>(</span>
-<span id="cb888-2"><a href="regularni-izrazi-in-quanteda.html#cb888-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;zur|in .+ung (ge)komm.+|(ge)brach.+|bring.+&quot;</span>)),</span>
-<span id="cb888-3"><a href="regularni-izrazi-in-quanteda.html#cb888-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb888-4"><a href="regularni-izrazi-in-quanteda.html#cb888-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="regularni-izrazi-in-quanteda.html#cb864-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">fvg1 =</span>  <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">phrase</span>(</span>
+<span id="cb864-2"><a href="regularni-izrazi-in-quanteda.html#cb864-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;zur|in .+ung (ge)komm.+|(ge)brach.+|bring.+&quot;</span>)),</span>
+<span id="cb864-3"><a href="regularni-izrazi-in-quanteda.html#cb864-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb864-4"><a href="regularni-izrazi-in-quanteda.html#cb864-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 7
 ##   docname      from    to pre                            keyword  post   pattern
 ##   &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;                          &lt;chr&gt;    &lt;chr&gt;  &lt;fct&gt;  
@@ -1238,13 +1239,13 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 ## 8 tom.txt     72134 72136 , mit den letzten Ereignissen  in Verb~ zu we~ zur|in~
 ## 9 tom.txt     77725 77727 Abenteuer , hie und da         kleine ~ ; er ~ zur|in~</code></pre>
 <p>Če so med sestavnimi deli besedne zveze drugi izrazi, lahko tudi postopoma filtriramo:</p>
-<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="regularni-izrazi-in-quanteda.html#cb890-1" aria-hidden="true" tabindex="-1"></a>phrase1 <span class="ot">=</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">bstand.*|</span><span class="sc">\\</span><span class="st">bsteh.*&quot;</span></span>
-<span id="cb890-2"><a href="regularni-izrazi-in-quanteda.html#cb890-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb890-3"><a href="regularni-izrazi-in-quanteda.html#cb890-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">fvg2 =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">phrase</span>(phrase1), <span class="at">window =</span> <span class="dv">10</span>,</span>
-<span id="cb890-4"><a href="regularni-izrazi-in-quanteda.html#cb890-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb890-5"><a href="regularni-izrazi-in-quanteda.html#cb890-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(post, <span class="st">&quot;zur&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb890-6"><a href="regularni-izrazi-in-quanteda.html#cb890-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(post, <span class="st">&quot;.+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>))</span>
-<span id="cb890-7"><a href="regularni-izrazi-in-quanteda.html#cb890-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb866-1"><a href="regularni-izrazi-in-quanteda.html#cb866-1" aria-hidden="true" tabindex="-1"></a>phrase1 <span class="ot">=</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">bstand.*|</span><span class="sc">\\</span><span class="st">bsteh.*&quot;</span></span>
+<span id="cb866-2"><a href="regularni-izrazi-in-quanteda.html#cb866-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb866-3"><a href="regularni-izrazi-in-quanteda.html#cb866-3" aria-hidden="true" tabindex="-1"></a>(<span class="at">fvg2 =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">phrase</span>(phrase1), <span class="at">window =</span> <span class="dv">10</span>,</span>
+<span id="cb866-4"><a href="regularni-izrazi-in-quanteda.html#cb866-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb866-5"><a href="regularni-izrazi-in-quanteda.html#cb866-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(post, <span class="st">&quot;zur&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb866-6"><a href="regularni-izrazi-in-quanteda.html#cb866-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(post, <span class="st">&quot;.+ung</span><span class="sc">\\</span><span class="st">b&quot;</span>))</span>
+<span id="cb866-7"><a href="regularni-izrazi-in-quanteda.html#cb866-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 7
 ##   docname      from    to pre              keyword post               pattern   
 ##   &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;   &lt;chr&gt;              &lt;fct&gt;     
@@ -1256,17 +1257,17 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 <div id="besede" class="section level3" number="8.6.1">
 <h3><span class="header-section-number">8.6.1</span> Besede</h3>
 <p>Pretvorba besedil v povedi s programom tidytext, funkcija <em>unnest_tokens()</em>:</p>
-<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="regularni-izrazi-in-quanteda.html#cb892-1" aria-hidden="true" tabindex="-1"></a>romantexte <span class="ot">=</span> txt <span class="sc">%&gt;%</span> </span>
-<span id="cb892-2"><a href="regularni-izrazi-in-quanteda.html#cb892-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb892-3"><a href="regularni-izrazi-in-quanteda.html#cb892-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(sentence, text, <span class="at">token =</span> <span class="st">&quot;sentences&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb868-1"><a href="regularni-izrazi-in-quanteda.html#cb868-1" aria-hidden="true" tabindex="-1"></a>romantexte <span class="ot">=</span> txt <span class="sc">%&gt;%</span> </span>
+<span id="cb868-2"><a href="regularni-izrazi-in-quanteda.html#cb868-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb868-3"><a href="regularni-izrazi-in-quanteda.html#cb868-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(sentence, text, <span class="at">token =</span> <span class="st">&quot;sentences&quot;</span>)</span></code></pre></div>
 </div>
 <div id="besedne-zveze" class="section level3" number="8.6.2">
 <h3><span class="header-section-number">8.6.2</span> Besedne zveze</h3>
 <p>Izvleci samostalniške zveze:</p>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="regularni-izrazi-in-quanteda.html#cb893-1" aria-hidden="true" tabindex="-1"></a>np <span class="ot">=</span> <span class="st">&quot;(der|die|das|des|dem|den) ([^ ]+)&quot;</span></span>
-<span id="cb893-2"><a href="regularni-izrazi-in-quanteda.html#cb893-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-3"><a href="regularni-izrazi-in-quanteda.html#cb893-3" aria-hidden="true" tabindex="-1"></a>romantexte <span class="sc">%&gt;%</span></span>
-<span id="cb893-4"><a href="regularni-izrazi-in-quanteda.html#cb893-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(np)</span></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb869-1"><a href="regularni-izrazi-in-quanteda.html#cb869-1" aria-hidden="true" tabindex="-1"></a>np <span class="ot">=</span> <span class="st">&quot;(der|die|das|des|dem|den) ([^ ]+)&quot;</span></span>
+<span id="cb869-2"><a href="regularni-izrazi-in-quanteda.html#cb869-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb869-3"><a href="regularni-izrazi-in-quanteda.html#cb869-3" aria-hidden="true" tabindex="-1"></a>romantexte <span class="sc">%&gt;%</span></span>
+<span id="cb869-4"><a href="regularni-izrazi-in-quanteda.html#cb869-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(np)</span></code></pre></div>
 <pre><code>## Warning in stri_extract_all_regex(string, pattern, simplify = simplify, :
 ## argument is not an atomic vector; coercing</code></pre>
 <pre><code>## [[1]]
@@ -7679,16 +7680,16 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 ## [12807] &quot;der in&quot;                         &quot;den personen&quot;                  
 ## [12809] &quot;die geschichte&quot;                 &quot;der jugend&quot;                    
 ## [12811] &quot;der aufzunehmen&quot;                &quot;den sind&quot;</code></pre>
-<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="regularni-izrazi-in-quanteda.html#cb896-1" aria-hidden="true" tabindex="-1"></a><span class="co"># romantexte %&gt;%</span></span>
-<span id="cb896-2"><a href="regularni-izrazi-in-quanteda.html#cb896-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   str_match_all(np)</span></span></code></pre></div>
+<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="regularni-izrazi-in-quanteda.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># romantexte %&gt;%</span></span>
+<span id="cb872-2"><a href="regularni-izrazi-in-quanteda.html#cb872-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   str_match_all(np)</span></span></code></pre></div>
 <p>Izvleci FVG:</p>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="regularni-izrazi-in-quanteda.html#cb897-1" aria-hidden="true" tabindex="-1"></a>nomphrase <span class="ot">=</span> <span class="st">&quot;stand.*</span><span class="sc">\\</span><span class="st">W(</span><span class="sc">\\</span><span class="st">w+){1,3}</span><span class="sc">\\</span><span class="st">szur</span><span class="sc">\\</span><span class="st">s.+ung&quot;</span></span>
-<span id="cb897-2"><a href="regularni-izrazi-in-quanteda.html#cb897-2" aria-hidden="true" tabindex="-1"></a>nomphrase <span class="ot">=</span> <span class="st">&quot;stand.* (zur .+ung)&quot;</span></span>
-<span id="cb897-3"><a href="regularni-izrazi-in-quanteda.html#cb897-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb897-4"><a href="regularni-izrazi-in-quanteda.html#cb897-4" aria-hidden="true" tabindex="-1"></a>romantexte <span class="sc">%&gt;%</span></span>
-<span id="cb897-5"><a href="regularni-izrazi-in-quanteda.html#cb897-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sentence) <span class="sc">%&gt;%</span> </span>
-<span id="cb897-6"><a href="regularni-izrazi-in-quanteda.html#cb897-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(nomphrase) <span class="sc">%&gt;%</span> </span>
-<span id="cb897-7"><a href="regularni-izrazi-in-quanteda.html#cb897-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="regularni-izrazi-in-quanteda.html#cb873-1" aria-hidden="true" tabindex="-1"></a>nomphrase <span class="ot">=</span> <span class="st">&quot;stand.*</span><span class="sc">\\</span><span class="st">W(</span><span class="sc">\\</span><span class="st">w+){1,3}</span><span class="sc">\\</span><span class="st">szur</span><span class="sc">\\</span><span class="st">s.+ung&quot;</span></span>
+<span id="cb873-2"><a href="regularni-izrazi-in-quanteda.html#cb873-2" aria-hidden="true" tabindex="-1"></a>nomphrase <span class="ot">=</span> <span class="st">&quot;stand.* (zur .+ung)&quot;</span></span>
+<span id="cb873-3"><a href="regularni-izrazi-in-quanteda.html#cb873-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb873-4"><a href="regularni-izrazi-in-quanteda.html#cb873-4" aria-hidden="true" tabindex="-1"></a>romantexte <span class="sc">%&gt;%</span></span>
+<span id="cb873-5"><a href="regularni-izrazi-in-quanteda.html#cb873-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sentence) <span class="sc">%&gt;%</span> </span>
+<span id="cb873-6"><a href="regularni-izrazi-in-quanteda.html#cb873-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(nomphrase) <span class="sc">%&gt;%</span> </span>
+<span id="cb873-7"><a href="regularni-izrazi-in-quanteda.html#cb873-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## Warning in stri_extract_all_regex(string, pattern, simplify = simplify, :
 ## argument is not an atomic vector; coercing</code></pre>
 <pre><code>## [[1]]

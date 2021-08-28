@@ -26,24 +26,30 @@ library(extrafont)
 ## Daten laden
 
 ```{r}
-vokale <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", sheet ="A1-4_alle") %>% 
+vokale <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", 
+                    sheet ="A1-4_alle") %>% 
   janitor::clean_names() %>% 
   dplyr::select(-studierende) %>% 
   mutate(geschlecht = "f") %>% 
-  dplyr::select(sprecherin, geschlecht, vokal, f1, f2, dauer, lange, wort, phrase) %>% 
+  dplyr::select(sprecherin, geschlecht, vokal, vowel, 
+                f1, f2, dauer, lange, wort, phrase) %>% 
   mutate(l1_l2 = ifelse(sprecherin == "Deutsche", "L1", "L2")) %>% 
-  mutate(vokal = str_replace(vokal, "F:", "E:")) %>% 
-  mutate(vowel = vokal)
-head(vokale)
+  mutate(vokal = str_replace(vokal, "F:", "E:")) # %>% 
+  # mutate(vowel = vokal)
 
-vergleich <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", sheet ="A10_Vgl_L1_L2_tab") %>% 
+vokale %>% rmarkdown::paged_table()
+
+vergleich <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", 
+                       sheet ="A10_Vgl_L1_L2_tab") %>% 
   janitor::clean_names() %>% 
   mutate(phonem = str_replace(phonem, "EE", "E:")) %>% 
   rename(f1_l1 = f1_in_hz,
          f2_l1 = f2_in_hz,
          dauer_l1 = dauer_in_ms,
-         vokal = phonem)
-head(vergleich)
+         vokal = phonem) %>% 
+  dplyr::select(-phonem_ipa_1, -phonem_ipa_2)
+
+vergleich %>% rmarkdown::paged_table()
 
 ```
 
@@ -66,7 +72,7 @@ df4 <- df4 %>% mutate(speaker = "Jasmina")
 df5 <- df5 %>% mutate(speaker = "Teodor")
 
 df <- rbind(df0,df1a,df1b,df2,df3,df4,df5)
-head(df)
+df %>% rmarkdown::paged_table()
 
 ```
 
@@ -74,99 +80,227 @@ head(df)
 ## IPA syms
 
 ```{r}
-par(family='Helvetica')
-par(family = "Charis SIL")
+list1 <- levels(factor(vergleich$vowel)) %>% paste(collapse = ",")
+list2 <- levels(factor(vokale$vowel)) %>% paste(collapse = ",")
+list3 <- levels(factor(df$vowel)) %>% paste(collapse = ",")
 
-i = "i:"
-I = "ɪ"
-y = "y:"
-Y = "ʏ"
-e = "e:"
-E = "ɛ"
-EE = "ɛ\u02D0"
-oe = "ø:"
-oe = "ø\u02D0"
-# oe = "\u00F8" # wird nicht gedruckt
-# oe = "\u00D8" # ok, aber eigentlich ein anderes Phonem
-# oe = "\u2205" # ok, aber eigentlich ein anderes Phonem
-# oe = "&#248" # wird nicht gedruckt
-OE = "œ"
-# OE = "\u0153"
-# OE = "&#339"
-schwa = "ə"
-a = "a"
-A = "a:"
-o = "o:"
-O = "ɔ"
-u = "u:"
-U = "ʊ"
+ipa_list1 <- c(
+a = "\u0061",
+AA = "\u0251\u02D0",
+E = "\u025B",
+ee = "\u0065\u02D0",
+EE = "\u025B\u02D0",
+I = "\u026A",
+ii = "\u0069\u02D0",
+O = "\u0254",
+oe = "\u00F8\u02D0",
+OE = "\u0153",
+oo = "\u006F\u02D0",
+schwa = "\u0259",
+U = "\u028A",
+uu = "\u0075\u02D0",
+Y = "\u028F",
+yy = "\u0079\u02D0"
+) # %>% paste(collapse = ",")
 
-ipavow = c(a,A,e,E,EE,I,i,O,o,U,u,Y,y,OE,oe, schwa) %>%  as_tibble() %>% rename(vowel = value)
+ipa_list2 <- c(
+a = "\u0061",
+AA = "\u0251\u02D0",
+E = "\u025B",
+ee = "\u0065\u02D0",
+EE = "\u025B\u02D0",
+I = "\u026A",
+ii = "\u0069\u02D0",
+O = "\u0254",
+oe = "\u00F8\u02D0",
+OE = "\u0153",
+oo = "\u006F\u02D0",
+U = "\u028A",
+uu = "\u0075\u02D0",
+Y = "\u028F",
+yy = "\u0079\u02D0"
+) # %>% paste(collapse = ",")
 
-vergleich <- vergleich %>% cbind(ipavow) %>% dplyr::select(-phonem_ipa_1, -phonem_ipa_2)
+ipa_list3 <- c(
+a = "\u0061",
+AA = "\u0251\u02D0",
+E = "\u025B",
+Ea = "\u025B\u0061",
+ee = "\u0065\u02D0",
+EE = "\u025B\u02D0",
+I = "\u026A",
+ii = "\u0069\u02D0",
+O = "\u0254",
+oe = "\u00F8\u02D0",
+OE = "\u0153",
+oo = "\u006F\u02D0",
+OO = "\u0254\u02D0",
+OOE = "\u0153\u02D0",
+schwa = "\u0259",
+U = "\u028A",
+uu = "\u0075\u02D0",
+UU = "\u028A\u02D0",
+Y = "\u028F",
+yy = "\u0079\u02D0",
+YY = "\u028F\u02D0"
+) # %>% paste(collapse = ",")
+
+```
+
+
+```{r}
+vergleich$vowel_ipa <- ipa_list1[as.numeric(factor(vergleich$vowel))]
+vokale$vowel_ipa <- ipa_list2[as.numeric(factor(vokale$vowel))]
+df$vowel_ipa <- ipa_list3[as.numeric(factor(df$vowel))]
+
+```
+
+
+```{r}
+# par(family='Helvetica')
+# par(family = "Charis SIL")
+# 
+# ipa_list <- c(
+# ii = "\u0069\u02D0",
+# I = "\u026A",
+# yy = "\u0079\u02D0",
+# Y = "\u028F",
+# ee = "\u0065\u02D0",
+# E = "\u025B",
+# EE = "\u025B\u02D0",
+# oe = "\u00F8\u02D0",
+# OE = "\u0153",
+# schwa = "\u0259",
+# a = "\u0061",
+# AA = "\u0251\u02D0",
+# oo = "\u006F\u02D0",
+# O = "\u0254",
+# uu = "\u0075\u02D0",
+# U = "\u028A"
+# )
+# 
+# ipa_list <- c(
+# a = "\u0061",
+# AA = "\u0251\u02D0",
+# ee = "\u0065\u02D0",
+# E = "\u025B",
+# EE = "\u025B\u02D0",
+# I = "\u026A",
+# ii = "\u0069\u02D0",
+# O = "\u0254",
+# oo = "\u006F\u02D0",
+# U = "\u028A",
+# uu = "\u0075\u02D0",
+# Y = "\u028F",
+# yy = "\u0079\u02D0",
+# OE = "\u0153",
+# oe = "\u00F8\u02D0",
+# schwa = "\u0259"
+# )
+# 
+# ipa_list <- c(
+# "\u0061",
+# "\u0251\u02D0",
+# "\u0065\u02D0",
+# "\u025B",
+# "\u025B\u02D0",
+# "\u026A",
+# "\u0069\u02D0",
+# "\u0254",
+# "\u006F\u02D0",
+# "\u028A",
+# "\u0075\u02D0",
+# "\u028F",
+# "\u0079\u02D0",
+# "\u0153",
+# "\u00F8\u02D0",
+# "\u0259"
+# )
+# 
+# vergleich$vowel_ipa <- ipa_list
+# vergleich <- vergleich %>% 
+#   group_by(vowel) %>% 
+#   select(vokal, vowel, vowel_ipa, f1_l1:lange)
 
 ```
 
 
 ```{r}
 # Deutsche Vokale
-vowel_lookup =
-  c(
-    ii = "i:",
-    I = "ɪ",
-    yy = "y:",
-    Y = "ʏ",
-    ee = "e:",
-    E = "ɛ",
-    EE = "ɛ\u02D0",
-    Ea = "ɛa",
-    oe = "ø:",
-    oe = "ø\u02D0",
-    # oe = "\u00F8" # wird nicht gedruckt
-    # oe = "\u00D8" # ok, aber eigentlich ein anderes Phonem
-    # oe = "\u2205" # ok, aber eigentlich ein anderes Phonem
-    # oe = "&#248" # wird nicht gedruckt
-    OE = "œ",
-    OOE = "œ:",
-    # OE = "\u0153"
-    # OE = "&#339"
-    schwa = "ə",
-    a = "a",
-    AA = "a:",
-    oo = "o:",
-    O = "ɔ",
-    OO = "ɔ:",
-    uu = "u:",
-    U = "ʊ"
-    
-  )
-
-df$IPA <- vowel_lookup[df$vowel]
+# vowel_lookup =
+#   c(
+#     ii = "i:",
+#     I = "ɪ",
+#     yy = "y:",
+#     Y = "ʏ",
+#     ee = "e:",
+#     E = "ɛ",
+#     EE = "ɛ\u02D0",
+#     Ea = "ɛa",
+#     oe = "ø\u02D0",
+#     OE = "œ",
+#     OOE = "œ:",
+#     schwa = "ə",
+#     a = "a",
+#     AA = "a:",
+#     oo = "o:",
+#     O = "ɔ",
+#     OO = "ɔ:",
+#     uu = "u:",
+#     U = "ʊ"
+#     
+#   )
+# 
+# df$IPA <- vowel_lookup[df$vowel]
+# df <- df %>%
+#   select(vowel, IPA, time_index:speaker)
 
 ```
 
+
+*M. Winn* uses **as.numeric(vowel)**:
+Translation of code:
+Index `[]` the list of vowel IPA symbols 
+using the vector of values in the Vowel column 
+as if the Vowels were treated as their corresponding numeric indices 
+in the automatic ordering.
+**data.melt$Vowel.IPA <- IPA_vowels[as.numeric(data.melt$Vowel)]**
+
+```{r}
+# IPA_vowels <- c("i:","ɪ","y:","ʏ","e:","ɛ","ɛ\u02D0",
+#                 "ɛa","ø:","ø\u02D0","œ","œ:","ə",
+#                 "a","a:","o:","ɔ","ɔ:","u:","ʊ")
+# IPA_vowels <- c("\u0069\u02D0","\u026A","\u0079\u02D0",
+#                 "\u028F","e\u02D0","\u025B","\u025B\u02D0",
+#                 "\u025B\u0061","\u00F8","\u00F8\u02D0",
+#                 "\u0153","\u0153\u02D0","\u0259",
+#                 "\u0061","\u0251","o:","\u0254",
+#                 "\u0254\u02D0","\u0075\u02D0","\u028A")
+# df$vowel_ipa <- IPA_vowels[as.numeric(factor(df$vowel))]
+
+```
 
 ## Vergleich der Vokalformanten
 
 Verglichen werden Vokale deutscher Muttersprachler_innen mit Vokalen von Studierenden des Deutschen als Fremdsprache. Verglichen werden die ersten beiden Vokalformanten (F1 und F2). In den Diagrammen werden IPA-Symbole verwendet.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vgl_pivot <- vergleich %>% 
   group_by(vokal) %>% 
   pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
   separate(category, into = c("category", "l1_l2")) %>% 
   drop_na() %>% 
   pivot_wider(names_from = category, values_from = value)
-head(vgl_pivot)
+vgl_pivot %>% rmarkdown::paged_table()
 
 # par(family='Charis SIL')
 (graph4 <- vgl_pivot %>% 
   drop_na() %>% 
-  group_by(vokal, l1_l2, lange) %>% 
-  ggplot(aes(f2,f1, label = vowel)) +
+  group_by(vowel_ipa, l1_l2, lange) %>% 
+  ggplot(aes(f2,f1, label = vowel_ipa)) + 
   geom_hex(alpha = 0.2, show.legend = F) +
   theme(text=element_text(size=16)) + # family = "Charis SIL"
-  geom_text(aes(label = vowel, color = vowel), # family = "Charis SIL"
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), # family = "Charis SIL"
             vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 6) +
   # geom_label(aes(x = mean(f2), y = mean(f1)), color = "black") + 
   # stat_ellipse() +
@@ -244,14 +378,14 @@ vgl_pivot <- vergleich %>%
   separate(category, into = c("category", "l1_l2")) %>% 
   drop_na() %>% 
   pivot_wider(names_from = category, values_from = value)
-head(vgl_pivot)
+vgl_pivot %>% rmarkdown::paged_table()
 
 (graph5 <- vgl_pivot %>% 
   drop_na() %>% 
-  group_by(vokal, l1_l2, lange) %>% 
+  group_by(vowel_ipa, l1_l2, lange) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = vowel, color = vowel), 
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
             vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 6) +
   scale_y_reverse() +
   scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
@@ -274,12 +408,12 @@ library(ggrepel)
 
 (graph6 <- df %>% 
    filter(speaker != "Monika1") %>% 
-    group_by(vowel, speaker, IPA) %>% 
+    group_by(vowel, speaker, vowel_ipa) %>% 
   summarise(f1 = mean(F1),
             f2 = mean(F2)) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = IPA, color = IPA),
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa),
             vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
   # geom_label_repel(aes(label = IPA, color = IPA),
   #           vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
@@ -301,13 +435,29 @@ ggplotly(graph6) %>% layout(showlegend = FALSE)
 
 
 ```{r}
-vowlist1 <- c("i:","I","ü:","Ü","e:","E","ö:","Ö","E:","a:","a","o:","O","u:","U") # unsere Symbole
-vowlist2 = c("i:","I","ue:","Ue","e:","E","oe:","Oe","E:","a:","a","o:","O","u:","U") # Umlautsymbole ersetzt
-vowlist3 = c("i:","I","y:","Y","e:","E","2:","9","E:","a:","a","o:","O","u:","U") # Sampa
-vowlist4 = c("i:","I","ii:","II","e:","E","ee:","EE","E:","a:","a","o:","O","u:","U") # Verdoppelung langer Vokale
+ipa_vow2 <- c(
+a = "\u0061",
+AA = "\u0251\u02D0",
+E = "\u025B",
+ee = "\u0065\u02D0",
+EE = "\u025B\u02D0",
+I = "\u026A",
+ii = "\u0069\u02D0",
+O = "\u0254",
+OE = "\u0153",
+oo = "\u006F\u02D0",
+oe = "\u00F8\u02D0",
+U = "\u028A",
+Y = "\u028F",
+uu = "\u0075\u02D0",
+yy = "\u0079\u02D0"
+)
+
+ipavow2 = ipa_vow2 %>%  as_tibble() %>% rename(vowel = value)
 
 ```
 
+## Aggregated
 
 ```{r}
 vokale_agg <- vokale %>% 
@@ -316,12 +466,11 @@ vokale_agg <- vokale %>%
             f2_avg = mean(f2),
             dauer_avg = mean(dauer))
 
-ipavow2 = c(a,A,E,e,EE,I,i,O,OE,o,oe,U,Y,u,y) %>%  as_tibble() %>% rename(vowel = value)
-
 vokale_agg1 <- vokale_agg %>% filter(l1_l2 == "L1") %>% cbind(ipavow2)
 vokale_agg2 <- vokale_agg %>% filter(l1_l2 == "L2") %>% cbind(ipavow2)
 vokale_agg <- rbind(vokale_agg1, vokale_agg2) %>% as_tibble()
-head(vokale_agg)
+
+vokale_agg %>% rmarkdown::paged_table()
 
 ```
 
@@ -330,7 +479,7 @@ library(tidytext)
 library(ggrepel)
 
 (graph <- vokale %>% 
-  group_by(vokal, l1_l2, color = vokal, label = vokal, fill = vokal, shape = vokal) %>% 
+  group_by(vokal, l1_l2, color = vowel_ipa, label = vowel_ipa, fill = vowel_ipa, shape = vowel_ipa) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
   geom_label(data = vokale_agg, label = vokale_agg$vowel, aes(x = f2_avg, y = f1_avg), color = "black") + 
@@ -373,19 +522,19 @@ ggplotly(graph) %>% layout(showlegend = FALSE)
 
 ```{r}
 vgl_pivot <- vergleich %>% 
-  group_by(vokal) %>% 
+  group_by(vowel_ipa) %>% 
   pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
   separate(category, into = c("category", "l1_l2")) %>% 
   drop_na() %>% 
   pivot_wider(names_from = category, values_from = value)
-head(vgl_pivot)
+vgl_pivot %>% rmarkdown::paged_table()
 
 (graph2 <- vgl_pivot %>% 
   drop_na() %>% 
-  group_by(vokal, l1_l2) %>% 
+  group_by(vowel_ipa, l1_l2) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = vowel, color = vowel), 
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
             size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
   scale_y_reverse() +
   scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
@@ -405,19 +554,19 @@ ggplotly(graph2) %>% layout(showlegend = FALSE)
 
 ```{r}
 vgl_pivot <- vergleich %>% 
-  group_by(vokal) %>% 
+  group_by(vowel_ipa) %>% 
   pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
   separate(category, into = c("category", "l1_l2")) %>% 
   drop_na() %>% 
   pivot_wider(names_from = category, values_from = value)
-head(vgl_pivot)
+vgl_pivot %>% rmarkdown::paged_table()
 
 (graph3 <- vgl_pivot %>% 
   drop_na() %>% 
-  group_by(vokal, l1_l2, lange) %>% 
+  group_by(vowel_ipa, l1_l2, lange) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = vowel, color = vowel), 
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
             size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
   scale_y_reverse() +
   scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +

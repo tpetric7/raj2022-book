@@ -37,8 +37,15 @@ Unser Ziel ist die Extrahierung von Wortbildungsmorphemen. Daher führen wir mit
 
 ```{r}
 library(udpipe)
-model = udpipe_download_model(language = "german")
-demodel = udpipe_load_model(model$file_model)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   model <- udpipe_download_model(language = "german")
+   demodel <- udpipe_load_model(model$file_model)
+   } else {
+  file_model = destfile
+  demodel <- udpipe_load_model(file_model)
+}
 
 ```
 
