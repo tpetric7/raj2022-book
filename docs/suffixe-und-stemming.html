@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -489,8 +518,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb889-10"><a href="suffixe-und-stemming.html#cb889-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.</p>
 <div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb890-1"><a href="suffixe-und-stemming.html#cb890-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe_annotate</span>(demodel, novels_txt<span class="sc">$</span>text, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 2021-08-28 22:01:56 Annotating text fragment 1/2
-## 2021-08-28 22:03:44 Annotating text fragment 2/2</code></pre>
+<pre><code>## 2021-08-30 21:55:32 Annotating text fragment 1/2
+## 2021-08-30 21:59:45 Annotating text fragment 2/2</code></pre>
 <div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="suffixe-und-stemming.html#cb892-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
 <p>Wir filtern Interpunktionszeichen heraus, die für unser Ziel nicht relevant sind. Die Spalte “upos” enthält die dafür relevante Kategorie (“PUNCT”).</p>
 <p>In einem weiteren Schritt fügen wir mit <em>mutate</em> eine neue Spalte (“word”) hinzu, welche die tokens der Texte enthält, aber kleingeschrieben gewerden sollen, was mit <em>tolower()</em> erreicht werden kann.</p>
@@ -504,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Da wir vor allem an Wörtern interessiert sind, die aus mehr als einem Morphem bestehen, filtern wir u.a. Funktionswörter heraus, und zwar mit der Funktion <em>anti_join()</em> und einer Stoppwortliste aus dem Programm <em>stopwords</em>.</p>
 <p>Da die Stoppwortliste im Format einer Liste vorliegt, müssen wir sie in eine Tabelle umwandeln, und zwar mit der Funktion <em>as_tibble()</em>. Der Name der Tabellenspalte muss mit dem Namen der entsprechende Spalte in “novels_words” (also: “word”) übereinstimmen, damit wir die beiden Tabellen entsprechend vereinen können. Den Namen von Tabellenspalten verändern wir mit <em>rename()</em>.</p>
 <p>Außerdem wollen wir gleichzeitig auch einige Wörter herausfiltern, die nicht zu den Romantexten gehören: englische Wörter, die Namen der Autoren, eventuell noch nicht entfernte Ziffern, Interpunktionszeichen und Symbole. Zur Vereinigung der Wortformen in einen Vektor bzw. Tabellenspalte verwenden wir die concatenate-Funktion <em>c()</em>.</p>
-<p>In einem weiteren Schritt sollen die Kategorien der “doc_id” bessere Namen erhalten: die allgemeineren Namen “doc1” und “doc2” ersetzen wir mit den eindeutigeren Namen “prozess” und “tom”.</p>
+<p>In einem weiteren Schritt sollen die Kategorien der “doc_id” bessere Namen erhalten: die allgemeineren Namen “doc1” und “doc2” ersetzen wir mit den eindeutigeren Namen “prozess” und “tom.”</p>
 <div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="suffixe-und-stemming.html#cb895-1" aria-hidden="true" tabindex="-1"></a>stoplist_de <span class="ot">=</span> <span class="fu">c</span>(stopwords<span class="sc">::</span><span class="fu">stopwords</span>(<span class="at">language =</span> <span class="st">&quot;german&quot;</span>), <span class="st">&quot;franz&quot;</span>,<span class="st">&quot;kafka&quot;</span>,<span class="st">&quot;mark&quot;</span>,<span class="st">&quot;twain&quot;</span>,</span>
 <span id="cb895-2"><a href="suffixe-und-stemming.html#cb895-2" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;by&quot;</span>,<span class="st">&quot;aligned&quot;</span>,<span class="st">&quot;Aligned&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot;bilingual-texts.com&quot;</span>,<span class="st">&quot;fully&quot;</span>,<span class="st">&quot;reviewed&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb895-3"><a href="suffixe-und-stemming.html#cb895-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
@@ -673,7 +702,7 @@ Zuletzt verändern wir mit <em>pivot_wider()</em> das Tabellenformat, so dass di
 {"columns":[{"label":["lich"],"name":[1],"type":["lgl"],"align":["right"]},{"label":["prozess"],"name":[2],"type":["int"],"align":["right"]},{"label":["tom"],"name":[3],"type":["int"],"align":["right"]},{"label":["prozess_pct"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["tom_pct"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"FALSE","2":"1403","3":"1184","4":"0.784237","5":"0.8475304"},{"1":"TRUE","2":"386","3":"213","4":"0.215763","5":"0.1524696"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Etwa 21,5% der als Adjektiv identifizierten Lemmas im Roman “prozess” enden mit dem Suffix “-lich”, im Roman “tom sawyer” sind es etwa 15,2%. Der Unterschied ist auch in der graphischen Darstellung zu sehen.</p>
+<p>Etwa 21,5% der als Adjektiv identifizierten Lemmas im Roman “prozess” enden mit dem Suffix “-lich,” im Roman “tom sawyer” sind es etwa 15,2%. Der Unterschied ist auch in der graphischen Darstellung zu sehen.</p>
 <div class="sourceCode" id="cb910"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb910-1"><a href="suffixe-und-stemming.html#cb910-1" aria-hidden="true" tabindex="-1"></a>lichtab2 <span class="sc">%&gt;%</span> </span>
 <span id="cb910-2"><a href="suffixe-und-stemming.html#cb910-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(prozess_pct<span class="sc">:</span>tom_pct, <span class="at">names_to =</span> <span class="st">&quot;title&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;pct&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb910-3"><a href="suffixe-und-stemming.html#cb910-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title, pct, <span class="at">fill =</span> lich)) <span class="sc">+</span></span>

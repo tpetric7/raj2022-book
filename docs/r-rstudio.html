@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -467,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="tabelle-öffnen" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Tabelle öffnen</h2>
-<p>Funkcija <em>read_csv()</em> ali <em>read_csv2()</em> sta le dve izmed številnih funkcij za odpiranje preglednice s pripono “csv”.</p>
+<p>Funkcija <em>read_csv()</em> ali <em>read_csv2()</em> sta le dve izmed številnih funkcij za odpiranje preglednice s pripono “csv.”</p>
 <p>Odpiranje besedila s spletnega naslova (url) je možen.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-rstudio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href="r-rstudio.html#cb5-2" aria-hidden="true" tabindex="-1"></a>tabela <span class="ot">=</span> <span class="fu">read_csv2</span>(<span class="st">&quot;data/plural_Subj_sum.csv&quot;</span>)</span></code></pre></div>
@@ -490,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="excel-tabelle-öffnen" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Excel-Tabelle öffnen</h2>
-<p>Funkcija <em>read_xlsx()</em> ali <em>read_excel()</em> omogoča odpiranje Excelove preglednice s pripono “xlsx”.</p>
+<p>Funkcija <em>read_xlsx()</em> ali <em>read_excel()</em> omogoča odpiranje Excelove preglednice s pripono “xlsx.”</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-rstudio.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb11-2"><a href="r-rstudio.html#cb11-2" aria-hidden="true" tabindex="-1"></a>excel <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/S03_Vokalformanten_Diagramme.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;A1-4_alle&quot;</span>)</span>
 <span id="cb11-3"><a href="r-rstudio.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(excel) <span class="sc">%&gt;%</span> </span>
@@ -503,7 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="datei-speichern" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Datei speichern</h2>
-<p>Privzeto spodnji programi shranjujejo v obliki (codepage) encoding = “UTF-8” / fileEncoding = “UTF-8”.</p>
+<p>Privzeto spodnji programi shranjujejo v obliki (codepage) encoding = “UTF-8” / fileEncoding = “UTF-8.”</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-rstudio.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb12-2"><a href="r-rstudio.html#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="r-rstudio.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shranjevanje posamičnega besedila</span></span>

@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -940,7 +969,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Thatchers beinahe. Vollkommen konnte                   
 ##  Richter - in der Höhle</code></pre>
 <p>Konkordanco bomo pretvorili v podatkovno zbirko, tj. <em>data.frame</em> ali <em>tibble()</em>. Prednost je npr., da tako pridobimo imena stolpcev (tj. spremenljivk).</p>
-<p><em>kwic()</em> ima več možnosti, npr. “case_insensitive = FALSE” razlikuje med velikimi in malimi črkami. Privzeta vrednost je “TRUE”, tj. da tega ne razlikuje (tako kot Excel).</p>
+<p><em>kwic()</em> ima več možnosti, npr. “case_insensitive = FALSE” razlikuje med velikimi in malimi črkami. Privzeta vrednost je “TRUE,” tj. da tega ne razlikuje (tako kot Excel).</p>
 <div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="regularni-izrazi-in-quanteda.html#cb836-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">konkordanca =</span> <span class="fu">kwic</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="st">&quot;Frau&quot;</span>, <span class="st">&quot;Herr&quot;</span>), <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb836-2"><a href="regularni-izrazi-in-quanteda.html#cb836-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
 <span id="cb836-3"><a href="regularni-izrazi-in-quanteda.html#cb836-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
@@ -1046,7 +1075,7 @@ $ na koncu vrstice</p>
 - in šele potem poizvedujemo s funkcijo kwic()</p>
 <div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="regularni-izrazi-in-quanteda.html#cb844-1" aria-hidden="true" tabindex="-1"></a>wortformen <span class="ot">=</span> <span class="fu">tokens_select</span>(woerter, <span class="at">pattern =</span> <span class="fu">c</span>(<span class="fu">stopwords</span>(<span class="st">&quot;de&quot;</span>), <span class="st">&quot;bisher&quot;</span>,<span class="st">&quot;immer&quot;</span>), </span>
 <span id="cb844-2"><a href="regularni-izrazi-in-quanteda.html#cb844-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">selection =</span> <span class="st">&quot;remove&quot;</span>)</span></code></pre></div>
-<p>Približno 500 besednih oblik manj, kot če ne bi izločili “stopwords”.</p>
+<p>Približno 500 besednih oblik manj, kot če ne bi izločili “stopwords.”</p>
 <div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="regularni-izrazi-in-quanteda.html#cb845-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomen_er =</span> <span class="fu">as_tibble</span>(<span class="fu">kwic</span>(wortformen, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">b[A-Z].+er</span><span class="sc">\\</span><span class="st">b&quot;</span>,</span>
 <span id="cb845-2"><a href="regularni-izrazi-in-quanteda.html#cb845-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>))</span>
 <span id="cb845-3"><a href="regularni-izrazi-in-quanteda.html#cb845-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
@@ -1191,7 +1220,7 @@ Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkret
 <span id="cb860-2"><a href="regularni-izrazi-in-quanteda.html#cb860-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">valuetype =</span> <span class="st">&quot;regex&quot;</span>, <span class="at">case_insensitive =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb860-3"><a href="regularni-izrazi-in-quanteda.html#cb860-3" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_xray</span>(kwic_ung)</span></code></pre></div>
 <p><img src="14-Regex_in_quanteda_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
-<p>Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje “(kriminalno) pravo”, v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.</p>
+<p>Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje “(kriminalno) pravo,” v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.</p>
 <div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb861-1"><a href="regularni-izrazi-in-quanteda.html#cb861-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
 <span id="cb861-2"><a href="regularni-izrazi-in-quanteda.html#cb861-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">nomina_ung =</span> nomen_ung <span class="sc">%&gt;%</span> </span>
 <span id="cb861-3"><a href="regularni-izrazi-in-quanteda.html#cb861-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(docname) <span class="sc">%&gt;%</span> </span>

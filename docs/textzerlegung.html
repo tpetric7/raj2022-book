@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -463,7 +492,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.3.1</span> Tabelle</h3>
 <p>Um Texteinheiten wie z.B. Wörter, Buchstaben oder Sätze / Äußerungen zählen zu können, müssen wir den Text zuerst in kleinere Teile zerlegen, in der Fachsprache als Tokenisierung bekannt (tokens extrahieren).</p>
 <p>Für die Tokenisierung von Zeichenfolgen (Texten) gibt es in der R-Sprache viele Programme (z.B. <em>quanteda</em>, <em>tidytext</em>) und verschiedene Möglichkeiten (mit ihren Vor- und Nachteilen). Hier verwenden wir das zuletzt genannte Programm und seine Funktion <em>unnest_tokens()</em>.</p>
-<p>Im ersten Schritt wandeln wir die Textdatei in einen Datensatz um, so dass wir mit den gut verständlichen <em>tidyverse</em>-Funktionen arbeiten können. Das machen wir mit der Funktion <em>as_tibble()</em>, die in diesem Fall eine Tabelle mit einer einzigen Spalte erzeugt. Der Default-Name der Spalte “value” wird mit <em>rename()</em> umbenannt. Der neue (bessere) Spaltenname ist “text”, was wir mit <em>colnames()</em> überprüfen können. Wir geben dieser Tabelle einen neuen Namen (“novels_df”).</p>
+<p>Im ersten Schritt wandeln wir die Textdatei in einen Datensatz um, so dass wir mit den gut verständlichen <em>tidyverse</em>-Funktionen arbeiten können. Das machen wir mit der Funktion <em>as_tibble()</em>, die in diesem Fall eine Tabelle mit einer einzigen Spalte erzeugt. Der Default-Name der Spalte “value” wird mit <em>rename()</em> umbenannt. Der neue (bessere) Spaltenname ist “text,” was wir mit <em>colnames()</em> überprüfen können. Wir geben dieser Tabelle einen neuen Namen (“novels_df”).</p>
 <div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="textzerlegung.html#cb350-1" aria-hidden="true" tabindex="-1"></a>novels_df <span class="ot">=</span> <span class="fu">as_tibble</span>(novels_r) <span class="sc">%&gt;%</span> </span>
 <span id="cb350-2"><a href="textzerlegung.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">text =</span> value)</span>
 <span id="cb350-3"><a href="textzerlegung.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(novels_df)</span></code></pre></div>
@@ -471,13 +500,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="äußerungen" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Äußerungen</h3>
-<p>Im zweiten Schritt verwenden wir die Tabelle “novels_df” als Ausgangspunkt für die Tokenisierung. Wir zerlegen die Zeichenfolge in der Spalte “text” in Sätze (genau genommen: Äußerungen), und zwar mit Hilfe der Funktion <em>unnest_tokens()</em> des Programms <em>tidytext</em>. Wir geben dieser Tabelle einen neuen Namen, und zwar “novels_sents”.</p>
+<p>Im zweiten Schritt verwenden wir die Tabelle “novels_df” als Ausgangspunkt für die Tokenisierung. Wir zerlegen die Zeichenfolge in der Spalte “text” in Sätze (genau genommen: Äußerungen), und zwar mit Hilfe der Funktion <em>unnest_tokens()</em> des Programms <em>tidytext</em>. Wir geben dieser Tabelle einen neuen Namen, und zwar “novels_sents.”</p>
 <p>Die Funktion unnest_tokens verlangt die folgende Reihenfolge:
 zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Name der Tabellenspalte, die in kleinere Einheiten zerlegt werden soll (hier: “text”), gefolgt von der Angabe, in welche Einheit wir die Zeichenfolge umformen wollen (hier: “sentences”).</p>
 <p>Die neue Tabelle enthält nur eine Spalte (nur die Äußerungen), da wir die Option <em>drop = TRUE</em> beibehalten (denn sonst würde die neue Tabelle eine weitere Spalte mit dem ganzen Text enthalten, und zwar in jeder Tabellenzeile - sehr belastend für den Arbeitsspeicher!).</p>
 <p>Außerdem verhindern wir mit <em>to_lower = FALSE</em>, dass alle Wörter in der Spalte klein geschrieben werden. Die im Deutschen übliche Groß- und Kleinschreibung von Wörtern soll in dieser Spalte beibehalten werden.</p>
 <p>Zuletzt entfernen wir noch die erste Zeile in der Tabelle, da sie nicht zum Text gehört. Das machen wir mit <em>novels_sents[-1,]</em>: dem Namen der Tabelle folgen eckige Klammern; die Zahl <em>-1</em> vor dem <em>Komma</em> bezieht sich auf die erste Tabellenzeile; das Minuszeichen vor der Zahl besagt, dass diese Zeile entfernt werden soll; nach dem Komma steht nichts, d.h. alle Spalten in der Tabelle bleiben unverändert.</p>
-<p>Zur Identifizierung der Reihenfolge der Äußerungen fügen wir der Tabelle noch eine Spalte hinzu: mit <em>mutate()</em> erzeugen wir die Spalte “sentence_id”, und zwar indem wir die einzelnen Zeilenzahlen <em>row_number()</em> mit Hilfe der Anzahl der Tabellenzeilen <em>length()</em> festlegen.</p>
+<p>Zur Identifizierung der Reihenfolge der Äußerungen fügen wir der Tabelle noch eine Spalte hinzu: mit <em>mutate()</em> erzeugen wir die Spalte “sentence_id,” und zwar indem wir die einzelnen Zeilenzahlen <em>row_number()</em> mit Hilfe der Anzahl der Tabellenzeilen <em>length()</em> festlegen.</p>
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="textzerlegung.html#cb352-1" aria-hidden="true" tabindex="-1"></a>novels_sents <span class="ot">=</span> novels_df <span class="sc">%&gt;%</span> </span>
 <span id="cb352-2"><a href="textzerlegung.html#cb352-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(sentence, text, <span class="at">token =</span> <span class="st">&quot;sentences&quot;</span>, <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">to_lower =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb352-3"><a href="textzerlegung.html#cb352-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -510,9 +539,9 @@ zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Nam
 <div id="wörter" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> Wörter</h3>
 <p>Unser nächstes Ziel ist die Zerlegung der Äußerungen in kleinere Einheiten: Wörter. Das können wir auf ähnliche Weise bewerkstelligen wie im vorherigen Schritt.</p>
-<p>Ausgangspunkt ist nun die Tabelle “novels_sents”. Im <em>unnest_tokens()</em>-Befehl geben wir den Namen der hier gewünschten Einheit an (“word”), dann den Namen der Tabellenspalte mit den Äußerungen (“sentence”) und die gewünschte Einheit, in die wir die Äußerungen umformen möchten (“words”).</p>
+<p>Ausgangspunkt ist nun die Tabelle “novels_sents.” Im <em>unnest_tokens()</em>-Befehl geben wir den Namen der hier gewünschten Einheit an (“word”), dann den Namen der Tabellenspalte mit den Äußerungen (“sentence”) und die gewünschte Einheit, in die wir die Äußerungen umformen möchten (“words”).</p>
 <p>Außerdem wollen wir die Tabellenspalte “sentence” beibehalten, weshalb wir <em>drop = FALSE</em> auswählen. In der neuen Tabellenspalte “word” sollen alle Wörter klein geschrieben werden, was wir mit <em>to_lower = TRUE</em> erreichen.</p>
-<p>Wir fügen der Tabelle (ähnlich wie im Fall der “sentence_id”) auch eine weitere Spalte hinzu, der wir die ursprüngliche Reihenfolge der Wörter entnehmen können: “word_id”.</p>
+<p>Wir fügen der Tabelle (ähnlich wie im Fall der “sentence_id”) auch eine weitere Spalte hinzu, der wir die ursprüngliche Reihenfolge der Wörter entnehmen können: “word_id.”</p>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="textzerlegung.html#cb356-1" aria-hidden="true" tabindex="-1"></a>novels_words <span class="ot">=</span> novels_sents <span class="sc">%&gt;%</span> </span>
 <span id="cb356-2"><a href="textzerlegung.html#cb356-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, sentence, <span class="at">token =</span> <span class="st">&quot;words&quot;</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>, <span class="at">to_lower =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb356-3"><a href="textzerlegung.html#cb356-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -602,7 +631,7 @@ zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Nam
 </div>
 <div id="tabelle-speichern" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Tabelle speichern</h2>
-<p>Diese Tabelle speichern wir als Datei, falls wir ein anderes Mal mit ihr arbeiten möchten. Wir speichern die Tabelle als Excel-Datei (Programm: <em>writexl</em>) und als Tabelle im Textformat (Endung: “csv”, comma-separated-variables).</p>
+<p>Diese Tabelle speichern wir als Datei, falls wir ein anderes Mal mit ihr arbeiten möchten. Wir speichern die Tabelle als Excel-Datei (Programm: <em>writexl</em>) und als Tabelle im Textformat (Endung: “csv,” comma-separated-variables).</p>
 <p>Excel hat einen Nachteil: falls die Zeilen sehr lang sind, werden sie nicht vollständig gespeichert, sondern abgekürzt. Das Dateiformat “csv” und andere Textformate sind daher besser. Außerdem kann man “csv”-Dateien, da sie nur unformatierten Text enthalten, mit jedem Programm öffnen und lesen, Excel-Dateien dagegen nicht.</p>
 <div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="textzerlegung.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(novels_ch, <span class="st">&quot;data/tom_sawyer_tabelle.csv&quot;</span>)</span>
 <span id="cb366-2"><a href="textzerlegung.html#cb366-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -630,7 +659,7 @@ zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Nam
 </div>
 <div id="zählen" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Zählen</h2>
-<p>Als Ausgangspunkt für die Auszählung von Äußerungen, Wörtern und Buchstaben verwenden wir die zuletzt erstellte Tabelle “novels_ch”.</p>
+<p>Als Ausgangspunkt für die Auszählung von Äußerungen, Wörtern und Buchstaben verwenden wir die zuletzt erstellte Tabelle “novels_ch.”</p>
 <p>Zum Zählen einer Kategorie eignet sich die <em>tidyverse</em>-Funktion <em>count()</em>.</p>
 <p>Wie viele Äußerungen hat das Programm identifiziert?</p>
 <p>Hier müssen wir berücksichtigen, dass jede Äußerung in mehreren Zeilen wiederholt wird, da wir die Äußerungen auch in Wörter und Buchstaben zerlegt haben. Die Funktion <em>distinct()</em> berücksichtigt das.</p>
@@ -651,7 +680,7 @@ zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Nam
 ##  9 &#39;n ganzes Jahr werd &#39; ich jede Nacht wachen !                               1
 ## 10 &#39;ne Schande !                                                               1
 ## # ... with 4,637 more rows</code></pre>
-<p>Als Antwort auf diese Abfrage erhalten wir 4647 Zeilen, d.h. dass 4647 Äußerungen (“number_sents”) unterschieden wurden. Außerdem entsteht beim Zählen eine neue Spalte, und zwar mit dem Namen “n”. Die Zahl ist in allen Tabellenzeilen dieselbe, nämlich “1”. Dies zeigt uns, dass jede Äußerung nur einmal gezählt wurde (also distinkt / unterschiedlich ist), so wie wir es ja verlangt haben.</p>
+<p>Als Antwort auf diese Abfrage erhalten wir 4647 Zeilen, d.h. dass 4647 Äußerungen (“number_sents”) unterschieden wurden. Außerdem entsteht beim Zählen eine neue Spalte, und zwar mit dem Namen “n.” Die Zahl ist in allen Tabellenzeilen dieselbe, nämlich “1.” Dies zeigt uns, dass jede Äußerung nur einmal gezählt wurde (also distinkt / unterschiedlich ist), so wie wir es ja verlangt haben.</p>
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="textzerlegung.html#cb373-1" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb373-2"><a href="textzerlegung.html#cb373-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(sentence) <span class="sc">%&gt;%</span> </span>
 <span id="cb373-3"><a href="textzerlegung.html#cb373-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sentence) <span class="sc">%&gt;%</span> </span>
@@ -680,7 +709,7 @@ zuerst muss der Datensatz angegeben werden (hier: “novels_df”), dann der Nam
 <p>Auf diese Weise könnten wir die Anzahl der Buchstaben insgesamt und die Anzahl der Buchstaben pro Äußerung berechnen.</p>
 <div id="buchstaben-1" class="section level3" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> Buchstaben</h3>
-<p>Wie lang ist der Text, gemessen in “characters”?
+<p>Wie lang ist der Text, gemessen in “characters?”
 Fast 333 Tausend alphanumerische Zeichen.</p>
 <p>Wie viele alphanumerische Zeichen (Buchstaben und Ziffern) kommen durchschnittlich pro Äußerung vor?
 Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich groß: 71,5 +/- 61,9 Zeichen. In diesem Text kommen sehr kurze Äußerungen vor, aber auch deutlich längere.</p>
@@ -748,7 +777,7 @@ Beinahe 72 Zeichen. Die Standardabweichung von diesem Mittelwert ist ziemlich gr
 <span id="cb386-13"><a href="textzerlegung.html#cb386-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code></pre></div>
 <p><img src="11-Textzerlegung_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
 <p>Welche Buchstaben kommen im Text häufiger / seltener vor?
-Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter den auf Konsonanten bezogenen das “n”.</p>
+Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter den auf Konsonanten bezogenen das “n.”</p>
 <div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="textzerlegung.html#cb387-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb387-2"><a href="textzerlegung.html#cb387-2" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb387-3"><a href="textzerlegung.html#cb387-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(char, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
@@ -796,7 +825,7 @@ Unter den auf Vokale bezogenen Buchstaben ist das “e” am häufigsten, unter 
 <p>Wie viele Wortformen wurden vom Programm unterschieden?
 Die folgende Wortauszählung zeigt, dass das Programm 9639 types (Wortformen) unterschieden hat, denn die Tabelle hat so viele Zeilen (“0000” sind die oben umgewandelten Ziffern).</p>
 <p>Funktionswörter (z.B. und, die, nicht, sie, der, sich, er, ich, aber, …) kommen wie in allen Texten am häufigsten vor. Für die Inhaltsanalyse spielen sie kaum oder gar keine Rolle. Daher werden sie oft entfernt.</p>
-<p>Zu den Top-Ten gehört verständlicherweise auch der Name “Tom”, da die Hauptperson im Roman fortwährend angesprochen oder erwähnt wird (die Gebrauchsfrequenz oder Anzahl der tokens n = 738).</p>
+<p>Zu den Top-Ten gehört verständlicherweise auch der Name “Tom,” da die Hauptperson im Roman fortwährend angesprochen oder erwähnt wird (die Gebrauchsfrequenz oder Anzahl der tokens n = 738).</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="textzerlegung.html#cb391-1" aria-hidden="true" tabindex="-1"></a>novels_ch <span class="sc">%&gt;%</span> </span>
 <span id="cb391-2"><a href="textzerlegung.html#cb391-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word_id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb391-3"><a href="textzerlegung.html#cb391-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>

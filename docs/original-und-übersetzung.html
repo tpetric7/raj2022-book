@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -533,8 +562,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uporabljamo več funkcij / ukazov:
 - <em>filter()</em> za izbiranje vrstice v podatkovnem nizu,
 - <em>separate()</em> za delitev stolpca “text” v dva nova stolpca,
-- <em>rbind()</em> za združitev obeh podatkovnih nizov (“txt1”, “txt2”) v enega (“txt”)
-- <em>mutate()</em> in <em>str_squish()</em> za odstranjevanje nepotrebnih presledkov med besedami v stolpcu “text”.</p>
+- <em>rbind()</em> za združitev obeh podatkovnih nizov (“txt1,” “txt2”) v enega (“txt”)
+- <em>mutate()</em> in <em>str_squish()</em> za odstranjevanje nepotrebnih presledkov med besedami v stolpcu “text.”</p>
 <div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="original-und-übersetzung.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nemški prevod</span></span>
 <span id="cb645-2"><a href="original-und-übersetzung.html#cb645-2" aria-hidden="true" tabindex="-1"></a>txt1 <span class="ot">=</span> txt <span class="sc">%&gt;%</span> </span>
 <span id="cb645-3"><a href="original-und-übersetzung.html#cb645-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(doc_id <span class="sc">==</span> <span class="st">&quot;tom_de.txt&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -704,7 +733,7 @@ spremenljivk).</p>
 ## 3 Sawyer         58
 ## 4 Huckleberry    51
 ## 5 Finn           32</code></pre>
-<p>Skladno z našim pričakovanjem sta “Tom” in “Huck”, glavna junaka romana, pogosta izraza. Natančneje si lahko ogledamo tudi sobesedilo, v katerem se pojavljajo iskani znakovni nizi (keywords).</p>
+<p>Skladno z našim pričakovanjem sta “Tom” in “Huck,” glavna junaka romana, pogosta izraza. Natančneje si lahko ogledamo tudi sobesedilo, v katerem se pojavljajo iskani znakovni nizi (keywords).</p>
 </div>
 <div id="pogostnost-1" class="section level2" number="7.7">
 <h2><span class="header-section-number">7.7</span> Pogostnost</h2>
@@ -939,11 +968,11 @@ takoj naložimo z diska v pomnilnik.</p>
 <p>Naslednji korak je <em>udpipe_annotate()</em>: program udpipe označuje besedne oblike
 po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <p>Udpipe prebere in označuje besedilo takole:</p>
-<p>Na začetku je <em>readtext()</em> prebral besedila, shranili smo jih pod imenom “txt”. Angleški izvirnik smo shranili pod imenom “txt2”, besedilo pa je v stolpcu “text”.</p>
+<p>Na začetku je <em>readtext()</em> prebral besedila, shranili smo jih pod imenom “txt.” Angleški izvirnik smo shranili pod imenom “txt2,” besedilo pa je v stolpcu “text.”</p>
 <div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="original-und-übersetzung.html#cb686-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_en, <span class="co"># jezikovni model</span></span>
 <span id="cb686-2"><a href="original-und-übersetzung.html#cb686-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt2<span class="sc">$</span>text,  <span class="co"># izbran je le angleški izvirnik</span></span>
 <span id="cb686-3"><a href="original-und-übersetzung.html#cb686-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-08-28 21:44:27 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-08-30 21:24:59 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="original-und-übersetzung.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb688-2"><a href="original-und-übersetzung.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>
@@ -999,11 +1028,11 @@ takoj naložimo z diska v pomnilnik.</p>
 <p>Naslednji korak je <em>udpipe_annotate()</em>: program udpipe označuje besedne oblike
 po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <p>Udpipe prebere in označuje besedilo takole:</p>
-<p>Na začetku je <em>readtext()</em> prebral besedila, shranili smo jih pod imenom “txt”. Nemški prevod smo shranili pod imenom “txt1”, besedilo pa je v stolpcu “text”.</p>
+<p>Na začetku je <em>readtext()</em> prebral besedila, shranili smo jih pod imenom “txt.” Nemški prevod smo shranili pod imenom “txt1,” besedilo pa je v stolpcu “text.”</p>
 <div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="original-und-übersetzung.html#cb691-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_de, <span class="co"># jezikovni model</span></span>
 <span id="cb691-2"><a href="original-und-übersetzung.html#cb691-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt1<span class="sc">$</span>text,  <span class="co"># izbran je le nemški prevod romana</span></span>
 <span id="cb691-3"><a href="original-und-übersetzung.html#cb691-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-08-28 21:46:49 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-08-30 21:28:18 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="original-und-übersetzung.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb693-2"><a href="original-und-übersetzung.html#cb693-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>
@@ -1051,7 +1080,7 @@ po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <div id="besedni-oblaček-1" class="section level2" number="7.10">
 <h2><span class="header-section-number">7.10</span> Besedni oblaček</h2>
 <p>Besedni oblački so smiseln in razmeroma preprost prikaz najpogostejših besed v besedilu. Največkrat jih uporabljajo za prikaz vsebinsko relevantnih besed. Zato je treba najprej odstraniti funkcijske in druge neprimerne izraze. Še boljši pregled nad vsebino besedila nam besedni oblački dajejo, če uporabljamo slovarske enote (leme) namesto besednih oblik. To še posebej velja v oblikoslovno bogatih jezikih kot sta slovenščino in nemščina.</p>
-<p>Podatkovni niz “en_df”, ki ga je ustvaril <em>udpipe</em>, moramo pripraviti za program <em>wordcloud2</em>:
+<p>Podatkovni niz “en_df,” ki ga je ustvaril <em>udpipe</em>, moramo pripraviti za program <em>wordcloud2</em>:
 - izločiti nezaželene izraze,
 - ugotoviti pogostnost besed in
 - omejiti število besed za prikaz v besednem oblačku.</p>
@@ -1226,7 +1255,7 @@ Voyant Tools (MicroSearch).</p>
 <span id="cb708-8"><a href="original-und-übersetzung.html#cb708-8" aria-hidden="true" tabindex="-1"></a>romane3_toks <span class="ot">=</span> <span class="fu">tokens</span>(romane3)</span>
 <span id="cb708-9"><a href="original-und-übersetzung.html#cb708-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ustvarimo matriko (dfm)</span></span>
 <span id="cb708-10"><a href="original-und-übersetzung.html#cb708-10" aria-hidden="true" tabindex="-1"></a>romane3_dfm <span class="ot">=</span> <span class="fu">dfm</span>(romane3_toks)</span></code></pre></div>
-<p>Rezultat (ki je bil pričakovan): Kafkina novela “Die Verwandlung” je nemškemu prevoda podobnejši kot angleški izvirnik Twainovega romana “Tom Sawyer”. Program očitno ne primerja vsebine besedil, temveč besedne oblike.</p>
+<p>Rezultat (ki je bil pričakovan): Kafkina novela “Die Verwandlung” je nemškemu prevoda podobnejši kot angleški izvirnik Twainovega romana “Tom Sawyer.” Program očitno ne primerja vsebine besedil, temveč besedne oblike.</p>
 <div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="original-und-übersetzung.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textstat_simil</span>(romane3_dfm, <span class="at">method =</span> <span class="st">&quot;cosine&quot;</span>, <span class="at">margin =</span> <span class="st">&quot;documents&quot;</span>)</span></code></pre></div>
 <pre><code>## textstat_simil object; method = &quot;cosine&quot;
 ##                 tom_de.txt tom_en.txt verwandlung.txt
@@ -1375,7 +1404,7 @@ programe (npr. <em>spacyr</em> ali <em>udpipe</em>).</p>
 <p>Tu bomo ponovno uporabljali že pridobljena jezikovna modela in podatkovna niza (gl. lematizacijo), ampak tokrat za prikaz enostavnih primerov slovnične analize.</p>
 <div id="podatkovna-niza" class="section level3" number="7.17.1">
 <h3><span class="header-section-number">7.17.1</span> Podatkovna niza</h3>
-<p>Za lažje prepoznavo besedil bomo najprej spremenili imeni v stolpcu “doc_id”. Potem bomo podatkovna niza združili.</p>
+<p>Za lažje prepoznavo besedil bomo najprej spremenili imeni v stolpcu “doc_id.” Potem bomo podatkovna niza združili.</p>
 <div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="original-und-übersetzung.html#cb737-1" aria-hidden="true" tabindex="-1"></a>en_df <span class="ot">=</span> en_df <span class="sc">%&gt;%</span> </span>
 <span id="cb737-2"><a href="original-und-übersetzung.html#cb737-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">doc_id =</span> <span class="fu">str_replace</span>(doc_id, <span class="st">&quot;doc1&quot;</span>, <span class="st">&quot;tom_en&quot;</span>))</span>
 <span id="cb737-3"><a href="original-und-übersetzung.html#cb737-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1826,7 +1855,7 @@ besedilu. Preimenovali bomo tudi nekaj stolpcev.</p>
 <div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="original-und-übersetzung.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(sentiment2)</span></code></pre></div>
 <p>S seštevanjem čustvenih vrednosti je mogoče oceniti, katero besedilo ima več
 pozitivno ocenjenih besed. V ta namen bomo združili podatkovna niza in uredili
-obliko stolpcev “words” in “values”.</p>
+obliko stolpcev “words” in “values.”</p>
 <div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="original-und-übersetzung.html#cb792-1" aria-hidden="true" tabindex="-1"></a>sentiment <span class="ot">=</span> <span class="fu">rbind</span>(sentiment1, sentiment2) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb792-2"><a href="original-und-übersetzung.html#cb792-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">values =</span> <span class="fu">parse_number</span>(values),</span>
 <span id="cb792-3"><a href="original-und-übersetzung.html#cb792-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">words =</span> <span class="fu">parse_number</span>(words)) <span class="sc">%&gt;%</span></span>
@@ -1852,7 +1881,7 @@ obliko stolpcev “words” in “values”.</p>
 ## 5 tom_en.txt     4852    18      2 &quot;Most of the characters that perform in this~
 ## 6 tom_en.txt     4853    49      3 &quot;Some day it may seem worth while to take up~</code></pre>
 <p>Rezultat: po gornji metodi je povprečje čustvenih vrednosti v nemškem prevodu
-rahlo manjše kot v angleškem izvirniku “Tom Sawyer”, vendar je razlika tako majhna, da najbrž ne bi bila statistično značilna. Povprečje je v obeh primerih blizu nevtralne vrednosti (tj. 0): Tom Sawyer vsebuje kar nekaj vedrih prigod in dogodivščin, je pa res, da so njegove pustolovščine pogosto tudi nevarne ali strašljive.</p>
+rahlo manjše kot v angleškem izvirniku “Tom Sawyer,” vendar je razlika tako majhna, da najbrž ne bi bila statistično značilna. Povprečje je v obeh primerih blizu nevtralne vrednosti (tj. 0): Tom Sawyer vsebuje kar nekaj vedrih prigod in dogodivščin, je pa res, da so njegove pustolovščine pogosto tudi nevarne ali strašljive.</p>
 <div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="original-und-übersetzung.html#cb796-1" aria-hidden="true" tabindex="-1"></a>sentiment <span class="sc">%&gt;%</span> </span>
 <span id="cb796-2"><a href="original-und-übersetzung.html#cb796-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
 <span id="cb796-3"><a href="original-und-übersetzung.html#cb796-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">polarnost =</span> <span class="fu">mean</span>(values))</span></code></pre></div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-08-28" />
+<meta name="date" content="2021-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -133,6 +133,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="TMwR.css" type="text/css" />
@@ -395,7 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>13.5</b> Syntax: Dependenz</a>
 <ul>
 <li class="chapter" data-level="13.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>13.5.1</b> Aktiv und Passiv</a></li>
-<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#passiv-substantiv-vs.-pronomen"><i class="fa fa-check"></i><b>13.5.2</b> Passiv: Substantiv vs. Pronomen</a></li>
+<li class="chapter" data-level="13.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>13.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="13.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>13.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="13.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>13.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="13.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>13.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="13.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>13.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="13.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>13.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="13.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universal-25-in-ud-corpora"><i class="fa fa-check"></i><b>13.5.9</b> Greenberg’s Universal 25 in UD corpora</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>14</b> Bookdown intro</a></li>
@@ -529,7 +558,7 @@ Mit <em>encoding = “UTF-8”</em> teilen wir dem Programm mit, wie der Text ko
   </script>
 </div>
 <p>Ein paar Zeichen, die nicht zum deutschen Alphabet gehören und mit dem vorherigen Programm-Schritt nicht herausfiltern konnten, werden im nächsten Schritt ebenfalls herausgefiltert.</p>
-<p>Wir speichern das Ergebnis als neue Tabelle mit dem Namen “char_freq”.</p>
+<p>Wir speichern das Ergebnis als neue Tabelle mit dem Namen “char_freq.”</p>
 <div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="buchstaben-in-romanen.html#cb938-1" aria-hidden="true" tabindex="-1"></a>char_freq <span class="ot">=</span> novels_character <span class="sc">%&gt;%</span> </span>
 <span id="cb938-2"><a href="buchstaben-in-romanen.html#cb938-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(character, <span class="st">&quot;[:alpha:]&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb938-3"><a href="buchstaben-in-romanen.html#cb938-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, <span class="st">&quot;é|á&quot;</span>)) <span class="sc">%&gt;%</span> </span>
@@ -600,7 +629,7 @@ Dazu verwenden wir das Programm (library) <em>ggplot2</em>, das im Programmbünd
 <div id="vokale" class="section level2" number="10.5">
 <h2><span class="header-section-number">10.5</span> Vokale</h2>
 <p>Betrachten wir zunächst nur die Buchstaben, die Vokale symbolisieren!
-Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das “oder”-Zeichen ein: den <em>logischen Operator</em> “|”.</p>
+Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das “oder”-Zeichen ein: den <em>logischen Operator</em> “|.”</p>
 <div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="buchstaben-in-romanen.html#cb947-1" aria-hidden="true" tabindex="-1"></a>vokale <span class="ot">=</span> <span class="st">&quot;a|e|i|o|u|ä|ö|ü|y&quot;</span></span></code></pre></div>
 <p>Die Vokalliste “vokale” verwenden wir mit den Funktionen <em>filter()</em> und <em>str_detect()</em>.</p>
 <div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb948-1"><a href="buchstaben-in-romanen.html#cb948-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
@@ -615,12 +644,12 @@ Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das 
 <span id="cb948-10"><a href="buchstaben-in-romanen.html#cb948-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Vokale&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb948-11"><a href="buchstaben-in-romanen.html#cb948-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.05</span>)) <span class="co"># Prozent-Format</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-15-1.svg" width="10" height="8" /></p>
-<p>Am häufigsten kommt der Buchstabe “e” in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten “y”, welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.</p>
+<p>Am häufigsten kommt der Buchstabe “e” in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten “y,” welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.</p>
 </div>
 <div id="konsonanten" class="section level2" number="10.6">
 <h2><span class="header-section-number">10.6</span> Konsonanten</h2>
 <p>Welche Buchstaben, die Konsonanten symbolisieren, kommen am häufigsten vor?
-Zum Filtern verwenden wir wiederum die Vokalliste, dieses Mal allerdings mit Negationszeichen “!”.</p>
+Zum Filtern verwenden wir wiederum die Vokalliste, dieses Mal allerdings mit Negationszeichen “!”</p>
 <div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="buchstaben-in-romanen.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
 <span id="cb949-2"><a href="buchstaben-in-romanen.html#cb949-2" aria-hidden="true" tabindex="-1"></a>char_freq <span class="sc">%&gt;%</span> </span>
 <span id="cb949-3"><a href="buchstaben-in-romanen.html#cb949-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(character, vokale)) <span class="sc">%&gt;%</span> <span class="co"># Negationszeichen, daher Konsonanten beibehalten</span></span>
@@ -633,8 +662,8 @@ Zum Filtern verwenden wir wiederum die Vokalliste, dieses Mal allerdings mit Neg
 <span id="cb949-10"><a href="buchstaben-in-romanen.html#cb949-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Konsonanten&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Häufigkeit in Romanen&quot;</span>) <span class="sc">+</span></span>
 <span id="cb949-11"><a href="buchstaben-in-romanen.html#cb949-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> percent, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.02</span>)) <span class="co"># Prozent-Format und Einheiten</span></span></code></pre></div>
 <p><img src="16-Letter_frequency_files/figure-html/unnamed-chunk-16-1.svg" width="10" height="8" /></p>
-<p>Der Buchstabe “n” kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: “r, s, t, h, d”.
-Selten sind die Buchstaben: “x, q, p, ß, v”.</p>
+<p>Der Buchstabe “n” kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: “r, s, t, h, d.”
+Selten sind die Buchstaben: “x, q, p, ß, v.”</p>
 </div>
 <div id="vokal-konsonant-verhältnis" class="section level2" number="10.7">
 <h2><span class="header-section-number">10.7</span> Vokal-Konsonant-Verhältnis</h2>
@@ -817,7 +846,7 @@ Der t-Test bestätigt, dass “Der Prozess” im Durchschnitt etwas längere Wö
 ## sample estimates:
 ## mean of x mean of y 
 ##  1.613350  1.561307</code></pre>
-<p>Der nächste t-Test bestätigt ebenfalls, dass “Der Prozess” im Durchschnitt längere Wörter aufweist (8,79 Buchstaben pro Wort gegenüber 8.36 Buchstaben pro Wort in “Tom Sawyer”.) Berücksichtigt wurden distinkte Wortformen (keine wiederholten Wortformen).</p>
+<p>Der nächste t-Test bestätigt ebenfalls, dass “Der Prozess” im Durchschnitt längere Wörter aufweist (8,79 Buchstaben pro Wort gegenüber 8.36 Buchstaben pro Wort in “Tom Sawyer.”) Berücksichtigt wurden distinkte Wortformen (keine wiederholten Wortformen).</p>
 <div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb970-1"><a href="buchstaben-in-romanen.html#cb970-1" aria-hidden="true" tabindex="-1"></a>lets <span class="ot">=</span> novels_words <span class="sc">%&gt;%</span> </span>
 <span id="cb970-2"><a href="buchstaben-in-romanen.html#cb970-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(title) <span class="sc">%&gt;%</span> </span>
 <span id="cb970-3"><a href="buchstaben-in-romanen.html#cb970-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(word, <span class="at">.keep_all =</span> T) <span class="sc">%&gt;%</span></span>
@@ -977,7 +1006,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 <div id="quanteda-funktionen" class="section level2" number="10.11">
 <h2><span class="header-section-number">10.11</span> Quanteda-Funktionen</h2>
 <p>Eine alternative Berechnung der Anzahl der Buchstaben pro Wort mit <em>quanteda</em> (ohne t-Test).</p>
-<p>Die Durchschnittswerte, die uns quanteda liefert, sind etwas höher als die tidyverse-Werte. Aber auch hier ist der Mittelwert für den “Prozess” höher als für “Tom Sawyer”.</p>
+<p>Die Durchschnittswerte, die uns quanteda liefert, sind etwas höher als die tidyverse-Werte. Aber auch hier ist der Mittelwert für den “Prozess” höher als für “Tom Sawyer.”</p>
 <div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="buchstaben-in-romanen.html#cb995-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code></pre></div>
 <pre><code>## Warning: package &#39;quanteda&#39; was built under R version 4.1.1</code></pre>
 <pre><code>## Package version: 3.1.0

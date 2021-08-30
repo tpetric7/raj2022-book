@@ -216,7 +216,14 @@ substantive-im-plural
 adjektive-im-komparativ
 syntax-dependenz
 aktiv-und-passiv
-passiv-substantiv-vs.-pronomen
+substantive-und-pronomen-als-satzglieder
+subjekt-nominal-pronominal
+objekt-nominal-pronominal
+wortklasse-von-subjekt-objekt
+gattungs--und-eigennamen
+konstituentenfolge
+kontexte-von-modifizierern
+greenbergs-universal-25-in-ud-corpora
 intro
 rmarkdown-math
 math-example
