@@ -223,7 +223,7 @@ wortklasse-von-subjekt-objekt
 gattungs--und-eigennamen
 konstituentenfolge
 kontexte-von-modifizierern
-greenbergs-universal-25-in-ud-corpora
+greenbergs-universalie-25
 intro
 rmarkdown-math
 math-example

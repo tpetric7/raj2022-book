@@ -12,9 +12,9 @@ stringsAsFactors = FALSE
 
 ## Daten laden
 
-Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina* [@levshina2015linguistics], die slowenischen Untertitel stammen von der Webseite *nachschauen*.
+Die englischen und deutschen Untertitel zum Film *Avatar* stammen aus der Datensammlung von *Natalia Levshina* [@levshina2015linguistics], die slowenischen Untertitel stammen von der Webseite [nachschauen](https://...).
 
-Zuerst laden wir die Untertitel zum Film *Avatar* in englischer, deutscher und slowenischer Sprache.
+Zuerst laden wir sechs Dateien mit Untertiteln zum Film *Avatar*. Hauptsächlich werden wir mit den Untertiteln in englischer, deutscher und slowenischer Sprache arbeiten.
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -1222,7 +1222,86 @@ avatar_words_udpiped %>%
 ```
 
 
-### Greenberg's Universal 25 in UD corpora
+### Greenbergs Universalie 25
 
 "If the pronominal object follows the verb, so does the nominal object."
+
+Zuerst wollen wir direkte Objekte (im Deutschen und Slowenischen auch als Akkusativobjekte bezeichnet) ausfinding machen, die sowohl Gattungsnamen als auch Eigennamen enthalten und die dem Kopf der Verbalphrase vorangehen (OV) oder folgen (VO). 
+
+```{r}
+pivot_by_verb_obj = function(tbl){
+  tbl %>% 
+      mutate(word_order = ifelse(token_id > head_token_id, 
+                             "VO", 
+                             "OV")) %>% 
+  count(dep_rel, word_order) %>% 
+  mutate(pct = round(100*n/sum(n),2)) %>% 
+  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate(dep_rel = 
+           str_replace(dep_rel, "0", "Unknown")) %>% 
+  select(-dep_rel)
+}
+
+vo_nominal = avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "obj" & 
+           upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_verb_obj() %>% 
+  mutate(word_class = "NOUN")
+
+```
+
+Nun machen wir dasselbe mit den pronominalen Objekten.
+
+```{r}
+vo_pronominal = avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "obj" & 
+           upos %in% c("PRON")) %>% 
+  pivot_by_verb_obj() %>% 
+  mutate(word_class = "PRON")
+```
+
+Dann fügen wir beide Tabellen zusammen.
+
+```{r}
+verb_object = bind_rows(vo_nominal, vo_pronominal) %>% 
+  select(word_class, word_order:pct_tur)
+verb_object %>% rmarkdown::paged_table()
+```
+
+```{r}
+verb_object %>% 
+  select(word_class, word_order, pct_deu:pct_tur) %>% 
+  pivot_longer(pct_deu:pct_tur, 
+               names_to = "language", values_to = "pct") %>% 
+  mutate(language = str_replace(language, "pct_", "")) %>% 
+  ggplot(aes(pct, word_class, fill = word_order)) +
+  geom_col() +
+  facet_wrap(~ language) +
+  theme(legend.position = "top")
+
+```
+
+```{r}
+verb_object %>% 
+  select(word_class, word_order, n_deu:n_tur) %>% 
+  pivot_longer(n_deu:n_tur, 
+               names_to = "language", values_to = "n") %>% 
+  mutate(language = str_replace(language, "n_", "")) %>% 
+  pivot_wider(names_from = c(word_order, word_class), 
+              values_from = n) %>% 
+  group_by(language) %>% 
+  summarise(ov_nouns_prop = OV_NOUN/(VO_NOUN + OV_NOUN),
+            ov_prons_prop = OV_PRON/(VO_PRON + OV_PRON)) %>% 
+  ggplot(aes(ov_nouns_prop, ov_prons_prop, 
+             fill = language, group = language)) +
+  # geom_text(aes(label = language, check.overlap = TRUE)) +
+  geom_label(aes(label = language, check.overlap = TRUE)) +
+  theme(legend.position = "none") +
+  labs(x = "OV-Anteil bei Substantiven", 
+       y = "OV-Anteil bei Pronomen")
+  
+```
 
