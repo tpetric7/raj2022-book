@@ -49,6 +49,8 @@ a2 = avatar_eng %>%
   mutate(row_id = row_number()) %>% 
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
+  mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
+  mutate(text = str_replace(text, "\\</i\\>", "")) %>% 
   mutate(language = "eng")
 
 avatar_eng = bind_cols(a1,a2) %>% 
@@ -74,6 +76,8 @@ b2 = avatar_deu %>%
   mutate(row_id = row_number()) %>% 
   filter(str_detect(value, "[a-zA-Z]")) %>% 
   rename(text = value) %>% 
+  mutate(text = str_replace(text, "\\<i\\>", "")) %>% 
+  mutate(text = str_replace(text, "\\</i\\>", "")) %>% 
   mutate(language = "deu")
 
 # avatar_deu = bind_cols(a1,a2)
@@ -1303,5 +1307,65 @@ verb_object %>%
   labs(x = "OV-Anteil bei Substantiven", 
        y = "OV-Anteil bei Pronomen")
   
+```
+
+Übersichtsgraphik mit Korrelationsberechnung:
+
+```{r}
+library(GGally)
+ggpairs(verb_object[,c(1:8)])
+```
+
+Korrelationsgraphik:
+
+```{r message=FALSE, warning=FALSE}
+library(correlation)
+library(see)
+
+results = summary(correlation(verb_object[,c(1:8)]))
+p = plot(results)
+p + scale_fill_material_c(palette = "rainbow") + theme_abyss()
+```
+
+```{r}
+library(ggpage)
+avatar_deu[1:100] %>%
+  ggpage_build() %>%
+  mutate(long_word = stringr::str_length(word) > 8) %>%
+  ggpage_plot(aes(fill = long_word)) +
+  labs(title = "Longer words throughout the Avatar subtitles") +
+  scale_fill_manual(values = c("grey70", "blue"),
+                    labels = c("8 or less", "9 or more"),
+                    name = "Word length")
+```
+
+```{r}
+library(ggwordcloud)
+library(tidytext)
+
+stoplist_eng = as_tibble(c("not","hey","yeah","to","go","get")) %>% 
+  rename(word = value)
+
+x = avatar_words_udpiped %>% 
+  filter(language == "eng") %>% 
+  anti_join(stop_words) %>% 
+  # anti_join(stoplist_eng) %>%
+  # filter(!lemma %in% c(stoplist_eng)) %>% 
+  filter(!str_detect(lemma, c("not","hey","yeah","to","go","get"))) %>% 
+  count(lemma, sort = TRUE)
+
+x %>% ggplot(aes(label = lemma, size = n)) +
+  geom_text_wordcloud() +
+  scale_size_area(max_size = 40) +
+  theme_minimal()
+```
+
+
+Schnell eine Graphik mit dem Datensatz erstellen, ohne zu programmieren:
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+library(esquisse)
+esquisser(verb_object)
+
 ```
 
