@@ -1,5 +1,8 @@
 # Vokalformanten im Deutschen als Fremdsprache
-(Vowel formants in German as a foreign language)
+
+Vowel formants in German as a foreign language
+
+Akustische Messungen der ersten beiden Vokalformanten und Vokaldauer mit `Praat`, durchgeführt von Studierenden während einer Unterrichtsstunde in einem Einführungsseminar zur computerunterstützten Auswertung von deutschen Sprachkorpora und -datensätzen.
 
 ```{r setup18, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -23,9 +26,11 @@ library(extrafont)
 
 ```
 
-## Daten laden
+## Daten laden & anpassen
 
-```{r}
+### Datensatz 1
+
+```{r message=FALSE, warning=FALSE}
 vokale <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", 
                     sheet ="A1-4_alle") %>% 
   janitor::clean_names() %>% 
@@ -39,6 +44,11 @@ vokale <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx",
 
 vokale %>% rmarkdown::paged_table()
 
+```
+
+### Datensatz 2
+
+```{r message=FALSE, warning=FALSE}
 vergleich <- read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", 
                        sheet ="A10_Vgl_L1_L2_tab") %>% 
   janitor::clean_names() %>% 
@@ -53,8 +63,11 @@ vergleich %>% rmarkdown::paged_table()
 
 ```
 
+### Datensatz 3
 
-```{r}
+Dieser Datensatz wird aus einzelnen Datensätzen, die Messungen von Studierenden enthalten, zusammengesetzt.
+
+```{r message=FALSE, warning=FALSE}
 df0 <- read.csv("data/Deutsche_formants.Table.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8") 
 df1a <- read.csv("data/Monika_I_formants.Table.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8") 
 df1b <- read.csv("data/Monika_II_formants.Table.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8") 
@@ -76,10 +89,11 @@ df %>% rmarkdown::paged_table()
 
 ```
 
-
 ## IPA syms
 
-```{r}
+Die Listen wurden mit Hilfe der Angaben im Wikipedia-Artikel [Phonetic symbols in Unicode](https://en.wikipedia.org/wiki/Phonetic_symbols_in_Unicode), Abschnitt 2.2 [Vowels](https://en.wikipedia.org/wiki/Phonetic_symbols_in_Unicode#Vowels) erstellt.
+
+```{r message=FALSE, warning=FALSE}
 list1 <- levels(factor(vergleich$vowel)) %>% paste(collapse = ",")
 list2 <- levels(factor(vokale$vowel)) %>% paste(collapse = ",")
 list3 <- levels(factor(df$vowel)) %>% paste(collapse = ",")
@@ -147,16 +161,25 @@ YY = "\u028F\u02D0"
 
 ```
 
+Umwandlung der IPA-Zeichen mit dem Ziel, die phonetischen Symbole auch im html- oder pdf-Format richtig anzuzeigen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vergleich$vowel_ipa <- ipa_list1[as.numeric(factor(vergleich$vowel))]
 vokale$vowel_ipa <- ipa_list2[as.numeric(factor(vokale$vowel))]
 df$vowel_ipa <- ipa_list3[as.numeric(factor(df$vowel))]
-
 ```
 
+```{r}
+vergleich %>% pull(as.numeric(factor(vowel_ipa)))
+```
 
 ```{r}
+vergleich %>% pull(vowel_ipa)
+```
+
+Ursprüngliche IPA-Symbolisierungen sind ausgeblendet.
+
+```{r eval=FALSE, include=FALSE}
 # par(family='Helvetica')
 # par(family = "Charis SIL")
 # 
@@ -224,8 +247,7 @@ df$vowel_ipa <- ipa_list3[as.numeric(factor(df$vowel))]
 
 ```
 
-
-```{r}
+```{r eval=FALSE, include=FALSE}
 # Deutsche Vokale
 # vowel_lookup =
 #   c(
@@ -257,16 +279,11 @@ df$vowel_ipa <- ipa_list3[as.numeric(factor(df$vowel))]
 
 ```
 
+*Matthew Winn*, cf. [Listen Lab](https://github.com/ListenLab) oder [Working with Vowels part 1](http://www.mattwinn.com/tools/HB95_1.html) und [Working with Vowels part 2](http://www.mattwinn.com/tools/HB95_2.html), wandelt die IPA-Symbole für die graphische Darstellung um, und zwar mit `as.numeric(vowel)`.
 
-*M. Winn* uses **as.numeric(vowel)**:
-Translation of code:
-Index `[]` the list of vowel IPA symbols 
-using the vector of values in the Vowel column 
-as if the Vowels were treated as their corresponding numeric indices 
-in the automatic ordering.
-**data.melt$Vowel.IPA <- IPA_vowels[as.numeric(data.melt$Vowel)]**
+> "*Translation of code*: - Index `[]` the list of vowel IPA symbols - using the vector of values in the Vowel column - as if the Vowels were treated as their corresponding numeric indices in the automatic ordering. `data.melt$Vowel.IPA <- IPA_vowels[as.numeric(data.melt$Vowel)]`"
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 # IPA_vowels <- c("i:","ɪ","y:","ʏ","e:","ɛ","ɛ\u02D0",
 #                 "ɛa","ø:","ø\u02D0","œ","œ:","ə",
 #                 "a","a:","o:","ɔ","ɔ:","u:","ʊ")
@@ -284,6 +301,9 @@ in the automatic ordering.
 
 Verglichen werden Vokale deutscher Muttersprachler_innen mit Vokalen von Studierenden des Deutschen als Fremdsprache. Verglichen werden die ersten beiden Vokalformanten (F1 und F2). In den Diagrammen werden IPA-Symbole verwendet.
 
+### Datensatz 2
+#### Diagramm 1 (statisch)
+
 ```{r message=FALSE, warning=FALSE}
 vgl_pivot <- vergleich %>% 
   group_by(vokal) %>% 
@@ -291,10 +311,11 @@ vgl_pivot <- vergleich %>%
   separate(category, into = c("category", "l1_l2")) %>% 
   drop_na() %>% 
   pivot_wider(names_from = category, values_from = value)
-vgl_pivot %>% rmarkdown::paged_table()
+vgl_pivot %>% 
+  rmarkdown::paged_table()
 
 # par(family='Charis SIL')
-(graph4 <- vgl_pivot %>% 
+(graph1 <- vgl_pivot %>% 
   drop_na() %>% 
   group_by(vowel_ipa, l1_l2, lange) %>% 
   ggplot(aes(f2,f1, label = vowel_ipa)) + 
@@ -318,14 +339,23 @@ vgl_pivot %>% rmarkdown::paged_table()
 )
 ggsave("pictures/vergleich_vokalformanten_lang_kurz_ipa.jpg")
 
-library(plotly)
-ggplotly(graph4) %>% layout(showlegend = FALSE)
+```
 
+#### Diagramm 1 (interaktiv)
+
+Interaktives Diagramm mit dem `plotly`-Programm:
+
+```{r message=FALSE, warning=FALSE}
+library(plotly)
+ggplotly(graph1) %>% layout(showlegend = FALSE)
 
 ```
 
+#### Diagramm 1 (interaktiv2)
 
-```{r}
+Interaktives Diagramm mit zusätzlichen Einstellungen im `plotly`-Programm.
+
+```{r message=FALSE, warning=FALSE}
 font = list(
   # family = 'Charis SIL',
   family = 'Arial',
@@ -340,7 +370,7 @@ label = list(
 )
 
 library(plotly)
-(graph4_interactive <- ggplotly(graph4, tooltip=c("x", "y", "text")) %>% 
+(graph1_interactive <- ggplotly(graph1, tooltip=c("x", "y", "text")) %>% 
   style(hoverlabel = label) %>%
   layout(showlegend = FALSE,
          font = font,
@@ -350,7 +380,7 @@ library(plotly)
 )
 
 library(htmlwidgets)
-saveWidget(graph4_interactive, "pictures/vokalformanten_interaktiv_l1_l2_lang_kurz.html", 
+saveWidget(graph1_interactive, "pictures/vokalformanten_interaktiv_l1_l2_lang_kurz.html", 
            selfcontained = T)
 
 # Sys.setenv("plotly_username"="dataslice")
@@ -360,7 +390,7 @@ saveWidget(graph4_interactive, "pictures/vokalformanten_interaktiv_l1_l2_lang_ku
 
 # save it in html
 library("htmlwidgets")
-saveWidget(graph4_interactive,"tmp.html", selfcontained = F)
+saveWidget(graph1_interactive,"tmp.html", selfcontained = F)
 
 # and in pdf
 library(webshot)
@@ -370,8 +400,9 @@ webshot("tmp.html","pictures/vokalformanten_interaktiv_l1_l2_lang_kurz.pdf", del
 
 ```
 
+#### Diagramm 2 (statisch)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vgl_pivot <- vergleich %>% 
   group_by(vokal) %>% 
   pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
@@ -380,7 +411,7 @@ vgl_pivot <- vergleich %>%
   pivot_wider(names_from = category, values_from = value)
 vgl_pivot %>% rmarkdown::paged_table()
 
-(graph5 <- vgl_pivot %>% 
+(graph2 <- vgl_pivot %>% 
   drop_na() %>% 
   group_by(vowel_ipa, l1_l2, lange) %>% 
   ggplot(aes(f2,f1)) +
@@ -396,17 +427,102 @@ vgl_pivot %>% rmarkdown::paged_table()
 )
 ggsave("pictures/vergleich_vokalformanten_lang_kurz_ipa.jpg")
 
+```
+
+#### Diagramm 2 (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
+library(plotly)
+ggplotly(graph2) %>% layout(showlegend = FALSE)
+
+```
+
+
+#### Diagramm 5 (statisch)
+
+```{r message=FALSE, warning=FALSE}
+vgl_pivot <- vergleich %>% 
+  group_by(vowel_ipa) %>% 
+  pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
+  separate(category, into = c("category", "l1_l2")) %>% 
+  drop_na() %>% 
+  pivot_wider(names_from = category, values_from = value)
+vgl_pivot %>% rmarkdown::paged_table()
+
+(graph5 <- vgl_pivot %>% 
+  drop_na() %>% 
+  group_by(vowel_ipa, l1_l2) %>% 
+  ggplot(aes(f2,f1)) +
+  geom_hex(alpha = 0.2, show.legend = F) +
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
+            size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
+  scale_y_reverse() +
+  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
+  facet_wrap(~ l1_l2) +
+  theme_light() + 
+  labs(y = "Formant F1: tief >> hoch",
+       x = "Formant F2: << vorne - hinten >>")
+)
+ggsave("pictures/vergleich_vokalformanten.jpg")
+
+```
+
+#### Diagramm 5 (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(graph5) %>% layout(showlegend = FALSE)
 
 ```
 
-Messungen von TP mit Praat-Script (👉 Matt Winn: https://github.com/mwinn83)
+#### Diagramm 6 (statisch)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+vgl_pivot <- vergleich %>% 
+  group_by(vowel_ipa) %>% 
+  pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
+  separate(category, into = c("category", "l1_l2")) %>% 
+  drop_na() %>% 
+  pivot_wider(names_from = category, values_from = value)
+vgl_pivot %>% rmarkdown::paged_table()
+
+(graph6 <- vgl_pivot %>% 
+  drop_na() %>% 
+  group_by(vowel_ipa, l1_l2, lange) %>% 
+  ggplot(aes(f2,f1)) +
+  geom_hex(alpha = 0.2, show.legend = F) +
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
+            size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
+  scale_y_reverse() +
+  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
+  facet_wrap(~ lange + l1_l2) +
+  theme_light() + 
+  labs(y = "Formant F1: tief >> hoch",
+       x = "Formant F2: << vorne - hinten >>")
+)
+ggsave("pictures/vergleich_vokalformanten_lang_kurz.jpg")
+
+```
+
+#### Diagramm 6 (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
+library(plotly)
+ggplotly(graph6) %>% layout(showlegend = FALSE)
+
+```
+
+
+### Datensatz 3
+
+#### Diagramm 3a alle Vokale (statisch)
+
+Messungen von TP mit Praat-Script (👉 Matt Winn: <https://github.com/mwinn83>)
+
+```{r message=FALSE, warning=FALSE}
 library(ggrepel)
 
-(graph6 <- df %>% 
+(graph3a <- df %>% 
    filter(speaker != "Monika1") %>% 
     group_by(vowel, speaker, vowel_ipa) %>% 
   summarise(f1 = mean(F1),
@@ -428,13 +544,107 @@ library(ggrepel)
 
 ggsave("pictures/messungen_tp_vokalformanten_ipa.jpg", dpi = 100, width = 10, height = 10)
 
+```
+
+#### Diagramm 3a alle Vokale (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(graph6) %>% layout(showlegend = FALSE)
+ggplotly(graph3a) %>% layout(showlegend = FALSE)
+
+```
+
+#### Diagramm 3b kurze Vokale (statisch)
+
+```{r message=FALSE, warning=FALSE}
+library(ggrepel)
+
+(graph3b <- df %>% 
+    mutate(lange = ifelse(
+      vowel %in% c("I","E","Y","OE","a","O","U"), "kurz","lang")) %>% 
+   filter(speaker != "Monika1") %>% 
+    filter(lange == "kurz") %>% 
+    group_by(vowel, speaker, vowel_ipa) %>% 
+  summarise(f1 = mean(F1),
+            f2 = mean(F2)) %>% 
+  ggplot(aes(f2,f1)) +
+  geom_hex(alpha = 0.2, show.legend = F) +
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa),
+            vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
+  # geom_label_repel(aes(label = IPA, color = IPA),
+  #           vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
+  scale_y_reverse() +
+  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
+  facet_wrap(~ speaker) +
+  # theme_light() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(y = "Formant F1: tief >> hoch",
+       x = "Formant F2: << vorne - hinten >>")
+ )
+
+ggsave("pictures/messungen_tp_vokalformanten_ipa_kurz.jpg", dpi = 100, width = 10, height = 10)
+
+```
+
+#### Diagramm 3b kurze Vokale (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
+library(plotly)
+ggplotly(graph3b) %>% layout(showlegend = FALSE)
 
 ```
 
 
-```{r}
+#### Diagramm 3c lange Vokale (statisch)
+
+```{r message=FALSE, warning=FALSE}
+library(ggrepel)
+
+(graph3c <- df %>% 
+    mutate(lange = ifelse(
+      vowel %in% c("I","E","Y","OE","a","O","U"), "kurz","lang")) %>% 
+   filter(speaker != "Monika1") %>% 
+    filter(lange == "lang") %>% 
+    group_by(vowel, speaker, vowel_ipa) %>% 
+  summarise(f1 = mean(F1),
+            f2 = mean(F2)) %>% 
+  ggplot(aes(f2,f1)) +
+  geom_hex(alpha = 0.2, show.legend = F) +
+  geom_text(aes(label = vowel_ipa, color = vowel_ipa),
+            vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
+  # geom_label_repel(aes(label = IPA, color = IPA),
+  #           vjust = 1, hjust = 1, check_overlap = T, show.legend = F, size = 5) +
+  scale_y_reverse() +
+  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
+  facet_wrap(~ speaker) +
+  # theme_light() + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs(y = "Formant F1: tief >> hoch",
+       x = "Formant F2: << vorne - hinten >>")
+ )
+
+ggsave("pictures/messungen_tp_vokalformanten_ipa_lang.jpg", dpi = 100, width = 10, height = 10)
+
+```
+
+#### Diagramm 3c lange Vokale (interaktiv)
+
+```{r message=FALSE, warning=FALSE}
+library(plotly)
+ggplotly(graph3c) %>% layout(showlegend = FALSE)
+
+```
+
+
+
+
+## Aggregierter Datensatz
+
+Grundlage ist Datensatz 1
+
+### IPA syms
+
+```{r message=FALSE, warning=FALSE}
 ipa_vow2 <- c(
 a = "\u0061",
 AA = "\u0251\u02D0",
@@ -457,9 +667,11 @@ ipavow2 = ipa_vow2 %>%  as_tibble() %>% rename(vowel = value)
 
 ```
 
-## Aggregated
+### Tabelle
 
-```{r}
+Mittelwerte aus Datensatz 1
+
+```{r message=FALSE, warning=FALSE}
 vokale_agg <- vokale %>% 
   group_by(vokal, lange, l1_l2) %>% 
   summarise(f1_avg = mean(f1),
@@ -474,11 +686,15 @@ vokale_agg %>% rmarkdown::paged_table()
 
 ```
 
-```{r}
+### Datensatz 1 mit aggregierten Daten
+
+#### Diagramm 4 (statisch)
+
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 library(ggrepel)
 
-(graph <- vokale %>% 
+(graph4 <- vokale %>% 
   group_by(vokal, l1_l2, color = vowel_ipa, label = vowel_ipa, fill = vowel_ipa, shape = vowel_ipa) %>% 
   ggplot(aes(f2,f1)) +
   geom_hex(alpha = 0.2, show.legend = F) +
@@ -498,8 +714,10 @@ library(ggrepel)
 ```
 
 
-```{r}
-(graph <- vokale_agg %>% 
+#### Diagramm 7 (statisch)
+
+```{r message=FALSE, warning=FALSE}
+(graph7 <- vokale_agg %>% 
   group_by(vokal, l1_l2, label = vowel) %>% 
   ggplot(aes(f2_avg,f1_avg)) +
   geom_hex(alpha = 0.2, show.legend = F) +
@@ -514,75 +732,28 @@ library(ggrepel)
 )
 ggsave("pictures/vokalformanten.jpg")
 
+```
+
+#### Diagramm 5 (interaktiv)
+
+Interaktives Diagramm mit dem `plotly`-Programm:
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(graph) %>% layout(showlegend = FALSE)
+ggplotly(graph7) %>% layout(showlegend = FALSE)
 
 ```
 
 
-```{r}
-vgl_pivot <- vergleich %>% 
-  group_by(vowel_ipa) %>% 
-  pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
-  separate(category, into = c("category", "l1_l2")) %>% 
-  drop_na() %>% 
-  pivot_wider(names_from = category, values_from = value)
-vgl_pivot %>% rmarkdown::paged_table()
+## Abbildungen mit `phonR`
 
-(graph2 <- vgl_pivot %>% 
-  drop_na() %>% 
-  group_by(vowel_ipa, l1_l2) %>% 
-  ggplot(aes(f2,f1)) +
-  geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
-            size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
-  scale_y_reverse() +
-  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
-  facet_wrap(~ l1_l2) +
-  theme_light() + 
-  labs(y = "Formant F1: tief >> hoch",
-       x = "Formant F2: << vorne - hinten >>")
-)
-ggsave("pictures/vergleich_vokalformanten.jpg")
+Abbildungen mit dem phonR-Paket, spezialisiert auf die graphische Darstellung von akustischen, insbesondere phonetischen Daten.
 
-library(plotly)
-ggplotly(graph2) %>% layout(showlegend = FALSE)
+#### Diagramm 8
 
+Aggregierter Datensatz
 
-```
-
-
-```{r}
-vgl_pivot <- vergleich %>% 
-  group_by(vowel_ipa) %>% 
-  pivot_longer(f1_l1:dauer_l2, names_to = "category", values_to = "value") %>% 
-  separate(category, into = c("category", "l1_l2")) %>% 
-  drop_na() %>% 
-  pivot_wider(names_from = category, values_from = value)
-vgl_pivot %>% rmarkdown::paged_table()
-
-(graph3 <- vgl_pivot %>% 
-  drop_na() %>% 
-  group_by(vowel_ipa, l1_l2, lange) %>% 
-  ggplot(aes(f2,f1)) +
-  geom_hex(alpha = 0.2, show.legend = F) +
-  geom_text(aes(label = vowel_ipa, color = vowel_ipa), 
-            size = 6, vjust = 1, hjust = 1, check_overlap = T, show.legend = F) +
-  scale_y_reverse() +
-  scale_x_reverse(breaks = c(1000, 1250, 1500, 1750, 2000, 2250, 2500)) +
-  facet_wrap(~ lange + l1_l2) +
-  theme_light() + 
-  labs(y = "Formant F1: tief >> hoch",
-       x = "Formant F2: << vorne - hinten >>")
-)
-ggsave("pictures/vergleich_vokalformanten_lang_kurz.jpg")
-
-library(plotly)
-ggplotly(graph2) %>% layout(showlegend = FALSE)
-
-```
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(phonR)
 
 par(mfrow = c(1, 1))
@@ -591,40 +762,50 @@ with(vokale_agg, plotVowels(f1_avg, f2_avg, vowel, group = lange, pch.tokens = v
     var.sty.by = lange, hull.fill = TRUE, hull.line = TRUE, fill.opacity = 0.1, 
     pretty = TRUE))
 
+# Bild auf Festplatte speichern in drei Schritten:
 # 1. Open jpeg file
 jpeg("pictures/phonR_vowel_space.jpg", 
      width = 840, height = 535)
+
 # 2. Create the plot
+par(mfrow = c(1, 1))
 with(vokale_agg, plotVowels(f1_avg, f2_avg, vowel, group = lange, pch.tokens = vowel, cex.tokens = 1.2, 
     alpha.tokens = 0.3, plot.means = TRUE, pch.means = vowel, cex.means = 2, var.col.by = vowel, 
     var.sty.by = lange, hull.fill = TRUE, hull.line = TRUE, fill.opacity = 0.1, 
     pretty = TRUE))
+
 # 3. Close the file
 dev.off()
 
 ```
 
+#### Diagramm 9
 
-```{r}
+Einzelne Messungen
+
+```{r message=FALSE, warning=FALSE}
 library(phonR)
 
 par(mfrow = c(1, 1))
-with(vokale, plotVowels(f1, f2, vokal, group = lange, pch.tokens = vokal, cex.tokens = 1.2, 
-    alpha.tokens = 0.3, plot.means = TRUE, pch.means = vokal, cex.means = 2, var.col.by = lange, 
+with(vokale, plotVowels(f1, f2, vowel_ipa, group = lange, pch.tokens = vowel_ipa, cex.tokens = 1.2, 
+    alpha.tokens = 0.3, plot.means = TRUE, pch.means = vowel_ipa, cex.means = 2, var.col.by = lange, 
     var.sty.by = lange, hull.fill = TRUE, hull.line = TRUE, fill.opacity = 0.1, 
     pretty = TRUE))
 
+# Bild auf Festplatte speichern in drei Schritten:
 # 1. Open jpeg file
 jpeg("pictures/phonR_vowel_space2.jpg", 
      width = 840, height = 535)
+
 # 2. Create the plot
-with(vokale, plotVowels(f1, f2, vokal, group = lange, pch.tokens = vokal, cex.tokens = 1.2, 
-    alpha.tokens = 0.3, plot.means = TRUE, pch.means = vokal, cex.means = 2, var.col.by = lange, 
+par(mfrow = c(1, 1))
+with(vokale, plotVowels(f1, f2, vowel_ipa, group = lange, pch.tokens = vowel_ipa, cex.tokens = 1.2, 
+    alpha.tokens = 0.3, plot.means = TRUE, pch.means = vowel_ipa, cex.means = 2, var.col.by = lange, 
     var.sty.by = lange, hull.fill = TRUE, hull.line = TRUE, fill.opacity = 0.1, 
     pretty = TRUE))
+
 # 3. Close the file
 dev.off()
 
 ```
-
 
