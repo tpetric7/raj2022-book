@@ -599,11 +599,11 @@ tweets_rollingstones_time %>%
 
 Nun wird die Animation vorbereitet, angezeigt und als `gif`-Datei gespeichert.
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(gganimate)
 library(ggthemes)
 
-start = as_datetime("2021-08-24 16:38:55")
+start = lubridate::as_datetime("2021-08-24 16:38:55")
 # start = as_date("2021-08-24 16:38:55")
 
 anim_graph <- tweets_rollingstones_time %>%
@@ -624,13 +624,28 @@ anim_graph <- tweets_rollingstones_time %>%
   scale_size_continuous(range = c(1, 6)) + # 38
   # transition_reveal(start_date) +
   transition_time(date_time) +
-  labs(title = "Tweets about Rolling Stones: Time { round(frame_time) }") +
+  labs(
+    title = "Tweets about the Rolling Stones: { round(frame_time) }") +
   theme(legend.position = "none")
 
-animate(anim_graph, nframes = 400, fps = 4)
-
-anim_save("pictures/rolling_stones_tweets_animated.gif")
 ```
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+animate(anim_graph, nframes = 300, fps = 5,
+        height = 6, width = 8)
+
+```
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+anim_save("pictures/rolling_stones_tweets_animated.gif",
+          animation = anim_graph)
+
+```
+
+
+![anim_graph]("pictures/rolling_stones_tweets_animated.gif")
 
 
 ## Lange Wörter
@@ -901,7 +916,7 @@ Was für ein Unterschied! Woran das wohl liegen mag? Das müsste man sich auf je
 
 Auch hier können wir es mit einer Animation des Sentiments in den englischen Tweets versuchen. Da die Berechnung länger dauern könnte, wählen wir nur etwa 500 Tweets zur graphischen Darstellung des Sentiments aus. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggpage)
 library(purrr)
 library(gganimate)
@@ -921,7 +936,7 @@ midbuild <- map_df(.x = 0:50 * 10 + 1, ~ prebuild %>%
                               max(score_smooth), 
                             rolls = .x))
 
-midbuild %>%
+anim_pages <- midbuild %>%
   ggpage_plot(aes(fill = score_smooth)) +
   scale_fill_gradient2(low = "red", high = "blue", mid = "grey", 
                        midpoint = 0) +
@@ -931,4 +946,10 @@ midbuild %>%
   transition_time(rolls)
 
 ```
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+anim_pages
+```
+
 

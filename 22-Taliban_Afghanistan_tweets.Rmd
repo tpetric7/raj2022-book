@@ -1,4 +1,3 @@
-
 # Taliban in Afghanistan
 
 Ein brisantes politisches Thema. Was passiert in Afghanistan nach dem Abzug der NATO-Truppen und der Machtübernahme der Taliban?
@@ -79,25 +78,12 @@ tweets_afghanistan_sl
 ```
 
 
-```{r eval=FALSE, include=TRUE}
-q <- "Afghanistan"
-tweets_afghanistan_sl2 <- search_tweets(q = q, 
-                        n = 18000,
-                        token = bearer_token(), 
-                        include_rts = FALSE,
-                        `-filter` = "replies",
-                        lang = "sl")
-
-tweets_afghanistan_sl2
-
-```
-
-
 ## Gather tweets
 
 ```{r eval=FALSE, include=TRUE}
-tweets_afghanistan <- bind_rows(tweets_afghanistan_sl, tweets_afghanistan_sl2,
-                                tweets_afghanistan_de, tweets_afghanistan_en)
+tweets_afghanistan <- bind_rows(tweets_afghanistan_sl,
+                                tweets_afghanistan_de,
+                                tweets_afghanistan_en)
 ```
 
 ## Save tweets
@@ -112,6 +98,10 @@ write_rds(tweets_afghanistan, "data/tweets_afghanistan.rds")
 
 ```{r}
 tweets_afghanistan <- read_rds("data/tweets_afghanistan.rds")
+
+tweets_afghanistan_de <- subset(tweets_afghanistan, lang = "de")
+tweets_afghanistan_en <- subset(tweets_afghanistan, lang = "en")
+tweets_afghanistan_sl <- subset(tweets_afghanistan, lang = "sl")
 
 ```
 
@@ -198,10 +188,8 @@ ggplotly(p2)
 
 
 ```{r}
-tweets_afghanistan_sl12 <- bind_rows(tweets_afghanistan_sl,
-                                     tweets_afghanistan_sl2)
 ## plot time series of tweets
-p3 <- ts_plot(tweets_afghanistan_sl12, "3 hours", 
+p3 <- ts_plot(tweets_afghanistan_sl, "3 hours", 
               color = "darkgreen") +
   ggplot2::theme_minimal() +
   ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) +
