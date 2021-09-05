@@ -706,7 +706,7 @@ library(ggrepel)
   scale_x_reverse() +
   facet_wrap(~ l1_l2) +
   theme_light() + 
-  guides(color = F) +
+  guides(color = FALSE) +
   labs(y = "Formant F1: tief >> hoch",
        x = "Formant F2: << vorne - hinten >>")
 )
