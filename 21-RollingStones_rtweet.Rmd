@@ -601,6 +601,7 @@ Nun wird die Animation vorbereitet, angezeigt und als `gif`-Datei gespeichert.
 
 ```{r message = FALSE, warning = FALSE}
 library(gganimate)
+library(gifski)
 library(ggthemes)
 
 start = lubridate::as_datetime("2021-08-24 16:38:55")
@@ -631,21 +632,20 @@ anim_graph <- tweets_rollingstones_time %>%
 ```
 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
-animate(anim_graph, nframes = 300, fps = 5,
-        height = 6, width = 8)
+```{r, dev='png', message=FALSE, warning=FALSE}
+# animation.hook="gifski"
+animate(anim_graph, nframes = 300, fps = 5, device = "png")
 
 ```
 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
-anim_save("pictures/rolling_stones_tweets_animated.gif",
-          animation = anim_graph)
+```{r, dev='png', message=FALSE, warning=FALSE}
+anim_save("pictures/rolling_stones_tweets_animated.png")
 
 ```
 
 
-![anim_graph]("pictures/rolling_stones_tweets_animated.gif")
+![anim_graph]("pictures/rolling_stones_tweets_animated.png")
 
 
 ## Lange Wörter
