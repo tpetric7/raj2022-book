@@ -948,7 +948,7 @@ anim_pages <- midbuild %>%
 ```
 
 
-```{r eval=FALSE, message=FALSE, warning=FALSE, include=TRUE}
+```{r, dev='png', message=FALSE, warning=FALSE}
 anim_pages
 ```
 
