@@ -1,18 +1,18 @@
-
 ### Höflichkeit und Grundfrequenz
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(scales)
 # detach("package:rlang", unload=TRUE)
 ```
 
-Datensatz von: Bodo Winter Thema: Politeness and Pitch (F0)
+Datensatz von: Bodo Winter
+
+Thema: Politeness and Pitch (F0)
 
 (cf. <http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf>)
 
 (cf. <https://bodowinter.com/tutorial/bw_LME_tutorial.pdf>)
-
 
 Gliederung unserer quantitativen Analyse
 
@@ -26,10 +26,9 @@ Gliederung unserer quantitativen Analyse
 
 5\. Schluss
 
-
 #### Datei laden
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # politeness <- read.csv("/cloud/project/data/politeness_data.csv")
 politeness <- read.csv("data/politeness_data.csv")
 
@@ -39,70 +38,65 @@ politeness <- read.csv("data/politeness_data.csv")
 
 Welche Variablen enthält die Datei?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 head(politeness)
   
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 glimpse(politeness)
 ```
 
-Am Experiment nahmen 6 Versuchspersonen teil (F1, ..., M7). Von jeder
-Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).
+Am Experiment nahmen 6 Versuchspersonen teil (F1, ..., M7). Von jeder Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   count(subject)
 ```
 
 Versuchspersonen: je 3 sind weiblich bzw. männlich.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   count(subject, gender)
 ```
 
-Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten
-folgende) Hypothese zu überprüfen.
+Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten folgende) Hypothese zu überprüfen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   count(attitude)
 ```
 
 Berechnen wir mal die Grundfrequenz!
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   mean(frequency)
 ```
 
-"NA": In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile,
-um die durchschnittliche Frequenz (mean) zu berechnen.
+`NA`: In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche Frequenz mit `mean()` zu berechnen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   drop_na(frequency) %>%
   summarise(av_freq = mean(frequency))
 ```
 
-Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet.
-Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
+Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet. Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   drop_na(frequency) %>%
   group_by(gender) %>% 
   summarise(av_freq = mean(frequency))
 ```
 
-Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern:
-Frauen haben meist eine höhere Stimme als Männer.
+Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern: Frauen haben meist eine höhere Stimme als Männer.
 
 Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise: In unserer Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59 - 184,36.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   drop_na() %>% 
   group_by(attitude) %>% 
@@ -111,7 +105,7 @@ politeness %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # politeness %>% 
 #   drop_na %>% 
 #   transmute(attitude, frequency) %>% 
@@ -123,9 +117,9 @@ politeness %>%
 
 #### Hypothesen
 
-H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder informellem Sprechverhalten (attitude) ist gleich.
+-   H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder informellem Sprechverhalten (attitude) ist gleich.
 
-H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem Sprechverhalten unterscheidet sich vom informellen.
+-   H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem Sprechverhalten unterscheidet sich vom informellen.
 
 Nach unserem bisherigen Wissen erwarten wir, dass unsere Daten die Hypothese H1 bestätigen werden.
 
@@ -141,7 +135,7 @@ Nicht so gemäß Hypothese H0: Der Mittelwertunterschied zwischen den Stichprobe
 
 Mit statistischen Tests können wir diese beiden Hypothesen überprüfen. Einer davon ist der t-Test.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   drop_na() %>% 
   group_by(attitude) %>% 
@@ -152,19 +146,19 @@ politeness %>%
 
 Der t-Test bestätigt H1 nicht (p \> 0,05):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 t.test(frequency ~ attitude, data = politeness, paired = F, var.equal = T)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pol = politeness$frequency[politeness$attitude == "pol"]
 inf = politeness$frequency[politeness$attitude == "inf"]
 t.test(pol, inf)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 polite <- politeness %>% 
   select(attitude, frequency) %>% 
   filter(attitude == "pol") %>% 
@@ -183,17 +177,18 @@ t.test(polite, informal)
 
 Die lineare Regression hat den großen Vorteil, dass man mehr als eine unabhängige Variable (Prädiktor) verwenden kann, um die Hypothese zu testen. Wir wählen Geschlecht (gender) und Sprechverhalten (attitude) als unabhängige Variablen, der Grundfrequenzverlauf (frequency) ist die abhängige Variable.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   drop_na %>% 
   lm(frequency ~ attitude + gender, data = .) %>% 
   summary()
 ```
 
-Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p \< 0,001).
-Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p = 0,0146). Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. Der R\^2-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird.
+Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p \< 0,001). Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p = 0,0146).
 
-```{r}
+Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. Der R\^2-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird.
+
+```{r message=FALSE, warning=FALSE}
 politeness %>% 
   ggplot(aes(attitude, frequency, group = attitude, fill = attitude)) +
   geom_boxplot() +
@@ -204,7 +199,7 @@ politeness %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lm(frequency ~ attitude*gender, data = politeness)
 library(effects)
 allEffects(m)
@@ -214,7 +209,7 @@ plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(parameters)
 library(see)
 p1 = plot(parameters(m)) +
@@ -222,7 +217,7 @@ p1 = plot(parameters(m)) +
 p1
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(performance)
 check <- check_normality(m)
 ## Warning: Non-normality of residuals detected (p = 0.016).
@@ -231,7 +226,7 @@ p2 = plot(check, type = "qq")
 p2
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(performance)
 check <- check_normality(m, effects = "fixed")
 ## Warning: Non-normality of residuals detected (p = 0.016).
@@ -240,8 +235,7 @@ p2a = plot(check, type = "pp")
 p2a
 ```
 
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effectsize)
 library(see)
 
@@ -251,14 +245,14 @@ p3 = plot(omega_squared(m))
 p3
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
   geom_point2() +
   theme_modern()
 p4
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 p4 = ggplot(politeness, 
             aes(x = attitude, y = frequency, fill = gender)) +
   geom_violin() +
@@ -269,7 +263,7 @@ p4
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 p5 = ggplot(politeness, 
             aes(x = attitude, y = frequency, fill = gender)) +
   geom_violindot(fill_dots = "black") +
@@ -279,15 +273,13 @@ p5 = ggplot(politeness,
 p5
 ```
 
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 plots(p1,p2,p3,p4, 
       n_columns = 2, 
       tags = paste0("B", 1:4))
 ```
 
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(bayestestR)
 library(rstanarm)
 library(see)
@@ -297,7 +289,6 @@ m <- stan_glm(frequency ~ attitude*gender, data = politeness, refresh = 0)
 result <- hdi(m, ci = c(0.5, 0.75, 0.89, 0.95))
 plot(result)
 ```
-
 
 #### Schluss
 

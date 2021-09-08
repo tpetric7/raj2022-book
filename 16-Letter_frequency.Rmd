@@ -2,7 +2,7 @@
 
 ## Packages
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tidytext)
 library(scales)
@@ -19,7 +19,7 @@ Die *readtext()*-Funktion erlaubt Einlesen von mehreren Dateien auf einfache Art
 Mit *docvarsfrom* erhalten wird eine neue Spalte in der Tabelle, die wir mit der Funktion *rename()* umbenennen.
 Mit *encoding = "UTF-8"* teilen wir dem Programm mit, wie der Text kodiert ist (Code Page).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_txt = readtext("data/books/*.txt", docvarsfrom = "filenames", encoding = "UTF-8") %>% 
   rename(title = docvar1)
 novels_txt
@@ -37,7 +37,7 @@ Regex *{1}* (= default) extrahiert Einzelbuchstaben. Bei Verwendung von *{2}* we
 
 Die Funktion *tolower()* sorgt dafür, dass Großbuchstaben in Kleinbuchstaben umgewandelt werden. Falls zwischen großen und kleinen Buchstaben unterschieden werden soll, entfernen wir diese Funktion aus dem Programmkode.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 letters = tolower(novels_txt$text) %>% str_extract_all(pattern = "[:alpha:]{1}")
 letters[[1]][1:10]
 letters[[2]][1:9]
@@ -49,7 +49,7 @@ letters[[2]][1:9]
 
 Tabellen und Graphiken erstellen ist leichter, wenn wir die Texte in Datensätze umwandeln, und zwar mit der Funktion *as.data.frame()*.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels = as.data.frame(novels_txt)
 
 ```
@@ -57,7 +57,7 @@ novels = as.data.frame(novels_txt)
 
 Mit der Funktion *unnest_tokens()* können wir auch Buchstaben isolieren und anschließend auszählen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 
 novels_character <- novels %>%
@@ -71,7 +71,7 @@ head(novels_character)
 
 Mit *count()* können wir die Häufigkeit einer Variable (hier: der Buchstaben) auszählen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_character %>% 
   count(character, sort = TRUE) %>% 
   paged_table()
@@ -80,7 +80,7 @@ novels_character %>%
 
 Der tidytext-Tokenizer hat nicht nur Buchstaben, sondern auch Zahlen extrahiert. Da wir nur an der Häufigkeit von Buchstaben interessiert sind, filtern wir die Zahlen und andere Zeichen heraus. Dazu verwenden wir die Funktionen *filter()* und zusätzlich *str_detect()*, da wir für diese Aufgabe einen regulären Ausdruck nutzen wollen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_character %>% 
   filter(str_detect(character, "[:alpha:]")) %>% 
   count(character, sort = T) %>% 
@@ -92,7 +92,7 @@ Ein paar Zeichen, die nicht zum deutschen Alphabet gehören und mit dem vorherig
 
 Wir speichern das Ergebnis als neue Tabelle mit dem Namen "char_freq".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 char_freq = novels_character %>% 
   filter(str_detect(character, "[:alpha:]")) %>% 
   filter(!str_detect(character, "é|á")) %>% 
@@ -105,7 +105,7 @@ char_freq %>% paged_table()
 Insgesamt haben wir 30 Buchstaben des deutschen Alphabets in den Romanen unterschieden.
 Aus wie vielen Buchstaben des deutschen Alphabets bestehen die Romane? Die Summe erhalten wir mit der Funktion *summarise()* - fast 700 Tausend.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 char_freq %>% 
   summarise(total = sum(n))
 ```
@@ -141,7 +141,7 @@ char_freq %>%
 
 Getrennte tabellarische Darstellung für die Texte:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_character %>% 
   group_by(doc_id) %>% 
   count(character, sort = TRUE) %>% 
@@ -176,7 +176,7 @@ novels_character %>%
 Betrachten wir zunächst nur die Buchstaben, die Vokale symbolisieren!
 Zu diesem Zweck bilden wir eine Vokalliste. Zwischen den Vokalen setzen wir das "oder"-Zeichen ein: den *logischen Operator* "|".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vokale = "a|e|i|o|u|ä|ö|ü|y"
 ```
 
@@ -230,7 +230,7 @@ Welches Zahlenverhältnis besteht zwischen den Vokalen und Konsonanten?
 
 21 konsonantische Buchstaben und 9 vokalische Buchstaben. Pro Silbe sind in den deutschen Texten 1 Vokal und ungefähr 2 Konsonanten zu erwarten, also Silbenstrukturen wie z.B. KVK, KKV, VKK.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 char_freq %>% 
   mutate(buchstabe = ifelse(str_detect(character, vokale), "Vokal", "Konsonant")) %>% 
   count(buchstabe)
@@ -239,7 +239,7 @@ char_freq %>%
 
 Der höhere Anteil der Konsonanten entspricht der größeren Konsonantenmenge.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 char_freq %>% 
   mutate(buchstabe = ifelse(str_detect(character, vokale), "Vokal", "Konsonant")) %>% 
   mutate(Prozent = n / sum(n)) %>% 
@@ -272,7 +272,7 @@ Wie viele Silben kommen in den Romanen schätzungsweise vor und wie viele Buchst
 
 Da wir die Silbenzählfunktion nur ein einziges Mal bemühen, rufen wir sie in der unten sichtbaren Form auf: *nsyllable::nsyllable(buchstabenfolge)*.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words = novels %>%
   unnest_tokens(word, text, token = "words", to_lower = TRUE, drop = T) %>% 
   mutate(syllables = nsyllable::nsyllable(as.character(word), language = "en")) %>% 
@@ -283,7 +283,7 @@ head(novels_words) %>% paged_table()
 ```
 Insgesamt (d.h. kumulativ gesehen) fast 139 Tausend Silben in den Romanen. Diese Zahl bietet einen möglichen Ausgangspunkt für Textvergleiche.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words %>% 
   count(syllables) %>% 
   summarise(Silben = sum(n))
@@ -335,7 +335,7 @@ Bei der Berechnung der Mittelwerte und Standardabweichungen geben wir dem Progra
 
 In der folgenden Tabelle werden nur distinktive Wortformen (Types) berücksichtigt, d.h. als ob jede Wortform nur einmal pro Roman vorkommt.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words %>% 
   group_by(title) %>% 
   distinct(word, .keep_all = T) %>%
@@ -350,7 +350,7 @@ novels_words %>%
 
 Die durchschnittliche Anzahl der Silben und Buchstaben pro Wortform (Token), bei Berücksichtigung von Wortwiederholungen in den Romanen, ist in der folgenden Tabelle zu sehen. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words %>% 
   group_by(title) %>% 
   summarise(Avg_Silben = mean(syllables, na.rm = TRUE),
@@ -368,7 +368,7 @@ novels_words %>%
 Sind die berechneten Unterschiede zwischen den Mittelwerten relevant bzw. nicht-zufällig? Um diese Frage zu klären, kann man einen statistischen Test bemühen. Da wir lediglich zwei Samples (zwei Romanen) vergleichen wollen, kann uns ein parametrischer Test wie z.B. der t-Test Klarheit verschaffen. Wir verwenden die Programmfunktion *t.test()*.
 Der t-Test bestätigt, dass "Der Prozess" im Durchschnitt etwas längere Wörter aufweist (2,59 Silben pro Wort gegenüber 2,44 Silben pro Wort in "Tom Sawyer") - wenn Anzahl distinktiver Wortformen verwendet.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 syls = novels_words %>% 
   group_by(title) %>% 
   distinct(word, .keep_all = T) %>%
@@ -385,14 +385,14 @@ Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test
 
 Schnelle Form des t-Tests:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 t.test(syllables ~ title, data = novels_words)
 
 ```
 
 Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 prozess_syl <- novels_words %>% 
   filter(title == "prozess") %>% 
   dplyr::select(syllables) %>% 
@@ -408,7 +408,7 @@ t.test(prozess_syl, tom_syl) # significant
 
 Der nächste t-Test bestätigt ebenfalls, dass "Der Prozess" im Durchschnitt längere Wörter aufweist (8,79 Buchstaben pro Wort gegenüber 8.36 Buchstaben pro Wort in "Tom Sawyer".) Berücksichtigt wurden distinkte Wortformen (keine wiederholten Wortformen).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lets = novels_words %>% 
   group_by(title) %>% 
   distinct(word, .keep_all = T) %>%
@@ -425,14 +425,14 @@ Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test
 
 Schnelle Form des t-Tests:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 t.test(letters ~ title, data = novels_words)
 
 ```
 
 Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 prozess_let <- novels_words %>% 
   filter(title == "prozess") %>% 
   dplyr::select(letters) %>% 
@@ -456,7 +456,7 @@ Die Ordinate im Koordinatensystem (Intercept, also der y-Abschnitt mit x = 0) is
 
 Der R-Quadrat-Wert (R-squared) ist allerdings sehr klein, d.h. dass der Prädiktor "title" (Roman) nur einen Bruchteil der festgestellten Mittelwertvarianz (Veränderungen der Mittelwerte) zu erklären vermag. Möglicherweise gibt es andere Prädiktoren, die die Mittelwertvarianz besser erklären. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lm(syllables ~ title, data = novels_words)
 summary(m)
 anova(m)
@@ -474,7 +474,7 @@ plot(allEffects(m))
 
 Ergebnisse in Tabellenform:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 summary(lm(syllables ~ title, data = novels_words)) %>% 
   tidy() %>% paged_table()
 
@@ -528,7 +528,7 @@ Eine alternative Berechnung der Anzahl der Buchstaben pro Wort mit *quanteda* (o
 
 Die Durchschnittswerte, die uns quanteda liefert, sind etwas höher als die tidyverse-Werte. Aber auch hier ist der Mittelwert für den "Prozess" höher als für "Tom Sawyer".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(quanteda)
 library(quanteda.textstats)
 corp = corpus(novels_txt)
@@ -551,7 +551,7 @@ Welche Konsonantenverbindungen (Buchstabenverbindungen) kommen häufiger vor in 
 Wir zerlegen die Texte im Korpus in kleinere Einheiten (mittels *tokens*()), aber dieses Mal in alphanumerische Zeichen (Buchstaben). 
 Anschließend wenden wir *char_ngrams()*-Funktion an, mit der man Verknüpfungen von Zeichen feststellen kann.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tok_ch = tokens(corp, what = "character", remove_punct = TRUE, remove_symbols = T, remove_numbers = T, remove_url = T, remove_separators = T)
 
 ngrams_ch = char_ngrams(as.character(tok_ch), n = c(2,3,4), concatenator = "")
@@ -560,7 +560,7 @@ ngrams_ch = char_ngrams(as.character(tok_ch), n = c(2,3,4), concatenator = "")
 
 Wir wandeln die ngram-Liste in einen Datensatz um (mittels *tibble()*), was das Zählen mit einer *tidyverse*-Funktion ermöglicht.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ngrams_char = ngrams_ch %>% 
   as_tibble() %>% 
   rename(cluster = value)
@@ -579,7 +579,7 @@ to be continued ...
 ## Datensatz-Variante
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words_char <- novels %>%
   unnest_tokens(word, text, token = "words", to_lower = TRUE, drop = T) %>% 
   mutate(Silben = nsyllable::nsyllable(as.character(word), language = "en")) %>% 

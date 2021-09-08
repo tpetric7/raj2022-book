@@ -28,7 +28,7 @@ avatar_tur = read_lines("data/sub/Avatar_tur.txt")
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 head(avatar_eng); head(avatar_deu); head(avatar_slv)
 ```
 
@@ -38,7 +38,7 @@ head(avatar_eng); head(avatar_deu); head(avatar_slv)
 
 Untertitel haben ein besonderes Format. Recht einfach sind Datenmodifizierungen mit den tidyverse-Funktionen. Die Voraussetzung für ihre Verwendung ist die Umwandlung der Texte ins Tabellenformat. Dann können wir z.B. auch neue Tabellenspalten mit den Zeitangaben bilden.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 a1 = avatar_eng %>% 
   as_tibble() %>% 
   mutate(row_tc = row_number()) %>% 
@@ -65,7 +65,7 @@ a2a = a2 %>%
 
 Da die Anfangs- und Endzeit der Untertitel in den drei Sprachen nicht übereinstimmt, wollen wir lediglich die Untertiteltexte beibehalten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 b1 = avatar_deu %>% 
   as_tibble() %>% 
   mutate(row_tc = row_number()) %>% 
@@ -90,7 +90,7 @@ b2a = b2 %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 c1 = avatar_slv %>% 
   as_tibble() %>% 
   mutate(row_tc = row_number()) %>% 
@@ -115,7 +115,7 @@ c2a = c2 %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_fra = avatar_fra %>% 
   as_tibble() %>% 
   mutate(row_id = row_number()) %>% 
@@ -153,7 +153,7 @@ avatar_tur = avatar_tur %>%
 
 Nun verknüpfen wir die drei Datensätze zu einem einzigen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar = bind_rows(a2a,b2a,c2a, avatar_fra, avatar_ita, avatar_tur)
 
 ```
@@ -162,7 +162,7 @@ avatar = bind_rows(a2a,b2a,c2a, avatar_fra, avatar_ita, avatar_tur)
 
 Mit Hilfe von *quanteda*-Funktionen fügen wir dem Datensatz noch weitere Kenngrößen hinzu, und zwar die Anzahl der Wortformerscheinungen oder Tokens pro Äußerung (sentlen), die Anzahl der Silben pro Äußerung (syllables), die Wortlänge (wordlen), die Anzahl der verschiedenen Wortformen (Types) und das Type-Token-Verhältnis als bekanntes Maß für lexikalische Diversität.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar = avatar %>% 
   mutate(txt = str_replace_all(text, "[:punct:]", "")) %>% 
   mutate(sentlen = quanteda::ntoken(txt)) %>% 
@@ -175,12 +175,12 @@ avatar = avatar %>%
 
 Speichern für spätere Verwendung.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write_rds(avatar, "data/avatar.rds")
 write_csv(avatar, "data/avatar.csv")
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar = read_rds("data/avatar.rds")
 ```
 
@@ -281,7 +281,7 @@ udslv = as.data.frame(x)
 
 Französisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 destfile = "french-gsd-ud-2.5-191206.udpipe"
 
@@ -295,14 +295,14 @@ if(!file.exists(destfile)){
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(framod, x = avatar$text[avatar$language == "fra"], trace = FALSE)
 udfra = as.data.frame(x)
 ```
 
 Italienisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 destfile = "italian-isdt-ud-2.5-191206.udpipe"
 
@@ -316,14 +316,14 @@ if(!file.exists(destfile)){
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(itamod, x = avatar$text[avatar$language == "ita"], trace = FALSE)
 udita = as.data.frame(x)
 ```
 
 Türkisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 destfile = "turkish-imst-ud-2.5-191206.udpipe"
 
@@ -337,7 +337,7 @@ if(!file.exists(destfile)){
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(turmod, x = avatar$text[avatar$language == "tur"], trace = FALSE)
 udtur = as.data.frame(x)
 ```
@@ -367,7 +367,7 @@ udtur = udtur %>%
 
 Die Datensätze wollen wir für anderweitige Verwendungen speichern, und zwar sowohl im *conllu*-Format als auch im *csv*-Format. In beiden Fällen erhalten wir Textdateien.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write.table(as_conllu(udeng), file = "data/Avatar_ud_eng.conllu", 
             sep = "\t", quote = F, row.names = F)
 write.table(as_conllu(uddeu), file = "data/Avatar_ud_deu.conllu", 
@@ -384,7 +384,7 @@ write.table(as_conllu(udtur), file = "data/Avatar_ud_tur.conllu",
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write_csv(udeng, "data/Avatar_ud_eng.csv")
 write_csv(uddeu, "data/Avatar_ud_deu.csv")
 write_csv(udslv, "data/Avatar_ud_slv.csv")
@@ -410,7 +410,7 @@ Den drei annotierten Datensätzen wollen wir noch einige weitere Merkmale hinzuf
 
 Da wir dies mit allen drei Datensätzen anstellen wollen, bilden wir eine Funktion dazu, die als Input eine Tabelle (tbl) verlangt, in denen die Spalten "word, token, feats, sentence" zur Verfügung stehen:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tokenize_annotate = function(tbl){
   tbl %>% 
   unnest_tokens(word, token, drop = F) %>% 
@@ -435,7 +435,7 @@ tokenize_annotate = function(tbl){
 
 Die für die Verwendung der Funktion entsprechenden Tabellen sind die zuvor gebildeten Tabellen "udeng", "uddeu" und "udslv". Nach der Anreicherung der Datensätze verknüpfen wir sie zu einem einzigen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_eng_udpiped <- udeng %>% 
   tokenize_annotate() %>% mutate(language = "eng")
 avatar_deu_udpiped <- uddeu %>% 
@@ -463,12 +463,12 @@ avatar_words_udpiped %>% rmarkdown::paged_table()
 
 Für spätere Verwendungen speichern wir den Datensatz in zwei verschiedenen Formaten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write_rds(avatar_words_udpiped, "data/avatar_words_udpiped.rds")
 write_csv(avatar_words_udpiped, "data/avatar_words_udpiped.csv")
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped = read_rds("data/avatar_words_udpiped.rds")
 
 ```
@@ -477,7 +477,7 @@ avatar_words_udpiped = read_rds("data/avatar_words_udpiped.rds")
 
 Um einzelne Wörter und ihre Funktionen im Text aufzuspüren, brauchen wir nur die *filter()*- und die *select()*-Funktion einzugeben. Beispielsweise das Lemma "brother" in den englischen Untertiteln:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   filter(lemma == "brother") %>% 
   select(sentence, token, lemma, upos, dep_rel) %>% 
@@ -487,7 +487,7 @@ avatar_words_udpiped %>%
 
 Dasselbe mit dem deutschen "Bruder" und dem slowenischen "brat":
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   filter(lemma == "Bruder") %>% 
   select(sentence, token, lemma, upos, dep_rel) %>% 
@@ -495,7 +495,7 @@ avatar_words_udpiped %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   filter(lemma == "brat") %>% 
   select(sentence, token, lemma, upos, dep_rel) %>% 
@@ -540,7 +540,7 @@ p1|p2|p3
 
 Als nächstes wollen wir alle als Substantive (Noun) identifizierte Einheiten herausfinden, die im Plural auftreten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 #Find all plural nouns (tokens)
 avatar_words_udpiped %>% 
   filter(language == "eng" & 
@@ -550,7 +550,7 @@ avatar_words_udpiped %>%
   rmarkdown::paged_table()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   filter(language == "deu" & 
            upos == "NOUN" & 
@@ -559,7 +559,7 @@ avatar_words_udpiped %>%
   rmarkdown::paged_table()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   filter(language == "slv" & 
            upos == "NOUN" & 
@@ -593,7 +593,7 @@ In unserer nächsten Recherche wollen wir Komparativformen von Adjektiven ausfin
 
 Zuerst zählen wir die Wortarten (upos). Hier fällt auf, dass der Anteil einiger Wortarten in den slowenischen Untertiteln größer ist als in den anderen beiden Sprachen (z.B. Verben, Substantive), in anderen Fällen jedoch kleiner (z.B. Pronomen, die ja im Slowenischen nicht obligatorisch auftreten müssen).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Frequencies of parts of speech
 avatar_words_udpiped %>% 
   group_by(language) %>% 
@@ -609,7 +609,7 @@ In den englischen Untertiteln wurden 17 Komparativformen identifiziert, in den d
 
 Ähnlich verhält es sich mit den Superlativformen: deutsch (35 = 6%), englisch (14 = 2,77%), slowenisch (6 = 1,65)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(language == "eng" | 
@@ -644,7 +644,7 @@ Mehr über das Datenformat: [CoNLL-U Format](https://universaldependencies.org/f
 
 Frequenzwerte der syntaktischen Abhängigkeitsrelationen in den Avatar-Untertiteln (englisch, deutsch, slowenisch):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(language == "eng" | 
@@ -699,7 +699,7 @@ plot_annotation <- function(x, size = 3){
 
 Hier ist ein Beispiel eines Avatar-Untertitels in drei Sprachen. Wegen der deutschen bzw. slowenischen Sonderzeichen wandeln wir den Text mit Hilfe der Funktion *enc2utf8()* ins erforderliche UTF8-Format um.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # English
 mytext = udpipe("I started having these dreams of flying", "english")
 x1 = plot_annotation(mytext, size = 3)
@@ -734,7 +734,7 @@ Englischer Satz:
 
 -   mark: ein Marker, der eine untergerodnete Phrase / Satz kennzeichnet.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x1
 ```
 
@@ -752,7 +752,7 @@ Deutscher Satz:
 
 -   advmod: Element, das das Prädikat modifizert (Adverbialphrase).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x2
 ```
 
@@ -774,7 +774,7 @@ Slowenischer Satz:
 
 -   case: Element, das den Kasus einer Phrase regiert (z.B. die Präposition "o" regiert den Dativ der Nominalphrase "letenju").
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x3
 ```
 
@@ -798,7 +798,7 @@ Die Diagramme zeigen strukturelle Ähnlichkeiten und Unterschiede zwischen den S
 
 Wie groß ist der Anteil aktivischer und passivischer Sätze in den drei Sprachversionen? Dies können wir mit Hilfe der nsubj-Relation erfahren. In den englischen und deutschen Untertiteln wurden je 34 passivische Subjekte identifizert, in den slowenischen keiner.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(language == "eng" | 
@@ -816,7 +816,7 @@ avatar_words_udpiped %>%
 
 Schauen wir uns ein paar dieser Untertitel in allen drei Sprachen an:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(language == "eng") %>% 
@@ -832,14 +832,14 @@ avatar_words_udpiped %>%
 -   Deutsche Version: "*Die Idee ist, dass jeder Operator auf seinen eigenen Avatar abgestimmt wird*".
 -   Slowenische Version: "*Vsak upravljavec dobi svojega avatarja*".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar %>% 
   filter(language == "deu") %>% 
   filter(str_detect(text, "jeder Operator auf") | str_detect(text, "Avatar abgestimmt")) %>% 
   select(text) %>% rmarkdown::paged_table()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar %>% 
   filter(language == "slv") %>% 
   filter(str_detect(text, "dobi svojega avatarja")) %>% 
@@ -848,7 +848,7 @@ avatar %>%
 
 Wiederum visualisieren wir die drei Sprachversionen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # English
 mytext = udpipe("And the concept is that ervery driver is matched to his own avatar", "english")
 x1 = plot_annotation(mytext, size = 3)
@@ -863,15 +863,15 @@ x3 = plot_annotation(x, size = 3)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x1
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x2
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x3
 ```
 
@@ -890,7 +890,7 @@ x3
 
 Nun lenken wir unsere Sichtweise auf die Wortklassen Substantiv (NOUN) und Pronomen (PRON) in Subjekt- oder Objekt-Funktion. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(upos == "NOUN" | upos == "PRON") %>% 
@@ -917,7 +917,7 @@ Für genauere Feststellungen empfiehlt es sich, nur jeweils zwei Satzgliedfunkti
 
 Wie viele Subjekte im Aktiv oder Passiv werden mit Hilfe von Substantiven oder Personalpronomen ausgedrückt?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(language == "eng" | 
@@ -935,7 +935,7 @@ avatar_words_udpiped %>%
 
 Treten Pronomen genau so häufig als Passiv-Subjekte auf wie Substantive? Die obige Tabelle scheint für die englischen und deutschen Untertitel das Gegenteil zu zeigen. Machen für doch für diese beiden Sprachversionen je einen Chi-Quadrat-Test!
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pivot_by_nsubj <- function(tbl) {
   tbl %>% 
   filter(upos == "NOUN" | upos == "PRON") %>% 
@@ -960,7 +960,7 @@ In der letzten Tabelle fällt auf, dass der Anteil der Pronomen (pct_PRON) in de
 
 Für den Chi-Quadrat-Test benötigen wir lediglich die beiden Spalten mit den absoluten Zahlenwerten (also die zweite und dritte). In *Base-R* kann man dies sehr ökonomisch mit einer Bedingung in eckigen Klammern *[]* erreichen, mit der tidyverse-Funktion *select()* zwar transparenter und in Tabellenform, dafür muss man jedoch etwas mehr schreiben.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Base-R
 chisq.test(x[,c(2:3)])
 
@@ -973,7 +973,7 @@ Der Chi-Quadrat-Test bestätigt mit dem p-Wert (0,1339) die Null-Hypothese, d.h.
 
 Dasselbe können wir mit den deutschen Pronomen und Substantiven in Subjekt-Funktion machen. In diesem Fall ist der prozentuelle Unterschied zwischen Substantiven und Pronomen als aktivische oder passivische Subjekte größer zu sein als in der englischen Stichprobe.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   filter(language == "deu") %>% 
   pivot_by_nsubj()
@@ -992,7 +992,7 @@ chisq.test(x[,c(2:3)]) %>% tidy()
 
 Wir können uns die entsprechenden Belege mit Passivsubjekten auch anschauen. Aus der Tabelle ist auch ersichtlich, dass die grammatische Analyse des Programms auch einige Fehler enthält (z.B. "Avatar" in "(auf) seinen eigenen Avatar abgestimmt wird" ist Bestandteil eines Präpositionalobjekts und kein Passivsubjekt) oder eine andere Klassifizierung sinnvoller wäre (z.B. "Was ist hier passiert?" - "was" wurde als Passivsubjekt des Verbs "passieren" eingeordnet). Im Untertitel "wenn du nicht gekommen wärst" scheint das Programm den sein-Passiv übergeneralisierend auf Sätze mit einem Verb im Perfekt anzuwenden. Einige Fehler kommen aufgrund unvollständiger Sätze als Input vor, andere wiederum aufgrund der Tatsache, dass bestimmte sprachliche Formen mehrere Funktionen in der Sprache erfüllen können.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   select(sentence, upos, dep_rel, language) %>% 
   filter(language == "deu") %>% 
@@ -1007,7 +1007,7 @@ avatar_words_udpiped %>%
 
 Wird das *direkte Objekt* (obj), im Deutschen und Slowenischen auch *Akkusativojekt* genannt, in den Untertiteln häufiger nominal oder pronominal ausgedrückt?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(upos == "NOUN" | upos == "PRON") %>% 
@@ -1024,7 +1024,7 @@ x %>% rmarkdown::paged_table()
 
 Die Tabelle deutet daraufhin, dass in den englischen Untertiteln kein wesentlicher Unterschied auftritt, in den deutschen und slowenischen Untertiteln dagegen schon. Das können wir wiederum testen. Der erste Chi-Quadrat-Test bestätigt für die englischen Untertitel die Null-Hypothese (bei p > 0,05 also keinen Unterschied), für die deutschen und slowenischen Untertitel dagegen die alternative Hypothese (d.h. dass es bei p < 0,05 einen Wahrscheinlichkeitsunterschied gibt, ob das Objekt nominal oder pronominal ausgedrückt ist). 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 englisch = chisq.test(x[,4]) %>% tidy() %>% mutate(language = "eng")
 deutsch = chisq.test(x[,3]) %>% tidy() %>% mutate(language = "deu")
 slowenisch = chisq.test(x[,5]) %>% tidy() %>% mutate(language = "slv")
@@ -1037,7 +1037,7 @@ chisqtabelle %>% rmarkdown::paged_table()
 
 Welche sprachübergreifende (cross-linguistic) Tendenz werden mit den englisch- und deutschsprachigen Daten bestätigt?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(upos == "NOUN" | upos == "PRON") %>% 
@@ -1054,7 +1054,7 @@ avatar_words_udpiped %>%
 
 Englisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pivot_by_obj <- function(tbl) {
   tbl %>% 
     filter(upos == "NOUN" | upos == "PRON") %>% 
@@ -1076,7 +1076,7 @@ x %>% rmarkdown::paged_table()
 
 Deutsch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   filter(language == "deu") %>% 
   pivot_by_obj()
@@ -1089,7 +1089,7 @@ Sowohl in den englischen als auch deutschen Untertiteln wird das Subjekt häufig
 
 Dieses Verhältnis können wir in den slowenischen Untertiteln nicht nachweisen, was wir wiederum auf die Tatsache zurückführen können, dass Slowenisch eine Pro-Drop-Sprachen ist und daher die Anzahl pronominalisierter Subjekte wesentlich geringer sein muss, da ein pronominalisiertes Subjekt nur bei Hervorhebung obligatorisch im Satz vorkommt.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   filter(language == "slv") %>% 
   pivot_by_obj()
@@ -1104,7 +1104,7 @@ Treten Gattungsnamen (Appelativa) und Eigennamen häufiger in Subjekt- oder in O
 
 Englisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pivot_by_propn <- function(tbl) {
   tbl %>% 
     filter(upos %in% c("NOUN", "PROPN")) %>% 
@@ -1126,7 +1126,7 @@ x %>% rmarkdown::paged_table()
 
 Deutsch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   filter(language == "deu") %>% 
   pivot_by_propn()
@@ -1137,7 +1137,7 @@ x %>% rmarkdown::paged_table()
 
 Slowenisch:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = avatar_words_udpiped %>% 
   filter(language == "slv") %>% 
   pivot_by_propn()
@@ -1156,7 +1156,7 @@ Englisch und Slowenisch werden gewöhnlich als SVO-Sprachen eingeordnet, Deutsch
 
 Was zeigt nun unser Sprachmaterial?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(dep_rel == "amod" & 
@@ -1179,7 +1179,7 @@ Im Englischen, Deutschen und Slowenischen und Türkischen dominiert die Reihenfo
 
 Schauen wir uns noch an, in welchen Untertiteln unser Programm nachgestellte Adjektive identifiziert hat!
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(dep_rel == "amod" & 
@@ -1198,7 +1198,7 @@ Im slowenischen Untertitel "Gre za nekaj resničnega" wird das Adjektiv "resnič
 
 ### Kontexte von Modifizierern
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(dep_rel == "amod" & 
@@ -1212,7 +1212,7 @@ avatar_words_udpiped %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(dep_rel == "amod" & 
@@ -1232,7 +1232,7 @@ avatar_words_udpiped %>%
 
 Zuerst wollen wir direkte Objekte (im Deutschen und Slowenischen auch als Akkusativobjekte bezeichnet) ausfinding machen, die sowohl Gattungsnamen als auch Eigennamen enthalten und die dem Kopf der Verbalphrase vorangehen (OV) oder folgen (VO). 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pivot_by_verb_obj = function(tbl){
   tbl %>% 
       mutate(word_order = ifelse(token_id > head_token_id, 
@@ -1258,7 +1258,7 @@ vo_nominal = avatar_words_udpiped %>%
 
 Nun machen wir dasselbe mit den pronominalen Objekten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vo_pronominal = avatar_words_udpiped %>% 
   group_by(language) %>% 
   filter(dep_rel == "obj" & 
@@ -1269,13 +1269,13 @@ vo_pronominal = avatar_words_udpiped %>%
 
 Dann fügen wir beide Tabellen zusammen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 verb_object = bind_rows(vo_nominal, vo_pronominal) %>% 
   select(word_class, word_order:pct_tur)
 verb_object %>% rmarkdown::paged_table()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 verb_object %>% 
   select(word_class, word_order, pct_deu:pct_tur) %>% 
   pivot_longer(pct_deu:pct_tur, 
@@ -1285,10 +1285,10 @@ verb_object %>%
   geom_col() +
   facet_wrap(~ language) +
   theme(legend.position = "top")
-
+ggsave("pictures/barplot_avatar_VO-OV_NN_PRON.png")
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 verb_object %>% 
   select(word_class, word_order, n_deu:n_tur) %>% 
   pivot_longer(n_deu:n_tur, 
@@ -1306,12 +1306,12 @@ verb_object %>%
   theme(legend.position = "none") +
   labs(x = "OV-Anteil bei Substantiven", 
        y = "OV-Anteil bei Pronomen")
-  
+ggsave("pictures/koord_avatar_VO-OV_NN_PRON.png")  
 ```
 
 Übersichtsgraphik mit Korrelationsberechnung:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(GGally)
 ggpairs(verb_object[,c(1:8)])
 ```
@@ -1327,7 +1327,7 @@ p = plot(results)
 p + scale_fill_material_c(palette = "rainbow") + theme_abyss()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggpage)
 avatar_deu[1:100] %>%
   ggpage_build() %>%
@@ -1339,7 +1339,7 @@ avatar_deu[1:100] %>%
                     name = "Word length")
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggwordcloud)
 library(tidytext)
 

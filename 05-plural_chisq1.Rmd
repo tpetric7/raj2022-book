@@ -1,9 +1,8 @@
-
 ### Plural von Kunstwörtern
 
 #### Naložimo programe
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(scales)
 library(kableExtra)
@@ -11,7 +10,7 @@ library(kableExtra)
 
 #### Preberemo podatkovni niz z diska
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Branje datoteke je možno na več načinov
 plural_subj1 = read.csv("data/plural_Subj_sum.csv", sep = ";")
 plural_subj1 = read.csv2("data/plural_Subj_sum.csv")
@@ -24,18 +23,17 @@ head(plural_subj1) %>% knitr::kable()
 
 #### Povzetek in Hi-kvadrat test
 
-Podatkovni niz preoblikujemo in povzemamo (agregacija). 
-Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami).
-Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.
+Podatkovni niz preoblikujemo in povzemamo (agregacija). Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami). Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.
 
-H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
-H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).
+-   H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
 
-Če je p-vrednost < 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake). 
+-   H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).
 
-Če p > 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.
+Če je p-vrednost \< 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake).
 
-```{r}
+Če p \> 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.
+
+```{r message=FALSE, warning=FALSE}
 # Povzemamo ("aggregate")
 # Ergebnisse summieren
 p = plural_subj1 %>% 
@@ -56,7 +54,7 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 #### Naslednji preizkus(i)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Izberemo tri stolpce za naslednji preizkus
 q = p %>% select(WordType, E, Er)
 
@@ -69,7 +67,7 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 Možno je tudi testiranje treh ali več vzorcev, vendar nam test ne pove, kateri vzorec je različen od drugega.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Izberemo tri stolpce za naslednji preizkus
 q = p %>% select(WordType, Er, E, S)
 
@@ -82,7 +80,7 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 Ergebnisse summieren:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (p = plural_subj1 %>% 
   group_by(WordType) %>% 
   summarise(En = sum(En), E = sum (E))
@@ -90,11 +88,9 @@ Ergebnisse summieren:
 
 ```
 
-Chi-Quadrat-Test
-Falls p < 0,05: es gilt H1 (Stichproben unterscheiden sich).
-Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
+Chi-Quadrat-Test Falls p \< 0,05: es gilt H1 (Stichproben unterscheiden sich). Falls p \> 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (chi = chisq.test(p[,-1])
 )
 
@@ -102,13 +98,17 @@ Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
 
 Beobachtete vs. erwartete Werte:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tabelle <- as_tibble(cbind(chi$observed, chi$expected)) %>%
-   mutate(Wordtyp = unlist(p[,1])) %>% # Spalte wieder hinzufügen
-   mutate(Wordtyp = str_replace(Wordtyp, "NoRhyme", "Nicht-Reimwort"), # auf deutsch
-          Wordtyp = str_replace(Wordtyp, "Rhyme", "Reimwort")) %>% # auf deutsch
-   rename(En_erwartet = V3, E_erwartet = V4) %>%  # erwartete Werte, wenn H0 richtig ist
-   select(Wordtyp, En, E, En_erwartet, E_erwartet) # Reihenfolge der Variablen verändern
+    # Spalte wieder hinzufügen
+   mutate(Wordtyp = unlist(p[,1])) %>%
+   # auf deutsch
+   mutate(Wordtyp = str_replace(Wordtyp, "NoRhyme", "Nicht-Reimwort"), 
+          Wordtyp = str_replace(Wordtyp, "Rhyme", "Reimwort")) %>%
+   # erwartete Werte, wenn H0 richtig ist
+   rename(En_erwartet = V3, E_erwartet = V4) %>% 
+   # Reihenfolge der Variablen verändern
+   select(Wordtyp, En, E, En_erwartet, E_erwartet)
 
 tabelle %>% rmarkdown::paged_table()
 ```

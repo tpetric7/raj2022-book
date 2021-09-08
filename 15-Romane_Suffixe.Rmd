@@ -2,7 +2,7 @@
 
 ## Packages
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tidytext)
 library(SnowballC)
@@ -16,7 +16,7 @@ library(vecsets)
 
 ## Dateien einlesen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_txt = readtext("data/books/*.txt", docvarsfrom = "filenames", encoding = "UTF-8") %>% 
   rename(title = docvar1)
 novels_txt
@@ -25,7 +25,7 @@ novels_txt
 
 Wir wandeln die Datei in eine Tabelle um.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels = as.data.frame(novels_txt)
 
 ```
@@ -35,7 +35,7 @@ novels = as.data.frame(novels_txt)
 
 Unser Ziel ist die Extrahierung von Wortbildungsmorphemen. Daher führen wir mit dem Program *udpipe* zuerst eine Analyse der Wortformen durch, die auch eine Lemmatisierung der Wortformen einschließt. Durch die Lemmatisierung können wir auf die Grundformen von Wörtern zurückgreifen und Flexionsmorpheme ausschließen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 destfile = "german-gsd-ud-2.5-191206.udpipe"
 
@@ -51,7 +51,7 @@ if(!file.exists(destfile)){
 
 Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 x = udpipe_annotate(demodel, novels_txt$text, trace = TRUE)
 x = as.data.frame(x)
 
@@ -61,7 +61,7 @@ Wir filtern Interpunktionszeichen heraus, die für unser Ziel nicht relevant sin
 
 In einem weiteren Schritt fügen wir mit *mutate* eine neue Spalte ("word") hinzu, welche die tokens der Texte enthält, aber kleingeschrieben gewerden sollen, was mit *tolower()* erreicht werden kann.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 udpipe = x %>% 
   filter(upos != "PUNCT") %>% 
   mutate(word = tolower(token))
@@ -70,7 +70,7 @@ udpipe = x %>%
 
 Für die Entfernung von Ziffern und Symbolen aus der Tabelle verwenden wir einen regulären Ausdruck (regex). Außerdem sollen alle Lemmas mit Kleinbuchstaben beginnen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words = udpipe %>% 
   filter(str_detect(lemma, "[:alpha:]")) %>% # keine Ziffern oder Interpunktionszeichen oder Symbole
   mutate(lemma = tolower(lemma))
@@ -85,7 +85,7 @@ Außerdem wollen wir gleichzeitig auch einige Wörter herausfiltern, die nicht z
 
 In einem weiteren Schritt sollen die Kategorien der "doc_id" bessere Namen erhalten: die allgemeineren Namen "doc1" und "doc2" ersetzen wir mit den eindeutigeren Namen "prozess" und "tom".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 stoplist_de = c(stopwords::stopwords(language = "german"), "franz","kafka","mark","twain",
                 "by","aligned","Aligned","","bilingual-texts.com","fully","reviewed") %>% 
   as_tibble() %>% 
@@ -109,7 +109,7 @@ Hier verwenden wir die Stemming-Funktion *wordStem()* des Programms *SnowballC*,
 
 Mit *mutate()* und der *wordStem()*-Funktion fügen wir der Tabelle eine weitere Spalte hinzu, der wir den Namen "stamm" geben. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_words = novels_words %>% 
   mutate(stamm = wordStem(lemma, language = "de"))
 head(novels_words) %>% paged_table()
@@ -124,7 +124,7 @@ Dann folgen einige Korrekturen mit *str_remove()*, *str_remove_all()*, *str_repl
 Mit *str_remove()* beseitigen wir ein Zeichen einmal, mit *str_remove_all()* so oft, wie es in einer Tabellenspalte vorkommt.
 Mit *str_replace()* wandeln wir ein Zeichen einmal in ein anderes um, mit *str_replace_all()* so oft, wie es in einer Tabellenspalte vorkommt.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(vecsets)
 novels_full_words = novels_words %>% 
   mutate(diffs = as.character(mapply(vsetdiff, strsplit(lemma, split = ""),
@@ -143,7 +143,7 @@ novels_full_words = novels_words %>%
 
 Das Ergebnis ist nicht perfekt, aber für bestimmte Wortbildungssuffixe brauchbar.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words %>% 
   dplyr::select(doc_id, lemma, stamm, diffs) %>% 
 head(10) %>% paged_table()
@@ -153,7 +153,7 @@ head(10) %>% paged_table()
 Wir speichern die Tabelle für spätere Analysen. Möglich sind verschiedene Formate, z.B. "rds"-Dateien, die man mit R/Rstudio öffnen kann, und "csv"-Dateien, die man mit beliebigen Programmen öffnen kann. 
 Aber wir speichern die Tabelle hier nur als Excel-Datei ab, weil die Tabellenzeilen nicht zu lang sind.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # write_rds(novels_full_words, "data/novels_full_words.rds")
 # write_csv(novels_full_words, "data/novels_full_words.csv")
 writexl::write_xlsx(novels_full_words, "data/novels_full_words.xlsx")
@@ -165,7 +165,7 @@ writexl::write_xlsx(novels_full_words, "data/novels_full_words.xlsx")
 
 Um am nächsten Tag nicht alle vorherigen Schritte noch einmal machen zu müssen, können wir an dieser Stelle die zuvor gespeicherte Tabelle öffnen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words = readxl::read_xlsx("data/novels_full_words.xlsx")
 ```
 
@@ -178,7 +178,7 @@ Mit *filter()* werden leere Zeilen in der Tabellenspalte "diffs" herausgefiltert
 Dann zählen wir die verschiedenen Kategorien in der Tabellenspalte, und zwar mit *count()*.
 Zuletzt verändern wir mit *pivot_wider()* das Tabellenformat, so dass die Romantitel als Spaltennamen erscheinen und die Endungen als Tabellenzeilen. Die Spalten "prozess" und "tom" enthalten nun die Häufigkeitswerte für die einzelnen Endungen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words %>% 
   dplyr::select(doc_id, lemma, stamm, diffs) %>%
   group_by(doc_id) %>% 
@@ -191,7 +191,7 @@ novels_full_words %>%
 
 Wir erweitern unsere Häufigkeitstabelle mit Prozentzahlen und geben ihr einen Namen ("novels_diffs").
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_diffs = novels_full_words %>% 
   dplyr::select(doc_id, lemma, stamm, diffs) %>%
   group_by(doc_id) %>% 
@@ -210,7 +210,7 @@ head(novels_diffs) %>% paged_table()
 
 Noch eine graphische Darstellung der Häufigkeitswerte, für die wir die Tabelle umformen, und zwar mit *pivot_longer()* und verkürzen (durch Filtervorgänge): wir wollen nur Endungen mit einer Häufigkeit von mehr als 0,5% (0.005) beibehalten. Mit *fct_lump()* kann man die Anzahl der Kategorien reduzieren (die Restkategorie heißt hier "Other"). Mit *fct_reorder()* sorgen wir dafür, dass die häufigeren Endungen im Diagramm oben erscheinen. Die Funktion *facet_wrap()* ermöglicht die getrennte Darstellung der Romane.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(scales)
 
 novels_diffs %>% 
@@ -233,7 +233,7 @@ novels_diffs %>%
 
 Vergleichen wir mal die Häufigkeit der Endung "-lich" in den Romanen! Da dieses Wortbildungssuffix mit adjektivischen Stämmen verknüpft wird, filtern die entsprechende Wortklasse heraus.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (lich_tab = novels_full_words %>% 
   group_by(doc_id) %>% 
   filter(upos == "ADJ") %>% 
@@ -247,14 +247,14 @@ Vergleichen wir mal die Häufigkeit der Endung "-lich" in den Romanen! Da dieses
 
 Ist der Unterschied zwischen den Romanen statistisch signifikant? Das überprüfen wir mit dem Chi-Quadrat-Test. Die erste Spalte enthält keine Zahlen, daher müssen wir sie beim Testen entfernen, und zwar mit *[, -1]*: alle Zeilen übernehmen, aber die este Tabellenspalte nicht.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 chisq.test(lich_tab[,-1])
 
 ```
 
 Der Chi-Quadrat-Test hat lediglich einen signifikanten Unterschied zwischen den beiden Stichproben "prozess" und "tom" bestätigt, sagt uns aber nicht, in welcher Stichprobe, das Suffix "-lich" verhältnismäßig häufiger vorkommt. Bei dieser Beurteilung helfen uns Prozentzahlen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lichtab2 = novels_full_words %>% 
   group_by(doc_id) %>% 
   filter(upos == "ADJ") %>% 
@@ -274,7 +274,7 @@ lichtab2 %>% paged_table()
 
 Etwa 21,5% der als Adjektiv identifizierten Lemmas im Roman "prozess" enden mit dem Suffix "-lich", im Roman "tom sawyer" sind es etwa 15,2%. Der Unterschied ist auch in der graphischen Darstellung zu sehen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lichtab2 %>% 
   pivot_longer(prozess_pct:tom_pct, names_to = "title", values_to = "pct") %>% 
   ggplot(aes(title, pct, fill = lich)) +
@@ -284,7 +284,7 @@ lichtab2 %>%
 
 Das Suffix "-lich" gehört zu den produktiven Wortbildungsmitteln im Deutschen. Warum sind im "prozess" mehr davon zu finden als im anderen Roman? Zur Klärung dieser Frage müssten wir zuerst mehr über die semantischen Eigenschaften und Verknüpfungsmöglichkeiten (oder -einschränkungen) mit verschiedenen Wortstämmen erfahren.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words %>% 
   dplyr::select(doc_id, lemma, word, upos, diffs) %>%
   group_by(doc_id, lemma, word) %>% 
@@ -299,7 +299,7 @@ novels_full_words %>%
 
 Vergleichen wir die Häufigkeit von mehreren adjektivischen Suffixen in unserem Romankorpus!
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words %>% 
   dplyr::select(doc_id, lemma, word, upos, diffs) %>% # Auswahl von hier relevanten Spalten
   group_by(doc_id, lemma, word) %>% # Gruppierung nach diesen Merkmalen (Spalten)
@@ -314,7 +314,7 @@ novels_full_words %>%
 
 Von den insgesamt 1370 als (suffigiertes) Adjektiv identifizierten Wortformen (tokens) kommen 847 im "prozess" und 523 in "tom sawyer" vor. Der Anteil der Zustandsbeschreibungen mit Hilfe von suffigierten Adjektiven scheint im ersten Werk größer zu sein als im zuletzt genannten (was wir aber an dieser Stelle nicht mit einem Chi-Quadrat-Test überprüfen wollen).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 adj_tab = novels_full_words %>% 
   dplyr::select(doc_id, lemma, upos, diffs) %>%
   group_by(doc_id) %>% 
@@ -332,7 +332,7 @@ adj_tab %>% paged_table()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(scales)
 
 adj_tab %>% 
@@ -348,7 +348,7 @@ adj_tab %>%
 
 ### Nicht verwendete Tabelle
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 novels_full_words %>% 
   dplyr::select(doc_id, lemma, stamm, diffs) %>%
   group_by(doc_id) %>% 

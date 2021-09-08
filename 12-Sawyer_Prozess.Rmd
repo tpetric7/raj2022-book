@@ -8,7 +8,7 @@ Namestitev: Če ste program(e) že namestili, lahko preskočite ta korak.
 Znak \# v programskem bloku (chunk) pomeni, da se ta vrstica ne izvaja. Odstrani
 \# če želite program namestiti.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # # Programe, ki jih še nimate, lahko namestite tudi na ta način (odstranite #):
 # install.packages("readtext")
 # ...
@@ -33,7 +33,7 @@ invisible(lapply(packages, library, character.only = TRUE))
 
 Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(readtext)
 library(quanteda)
 library(quanteda.textstats)
@@ -52,7 +52,7 @@ library(corpustools)
 
 ## Preberemo besedila
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 txt = readtext("data/books/*.txt", encoding = "UTF-8")
 txt
 
@@ -60,7 +60,7 @@ txt
 
 Alternativno lahko besedila preberemo tudi z medmrežja:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 txt1 = readtext("https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/books/prozess.txt", encoding = "UTF-8")
 txt2 = readtext("https://raw.githubusercontent.com/tpetric7/tpetric7.github.io/main/data/books/tom.txt", encoding = "UTF-8")
 
@@ -73,7 +73,7 @@ txt = rbind(txt1,txt2)
 
 Ustvarimo korpus ali jezikovno gradivo. Ukaz v programu "quanteda" je corpus().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 romane = corpus(txt)
 
 ```
@@ -83,13 +83,13 @@ Povzetek:
 Program quanteda ima dve funkciji za povzemanje: - summary() -
 textstat_summary()
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (romanstatistik = textstat_summary(romane)
 )
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 povzetek = summary(romane)
 povzetek
 
@@ -98,7 +98,7 @@ povzetek
 Podatke iz povzetka bi lahko uporabili npr. za izračun povprečne dolžine povedi
 v besedilih:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 povzetek %>% 
   group_by(Text) %>%
   mutate(dolzina_povedi = Tokens/Sentences)
@@ -118,7 +118,7 @@ npr. nemški glagol "gehen" je slovarska enota, ki ima več različnic ali oblik
 Pojavnice: nekatere oblike glagola so pogostejše kot druge, nekatere pa se v
 izbranem besedilu ne pojavljajo.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 povzetek %>% 
   group_by(Text) %>% 
   mutate(ttr = Types/Tokens)
@@ -140,7 +140,7 @@ Iz gradiva izvlečemo besedne oblike (npr. s pomočjo presledkov).
 
 Za tokenizacijo ima quanteda ukaz tokens().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 besede = tokens(romane)
 head(besede)
 
@@ -150,7 +150,7 @@ head(besede)
 
 S seznama lahko izločimo "nebesede":
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 besede = tokens(romane, remove_punct = T, remove_symbols = T, remove_numbers = T, remove_url = T)
 head(besede)
 
@@ -163,7 +163,7 @@ besedil.
 
 concatenate = združi: c()
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 stoplist_de = c(stopwords("de"), "dass", "Aligned", "by", "autoalignment", "Source", "Project", 
                 "bilingual-texts.com", "fully", "reviewed")
 besede = tokens_select(besede, pattern = stoplist_de, selection = "remove")
@@ -173,7 +173,7 @@ besede = tokens_select(besede, pattern = stoplist_de, selection = "remove")
 Naslednji seznam bomo uporabljali za ustvarjanje konkordance, tj. seznama
 sobesedil, v katerem se nahaja iskalni niz (npr. neka beseda).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 stoplist_en = c("Aligned", "by", "autoalignment", "Source", "Project", 
                 "bilingual-texts.com", "fully", "reviewed")
 
@@ -192,7 +192,7 @@ context).
 Možno je iskati posamezne besede, besedne zveze, uporabljamo pa lahko tudi
 nadomestne znake (npr. \*).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kwic(woerter, pattern = c("Frau", "Herr")) %>% head(3)
 
 ```
@@ -205,7 +205,7 @@ spremenljivk).
 velikimi in malimi črkami. Privzeta vrednost je "TRUE", tj. da tega ne razlikuje
 (tako kot Excel).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 konkordanca = kwic(woerter, pattern = c("Frau", "Herr"), case_insensitive = FALSE) %>% 
   as_tibble()
 
@@ -215,7 +215,7 @@ konkordanca %>% rmarkdown::paged_table()
 
 Z ukazom *count()* lahko preštejemo, koliko pojavnic je KWIC našel.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 konkordanca %>% 
   count(keyword)
 
@@ -224,7 +224,7 @@ konkordanca %>%
 Poiskati želimo besede s pripono "-in" za samostalnike, ki označujejo ženska
 osebna imena (npr. Ärztin, Köchin, ...).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca2 = kwic(woerter, pattern = c("*in"), case_insensitive = FALSE) %>% 
   as_tibble()
 )
@@ -240,7 +240,7 @@ preizkušate in se učite regularnih izrazov.
 
 Poizvedovanje s pomočjo regularnih izrazov: \*in.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 konkordanca2 = kwic(woerter, pattern = "\\A[A-Z][a-z]+[^Eae]in\\b",
                       valuetype = "regex", case_insensitive = FALSE) %>% 
   as_tibble() %>% 
@@ -263,7 +263,7 @@ konkordanca2 %>% rmarkdown::paged_table()
 Manjšalnice / Diminutive (-chen, -lein). Katera manjšalna pripona prevladuje:
 -lein ali -chen ?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca3a = kwic(woerter, "*lein",
                       valuetype = "glob", case_insensitive = FALSE) %>% 
   as_tibble() %>% 
@@ -294,7 +294,7 @@ Poizvedovanje s pomočjo "regex": Frau + Priimek / Ime
 Obvezno nastavimo case_insensitive = FALSE, saj naj program razlikuje med
 velikimi in malimi začetnicami.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca4 <- kwic(woerter, pattern = phrase("\\bFrau\\b ^[A-Z][^[:punct:]]"), 
                       valuetype = "regex", case_insensitive = FALSE) %>% 
   as_tibble()
@@ -308,7 +308,7 @@ Besedilno-besedna matrika (dfm) je izhodišče za izračun in grafični prikaz v
 statističnih količin, npr. tudi pogostnosti besednih oblik v posameznih
 besedilih:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 matrika = dfm(besede, tolower = FALSE) # za zdaj obdržimo velike začetnice
 
 # Odstranimo besede, ki jih v vsebinski analizi ne potrebujemo (stopwords)
@@ -319,7 +319,7 @@ matrika
 Program quanteda ima posebno funkcijo, ki sestavi seznam besednih oblik in
 njihove pogostnosti, tj. textstat_frequency().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(quanteda.textstats)
 library(quanteda.textplots)
 
@@ -331,7 +331,7 @@ pogostnost %>% rmarkdown::paged_table()
 
 Diagram najpogostnejših izrazov:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pogostnost %>% 
   slice_max(order_by = frequency, n = 20) %>% 
   mutate(feature = reorder_within(feature, frequency, frequency, sep = ": ")) %>%
@@ -346,7 +346,7 @@ pogostnost %>%
 Po potrebi lahko seznam besednih pogostnosti oblik razdelimo na dva posebna
 seznama, in sicer s funkcijo filter().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 pogost_tom = textstat_frequency(matrika, groups = c("prozess.txt", "tom.txt")) %>% 
   filter(group == "tom.txt")
 
@@ -361,7 +361,7 @@ pogost_prozess %>% rmarkdown::paged_table()
 
 Glagoli rekanja in mišljenja: kateri so v izbranih besedilih pogostnejši?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sagen = pogostnost %>%
    filter(str_detect(feature, "^(ge)?sag*"))
 sagen %>% rmarkdown::paged_table()
@@ -385,7 +385,7 @@ rufen %>% rmarkdown::paged_table()
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 verb1 = sagen %>% 
   group_by(group) %>% 
   summarise(freq = sum(frequency)) %>% 
@@ -415,7 +415,7 @@ verb5 = rufen %>%
 
 Pet majhnih tabel lahko združimo v večjo tabelo, tj. s funkcijo rbind().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 glagoli = rbind(verb1, verb2, verb3, verb4, verb5)
 glagoli %>% rmarkdown::paged_table()
 
@@ -423,7 +423,7 @@ glagoli %>% rmarkdown::paged_table()
 
 Še diagram:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 glagoli %>% 
   ggplot(aes(freq, verb, fill = verb)) +
   geom_col() +
@@ -434,7 +434,7 @@ glagoli %>%
 
 Tabelo lahko tudi prerazporedimo, npr. zaradi lažje primerjave besedil takole:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 glagoli %>% 
   pivot_wider(id_cols = verb, names_from = group, values_from = freq) %>% rmarkdown::paged_table()
 
@@ -456,7 +456,7 @@ Funkcija textstat_collocations() v programu quanteda.
 "woerter" je seznam besednih oblik (padding = TRUE !), ki smo ga ustvarili
 zgoraj.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 coll_2 = textstat_collocations(woerter, size = 2, tolower = TRUE) # naredi male črke !
 
 coll_2 %>% rmarkdown::paged_table()
@@ -465,14 +465,14 @@ coll_2 %>% rmarkdown::paged_table()
 
 Kolokacije s tremi členi.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 coll_3 = textstat_collocations(woerter, size = 3, tolower = FALSE)
 
 coll_3 %>% rmarkdown::paged_table()
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 coll_4 = textstat_collocations(woerter, size = 4, tolower = FALSE)
 
 coll_4 %>% rmarkdown::paged_table()
@@ -482,7 +482,7 @@ coll_4 %>% rmarkdown::paged_table()
 Sopomenski vprašalnici "warum" in "wieso: s katerimi besednimi oblikami se
 sopojavljata?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 warum <- coll_2 %>% 
   filter(str_detect(collocation, "^warum"))
 warum %>% rmarkdown::paged_table()
@@ -497,7 +497,7 @@ Kolokacija samostalniških izrazov. V nemščini imajo veliko začetnico. Najpre
 bomo sestavili seznam besednih oblik z veliko začetnico (woerter_caps). Potem
 lahko pridobimo seznam kolokacij (coll_caps2).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 woerter_caps = tokens_select(woerter, pattern = "^[A-Z]", 
                                 valuetype = "regex", 
                                 case_insensitive = FALSE, 
@@ -515,7 +515,7 @@ velika večina samostalnikov pojavlja s členom.
 Zato bomo člene "Der, Die, Das" in še nekaj besednih oblik na začetku stavka
 spremenili v "der, die , das", ....
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 woerter_small = tokens_replace(woerter, 
                                pattern = c("Der","Die","Das","Des","Wollen","Im","Zum",
                                            "Kein","Jeden","Wenn","Als","Da","Aber","Und","Sehen"), 
@@ -537,7 +537,7 @@ coll_caps2 %>% rmarkdown::paged_table()
 
 Seznam slovarskih enot (lem) lahko naložimo z medmrežja na naš disk.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Preberi seznam slovarskih enot in pojavnic z diska
 lemdict = read.delim2("data/lemmatization_de.txt", sep = "\t", encoding = "UTF-8", 
                       col.names = c("lemma", "word"), stringsAsFactors = F)
@@ -558,7 +558,7 @@ lemmas <- tokens_replace(besede,
 
 Ustvarimo matriko s slovarskimi enotami (namesto pojavnic).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 matrika_lem = dfm(lemmas, tolower = FALSE) # za zdaj obdržimo velike začetnice
 
 # Odstranimo besede, ki jih v vsebinski analizi ne potrebujemo (stopwords)
@@ -569,7 +569,7 @@ matrika_lem
 
 ## Besedni oblaček
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 textplot_wordcloud(matrika_lem, comparison = TRUE, adjust = 0.3, color = c("darkblue","darkgreen"),
                    max_size = 4, min_size = 0.75, rotation = 0.5, min_count = 30, max_words = 250)
 
@@ -577,7 +577,7 @@ textplot_wordcloud(matrika_lem, comparison = TRUE, adjust = 0.3, color = c("dark
 
 Lepši oblaček (za obe besedili skupaj).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # install.packages("wordcloud2)
 matrika_lem_prozess = matrika_lem[1,]
 
@@ -589,7 +589,7 @@ wordcloud2(topfeat)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 matrika_lem_tom = matrika_lem[2,]
 
 set.seed(1321)
@@ -605,7 +605,7 @@ wordcloud2(topfeat2)
 Diagram prikazuje, kje v besedilih se pojavlja besedna oblika "frau". Podobno:
 Voyant Tools (MicroSearch).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kwic_frau = kwic(lemmas, pattern = "frau")
 textplot_xray(kwic_frau)
 
@@ -613,7 +613,7 @@ textplot_xray(kwic_frau)
 
 ## Slovarska raznolikost
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 textstat_lexdiv(matrika, measure = "all")
 
 ```
@@ -623,7 +623,7 @@ textstat_lexdiv(matrika, measure = "all")
 Ta postopek je bolj zanimiv, če želimo primerjati več besedil. Zato bomo dodali
 še Kafkino novelo.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # odpremo datoteko
 verwandl = readtext("data/books/verwandlung/verwandlung.txt", encoding = "UTF-8")
 # ustvarimo nov korpus
@@ -640,14 +640,14 @@ romane3_dfm = dfm(romane3_toks)
 Rezultat: Kafkina novela "Die Verwandlung" je Kafkinemu romanu "Der Prozess"
 nekoliko podobnejša kot Twainov roman "Tom Sawyer".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 textstat_simil(romane3_dfm, method = "cosine", margin = "documents")
 
 ```
 
 Podobnost oblik (features).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # compute some term similarities
 simil1 = textstat_simil(matrika, matrika[, c("Josef", "Tom", "Sawyer", "Huck", "Finn")], 
                          method = "cosine", margin = "features")
@@ -657,7 +657,7 @@ head(as.matrix(simil1), 10)
 
 Različnost besedil (Kaj je ta metoda upoštevala? Razliko v dolžini?):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # plot a dendrogram after converting the object into distances
 dist1 = textstat_dist(romane3_dfm, method = "euclidean", margin = "documents")
 plot(hclust(as.dist(dist1)))
@@ -671,7 +671,7 @@ najbolj značilni za neko besedilo? Program quanteda ima funkcijo
 *textstat_keyness()*: ciljno besedilo (target) primerjamo z referenčnim
 besedilom (reference).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 key_tom <- textstat_keyness(matrika, target = "tom.txt")
 key_tom %>% rmarkdown::paged_table()
 
@@ -680,7 +680,7 @@ key_prozess %>% rmarkdown::paged_table()
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 textplot_keyness(key_tom, key_tom$n_target == 1)
 textplot_keyness(key_tom, key_prozess$n_target == 1)
 textplot_keyness(key_tom)
@@ -697,7 +697,7 @@ Flesch-Indeks: Prozess ima nekoliko nižjo vrednost (52) kot Tom Sawyer (61), ka
 pomeni, da Prozess (zaradi daljših povedi in besed) težje beremo (razumemo), Tom
 Sawyer pa z večjo lahkoto.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 textstat_readability(romane, measure = c("Flesch", "Flesch.Kincaid", "FOG", "FOG.PSK", "FOG.NRI"))
 
 ```
@@ -708,7 +708,7 @@ Matriko sopojavljanja besednih oblik (FCM) pridobimo v dveh korakih: - najprej
 izberemo seznam izrazov (pattern) iz matrike (dfm), - potem določimo matriko
 sopojavljanja besednih oblik (fcm).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 dfm_tags <- dfm_select(matrika[2,], pattern = (c("tom", "huck", "*joe", "becky", "tante", "witwe",
                                                  "polly", "sid", "mary", "thatcher", "höhle", "herz",
                                                  "*schule", "katze", "geld", "zaun", "piraten",
@@ -718,7 +718,7 @@ head(toptag)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Construct feature-cooccurrence matrix (fcm) of tags
 fcm_tom <- fcm(matrika[2,]) # besedilo 2 je tom.txt
 head(fcm_tom)
@@ -739,7 +739,7 @@ Program udpipe je na voljo za številne jezike, tudi za nemščino in slovenšč
 Pred prvo uporabo moramo naložiti model za nemški jezik z interneta.
 V naslednjem koraku naložimo jezikovni model v pomnilnik: *udpipe_load_model()*
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(udpipe)
 destfile = "german-gsd-ud-2.5-191206.udpipe"
 
@@ -767,7 +767,7 @@ po več merilih.
 
 Udpipe prebere in označuje besedilo takole:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Na začetku je readtext prebral besedila, shranili smo jih v spremenljivki "txt".
 x <- udpipe_annotate(udmodel_de, x = txt$text, trace = TRUE)
 
@@ -780,13 +780,13 @@ x <- as.data.frame(x)
 
 Zgradba podatkovnega niza (structure of data frame):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 str(x)
 ```
 
 Podatkovni niz ima tako obliko:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 head(x, 10) %>% rmarkdown::paged_table()
 
 ```
@@ -796,7 +796,7 @@ head(x, 10) %>% rmarkdown::paged_table()
 Zdaj lahko začnemo poizvedovati po besednih oblikah, slovarskih enotah in
 slovničnih kategorijah.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (tabela = x %>% 
   group_by(doc_id) %>% 
   count(upos) %>% 
@@ -816,7 +816,7 @@ tabela %>%
 
 Izračun deležev v odstotkih:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (delezi = tabela %>% 
   mutate(prozent = n/sum(n)) %>% 
   pivot_wider(id_cols = upos, names_from = doc_id, values_from = n:prozent)
@@ -824,7 +824,7 @@ Izračun deležev v odstotkih:
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 delezi %>% 
   filter(upos %in% c("NOUN", "PRON"))
 
@@ -832,7 +832,7 @@ delezi %>%
 
 Ali se besedili razlikujeta glede na razmerje med samostalniki in zaimki?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # za hi kvadrat test potrebujemo le drugi in tretji stolpec
 nominal = delezi %>% 
   filter(upos %in% c("NOUN", "PRON")) %>% 
@@ -855,7 +855,7 @@ pretvorba bolj zapletena, saj moramo podobno kot v Excelu - najprej izračunati
 vsoto za vse besedne vrste, - potem odšteti število zaimkov oz. samostalnikov od
 vsote, - razliko pa upoštevati za tabelo 2x2 za hi kvadrat test.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (zaimki = x %>% 
   group_by(doc_id) %>% 
   count(upos) %>% 
@@ -889,7 +889,7 @@ vsote, - razliko pa upoštevati za tabelo 2x2 za hi kvadrat test.
 Hi kvadrat testa: - primerjava števila zaimkov nasproti ostalim besednim vrstam,
 - primerjava števila samostalnikov nasproti ostalim besednim vrstam.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # izločimo prvi stolpec [, -1], za hi kvadrat test potrebujemo le drugi in tretji stolpec
 chisq.test(zaimki[,-1])
 chisq.test(samostalniki[,-1])
@@ -906,7 +906,7 @@ Osnovna domneva je, da priredno zložene povedi (vsebujejo stavek, uveden s
 prirednim veznikom) lažje razumemo kot podredno zložene povedi (vsebujejo
 stavek, uveden s podrednim veznikom).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (vezniki = tabela %>% 
   filter(upos %in% c("CCONJ", "SCONJ")) %>% 
   mutate(prozent = n/sum(n)) %>% 
@@ -921,7 +921,7 @@ v romanu Tom Sawyer.
 Hi kvadrat test (upoštevane so le povedi, ki vsebujejo veznik) za preverjanje,
 ali je razlika dovolj velika, da bi bila nenaključna.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 chisq.test(vezniki[,c(2:3)])
 
 ```
@@ -930,7 +930,7 @@ Razlika med romanoma je statistično značilna.
 
 Če upoštevamo tudi vsote drugih besednih vrst (kot zgoraj):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (koord = tabela %>% 
   mutate(vsota = sum(n),
          no_cconj = vsota - n[upos == "CCONJ"],
@@ -955,7 +955,7 @@ Razlika med romanoma je statistično značilna.
 
 Hi kvadrat preizkus izkazuje razliko med romanoma
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 chisq.test(koord[,-1])
 chisq.test(subord[,-1])
 
@@ -969,7 +969,7 @@ Program udpipe je vsako besedno obliko dodelil slovarski enoti (lemma). Koliko
 koliko slovarskih enot je v besedilih? Katerim besednim vrstam najpogosteje
 pripadajo?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (tabela2 = x %>% 
   group_by(doc_id, upos) %>% 
     filter(!is.na(upos),
@@ -999,7 +999,7 @@ tabela2 %>%
 Katere besedne pogostnosti se vzporedno povečujejo ali zmanjšujejo (pairwise
 correlation) ? Podobno analizno orodje: Voyant Tools.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(widyr)
 
 # pairwise correlation
@@ -1021,7 +1021,7 @@ library(widyr)
 
 Tom Sawyer: Zaun.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 correlations %>%
   filter(item1 == "zaun") %>%
   mutate(item2 = fct_reorder(item2, correlation)) %>%
@@ -1035,7 +1035,7 @@ correlations %>%
 
 Prozess: Gericht.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 correlations %>%
   filter(item1 == "gericht") %>%
   mutate(item2 = fct_reorder(item2, correlation)) %>%
@@ -1058,7 +1058,7 @@ Uporaba nrc leksikona za nemščino (priložen programu syuzhet).
 
 Najprej besedilo s funkcijo *get_sentences()* razcepimo na povedi.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(syuzhet)
 
 tom_v = get_sentences(txt$text[2]) # izberemo drugo besedilo: tom.txt
@@ -1070,7 +1070,7 @@ head(tom_v[-1])
 Funkcija *get_sentiment()* dodeli besedam v povedih pozitivno (+1), negativno
 (-1) ali nevtralno (0) čustveno vrednost. Program te vrednosti sešteje.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tom_values <- get_sentiment(tom_v, method = "nrc", language = "german")
 length(tom_values)
 tom_values[100:110]
@@ -1081,7 +1081,7 @@ Povedi, čustvene vrednosti in dolžino povedi povežemo v podatkovni niz. To na
 olajšuje oceno, kako uspešna je bila uporaba sentimentnega slovarja v našem
 besedilu. Preimenovali bomo tudi nekaj stolpcev.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sentiment1 = cbind(tom_v, tom_values, ntoken(tom_v)) %>% 
   as.data.frame() %>% 
   rename(words = V3,
@@ -1097,7 +1097,7 @@ sentiment1 %>% rmarkdown::paged_table()
 
 Gornje postopke ponovimo za besedilo, ki ga želimo primerjati s prvim.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 prozess_v = get_sentences(txt$text[1]) # izberemo prvo besedilo: prozess.txt
 prozess_v = (prozess_v[-1]) # tako lahko izločimo prvo vrstico (uredniško pripombo)
 prozess_values <- get_sentiment(prozess_v, method = "nrc", language = "german")
@@ -1118,7 +1118,7 @@ S seštevanjem čustvenih vrednosti je mogoče oceniti, katero besedilo ima več
 pozitivno ocenjenih besed. V ta namen bomo združili podatkovna niza in uredili
 obliko stolpcev "words" in "values".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sentiment = rbind(sentiment1, sentiment2) %>% as_tibble() %>% 
   mutate(values = parse_number(values),
          words = parse_number(words)) %>%
@@ -1133,7 +1133,7 @@ nekoliko večje kot v romanu "Tom Sawyer". To je v nasprotju z našim
 pričakovanjem, saj Tom Sawyer vsebuje kar nekaj vedrih zgodb, je pa res, da so
 njegove pustolovščine pogosto tudi nevarne ali strašljive.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sentiment %>% 
   group_by(doc_id) %>% 
   summarise(polarnost = mean(values))
@@ -1143,7 +1143,7 @@ sentiment %>%
 Poskusimo drugače: pozitivne, nevtralne in negativne vrednosti obravnajmo ločeno
 in upoštevajmo tudi dolžino povedi.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sentiment1 = sentiment %>% 
   group_by(doc_id) %>% 
   mutate(positive = ifelse(values > 0, abs(values), 0),
@@ -1160,7 +1160,7 @@ Ta rezultat je skladnejši z našim pričakovanjem.
 
 Poglejmo še nekaj povedi, ki so bile ocenjene negativno:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sentiment1 %>% 
   filter(negative > 0) %>% 
   rmarkdown::paged_table()
@@ -1168,7 +1168,7 @@ sentiment1 %>%
 
 ### Različica 2
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tom_v = get_sentences(txt$text[2])
 tom_nrc_values = get_nrc_sentiment(tom_v)
 tom_joy_items = which(tom_nrc_values$joy > 0)
@@ -1176,7 +1176,7 @@ head(tom_v[tom_joy_items], 4)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nrc_sentiment = as.data.frame(cbind(tom_v, tom_nrc_values))
 nrc_sentiment %>% rmarkdown::paged_table()
 
@@ -1187,7 +1187,7 @@ nrc_sentiment %>% rmarkdown::paged_table()
 Drugi sentimentni slovarji z medmrežja: npr. BAWLR lahko uporabljamo kot
 sentimentni slovar.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # This lexicons contains values of Emotional valence and arousal ranging from 1 to 5.
 # But this extended version contains also binary Emo_Val values (1, -1).
 bawlr <- read.delim2("data/BAWLR_utf8.txt", sep = "\t", dec = ",", fileEncoding = "UTF-8", 
@@ -1203,7 +1203,7 @@ bawlr %>% rmarkdown::paged_table()
 
 Sestavimo dva seznama:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 positive.words = bawlr %>% 
   mutate(WORD_LOWER = as.character(WORD_LOWER)) %>% 
   dplyr::select(EmoVal, WORD_LOWER) %>% 
@@ -1222,7 +1222,7 @@ negative.words = bawlr %>%
 
 Ustvarimo quanteda slovar *dictionary()*:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 bawlr_dict = dictionary(list(positive = list(positive.words), negative = list(negative.words)))
 
 ```
@@ -1230,7 +1230,7 @@ bawlr_dict = dictionary(list(positive = list(positive.words), negative = list(ne
 Uporabljamo matriko (dfm) s slovarskimi enotami (lemma), saj slovar bawlr_dict
 vsebujejo le osnovno obliko slovarskih enot.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 matrika_lemmas = dfm(matrika_lem, tolower = TRUE)
 
 result = matrika_lemmas %>% 
@@ -1244,7 +1244,7 @@ result
 Dodamo lahko skupno dolžino besed, če želimo normalizirati rezultat z ozirom na
 dolžino besedil.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 result = result %>% mutate(length=ntoken(matrika_lemmas))
 result
 
@@ -1258,7 +1258,7 @@ dolžino besedil,
 Izračunamo lahko tudi stopnjo subjektivnosti, tj. koliko čustvenih vrednosti je
 skupno izraženih:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 result = result %>% mutate(sentiment1=(positive - negative) / (positive + negative))
 result = result %>% mutate(sentiment2=(positive - negative) / length)
 result = result %>% mutate(subjektivnost=(positive + negative) / length)
@@ -1273,7 +1273,7 @@ vrednosti besed v sentimentnem slovarju.
 
 Prvi korak je ustvarjanje tcorpusa.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(corpustools)
 t = create_tcorpus(txt, doc_column="doc_id")
 
@@ -1281,7 +1281,7 @@ t = create_tcorpus(txt, doc_column="doc_id")
 
 V drugem koraku sledi iskanje po slovarju (tcorpus):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 t$code_dictionary(bawlr_dict, column = 'bawlr')
 t$set('sentiment', 1, subset = bawlr %in% c('positive','neg_negative'))
 t$set('sentiment', -1, subset = bawlr %in% c('negative','neg_positive'))
@@ -1290,7 +1290,7 @@ t$set('sentiment', -1, subset = bawlr %in% c('negative','neg_positive'))
 
 Prikaz barvno označenih besedil v oknu "Viewer":
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 browse_texts(t, scale='sentiment')
 
 ```
@@ -1298,7 +1298,7 @@ browse_texts(t, scale='sentiment')
 Prikaz barvno označenih besedil v spletnem brskalniku in shranjevanje v obliki
 html datoteke:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 browse_texts(t, scale='sentiment', filename = "sentiment_prozess_tom.html", 
              header = "Sentiment in Kafkas Prozess und Twains Tom Sawyer")
 

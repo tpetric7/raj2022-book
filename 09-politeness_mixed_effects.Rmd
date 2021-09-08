@@ -4,7 +4,7 @@ Politeness data (B. Winter tutorial)
 
 Programme laden
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 
 ```
@@ -12,7 +12,7 @@ library(tidyverse)
 
 Datei laden
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # LOAD
 rm(list=ls(all=TRUE)) # clear memory
 polite <- read.csv("data/politeness_data.csv", dec=".")
@@ -21,13 +21,13 @@ polite <- read.csv("data/politeness_data.csv", dec=".")
 
 Ansicht der Datenlage
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 head(polite)
 ```
 
 Variablen festlegen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 polite$frequency = as.numeric(polite$frequency)
 polite$scenario = as.factor(polite$scenario)
 polite$subject = as.factor(polite$subject)
@@ -38,7 +38,7 @@ polite$attitude = as.factor(polite$attitude)
 
 Kontraste für den statistischen Test setzen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # In this session we use contr. sum contrasts
 options(contrasts=c('contr.sum', 'contr.poly'))
 options("contrasts")
@@ -46,7 +46,7 @@ options("contrasts")
 
 Kontraste zurücksetzen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # To reset default settings run: 
 options(contrasts=c('contr.treatment', 'contr.poly')) 
 # (all afex functions should be unaffected by this)
@@ -58,14 +58,14 @@ options(contrasts=c('contr.treatment', 'contr.poly'))
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 boxplot(frequency ~ attitude*gender, 
         col=c("red","green"), data = polite)
 ```
 
 Bild speichern
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # 1. Open jpeg file
 jpeg("pictures/politeness_boxplot.jpg", 
      width = 840, height = 535)
@@ -76,7 +76,7 @@ boxplot(frequency ~ attitude*gender,
 dev.off()
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Open a pdf file
 pdf("pictures/politeness_boxplot.pdf") 
 # 2. Create a plot
@@ -87,47 +87,47 @@ dev.off()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Inspect relationships between pairs of variables
 # library(MASS)
 ```
 
 Inspect relationships between pairs of variables
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(psych)
 pairs.panels(polite[c(2,4,5)])
 ```
 
 Ordinary Least Squares Regression (OLS)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # model 1
 m <- lm(frequency ~ gender + attitude + subject + scenario, data = polite)
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # model 2
 m <- lm(frequency ~ gender + attitude, data=polite)
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 allEffects(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Save plot of the effects to disk
 # 1. Open jpeg file
 jpeg("pictures/politeness_lineplot.jpg", 
@@ -139,26 +139,26 @@ dev.off()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # model 3 (with interaction)
 m <- lm(frequency ~ gender*attitude, data=polite)
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 allEffects(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-3.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Save plot of the effects to disk
 # 1. Open jpeg file
 jpeg("pictures/politeness_effects.jpg", 
@@ -170,7 +170,7 @@ dev.off()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Open a pdf file
 pdf("pictures/politeness_effects.pdf") 
 # 2. Create a plot
@@ -180,7 +180,7 @@ dev.off()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # plot diagnostic diagrams
 par(mfrow = c(3,2))
 plot(m, which = 1) # variance of residuals vs. fitted values?
@@ -195,14 +195,14 @@ par(mfrow = c(1,1))
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-4.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Change of estimates if one datapoint is removed from the model
 d <- dfbetas(m)
 head(d) %>% as.data.frame %>% rmarkdown::paged_table()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # plot the dfbetas (are there any outliers or data points with high influence?)
 par(mfrow = c(1,3))
 plot(d[,1], col = "orange")
@@ -222,7 +222,7 @@ library(afex)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # random intercepts model
 m <- lmer(frequency ~ gender + 
             (1|subject) + (1|scenario), 
@@ -232,7 +232,7 @@ summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender + attitude + 
           (1|subject) + (1|scenario), 
           REML=F, data=polite)
@@ -241,7 +241,7 @@ summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender*attitude + 
             (1|subject) + (1|scenario), 
           REML=F, data=polite)
@@ -251,12 +251,12 @@ summary(m)
 
 Vergleich der Modelle:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 anova(m0,m1,m2)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # politeness affected pitch (χ2(1)=11.62, p=0.00065), 
 # lowering it by about 19.7 Hz ± 5.6 (standard errors) 
 
@@ -267,78 +267,78 @@ m <- lmer(frequency ~ gender +
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m00 <- m
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender + attitude + 
           (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m01 <- m
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender + attitude + 
             (attitude + 1|subject), 
           REML=F, data=polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 allEffects(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-6.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender + attitude + 
             (attitude + 1|scenario), 
           REML=F, data=polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 allEffects(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-7.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m <- lmer(frequency ~ gender*attitude + 
             (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m02 <- m
 summary(m)
 ```
 
 Vergleich der Modelle:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 anova(m00,m01,m02)
 ```
 
@@ -349,12 +349,12 @@ s <- step(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 s
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(LMERConvenienceFunctions)
 
 m <- lmer(frequency ~ gender + attitude + 
@@ -363,40 +363,40 @@ m <- lmer(frequency ~ gender + attitude +
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m01 <- m
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Check model asumptions
 mcp.fnc(m)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-8.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 fligner.test(frequency ~ attitude, polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 fligner.test(frequency ~ gender, polite)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 shapiro.test(polite$frequency)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 which(is.na(polite$frequency)) 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # delete NA from data frame in row 39
 polite1 <- polite[-39,]
 
@@ -405,12 +405,12 @@ freqout <- romr.fnc(m, polite1, trim=2.5)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 freqout$n.removed
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 freqout$percent.removed
 ```
 
@@ -421,7 +421,7 @@ attach(freqout)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # update model
 m <- lmer(frequency ~ gender + attitude + 
             (attitude + 1|subject) + (attitude + 1|scenario), 
@@ -429,30 +429,30 @@ m <- lmer(frequency ~ gender + attitude +
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 m01 <- m
 summary(m)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Re-Check model asumptions
 mcp.fnc(m)
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-9.png)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 fligner.test(frequency ~ attitude, freqout)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 fligner.test(frequency ~ gender, freqout)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 shapiro.test(freqout$frequency)
 ```
 

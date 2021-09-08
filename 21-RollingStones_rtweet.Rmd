@@ -135,7 +135,7 @@ write_rds(tweets_rollingstones, "data/tweets_rollingstones.rds")
 
 Am nächsten Tag fahren wir mit unsere Analyse fort und laden unseren Datensatz.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones <- read_rds("data/tweets_rollingstones.rds")
 
 ```
@@ -145,14 +145,14 @@ tweets_rollingstones <- read_rds("data/tweets_rollingstones.rds")
 
 Unter den Twitternutzern, die Tweets anlässlich des Todes von Charlie Watts, dem Drummer der Rolling Stones, sind einige uns bekannte Namen zu finden, z.B. der slowenische Radiosender "Val202". Die Schreiber der Tweets findet man in der Tabellenspalte `screen_name`.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
   filter(str_detect(screen_name, "Val202"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_sl <- subset(tweets_rollingstones, lang == "sl")
 ## plot multiple time series by first grouping the data by screen name
 tweets_rollingstones_sl %>%
@@ -167,7 +167,7 @@ tweets_rollingstones_sl %>%
 
 Tweets der deutschen Zeitung "FAZ" (Frankfurter Allgemeine Zeitung):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
   filter(str_detect(screen_name, "faznet"))
 
@@ -175,14 +175,14 @@ tweets_rollingstones %>%
 
 Der Tagesspiegel:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
   filter(str_detect(screen_name, "Tagesspiegel"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_de <- subset(tweets_rollingstones, lang == "de")
 ## plot multiple time series by first grouping the data by screen name
 tweets_rollingstones_de %>%
@@ -201,7 +201,7 @@ tweets_rollingstones_de %>%
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_en <- subset(tweets_rollingstones, lang == "en")
 ## plot multiple time series by first grouping the data by screen name
 tweets_rollingstones_en %>%
@@ -224,7 +224,7 @@ tweets_rollingstones_en %>%
 
 Die Anzahl der veröffentlichten Tweets zum Thema können wir in einem Diagramm chronologisch darstellen. Im folgenden Diagramm bildet die Anzahl der Tweets innerhalb von drei Stunden jeweils einen Datenpunkt. Zunächst bilden wir die englischsprachigen Tweets ab.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## plot time series of tweets
 tweets_rollingstones_en = subset(tweets_rollingstones, lang == "en")
 p1 <- ts_plot(tweets_rollingstones_en, "3 hours", color = "red") +
@@ -237,13 +237,16 @@ p1 <- ts_plot(tweets_rollingstones_en, "3 hours", color = "red") +
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 
+```
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(p1)
 ```
 
 Die deutschsprachigen Tweets:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## plot time series of tweets
 tweets_rollingstones_de = subset(tweets_rollingstones, lang == "de")
 p2 <- ts_plot(tweets_rollingstones_de,
@@ -258,9 +261,12 @@ p2 <- ts_plot(tweets_rollingstones_de,
     caption = "\nSource: Data collected from Twitter's REST API via rtweet"
   )
 
+```
+
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(p2)
-
 ```
 
 In beiden Fällen flacht die Verlaufskurve schnell ab.
@@ -270,7 +276,7 @@ In beiden Fällen flacht die Verlaufskurve schnell ab.
 
 Aus unserem Datensatz können wir mit `users_data()` auch Informationen über die Twitter-Nutzer herausholen, die einen Tweet zum Thema #RollingStones (in den vergangenen 6-9 Tagen) verfasst hat, z.B. wie viele Follower sie haben, wie viele Freunde, wie viele Tweets sie verfasst haben, Beschreibungen über sich selbst u.a.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
   users_data() %>% 
   rmarkdown::paged_table()
@@ -290,21 +296,21 @@ Aus welchen Ländern stammen die englischsprachigen Tweets?
 
 In der Tabellenspalte `country` finden wir leider in den meisten Fällen keine Angabe (NA), aber die am häufigsten angezeigten Staaten sind die USA, Großbritannien, Ausralien, Kanada und Irland, in denen Englisch Amtssprache ist.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_en %>% 
   count(country, sort = TRUE)
 ```
 
 Wählen wir die Tabellenspalte `location` als Ausgangspunkt, dann erhalten wir recht chaotische Sammlung von Stadt-, Staats- und anderen geographischen Bezeichnungen, die man nach vorheriger Bereinigung nutzen könnte, z.B. kartographisch.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_en %>% 
   count(location, sort = TRUE)
 ```
 
 Für eine graphische Darstellung wählen wir an dieser Stelle die (unkomplizierte) country-Spalte.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(lubridate)
 
 p3 <- tweets_rollingstones_en %>% 
@@ -318,6 +324,9 @@ p3 <- tweets_rollingstones_en %>%
   ggplot(aes(date, n, fill = country)) +
   geom_col()
 
+```
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(p3)
 
@@ -325,7 +334,7 @@ ggplotly(p3)
 
 Die graphische Darstellung für die deutschen Tweets nach Staaten:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 p4 <- tweets_rollingstones_de %>% 
   select(created_at, country) %>% 
   mutate(date = lubridate::as_date(created_at)) %>% 
@@ -337,13 +346,16 @@ p4 <- tweets_rollingstones_de %>%
   ggplot(aes(date, n, fill = country)) +
   geom_col()
 
+```
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(p4)
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggthemes)
 
 m1 <- tweets_rollingstones %>% 
@@ -367,21 +379,23 @@ m1 <- tweets_rollingstones %>%
   labs(title = "Tweets around the World after Death of Charlie Watts",
        color = "Country")
 
+```
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(m1)
 ```
 
-
 Es gibt mehrere Datensätze, in denen die geographische Lage von Städten (also Längen- und Breitengrad) gespeichert ist. Das `rtweet`-Paket verfügt über einen kleineren Datensatz, erreichbar durch:
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 rtweet:::citycoords
 ```
 
 Einen wesentlich umfangreicheren Datensatz findet man auf der Webseite von [simplempas](https://simplemaps.com/data/world-cities), neben den Angaben zur geographischen Lage und Staatszugehörigkeit auch die Einwohnerzahl.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 world_cities <- read_csv("data/worldcities.csv")
 
 world_cities <- world_cities %>% 
@@ -394,7 +408,7 @@ Die letztere Datensammlung fügen wir mit der Funktion `left_join()` unserem Twi
 
 Im Twitter-Datensatz nehmen wir außerdem mehrere *Korrekturen* vor, und zwar mit den `tidyverse`-Funktionen `separate()` zur Trennung von Tabellenspalten, `str_replace()` zum Austausch von Angaben in den Tabellenspalten, `str_to_sentence()` zur Vereinheitlichung der Schreibweise sowie `ifelse()` und `str_detect()`, um Bezeichnungen unter passenden Bedingungen in einer Tabellenspalte ausfindig zu machen und zu ersetzen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_cities <- tweets_rollingstones %>% 
   separate(location, 
            into = c("city", "state_country"), 
@@ -486,7 +500,7 @@ tweets_rollingstones_cities <- tweets_rollingstones %>%
 
 Der korrigierte und mit `left_join()` erweiterte Datensatz:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_cities_joined <- tweets_rollingstones_cities %>% 
   left_join(world_cities, by = c("city", "state_country"))
 
@@ -497,7 +511,7 @@ tweets_rollingstones_cities_joined %>%
 
 ## Speichern des erweiterten Datensatzes
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write_rds(tweets_rollingstones_cities_joined,
           "data/tweets_rollingstones_cities_joined.rds")
 library(writexl)
@@ -509,7 +523,7 @@ write_xlsx(tweets_rollingstones_cities_joined,
 
 Am nächsten Tag brauchen wir nicht all die oben durchgeführten Schritte noch einmal durchzuführen, sondern hier an dieser Stelle den relevanten Datensatz laden und weitermachen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_cities_joined <- 
   read_rds("data/tweets_rollingstones_cities_joined.rds")
 
@@ -517,7 +531,7 @@ tweets_rollingstones_cities_joined <-
 
 Eine einfache Weltkarte aus dem `ggthemes`-Paket, auf der die einzelnen Twitterorte als farbige Punkte eingetragen sind.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggthemes)
 
 m2 <- tweets_rollingstones_cities_joined %>% 
@@ -544,6 +558,9 @@ m2 <- tweets_rollingstones_cities_joined %>%
 ggsave("pictures/worldmap_tweets_rollingstones.png",
        width = 12, height = 9)
 
+```
+
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 ggplotly(m2)
 
@@ -551,7 +568,7 @@ ggplotly(m2)
 
 Eine detailliertere und vergrößerbare Weltkarte (Paket `leaflet`) mit den Twitterorten aus unserem Twitter-Datensatz über den Drummer *Charlie Watts* und die *Rolling Stones*.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(leaflet)
 library(glue)
 library(htmlwidgets)
@@ -559,7 +576,7 @@ library(DT)
 
 template <- "<>{ city }</p><p>{ state_country }</p>"
 
-tweets_rollingstones_cities_joined %>%
+tweet_map <- tweets_rollingstones_cities_joined %>%
   gather(key, value,
          city) %>%
   mutate(key = str_to_title(str_replace_all(key, "_", " ")),
@@ -581,13 +598,17 @@ tweets_rollingstones_cities_joined %>%
   addMeasure()
 ```
 
+```{r message=FALSE, warning=FALSE}
+tweet_map
+```
+
 ## Zeitlicher geographischer Verlauf
 
 Mit dem Paket gganimate sind  auch Animationen möglich, die die Entwicklung eines Prozesses graphisch darstellen. In diesem Fall soll gezeigt werden, wann und wo auf der Welt Tweets nach dem Tod von Charlie Watts verfasst wurden. Nach den oben durchgeführten Korrekturen und Erweiterungen verfügen wir zumindest über fast 1000 Tweets mit ausgewiesenen Twitterorten (d.h. mit den Koordinaaten ihrer geographischen Lage), was für eine Demonstration der Animation ausreicht.
 
 Im ersten Schritt leiten wir mit Hilfe von `mutate()` aus der Tabellenspalte "created at" eine Datumsspalte (*date_time*) ab und fügen sie unserem Datensatz hinzu. Im folgenden Chunk haben wir noch zwei weitere Datumsspalten als Varianten geschaffen, die wir bei Bedarf verwenden könnten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_rollingstones_time <- tweets_rollingstones_cities_joined %>% 
   mutate(date_time = lubridate::as_datetime(created_at)) %>% 
   mutate(dates = lubridate::as_date(created_at)) %>% 
@@ -652,7 +673,7 @@ anim_save("pictures/rolling_stones_tweets_animated.png")
 
 Ein spezielles Paket (`ggpage`), mit dem wir uns eine grobe graphische Übersicht über bestimmte quantifizierte Eigenschaften von Texten verschaffen können, und zwar über die Länge von Wörtern und ihre Textstelle. Diese graphische Darstellung kann insbesondere bei kürzeren Texten effektvoll eingesetzt werden. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggpage)
 tweets_rollingstones_de %>%
   ggpage_build() %>%
@@ -676,7 +697,7 @@ Zuerst bereiten wir eine Stoppwordliste für die deutsche Sprache vor. Dann wäh
 
 Wörter in deutschen Tweets:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 
 stoplist_de <- as_tibble(quanteda::stopwords("german")) %>% 
@@ -692,14 +713,14 @@ tw_rs_de_words %>% rmarkdown::paged_table()
 
 Wortwolke aus deutschen Tweets:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(wordcloud2)
 wordcloud2(tw_rs_de_words)
 ```
 
 Englische Tweets:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 stoplist_en <- stop_words
 
 tw_rs_en_words <- tweets_rollingstones_en %>% 
@@ -712,9 +733,10 @@ tw_rs_en_words %>% rmarkdown::paged_table()
 
 Die am häufigsten verwendeten Schlagwörter (topfeatures) sind in beiden Sprachen annähernd gleich.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(wordcloud2)
-wordcloud2(tw_rs_en_words)
+w2 <- wordcloud2(tw_rs_en_words)
+w2
 ```
 
 
@@ -724,7 +746,7 @@ Welche Wörter erscheinen häufiger gemeinsam in Tweets? Welche Wortpaare (also 
 
 Arbeitet man mit `tidyverse`-Funktionen, kann man das Programm `widyr` verwenden. Im `quanteda.textstats`-Programm gibt es die Funktion `textstat_collocations()`. Auch das Programm `udpipe` hat Funktionen zur Ermittlung von ngrams, Kollokationen und Netzwerk-Diagramme.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(widyr)
 
 # remove punctuation, convert to lowercase, add id for each tweet!
@@ -740,7 +762,7 @@ tweets_rollingstones_paired_words_de %>%
 
 Wir verwenden wiederum die Stoppwortliste, um Funktionswörter herauszufiltern, so dass möglichst nur Kollokationen mit Inhaltswörtern übrig bleiben.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyr)
 
 # Wörter in getrennten Tabllenspalten
@@ -768,7 +790,7 @@ Aus der vorher erstellten Stoppwortliste haben wir auch die URL-Bestandteile (ht
 
 Oben wurde schon erwähnt, dass man die URL mit `tidytext`- oder `quanteda`-Funktionen bequem entfernen kann. 
 
-Eine zwar unübersichtliche, aber sehr ökonomische Methode ist die Verwendung eines regulären Ausdrucks (`Regex`), um die gesamte URL (und nicht nur die beiden oben angeführten Bestandteile) aus den Tweets zu entfernen, z.B. diese:
+Eine zwar unübersichtliche, aber ökonomische Methode ist die Verwendung eines regulären Ausdrucks (`Regex`), um die gesamte URL (und nicht nur die beiden oben angeführten Bestandteile) aus den Tweets zu entfernen, z.B. diese mit der Funktion `gsub()`, die nach einem vorgegebenen Muster (`pattern`) den Inhalt eines Textes oder einer Tabellenspalte durch eine (leere) Zeichenfolge ersetzt (`replacement`). 
 
 ```{r eval=FALSE, include=TRUE}
 # Remove all url’s
@@ -781,7 +803,7 @@ gsub(pattern = "\\s?(f|ht)(tp)(s?)(://)([^\\.]*)[\\.|/](\\S*)",
 
 Das Netzwerk-Diagramm zeigt, welche Wörter (vor allem Inhaltswörter) in den deutschen Tweets häufiger miteinander auftreten. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(igraph)
 library(ggraph)
 
@@ -820,7 +842,7 @@ v_en <- get_sentences(tweets_rollingstones_en$text)
 
 Dann wird mit der Funktion `get_sentiment()` der Sentiment-Wert für jede einzelne Äußerung (z.B. die Summe der einzelnen Werte für die Wörter in einer Äußerung) ermittelt, und zwar auf der Grundlage von Wortlisten, in denen Wörtern emotionale Zahlenwerte zugeordnet wurden (d.h. positive oder negative Werte).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Then we calculate a sentiment value for each sentence.
 rs_sentiment <- get_sentiment(v_en)
 head(rs_sentiment)
@@ -829,7 +851,7 @@ head(rs_sentiment)
 
 Mit der Funktion `get_nrc_sentiment()` können außer den polarisierten Werten (positiv vs. negativ) auch verschiedene Emtionen wie etwa Freude (joy), Trauer (sadness) und einige weitere ermittelt werden, und zwar wieder auf der Grundlage von Wortlisten, die von Versuchspersonen emotional bewertete Wörter enthalten.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 rs_nrc_sentiment <- get_nrc_sentiment(v_en)
 joy_items <- which(rs_nrc_sentiment$joy > 0)
 head(v_en[joy_items], 4)
@@ -838,13 +860,13 @@ head(v_en[joy_items], 4)
 
 Hier ist ein Ausschnitt aus solch einer Tabelle, die wir nach der Ermittlung der emotionalen Werte von Wörtern erhalten:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 rs_nrc_sentiment[1:10, 1:10] %>% rmarkdown::paged_table()
 ```
 
 Die *emotionale Valenz* (d.h. wie positiv oder negativ die Bedeutung eines Wortes bewertet wird):
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 valence_rs <- (rs_nrc_sentiment[, 9]*-1) + rs_nrc_sentiment[, 10]
 head(valence_rs)
 
@@ -852,7 +874,7 @@ head(valence_rs)
 
 In den englischen Tweets wurden Wörter gefunden, die häufig Emotionen wie Freude, Zuversicht, Erwartung, Trauer ausdrücken. Das Ergebnis können wir wenigen Zeilen graphisch darstellen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 barplot(
   sort(colSums(prop.table(rs_nrc_sentiment[, 1:8]))), 
   horiz = TRUE, cex.names = 0.7, las = 1, col = 9:2,
@@ -863,7 +885,7 @@ barplot(
 
 Hier ist eine ästhetisch etwas ansprechendere, aber auch erweiterbare graphische Darstellung mit `ggplot()`:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(scales)
 rs_nrc_sentiment[,1:8] %>% 
   summarise(across(everything(), ~ mean(.))) %>% 
@@ -884,7 +906,7 @@ Zum Vergleich die deutschen Tweets:
 
 Zunächst wiederum die Umwandlung in Äußerungen, gefolgt von der Ermittlung der emtionalen Werte von Wörtern.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 v_de <- get_sentences(tweets_rollingstones_de$text)
 rs_nrc_sentiment_de <- get_nrc_sentiment(v_de, language = "german")
 joy_items_de <- which(rs_nrc_sentiment_de$joy > 0)
@@ -893,7 +915,7 @@ head(v_de[joy_items_de], 4)
 
 Die graphische Darstellung der emotionalen Werte in deutschen Tweets:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 rs_nrc_sentiment_de[,1:8] %>% 
   summarise(across(everything(), ~ mean(.))) %>% 
   pivot_longer(anger:trust, 

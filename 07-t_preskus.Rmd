@@ -1,16 +1,20 @@
-
 ## Intervallskalierte Größen
 
-Statistische Tests: t-Test, lineare Regression, lineare Regression mit gemischten Effekten.
+Statistische Tests:
+
+-   t-Test,
+
+-   lineare Regression,
+
+-   lineare Regression mit gemischten Effekten.
 
 ### Wirkung von Unterrichtsmethoden
 
-Welche Wirkung haben zwei verschiedene Unterrichtsmethoden auf die Ergebnisse von Sprachtests?
-Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?
+Welche Wirkung haben zwei verschiedene Unterrichtsmethoden auf die Ergebnisse von Sprachtests? Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?
 
 #### Data
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Two teaching methods and the scores in a language test.
 metode <- read.csv("data/ttest2a.csv", dec=",")
 attach(metode)
@@ -22,19 +26,19 @@ head(metode)
 
 Average scores of students
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tapply(Resultat, list(Methode), mean)
 ```
 
 Standard deviations of averages
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tapply(Resultat, list(Methode), sd)
 ```
 
 Graphische Darstellung
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 barplot(tapply(Resultat, list(Methode), mean), col=c(3:2))
 ```
 
@@ -44,7 +48,7 @@ barplot(tapply(Resultat, list(Methode), mean), col=c(3:2))
 
 **t test**
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Do the means of the two samples differ significantly?
 # Hypothesis H0: they don't (if p > 0.05.
 # Hypothesis H1: they do (if p < 0.05.
@@ -55,7 +59,7 @@ t.test(Resultat ~ Methode, data=metode, paired = F, var.equal = T)
 
 Since we deal with only one predictor ("Methode"), the result of the linear regression will be the same as the result of the t test above.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Check the same hypotheses with the linear regression method
 # Since there is only one predictor ("Methode"), we obtain the same result as with the t-test.
 # Since p > 0.05, the score means of the two methods do not differ significantly.
@@ -63,19 +67,17 @@ m <- lm(Resultat ~ Methode, data=metode)
 summary(m)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 ```
 
 Predicted scores
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 allEffects(m)
 ```
 
-```{r}
-plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
+```{r message=FALSE, warning=FALSE}
+plot(allEffects(m), multiline=TRUE, grid=TRUE, 
+     rug=FALSE, as.table=TRUE)
 ```
-
-
-

@@ -2,7 +2,7 @@
 
 Ein brisantes politisches Thema. Was passiert in Afghanistan nach dem Abzug der NATO-Truppen und der Machtübernahme der Taliban?
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tidytext)
 library(rtweet)
@@ -96,7 +96,7 @@ write_rds(tweets_afghanistan, "data/tweets_afghanistan.rds")
 
 ## Load tweets
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan <- read_rds("data/tweets_afghanistan.rds")
 
 tweets_afghanistan_de <- subset(tweets_afghanistan, lang = "de")
@@ -108,42 +108,42 @@ tweets_afghanistan_sl <- subset(tweets_afghanistan, lang = "sl")
 
 ## Who wrote about
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter(str_detect(screen_name, "spiegel"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter(str_detect(screen_name, "Tonin"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter(str_detect(screen_name, "SpletnaMladina"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter(str_detect(screen_name, "Dnevnik"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter((screen_name == "Delo"))
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweets_afghanistan %>% 
   filter(str_detect(screen_name, "Demokracija"))
 
@@ -151,7 +151,7 @@ tweets_afghanistan %>%
 
 ## Timeplot
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## plot time series of tweets
 p1 <- ts_plot(tweets_afghanistan, "3 hours", color = "red") +
   ggplot2::theme_minimal() +
@@ -168,7 +168,7 @@ ggplotly(p1)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## plot time series of tweets
 p2 <- ts_plot(tweets_afghanistan_de, "3 hours", 
               color = "darkgreen") +
@@ -187,7 +187,7 @@ ggplotly(p2)
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 ## plot time series of tweets
 p3 <- ts_plot(tweets_afghanistan_sl, "3 hours", 
               color = "darkgreen") +

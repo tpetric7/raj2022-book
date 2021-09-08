@@ -16,4 +16,6 @@ AutoAppendNewline: Yes
 
 BuildType: Website
 
+MarkdownWrap: Sentence
+
 SpellingDictionary: de_DE_neu

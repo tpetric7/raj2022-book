@@ -169,11 +169,11 @@ vokale$vowel_ipa <- ipa_list2[as.numeric(factor(vokale$vowel))]
 df$vowel_ipa <- ipa_list3[as.numeric(factor(df$vowel))]
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vergleich %>% pull(as.numeric(factor(vowel_ipa)))
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 vergleich %>% pull(vowel_ipa)
 ```
 

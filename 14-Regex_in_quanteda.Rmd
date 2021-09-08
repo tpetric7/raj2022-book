@@ -4,7 +4,7 @@
 
 Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(readtext)
 library(quanteda)
 library(quanteda.textstats)
@@ -18,7 +18,7 @@ library(tidytext)
 
 ## Preberemo besedila
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 txt = readtext("data/books/*.txt", encoding = "UTF-8")
 txt
 
@@ -28,7 +28,7 @@ txt
 
 Ustvarimo korpus ali jezikovno gradivo. Ukaz v programu "quanteda" je corpus().
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 romane = corpus(txt)
 
 ```
@@ -36,7 +36,7 @@ romane = corpus(txt)
 
 ## Tokenizacija
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 woerter = tokens(romane)
 
 ```
@@ -50,7 +50,7 @@ Možno je iskati posamezne besede, besedne zveze, uporabljamo pa lahko tudi nado
 
 ### Frau, Mann
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kwic(woerter, pattern = c("Frau", "Herr"))
 
 ```
@@ -59,7 +59,7 @@ Konkordanco bomo pretvorili v podatkovno zbirko, tj. *data.frame* ali *tibble()*
 
 *kwic()* ima več možnosti, npr. "case_insensitive = FALSE" razlikuje med velikimi in malimi črkami. Privzeta vrednost je "TRUE", tj. da tega ne razlikuje (tako kot Excel).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca = kwic(woerter, pattern = c("Frau", "Herr"), case_insensitive = FALSE) %>% 
   as_tibble()
 )
@@ -68,7 +68,7 @@ Konkordanco bomo pretvorili v podatkovno zbirko, tj. *data.frame* ali *tibble()*
 
 Z ukazom *count()* lahko preštejemo, koliko pojavnic je *kwic()* našel v jezikovnem gradivu.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 konkordanca %>% 
   count(keyword)
 
@@ -78,7 +78,7 @@ konkordanca %>%
 
 Poiskati želimo besede s pripono "-in" za samostalnike, ki označujejo ženska osebna imena (npr. Ärztin, Köchin, ...).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca2 <- kwic(woerter, pattern = c("*in"), case_insensitive = FALSE) %>% 
   as_tibble()
 )
@@ -110,7 +110,7 @@ $   na koncu vrstice
 +   en ali več znakov
 .   poljuben znak (razen: nova vrstica \n)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (konkordanca2 = as_tibble(kwic(woerter, pattern = "\\b[A-Z].+[^ae]in\\b",
                       valuetype = "regex", case_insensitive = FALSE)) %>% 
     filter(keyword != "Immerhin", 
@@ -139,7 +139,7 @@ Glede na to, da se pripona -er uporablja v mnoge druge namene, bo najbolje, če
 - najprej odstranimo funkcijske in druge pogoste besede (seznam stopwords)
 - in šele potem poizvedujemo s funkcijo kwic()
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 wortformen = tokens_select(woerter, pattern = c(stopwords("de"), "bisher","immer"), 
                            selection = "remove")
 
@@ -147,7 +147,7 @@ wortformen = tokens_select(woerter, pattern = c(stopwords("de"), "bisher","immer
 
 Približno 500 besednih oblik manj, kot če ne bi izločili "stopwords".
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (nomen_er = as_tibble(kwic(wortformen, pattern = "\\b[A-Z].+er\\b",
                       valuetype = "regex", case_insensitive = FALSE))
 )
@@ -156,7 +156,7 @@ Približno 500 besednih oblik manj, kot če ne bi izločili "stopwords".
 
 462 je besednih oblik, ki se konča na -er, vendar med njimi niso samo samostalniki, ki bi se nanašali na osebe moškega spola.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nomen_er %>% 
   count(keyword, sort = T)
 
@@ -164,7 +164,7 @@ nomen_er %>%
 
 Še vedno je potrebno posamično filtriranje: bodisi zaradi pomena bodisi zaradi besedotvornega vzorca. Zaradi prej izločenih nezaželenih besed (stopwords) je filtrirni seznam nekoliko krajši.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (nomina_er = nomen_er %>%
   filter(!str_detect(keyword, 
                      c("[Z|z]immer|[P|p]apier|[F|f]inger|[W|w]asser|[H|h]äuser|[B|b]ücher|spritzer|[G|g]itter|[K|k]ammer|[W|w]etter")),
@@ -178,7 +178,7 @@ nomen_er %>%
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nomina_er %>% 
   group_by(docname) %>% 
   count(keyword, sort = T)
@@ -187,7 +187,7 @@ nomina_er %>%
 
 Za grafični prikaz obdržimo samo po 20 najpogostnejših izrazov iz vsakega besedila.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nomina_er %>% 
   group_by(docname) %>% 
   count(keyword, sort = T) %>% 
@@ -197,7 +197,7 @@ nomina_er %>%
 
 V romanu Tom Sawyer so priimki na -er na vrhu lestvice, roman Prozess vsebuje bistvenih več splošnih samostalnikov, ki se končajo s pripono -er in se nanašajo na moške osebe. Edini Priimek je Bürstner.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 nomina_er %>% 
   group_by(docname) %>% 
@@ -215,7 +215,7 @@ nomina_er %>%
 
 ### Pripona -ung
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (nomen_ung = as_tibble(kwic(woerter, pattern = "\\b[A-Z].+ung\\b",
                       valuetype = "regex", case_insensitive = FALSE))
 )
@@ -225,7 +225,7 @@ nomina_er %>%
 V romanu Prozess je število pojavnic samostalnikov na -ung skoraj enkrat večje kot v Tomu.
 Mnogi samostalniki s pripono -ung so abstraktni in težje razumljivi kot konkretni samostalniki.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nomen_ung %>% 
   group_by(docname) %>%
   count(keyword, sort = T) %>% 
@@ -233,7 +233,7 @@ nomen_ung %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kwic_ung = kwic(woerter, pattern = "\\b[A-Z].+ung\\b",
                       valuetype = "regex", case_insensitive = FALSE)
 textplot_xray(kwic_ung)
@@ -242,7 +242,7 @@ textplot_xray(kwic_ung)
 
 Najpogostnejši samostalniki s pripono -ung odražajo osrednjo tematiko obeh besedil. V romanu Prozess se pogosteje pojavljajo samostalniki s pripono -ung, ki spadajo v pomensko polje "(kriminalno) pravo", v romanu Tom Sawyer pa je na vrhu lestvice več takih samostalnikov, ki se nanašajo na geografski prostor in razpoloženje.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidytext)
 (nomina_ung = nomen_ung %>% 
   group_by(docname) %>% 
@@ -262,7 +262,7 @@ nomina_ung %>%
 
 Iskanje besednih zvez s funkcijo *kwic()* in *phrase()* - funkcijske glagolske zveze (Funktionsverbgefüge) in frazemi:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (fvg1 =  as_tibble(kwic(woerter, pattern = phrase(
   c("zur|in .+ung (ge)komm.+|(ge)brach.+|bring.+")),
                  valuetype = "regex", case_insensitive = FALSE))
@@ -272,7 +272,7 @@ Iskanje besednih zvez s funkcijo *kwic()* in *phrase()* - funkcijske glagolske z
 
 Če so med sestavnimi deli besedne zveze drugi izrazi, lahko tudi postopoma filtriramo:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 phrase1 = "\\bstand.*|\\bsteh.*"
 
 (fvg2 = as_tibble(kwic(woerter, pattern = phrase(phrase1), window = 10,
@@ -290,7 +290,7 @@ phrase1 = "\\bstand.*|\\bsteh.*"
 
 Pretvorba besedil v povedi s programom tidytext, funkcija *unnest_tokens()*:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 romantexte = txt %>% 
   as_tibble() %>% 
   unnest_tokens(sentence, text, token = "sentences")
@@ -302,7 +302,7 @@ romantexte = txt %>%
 
 Izvleci samostalniške zveze:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 np = "(der|die|das|des|dem|den) ([^ ]+)"
 
 romantexte %>%
@@ -316,7 +316,7 @@ romantexte %>%
 
 Izvleci FVG:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 nomphrase = "stand.*\\W(\\w+){1,3}\\szur\\s.+ung"
 nomphrase = "stand.* (zur .+ung)"
 

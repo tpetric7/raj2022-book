@@ -20,7 +20,7 @@ library(nsyllable)
 
 ## Texte lesen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 stringsAsFactor = F
 prozess = read_lines("novels/book05.txt")
 enfants = read_lines("novels/book12.txt")
@@ -33,13 +33,13 @@ coronavirus2020 <- readtext("news/*.json",
 
 ## Flesch Reading Ease - deutsche Version
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 knitr::include_graphics(
   "pictures/Lesbarkeitsindex Flesch Ease deutsch.png")
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 flres_de = readxl::read_xlsx("data/Flesch-Reading-Ease-Score-deutsch.xlsx")
 flres_de %>% 
   mutate(`Verständlich für` = replace_na(`Verständlich für`," ")) %>%
@@ -49,7 +49,7 @@ flres_de %>%
 
 ## Romane (deutsche oder ins Deutsche übersetzte)
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_romane = as_tibble(romane) %>%
   mutate(sentences = nsentence(text),
          words = ntoken(text, remove_punct = TRUE),
@@ -63,12 +63,12 @@ lesbarkeitsindex_romane %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # write_excel_csv2(lesbarkeitsindex_romane, "data/lesbarkeitsindex_romane.csv")
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_romane = lesbarkeitsindex_romane %>% 
   mutate(book_name = str_sub(text, 1, 12)) # extract string in position 1-12
 
@@ -92,7 +92,7 @@ book <- book[str_sub(book, 1, 12) == "review/text:"] # extract string in positio
 book <- str_sub(book, start = 14) # extract substring starting in position 14
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 p <- lesbarkeitsindex_romane %>%
   ggplot(aes(syllables/words, flesch_ease_de, 
@@ -112,7 +112,7 @@ ggplotly(p, height = 500)
 
 ## Zeitungen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news = as_tibble(coronavirus2020) %>%
   mutate(syllables = nsyllable(text),
          sentences = nsentence(text),
@@ -126,14 +126,14 @@ lesbarkeitsindex_news %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # write_excel_csv2(lesbarkeitsindex_news,
 #                  "data/lesbarkeitsindex_news_coronavirus_2020.csv")
 
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # reading score chart
 ggplot(lesbarkeitsindex_news, aes(x = syllables/words, y = flesch_ease_de, 
                                   color = lubridate::month(date),
@@ -152,7 +152,7 @@ ggplot(lesbarkeitsindex_news, aes(x = syllables/words, y = flesch_ease_de,
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news = lesbarkeitsindex_news %>% mutate(news_name = str_sub(doc_id, 1, 7))
 
 # reading score chart
@@ -173,7 +173,7 @@ ggplot(lesbarkeitsindex_news, aes(x = syllables/words, y = flesch_ease_de,
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 q = lesbarkeitsindex_news %>%
   ggplot(aes(syllables/words, flesch_ease_de, 
@@ -200,21 +200,21 @@ Können wir statistisch signifikante Unterschiede zwischen den Lesbarkeitsindice
   
   Mit dem t-Test können wir immer nur zwei Stichproben miteinander vergleichn.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news %>% 
   filter(news_name != "welt_co" & news_name != "stern_g" & news_name != "focus_c") %>% 
   t.test(flesch_ease_de ~ news_name, data = ., paired = F, var.equal = T)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news %>% 
   filter(news_name != "spiegel" & news_name != "stern_g" & news_name != "focus_c") %>% 
   t.test(flesch_ease_de ~ news_name, data = ., paired = F, var.equal = T)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news %>% 
   filter(news_name != "faz_cor" & news_name != "stern_g" & news_name != "focus_c") %>% 
   t.test(flesch_ease_de ~ news_name, data = ., paired = F, var.equal = T)
@@ -223,7 +223,7 @@ lesbarkeitsindex_news %>%
 
 Eine lineare Regression ermöglicht den Vergleich von mehreren Stichproben und mehreren Variablen (Faktoren, Prädiktoren).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_news %>% 
   lm(flesch_ease_de ~ news_name, data = .) %>% 
   summary()
@@ -232,7 +232,7 @@ lesbarkeitsindex_news %>%
 
 ## Datensätze vereinen
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex = lesbarkeitsindex_romane %>% 
   mutate(book_name = "romane") %>% 
   rename(news_name = book_name) %>% 
@@ -240,13 +240,13 @@ lesbarkeitsindex = lesbarkeitsindex_romane %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 (les_mean = mean(lesbarkeitsindex$flesch_ease_de))
 (les_sd = sd(lesbarkeitsindex$flesch_ease_de))
 (syl_mean = mean(lesbarkeitsindex$syllables/lesbarkeitsindex$words))
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 p <- lesbarkeitsindex %>%
   ggplot(aes(syllables/words, flesch_ease_de, 
@@ -273,7 +273,7 @@ ggplotly(p, height = 400)
 
 ## Zeitungen im Vergleich
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # global options
 # options(contrasts=c('contr.sum','contr.poly'))
 
@@ -288,7 +288,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   lm(flesch_ease_de ~ news_name, data = .) %>% 
   tidy() %>% 
@@ -299,7 +299,7 @@ lesbarkeitsindex %>%
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # global default option
 # options(contrasts=c('contr.treatment','contr.poly'))
 
@@ -313,7 +313,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   lm(flesch_ease_de ~ news_name, data = .) %>% 
   tidy() %>% 
@@ -324,7 +324,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(effects)
 lesbarkeitsindex %>% 
   lm(flesch_ease_de ~ news_name, data = .) -> mymodel  
@@ -336,7 +336,7 @@ plot(allEffects(mymodel))
 
 Die ausgewählten zwölf Romane haben einen deutlich höheren Lesbarkeitsindex als die Zeitungstexte. Woran liegt das: an der Wortlänge, der Silbenanzahl oder an der Satzlänge? 
   
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   mutate(wordnum_utterance = (words/sentences),
          sylnum_utterance = (syllables/sentences)) %>% 
@@ -349,7 +349,7 @@ lesbarkeitsindex %>%
 
 Nur statistisch signifikante Interaktionen:
   
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   mutate(wordnum_utterance = (words/sentences),
          sylnum_utterance = (syllables/sentences)) %>% 
@@ -370,7 +370,7 @@ lesbarkeitsindex %>%
 In den Romanen sind die Wörter im Durchschnitt kürzer als in den Zeitungstexten (Spiegel ...).
 "Tidy"-Version:
   
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   group_by(news_name) %>% 
   summarise(syl_per_wrd = mean(syllables/words),
@@ -380,7 +380,7 @@ lesbarkeitsindex %>%
 
 Die Anzahl der Silben pro Äußerung in den Romanen ist vergleichbar mit der in Zeitungstexten (z.B. Spiegel).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   group_by(news_name) %>% 
   summarise(syl_per_utt = mean(syllables/sentences),
@@ -390,7 +390,7 @@ lesbarkeitsindex %>%
 
 Die Romane haben durchschnittlich mehr Wörter pro Äußerung.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   group_by(news_name) %>% 
   summarise(wrds_per_utt = mean(words/sentences),
@@ -398,7 +398,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeit = lesbarkeitsindex %>% 
   mutate(functiontype = case_when(
     news_name == "romane" ~ "literatur",
@@ -418,7 +418,7 @@ lesbarkeit %>%
 
 Die Romane haben kürzere Wörter als die Zeitungstexte (d.h. weniger Silben).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # set contrast back to default ("contr.treatment")
 contrasts(lesbarkeitsindex$news_name) <- NULL
 levels(lesbarkeitsindex$news_name)
@@ -433,7 +433,7 @@ lesbarkeit %>%
 
 Die Romane haben durchschnittlich mehr Wörter pro Äußerung.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 contrasts(lesbarkeitsindex$news_name) <- NULL
 levels(lesbarkeitsindex$news_name)
 contrasts(lesbarkeitsindex$news_name) <- contr.treatment(6, base = 3) # base = romane !
@@ -447,7 +447,7 @@ lesbarkeit %>%
 
 Noch deutlicher sichtbar in der Gegenüberstellung (Literatur vs. Zeitung): 
   
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeit %>% 
   lm(wordnum_utterance ~ functiontype, data = .) %>% 
   summary()
@@ -456,7 +456,7 @@ lesbarkeit %>%
 
 Längere Wörter (mehr Silben pro Wort) in Zeitungen als in Romanen.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeit %>% 
   lm(syl_per_wrd ~ functiontype, data = .) %>% 
   summary()
@@ -465,7 +465,7 @@ lesbarkeit %>%
 
 Aber die Anzahl der Silben pro Äußerung in den Romanen und Zeitungstexten unterscheidet sich nicht wesentlich (p = 0,979).
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeit %>% 
   lm(sylnum_utterance ~ functiontype, data = .) %>% 
   summary()
@@ -479,7 +479,7 @@ https://paldhous.github.io/NICAR/2019/r-text-analysis.html
 
 The code below uses the **quanteda** functions `ntoken`, `nsentence` and `nsyllable` to count the words, sentences, and syllables in each addresss. Then it uses those values to calculate the [Flesch-Kincaid reading grade level](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests), a widely used measure of linguistic complexity.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sou = read_csv("data/sou.csv")
 
 ```
@@ -517,7 +517,7 @@ ggplot(sou, aes(x = date, y = fk_grade, color = party, size = words)) +
         panel.grid.minor = element_blank())
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(plotly)
 
 # color palette for parties
@@ -566,7 +566,7 @@ ES ist der Prozentanteil der einsilbigen Wörter.
 **Die vierte Wiener Sachtextformel („im Hinblick auf die Jahrgangsstufe“)**
   WSTF4 = 0.2744 * MS + 0.2656 * SL - 1.69
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Das Beispiel mit den Entchen liefert mit der ersten WSTF einen Index von 3.8:
 satz="Alle meine Entchen schwimmen auf dem See, Köpfchen unters Wasser, Schwänzchen in die Höh."
 WSTF1 = 0.1935 * 0 + 0.1672 * 14 + 0.1297 * 29 - 0.0327 * 43 - 0.875
@@ -575,7 +575,7 @@ WSTF1 = 0.1935 * 0 + 0.1672 * 14 + 0.1297 * 29 - 0.0327 * 43 - 0.875
 
 In unserem Korpus:
   
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "faz_cor") %>% 
   add_count(news_name) %>% 
@@ -596,7 +596,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "spiegel") %>% 
   add_count(news_name) %>% 
@@ -617,7 +617,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "welt_co") %>% 
   add_count(news_name) %>% 
@@ -638,7 +638,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "stern_g") %>% 
   add_count(news_name) %>% 
@@ -659,7 +659,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "focus_c") %>% 
   add_count(news_name) %>% 
@@ -681,7 +681,7 @@ lesbarkeitsindex %>%
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex %>% 
   filter(news_name == "romane") %>% 
   add_count(news_name) %>% 
@@ -702,7 +702,7 @@ lesbarkeitsindex %>%
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 wstf1_idx = lesbarkeitsindex_romane %>% 
   unnest_tokens(word, text) %>% 
   mutate(ms = ifelse(nsyllable(word) > 2, 1, 0),
@@ -720,7 +720,7 @@ wstf1_idx %>% rmarkdown::paged_table()
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 lesbarkeitsindex_romane %>% 
   # filter(str_detect(book_name, "Der Prozess")) %>%
   unnest_tokens(word, text) %>% 
