@@ -9,27 +9,6 @@ Programme laden
 library(tidyverse)
 ```
 
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
 
 Datei laden
 
@@ -151,20 +130,6 @@ Inspect relationships between pairs of variables
 
 ```r
 library(psych)
-```
-
-```
-## 
-## Attaching package: 'psych'
-```
-
-```
-## The following objects are masked from 'package:ggplot2':
-## 
-##     %+%, alpha
-```
-
-```r
 pairs.panels(polite[c(2,4,5)])
 ```
 
@@ -249,18 +214,6 @@ summary(m)
 
 ```r
 library(effects)
-```
-
-```
-## Loading required package: carData
-```
-
-```
-## lattice theme set by effectsTheme()
-## See ?effectsTheme for details.
-```
-
-```r
 allEffects(m)
 ```
 
@@ -624,10 +577,6 @@ m <- lmer(frequency ~ gender +
           REML=F, data=polite)
 ```
 
-```
-## boundary (singular) fit: see ?isSingular
-```
-
 
 
 ```r
@@ -678,10 +627,6 @@ summary(m)
 m <- lmer(frequency ~ gender + attitude + 
           (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=polite)
-```
-
-```
-## boundary (singular) fit: see ?isSingular
 ```
 
 
@@ -739,10 +684,6 @@ m <- lmer(frequency ~ gender + attitude +
           REML=F, data=polite)
 ```
 
-```
-## boundary (singular) fit: see ?isSingular
-```
-
 
 
 ```r
@@ -781,10 +722,6 @@ m <- lmer(frequency ~ gender + attitude +
           REML=F, data=polite)
 ```
 
-```
-## boundary (singular) fit: see ?isSingular
-```
-
 
 
 ```r
@@ -821,10 +758,6 @@ plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 m <- lmer(frequency ~ gender*attitude + 
             (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=polite)
-```
-
-```
-## boundary (singular) fit: see ?isSingular
 ```
 
 
@@ -950,10 +883,6 @@ library(LMERConvenienceFunctions)
 m <- lmer(frequency ~ gender + attitude + 
             (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=polite)
-```
-
-```
-## boundary (singular) fit: see ?isSingular
 ```
 
 
@@ -1114,10 +1043,6 @@ attach(freqout)
 m <- lmer(frequency ~ gender + attitude + 
             (attitude + 1|subject) + (attitude + 1|scenario), 
           REML=F, data=freqout)
-```
-
-```
-## boundary (singular) fit: see ?isSingular
 ```
 
 

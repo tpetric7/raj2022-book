@@ -5,55 +5,11 @@
 
 ```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(tidytext)
 library(SnowballC)
 library(readtext)
 library(rmarkdown)
 library(scales)
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
-
-```r
 library(udpipe)
 library(vecsets)
 ```
@@ -110,8 +66,8 @@ x = udpipe_annotate(demodel, novels_txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-09-06 14:54:43 Annotating text fragment 1/2
-## 2021-09-06 14:56:31 Annotating text fragment 2/2
+## 2021-09-09 23:10:29 Annotating text fragment 1/2
+## 2021-09-09 23:12:21 Annotating text fragment 2/2
 ```
 
 ```r
@@ -507,13 +463,6 @@ novels_full_words %>%
   pivot_wider(names_from = doc_id, values_from = n, names_repair = "unique") %>% 
   unnest(c(prozess, tom)) %>% 
   paged_table()
-```
-
-```
-## Warning: Values are not uniquely identified; output will contain list-cols.
-## * Use `values_fn = list` to suppress this warning.
-## * Use `values_fn = length` to identify where the duplicates arise
-## * Use `values_fn = {summary_fun}` to summarise duplicates
 ```
 
 <div data-pagedtable="false">

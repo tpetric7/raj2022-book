@@ -1,7 +1,7 @@
 ---
 title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
-date: "2021-09-06"
+date: "2021-09-09"
 site: bookdown::bookdown_site
 bibliography: "book.bib"
 bibio-style: "apalike"
@@ -43,4 +43,6 @@ In einer Kurseinheit vergleichen wir Ermittlungsfunktionen in *R* und
 Das Thema mehrerer Kurseinheiten ist die Zerlegung von Texten in
 kleinere Einheiten und ihre Bearbeitung auf verschiedenen linguistischen
 Ebenen: auf phonetischer, graphematischer, morphologischer und
-syntaktischer Ebene.
+syntaktischer Ebene.[^index-1]
+
+[^index-1]: Dieses Buch wurde mit *Bookdown* [@xie2015] verfasst.

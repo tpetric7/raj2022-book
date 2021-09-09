@@ -5,52 +5,8 @@
 
 ```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(tidytext)
 library(scales)
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
-
-```r
 library(readtext)
 library(rmarkdown)
 # library(qdap) # syllable_count and syllable_sum
@@ -888,27 +844,6 @@ Die Durchschnittswerte, die uns quanteda liefert, sind etwas höher als die tidy
 
 ```r
 library(quanteda)
-```
-
-```
-## Warning: package 'quanteda' was built under R version 4.1.1
-```
-
-```
-## Package version: 3.1.0
-## Unicode version: 13.0
-## ICU version: 69.1
-```
-
-```
-## Parallel computing: 12 of 12 threads used.
-```
-
-```
-## See https://quanteda.io for tutorials and examples.
-```
-
-```r
 library(quanteda.textstats)
 corp = corpus(novels_txt)
 stats = textstat_summary(corp)

@@ -32,151 +32,6 @@ package.check <- lapply(
 )
 ```
 
-```
-## Loading required package: tidyverse
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```
-## Loading required package: quanteda
-```
-
-```
-## Warning: package 'quanteda' was built under R version 4.1.1
-```
-
-```
-## Package version: 3.1.0
-## Unicode version: 13.0
-## ICU version: 69.1
-```
-
-```
-## Parallel computing: 12 of 12 threads used.
-```
-
-```
-## See https://quanteda.io for tutorials and examples.
-```
-
-```
-## Loading required package: quanteda.textplots
-```
-
-```
-## Loading required package: quanteda.textstats
-```
-
-```
-## Loading required package: wordcloud2
-```
-
-```
-## Loading required package: tidytext
-```
-
-```
-## Loading required package: udpipe
-```
-
-```
-## Loading required package: janitor
-```
-
-```
-## 
-## Attaching package: 'janitor'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     chisq.test, fisher.test
-```
-
-```
-## Loading required package: scales
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
-
-```
-## Loading required package: widyr
-```
-
-```
-## Warning: package 'widyr' was built under R version 4.1.1
-```
-
-```
-## Loading required package: syuzhet
-```
-
-```
-## 
-## Attaching package: 'syuzhet'
-```
-
-```
-## The following object is masked from 'package:scales':
-## 
-##     rescale
-```
-
-```
-## Loading required package: corpustools
-```
-
-```
-## 
-## Attaching package: 'corpustools'
-```
-
-```
-## The following object is masked from 'package:tidytext':
-## 
-##     get_stopwords
-```
-
-```
-## Loading required package: readtext
-```
-
 
 Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
 
@@ -626,13 +481,6 @@ Seznam vseh kolokacij velikost 2, 3 in 4. V stolpcu *count_nested* program štej
 ```r
 coll_2_4 = textstat_collocations(woerter, size = 2:4, tolower = TRUE, 
                                minimal_count = 2)
-```
-
-```
-## Warning: minimal_count argument is not used.
-```
-
-```r
 head(coll_2_4)
 ```
 
@@ -841,7 +689,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-09-06 14:42:39 Annotating text fragment 1/1
+## 2021-09-09 22:57:35 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -930,7 +778,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-09-06 14:43:49 Annotating text fragment 1/1
+## 2021-09-09 22:58:48 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -1344,50 +1192,10 @@ key_tom_en %>% rmarkdown::paged_table()
 textplot_keyness(key_tom_de, key_tom_de$n_target == 1)
 ```
 
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) min(data$x1) - margin else 0: the condition has
-## length > 1 and only the first element will be used
-```
-
 <img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-1.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_de, key_tom_en$n_target == 1)
-```
-
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) {: the condition has length > 1 and only the
-## first element will be used
-```
-
-```
-## Warning in if (show_reference) min(data$x1) - margin else 0: the condition has
-## length > 1 and only the first element will be used
 ```
 
 <img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-2.svg" width="672" />
@@ -1925,10 +1733,6 @@ pripadajo?
 ```
 
 ```
-## `summarise()` has grouped output by 'doc_id'. You can override using the `.groups` argument.
-```
-
-```
 ## # A tibble: 28 x 4
 ## # Groups:   doc_id [2]
 ##    doc_id upos  lemmas prozent
@@ -1984,13 +1788,7 @@ correlations = tom_df %>%
   filter(Freq > 2) %>% 
   pairwise_cor(lemma, sentence_id, sort = TRUE) %>% 
   filter(correlation < 1 & correlation > 0.3)
-```
 
-```
-## `summarise()` has grouped output by 'doc_id', 'lemma', 'token'. You can override using the `.groups` argument.
-```
-
-```r
 head(correlations)
 ```
 

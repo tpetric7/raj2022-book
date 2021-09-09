@@ -1,63 +1,19 @@
-
 ### Höflichkeit und Grundfrequenz
 
 
 ```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(scales)
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
-
-```r
 # detach("package:rlang", unload=TRUE)
 ```
 
-Datensatz von: Bodo Winter Thema: Politeness and Pitch (F0)
+Datensatz von: Bodo Winter
+
+Thema: Politeness and Pitch (F0)
 
 (cf. <http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf>)
 
 (cf. <https://bodowinter.com/tutorial/bw_LME_tutorial.pdf>)
-
 
 Gliederung unserer quantitativen Analyse
 
@@ -70,7 +26,6 @@ Gliederung unserer quantitativen Analyse
 4\. Test und Ergebnisse
 
 5\. Schluss
-
 
 #### Datei laden
 
@@ -114,8 +69,7 @@ glimpse(politeness)
 ## $ frequency <dbl> 213.3, 204.5, 285.1, 259.7, 203.9, 286.9, 250.8, 276.8, 231.~
 ```
 
-Am Experiment nahmen 6 Versuchspersonen teil (F1, ..., M7). Von jeder
-Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).
+Am Experiment nahmen 6 Versuchspersonen teil (F1, ..., M7). Von jeder Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).
 
 
 ```r
@@ -151,8 +105,7 @@ politeness %>%
 ## 6      M7      M 14
 ```
 
-Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten
-folgende) Hypothese zu überprüfen.
+Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten folgende) Hypothese zu überprüfen.
 
 
 ```r
@@ -175,16 +128,10 @@ politeness %>%
 ```
 
 ```
-## Warning in mean.default(., frequency): argument is not numeric or logical:
-## returning NA
-```
-
-```
 ## [1] NA
 ```
 
-"NA": In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile,
-um die durchschnittliche Frequenz (mean) zu berechnen.
+`NA`: In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche Frequenz mit `mean()` zu berechnen.
 
 
 ```r
@@ -198,8 +145,7 @@ politeness %>%
 ## 1 193.5819
 ```
 
-Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet.
-Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
+Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet. Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
 
 
 ```r
@@ -217,8 +163,7 @@ politeness %>%
 ## 2 M         139.
 ```
 
-Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern:
-Frauen haben meist eine höhere Stimme als Männer.
+Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern: Frauen haben meist eine höhere Stimme als Männer.
 
 Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise: In unserer Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59 - 184,36.
 
@@ -251,9 +196,9 @@ politeness %>%
 
 #### Hypothesen
 
-H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder informellem Sprechverhalten (attitude) ist gleich.
+-   H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder informellem Sprechverhalten (attitude) ist gleich.
 
-H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem Sprechverhalten unterscheidet sich vom informellen.
+-   H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem Sprechverhalten unterscheidet sich vom informellen.
 
 Nach unserem bisherigen Wissen erwarten wir, dass unsere Daten die Hypothese H1 bestätigen werden.
 
@@ -391,8 +336,9 @@ politeness %>%
 ## F-statistic: 98.38 on 2 and 80 DF,  p-value: < 2.2e-16
 ```
 
-Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p \< 0,001).
-Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p = 0,0146). Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. Der R\^2-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird.
+Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p \< 0,001). Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p = 0,0146).
+
+Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. Der R\^2-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird.
 
 
 ```r
@@ -405,32 +351,12 @@ politeness %>%
   geom_jitter(width = 0.2)
 ```
 
-```
-## Warning: Removed 1 rows containing non-finite values (stat_boxplot).
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_point).
-```
-
 <img src="08-politeness_files/figure-html/unnamed-chunk-18-1.svg" width="672" />
 
 
 ```r
 m <- lm(frequency ~ attitude*gender, data = politeness)
 library(effects)
-```
-
-```
-## Loading required package: carData
-```
-
-```
-## lattice theme set by effectsTheme()
-## See ?effectsTheme for details.
-```
-
-```r
 allEffects(m)
 ```
 
@@ -455,35 +381,7 @@ plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
 
 ```r
 library(parameters)
-```
-
-```
-## Registered S3 methods overwritten by 'parameters':
-##   method                           from      
-##   as.double.parameters_kurtosis    datawizard
-##   as.double.parameters_skewness    datawizard
-##   as.double.parameters_smoothness  datawizard
-##   as.numeric.parameters_kurtosis   datawizard
-##   as.numeric.parameters_skewness   datawizard
-##   as.numeric.parameters_smoothness datawizard
-##   print.parameters_distribution    datawizard
-##   print.parameters_kurtosis        datawizard
-##   print.parameters_skewness        datawizard
-##   summary.parameters_kurtosis      datawizard
-##   summary.parameters_skewness      datawizard
-```
-
-```r
 library(see)
-```
-
-```
-## Registered S3 method overwritten by 'see':
-##   method                    from      
-##   plot.visualisation_recipe datawizard
-```
-
-```r
 p1 = plot(parameters(m)) +
   ggplot2::labs(title = "A Dot-and-Whisker Plot")
 p1
@@ -530,7 +428,6 @@ p2a
 <img src="08-politeness_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
 
 
-
 ```r
 library(effectsize)
 library(see)
@@ -551,10 +448,6 @@ p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
 p4
 ```
 
-```
-## Warning: Removed 1 rows containing missing values (geom_point).
-```
-
 <img src="08-politeness_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
 
 
@@ -566,10 +459,6 @@ p4 = ggplot(politeness,
   scale_fill_material_d(palette = "ice")
 
 p4
-```
-
-```
-## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
 ```
 
 <img src="08-politeness_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
@@ -585,20 +474,7 @@ p5 = ggplot(politeness,
 p5
 ```
 
-```
-## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
-```
-
-```
-## Warning: Removed 1 rows containing non-finite values (stat_bindot).
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_point).
-```
-
 <img src="08-politeness_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
-
 
 
 ```r
@@ -607,61 +483,12 @@ plots(p1,p2,p3,p4,
       tags = paste0("B", 1:4))
 ```
 
-```
-## Warning: Removed 1 rows containing non-finite values (stat_ydensity).
-```
-
 <img src="08-politeness_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
-
 
 
 ```r
 library(bayestestR)
 library(rstanarm)
-```
-
-```
-## Loading required package: Rcpp
-```
-
-```
-## This is rstanarm version 2.21.1
-```
-
-```
-## - See https://mc-stan.org/rstanarm/articles/priors for changes to default priors!
-```
-
-```
-## - Default priors may change, so it's safest to specify priors, even if equivalent to the defaults.
-```
-
-```
-## - For execution on a local, multicore CPU with excess RAM we recommend calling
-```
-
-```
-##   options(mc.cores = parallel::detectCores())
-```
-
-```
-## 
-## Attaching package: 'rstanarm'
-```
-
-```
-## The following object is masked from 'package:performance':
-## 
-##     pp_check
-```
-
-```
-## The following object is masked from 'package:parameters':
-## 
-##     compare_models
-```
-
-```r
 library(see)
 
 set.seed(123)
@@ -671,7 +498,6 @@ plot(result)
 ```
 
 <img src="08-politeness_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
-
 
 #### Schluss
 

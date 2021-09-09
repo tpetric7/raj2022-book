@@ -1,17 +1,16 @@
-
 # Stichprobentests
+
 ## Nominalskalierte Größen
 
-**Chi-Quadrat-Test** 
-Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests zum Vergleich von  nominalskalierten Kategorien, z.B. 
+**Chi-Quadrat-Test** Der Chi-Quadrat-Test ist einer der grundlegenden statistischen Tests zum Vergleich von nominalskalierten Kategorien, z.B.
 
-* biologisches Geschlecht: Frauen vs. Männer, 
-* Größe: klein vs. groß
-* Texte: Text A vs. Text B vs. Text C ...
+-   biologisches Geschlecht: Frauen vs. Männer,
+-   Größe: klein vs. groß
+-   Texte: Text A vs. Text B vs. Text C ...
 
 ### Lange und kurze Kommentare
 
-Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen. 
+Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfundenen Datensatzes kennen lernen.
 
 <table>
  <thead>
@@ -35,7 +34,7 @@ Die Verwendung des Chi-Quadrat-Tests wollen wir zunächst am Beispiel eines erfu
 </tbody>
 </table>
 
-Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten. 
+Im Datensatz wird zwischen langen und kurzen Kommentaren einer Lehrerin unterschieden und die jeweilige Anzahl sprachlicher Fehler von Schülern in ihren Aufsätzen. Geklärt werden soll die Frage, welche Wirkung lange und kurze Kommentare der Lehrerin auf die Anzahl der sprachlichen Fehler hatten.
 
 #### Programme
 
@@ -48,8 +47,8 @@ library(rmarkdown)
 library(kableExtra)
 ```
 
-
 #### Kurzversion:
+
 Wie sinnvoll sind lange bzw. kurze Kommentare einer Lehrerin zu sprachlichen Fehlern in Essays?
 
 
@@ -84,11 +83,10 @@ chisq.test(kommentare[,-1])
 ## X-squared = 6.2551, df = 1, p-value = 0.01238
 ```
 
-Ergebnis:
-Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an: 
-zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
+Ergebnis: Wir verwerfen die Hypothese H0 und nehmen die Hypothese H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
 
 #### Längere Version
+
 ##### Datei laden
 
 Eine Lehrerin möchte wissen, ob es effektiver ist, wenn sie am Rand der Schüleressays kurze oder ausführlichere Kommentare zu den Fehlern der Schüler_innen notiert. Sie vergleicht somit zwei Schülergruppen (Schüler_innen mit kurzen vs. langen Kommentaren) und zwei Beurteilungskategorien (korrekte vs. inkorrekte Äußerungen in den Essays).
@@ -140,8 +138,8 @@ head(kommentare) %>% knitr::kable()
 
 Stichproben: kurzer Kommentar vs. langer Kommentar
 
-* H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).
-* H1: Zwischen den beiden Stichproben besteht ein signifikanter Unterschied (Unterschiede nicht zufällig).
+-   H0: Zwischen den beiden Stichproben besteht kein signifikanter Unterschied (Unterschiede zufällig).
+-   H1: Zwischen den beiden Stichproben besteht ein signifikanter Unterschied (Unterschiede nicht zufällig).
 
 
 ```r
@@ -158,7 +156,6 @@ chisq.test(kommentare[,-1])
 ```
 
 Wir verwerfen H0 und nehmen H1 an: zwischen kurzen und langen Kommentaren besteht ein nicht zufälliger Unterschied.
-
 
 ##### Graphische Darstellung
 
@@ -223,4 +220,3 @@ kom_lang  %>%  ggplot(aes(Kommentar, pct, fill = neugeschriebener_satz)) +
 ```
 
 <img src="04-kommentare_chisq_long_files/figure-html/unnamed-chunk-6-1.svg" width="672" />
-

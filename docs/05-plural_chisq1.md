@@ -1,4 +1,3 @@
-
 ### Plural von Kunstwörtern
 
 #### Naložimo programe
@@ -6,63 +5,8 @@
 
 ```r
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(scales)
-```
-
-```
-## 
-## Attaching package: 'scales'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     discard
-```
-
-```
-## The following object is masked from 'package:readr':
-## 
-##     col_factor
-```
-
-```r
 library(kableExtra)
-```
-
-```
-## 
-## Attaching package: 'kableExtra'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     group_rows
 ```
 
 #### Preberemo podatkovni niz z diska
@@ -73,30 +17,7 @@ library(kableExtra)
 plural_subj1 = read.csv("data/plural_Subj_sum.csv", sep = ";")
 plural_subj1 = read.csv2("data/plural_Subj_sum.csv")
 plural_subj1 = read_csv2("data/plural_Subj_sum.csv")
-```
 
-```
-## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-```
-
-```
-## Rows: 738 Columns: 9
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ";"
-## chr (2): WordType, Genus
-## dbl (7): SubjID, Sigstark, En, E, Er, S, Z
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 # Pokaži prvih šest vrstic
 head(plural_subj1) %>% knitr::kable()
 ```
@@ -187,16 +108,15 @@ head(plural_subj1) %>% knitr::kable()
 
 #### Povzetek in Hi-kvadrat test
 
-Podatkovni niz preoblikujemo in povzemamo (agregacija). 
-Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami).
-Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.
+Podatkovni niz preoblikujemo in povzemamo (agregacija). Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami). Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.
 
-H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
-H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).
+-   H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
 
-Če je p-vrednost < 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake). 
+-   H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).
 
-Če p > 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.
+Če je p-vrednost \< 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake).
+
+Če p \> 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.
 
 
 ```r
@@ -321,9 +241,7 @@ Ergebnisse summieren:
 ## 2 Rhyme     1425  2172
 ```
 
-Chi-Quadrat-Test
-Falls p < 0,05: es gilt H1 (Stichproben unterscheiden sich).
-Falls p > 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
+Chi-Quadrat-Test Falls p \< 0,05: es gilt H1 (Stichproben unterscheiden sich). Falls p \> 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
 
 
 ```r
@@ -344,19 +262,16 @@ Beobachtete vs. erwartete Werte:
 
 ```r
 tabelle <- as_tibble(cbind(chi$observed, chi$expected)) %>%
-   mutate(Wordtyp = unlist(p[,1])) %>% # Spalte wieder hinzufügen
-   mutate(Wordtyp = str_replace(Wordtyp, "NoRhyme", "Nicht-Reimwort"), # auf deutsch
-          Wordtyp = str_replace(Wordtyp, "Rhyme", "Reimwort")) %>% # auf deutsch
-   rename(En_erwartet = V3, E_erwartet = V4) %>%  # erwartete Werte, wenn H0 richtig ist
-   select(Wordtyp, En, E, En_erwartet, E_erwartet) # Reihenfolge der Variablen verändern
-```
+    # Spalte wieder hinzufügen
+   mutate(Wordtyp = unlist(p[,1])) %>%
+   # auf deutsch
+   mutate(Wordtyp = str_replace(Wordtyp, "NoRhyme", "Nicht-Reimwort"), 
+          Wordtyp = str_replace(Wordtyp, "Rhyme", "Reimwort")) %>%
+   # erwartete Werte, wenn H0 richtig ist
+   rename(En_erwartet = V3, E_erwartet = V4) %>% 
+   # Reihenfolge der Variablen verändern
+   select(Wordtyp, En, E, En_erwartet, E_erwartet)
 
-```
-## Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if `.name_repair` is omitted as of tibble 2.0.0.
-## Using compatibility `.name_repair`.
-```
-
-```r
 tabelle %>% rmarkdown::paged_table()
 ```
 

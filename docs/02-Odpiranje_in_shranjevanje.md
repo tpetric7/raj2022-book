@@ -1,11 +1,12 @@
 # R & RStudio
+
 ## Programme
 
 In diesem Kapitel verwenden wir die folgenden Programme und Programmbündel:
 
 
 ```r
-library(tidyverse) # viele verschiedene Funktionen
+library(tidyverse) # viele verschiedene tabellenorientierte Funktionen
 library(readtext) # Texte lesen
 library(readxl) # Excel-Tabellen lesen
 library(writexl) # Excel-Tabellen schreiben
@@ -15,10 +16,9 @@ library(kableExtra) # für besseres Tabellenformat
 
 Načinov za odpiranje in shranjevanje datotek je veliko. Tule bom pokazal nekaj preprostih:
 
-
 ## Textdatei öffnen
 
-Funkcija *read_lines()*: odpremo besedilo v izbrani mapi in ga shranimo v spremenljivki (npr. "besedilo").
+Funkcija `read_lines()`: odpremo besedilo v izbrani mapi in ga shranimo v spremenljivki (npr. "besedilo").
 
 Odpiranje besedila s spletnega naslova (url) je možen.
 
@@ -28,14 +28,13 @@ library(tidyverse)
 besedilo = read_lines("data/books/tom.txt")
 ```
 
-
 ## Mehrere Textdateien öffnen
 
-Funkcija *readtext()*: če namesto imena datotek navedemo samo zvezdico + pripono datotek (npr. *.txt) v izbrani mapi (npr. "data/books/"), potem bo program odprl vse besedilne datoteke s to pripono in to zbirko shranil v spremenljivki (npr. "besedila"). Program ustvari tabelo odprtih besedil.
+Funkcija `readtext()`: če namesto imena datotek navedemo samo zvezdico + pripono datotek (npr. \*.txt) v izbrani mapi (npr. "data/books/"), potem bo program odprl vse besedilne datoteke s to pripono in to zbirko shranil v spremenljivki (npr. "besedila"). Program ustvari tabelo odprtih besedil.
 
-readtext() odpira različne besedila z različnimi priponami: txt, csv, docx, pdf, xml, ...
+`readtext()` odpira različne besedila z različnimi priponami: txt, csv, docx, pdf, xml, ...
 
-Odpiranje besedila s spletnega naslova (url) je možen.
+Odpiranje besedila s spletnega naslova (`url`) je možen.
 
 
 ```r
@@ -53,41 +52,16 @@ besedila
 ## 2 tom.txt     "\"Tom Sawyer\"..."
 ```
 
-
 ## Tabelle öffnen
 
-Funkcija *read_csv()* ali *read_csv2()* sta le dve izmed številnih funkcij za odpiranje preglednice s pripono "csv". 
+Funkcija `read_csv()` ali `read_csv2()` sta le dve izmed številnih funkcij za odpiranje preglednice s pripono *csv*.
 
-Odpiranje besedila s spletnega naslova (url) je možen.
+Odpiranje besedila s spletnega naslova (`url`) je možen.
 
 
 ```r
 library(tidyverse)
 tabela = read_csv2("data/plural_Subj_sum.csv")
-```
-
-```
-## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
-```
-
-```
-## Rows: 738 Columns: 9
-```
-
-```
-## -- Column specification --------------------------------------------------------
-## Delimiter: ";"
-## chr (2): WordType, Genus
-## dbl (7): SubjID, Sigstark, En, E, Er, S, Z
-```
-
-```
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 head(tabela) %>% 
   rmarkdown::paged_table()
 ```
@@ -98,10 +72,9 @@ head(tabela) %>%
   </script>
 </div>
 
-
 ## Excel-Tabelle öffnen
 
-Funkcija *read_xlsx()* ali *read_excel()* omogoča odpiranje Excelove preglednice s pripono "xlsx". 
+Funkcija `read_xlsx()` ali `read_excel()` omogoča odpiranje Excelove preglednice s pripono *xlsx*.
 
 
 ```r
@@ -117,10 +90,9 @@ head(excel) %>%
   </script>
 </div>
 
-
 ## Datei speichern
 
-Privzeto spodnji programi shranjujejo v obliki (codepage) encoding = "UTF-8" / fileEncoding = "UTF-8".
+Privzeto spodnji programi shranjujejo v obliki (codepage) `encoding = "UTF-8"` / `fileEncoding = "UTF-8"`.
 
 
 ```r
@@ -143,11 +115,7 @@ write_xlsx(tabela, "moja_tabela.xlsx")
 # write_xlsx(besedila, "moja_tabela_z_besedili.xlsx")
 ```
 
-Basic operations in R:
-* Download (zip) files
-* Extract compressed files to a folder
-* Check & Create a folder or subfolders
-* List & Read files in a folder
+Basic operations in R: \* Download (zip) files \* Extract compressed files to a folder \* Check & Create a folder or subfolders \* List & Read files in a folder
 
 ## Download
 
@@ -188,7 +156,6 @@ ifelse(exist == FALSE,
 unzip("d:/Users/teodo/Downloads/tpetric7-master.zip", exdir = pot)
 ```
 
-
 ## Create subfolders
 
 
@@ -197,26 +164,6 @@ subfolder_names <- c("a","b","c","d")
 for (i in 1:length(subfolder_names)){
   folder <- dir.create(paste0(pot, "/", subfolder_names[i]))
 }
-```
-
-```
-## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
-## \Users\teodo\Downloads\tpetric7-master\a' already exists
-```
-
-```
-## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
-## \Users\teodo\Downloads\tpetric7-master\b' already exists
-```
-
-```
-## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
-## \Users\teodo\Downloads\tpetric7-master\c' already exists
-```
-
-```
-## Warning in dir.create(paste0(pot, "/", subfolder_names[i])): 'd:
-## \Users\teodo\Downloads\tpetric7-master\d' already exists
 ```
 
 ## List files
@@ -292,9 +239,10 @@ substr(alltxt[2], 1, 70)
 ```
 
 ## Konversion
+
 R scripts kann man ins Rmd-Dateiformat umwandeln (konvertieren), und zwar mittels:
 
-* *[Ctrl + Shift + K]* oder 
-* *knitr::spin("t_preskus.R")*
+-   `[Ctrl + Shift + K]` oder
+-   `knitr::spin("t_preskus.R")`
 
 Da beide Dateiformate Textdateien darstellen, ist es auch relativ leicht, sie in andere Formate umwandeln.

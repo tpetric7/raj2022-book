@@ -1,12 +1,16 @@
-
 ## Intervallskalierte Größen
 
-Statistische Tests: t-Test, lineare Regression, lineare Regression mit gemischten Effekten.
+Statistische Tests:
+
+-   t-Test,
+
+-   lineare Regression,
+
+-   lineare Regression mit gemischten Effekten.
 
 ### Wirkung von Unterrichtsmethoden
 
-Welche Wirkung haben zwei verschiedene Unterrichtsmethoden auf die Ergebnisse von Sprachtests?
-Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?
+Welche Wirkung haben zwei verschiedene Unterrichtsmethoden auf die Ergebnisse von Sprachtests? Welche Gruppe von Studierenden erreichte eine höhere Punktzahl beim Test?
 
 #### Data
 
@@ -131,15 +135,6 @@ summary(m)
 library(effects)
 ```
 
-```
-## Loading required package: carData
-```
-
-```
-## lattice theme set by effectsTheme()
-## See ?effectsTheme for details.
-```
-
 Predicted scores
 
 
@@ -158,10 +153,8 @@ allEffects(m)
 
 
 ```r
-plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
+plot(allEffects(m), multiline=TRUE, grid=TRUE, 
+     rug=FALSE, as.table=TRUE)
 ```
 
 <img src="07-t_preskus_files/figure-html/unnamed-chunk-9-1.svg" width="672" />
-
-
-

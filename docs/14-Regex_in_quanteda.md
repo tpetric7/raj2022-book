@@ -8,55 +8,10 @@ Najprej moramo zagnati programe, ki jih potrebujemo za načrtovano delo.
 ```r
 library(readtext)
 library(quanteda)
-```
-
-```
-## Warning: package 'quanteda' was built under R version 4.1.1
-```
-
-```
-## Package version: 3.1.0
-## Unicode version: 13.0
-## ICU version: 69.1
-```
-
-```
-## Parallel computing: 12 of 12 threads used.
-```
-
-```
-## See https://quanteda.io for tutorials and examples.
-```
-
-```r
 library(quanteda.textstats)
 library(quanteda.textplots)
 
 library(tidyverse)
-```
-
-```
-## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-```
-
-```
-## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1
-```
-
-```
-## Warning: package 'readr' was built under R version 4.1.1
-```
-
-```
-## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(tidytext)
 ```
 
@@ -1039,11 +994,6 @@ np = "(der|die|das|des|dem|den) ([^ ]+)"
 
 romantexte %>%
   str_extract_all(np)
-```
-
-```
-## Warning in stri_extract_all_regex(string, pattern, simplify = simplify, :
-## argument is not an atomic vector; coercing
 ```
 
 ```
@@ -7476,11 +7426,6 @@ romantexte %>%
   dplyr::select(sentence) %>% 
   str_extract_all(nomphrase) %>% 
   head(10)
-```
-
-```
-## Warning in stri_extract_all_regex(string, pattern, simplify = simplify, :
-## argument is not an atomic vector; coercing
 ```
 
 ```
