@@ -1,7 +1,7 @@
 ---
 title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
-date: "2021-09-09"
+date: "2021-09-10"
 site: bookdown::bookdown_site
 bibliography: "book.bib"
 bibio-style: "apalike"

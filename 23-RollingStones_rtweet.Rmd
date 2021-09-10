@@ -7,6 +7,15 @@
 library(tidyverse)
 library(tidytext)
 library(rtweet)
+library(lubridate)
+library(plotly)
+library(leaflet)
+library(glue)
+library(htmlwidgets)
+library(DT)
+library(gganimate)
+library(gifski)
+library(ggthemes)
 
 ```
 
@@ -147,7 +156,8 @@ Unter den Twitternutzern, die Tweets anlässlich des Todes von Charlie Watts, de
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
-  filter(str_detect(screen_name, "Val202"))
+  filter(str_detect(screen_name, "Val202")) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -169,7 +179,8 @@ Tweets der deutschen Zeitung "FAZ" (Frankfurter Allgemeine Zeitung):
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
-  filter(str_detect(screen_name, "faznet"))
+  filter(str_detect(screen_name, "faznet")) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -177,7 +188,9 @@ Der Tagesspiegel:
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
-  filter(str_detect(screen_name, "Tagesspiegel"))
+  filter(str_detect(screen_name, "Tagesspiegel")) %>% 
+  rmarkdown::paged_table()
+
 
 ```
 
@@ -225,8 +238,10 @@ tweets_rollingstones_en %>%
 Die Anzahl der veröffentlichten Tweets zum Thema können wir in einem Diagramm chronologisch darstellen. Im folgenden Diagramm bildet die Anzahl der Tweets innerhalb von drei Stunden jeweils einen Datenpunkt. Zunächst bilden wir die englischsprachigen Tweets ab.
 
 ```{r message=FALSE, warning=FALSE}
-## plot time series of tweets
+## subset dataframe
 tweets_rollingstones_en = subset(tweets_rollingstones, lang == "en")
+
+## plot time series of tweets
 p1 <- ts_plot(tweets_rollingstones_en, "3 hours", color = "red") +
   ggplot2::theme_minimal() +
   ggplot2::theme(plot.title = ggplot2::element_text(face = "bold")) +
@@ -234,21 +249,22 @@ p1 <- ts_plot(tweets_rollingstones_en, "3 hours", color = "red") +
     x = NULL, y = NULL,
     title = "Frequency of #rollingstones Twitter statuses from past 9 days",
     subtitle = "Twitter status (tweet) counts aggregated using three-hour intervals",
-    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
-  )
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet")
 
 ```
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(p1)
+ggplotly(p1) %>% layout()
 ```
 
 Die deutschsprachigen Tweets:
 
 ```{r message=FALSE, warning=FALSE}
-## plot time series of tweets
+## subset dataframe
 tweets_rollingstones_de = subset(tweets_rollingstones, lang == "de")
+
+## plot time series of tweets
 p2 <- ts_plot(tweets_rollingstones_de,
               "3 hours", 
               color = "darkgreen") +
@@ -258,15 +274,14 @@ p2 <- ts_plot(tweets_rollingstones_de,
     x = NULL, y = NULL,
     title = "Frequency of #rollingstones Twitter statuses from past 9 days",
     subtitle = "Twitter status (tweet) counts aggregated using three-hour intervals",
-    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
-  )
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet")
 
 ```
 
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(p2)
+ggplotly(p2) %>% layout()
 ```
 
 In beiden Fällen flacht die Verlaufskurve schnell ab.
@@ -328,7 +343,7 @@ p3 <- tweets_rollingstones_en %>%
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(p3)
+ggplotly(p3) %>% layout()
 
 ```
 
@@ -350,7 +365,7 @@ p4 <- tweets_rollingstones_de %>%
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(p4)
+ggplotly(p4) %>% layout()
 
 ```
 
@@ -383,14 +398,14 @@ m1 <- tweets_rollingstones %>%
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(m1)
+ggplotly(m1) %>% layout()
 ```
 
 Es gibt mehrere Datensätze, in denen die geographische Lage von Städten (also Längen- und Breitengrad) gespeichert ist. Das `rtweet`-Paket verfügt über einen kleineren Datensatz, erreichbar durch:
 
 
 ```{r message=FALSE, warning=FALSE}
-rtweet:::citycoords
+rtweet:::citycoords %>% rmarkdown::paged_table()
 ```
 
 Einen wesentlich umfangreicheren Datensatz findet man auf der Webseite von [simplempas](https://simplemaps.com/data/world-cities), neben den Angaben zur geographischen Lage und Staatszugehörigkeit auch die Einwohnerzahl.
@@ -401,7 +416,8 @@ world_cities <- read_csv("data/worldcities.csv")
 world_cities <- world_cities %>% 
   select(city_ascii, country, lat, lng) %>% 
   rename(city = city_ascii, state_country = country)
-head(world_cities)
+
+world_cities %>% rmarkdown::paged_table()
 ```
 
 Die letztere Datensammlung fügen wir mit der Funktion `left_join()` unserem Twitter-Datensatz hinzu.
@@ -505,7 +521,8 @@ tweets_rollingstones_cities_joined <- tweets_rollingstones_cities %>%
   left_join(world_cities, by = c("city", "state_country"))
 
 tweets_rollingstones_cities_joined %>% 
-  select(location, country, city, state_country, lat, lng)
+  select(location, country, city, state_country, lat, lng) %>% 
+  rmarkdown::paged_table()
 
 ```
 
@@ -562,7 +579,7 @@ ggsave("pictures/worldmap_tweets_rollingstones.png",
 
 ```{r message=FALSE, warning=FALSE}
 library(plotly)
-ggplotly(m2)
+ggplotly(m2) %>% layout()
 
 ```
 

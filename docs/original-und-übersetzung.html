@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-09-09" />
+<meta name="date" content="2021-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -975,7 +975,7 @@ po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="original-und-übersetzung.html#cb518-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_en, <span class="co"># jezikovni model</span></span>
 <span id="cb518-2"><a href="original-und-übersetzung.html#cb518-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt2<span class="sc">$</span>text,  <span class="co"># izbran je le angleški izvirnik</span></span>
 <span id="cb518-3"><a href="original-und-übersetzung.html#cb518-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-09-09 22:57:35 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-09-10 14:18:15 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="original-und-übersetzung.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb520-2"><a href="original-und-übersetzung.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>
@@ -1035,7 +1035,7 @@ po več merilih. Lematizacijo je le ena izmed nalog, ki jih program opravi.</p>
 <div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="original-und-übersetzung.html#cb523-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(ud_de, <span class="co"># jezikovni model</span></span>
 <span id="cb523-2"><a href="original-und-übersetzung.html#cb523-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">x =</span> txt1<span class="sc">$</span>text,  <span class="co"># izbran je le nemški prevod romana</span></span>
 <span id="cb523-3"><a href="original-und-übersetzung.html#cb523-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">trace =</span> <span class="cn">TRUE</span>) <span class="co"># sledimo napredku anotacije</span></span></code></pre></div>
-<pre><code>## 2021-09-09 22:58:48 Annotating text fragment 1/1</code></pre>
+<pre><code>## 2021-09-10 14:19:45 Annotating text fragment 1/1</code></pre>
 <p>Pretvorba seznama v podatkovni niz s funkcijo <em>as.data.frame()</em>:</p>
 <div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="original-und-übersetzung.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Alternativno branje angleškega izvirnika</span></span>
 <span id="cb525-2"><a href="original-und-übersetzung.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo drugo besedilo:</span></span>
