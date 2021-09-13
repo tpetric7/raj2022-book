@@ -689,7 +689,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-09-10 14:18:15 Annotating text fragment 1/1
+## 2021-09-13 21:12:04 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -778,7 +778,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-09-10 14:19:45 Annotating text fragment 1/1
+## 2021-09-13 21:14:45 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -835,7 +835,7 @@ head(de_df)
 
 Besedni oblački so smiseln in razmeroma preprost prikaz najpogostejših besed v besedilu. Največkrat jih uporabljajo za prikaz vsebinsko relevantnih besed. Zato je treba najprej odstraniti funkcijske in druge neprimerne izraze. Še boljši pregled nad vsebino besedila nam besedni oblački dajejo, če uporabljamo slovarske enote (leme) namesto besednih oblik. To še posebej velja v oblikoslovno bogatih jezikih kot sta slovenščino in nemščina.
 
-Podatkovni niz "en_df", ki ga je ustvaril *udpipe*, moramo pripraviti za program *wordcloud2*:
+Podatkovni niz "en_df", ki ga je ustvaril `udpipe`, moramo pripraviti za program `wordcloud2`:
 - izločiti nezaželene izraze,
 - ugotoviti pogostnost besed in
 - omejiti število besed za prikaz v besednem oblačku.
@@ -847,7 +847,7 @@ en_df_ud <- en_df %>%
   filter(str_detect(lemma, "^[:alpha:]")) %>% # samo črke, ne simobolov itd.
   mutate(word = str_to_lower(lemma)) # vse pretvorimo v male črke
 
-# iz besednega senzama naredimo podatkovni niz
+# iz besednega seznama naredimo podatkovni niz
 stoplist_eng = as_tibble(stoplist_en) %>% 
   rename(word = value) # sprememba imena
 
@@ -862,15 +862,41 @@ topfeat_en = en_df_cleaned %>%
   as_tibble()
 
 # Oblaček
-set.seed(1320)
-library(wordcloud2)
-wordcloud2(topfeat_en)
 ```
 
-```{=html}
-<div id="htmlwidget-e9ebc68e1a2e776482e0" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e9ebc68e1a2e776482e0">{"x":{"word":["tom","go","get","boy","come","huck","see","time","know","take","well","make","joe","tell","little","find","look","away","never","back","begin","like","can","think","two","oh","way","thing","becky","good","long","day","hand","give","man","night","old","want","let","right","turn","try","aunt","eye","face","place","presently","last","head","keep","every","hear","talk","reckon","sid","stand","heart","yes","house","moment","always","great","seem","still","feel","injun","school","might","dead","something","enough","much","along","another","put","three","lay","sit","fall","leave","till","anything","girl","new","work","half","mean","home","light","next","nothing","polly","poor","water","word","even","mind","potter","village","door","far","hope","must","stop","anybody","foot","follow","wait","child","hour","move","sleep","soon","thatcher","without","start","whisper","wish","break","book","run","better","cave","grow","bring","town","trouble","awful","close","maybe","rest","sound","widow","harper","hold","many","mary","body","chapter","drop","first","minute","voice","watch","whole","call","morning","small","world","almost","cry","die","judge","show","use","end","sawyer","side","step","white","dream","life","name","pirate","reach","silence","candle","everything","money","tear","window","behind","course","draw","fire","pass","people","together","air","cat","ground","hang","lady","matter","yet","huckleberry","open","rise","thought","dark","hill","notice","smoke","spring","treasure","young","believe","ben","hide","kill","lie","order","sunday","toward","tree","wonder","arm","breath","church","help","knife","listen","lose","master","mighty","within","bet","ear","mile","n’t","river","sure","throw","anyway","fence","full","high","interest","line","mr.","play","set","sort","spirit","week","care","kind","lead","less","part","remember","room","stay","answer","ask","become","bed","enter","everybody","fool","hard","lad","muff","near","war","wood","year","carry","chance","company","eat","glad","glance","late","learn","nobody","occur","ten","whose","big","bit","breakfast","business","deep","dog","else","fear","happen","promise","soul","speak","stir","wall","welshman","afraid","bear","bout","box","bury","clothes","distance","dress","finally","forget","hardly","hundred","mouth","ready","round","sign"],"freq":[771,357,313,290,275,249,226,214,200,173,168,164,162,152,143,139,137,129,128,124,124,124,119,118,116,115,115,112,109,103,103,102,102,100,99,97,96,96,95,94,93,84,83,83,83,83,82,81,80,80,79,79,79,77,77,76,75,75,70,70,68,68,68,68,67,67,67,65,64,64,62,62,61,61,61,59,58,58,56,56,55,54,54,54,54,53,53,52,52,52,52,52,52,52,52,51,51,50,50,49,49,49,49,48,47,47,46,46,45,45,45,45,45,45,45,44,44,44,43,42,42,41,41,41,40,40,40,39,39,39,39,39,39,38,38,38,38,37,37,37,37,37,37,37,37,36,36,36,36,35,35,35,35,35,35,34,34,34,34,34,33,33,33,33,33,33,32,32,32,32,32,31,31,31,31,31,31,31,30,30,30,30,30,30,30,29,29,29,29,28,28,28,28,28,28,28,27,27,27,27,27,27,27,27,27,27,26,26,26,26,26,26,26,26,26,26,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,23,23,23,23,23,23,23,23,22,22,22,22,22,22,22,22,22,22,22,22,22,22,21,21,21,21,21,21,21,21,21,21,21,21,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":0.233463035019455,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+Izris in shranjevanje oblačka:
+
+
+```r
+#install webshot
+library(webshot)
+# webshot::install_phantomjs()
+
+# Make the graph
+# my_graph=wordcloud2(demoFreq, size=1.5)
+# my_graph = wordcloud2(topfeat_en, shape = "circle",  
+#                       color='random-light', backgroundColor="black") #color = "random-dark")
+
+set.seed(1320)
+library(wordcloud2)
+my_graph = wordcloud2(topfeat_en)
+# my_graph = wordcloud2(topfeat, shape = "circle",  
+#                       color='random-light', backgroundColor="black") 
+# save it in html
+library(htmlwidgets)
+saveWidget(my_graph,"tmp.html",selfcontained = F)
+
+# png and pdf
+webshot("tmp.html","pictures/wcloud_tom_en.png", delay =5, vwidth = 1000, vheight=800)
 ```
+
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-38-1.png" width="672" />
+
+```r
+webshot("tmp.html","pictures/wcloud_tom_en.pdf", delay =5, vwidth = 800, vheight=600)
+```
+
+<embed src="13-tom_vs_tom_files/figure-html/unnamed-chunk-38-2.pdf" width="672" type="application/pdf" />
 
 Oblaček nemških slovarskih enot:
 
@@ -891,24 +917,35 @@ de_df_cleaned = de_df_ud %>%
 # preštejemo besede, zadnji popravki in izberemo najpogostejše
 topfeat_de = de_df_cleaned %>% 
   count(word, sort = TRUE) %>% 
-  filter(!str_detect(word, "er\\|es\\|sie")) %>% # izločimo z regularnim izrazom
+  filter(!str_detect(
+    word, "er\\|es\\|sie")) %>% # izločimo z regularnim izrazom
   filter(!str_detect(word, "sie\\|sie")) %>% # izločimo z regex
-  mutate(word = str_replace(word, "hucken", "huck")) %>% # popravek !!!
+  mutate(word = str_replace(
+    word, "hucken", "huck")) %>% # popravek !!!
   head(300) %>% 
   as_tibble()
 
 # Oblaček
 set.seed(1321)
 library(wordcloud2)
-wordcloud2(topfeat_de)
+my_graph2 = wordcloud2(topfeat_de)
+# save it in html
+library(webshot)
+library(htmlwidgets)
+saveWidget(my_graph2,"tmp2.html",selfcontained = F)
+# save as png and pdf
+webshot("tmp2.html","pictures/wcloud_tom_de.png", delay =5, vwidth = 1000, vheight=800)
 ```
 
-```{=html}
-<div id="htmlwidget-3e6923d3902f1985fa4e" style="width:672px;height:480px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3e6923d3902f1985fa4e">{"x":{"word":["tom","huck","kommen","sehen","gehen","gut","tun","joe","lassen","na","denken","geben","müssen","klein","sollen","alt","wissen","beginnen","becky","jung","tag","finden","jed","tante","groß","nehmen","halten","hand","stehen","zeit","schließlich","augenblick","plötzlich","haus","herz","liegen","nacht","sid","zwei","auge","davon","recht","kopf","bald","junge","nie","beide","bleiben","schrecklich","dorf","sprechen","lang","scheinen","hören","gesicht","nah","wort","genug","zurück","nein","setzen","erst","fort","solch","gedanke","still","ist's","kind","neu","versuchen","fühlen","mann","paar","fallen","gewiß","halb","niemand","tief","tür","witwe","darauf","drei","erscheinen","polly","bißchen","gleich","herum","höhle","lange","letzt","stimme","suchen","weit","ich's","legen","potter","wär","weißen|wissen","wer","folgen","fuß","geist","indianer","sitzen","warum","wasser","arm","schule","warten","ziehen","gott","mädchen","welch","wenig","leben","mary","voll","zeigen","du's","gehören","kapitel","sache","buch","geld","herr","irgend","mögen","stoßen","thatcher","fahren","laß","schwach","sofort","verlieren","brechen","jemand","schlafen","schlagen","tot","welt","bringen","gerade","glauben","harper","teufel","ton","weiß","wußen","ach","dabei","dran","werfen","bekommen","minute","sicher","toms","ab","brauchen","fragen","katze","lehrer","morgen","schauen","all","daran","heraus","ohr","pirat","schön","schwer","wahr","dame","nieder","sawyer","werd","arbeit","eigen","fast","frau","gang","leute","messer","platz","seite","traurig","treiben","vielleicht","weile","darüber","ende","fangen","her","knabe","laufen","leicht","menge","mund","schatz","traum","bett","blick","fenster","hätt","licht","name","richter","wenden","baum","dicht","genau","gesellschaft","heißen","hoch","huckleberry","kurz","meile","muff","oft","rennen","rufen","springen","tragen","wirklich","zusammen","denken|gedenken","gelegenheit","glaub","grad","höhe","jahr","stecken","sterben","stolz","vorsichtig","zaun","art","burschen","halt","kaum","luft","merken","nochmals","ort","schatten","vergnügen","verlassen","woche","dafür","entdecken","er's","erde","erfüllen","flüsteren","hervor","hoffnung","land","natürlich","niemals","sag","schrecken","stelle","vergessen","wald","wenn's","allmählich","befinden","einfach","hinunter","spät","treffen","treten","vorher","weinen","antwort","ebenso","frühstück","geschichte","holen","interesse","jim","kirche","moment","schlecht","spielen","uhr","wenigstens","würd","zeichen","abend","angst","ben","danach","douglas","erheben","feuer","finger","fluß","glücklich","je","kleider"],"freq":[769,226,212,189,171,170,158,143,127,125,123,115,115,113,111,103,103,102,101,99,98,94,94,94,91,84,83,83,83,82,81,78,78,77,77,77,76,74,74,71,71,71,68,66,66,66,65,65,65,63,63,62,62,61,60,57,57,56,56,54,54,53,53,53,52,52,51,50,50,50,49,49,47,46,46,46,46,46,46,46,45,45,45,45,44,44,44,44,44,44,44,44,44,43,43,43,43,43,42,41,41,41,41,41,41,41,40,40,40,40,39,39,39,39,38,38,38,38,37,37,37,37,36,36,36,36,36,36,36,35,35,35,35,35,34,34,34,34,34,34,33,33,33,33,33,33,33,33,32,32,32,32,31,31,31,31,30,30,30,30,30,30,30,29,29,29,29,29,29,29,29,28,28,28,28,27,27,27,27,27,27,27,27,27,27,27,27,27,26,26,26,26,26,26,26,26,26,26,26,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,23,23,23,23,23,23,23,23,23,23,23,22,22,22,22,22,22,22,22,22,22,22,22,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,20,20,20,20,20,20,20,20,20,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,18,18,18,18,18,18,18,18,18,18,18,18],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":0.23407022106632,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+
+```r
+webshot("tmp2.html","pictures/wcloud_tom_de.pdf", delay =5, vwidth = 800, vheight=600)
 ```
 
-Oblaček angleških slovarskih enot, ki smo jih pridobili s programom *udpipe*, lahko tudi pripravimo za prikaz s funkcijo *textplot_wordcloud()* programa *quanteda*. 
+<embed src="13-tom_vs_tom_files/figure-html/unnamed-chunk-39-2.pdf" width="672" type="application/pdf" />
+
+Oblaček angleških slovarskih enot, ki smo jih pridobili s programom `udpipe`, lahko tudi pripravimo za prikaz s funkcijo `textplot_wordcloud()` programa `quanteda`. 
 
 
 ```r
@@ -935,7 +972,7 @@ textplot_wordcloud(matrika_lem_en, # le nemški prevod
                    max_words = 250) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-39-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-40-1.svg" width="672" />
 
 Priprava seznama nemških slovarskih enot, ki smo jih pridobili z *udpipe*, in prikaz s funkcijo textplot_wordcloud().
 
@@ -964,7 +1001,7 @@ textplot_wordcloud(matrika_lem_de, # le nemški prevod
                    max_words = 250) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-40-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-41-1.svg" width="672" />
 
 Združimo matriki s funkcijo *rbind()*.
 
@@ -1009,7 +1046,7 @@ textplot_wordcloud(matrika_lem_de_en,
                    max_words = 120) # koliko besed sme biti v oblačku
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-43-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-44-1.svg" width="672" />
 
 
 ## Položaj v besedilu (xray)
@@ -1027,7 +1064,7 @@ kwic_tom = kwic(besede,
 textplot_xray(kwic_tom)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-44-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-45-1.svg" width="672" />
 
 
 ## Slovarska raznolikost
@@ -1154,7 +1191,7 @@ dist1 = textstat_dist(romane3_dfm, method = "euclidean", margin = "documents")
 plot(hclust(as.dist(dist1)))
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-50-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-51-1.svg" width="672" />
 
 
 ## Ključne besede
@@ -1192,25 +1229,25 @@ key_tom_en %>% rmarkdown::paged_table()
 textplot_keyness(key_tom_de, key_tom_de$n_target == 1)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-53-1.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_de, key_tom_en$n_target == 1)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-2.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-53-2.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_de)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-3.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-53-3.svg" width="672" />
 
 ```r
 textplot_keyness(key_tom_en)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-52-4.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-53-4.svg" width="672" />
 
 
 ## Razumljivost besedil
@@ -1294,7 +1331,7 @@ textplot_network(top_fcm_de,
                  edge_size = 5)
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-55-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-56-1.svg" width="672" />
 
 ## Slovnična analiza
 
@@ -1436,7 +1473,7 @@ tabela %>%
   labs(x = "Število pojavnic", y = "")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-58-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-59-1.svg" width="672" />
 
 Izračun deležev:
 
@@ -1763,7 +1800,7 @@ tabela2 %>%
   labs(x = "Anteil", y = "Wortklasse")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-68-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-69-1.svg" width="672" />
 
 
 ### Korelacija besed
@@ -1818,7 +1855,7 @@ correlations %>%
        subtitle = "Among elements that appeared in at least 2 sentences")
 ```
 
-<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-70-1.svg" width="672" />
+<img src="13-tom_vs_tom_files/figure-html/unnamed-chunk-71-1.svg" width="672" />
 
 
 ## Sentiment

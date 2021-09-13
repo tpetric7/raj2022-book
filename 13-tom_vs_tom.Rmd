@@ -587,7 +587,7 @@ head(de_df)
 
 Besedni oblački so smiseln in razmeroma preprost prikaz najpogostejših besed v besedilu. Največkrat jih uporabljajo za prikaz vsebinsko relevantnih besed. Zato je treba najprej odstraniti funkcijske in druge neprimerne izraze. Še boljši pregled nad vsebino besedila nam besedni oblački dajejo, če uporabljamo slovarske enote (leme) namesto besednih oblik. To še posebej velja v oblikoslovno bogatih jezikih kot sta slovenščino in nemščina.
 
-Podatkovni niz "en_df", ki ga je ustvaril *udpipe*, moramo pripraviti za program *wordcloud2*:
+Podatkovni niz "en_df", ki ga je ustvaril `udpipe`, moramo pripraviti za program `wordcloud2`:
 - izločiti nezaželene izraze,
 - ugotoviti pogostnost besed in
 - omejiti število besed za prikaz v besednem oblačku.
@@ -598,7 +598,7 @@ en_df_ud <- en_df %>%
   filter(str_detect(lemma, "^[:alpha:]")) %>% # samo črke, ne simobolov itd.
   mutate(word = str_to_lower(lemma)) # vse pretvorimo v male črke
 
-# iz besednega senzama naredimo podatkovni niz
+# iz besednega seznama naredimo podatkovni niz
 stoplist_eng = as_tibble(stoplist_en) %>% 
   rename(word = value) # sprememba imena
 
@@ -613,9 +613,33 @@ topfeat_en = en_df_cleaned %>%
   as_tibble()
 
 # Oblaček
+
+```
+
+Izris in shranjevanje oblačka:
+
+```{r}
+#install webshot
+library(webshot)
+# webshot::install_phantomjs()
+
+# Make the graph
+# my_graph=wordcloud2(demoFreq, size=1.5)
+# my_graph = wordcloud2(topfeat_en, shape = "circle",  
+#                       color='random-light', backgroundColor="black") #color = "random-dark")
+
 set.seed(1320)
 library(wordcloud2)
-wordcloud2(topfeat_en)
+my_graph = wordcloud2(topfeat_en)
+# my_graph = wordcloud2(topfeat, shape = "circle",  
+#                       color='random-light', backgroundColor="black") 
+# save it in html
+library(htmlwidgets)
+saveWidget(my_graph,"tmp.html",selfcontained = F)
+
+# png and pdf
+webshot("tmp.html","pictures/wcloud_tom_en.png", delay =5, vwidth = 1000, vheight=800)
+webshot("tmp.html","pictures/wcloud_tom_en.pdf", delay =5, vwidth = 800, vheight=600)
 
 ```
 
@@ -637,20 +661,29 @@ de_df_cleaned = de_df_ud %>%
 # preštejemo besede, zadnji popravki in izberemo najpogostejše
 topfeat_de = de_df_cleaned %>% 
   count(word, sort = TRUE) %>% 
-  filter(!str_detect(word, "er\\|es\\|sie")) %>% # izločimo z regularnim izrazom
+  filter(!str_detect(
+    word, "er\\|es\\|sie")) %>% # izločimo z regularnim izrazom
   filter(!str_detect(word, "sie\\|sie")) %>% # izločimo z regex
-  mutate(word = str_replace(word, "hucken", "huck")) %>% # popravek !!!
+  mutate(word = str_replace(
+    word, "hucken", "huck")) %>% # popravek !!!
   head(300) %>% 
   as_tibble()
 
 # Oblaček
 set.seed(1321)
 library(wordcloud2)
-wordcloud2(topfeat_de)
+my_graph2 = wordcloud2(topfeat_de)
+# save it in html
+library(webshot)
+library(htmlwidgets)
+saveWidget(my_graph2,"tmp2.html",selfcontained = F)
+# save as png and pdf
+webshot("tmp2.html","pictures/wcloud_tom_de.png", delay =5, vwidth = 1000, vheight=800)
+webshot("tmp2.html","pictures/wcloud_tom_de.pdf", delay =5, vwidth = 800, vheight=600)
 
 ```
 
-Oblaček angleških slovarskih enot, ki smo jih pridobili s programom *udpipe*, lahko tudi pripravimo za prikaz s funkcijo *textplot_wordcloud()* programa *quanteda*. 
+Oblaček angleških slovarskih enot, ki smo jih pridobili s programom `udpipe`, lahko tudi pripravimo za prikaz s funkcijo `textplot_wordcloud()` programa `quanteda`. 
 
 ```{r message=FALSE, warning=FALSE}
 tok_en = en_df_cleaned %>% 

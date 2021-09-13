@@ -1,9 +1,9 @@
 ---
 title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
-date: "2021-09-10"
+date: "2021-09-13"
 site: bookdown::bookdown_site
-bibliography: "book.bib"
+bibliography: [book.bib, packages.bib]
 bibio-style: "apalike"
 link-citations: true
 colorlinks: yes 
@@ -46,3 +46,5 @@ Ebenen: auf phonetischer, graphematischer, morphologischer und
 syntaktischer Ebene.[^index-1]
 
 [^index-1]: Dieses Buch wurde mit *Bookdown* [@xie2015] verfasst.
+
+
