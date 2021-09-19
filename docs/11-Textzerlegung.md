@@ -10,11 +10,11 @@ library(tidytext)
 
 ## Text öffnen
 
-In der R-Umgebung haben wir mehrere Möglichkeiten, Textdateien zu öffnen.
+In der `R`-Umgebung haben wir mehrere Möglichkeiten, Textdateien zu öffnen.
 Hier verwenden wir `read_lines()`, ein Programm, das mit dem Programmbündel `tidyverse` geladen wird.
 
-Bei langen Texten vermeiden wir es, den ganzen Text in den Arbeitsspeicher (*RAM*) zu laden, weil das lange dauern kann.
-Stattdessen verwenden wir Befehle wie `substr()` oder die tidyverse-Funktion `str_sub()`, um uns einen Teil des Texte anzuschauen.
+Bei langen Texten vermeiden wir es, den ganzen Text in den Arbeitsspeicher (`RAM`) zu laden, weil das lange dauern kann.
+Stattdessen verwenden wir Befehle wie `substr()` oder die `tidyverse`-Funktion `str_sub()`, um uns einen Teil des Textes anzuschauen.
 
 
 ```r
@@ -41,8 +41,7 @@ str_sub(novels_r, start = 1, end = 300)
 
 ### Tabelle
 
-Um Texteinheiten wie z.B.
-Wörter, Buchstaben oder Sätze / Äußerungen zählen zu können, müssen wir den Text zuerst in kleinere Teile zerlegen, in der Fachsprache als Tokenisierung bekannt (tokens extrahieren).
+Um Texteinheiten wie z.B. Wörter, Buchstaben oder Sätze / Äußerungen zählen zu können, müssen wir den Text zuerst in kleinere Teile zerlegen, in der Fachsprache als Tokenisierung bekannt (`tokens` extrahieren).
 
 Für die Tokenisierung von Zeichenfolgen (Texten) gibt es in der R-Sprache viele Programme (z.B. `quanteda`, `tidytext`) und verschiedene Möglichkeiten (mit ihren Vor- und Nachteilen).
 Hier verwenden wir das zuletzt genannte Programm und seine Funktion `unnest_tokens()`.

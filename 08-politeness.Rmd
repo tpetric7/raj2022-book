@@ -6,7 +6,7 @@ library(scales)
 # detach("package:rlang", unload=TRUE)
 ```
 
-Datensatz von: Bodo Winter
+Datensatz von: *Bodo Winter*
 
 Thema: Politeness and Pitch (F0)
 
@@ -25,6 +25,11 @@ Gliederung unserer quantitativen Analyse
 4\. Test und Ergebnisse
 
 5\. Schluss
+
+
+:::rmdnote 
+Eine einfache `lineare Regression` oder einen `t-Test` kann man auch in Excel berechnen, aber in Statistikprogrammen ist das bequemer.
+:::
 
 #### Datei laden
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2021-09-13" />
+<meta name="date" content="2021-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="excel-vs.-r.html"/>
 <link rel="next" href="textvergleich.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,7 +55,7 @@
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
 <script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
 <script src="libs/wordcloud2-0.0.1/hover.js"></script>
@@ -524,10 +524,10 @@ div.csl-indent {
 </div>
 <div id="text-öffnen" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Text öffnen</h2>
-<p>In der R-Umgebung haben wir mehrere Möglichkeiten, Textdateien zu öffnen.
+<p>In der <code>R</code>-Umgebung haben wir mehrere Möglichkeiten, Textdateien zu öffnen.
 Hier verwenden wir <code>read_lines()</code>, ein Programm, das mit dem Programmbündel <code>tidyverse</code> geladen wird.</p>
-<p>Bei langen Texten vermeiden wir es, den ganzen Text in den Arbeitsspeicher (<em>RAM</em>) zu laden, weil das lange dauern kann.
-Stattdessen verwenden wir Befehle wie <code>substr()</code> oder die tidyverse-Funktion <code>str_sub()</code>, um uns einen Teil des Texte anzuschauen.</p>
+<p>Bei langen Texten vermeiden wir es, den ganzen Text in den Arbeitsspeicher (<code>RAM</code>) zu laden, weil das lange dauern kann.
+Stattdessen verwenden wir Befehle wie <code>substr()</code> oder die <code>tidyverse</code>-Funktion <code>str_sub()</code>, um uns einen Teil des Textes anzuschauen.</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="textzerlegung.html#cb251-1" aria-hidden="true" tabindex="-1"></a>novels_r <span class="ot">=</span> <span class="fu">read_lines</span>(<span class="st">&quot;data/books/tom.txt&quot;</span>)</span>
 <span id="cb251-2"><a href="textzerlegung.html#cb251-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb251-3"><a href="textzerlegung.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ansicht der ersten 300 Zeichen</span></span>
@@ -541,8 +541,7 @@ Stattdessen verwenden wir Befehle wie <code>substr()</code> oder die tidyverse-F
 <h2><span class="header-section-number">5.3</span> Zerlegung des Textes</h2>
 <div id="tabelle" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Tabelle</h3>
-<p>Um Texteinheiten wie z.B.
-Wörter, Buchstaben oder Sätze / Äußerungen zählen zu können, müssen wir den Text zuerst in kleinere Teile zerlegen, in der Fachsprache als Tokenisierung bekannt (tokens extrahieren).</p>
+<p>Um Texteinheiten wie z.B. Wörter, Buchstaben oder Sätze / Äußerungen zählen zu können, müssen wir den Text zuerst in kleinere Teile zerlegen, in der Fachsprache als Tokenisierung bekannt (<code>tokens</code> extrahieren).</p>
 <p>Für die Tokenisierung von Zeichenfolgen (Texten) gibt es in der R-Sprache viele Programme (z.B. <code>quanteda</code>, <code>tidytext</code>) und verschiedene Möglichkeiten (mit ihren Vor- und Nachteilen).
 Hier verwenden wir das zuletzt genannte Programm und seine Funktion <code>unnest_tokens()</code>.</p>
 <p>Im ersten Schritt wandeln wir die Textdatei in einen Datensatz um, so dass wir mit den gut verständlichen <code>tidyverse</code>-Funktionen arbeiten können.
