@@ -1,7 +1,7 @@
 ---
 title: "RAJ 2022 Introduction Course"
 author: "Teodor Petrič"
-date: "2021-09-13"
+date: "2021-09-19"
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
 bibio-style: "apalike"
@@ -10,6 +10,11 @@ colorlinks: yes
 always_allow_html: true
 graphics: yes 
 cover-image: "pictures/hayiti__wcloud_lemmas.png" 
+resources:
+- name: featuredImage
+  params:
+    description: "Text linguistics in R"
+  src: "pictures/hayiti__wcloud_lemmas.png" 
 editor_options:
   markdown:
     wrap: 72

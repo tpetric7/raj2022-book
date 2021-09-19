@@ -689,7 +689,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-09-13 21:12:04 Annotating text fragment 1/1
+## 2021-09-19 13:47:54 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -778,7 +778,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-09-13 21:14:45 Annotating text fragment 1/1
+## 2021-09-19 13:50:20 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -884,6 +884,13 @@ my_graph = wordcloud2(topfeat_en)
 #                       color='random-light', backgroundColor="black") 
 # save it in html
 library(htmlwidgets)
+```
+
+```
+## Warning: package 'htmlwidgets' was built under R version 4.1.1
+```
+
+```r
 saveWidget(my_graph,"tmp.html",selfcontained = F)
 
 # png and pdf
