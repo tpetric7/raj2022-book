@@ -105,9 +105,9 @@ write_rds(tweets_afghanistan, "data/tweets_afghanistan.rds")
 ```{r message=FALSE, warning=FALSE}
 tweets_afghanistan <- read_rds("data/tweets_afghanistan.rds")
 
-tweets_afghanistan_de <- subset(tweets_afghanistan, lang = "de")
-tweets_afghanistan_en <- subset(tweets_afghanistan, lang = "en")
-tweets_afghanistan_sl <- subset(tweets_afghanistan, lang = "sl")
+tweets_afghanistan_de <- subset(tweets_afghanistan, lang == "de")
+tweets_afghanistan_en <- subset(tweets_afghanistan, lang == "en")
+tweets_afghanistan_sl <- subset(tweets_afghanistan, lang == "sl")
 
 ```
 
@@ -219,14 +219,13 @@ ggplotly(p3)
 
 ## Reactable table
 
-```{r}
-tweet_table_data <- select(tweets_afghanistan_de, -user_id, -status_id)
-library(reactable)
-reactable(tweet_table_data)
+```{r message=FALSE, warning=FALSE}
+tweet_table_data <- select(tweets_afghanistan_sl, -user_id, -status_id)
 
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
+library(reactable)
 reactable(tweet_table_data, 
           filterable = TRUE, searchable = TRUE, bordered = TRUE, 
           striped = TRUE, highlight = TRUE,
@@ -267,7 +266,7 @@ To construct a URL, I need to know the format of a tweet, which if you look at a
 
 Using the glue package, that would be rendered like this: 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(glue)
 #glue::glue("https://twitter.com/{screen_name}/status/{status_id}")
 
@@ -282,8 +281,8 @@ My full code to create a column with a clickable link to the tweet after the twe
 
 And the code to create a data frame for an interactive table:
 
-```{r}
-tweet_table_data <- tweets_afghanistan_de %>%
+```{r message=FALSE, warning=FALSE}
+tweet_table_data <- tweets_afghanistan_sl %>%
   select(user_id, status_id, created_at, screen_name, text, favorite_count, retweet_count, urls_expanded_url) %>%
   mutate(
     Tweet = glue::glue("{text} <a href='https://twitter.com/{screen_name}/status/{status_id}'>>> </a>") 
@@ -296,7 +295,7 @@ I'd also like to make clickable links from the URL column, which is now just tex
 
 I’m sure there is a more elegant way to create clickable links from a list column of plain-text URLs, but the code below works. First I create a function to generate the HTML if there are no URLs, one URL, or two or more:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 make_url_html <- function(url) {
   if(length(url) < 2) {
     if(!is.na(url)) {
@@ -315,7 +314,7 @@ I run purrr::map_chr() on the URL value if there are two or more URLs so that ea
 
 Once my function works, I use purrr::map_chr() again to iterate over each item in the column:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tweet_table_data$URLs <- purrr::map_chr(tweet_table_data$URLs, make_url_html)
 
 ```
@@ -324,7 +323,7 @@ Don’t worry if you don’t understand this part, since it’s really more abou
 
 Finally, I can run my customized reactable() code on the new tweet table data: 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 reactable(tweet_table_data, 
           filterable = TRUE, searchable = TRUE, bordered = TRUE, striped = TRUE, highlight = TRUE,
           showSortable = TRUE, defaultSortOrder = "desc", defaultPageSize = 25, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 50, 75, 100, 200), 
