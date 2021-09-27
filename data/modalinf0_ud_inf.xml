@@ -1,0 +1,5811 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<text>
+		<body>
+			<p>
+				<s>
+					<w msd="Gp-n" lemma="biti">biti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="imeti">imeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="narediti">narediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="upoštevati">upoštevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vedeti">vedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ostati">ostati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poskrbeti">poskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nositi">nositi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavedati">zavedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delati">delati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagotoviti">zagotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="iti">iti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="plačati">plačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priznati">priznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naučiti">naučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opraviti">opraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vrniti">vrniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="začeti">začeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priti">priti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrbeti">skrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odločiti">odločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="storiti">storiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izpolnjevati">izpolnjevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ravnati">ravnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapreti">zapreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opravljati">opravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="pomagati">pomagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="sprejet">sprejeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dati">dati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="paziti">paziti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="potekati">potekati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povedati">povedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pridobiti">pridobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="reč">reči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spoštovati">spoštovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spremeniti">spremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="uporabljati">uporabljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="držati">držati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="najti">najti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="počakati">počakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poznati">poznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Zk-mmi" lemma="ta">ti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="učiti">učiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukrepati">ukrepati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="voditi">voditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="znati">znati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="boriti">boriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obstajati">obstajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odgovoriti">odgovoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oditi">oditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odločati">odločati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poiskati">poiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postaviti">postaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predložiti">predložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pustiti">pustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razmišljati">razmišljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzeti">vzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čakati">čakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čutiti">čutiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dobiti">dobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dokazati">dokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="govoriti">govoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="hoditi">hoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izbirati">izbirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izbrati">izbrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izvajati">izvajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="kaznovati">kaznovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oddati">oddati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpovedati">odpovedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpreti">odpreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omeniti">omeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omogočiti">omogočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="osredotočiti">osredotočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="plačevati">plačevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokazati">pokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preživeti">preživeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prilagoditi">prilagoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="slediti">slediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="stopiti">stopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukvarjati">ukvarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="uživati">uživati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vpisati">vpisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vprašati">vprašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="znajti">znajti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="živeti">živeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izkazati">izkazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izkoristiti">izkoristiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izogibati">izogibati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="končati">končati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nadaljevati">nadaljevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nameniti">nameniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="napisati">napisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obiskati">obiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odstraniti">odstraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pisati">pisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="podati">podati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poklicati">poklicati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ponuditi">ponuditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="popraviti">popraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potrditi">potrditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prenašati">prenašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prestaviti">prestaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preteči">preteči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preveriti">preveriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripraviti">pripraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Dd" lemma="proti">proti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="raziskati">raziskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razmisliti">razmisliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="razumeti">razumeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sedeti">sedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="soočiti">soočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="spoznati">spoznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprijazniti">sprijazniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="strinjati">strinjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ščititi">ščititi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umakniti">umakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="urediti">urediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ustvariti">ustvariti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zagotavljati">zagotavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapustiti">zapustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="zaupati">zaupati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="bati">bati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čuvati">čuvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dajati">dajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delovati">delovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dihati">dihati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dogovoriti">dogovoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dokazovati">dokazovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dvigniti">dvigniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="igrati">igrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izgubiti">izgubiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpolniti">izpolniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpustiti">izpustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="jesti">jesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="kupiti">kupiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="najeti">najeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="napraviti">napraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nastopiti">nastopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nehati">nehati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obiskovati">obiskovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obleči">obleči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obnoviti">obnoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oceniti">oceniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odpirati">odpirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odsvetovati">odsvetovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odšteti">odšteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odviti">odviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ohraniti">ohraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="okrepiti">okrepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omejiti">omejiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opustiti">opustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="podpisati">podpisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pogovoriti">pogovoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pohvaliti">pohvaliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pomisliti">pomisliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poskušati">poskušati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posloviti">posloviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poslušati">poslušati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posneti">posneti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="posredovati">posredovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postati">postati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posvetiti">posvetiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="posvetovati">posvetovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potegniti">potegniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potruditi">potruditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povezati">povezati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pozabiti">pozabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predelati">predelati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prejemati">prejemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepustiti">prepustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="presoditi">presoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prijaviti">prijaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prirediti">prirediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pristati">pristati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="reševati">reševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sodelovati">sodelovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spopadati">spopadati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spopasti">spopasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spraševati">spraševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spremljati">spremljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sproščati">sproščati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spucati">spucati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="stati">stati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="testirati">testirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Zk-mmi" lemma="tisti">tisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ugasniti">ugasniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uglasiti">uglasiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umiti">umiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="usklajevati">usklajevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ustvarjati">ustvarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="veljati">veljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="vest">vesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="videti">videti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vključevati">vključevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vključiti">vključiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vložiti">vložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vpeljati">vpeljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zadoščati">zadoščati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zadovoljiti">zadovoljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapisati">zapisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaščititi">zaščititi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavarovati">zavarovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavezati">zavezati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavrniti">zavrniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="zavrt">zavrti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zbrati">zbrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zdraviti">zdraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zglasiti">zglasiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zgoditi">zgoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zmanjšati">zmanjšati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="znašati">znašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="znebiti">znebiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čistiti">čistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="decentralist">decentralisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="definirati">definirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="doklicati">doklicati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="določiti">določiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="domovati">domovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="doplačevati">doplačevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="doprinesti">doprinesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dopustiti">dopustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dotakniti">dotakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dovoliti">dovoliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="gledati">gledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="gostiti">gostiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="graditi">graditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="hospitalizirati">hospitalizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="hraniti">hraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="hvaliti">hvaliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="iskati">iskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izboriti">izboriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izčistiti">izčistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izdelati">izdelati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izginiti">izginiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izkazovati">izkazovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izkusiti">izkusiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izobraževati">izobraževati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="izolirati">izolirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ppnmmi" lemma="izrazit">izraziti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izvesti">izvesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izvršiti">izvršiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="jemati">jemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="komunist">komunisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="koncentrirati">koncentrirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="konkurirati">konkurirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="koordinirati">koordinirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kriti">kriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kupovati">kupovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ljubiti">ljubiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="lotevati">lotevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozer" lemma="malenkost">malenkosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="mat">mati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="mazati">mazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="menjavati">menjavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="modernizirati">modernizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="L" lemma="morebiti">morebiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="načrtovati">načrtovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nadeti">nadeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nadgraditi">nadgraditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nadomeščati">nadomeščati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nadzirati">nadzirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nagrabiti">nagrabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="napotiti">napotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="napredovati">napredovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="narezati">narezati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="naročati">naročati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naročiti">naročiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="navaditi">navaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="navesti">navesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="negovati">negovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="občudovati">občudovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="občutiti">občutiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obljubiti">obljubiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obnašati">obnašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obravnavati">obravnavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obrniti">obrniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obsegati">obsegati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obsojati">obsojati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obveljati">obveljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obvestiti">obvestiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="obvladati">obvladati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oddaljiti">oddaljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odgovarjati">odgovarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odgovrajati">odgovrajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odhiteti">odhiteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odnehati">odnehati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odnesti">odnesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpeljati">odpeljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpustiti">odpustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odpuščati">odpuščati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odskočiti">odskočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odstopiti">odstopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odvzeti">odvzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ogledati">ogledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ohranjati">ohranjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="okužiti">okužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="omogočati">omogočati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opomniti">opomniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opozarjati">opozarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opravičiti">opravičiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opredeliti">opredeliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opremiti">opremiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oskrbeti">oskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="osvežiti">osvežiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ovrednotiti">ovrednotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="piti">piti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pobegniti">pobegniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="početi">početi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="podpirati">podpirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="podpreti">podpreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pogajati">pogajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pojesti">pojesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokopati">pokopati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokoriti">pokoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pokrivati">pokrivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="polagati">polagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poleteti">poleteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="policist">policisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ponotranjiti">ponotranjiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="popravljati">popravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="porabiti">porabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poravnati">poravnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poročati">poročati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posekati">posekati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posesati">posesati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poskusiti">poskusiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poslati">poslati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pospešiti">pospešiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postoriti">postoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potrkati">potrkati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="potrpeti">potrpeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poučiti">poučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poudarjati">poudarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povišati">povišati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povzdigniti">povzdigniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozer" lemma="pozornost">pozornosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prebrati">prebrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prebroditi">prebroditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="prečkati">prečkati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predati">predati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predstaviti">predstaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prehoditi">prehoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prejeti">prejeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preklopiti">preklopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prelomiti">prelomiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="premagati">premagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="premagovati">premagovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="premakniti">premakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prenehati">prenehati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepoloviti">prepoloviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preprečiti">preprečiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepričati">prepričati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preseči">preseči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preskočiti">preskočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prestati">prestati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pretrpeti">pretrpeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preučiti">preučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preusmeriti">preusmeriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevoziti">prevoziti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevzeti">prevzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevzgojiti">prevzgojiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="približati">približati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pridobivati">pridobivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priklopiti">priklopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prilagajati">prilagajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priložiti">priložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pripadati">pripadati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripeljati">pripeljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripomniti">pripomniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pripovedovati">pripovedovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prisiliti">prisiliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priskrbeti">priskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prisluhniti">prisluhniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="prispevati">prispevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pritrditi">pritrditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priučiti">priučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="privaditi">privaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="privajati">privajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prizemljiti">prizemljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="računati">računati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razbiti">razbiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razjasniti">razjasniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razkuževati">razkuževati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razkužiti">razkužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razočarati">razočarati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razpisati">razpisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razporediti">razporediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razstrupiti">razstrupiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razvijati">razvijati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razviti">razviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="reagirati">reagirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="registrirati">registrirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="roditi">roditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="samoizolirati">samoizolirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="sankcionirati">sankcionirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sesti">sesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="seznaniti">seznaniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="sistemizirati">sistemizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skladiščiti">skladiščiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="skočiti">skočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="skrajšati">skrajšati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrivati">skrivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="slišati">slišati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="služiti">služiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sneti">sneti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="soočati">soočati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spati">spati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spoprijeti">spoprijeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spraviti">spraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprehoditi">sprehoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sprejemati">sprejemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Rsn" lemma="sproti">sproti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spustiti">spustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="srečati">srečati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="staviti">staviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="streči">streči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="šolati">šolati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ppnmmi" lemma="temeljit">temeljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="trajati">trajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="trenirati">trenirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="trpeti">trpeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="turist">turisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="tvoriti">tvoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ugotoviti">ugotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ugrizniti">ugrizniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ukrotiti">ukrotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umiriti">umiriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="umivati">umivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umoriti">umoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umreti">umreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="upodobiti">upodobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="upokojiti">upokojiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ustrezati">ustrezati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozer" lemma="varnost">varnosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="varovati">varovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vcepiti">vcepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="verjeti">verjeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vmešati">vmešati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vnesti">vnesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="voliti">voliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vpisovati">vpisovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vsebovati">vsebovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vstati">vstati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vstopiti">vstopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vzdrževati">vzdrževati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzgojiti">vzgojiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zabavati">zabavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="začutiti">začutiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagnati">zagnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagoreti">zagoreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zahvaliti">zahvaliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zajemati">zajemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zamenjati">zamenjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zanašati">zanašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zanimati">zanimati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaobjeti">zaobjeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapolniti">zapolniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapomniti">zapomniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaprositi">zaprositi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaslužiti">zaslužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zastaviti">zastaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="zaužit">zaužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavedeti">zavedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="zavzet">zavzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zbadati">zbadati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="združiti">združiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zdržati">zdržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zvišati">zvišati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zvrstiti">zvrstiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="žrtvovati">žrtvovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="upoštevati">upoštevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Gp-n" lemma="biti">biti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="narediti">narediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vedeti">vedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagotoviti">zagotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dati">dati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nositi">nositi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odšteti">odšteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poudariti">poudariti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="bati">bati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delati">delati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obravnavati">obravnavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="počakati">počakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poiskati">poiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spremeniti">spremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poskrbeti">poskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predložiti">predložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="storiti">storiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavedati">zavedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čakati">čakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dodati">dodati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="iskati">iskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izogibati">izogibati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpolniti">izpolniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omeniti">omeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opozoriti">opozoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priznati">priznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="razumeti">razumeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spoštovati">spoštovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="deliti">deliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="igrati">igrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="imeti">imeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="najti">najti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nameniti">nameniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naučiti">naučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opraviti">opraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="organizirati">organizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="osredotočiti">osredotočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="plačati">plačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pošiljati">pošiljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="presojati">presojati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priti">priti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrbeti">skrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="začeti">začeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zamenjati">zamenjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dokazati">dokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="držati">držati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="gledati">gledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="govoriti">govoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="iti">iti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izvesti">izvesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nadgraditi">nadgraditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nadoknaditi">nadoknaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obdržati">obdržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oddati">oddati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odločiti">odločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ostati">ostati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="paziti">paziti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="plačevati">plačevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pogledati">pogledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="pomagati">pomagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poseči">poseči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potruditi">potruditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povedati">povedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preveriti">preveriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevzeti">prevzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prezračiti">prezračiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prijaviti">prijaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripisati">pripisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prisluhniti">prisluhniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pritegniti">pritegniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razkriti">razkriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrivati">skrivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="slediti">slediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprejeti">sprejeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uporabiti">uporabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vlagati">vlagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vložiti">vložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vprašati">vprašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vrniti">vrniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzeti">vzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagnati">zagnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="amputirati">amputirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="barvati">barvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="boriti">boriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čistiti">čistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čuvati">čuvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delovati">delovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dokazovati">dokazovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="doseči">doseči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dovoliti">dovoliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="doživeti">doživeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="gasiti">gasiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="hiteti">hiteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="hraniti">hraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izbrati">izbrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izkoreniniti">izkoreniniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izkoristiti">izkoristiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izobraževati">izobraževati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izpostavljati">izpostavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="iztrgati">iztrgati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izumljati">izumljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izvršiti">izvršiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="jemati">jemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kljubovati">kljubovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="koristiti">koristiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kovati">kovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kupovati">kupovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ločevati">ločevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="načrtovati">načrtovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nadomestiti">nadomestiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naliti">naliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="namakati">namakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naročiti">naročiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="naslavljati">naslavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="navaditi">navaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="navesti">navesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="L" lemma="niti">niti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obdelati">obdelati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obnašati">obnašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpreti">odpreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odzvati">odzvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ohraniti">ohraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ohranjati">ohranjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omogočiti">omogočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opravljati">opravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opremiti">opremiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="označiti">označiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="počistiti">počistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="podpirati">podpirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poenotiti">poenotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pohvaliti">pohvaliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokazati">pokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poklicati">poklicati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="porabiti">porabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posejati">posejati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posloviti">posloviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poslušati">poslušati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pospremiti">pospremiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="posredovati">posredovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postaviti">postaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posvetiti">posvetiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="posvetovati">posvetovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pozivati">pozivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poznati">poznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="predajati">predajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pregledati">pregledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preiti">preiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prenehati">prenehati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prenesti">prenesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preprečiti">preprečiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepričati">prepričati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="presoditi">presoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prestajati">prestajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pretehtati">pretehtati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pretiravati">pretiravati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevetriti">prevetriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preživeti">preživeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priključiti">priključiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prikloniti">prikloniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priklopiti">priklopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prilagoditi">prilagoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prinesti">prinesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prišteti">prišteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prižgati">prižgati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="proučiti">proučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pustiti">pustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ravnati">ravnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razbremeniti">razbremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razčistiti">razčistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="raziskati">raziskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razkrinkati">razkrinkati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razkužiti">razkužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razlikovati">razlikovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razmakniti">razmakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="rehabilitirati">rehabilitirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="reorganizirati">reorganizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sedeti">sedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sestavljati">sestavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="seznaniti">seznaniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="shraniti">shraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="skleniti">skleniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="soočati">soočati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spodbujati">spodbujati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spopasti">spopasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spoprijeti">spoprijeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="spoznati">spoznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprehoditi">sprehoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spremljati">spremljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprostiti">sprostiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprožiti">sprožiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="stopiti">stopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="testirati">testirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ugotoviti">ugotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ukazati">ukazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukrepati">ukrepati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukvarjati">ukvarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umakniti">umakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="usesti">usesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ustaviti">ustaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uvesti">uvesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vključevati">vključevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vključiti">vključiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vpeljati">vpeljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzdržati">vzdržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzpostaviti">vzpostaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zapirati">zapirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaščititi">zaščititi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="zaupati">zaupati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavarovati">zavarovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaviti">zaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavreči">zavreči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="združiti">združiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="znati">znati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Gp-n" lemma="biti">biti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="imeti">imeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postati">postati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vedeti">vedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="storiti">storiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dati">dati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poskrbeti">poskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="znati">znati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="narediti">narediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sprejeti">sprejeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="začeti">začeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dobiti">dobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odstopiti">odstopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ostati">ostati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povedati">povedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priznati">priznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spoštovati">spoštovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="plačati">plačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="podpreti">podpreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="stopiti">stopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukrepati">ukrepati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vračati">vračati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagotoviti">zagotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="boriti">boriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="končati">končati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omogočiti">omogočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opraviti">opraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poznati">poznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="reč">reči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrbeti">skrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="slediti">slediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="voditi">voditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vprašati">vprašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zagovarjati">zagovarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="braniti">braniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="govoriti">govoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="najti">najti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odgovarjati">odgovarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="počakati">počakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pojasniti">pojasniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sodelovati">sodelovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ppnmmi" lemma="temeljit">temeljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ustvariti">ustvariti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="veljati">veljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="videti">videti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vrniti">vrniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zadržati">zadržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaščititi">zaščititi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavedati">zavedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delati">delati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="iskati">iskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izločiti">izločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="krepiti">krepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obstajati">obstajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oditi">oditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ohraniti">ohraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opravljati">opravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="osredotočiti">osredotočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ponuditi">ponuditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povezati">povezati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prebrati">prebrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prevzeti">prevzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prinesti">prinesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priti">priti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razmisliti">razmisliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sedeti">sedeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="soočiti">soočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spremeniti">spremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="upoštevati">upoštevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="usmeriti">usmeriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="varovati">varovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="viseti">viseti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vložiti">vložiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapreti">zapreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavarovati">zavarovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dokazati">dokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dovoliti">dovoliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="identificirati">identificirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="iti">iti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izgnati">izgnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izpogajati">izpogajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izpolnjevati">izpolnjevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="migrant">migranti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nasloviti">nasloviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="naučiti">naučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odločati">odločati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odločiti">odločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odpirati">odpirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odreagirati">odreagirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odrediti">odrediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odzvati">odzvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oglasiti">oglasiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ohranjati">ohranjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opravičevati">opravičevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opustiti">opustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oživiti">oživiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="past">pasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pisati">pisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="podati">podati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pogledati">pogledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poiskati">poiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="pomagati">pomagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ponavljati">ponavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poslušati">poslušati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postaviti">postaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="potekati">potekati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povabiti">povabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prenehati">prenehati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prenoviti">prenoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preseči">preseči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preveriti">preveriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pričeti">pričeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pridobiti">pridobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripraviti">pripraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prizadevati">prizadevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pustiti">pustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ravnati">ravnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razmišljati">razmišljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="razvijati">razvijati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="reševati">reševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="soditi">soditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spodbujati">spodbujati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spomniti">spomniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spopasti">spopasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="strinjati">strinjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Zk-mmi" lemma="ta">ti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ugotoviti">ugotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umakniti">umakniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="uporabljati">uporabljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uvesti">uvesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vklopiti">vklopiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzpostaviti">vzpostaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zazvoniti">zazvoniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zbrati">zbrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="združiti">združiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zdržati">zdržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zmanjševati">zmanjševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="bati">bati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="bivati">bivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="cestitati">cestitati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dajati">dajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="delegirati">delegirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delovati">delovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dodati">dodati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dogajati">dogajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dokazovati">dokazovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="dolžnost">dolžnosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="doplačati">doplačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dvigniti">dvigniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="glasovati">glasovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="gledati">gledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="graditi">graditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="igrati">igrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="investirati">investirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izbirati">izbirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izboriti">izboriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izničiti">izničiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpolniti">izpolniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpustiti">izpustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izsiliti">izsiliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="izvoliti">izvoliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="izvzet">izvzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="jemati">jemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="kazati">kazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="koncentrirati">koncentrirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="kupiti">kupiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="ločiti">ločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="lotiti">lotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Rsn" lemma="maksimizirati">maksimizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="misliti">misliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="molčati">molčati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="možnost">možnosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="mrgoleti">mrgoleti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nadaljevati">nadaljevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="nameniti">nameniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="namestiti">namestiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="navaditi">navaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nositi">nositi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nuditi">nuditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obdavčiti">obdavčiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="objavljati">objavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obkljukati">obkljukati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozem" lemma="oblast">oblasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obnoviti">obnoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obračati">obračati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obuditi">obuditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obvestiti">obvestiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odbiti">odbiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="oddolžiti">oddolžiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odgovoriti">odgovoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozer" lemma="odgovornost">odgovornosti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="odklanjati">odklanjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpovedati">odpovedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpraviti">odpraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odstraniti">odstraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ogledati">ogledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="okrepiti">okrepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="olajšati">olajšati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omeniti">omeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="operirati">operirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="opominjati">opominjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opomniti">opomniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opravičiti">opravičiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opremiti">opremiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="oprijemati">oprijemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="osamosvojiti">osamosvojiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="plasirati">plasirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pobirati">pobirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pogovarjati">pogovarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pojesti">pojesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokazati">pokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pokrivati">pokrivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="popadati">popadati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="popravljati">popravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="porabiti">porabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poravnati">poravnati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poročati">poročati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poslati">poslati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="posloviti">posloviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pospešiti">pospešiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="posredovati">posredovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="potrditi">potrditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ppnmmi" lemma="povećavat">povećavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pozvati">pozvati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="požigati">požigati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prebrati">prebrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="predlagati">predlagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="predvajati">predvajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="preganjati">preganjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preiskati">preiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="premisliti">premisliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="premišljati">premišljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepovedati">prepovedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepoznati">prepoznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepricati">prepricati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepričati">prepričati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prestaviti">prestaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preučiti">preučiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="preverjati">preverjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="približati">približati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pridružiti">pridružiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prijavljati">prijavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prilagoditi">prilagoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pripeljati">pripeljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pripravljati">pripravljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prisluhniti">prisluhniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="prispevati">prispevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pritegniti">pritegniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="prodajati">prodajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="rahljati">rahljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razbremeniti">razbremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razčistiti">razčistiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razkriti">razkriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razpisati">razpisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razpoznati">razpoznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razrešiti">razrešiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="razumeti">razumeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razviti">razviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="reagirati">reagirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="reč">reči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="refundirati">refundirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="rešiti">rešiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="shranjevati">shranjevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sklicati">sklicati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="slediti">slediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="slišati">slišati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="soustvarjati">soustvarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="sovražiti">sovražiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spiti">spiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Rsn" lemma="splacati">splacati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="splačati">splačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="sporočiti">sporočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spostovati">spostovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="spoznati">spoznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spraviti">spraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spregovoriti">spregovoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spremljati">spremljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spustiti">spustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="stremeti">stremeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="subvencionirati">subvencionirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommo" lemma="ščit">ščiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="švercati">švercati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommo" lemma="taksist">taksisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="teči">teči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Zk-mmi" lemma="tisti">tisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="trpeti">trpeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="truditi">truditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sommi" lemma="turist">turisti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ublažiti">ublažiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="udeležiti">udeležiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="umikati">umikati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uničiti">uničiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uporabiti">uporabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="upreti">upreti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="videti">videti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="vključevati">vključevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vključiti">vključiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozem" lemma="vreča">vreči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzeti">vzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaceliti">zaceliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zadostovati">zadostovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zadovoljiti">zadovoljiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zagotavljati">zagotavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="zahtevati">zahtevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zahvaliti">zahvaliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zamisliti">zamisliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapisati">zapisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaslužiti">zaslužiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="zaupati">zaupati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavirati">zavirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zavrteti">zavrteti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="združevati">združevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zmanjšati">zmanjšati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="znebiti">znebiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="znižati">znižati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zoperstaviti">zoperstaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zrasti">zrasti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="želeti">želeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="živeti">živeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Gp-n" lemma="biti">biti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dati">dati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="povedati">povedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="bati">bati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="iskati">iskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="najti">najti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="narediti">narediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="plačevati">plačevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pokazati">pokazati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="priznati">priznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spoštovati">spoštovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zaščititi">zaščititi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="cepiti">cepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="imeti">imeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izbrati">izbrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obravnavati">obravnavati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozmt" lemma="reč">reči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="spremeniti">spremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="braniti">braniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dodajati">dodajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dvigniti">dvigniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="govoriti">govoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="jemati">jemati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="kriminalizirati">kriminalizirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="lagati">lagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="lepiti">lepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="obsoditi">obsoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="okrepiti">okrepiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="omejiti">omejiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="opredeliti">opredeliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ostati">ostati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="pomagati">pomagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="popraviti">popraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postaviti">postaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prebrati">prebrati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pregledati">pregledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preiskati">preiskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razgraditi">razgraditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="razumeti">razumeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spraševati">spraševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Pdnmmi" lemma="sprejet">sprejeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="upoštevati">upoštevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="usmerjati">usmerjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vzeti">vzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zagotoviti">zagotoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zapustiti">zapustiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="znati">znati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="boriti">boriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="brati">brati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ppnmetd" lemma="bt">bti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ceniti">ceniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="čakati">čakati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="delovati">delovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dobiti">dobiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dodati">dodati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="dokazovati">dokazovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="dopisati">dopisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="držati">držati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="glasovati">glasovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="graditi">graditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="iti">iti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izbojevati">izbojevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izogniti">izogniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="izpolniti">izpolniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="izpolnjevati">izpolnjevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="iztrebiti">iztrebiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="kupiti">kupiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="likvidirati">likvidirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="ločiti">ločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="lotiti">lotiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="misliti">misliti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="molčati">molčati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nadzorovati">nadzorovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="L" lemma="niti">niti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="nižati">nižati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="norčevati">norčevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="obveščati">obveščati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="obvladati">obvladati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odločiti">odločiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odpraviti">odpraviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odvaditi">odvaditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="odvzeti">odvzeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ohraniti">ohraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pisati">pisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="plačati">plačati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="podrejati">podrejati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pogledati">pogledati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pojasniti">pojasniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pomesti">pomesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pomiriti">pomiriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Sozer" lemma="pomoč">pomoči</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ponavljati">ponavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ponoviti">ponoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poskrbeti">poskrbeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poslušati">poslušati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="pospešiti">pospešiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="postoriti">postoriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="potrpeti">potrpeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="poudariti">poudariti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="povezovati">povezovati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="poznati">poznati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="požigati">požigati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="prečkati">prečkati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="predstaviti">predstaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="preganjati">preganjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="premagati">premagati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepovedati">prepovedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preprečiti">preprečiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prepričati">prepričati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="preslikati">preslikati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prijaviti">prijaviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prilagoditi">prilagoditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="prinesti">prinesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="pripenjati">pripenjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Dd" lemma="proti">proti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="razbremeniti">razbremeniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="raziskati">raziskati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="reformirati">reformirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="reševati">reševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="sankcionirati">sankcionirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="shranjevati">shranjevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="skleniti">skleniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrajševati">skrajševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="skrivati">skrivati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="soočiti">soočiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="spreminjati">spreminjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="storiti">storiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="tehtati">tehtati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="testirati">testirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="truditi">truditi</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ubiti">ubiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ubraniti">ubraniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="udariti">udariti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ukiniti">ukiniti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ukvarjati">ukvarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="umiriti">umiriti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uporabiti">uporabiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="urediti">urediti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="ustanoviti">ustanoviti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="ustavljati">ustavljati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="utišati">utišati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="uvajati">uvajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="uvesti">uvesti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="verjeti">verjeti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="vključiti">vključiti</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zabrenkati">zabrenkati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zabrisati">zabrisati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zadržati">zadržati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zagovarjati">zagovarjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggvn" lemma="zahtevati">zahtevati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="zamenjati">zamenjati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zanašati">zanašati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zapirati">zapirati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zastraševati">zastraševati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavajati">zavajati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="zavedati">zavedati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggdn" lemma="znižati">znižati</w>
+				</s>
+			</p>
+			<p>
+				<s>
+					<w msd="Ggnn" lemma="živeti">živeti</w>
+				</s>
+			</p>
+		</body>
+	</text>
+</TEI>

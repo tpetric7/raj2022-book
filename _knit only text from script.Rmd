@@ -1,0 +1,20 @@
+We can knit this document using knitr::knit("foo.Rmd"), but in this case code chunks will be included in text. To deal with this we need to set knitr options:
+
+library(knitr)
+opts_chunk$set(list(echo = FALSE, eval = FALSE))
+knit("foo.Rmd")
+
+This command will create output document foo.md only with text.
+Share
+Improve this answer
+Follow
+answered Feb 5 '18 at 21:31
+pogibas
+24.7k1818 gold badges6666 silver badges102102 bronze badges
+
+    Hi there! So if I now have this "foo.Rmd" saved on my PC, how can I read it in that I only have the text elements in my workspace? – 
+    Inkling
+    Feb 5 '18 at 22:03
+    @Inkling you need to run those three code lines and then: readLines("foo.md"). Let me know how it goes – 
+    pogibas
+    Feb 5 '18 at 22:05
