@@ -20,7 +20,9 @@ Mit *docvarsfrom* erhalten wird eine neue Spalte in der Tabelle, die wir mit der
 Mit *encoding = "UTF-8"* teilen wir dem Programm mit, wie der Text kodiert ist (Code Page).
 
 ```{r message=FALSE, warning=FALSE}
-novels_txt = readtext("data/books/*.txt", docvarsfrom = "filenames", encoding = "UTF-8") %>% 
+novels_txt = readtext("data/books/*.txt", 
+                      docvarsfrom = "filenames", 
+                      encoding = "UTF-8") %>% 
   rename(title = docvar1)
 novels_txt
 
@@ -73,8 +75,7 @@ Mit *count()* können wir die Häufigkeit einer Variable (hier: der Buchstaben) 
 
 ```{r message=FALSE, warning=FALSE}
 novels_character %>% 
-  count(character, sort = TRUE) %>% 
-  paged_table()
+  count(character, sort = TRUE) %>% head(3)
 
 ```
 
@@ -83,8 +84,7 @@ Der tidytext-Tokenizer hat nicht nur Buchstaben, sondern auch Zahlen extrahiert.
 ```{r message=FALSE, warning=FALSE}
 novels_character %>% 
   filter(str_detect(character, "[:alpha:]")) %>% 
-  count(character, sort = T) %>% 
-  paged_table()
+  count(character, sort = T) %>% head(3)
 ```
 
 
@@ -98,8 +98,9 @@ char_freq = novels_character %>%
   filter(!str_detect(character, "é|á")) %>% 
   count(character, sort = T)
 
-char_freq %>% paged_table()
-
+char_freq %>% 
+    DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 10))
 ```
 
 Insgesamt haben wir 30 Buchstaben des deutschen Alphabets in den Romanen unterschieden.
@@ -135,7 +136,8 @@ char_freq %>%
   ggplot(aes(Prozent, character, fill = character)) +
   geom_col() +
   theme(legend.position = "none") +
-  scale_x_continuous(labels = percent) # Prozent-Format
+  scale_x_continuous(labels = percent_format(
+    decimal.mark = ",", accuracy = 1)) # Prozent-Format
 
 ```
 
@@ -193,7 +195,8 @@ char_freq %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(y = "Vokale", x = "Häufigkeit in Romanen") +
-  scale_x_continuous(labels = percent, breaks = seq(0, 0.50, 0.05)) # Prozent-Format
+  scale_x_continuous(labels = percent_format(accuracy = 1), 
+                     breaks = seq(0, 0.50, 0.05)) # Prozent-Format
 
 ```
 
@@ -216,7 +219,7 @@ char_freq %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(y = "Konsonanten", x = "Häufigkeit in Romanen") +
-  scale_x_continuous(labels = percent, breaks = seq(0, 0.50, 0.02)) # Prozent-Format und Einheiten
+  scale_x_continuous(labels = percent_format(accuracy = 1), breaks = seq(0, 0.50, 0.02)) # Prozent-Format und Einheiten
 
 ```
 
@@ -231,36 +234,29 @@ Welches Zahlenverhältnis besteht zwischen den Vokalen und Konsonanten?
 21 konsonantische Buchstaben und 9 vokalische Buchstaben. Pro Silbe sind in den deutschen Texten 1 Vokal und ungefähr 2 Konsonanten zu erwarten, also Silbenstrukturen wie z.B. KVK, KKV, VKK.
 
 ```{r message=FALSE, warning=FALSE}
-char_freq %>% 
+bs_ratio = char_freq %>% 
   mutate(buchstabe = ifelse(str_detect(character, vokale), "Vokal", "Konsonant")) %>% 
-  count(buchstabe)
-
+  count(buchstabe) %>% 
+  mutate(Prozent = n / sum(n))
+  
+bs_ratio
 ```
 
 Der höhere Anteil der Konsonanten entspricht der größeren Konsonantenmenge.
 
-```{r message=FALSE, warning=FALSE}
-char_freq %>% 
-  mutate(buchstabe = ifelse(str_detect(character, vokale), "Vokal", "Konsonant")) %>% 
-  mutate(Prozent = n / sum(n)) %>% 
-  group_by(buchstabe) %>% 
-  summarise(Avg_Prozent = sum(Prozent))
-
-```
-
-
 ```{r out.width=10, out.height=8}
-char_freq %>% 
-  mutate(buchstabe = ifelse(str_detect(character, vokale), "Vokal", "Konsonant")) %>% 
-  mutate(Prozent = n / sum(n)) %>% 
-  group_by(buchstabe) %>% 
-  summarise(Avg_Prozent = sum(Prozent)) %>% 
-  ggplot(aes(Avg_Prozent, buchstabe, fill = buchstabe)) +
-  geom_col() +
-  theme(legend.position = "none") +
-  labs(y = "Vokale / Konsonanten", x = "Häufigkeit in Romanen") +
-  scale_x_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
-
+ggplot(bs_ratio, aes(x = "", y = Prozent, fill = buchstabe)) +
+  geom_col(color = "black", size = 2) +
+  coord_polar(theta = "y", start = -0 * pi / 180) +
+  # scale_fill_discrete(labels = c("Konsonanten", "Vokale")) +
+  scale_fill_manual(labels = c("Konsonanten", "Vokale"), 
+                               values = c("#9E9AC8", "#6A51A3")) +
+  theme(legend.position = "top", axis.text.y = element_blank(),
+        axis.ticks = element_blank()) +
+  labs(y = "", x = "Anteil % in Romanen") +
+  scale_x_discrete(NULL, expand = c(0, 0)) +
+  scale_y_continuous(labels = percent_format(accuracy = 1),
+                     breaks = seq(0, 1, 0.1)) # Prozent-Format und Einheiten
 ```
 
 Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche. 
@@ -278,7 +274,10 @@ novels_words = novels %>%
   mutate(syllables = nsyllable::nsyllable(as.character(word), language = "en")) %>% 
   mutate(letters = nchar(word))
   
-head(novels_words) %>% paged_table()
+novels_words %>% head(100) %>% 
+  DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 6))
+
 
 ```
 Insgesamt (d.h. kumulativ gesehen) fast 139 Tausend Silben in den Romanen. Diese Zahl bietet einen möglichen Ausgangspunkt für Textvergleiche.
@@ -344,7 +343,8 @@ novels_words %>%
             Stdev_Silben = sd(syllables, na.rm = TRUE),
             Avg_Buchstaben = mean(letters, na.rm = TRUE),
             Stdev_Buchstaben = sd(letters, na.rm = TRUE)) %>% 
-  paged_table()
+    DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 4))
 
 ```
 
@@ -357,7 +357,9 @@ novels_words %>%
             Stdev_Silben = sd(syllables, na.rm = TRUE),
             Avg_Buchstaben = mean(letters, na.rm = TRUE),
             Stdev_Buchstaben = sd(letters, na.rm = TRUE)) %>% 
-  paged_table()
+    DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 4))
+
 
 ```
 
@@ -476,8 +478,9 @@ Ergebnisse in Tabellenform:
 
 ```{r message=FALSE, warning=FALSE}
 summary(lm(syllables ~ title, data = novels_words)) %>% 
-  tidy() %>% paged_table()
-
+  tidy() %>% 
+    DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 4))
 ```
 
 Boxplot mit Jitterplot anhand des vollen Datensatzes: der Mittelwert ist hier der Median *median()* (d.h. ein Wert, der genau in der Mitte jeder Stichprobe liegt), das arithmetische Mittel / der Durchschnitt wird hier mit einem roten Quadrat symbolisiert. Der Median liegt in beiden Stichproben beim Wert 1, also weit unter dem jeweiligen Durchschnittswert. Dies zeigt, dass die Wortlängen nicht normalverteilt sind. Der Jitterplot veranschaulicht, dass der "Prozess" über mehr Wortformen mit 6, 7 oder 8 Silben verfügt.
@@ -568,7 +571,9 @@ ngrams_char = ngrams_ch %>%
 ngrams_char %>% 
   count(cluster, sort = TRUE) %>% 
   head(10) %>% 
-  paged_table()
+    DT::datatable(fillContainer = TRUE, filter = "top",
+                options = list(pageLength = 10))
+
 
 ```
 

@@ -19,8 +19,6 @@ library(writexl)
 
 ## Branje besedil
 
-Čivki slovenskih politikov.
-
 ```{r message=FALSE, warning=FALSE}
 slovtwit1 <- read_rds("data/tmls_all_slo_politicians_2021-03-21.rds")
 head(slovtwit1)
@@ -30,14 +28,14 @@ head(slovtwit)
 
 ```
 
-Izbor časopisnih člankov, pretežno v rubriki zdravje oz. koronavirus.
 
 ```{r message=FALSE, warning=FALSE}
-parent_folder<-"data/"
+parent_folder<-"data/casniki/"
 filenames <- list.files(parent_folder, recursive=TRUE, full.names = T, pattern = "\\.json$")
 head(filenames, 3)
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 # slovbes <- lapply(filenames,load,.GlobalEnv)
@@ -48,6 +46,7 @@ slovcas
 
 ```
 
+
 ## Korpus
 
 ```{r message=FALSE, warning=FALSE}
@@ -55,10 +54,12 @@ sltwit_corp <- corpus(slovtwit, text_field = "text")
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 slcas_corp <- corpus(slovcas)
 
 ```
+
 
 ```{r eval=requireNamespace("DT", quietly=TRUE)}
 library(DT)
@@ -80,6 +81,7 @@ DT::datatable(head(slcas_stat, 30),
 
 ```
 
+
 Ponovno združi statistiko in text v eno podatkovno zbirko.
 
 ```{r message=FALSE, warning=FALSE}
@@ -93,6 +95,7 @@ slcas <- slcas_stat %>%
 slcas_summary <- textstat_summary(slcas_corp) %>% 
    rename(doc_id = document)
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 slcas1 <- as_tibble(slcas) %>% 
@@ -112,12 +115,14 @@ DT::datatable(head(slcas1, 30),
 
 ```
 
+
 #### Zapiši na disk.
 
 ```{r message=FALSE, warning=FALSE}
 # write_csv2(slcas1, "data/slovenski_casniki.csv")
 
 ```
+
 
 ## Besedne oblike in matrika
 
@@ -127,6 +132,7 @@ slcas_toks <- tokens(slcas_corp, remove_numbers = T, remove_punct = T,
 slcas_dfm <- dfm(slcas_toks)
 
 ```
+
 
 ## Pogostnost oblik
 
@@ -147,13 +153,10 @@ DT::datatable(head(freqs, 30),
 
 ```
 
+
 ## Konkordance
 
-Za sestavo konkordanc, ki vsebujejo zaželene naklonske zgradbe,
-uporabljamo funkcijo `kwic()` programa `quanteda`. Konkordanco lahko
-ustvarimo iz jezikovnega gradiva (`corpus`) ali besednega seznama
-(`tokens`). Prednostni način je slednji, saj nam omogoča tudi izločanje
-nezaželenih izrazov (npr. url, številk idr.).
+Za sestavo konkordanc, ki vsebujejo zaželene naklonske zgradbe, uporabljamo funkcijo `kwic()` programa `quanteda`. Konkordanco lahko ustvarimo iz jezikovnega gradiva (`corpus`) ali besednega seznama (`tokens`). Prednostni način je slednji, saj nam omogoča tudi izločanje nezaželenih izrazov (npr. url, številk idr.).
 
 ```{r message=FALSE, warning=FALSE}
 slcas_toks2 <- tokens(slcas_corp, remove_numbers = T, 
@@ -162,15 +165,13 @@ slcas_toks2 <- tokens(slcas_corp, remove_numbers = T,
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 treba <- kwic(slcas_toks2, pattern = "treba")
 
 ```
 
-S funkcijo `as_tibble()` pretvorimo konkordanćni seznam v podatkovni niz
-ali tabelo (prim. `Excel`). To nam omogoča lepši in preglednejši izpis
-preglednice in računanje deležev in drugih količin s funkcijami
-programskega svežnja `tidyverse`.
+S funkcijo `as_tibble()` pretvorimo konkordanćni seznam v podatkovni niz ali tabelo (prim. `Excel`). To nam omogoča lepši in preglednejši izpis preglednice in računanje deležev in drugih količin s funkcijami programskega svežnja `tidyverse`.
 
 ```{r message=FALSE, warning=FALSE}
 treba_kwic <- as_tibble(treba)
@@ -189,6 +190,7 @@ DT::datatable(treba_kwic,
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 morati <- kwic(slcas_toks2, 
                pattern = c("morati", "mora", "moram", "moraš",
@@ -197,6 +199,7 @@ morati <- kwic(slcas_toks2,
                            "moralo"))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 morati_kwic <- as_tibble(morati)
@@ -215,6 +218,7 @@ DT::datatable(morati_kwic,
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 morati_kwic %>% 
   count(pattern, sort = T) %>% 
@@ -225,8 +229,7 @@ morati_kwic %>%
 
 ```
 
-Next, we calculate the frequency and dispersion of tokens per narrative,
-which contain the terms 'dark' and 'light'.
+Next, we calculate the frequency and dispersion of tokens per narrative, which contain the terms ‘dark’ and ‘light’.
 
 ```{r message=FALSE, warning=FALSE}
 term1 <- kwic(slcas_toks2, "treba", valuetype = "regex", case_insensitive = T) %>% 
@@ -249,6 +252,7 @@ term1 %>%
                 options = list(pageLength = 4))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 term2 %>% 
   arrange(-percentage) %>% 
@@ -256,13 +260,14 @@ term2 %>%
                 options = list(pageLength = 4))
 ```
 
+
 ## Kolokacije
 
 ```{r message=FALSE, warning=FALSE}
 collo2 <- textstat_collocations(slcas_corp)
-write_rds(collo2, "data/slcas_corp_collocations2.rds")
-write_csv(collo2, "data/slcas_corp_collocations2.csv")
+
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 collo2 %>% 
@@ -280,6 +285,7 @@ DT::datatable(filter = "top", fillContainer = TRUE,
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 collo2 %>% 
   filter(str_detect(collocation, "\\bmora")) %>% 
@@ -295,12 +301,14 @@ DT::datatable(filter = "top", fillContainer = TRUE,
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 collo3 <- textstat_collocations(slcas_corp, size = 3, tolower = T)
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 collo3 %>% 
   filter(str_detect(collocation, "\\btreba\\b")) %>% 
@@ -317,6 +325,7 @@ collo3 %>%
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 collo3 %>% 
@@ -335,15 +344,12 @@ collo3 %>%
 
 ```
 
+
 ## Konkordance (po povedih)
 
-Ena možnost je tokenizacija po povedih, tako da lahko izvlečemo zgradbo
-iz posameznih povedi. To ima prednost, da lahko določim dolžino in
-morebitne druge lastnosti povedi, ki vsebuje naklonsko zgradbo, v
-primerjavi s povedmi brez naklonske zgradbe.
+Ena možnost je tokenizacija po povedih, tako da lahko izvlečemo zgradbo iz posameznih povedi. To ima prednost, da lahko določim dolžino in morebitne druge lastnosti povedi, ki vsebuje naklonsko zgradbo, v primerjavi s povedmi brez naklonske zgradbe.
 
-Nastavitev `window = 1` določa, da želimo zajeti eno poved pred iskano
-zgradbo in eno po iskani zgradbi.
+Nastavitev `window = 1` določa, da želimo zajeti eno poved pred iskano zgradbo in eno po iskani zgradbi.
 
 ```{r message=FALSE, warning=FALSE}
 text <- slovcas$text
@@ -351,8 +357,7 @@ toks <- tokens(text, what = 'sentence')
 
 ```
 
-"Keyword" je v tem primeru poved z iskano naklonsko zgradbo, "pre" je
-poved pred njo, "post" pa poved, ki ji sledi.
+"Keyword" je v tem primeru poved z iskano naklonsko zgradbo, "pre" je poved pred njo, "post" pa poved, ki ji sledi.
 
 ```{r message=FALSE, warning=FALSE}
 kwic_mora_poved <- as_tibble(kwic(
@@ -375,11 +380,11 @@ DT::datatable(kwic_mora_poved,
 
 To bi naredili še za druge naklonske zgradbe.
 
+
 ## Konkordance (fraze)
 
-Druga možnost izvleče besedne zveze iz jezikovnega gradiva (`corpus`). V
-tem primeru uporabljamo `kwic()` in kot vzorec (`pattern`) izberemo
-`phrase()`.
+Druga možnost izvleče besedne zveze iz jezikovnega gradiva (`corpus`).
+V tem primeru uporabljamo `kwic()` in kot vzorec (`pattern`) izberemo `phrase()`.
 
 ```{r message=FALSE, warning=FALSE}
 morati2 <- kwic(slcas_corp, valuetype = "glob",
@@ -401,6 +406,7 @@ DT::datatable(filter = "top", fillContainer = TRUE,
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 treba2 <- kwic(slcas_corp, valuetype = "glob",
                pattern = phrase(c("treba *ti", "treba *či")), case_insensitive = T)
@@ -420,6 +426,7 @@ DT::datatable(filter = "top", fillContainer = TRUE,
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 potrebno2 <- kwic(slcas_corp, valuetype = "glob",
@@ -443,24 +450,16 @@ DT::datatable(filter = "top", fillContainer = TRUE,
 
 ### časniki
 
-Zgoraj smo že pridobili konkordance iz besednega seznama (`tokens`), ki
-smo organizirali po povedih (`sentences`) namesto po besedilih
-(`doc_id`). Konkordance so prikazovale tri povedi (`keyword`, `pre-` in
-`post-`).
+Zgoraj smo že pridobili konkordance iz besednega seznama (`tokens`), ki smo organizirali po povedih (`sentences`) namesto po besedilih (`doc_id`). Konkordance so prikazovale tri povedi (`keyword`, `pre-` in `post-`).
 
-Spodnji način najprej predvideva pretvorbo jezikovnega gradiva
-(`corpus`) v povedi (`sentences`), in sicer s funkcijo
-`corpus_reshape()`, ki je sestavni del programa `quanteda`. Na tak način
-prikazujemo naklonsko zgradbo kot `keyword`, funkcija `kwic()` pa ima
-nastavljeno široko okno, tj. `window = 50`.
+Spodnji način najprej predvideva pretvorbo jezikovnega gradiva (`corpus`) v povedi (`sentences`), in sicer s funkcijo `corpus_reshape()`, ki je sestavni del programa `quanteda`. Na tak način prikazujemo naklonsko zgradbo kot `keyword`, funkcija `kwic()` pa ima nastavljeno široko okno, tj. `window = 50`.
 
 ```{r message=FALSE, warning=FALSE}
 slcas_corp_sent <- corpus_reshape(slcas_corp, to = "sentences", use_docvars = T)
 
 ```
 
-Poizvedba: med naklonskim izrazom *morati* oz. *treba* in nedoločnikom
-so lahko tudi druge besede. Vsi izrazi so znotraj določene povedi.
+Poizvedba: med naklonskim izrazom *morati* oz. *treba* in nedoločnikom so lahko tudi druge besede. Vsi izrazi so znotraj določene povedi.
 
 ```{r message=FALSE, warning=FALSE}
 morati3 <- kwic(slcas_corp_sent, valuetype = "glob", window = 50,
@@ -488,6 +487,7 @@ morati3_kwic %>%
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 treba3_kwic <- as_tibble(treba3)
 
@@ -503,6 +503,7 @@ DT::datatable(filter = "top", fillContainer = TRUE,
   target = 'row',
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 potrebno3 <- kwic(slcas_corp_sent, valuetype = "glob", window = 50,
@@ -524,10 +525,10 @@ potrebno3_kwic %>%
 
 ```
 
+
 ### twitter
 
-Pretvorba jezikovnega gradiva, tako da bo osnovna enota poved
-(`sentences`).
+Pretvorba jezikovnega gradiva, tako da bo osnovna enota poved (`sentences`).
 
 ```{r message=FALSE, warning=FALSE}
 sltwit_corp_sent <- corpus_reshape(sltwit_corp, to = "sentences", use_docvars = T)
@@ -573,6 +574,7 @@ DT::datatable(filter = "top", fillContainer = TRUE,
   target = 'row',
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 potrebno3tw <- kwic(sltwit_corp_sent, valuetype = "glob", window = 50,
@@ -633,6 +635,7 @@ imeti3twr_kwic %>%
   backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 rabiti3tw <- kwic(sltwit_corp_sent, valuetype = "glob", window = 50,
                pattern = phrase(c("rabi* za *ti", "rabi* za *či")), case_insensitive = T)
@@ -673,12 +676,10 @@ rabiti3twr_kwic %>%
 
 ```
 
+
 ## Deleži glagolov
 
-V nadaljevanju uporabljajo konkordance iz prejšnjega odseka, ki
-vsebujejo zveze naklonskega glagola in nedoločnika kot, tj. `phrase()`.
-Izračunali bomo deleže nedoločnikov, ki spremljajo naklonski glagol
-*morati* in *treba* (in nekatere druge).
+V nadaljevanju uporabljajo konkordance iz prejšnjega odseka, ki vsebujejo zveze naklonskega glagola in nedoločnika kot, tj. `phrase()`. Izračunali bomo deleže nedoločnikov, ki spremljajo naklonski glagol *morati* in *treba* (in nekatere druge).
 
 ### twitter
 
@@ -695,6 +696,7 @@ m1tw %>%
                 options = list(pageLength = 4))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 morati3tw_kwic %>% 
@@ -723,6 +725,7 @@ t1tw %>%
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 treba3tw_kwic %>% 
   separate(keyword, into = c("modal", "inf"), sep = " ") %>% 
@@ -735,6 +738,7 @@ treba3tw_kwic %>%
   theme(legend.position = "none")
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 p1tw <- potrebno3tw_kwic %>% 
@@ -750,6 +754,7 @@ p1tw %>%
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 potrebno3tw_kwic %>% 
   separate(keyword, into = c("modal", "inf"), sep = " ") %>% 
@@ -762,6 +767,7 @@ potrebno3tw_kwic %>%
   theme(legend.position = "none")
 
 ```
+
 
 ### časniki
 
@@ -778,6 +784,7 @@ m1 %>%
                 options = list(pageLength = 4))
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 morati3_kwic %>% 
@@ -805,6 +812,7 @@ t1 %>%
                 options = list(pageLength = 4))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 treba3_kwic %>% 
   separate(keyword, into = c("modal", "inf"), sep = " ") %>% 
@@ -817,6 +825,7 @@ treba3_kwic %>%
   theme(legend.position = "none")
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 p1 <- potrebno3_kwic %>% 
@@ -831,6 +840,7 @@ p1 %>%
                 options = list(pageLength = 4))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 potrebno3_kwic %>% 
   separate(keyword, into = c("modal", "inf"), sep = " ") %>% 
@@ -843,6 +853,7 @@ potrebno3_kwic %>%
   theme(legend.position = "none")
 
 ```
+
 
 ### vsa besedila
 
@@ -872,6 +883,7 @@ modalinf0_all %>%
 # write_rds(modalinf0_all, "data/modalinf0_all.rds")
 # write_csv(modalinf0_all, "data/modalinf0_all.csv")
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 modalinf <- rbind(m1,t1,p1,m1tw,t1tw,p1tw) %>% 
@@ -913,6 +925,7 @@ anova(m000, m001)
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 library(effects)
 plot(allEffects(m001), multiline = T)
@@ -921,6 +934,7 @@ png("pictures/modalinf0_glmer.png")
 plot(allEffects(m001), multiline = T)
 dev.off()
 ```
+
 
 #### časniki
 
@@ -968,6 +982,7 @@ modalinf_all %>%
 
 ```
 
+
 #### brez biti
 
 ```{r message=FALSE, warning=FALSE}
@@ -997,13 +1012,13 @@ modalinf_all %>%
 
 ```
 
+
 ### Večkratno pojavljanje
 
 Glagoli se pojavljajo enkrat ali večkrat:
 
 ```{r message=FALSE, warning=FALSE}
-x <- as_tibble(rbind(veckrat = c(212,82), 
-                     enkrat = c(470-212,214-82))) %>% 
+x <- as_tibble(rbind(veckrat = c(212,82), enkrat = c(470-212,214-82))) %>% 
   rename(morati = V1, treba = V2)
 
 chisq.test(x)
@@ -1040,6 +1055,7 @@ imeti3tw_kwic %>%
 
 ```
 
+
 ### rabiti + nedoločnik
 
 ```{r message=FALSE, warning=FALSE}
@@ -1054,6 +1070,7 @@ rabiti3tw_kwic %>%
 
 
 ```
+
 
 ## Udpipe analiza
 
@@ -1122,10 +1139,15 @@ clean_tweet <- str_replace_all(clean_tweet," "," ")
 slovtwit$text_cleaned <- clean_tweet
 ```
 
-> The above expression explained: ? optional space (f\|ht) match "f" or
-> "ht" tp match "tp" (s?) optionally match "s" if it's there (://) match
-> "://" (.*) match every character (everything) up to [.\|/] a period or
-> a forward-slash (.*) then everything after that
+> The above expression explained:
+    ? optional space
+    (f|ht) match "f" or "ht"
+    tp match "tp"
+    (s?) optionally match "s" if it's there
+    (://) match "://"
+    (.*) match every character (everything) up to
+    [.|/] a period or a forward-slash
+    (.*) then everything after that
 
 ```{r message=FALSE, warning=FALSE}
 # regex "((http|ftp|https):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)"
@@ -1147,6 +1169,7 @@ slovtwit_udpiped <- as.data.frame(slovtwit_udpiped)
 # write_rds(slovtwit_udpiped, "data/slovtwit_udpiped.rds")
 # write_csv(slovtwit_udpiped, "data/slovtwit_udpiped.csv")
 ```
+
 
 ### tidytext
 
@@ -1173,12 +1196,6 @@ tokenize_annotate = function(tbl){
 
 ```
 
-#### Odpri udpiped
-
-```{r message=FALSE, warning=FALSE}
-slovtwit_udpiped <- read_rds("data/slovtwit_udpiped.rds")
-slovcas_udpiped <- read_rds("data/slovcas_udpiped.rds")
-```
 
 ```{r message=FALSE, warning=FALSE}
 slovtwit_df <- slovtwit_udpiped %>% 
@@ -1187,12 +1204,14 @@ slovtwit_df <- slovtwit_udpiped %>%
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 slovcas_df <- slovcas_udpiped %>% 
   tokenize_annotate() %>% mutate(language = "slv",
                                  texttype = "news")
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 slovtxts <- bind_rows(slovtwit_df, slovcas_df)
@@ -1208,13 +1227,12 @@ slovtxts <- bind_rows(slovtwit_df, slovcas_df)
 #### Odpri ud
 
 ```{r message=FALSE, warning=FALSE}
-slovtxts <- read_rds("data/slovtxts.rds")
+# slovtxts <- read_rds("data/slovtxts.rds")
 ```
 
 #### Sample ud
 
-Majhen vzorec za oceno, kolikokrat je uporabljen morati v primeru
-zunanje nujnosti (ali drugih pomenov).
+Majhen vzorec za oceno, kolikokrat je uporabljen morati v primeru zunanje nujnosti (ali drugih pomenov).
 
 ```{r message=FALSE, warning=FALSE}
 twitter100 <- slovtxts %>% 
@@ -1223,6 +1241,7 @@ twitter100 <- slovtxts %>%
   slice_sample(n = 100, replace = TRUE)
 # writexl::write_xlsx(twitter100, "data/twitter100.xlsx")
 ```
+
 
 ### Dependenca
 
@@ -1241,6 +1260,7 @@ slo_deprel %>%
   DT::datatable(fillContainer = TRUE, filter = "top",
                 options = list(pageLength = 4))
 ```
+
 
 ### Vizualizacija
 
@@ -1272,6 +1292,7 @@ plot_annotation <- function(x, size = 3){
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 # Slovenian
 mytext = "Ali jo bodo morali zapustiti" %>% enc2utf8()
@@ -1284,6 +1305,7 @@ x3
 dev.off()
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 # Slovenian
 mytext = "Ali jo bo treba zapustiti" %>% enc2utf8()
@@ -1295,6 +1317,7 @@ png("pictures/treba_zapustiti.png")
 x4
 dev.off()
 ```
+
 
 ### Predmet pred/za modal
 
@@ -1310,6 +1333,7 @@ x %>%
 
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 pivot_by_verb_obj = function(tbl){
@@ -1327,6 +1351,7 @@ pivot_by_verb_obj = function(tbl){
 }
 
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 vo_nominal_morati = slovtxts %>% 
@@ -1379,6 +1404,7 @@ vo_pronominal_morati %>%
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 vo_pronominal_treba = slovtxts %>% 
   group_by(texttype) %>% 
@@ -1395,6 +1421,8 @@ vo_pronominal_treba %>%
                 options = list(pageLength = 4))
 
 ```
+
+
 
 ```{r message=FALSE, warning=FALSE}
 verb_object = bind_rows(vo_nominal_morati, 
@@ -1424,6 +1452,7 @@ verb_object[7:8,2:3]
 verb_object[7:8,2:3] %>% 
   chisq.test()
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 # library(esquisse)
@@ -1457,13 +1486,12 @@ ggplot(verb_object) +
 
 ```
 
+
 ## Kwic udpipe
 
-Cilj: analiza **nedoločnikov** z `udpipe` in funkcijo
-`tokenize_annotate()`, ki sem jo sestavil zgoraj.
+Cilj: analiza **nedoločnikov** z `udpipe` in funkcijo `tokenize_annotate()`, ki sem jo sestavil zgoraj.
 
-Izbral sem tabelo, ki vsebuje le naklonske zgradbe *morati /treba +
-nedoločnik*.
+Izbral sem tabelo, ki vsebuje le naklonske zgradbe *morati /treba + nedoločnik*.
 
 ```{r message=FALSE, warning=FALSE}
 kwic_ud <- modalinf0 %>% 
@@ -1487,7 +1515,7 @@ modalinf0_ud <- modalinf0 %>%
   select(-token, -lemma, -syllables)
 ```
 
-### Pregled napak
+### Pregled napak 
 
 Kateri nedoločniki sploh niso nedoločniki in obratno?
 
@@ -1507,16 +1535,11 @@ write_lines(modalinf0_ud %>% pull(inf), "data/modalinf0_ud_inf.txt")
 
 ### Obeliks xml
 
-Zgoraj sem uporabil `udpipe` za določevanje oblikoslovnih lastnosti
-nedoločnikov.
+Zgoraj sem uporabil `udpipe` za določevanje oblikoslovnih lastnosti nedoločnikov.
 
-Primerjam še z analizo programa `OBELIKS`, ki je analiziral nedoločnike
-iz datoteke *data/modalinf0_ud_inf.txt*. Obeliksova izhodna datoteka ima
-format `xml`. Datoteko moram pretvoriti. Pri tem mi pomaga
-`library(xml2)`.
+Primerjam še z analizo programa `OBELIKS`, ki je analiziral nedoločnike iz datoteke *data/modalinf0_ud_inf.txt*. Obeliksova izhodna datoteka ima format `xml`. Datoteko moram pretvoriti. Pri tem mi pomaga `library(xml2)`.
 
-Poglej tudi tabele na spletni strani IJS za pretvorbo specifikacij
-`josMSD`: <https://nl.ijs.si/jos/josMSD-en.html>.
+Poglej tudi tabele na spletni strani IJS za pretvorbo specifikacij `josMSD`: https://nl.ijs.si/jos/josMSD-en.html.
 
 Parsing of `xml` documents with `library(xml2)`:
 [gastonsanchez](https://www.gastonsanchez.com/intro2cwd/parsing.html)
@@ -1529,8 +1552,7 @@ obeliks <- read_xml("data/modalinf0_ud_inf.xml")
 obeliks
 ```
 
-We use the `xml_length()` to know how many elements or nodes are in the
-root node:
+We use the `xml_length()` to know how many elements or nodes are in the root node:
 
 ```{r message=FALSE, warning=FALSE}
 xml_length(obeliks)
@@ -1604,11 +1626,10 @@ obeliks_delim <- read_delim("data/obeliks_child5char.txt",
 write_csv(obeliks_delim, "data/obeliks_delim.csv")
 ```
 
+
 ### Združi kwic in obeliks
 
-Združim oba podatkovna niza in v nadaljevanju popravljam napake, ki jih
-je naredil predvsem `udpipe`, v manjši meri `obeliks`. Slednji je
-trainiran na slovenska besedila.
+Združim oba podatkovna niza in v nadaljevanju popravljam napake, ki jih je naredil predvsem `udpipe`, v manjši meri `obeliks`. Slednji je trainiran na slovenska besedila.
 
 ```{r message=FALSE, warning=FALSE}
 # modalinf0_udobx
@@ -1691,6 +1712,7 @@ modalinf0_udoblx <- modalinf0_ud %>%
   
 ```
 
+
 #### Shrani združeno
 
 ```{r message=FALSE, warning=FALSE}
@@ -1700,10 +1722,10 @@ write_csv(modalinf0_udoblx,
           "data/casniki_twitter_modalinf0_udoblx.csv")
 ```
 
-### Pretvorba josMSD sl\>en
 
-Najprej odpremo in prilagodimo tabelo josMSD, ki sem jo dobil na spletni
-strani IJS, `josMSD`: <https://nl.ijs.si/jos/josMSD-en.html>.
+### Pretvorba josMSD sl>en
+
+Najprej odpremo in prilagodimo tabelo josMSD, ki sem jo dobil na spletni strani IJS, `josMSD`: https://nl.ijs.si/jos/josMSD-en.html.
 
 ```{r message=FALSE, warning=FALSE}
 josmsd = read.delim2(
@@ -1729,8 +1751,7 @@ lemma = as.character(josmsd$msdeng)
 word = as.character(josmsd$msdslo)
 ```
 
-S funkcijo `tokens_replace()` programa `quanteda` pretvorimo *slovensko*
-specifikacijo v *angleško*.
+S funkcijo `tokens_replace()` programa `quanteda` pretvorimo *slovensko* specifikacijo v *angleško*.
 
 ```{r message=FALSE, warning=FALSE}
 modalinf0_x <- 
@@ -1751,9 +1772,11 @@ modalinf0_x  %>% head(3)
 
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 modalinf0_udoblx$xpos2 <- as.character(modalinf0_x)
 ```
+
 
 ```{r message=FALSE, warning=FALSE}
 modalinf0_udoblx %>% 
@@ -1774,10 +1797,11 @@ write_csv(modalinf0_udoblx,
 #### Odpri
 
 ```{r message=FALSE, warning=FALSE}
-modalinf0_udoblx <-
-  read_rds("data/casniki_twitter_modalinf0_udoblx.rds")
+# modalinf0_udoblx <- 
+#   read_rds("data/casniki_twitter_modalinf0_udoblx.rds")
 
 ```
+
 
 ### Oblikoslovje nedoločnikov
 
@@ -1837,551 +1861,9 @@ aspect_types %>%
                 options = list(pageLength = 4))
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 chisq.test(aspect_types[,2:3])
 
 ```
-
-## Slovnična prožnost
-
-*Barkema (1996)*: grammatische Flexibilität Barkema je želel pokazati,
-da je mnogo ustaljenih izrazov (feste Fügungen) mnogo prožnejših, kot se
-na splošno trdi.
-
-*Stefanowitsch (2006)*: obratno ta metoda smiselna tudi za dokazovanje,
-da so mariskatere jezikovne zgradbe, ki se ravnajo po splošnem pravilu,
-manj prožnih, kot na splošno pričakujejo. To formalno utemeljitev želi
-uveljaviti za ugotavljanje neke zgradbe kot konstrukcije v smislu
-konstrukcijske gramatike.
-
-Najprej ustvarimo ustrezno konkordanco za vsa besedila v časnikih in
-čivkih (tweetih).
-
-### konkordanca dveh zgradb
-
-```{r message=FALSE, warning=FALSE}
-morati4_kwic <- morati3_kwic %>% mutate(sample = "casniki")
-treba4_kwic <- treba3_kwic %>% mutate(sample = "casniki")
-morati4tw_kwic <- morati3tw_kwic %>% mutate(sample = "twitter")
-treba4tw_kwic <- treba3tw_kwic %>% mutate(sample = "twitter")
-konkordance_all <- bind_rows(morati4_kwic, treba4_kwic,
-                             morati4tw_kwic, treba4tw_kwic) %>% 
-  mutate(keyword = str_to_lower(keyword)) %>% 
-  separate(keyword, into = c("keyword", "inf"), 
-           sep = " ", extra = "merge")
-
-```
-
-Naslednja preglednica prikazuje *oblikoslovni profil* glagolskih oblik
-glagola *morati*.
-
-```{r message=FALSE, warning=FALSE}
-konkordance_all %>% 
-  count(keyword, sort = TRUE) %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
-                options = list(pageLength = 4))
-```
-
-```{r message=FALSE, warning=FALSE}
-konkordance_all %>% 
-  count(keyword, inf, sort = TRUE) %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
-                options = list(pageLength = 4))
-```
-
-### Oblike glagolov (types)
-
-Zgoraj smo izvedli oblikoslovno označevanje (`udpipe`).
-
-Tu preizkušamo različnice (*types*) glagola *morati* in drugih glagolov.
-
-```{r message=FALSE, warning=FALSE}
-morati_oblike <- slovtxts %>% 
-  filter(upos == "VERB" | upos == "AUX") %>% 
-  filter(lemma != "biti") %>% 
-  filter(lemma == "morati") %>% 
-  group_by(lemma, token) %>% 
-  count(xpos, morph_number, morph_person, morph_tense, 
-        morph_mood, morph_aspect) %>% 
-  arrange(desc(n, xpos))
-  
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_oblike <- slovtxts %>% 
-  filter(upos == "VERB" | upos == "AUX") %>% 
-  filter(lemma != "biti") %>% 
-  filter(lemma != "morati") %>% 
-  group_by(lemma, token) %>% 
-  count(xpos, morph_number, morph_person, morph_tense, 
-        morph_mood, morph_aspect) %>% 
-  arrange(desc(n, xpos))
-
-```
-
-#### morph_num
-
-Glagol *morati* se pogosteje pojavlja v bolj zaznamovanih številih
-*dvojina* in *množina* kot preostali glagoli v vzorcu.
-
-```{r message=FALSE, warning=FALSE}
-morati_num <- morati_oblike %>% ungroup() %>% 
-  count(morph_number, sort = F, name = "n_morati") %>% 
-  drop_na() %>% 
-  mutate(pct_morati = round(100*n_morati / sum(n_morati), 2))
-
-glagoli_num <- glagoli_oblike %>% ungroup() %>% 
-  count(morph_number, sort = F, name = "n_glagoli") %>% 
-  drop_na() %>% 
-  mutate(pct_glagoli = round(100*n_glagoli / sum(n_glagoli), 2))
-
-glagoli_morph_num <- bind_cols(morati_num, glagoli_num[,2:3])
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_morph_num[, c(2,4)] %>% chisq.test()
-```
-
-#### morph_pers
-
-```{r message=FALSE, warning=FALSE}
-morati_pers <- morati_oblike %>% ungroup() %>% 
-  count(morph_person, sort = F, name = "n_morati") %>% 
-  drop_na() %>% 
-  mutate(pct_morati = round(100*n_morati / sum(n_morati), 2))
-
-glagoli_pers <- glagoli_oblike %>% ungroup() %>% 
-  count(morph_person, sort = F, name = "n_glagoli") %>% 
-  drop_na() %>% 
-  mutate(pct_glagoli = round(100*n_glagoli / sum(n_glagoli), 2))
-
-glagoli_morph_pers <- bind_cols(morati_pers, glagoli_pers[,2:3])
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_morph_pers[, c(2,4)] %>% chisq.test()
-```
-
-#### morph_tense
-
-```{r message=FALSE, warning=FALSE}
-morati_tense <- morati_oblike %>% ungroup() %>% 
-      mutate(morph_tense = ifelse(is.na(morph_tense), 
-                        "other", morph_tense)) %>% 
-  count(morph_tense, sort = F, name = "n_morati") %>% 
-  # drop_na() %>% 
-  mutate(pct_morati = round(100*n_morati / sum(n_morati), 2))
-
-
-glagoli_tense <- glagoli_oblike %>% ungroup() %>% 
-  mutate(morph_tense = ifelse(is.na(morph_tense), 
-                        "other", morph_tense)) %>% 
-  mutate(morph_tense = ifelse(morph_tense == "Fut", "other",
-                              morph_tense)) %>% 
-  count(morph_tense, sort = F, name = "n_glagoli") %>% 
-  # drop_na() %>% 
-  mutate(pct_glagoli = round(100*n_glagoli / sum(n_glagoli), 2))
-
-
-glagoli_morph_tense <- bind_cols(morati_tense, glagoli_tense[,2:3])
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_morph_tense[, c(2,4)] %>% chisq.test()
-```
-
-#### morph_mood
-
-```{r message=FALSE, warning=FALSE}
-morati_mood <- morati_oblike %>% ungroup() %>% 
-  mutate(morph_mood = ifelse(is.na(morph_mood), 
-                        "other", morph_mood)) %>% 
-  count(morph_mood, sort = F, name = "n_morati") %>% 
-  # drop_na() %>% 
-  mutate(pct_morati = round(100*n_morati / sum(n_morati), 2))
-
-glagoli_mood <- glagoli_oblike %>% ungroup() %>% 
-  mutate(morph_mood = ifelse(is.na(morph_mood), 
-                        "other", morph_mood)) %>% 
-  mutate(morph_mood = case_when(
-    morph_mood == "Imp" ~ "other",
-    morph_mood == "Cnd" ~ "other",
-    TRUE ~ morph_mood)) %>%
-  count(morph_mood, sort = F, name = "n_glagoli") %>%
-  # drop_na() %>% 
-  mutate(pct_glagoli = round(100*n_glagoli / sum(n_glagoli), 2))
-
-glagoli_morph_mood <- bind_cols(morati_mood, glagoli_mood[,2:3])
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_morph_mood[, c(2,4)] %>% chisq.test()
-```
-
-#### morph_aspect
-
-```{r message=FALSE, warning=FALSE}
-morati_aspect <- morati_oblike %>% ungroup() %>% 
-  mutate(morph_aspect = case_when(
-    morph_aspect == "Perf" ~ "other",
-    is.na(morph_aspect) ~ "other",
-    TRUE ~ morph_aspect)) %>%
-  count(morph_aspect, sort = F, name = "n_morati") %>% 
-  # drop_na() %>% 
-  mutate(pct_morati = round(100*n_morati / sum(n_morati), 2))
-
-glagoli_aspect <- glagoli_oblike %>% ungroup() %>% 
-  mutate(morph_aspect = case_when(
-    morph_aspect == "Perf" ~ "other",
-    is.na(morph_aspect) ~ "other",
-    TRUE ~ morph_aspect)) %>%
-  count(morph_aspect, sort = F, name = "n_glagoli") %>%
-  # drop_na() %>% 
-  mutate(pct_glagoli = round(100*n_glagoli / sum(n_glagoli), 2))
-
-glagoli_morph_aspect <- bind_cols(morati_aspect, glagoli_aspect[,2:3])
-
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_morph_aspect[, c(2,4)] %>% chisq.test()
-```
-
-### Oblike glagolov (tokens)
-
-```{r message=FALSE, warning=FALSE}
-slovtxts <- read_rds("data/slovtxts.rds")
-
-```
-
-```{r message=FALSE, warning=FALSE}
-morati_count <- slovtxts %>% 
-  mutate(lemma = str_to_lower(lemma),
-         token = str_to_lower(token)) %>% 
-  filter(upos == "VERB" | upos == "AUX") %>% 
-  filter(lemma == "morati") %>% 
-  count(token, sort = T, name = "freq") 
-
-library(udpipe)
-morati_ud <- morati_count %>% 
-  pull(token) %>% 
-  udpipe_annotate(ud_sl, ., trace = F) %>% 
-  as.data.frame() %>% 
-  cbind_morphological()
-
-morati_types_token <- morati_ud %>% 
-  left_join(morati_count, by = "token")
-
-morati_xpos_freq <- morati_types_token %>% 
-  select(token, lemma, upos, xpos, freq) %>% 
-  filter(token != "morš" & token != "morijo") %>% 
-  filter(upos == "VERB")
-  
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_count <- slovtxts %>% 
-  mutate(lemma = str_to_lower(lemma),
-         token = str_to_lower(token)) %>% 
-  filter(upos == "VERB" | upos == "AUX") %>% 
-  filter(lemma != "morati") %>% 
-  count(token, sort = T, name = "freq") 
-
-glagoli_ud <- glagoli_count %>% 
-  pull(token) %>% 
-  udpipe_annotate(ud_sl, ., trace = F) %>% 
-  as.data.frame() %>% 
-  cbind_morphological()
-
-glagoli_types_token <- glagoli_ud %>% 
-  left_join(glagoli_count, by = "token") %>% 
-  filter(lemma != "biti")
-
-```
-
-```{r message=FALSE, warning=FALSE}
-glagoli_types_token %>% 
-  filter(upos == "VERB") %>% 
-  slice_sample(n = 100) %>% 
-  select(token, lemma, upos, xpos, freq) %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
-                options = list(pageLength = 4))
-```
-
-```{r message=FALSE, warning=FALSE}
-oblike_glagolov <- "Vmpr3s$|Vmpp-pm$|Vmpr1p$|Vmpr3p$|Vmpp-sm$|Vmpp-sf$|Vmpr1s$|Vmpr2p$|Vmpp-sn$|Vmpr2s$|Vmpp-pf$|Vmpr3d$|Vmpr2d$"
-
-glagoli_xpos_freq <- glagoli_types_token %>% 
-  filter(upos == "VERB") %>% 
-  select(xpos, freq) %>% 
-  group_by(xpos) %>% 
-  summarise(freq_sum = sum(freq)) %>% 
-  arrange(desc(freq_sum)) %>% 
-  filter(str_detect(xpos, oblike_glagolov))
-  
-
-```
-
-Ali se pogostnost oblik glagola morati razlikuje od pogostnosti oblik
-preostalih (polnopomenskih) glagolov?
-
-Izvedemo lahko binomialni preizkus: `binom.test`(51, 235, 1/6,
-alternative = "two.sided")
-
-V nadaljevanju sem uporabil hi kvadrat preizkus `chisq.test()`.
-
-Oba podatkovna združujemo in odstranimo nepotrebne stolpce.
-
-```{r message=FALSE, warning=FALSE}
-xpos_freq <- merge(morati_xpos_freq, glagoli_xpos_freq) %>% 
-  select(-upos, -lemma, token, xpos, freq, freq_sum) %>% 
-  rename(freq_morati = freq, freq_glagoli = freq_sum) %>% 
-  arrange(xpos)
-
-```
-
-Hi kvadrat preizkus lahko opravimo za vsako glagolsko različnico
-posebej, npr. za prvo na seznamu.
-
-```{r message=FALSE, warning=FALSE}
-x <- as_tibble(xpos_freq[1,3:4])
-y <- bind_cols(sum(xpos_freq[2:12,3]), sum(xpos_freq[2:12,4])) %>% 
-  rename(freq_morati = "...1", freq_glagoli = "...2")
-z <- bind_rows(x,y)
-chisq.test(z)
-```
-
-Elegantnejša je zanka `for()` ali funkcija `map()`. Preglednejša je
-`for()`-zanka.
-
-```{r message=FALSE, warning=FALSE}
-options = (scipen = 999)
-
-for(i in 1:length(xpos_freq)){
-  # frequencies of verb types in question
-  x <- xpos_freq[i,3:4]
-  # sum of verb types frequencies without the above verb types
-  y <- bind_cols(
-    sum(xpos_freq[-i,3]), 
-    sum(xpos_freq[-i,4])) %>% 
-  rename(freq_morati = "...1", freq_glagoli = "...2")
-  # create a little data frame
-  z <- bind_rows(x,y)
-  # chi-square test results
-  chi <- chisq.test(z)
-  # expected freuqencies
-  expected_morati <- chi$expected[1,1] %>% as.numeric()
-  expected_glagoli <- chi$expected[1,2] %>% as.numeric()
-  # test the frequencies and pull the p-values out
-  p_value <- chisq.test(z) %>% 
-    tidy() %>% 
-    pull(p.value) %>%
-    as.numeric()
-  # append the p-values row by row to the data frame
-  xpos_freq$p_value[i] <- round(p_value, 5)
-  # append the expected freqs row by row to the data frame
-  xpos_freq$expected_morati[i] <- round(expected_morati, 2)
-  xpos_freq$expected_glagoli[i] <- round(expected_glagoli, 2)
-}
-
-# Add percentages
-xpos_freq <- xpos_freq %>% 
-  mutate(pct_morati = 
-           round(100*freq_morati/sum(freq_morati), 2),
-         pct_glagoli = 
-           round(100*freq_glagoli/sum(freq_glagoli), 2)) %>% 
-  arrange(desc(pct_morati, pct_glagoli))
-
-# write_rds(xpos_freq, "data/xpos_freq.rds")
-# write_csv(xpos_freq, "data/xpos_freq.csv")
-
-xpos_freq %>% 
-  DT::datatable(fillContainer = TRUE, filter = "top",
-                options = list(pageLength = 4))
-```
-
-Različnice glagola *morati* imajo statistično različno pogostnost od
-različnic drugih glagolov v jezikovnem gradivu, z izjemo oblike
-*Vmpp-sm* (deležnik na -l moškega spola, npr. *moral, gledal, obkljukal,
-...*) in *Vmpp-sn* (npr. *moralo, gledalo, ...*).
-
-```{r message=FALSE, warning=FALSE}
-library(tidytext)
-library(scales)
-xpos_freq %>% 
-  pivot_longer(pct_morati:pct_glagoli, 
-               names_to = "types", values_to = "pct") %>% 
-  group_by(types) %>% 
-  # mutate(xpos = reorder_within(
-  #   xpos, types, paste0(" (",pct,"%)"), sep = "")) %>% 
-  mutate(xpos = fct_reorder(xpos, pct)) %>% 
-  ggplot(aes(pct/100, xpos, fill = types)) +
-  geom_col() +
-  theme(legend.position = "none") +
-  scale_x_continuous(labels = percent) +
-  facet_wrap(~ types, scales = "free_y") +
-  labs(x = "", y = "")
-```
-
-### Značilni nedoločniki
-
-Kateri glagoli se pogosteje povezujejo z *morati* oz. s *treba*? Kateri
-nedoločniki so *signifikantni distinktivni kolleksemi* enot *morati* in
-*treba*?
-
-```{r message=FALSE, warning=FALSE}
-modalinf0_all <- read_rds("data/modalinf0_all.rds")
-
-```
-
-```{r message=FALSE, warning=FALSE}
-modalinf0_all_by_verbs <- modalinf0_all %>% 
-  pivot_wider(names_from = modal, values_from = c(freq, pct)) %>% 
-  select(inf, freq_morati:pct_treba, syl_inf) %>% 
-  mutate(freq_morati = ifelse(is.na(freq_morati), 0, freq_morati),
-         freq_treba = ifelse(is.na(freq_treba), 0, freq_treba))
-```
-
-```{r message=FALSE, warning=FALSE}
-options = (scipen = 999)
-
-for(i in 1:length(modalinf0_all_by_verbs)){
-  # frequencies of verb types in question
-  x <- modalinf0_all_by_verbs[i,2:3]
-  # sum of verb types frequencies without the above verb types
-  y <- bind_cols(
-    sum(modalinf0_all_by_verbs[-i,2]), 
-    sum(modalinf0_all_by_verbs[-i,3])) %>% 
-  rename(freq_morati = "...1", freq_treba = "...2")
-  # create a little data frame
-  z <- bind_rows(x,y)
-  # chi-square test results
-  chi <- chisq.test(z)
-  # expected frequencies
-  expected_morati <- chi$expected[1,1] %>% as.numeric()
-  expected_treba <- chi$expected[1,2] %>% as.numeric()
-  # test the frequencies and pull the p-values out
-  p_value <- chisq.test(z) %>% 
-    tidy() %>% 
-    pull(p.value) %>%
-    as.numeric()
-  # append the p-values / expected freqs row by row to the data frame
-  modalinf0_all_by_verbs$p_value[i] <- round(p_value, 5)
-  modalinf0_all_by_verbs$expected_morati[i] <- round(
-    expected_morati, 2)
-  modalinf0_all_by_verbs$expected_treba[i] <- round(
-    expected_treba, 2)
-
-}
-
-# Add percentages
-modalinf0_all_by_verbs <- modalinf0_all_by_verbs %>% 
-  mutate(pct_morati =
-           round(100*freq_morati/sum(freq_morati), 2),
-         pct_treba = 
-           round(100*freq_treba/sum(freq_treba), 2)) %>% 
-  arrange(desc(pct_morati, pct_treba))
-
-# write_rds(modalinf0_all_by_verbs, "data/modalinf0_all_by_verbs.rds")
-# write_csv(modalinf0_all_by_verbs, "data/modalinf0_all_by_verbs.csv")
-
-modalinf0_all_by_verbs %>% 
-  DT::datatable(fillContainer = TRUE, filter = "top",
-                options = list(pageLength = 4))
-```
-
-Pri naslednjih (maloštevilnih) glagolih ni statistično značilne razlike.
-
-```{r message=FALSE, warning=FALSE}
-modalinf0_all_by_verbs %>% 
-  filter(p_value > .05)
-```
-
-### Hapax legomena
-
-Produktivnost opredeljena z deležem nedoločnikov, ki se le enkrat
-pojavljajo z *morati* oz. *treba*.
-
-```{r message=FALSE, warning=FALSE}
-s_morati <- modalinf0_all_by_verbs %>% 
-  filter(freq_morati > 0) %>% 
-  count()
-  
-h_morati <- modalinf0_all_by_verbs %>% 
-  filter(freq_morati == 1) %>% 
-  count()
-
-produktiv_morati <- h_morati/s_morati
-produktiv_morati
-```
-
-```{r message=FALSE, warning=FALSE}
-s_treba <- modalinf0_all_by_verbs %>% 
-  filter(freq_treba > 0) %>% 
-  count()
-  
-h_treba <- modalinf0_all_by_verbs %>% 
-  filter(freq_treba == 1) %>% 
-  count()
-
-produktiv_treba <- h_treba/s_treba
-produktiv_treba
-```
-
-Z ozirom na Baayenovo (@Baayen 1991) kvantitativno opredelitev
-produktivnosti bi bila zgradba treba + inf (0,589) nekoliko
-produktivnejša kot morati + inf (0,51), razlika pa je statistično
-značilna (p = 0,028).
-
-```{r message=FALSE, warning=FALSE}
-h = cbind(h_morati, h_treba)
-s = cbind(s_morati, s_treba)
-z = rbind(h, s-h)
-chisq.test(z)
-```
-
-
-## Disperzijska analiza
-
-*Carrols D2* (Carrol 1970) ima vrednosti med 0 in 1: V koliko različnih registrih, žanrih itd. (v uravnoteženem korpusu moramo imeti za vsak žanr / register eno datoteko).
-
-$$a = log\Sigma{p_{1-n}}$$ 
-$$b = \Sigma{p_{1-n}}\log{p_{1-n}}$$
-$$c = \Sigma{p_{1-n}}$$
-
-$$d = \log{n}$$
-
-$$
-D = \frac{log\Sigma{p_{1-n}} - (\frac{\Sigma{p_{1-n}}\log{p_{1-n}}}{\Sigma{p_{1-n}}})}{\log{n}}
-$$
-
-$$p_{1-n}$$ je verjetnost pojavljanja nekega obeležja v datotekah 1 do $$n$$, in $$n$$ je število korpusnih datotek.
-
-Verjetnost pojavljanja je relativna količina, tj. pogostnost z ozirom na velikost datoteke. Za izračun disperzije (razpršenosti) besede, podajamo število vseh besed (konstrukcij), kar predstavlja velikost datoteke.
-
-Ali je *treba* + nedoločnik manj razpršena kot *morati* + nedoločnik? Ali je torej za določene besedilne vrste bolj značilna, medtem ko v drugih redko kdaj nastopa?
-
-Nemška *HZI*-konstrukcija ima manjšo disperzijo kot müssen. *HZI* je bolje zastopan v pravilnikih, manj pa pripovednih (narativnih) besedilih.
-
-```{r message=FALSE, warning=FALSE, out.width="100%"}
-knitr::include_graphics("pictures/disperzija_hzi.png")
-```
-
-## Semantika: kompozicijonalnost
-
->Stefanowitsch(2006: 21):
-"Zunächst stellt sich aber aus konstruktionsgrammatischer Perspektive die Frage, ob sich diese spezielleren Beschränkungen kompositionell aus der Bedeutung der einzelnen Komponenten der Struktur ableiten lassen. A priori scheint es unwahrscheinlich, dass dies der Fall ist, da die Komponenten haben, zu und der Infinitiv eine Vielzahl grammatischer Funktionen haben, sodass fraglich ist, ob sie überhaupt invariante Bedeutungen haben. ... es gibt hier Erfolg versprechende Ansätze, die sich dieser Fragestellung über den Vergleich der Kollokate einer komplexen Struktur mit den Kollokaten der einzelnen Komponenten nähern. Diese Ansätze erfordern allerdings größere Datenmengen. Stattdessen will ich hier sprachvergleichende Überlegungen heranziehen ... Die allgemeine Bedeutung dieser Struktur ist, ebenso wie im Deutschen, VERPFLICHTUNG. ... Wenn diese sich kompositionell herleiten lassen, sollten sie sich auch bei der englischen Konstruktion finden. Betrachten wir aber die distinktiven Kollexeme der englischen Konstruktion
-im Vergleich zum übergeordneten Verb must ‚müssen‘ ..., so findet sich keinerlei Evidenz für eine ähnliche speziellere Bedeutung. 
-Wie das deutsche müssen hat auch must trotz des ausgewogeneren Häufigkeitsverhältnisses wenige distinktive Kollexeme, die stark an die von müssen erinnern: es sind be ‚sein‘ (have to 27/must 159, 4.80E–18), have ‚haben‘ (9/49, 1.10E–05), know ‚wissen/kennen‘ (1/13, 5.45E–03) und stand ‚stehen‘ (0/7, 2.23E–02). Für [have + to + Infinitiv] gibt es eine Reihe von distinktiven Kollexemen. Allerdings handelt es sich dabei ausschließlich um sehr gebräuchliche Verben, die keiner klaren semantischen Klasse zugeordnet werden können. Es
-lässt sich allenfalls festhalten, dass es sich überwiegend um dynamische Verben handelt, während die wenigen distinktiven Kollexeme von must statische Verben sind.  Ebenso wie im Falle von müssen dürften die epistemischen Verwendungen von must die Ursache für diese Kollexeme sein, denn diese sind für have to zwar möglich, aber selten. Anders als bei der deutschen HZI-Struktur ergeben die distinktiven Kollexeme bei [have + to + Infinitiv] also keine klaren Hinweise auf
-einen BEHÖRDEN-Frame oder eine andere spezifischere Bedeutung der Struktur."
-
-```{r message=FALSE, warning=FALSE, out.width="100%"}
-knitr::include_graphics("pictures/distinktive_kollexeme.png")
-```
-
->"Dies wird auch durch eine Analyse der Dispersion von [have + to + Infinitiv] im BROWN-Korpus bestätigt, die eindeutig zeigt, dass diese Struktur auch in Bezug auf ihre typischen Gebrauchskontexte nicht eingeschränkt ist: sie hat eine Dispersion von 0,96 und ist damit genauso allgemein verwendbar wie [must + Infinitiv], das ebenfalls eine Dispersion von 0,96 im BROWN-Korpus hat. ... Da die deutsche Konstruktion aber die stärker eingeschränkte Bedeutung hat, scheint die Schlussfolgerung plausibel, dass es diese ist, die weniger kompositionell ist."
-
-
-
 
