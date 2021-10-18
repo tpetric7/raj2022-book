@@ -258,7 +258,10 @@ blockquote > p:first-child {
 
 
 div.rmdnote, 
-div.rstudio-tip, 
+div.rmdrobot, 
+div.rmdtip, 
+div.rmdrstudio, 
+div.rmderror, 
 div.rmdwarning {
   padding: 1em;
   margin: 1em 0;
@@ -278,20 +281,33 @@ div.rmdwarning {
 }
 
 div.rmdnote {
+  background-image: url("images/note.png");
+}
+
+div.rmdrobot {
   background-image: url("images/robot.png");
 }
 
-div.rstudio-tip {
+div.rmdtip {
+  background-image: url("images/tip.png");
+}
+
+div.rmdrstudio {
   background-image: url("images/rstudio.png");
 }
 
 div.rmdwarning {
-  background-image: url("images/error.png");
+  background-image: url("images/warning.png");
   background-color: #eab0c41a !important;
 }
 
+div.rmderror {
+  background-image: url("images/error.png");
+  background-color: #eac0c41a !important;
+}
+
 div.rmdnote code, 
-div.rstudio-tip code {
+div.rmdrstudio code {
   background-color: #91CBD765 !important;
   font-size: 1em;
 }

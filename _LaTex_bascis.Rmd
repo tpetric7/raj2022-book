@@ -1,0 +1,57 @@
+---
+title: "LaTex"
+author: "Teodor Petrič"
+date: "8 10 2021"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+https://en.wikipedia.org/wiki/Phonetic_symbols_in_Unicode
+https://www.phon.ucl.ac.uk/home/sampa/german.htm
+https://en.wikipedia.org/wiki/X-SAMPA
+
+https://rmarkdown.rstudio.com/authoring_basics.html
+
+https://www.overleaf.com/learn/latex/Mathematical_expressions
+
+## Einstein
+
+$$E=mc^2$$
+
+Das ist die Gleichung $E=mc^2$, die im Jahr 1905 von Einstein entdeckt wurde. Einstein entdeckte 1905 die folgende Gleichung: $$E=mc^2.$$ Das arithmetische Mittel wird nach der Gleichung $mean = \frac{\sum(x)}{n}$ berechnet. Die Gleichung $E=mc^2$ ist eine der bekanntesten aus der Relativitätstheorie.
+
+
+## Disperzijska analiza
+
+*Carrols D2* (Carrol 1970) ima vrednosti med 0 in 1: V koliko različnih registrih, žanrih itd. (v uravnoteženem korpusu moramo imeti za vsak žanr / register eno datoteko).
+
+$$a = log\Sigma{p_{1-n}}$$ 
+$$b = \Sigma{p_{1-n}}\log{p_{1-n}}$$
+$$c = \Sigma{p_{1-n}}$$
+
+$$d = \log{n}$$
+
+$$
+D = \frac{log\Sigma{p_{1-n}} - (\frac{\Sigma{p_{1-n}}\log{p_{1-n}}}{\Sigma{p_{1-n}}})}{\log{n}}
+$$
+
+$$p_{1-n}$$ je verjetnost pojavljanja nekega obeležja v datotekah 1 do $$n$$, in $$n$$ je število korpusnih datotek.
+
+Verjetnost pojavljanja je relativna količina, tj. pogostnost z ozirom na velikost datoteke. Za izračun disperzije (razpršenosti) besede, podajamo število vseh besed (konstrukcij), kar predstavlja velikost datoteke.
+
+
+## Partialkorrelation
+
+Wir *kontrollieren* den möglichen Effekt von Drittvariablen durch *auspartialisieren* (*herausregressieren*). Wie groß ist die Kovarianz der Variablen X und Y, wenn ich aus beiden die jeweilige **Kovarianz** mit der Variable Z entferne? Dazu benötigen wir die Korrelationen der beteiligten Variablen untereinander, also $r_{XY}$, $r_{XZ}$ und $r_{YZ}$.
+
+Partialkorrelation von drei Variablen (X, Y und Z):
+
+$$
+r_{XY*Z} = \frac{r_{XY} - r_{XZ}*r_{YZ}}{\sqrt{1 - r^2_{XZ}}*\sqrt{1 - r^2_{XY}}}
+$$
+
