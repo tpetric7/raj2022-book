@@ -258,6 +258,54 @@ htmlwidgets::saveWidget(as_widget(plotly_p1),
                         "plotly_pics/shared_names.html")
 ```
 
+
+```{r}
+library(plotly)
+
+x = seq(0, 10^5)
+y = seq(0, 10^5)
+
+fig <- sharedName %>% 
+  group_by(ime, Moski, Zenska, AvgYear) %>% 
+  plot_ly(x = ~Moski, y = ~Zenska, 
+          # width = 850, height = 700
+          hoveron = c("ime","Moski","Zenska","AvgYear")) %>% 
+  # add_markers(text = ~paste("AvgYear: ", AvgYear),
+  #             name = "Povprečje/leto",
+  #             symbol = I("circle"),
+  #             size = I(4),
+  #             opacity = I(0.2)) %>% 
+  add_markers(text = ~paste("Razmerje M/Ž: ", 
+                            round(Moski/Zenska, 2)),
+              color = ~Moski/Zenska,
+              symbol = I("square"),
+              size = I(12),
+              opacity = I(1),
+              name = "Razmerje M/Ž") %>% 
+  add_markers(text = ~paste("Ime: ", ime),
+              name = "Osebno ime",
+              color = ~Moski/Zenska,
+              symbol = I("circle"),
+              size = I(1),
+              opacity = I(0)) %>%
+  layout(
+    title = "Število skupnih imen",
+    xaxis = list(
+      title = "Število moških",
+      rangeslider = list(type = "x")
+    ),
+    yaxis = list(
+      title = "Število žensk"
+    )
+  )
+fig  
+
+ ##### Save it locally
+library(htmlwidgets)
+htmlwidgets::saveWidget(as_widget(fig),
+                        "plotly_pics/plotly_fig_shared_names.html")
+
 ```
+
 
 
