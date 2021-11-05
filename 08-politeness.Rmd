@@ -6,13 +6,16 @@ library(scales)
 # detach("package:rlang", unload=TRUE)
 ```
 
-Datensatz von: *Bodo Winter*
+Datensatz von: *Bodo Winter* [@winter2012phonetic; @winter2013linear]
 
 Thema: Politeness and Pitch (F0)
 
-(cf. <http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf>)
+Tutorials: 
+- [Lineare Regression](http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf)   
+- [Lineare Regression mit gemischten Effekten](https://bodowinter.com/tutorial/bw_LME_tutorial.pdf)   
 
-(cf. <https://bodowinter.com/tutorial/bw_LME_tutorial.pdf>)
+Artikel:   
+[The phonetic profile of Korean formal and informal speech registers](https://www.academia.edu/5655036/The_phonetic_profile_of_Korean_formal_and_informal_speech_registers)   
 
 Gliederung unserer quantitativen Analyse
 
@@ -28,7 +31,7 @@ Gliederung unserer quantitativen Analyse
 
 
 :::rmdnote 
-Eine einfache `lineare Regression` oder einen `t-Test` kann man auch in Excel berechnen, aber in Statistikprogrammen ist das bequemer.
+Eine einfache `lineare Regression` oder einen `t-Test` kann man auch in *Excel* berechnen, aber in Statistikprogrammen ist das bequemer.
 :::
 
 #### Datei laden
@@ -48,9 +51,19 @@ head(politeness)
   
 ```
 
+Eine weitere Funktion, um die Datenstruktur zu betrachten:
+
 ```{r message=FALSE, warning=FALSE}
 glimpse(politeness)
 ```
+
+Und noch eine Übersicht, die uns noch mehr zeigt, z.B. ob bestimmte Datenzellen leer sind (NA). Die Variable `frequency` enthält eine leere Datenzelle (s. `n_missing`). Das müssen wir bei der Berechnung des Durchschnitts berücksichtigen.
+
+```{r}
+library(skimr)
+skim(politeness)
+```
+
 
 Am Experiment nahmen 6 Versuchspersonen teil (F1, ..., M7). Von jeder Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).
 
@@ -80,7 +93,7 @@ politeness %>%
   mean(frequency)
 ```
 
-`NA`: In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche Frequenz mit `mean()` zu berechnen.
+`NA`: Hoppla! In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche Frequenz mit `mean()` zu berechnen. Entfernen der leeren Datenzelle (NA) ist die einfachste Lösung.
 
 ```{r message=FALSE, warning=FALSE}
 politeness %>% 
@@ -134,7 +147,7 @@ Das überprüfen wir zunächst mit einem t-Test, anschließend mit einer lineare
 
 Zunächst ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise. In unserer Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz.
 
-Gemäß Hypothese H1 ist der Unterschied nicht zufällig entstanden, sondern kann auf die Gesamtpopulation deutscher Sprecher verallgemeinert werden.
+Gemäß Hypothese H1 ist der Unterschied nicht zufällig entstanden, sondern kann auf die Gesamtpopulation der Sprecher verallgemeinert werden.
 
 Nicht so gemäß Hypothese H0: Der Mittelwertunterschied zwischen den Stichproben kann zufällig entstanden sein, denn wenn wir eine andere Stichprobe genommen hätten, wäre der Unterschied vielleicht gleich Null gewesen.
 
@@ -149,12 +162,16 @@ politeness %>%
 
 ```
 
+Die Varianzen und damit auch die Standardabweichungen (`sd_freq`) vom Mittelwert (`avg_freq`) sind in beiden Gruppen (`inf` und `pol`) ungefähr gleich groß. Beim t-Test können wir dies berücksichtigen, und zwar mit der Option `var.equal = TRUE`. Die Option `paired = FALSE` besagt, dass die beiden Gruppen unabhängig vom Messzeitpunkt sind.
+
 Der t-Test bestätigt H1 nicht (p \> 0,05):
 
 ```{r message=FALSE, warning=FALSE}
-t.test(frequency ~ attitude, data = politeness, paired = F, var.equal = T)
-
+t.test(frequency ~ attitude, data = politeness, 
+       paired = FALSE, var.equal = TRUE)
 ```
+
+Eine weitere Form, wie man den t-Test durchführen könnte. Wahrscheinlich hat sie eine verwirrende Wirkung auf R-Einsteiger.
 
 ```{r message=FALSE, warning=FALSE}
 pol = politeness$frequency[politeness$attitude == "pol"]
@@ -162,6 +179,8 @@ inf = politeness$frequency[politeness$attitude == "inf"]
 t.test(pol, inf)
 
 ```
+
+Oder eine dritte (längere) Variante, den t-Test durchzuführen:
 
 ```{r message=FALSE, warning=FALSE}
 polite <- politeness %>% 
@@ -178,9 +197,11 @@ t.test(polite, informal)
 
 ```
 
+In den beiden letzten Varianten wurde der Welch-t-Test durchgeführt, weil wir nicht angegeben haben, ob die Varianten (Standardabweichungen) der beiden Gruppen etwa gleich groß sind oder nicht.
+
 #### Lineare Regression
 
-Die lineare Regression hat den großen Vorteil, dass man mehr als eine unabhängige Variable (Prädiktor) verwenden kann, um die Hypothese zu testen. Wir wählen Geschlecht (gender) und Sprechverhalten (attitude) als unabhängige Variablen, der Grundfrequenzverlauf (frequency) ist die abhängige Variable.
+Die lineare Regression hat den großen Vorteil, dass man mehr als eine unabhängige Variable (Prädiktor) verwenden kann, um die Hypothese zu testen. Wir wählen *Geschlecht* (`gender`) und *Sprechverhalten* (`attitude`) als **unabhängige** Variablen, der *Grundfrequenzverlauf* (`frequency`) als **abhängige** Variable.
 
 ```{r message=FALSE, warning=FALSE}
 politeness %>% 
@@ -197,22 +218,36 @@ Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die m
 politeness %>% 
   ggplot(aes(attitude, frequency, group = attitude, fill = attitude)) +
   geom_boxplot() +
+  stat_summary(fun.y=mean, geom="point", 
+               shape="*", size=5, color="red", fill="red") + 
   facet_wrap(~ gender) +
-  geom_hline(yintercept = c(202.5), lty = 3) +
-  geom_hline(yintercept = c(184.3), lty = 2) +
+  # geom_hline(yintercept = c(202.5), 
+  #            lty = 2, col = "darkred") + # Polite-Mittelwert
+  # geom_hline(yintercept = c(184.3), 
+             # lty = 2, col = "darkgreen") + # Informal-Mittelwert
   geom_jitter(width = 0.2)
 
 ```
 
+Der rote Stern markiert den Durchschnittswert der jeweiligen Gruppe, der schwarze Balken den Median (d.h. den Wert, der genau in der Mitte aller Daten der jeweiligen Gruppe liegt).
+
+Eine alternative graphische Darstellung mit dem Programm `effects`, aber dieses Mal mit hinzugefügter Interaktion zwischen den beiden unabhängigen Variablen *Geschlecht* (gender) und *Verhalten* (attitude).
+
 ```{r message=FALSE, warning=FALSE}
 m <- lm(frequency ~ attitude*gender, data = politeness)
+summary(m)
 library(effects)
 allEffects(m)
-plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE)
+plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE, confint=list(style="bars"), x.var = "gender")
 
 ```
 
+Die sich überschneidenden Konfidenzintervalle im Diagramm zeigen, dass die Durchschnittswerte der männlichen Versuchspersonen keinen statistisch signifikanten Unterschied
+
+
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
+
+Das nächste Diagramm bestätigt, dass die Variablen Geschlecht (gender) und Verhalten (attitude) mit statistischer Signifikanz die Höhe des Grundfrequnezverlaufs (frequency) beeinflussen, nicht jedoch die Interaktion beider Variablen (deren Konfidenzintervall im Diagramm die Null-Linie überschreitet).
 
 ```{r message=FALSE, warning=FALSE}
 library(parameters)
@@ -221,6 +256,8 @@ p1 = plot(parameters(m)) +
   ggplot2::labs(title = "A Dot-and-Whisker Plot")
 p1
 ```
+
+Das nächste Diagramm bestätigt, dass die Residuen (d.h. die jeweiligen Abweichungen der einzelnen Werte vom Durchschnitt) normalverteilt sind (p = 0.396, also größer als der Grenzwert 0.05). Damit ist eine der erforderlichen Bedingungen für die Durchführung einer linearen Regression erfüllt. 
 
 ```{r message=FALSE, warning=FALSE}
 library(performance)
@@ -231,6 +268,7 @@ p2 = plot(check, type = "qq")
 p2
 ```
 
+
 ```{r message=FALSE, warning=FALSE}
 library(performance)
 check <- check_normality(m, effects = "fixed")
@@ -239,6 +277,8 @@ check <- check_normality(m, effects = "fixed")
 p2a = plot(check, type = "pp")
 p2a
 ```
+
+$Omega^2$ ist eine alternative Größe zu $R^2$, womit ebenfalls die erklärte Varianz eines linearen Regressionsmodells angegeben wird. Im Diagramm ist zu sehen, dass die Variable *Geschlecht* (gender) den größten Beitrag leistet (fast 70%), die Variable *Verhalten* (attitude) ca. 5%, während die Interaktion beider Variablen keinen signifikanten Beitrag zu Erklärung der Varianz leistet (Wert liegt bei 0%).
 
 ```{r message=FALSE, warning=FALSE}
 library(effectsize)
@@ -250,12 +290,16 @@ p3 = plot(omega_squared(m))
 p3
 ```
 
+Das nächste Diagramm zeigt die Verteilung der Daten.
+
 ```{r message=FALSE, warning=FALSE}
 p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
   geom_point2() +
   theme_modern()
 p4
 ```
+
+Weitere Darstellungen der Datendistribution:
 
 ```{r message=FALSE, warning=FALSE}
 p4 = ggplot(politeness, 
@@ -278,6 +322,24 @@ p5 = ggplot(politeness,
 p5
 ```
 
+Bedingungen für die Durchführung einer linearen Regression mit einem Befehl. Hier wählen wir das Modell ohne Interaktion (da diese nicht signifikant war).
+
+```{r message=FALSE, warning=FALSE, out.width="100%", out.height="100%"}
+library(performance)
+m <- lm(frequency ~ attitude + gender, data = politeness)
+summary(m)
+
+check <- check_model(m)
+
+p6 = plot(check)
+p6
+
+```
+
+
+
+Collage mehrerer der oben einzeln gezeigten Diagramme:
+
 ```{r message=FALSE, warning=FALSE}
 plots(p1,p2,p3,p4, 
       n_columns = 2, 
@@ -290,7 +352,8 @@ library(rstanarm)
 library(see)
 
 set.seed(123)
-m <- stan_glm(frequency ~ attitude*gender, data = politeness, refresh = 0)
+m <- stan_glm(frequency ~ attitude + gender, 
+              data = politeness, refresh = 0)
 result <- hdi(m, ci = c(0.5, 0.75, 0.89, 0.95))
 plot(result)
 ```
