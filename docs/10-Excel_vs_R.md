@@ -151,18 +151,18 @@ zdruzena %>%
 
 ```
 ## # A tibble: 830 x 15
-##    OrderID CustomerID EmployeeID OrderDate           EmployeeName   Title       
-##      <dbl> <chr>           <dbl> <dttm>              <chr>          <chr>       
-##  1   10248 VINET               5 1994-08-04 00:00:00 Buchanan Stev~ Sales Manag~
-##  2   10249 TOMSP               6 1994-08-05 00:00:00 Suyama Michael Sales Repre~
-##  3   10250 HANAR               4 1994-08-08 00:00:00 Peacock Marga~ Sales Repre~
-##  4   10251 VICTE               3 1994-08-08 00:00:00 Leverling Jan~ Sales Repre~
-##  5   10252 SUPRD               4 1994-08-09 00:00:00 Peacock Marga~ Sales Repre~
-##  6   10253 HANAR               3 1994-08-10 00:00:00 Leverling Jan~ Sales Repre~
-##  7   10254 CHOPS               5 1994-08-11 00:00:00 Buchanan Stev~ Sales Manag~
-##  8   10255 RICSU               9 1994-08-12 00:00:00 Dodsworth Anne Sales Repre~
-##  9   10256 WELLI               3 1994-08-15 00:00:00 Leverling Jan~ Sales Repre~
-## 10   10257 HILAA               4 1994-08-16 00:00:00 Peacock Marga~ Sales Repre~
+##    OrderID CustomerID EmployeeID OrderDate           EmployeeName     Title     
+##      <dbl> <chr>           <dbl> <dttm>              <chr>            <chr>     
+##  1   10248 VINET               5 1994-08-04 00:00:00 Buchanan Steven  Sales Man~
+##  2   10249 TOMSP               6 1994-08-05 00:00:00 Suyama Michael   Sales Rep~
+##  3   10250 HANAR               4 1994-08-08 00:00:00 Peacock Margaret Sales Rep~
+##  4   10251 VICTE               3 1994-08-08 00:00:00 Leverling Janet  Sales Rep~
+##  5   10252 SUPRD               4 1994-08-09 00:00:00 Peacock Margaret Sales Rep~
+##  6   10253 HANAR               3 1994-08-10 00:00:00 Leverling Janet  Sales Rep~
+##  7   10254 CHOPS               5 1994-08-11 00:00:00 Buchanan Steven  Sales Man~
+##  8   10255 RICSU               9 1994-08-12 00:00:00 Dodsworth Anne   Sales Rep~
+##  9   10256 WELLI               3 1994-08-15 00:00:00 Leverling Janet  Sales Rep~
+## 10   10257 HILAA               4 1994-08-16 00:00:00 Peacock Margaret Sales Rep~
 ## # ... with 820 more rows, and 9 more variables: TitleOfCourtesy <chr>,
 ## #   BirthDate <dttm>, HireDate <dttm>, Address <chr>, City <chr>, Region <chr>,
 ## #   PostalCode <chr>, Country <chr>, HomePhone <chr>

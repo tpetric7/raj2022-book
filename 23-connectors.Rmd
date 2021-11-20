@@ -1,0 +1,122 @@
+# Konnektoren
+
+## Pakete
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(scales)
+library(janitor)
+library(readtext)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(tidytext)
+library(readxl)
+library(writexl)
+library(udpipe)
+```
+
+## Text einlesen
+
+```{r message=FALSE, warning=FALSE}
+txt = readtext("data/books/*.txt", encoding = "UTF-8")
+txt
+
+```
+
+## UDPipe laden
+
+```{r message=FALSE, warning=FALSE}
+library(udpipe)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   sprachmodell <- udpipe_download_model(language = "german")
+   udmodel_de <- udpipe_load_model(sprachmodell$file_model)
+   } else {
+  file_model = destfile
+  udmodel_de <- udpipe_load_model(file_model)
+}
+
+```
+
+## Text annotieren
+
+https://universaldependencies.org/
+
+```{r message=FALSE, warning=FALSE}
+# Na začetku je readtext prebral besedila, shranili smo jih v spremenljivki "txt".
+x <- udpipe_annotate(udmodel_de, x = txt$text, trace = TRUE)
+
+# # samo prvo besedilo:
+# x <- udpipe_annotate(udmodel_de, x = txt$text[1], trace = TRUE)
+
+x <- as.data.frame(x)
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+# write_rds(x, "data/prozess_tom_udpiped.rds")
+# x = read_rds("data/prozess_tom_udpiped.rds")
+```
+
+## Wortklassen und Konnektoren
+
+```{r message=FALSE, warning=FALSE}
+tabela = x %>% 
+  group_by(doc_id) %>% 
+  count(upos) %>% 
+  filter(!is.na(upos),
+         upos != "PUNCT")
+head(tabela) %>% rmarkdown::paged_table()
+
+vezniki = tabela %>% 
+  filter(upos %in% c("CCONJ", "SCONJ")) %>% 
+  mutate(prozent = n/sum(n)) %>% 
+  pivot_wider(id_cols = upos, 
+              names_from = doc_id, values_from = n:prozent)
+head(vezniki) %>% rmarkdown::paged_table()
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+konnektoren = x %>% 
+  mutate(token = str_to_lower(token)) %>% 
+  group_by(doc_id, token) %>% 
+  filter(!is.na(upos),
+         upos != "PUNCT") %>% 
+  filter(upos %in% c("CCONJ", "SCONJ")) %>% 
+  count(upos, sort = T)
+```
+
+
+```{r message=FALSE, warning=FALSE}
+connectors = x %>% 
+  mutate(token = str_to_lower(token)) %>% 
+  group_by(token) %>% 
+  filter(!is.na(upos),
+         upos != "PUNCT") %>% 
+  filter(upos %in% c("CCONJ", "SCONJ")) %>% 
+  count(upos, sort = T)
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+connectors %>% filter(upos == "CCONJ") %>% pull(token) %>% head(50)
+```
+
+```{r message=FALSE, warning=FALSE}
+connectors %>% filter(upos == "SCONJ") %>% pull(token) %>% head(50)
+```
+
+Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien).
+
+Potem jih lahko natančneje preštejemo
+case_when
+str_detect(seznam_prirednih_konektorjev, "...|...|...")
+str_detect(seznam_podrednih_konektorjev, "...|...|...")
+str_detect(seznam_prislovnih_konektorjev, "...|...|...")

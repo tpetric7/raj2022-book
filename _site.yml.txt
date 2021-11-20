@@ -1,0 +1,2 @@
+name: "Showcase"
+output_dir: docs

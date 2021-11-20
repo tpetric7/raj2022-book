@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 19 Konnektoren | RAJ 2022 Introduction Course</title>
+  <meta name="description" content="Kapitel 19 Konnektoren | RAJ 2022 Introduction Course" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 19 Konnektoren | RAJ 2022 Introduction Course" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 19 Konnektoren | RAJ 2022 Introduction Course" />
+  
+  
+  <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+
+<meta name="author" content="Teodor Petrič" />
+
+
+<meta name="date" content="2021-11-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modals-in-slovene-texts.html"/>
+<link rel="next" href="rolling-stones-auf-twitter.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.19/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/jszip-1.10.20/jszip.min.js"></script>
+<script src="libs/pdfmake-1.10.20/pdfmake.js"></script>
+<script src="libs/pdfmake-1.10.20/vfs_fonts.js"></script>
+<link href="libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+<link href="libs/leaflet-measure-2.1.7/leaflet-measure.css" rel="stylesheet" />
+<script src="libs/leaflet-measure-2.1.7/leaflet-measure.min.js"></script>
+<script src="libs/core-js-2.5.3/shim.min.js"></script>
+<script src="libs/react-17.0.0/react.min.js"></script>
+<script src="libs/react-17.0.0/react-dom.min.js"></script>
+<script src="libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="libs/bokehjs-0.12.5/bokeh.min.css" rel="stylesheet" />
+<link href="libs/bokehjs-0.12.5/loader.css" rel="stylesheet" />
+<script src="libs/bokehjs-0.12.5/bokeh.min.js"></script>
+<script src="libs/rbokeh-binding-0.5.2/rbokeh.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RAJ 2022 Intro</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
+<li class="chapter" data-level="2" data-path="namestitev.html"><a href="namestitev.html"><i class="fa fa-check"></i><b>2</b> Namestitev</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="namestitev.html"><a href="namestitev.html#osnovni-programi"><i class="fa fa-check"></i><b>2.1</b> Osnovni programi</a></li>
+<li class="chapter" data-level="2.2" data-path="namestitev.html"><a href="namestitev.html#dodatni-programi"><i class="fa fa-check"></i><b>2.2</b> Dodatni programi</a></li>
+<li class="chapter" data-level="2.3" data-path="namestitev.html"><a href="namestitev.html#pomoč"><i class="fa fa-check"></i><b>2.3</b> Pomoč</a></li>
+<li class="chapter" data-level="2.4" data-path="namestitev.html"><a href="namestitev.html#druga-orodja"><i class="fa fa-check"></i><b>2.4</b> Druga orodja</a></li>
+<li class="chapter" data-level="2.5" data-path="namestitev.html"><a href="namestitev.html#oblačne-storitve"><i class="fa fa-check"></i><b>2.5</b> Oblačne storitve</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="showcase.html"><a href="showcase.html"><i class="fa fa-check"></i><b>3</b> Showcase</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="showcase.html"><a href="showcase.html#data-preparation-were-using-data-from-chart2000.com-music-charts-2000---2020"><i class="fa fa-check"></i><b>3.0.1</b> Data Preparation<br><br>We’re using data from <strong>Chart2000.com</strong>:<br>Music Charts 2000 - 2020</a></li>
+<li class="chapter" data-level="3.0.2" data-path="showcase.html"><a href="showcase.html#first-boxplot-some-tweaks-to-a-basic-ggplot2-chart-using-ggthemes-by-jeffrey-b.-arnold"><i class="fa fa-check"></i><b>3.0.2</b> First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using <strong>ggthemes</strong> by <strong>Jeffrey B. Arnold</strong></a></li>
+<li class="chapter" data-level="3.0.3" data-path="showcase.html"><a href="showcase.html#show-ns-visually-by-specifying-varwidth-true"><i class="fa fa-check"></i><b>3.0.3</b> 1. Show Ns Visually<br><br>by specifying <strong>varwidth = TRUE</strong></a></li>
+<li class="chapter" data-level="3.0.4" data-path="showcase.html"><a href="showcase.html#show-ns-numerically-using-envstatsstat_n_text-by-steven-millard-and-alexander-kowarik"><i class="fa fa-check"></i><b>3.0.4</b> 2. Show Ns Numerically <br><br>using <strong>EnvStats::stat_n_text()</strong> by <strong>Steven Millard</strong> and <strong>Alexander Kowarik</strong></a></li>
+<li class="chapter" data-level="3.0.5" data-path="showcase.html"><a href="showcase.html#show-summary-statistics-on-hover-mouse-over-using-plotly-by-carson-sievert"><i class="fa fa-check"></i><b>3.0.5</b> 3. Show Summary Statistics on Hover (Mouse-Over)<br><br>using <strong>plotly</strong> by <strong>Carson Sievert</strong></a></li>
+<li class="chapter" data-level="3.0.6" data-path="showcase.html"><a href="showcase.html#label-outliers-via-a-user-defined-function-and-geom_text"><i class="fa fa-check"></i><b>3.0.6</b> 4. Label Outliers<br><br>via a <strong>user-defined function</strong> and <strong>geom_text()</strong></a></li>
+<li class="chapter" data-level="3.0.7" data-path="showcase.html"><a href="showcase.html#display-individual-data-points-using-geom_jitter"><i class="fa fa-check"></i><b>3.0.7</b> 5. Display Individual Data Points<br><br>using <strong>geom_jitter()</strong></a></li>
+<li class="chapter" data-level="3.0.8" data-path="showcase.html"><a href="showcase.html#use-aesthetics-to-include-information-on-another-variable-combining-shape-and-color-using-rcolorbrewer-by-erich-neuwirth"><i class="fa fa-check"></i><b>3.0.8</b> 6. Use Aesthetics to Include Information on Another Variable<br><br>Combining <strong>shape</strong> and <strong>color</strong>, using <strong>RColorBrewer</strong> by <strong>Erich Neuwirth</strong></a></li>
+<li class="chapter" data-level="3.0.9" data-path="showcase.html"><a href="showcase.html#add-means-for-comparison-to-medians"><i class="fa fa-check"></i><b>3.0.9</b> 7. Add Means<br><br>for comparison to medians</a></li>
+<li class="chapter" data-level="3.0.10" data-path="showcase.html"><a href="showcase.html#calculate-and-display-statistical-tests-for-group-differences-using-ggstatsplot-by-indrajeet-patil"><i class="fa fa-check"></i><b>3.0.10</b> 8. Calculate and Display Statistical Tests for Group Differences<br><br>using <strong>ggstatsplot</strong> by <strong>Indrajeet Patil</strong></a></li>
+<li class="chapter" data-level="3.0.11" data-path="showcase.html"><a href="showcase.html#group-differences-example-for-a-significant-test"><i class="fa fa-check"></i><b>3.0.11</b> 9. Group Differences:<br><br>Example for a significant test</a></li>
+<li class="chapter" data-level="3.0.12" data-path="showcase.html"><a href="showcase.html#use-images-as-labels-via-ggtext-by-claus-wilke"><i class="fa fa-check"></i><b>3.0.12</b> 10. Use Images as Labels<br><br>via <strong>ggtext</strong> by <strong>Claus Wilke</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>4</b> R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r-rstudio.html"><a href="r-rstudio.html#knjižnice"><i class="fa fa-check"></i><b>4.1</b> Knjižnice</a></li>
+<li class="chapter" data-level="4.2" data-path="r-rstudio.html"><a href="r-rstudio.html#textdatei-öffnen"><i class="fa fa-check"></i><b>4.2</b> Textdatei öffnen</a></li>
+<li class="chapter" data-level="4.3" data-path="r-rstudio.html"><a href="r-rstudio.html#odpiranje-več-besedil"><i class="fa fa-check"></i><b>4.3</b> Odpiranje več besedil</a></li>
+<li class="chapter" data-level="4.4" data-path="r-rstudio.html"><a href="r-rstudio.html#odpiranje-preglednice"><i class="fa fa-check"></i><b>4.4</b> Odpiranje preglednice</a></li>
+<li class="chapter" data-level="4.5" data-path="r-rstudio.html"><a href="r-rstudio.html#odpiranje-excelove-tabele"><i class="fa fa-check"></i><b>4.5</b> Odpiranje Excelove tabele</a></li>
+<li class="chapter" data-level="4.6" data-path="r-rstudio.html"><a href="r-rstudio.html#shranjevanje-datotek"><i class="fa fa-check"></i><b>4.6</b> Shranjevanje datotek</a></li>
+<li class="chapter" data-level="4.7" data-path="r-rstudio.html"><a href="r-rstudio.html#nalaganje-s-spleta"><i class="fa fa-check"></i><b>4.7</b> Nalaganje s spleta</a></li>
+<li class="chapter" data-level="4.8" data-path="r-rstudio.html"><a href="r-rstudio.html#mape"><i class="fa fa-check"></i><b>4.8</b> Mape</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="r-rstudio.html"><a href="r-rstudio.html#preveri-obstoj-mape"><i class="fa fa-check"></i><b>4.8.1</b> Preveri obstoj mape</a></li>
+<li class="chapter" data-level="4.8.2" data-path="r-rstudio.html"><a href="r-rstudio.html#ustvari-mapo"><i class="fa fa-check"></i><b>4.8.2</b> Ustvari mapo</a></li>
+<li class="chapter" data-level="4.8.3" data-path="r-rstudio.html"><a href="r-rstudio.html#ustvari-podrejene-mape"><i class="fa fa-check"></i><b>4.8.3</b> Ustvari podrejene mape</a></li>
+<li class="chapter" data-level="4.8.4" data-path="r-rstudio.html"><a href="r-rstudio.html#odstrani-mape"><i class="fa fa-check"></i><b>4.8.4</b> Odstrani mape</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="r-rstudio.html"><a href="r-rstudio.html#stisnjene-datoteke"><i class="fa fa-check"></i><b>4.9</b> Stisnjene datoteke</a></li>
+<li class="chapter" data-level="4.10" data-path="r-rstudio.html"><a href="r-rstudio.html#pregledovanje-datotek"><i class="fa fa-check"></i><b>4.10</b> Pregledovanje datotek</a></li>
+<li class="chapter" data-level="4.11" data-path="r-rstudio.html"><a href="r-rstudio.html#prebiranje-datotek"><i class="fa fa-check"></i><b>4.11</b> Prebiranje datotek</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="r-rstudio.html"><a href="r-rstudio.html#tidyverse"><i class="fa fa-check"></i><b>4.11.1</b> tidyverse:</a></li>
+<li class="chapter" data-level="4.11.2" data-path="r-rstudio.html"><a href="r-rstudio.html#base-r"><i class="fa fa-check"></i><b>4.11.2</b> Base R:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="r-rstudio.html"><a href="r-rstudio.html#pretvorba-kodne-strani"><i class="fa fa-check"></i><b>4.12</b> Pretvorba kodne strani</a></li>
+<li class="chapter" data-level="4.13" data-path="r-rstudio.html"><a href="r-rstudio.html#priprava-podatkovnega-niza"><i class="fa fa-check"></i><b>4.13</b> Priprava podatkovnega niza</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="r-rstudio.html"><a href="r-rstudio.html#select"><i class="fa fa-check"></i><b>4.13.1</b> select()</a></li>
+<li class="chapter" data-level="4.13.2" data-path="r-rstudio.html"><a href="r-rstudio.html#filter"><i class="fa fa-check"></i><b>4.13.2</b> filter()</a></li>
+<li class="chapter" data-level="4.13.3" data-path="r-rstudio.html"><a href="r-rstudio.html#group_by"><i class="fa fa-check"></i><b>4.13.3</b> group_by()</a></li>
+<li class="chapter" data-level="4.13.4" data-path="r-rstudio.html"><a href="r-rstudio.html#mutate"><i class="fa fa-check"></i><b>4.13.4</b> mutate()</a></li>
+<li class="chapter" data-level="4.13.5" data-path="r-rstudio.html"><a href="r-rstudio.html#count"><i class="fa fa-check"></i><b>4.13.5</b> count()</a></li>
+<li class="chapter" data-level="4.13.6" data-path="r-rstudio.html"><a href="r-rstudio.html#summarise"><i class="fa fa-check"></i><b>4.13.6</b> summarise()</a></li>
+<li class="chapter" data-level="4.13.7" data-path="r-rstudio.html"><a href="r-rstudio.html#arrange"><i class="fa fa-check"></i><b>4.13.7</b> arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="r-rstudio.html"><a href="r-rstudio.html#pretvorba-r-skripta"><i class="fa fa-check"></i><b>4.14</b> Pretvorba R skripta</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stichprobentests.html"><a href="stichprobentests.html"><i class="fa fa-check"></i><b>5</b> Stichprobentests</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stichprobentests.html"><a href="stichprobentests.html#nominalskalierte-größen"><i class="fa fa-check"></i><b>5.1</b> Nominalskalierte Größen</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#lange-und-kurze-kommentare"><i class="fa fa-check"></i><b>5.1.1</b> Lange und kurze Kommentare</a></li>
+<li class="chapter" data-level="5.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#plural-von-kunstwörtern"><i class="fa fa-check"></i><b>5.1.2</b> Plural von Kunstwörtern</a></li>
+<li class="chapter" data-level="5.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#modalkonstruktionen-morati-vs.-treba"><i class="fa fa-check"></i><b>5.1.3</b> Modalkonstruktionen (morati vs. treba)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="stichprobentests.html"><a href="stichprobentests.html#intervallskalierte-größen"><i class="fa fa-check"></i><b>5.2</b> Intervallskalierte Größen</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#wirkung-von-unterrichtsmethoden"><i class="fa fa-check"></i><b>5.2.1</b> Wirkung von Unterrichtsmethoden</a></li>
+<li class="chapter" data-level="5.2.2" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>5.2.2</b> Höflichkeit und Grundfrequenz</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html"><i class="fa fa-check"></i><b>6</b> Excel vs. R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#programi"><i class="fa fa-check"></i><b>6.1</b> Programi</a></li>
+<li class="chapter" data-level="6.2" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#podatki"><i class="fa fa-check"></i><b>6.2</b> Podatki</a></li>
+<li class="chapter" data-level="6.3" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#število-podatkov-v-nizu"><i class="fa fa-check"></i><b>6.3</b> Število podatkov v nizu</a></li>
+<li class="chapter" data-level="6.4" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#lookup-excel"><i class="fa fa-check"></i><b>6.4</b> Lookup (Excel)</a></li>
+<li class="chapter" data-level="6.5" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#vlookup-concat"><i class="fa fa-check"></i><b>6.5</b> Vlookup, &amp;, Concat</a></li>
+<li class="chapter" data-level="6.6" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#transpose"><i class="fa fa-check"></i><b>6.6</b> Transpose</a></li>
+<li class="chapter" data-level="6.7" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#dvojniki-razdružitev"><i class="fa fa-check"></i><b>6.7</b> Dvojniki, razdružitev</a></li>
+<li class="chapter" data-level="6.8" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#xlookup"><i class="fa fa-check"></i><b>6.8</b> Xlookup</a></li>
+<li class="chapter" data-level="6.9" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#index-match"><i class="fa fa-check"></i><b>6.9</b> Index, Match</a></li>
+<li class="chapter" data-level="6.10" data-path="excel-vs.-r.html"><a href="excel-vs.-r.html#filtriranje"><i class="fa fa-check"></i><b>6.10</b> Filtriranje</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>7</b> Vokalformanten im Deutschen als Fremdsprache</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>7.1</b> Programme starten</a></li>
+<li class="chapter" data-level="7.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>7.2</b> Daten laden &amp; anpassen</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>7.2.1</b> Datensatz 1</a></li>
+<li class="chapter" data-level="7.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>7.2.2</b> Datensatz 2</a></li>
+<li class="chapter" data-level="7.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>7.2.3</b> Datensatz 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>7.3</b> IPA syms</a></li>
+<li class="chapter" data-level="7.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>7.4</b> Vergleich der Vokalformanten</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>7.4.1</b> Datensatz 2</a></li>
+<li class="chapter" data-level="7.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>7.4.2</b> Datensatz 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>7.5</b> Aggregierter Datensatz</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>7.5.1</b> IPA syms</a></li>
+<li class="chapter" data-level="7.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>7.5.2</b> Tabelle</a></li>
+<li class="chapter" data-level="7.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>7.5.3</b> Datensatz 1 mit aggregierten Daten</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>7.6</b> Abbildungen mit <code>phonR</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>8</b> Textzerlegung</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>8.1</b> Packages</a></li>
+<li class="chapter" data-level="8.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>8.2</b> Text öffnen</a></li>
+<li class="chapter" data-level="8.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>8.3</b> Zerlegung des Textes</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>8.3.1</b> Tabelle</a></li>
+<li class="chapter" data-level="8.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>8.3.2</b> Äußerungen</a></li>
+<li class="chapter" data-level="8.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>8.3.3</b> Wörter</a></li>
+<li class="chapter" data-level="8.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>8.3.4</b> Buchstaben</a></li>
+<li class="chapter" data-level="8.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>8.3.5</b> Ziffern umwandeln</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>8.4</b> Tabelle speichern</a></li>
+<li class="chapter" data-level="8.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>8.5</b> Tabelle öffnen</a></li>
+<li class="chapter" data-level="8.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>8.6</b> Zählen</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>8.6.1</b> Buchstaben</a></li>
+<li class="chapter" data-level="8.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>8.6.2</b> Worthäufigkeiten</a></li>
+<li class="chapter" data-level="8.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>8.6.3</b> Wortschatzdichte</a></li>
+<li class="chapter" data-level="8.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>8.6.4</b> Äußerungslänge</a></li>
+<li class="chapter" data-level="8.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>8.6.5</b> Vergleich mit quanteda</a></li>
+<li class="chapter" data-level="8.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>8.6.6</b> Vergleich mit Voyant Tools</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>9</b> Kurzgeschichten im Vergleich</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden"><i class="fa fa-check"></i><b>9.1</b> Programme laden</a></li>
+<li class="chapter" data-level="9.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>9.2</b> Texte laden</a></li>
+<li class="chapter" data-level="9.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>9.3</b> Textzerlegung und Annotation</a></li>
+<li class="chapter" data-level="9.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>9.4</b> Datensätze vereinen</a></li>
+<li class="chapter" data-level="9.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>9.5</b> Wortklassen zählen</a></li>
+<li class="chapter" data-level="9.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>9.6</b> Nicht-parametrischer Test</a></li>
+<li class="chapter" data-level="9.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren"><i class="fa fa-check"></i><b>9.7</b> Konnektoren</a></li>
+<li class="chapter" data-level="9.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>9.8</b> Äußerungslänge vergleichen</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>10</b> Spracherwerbsdaten</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-1"><i class="fa fa-check"></i><b>10.1</b> Programme</a></li>
+<li class="chapter" data-level="10.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>10.2</b> Daten lesen</a></li>
+<li class="chapter" data-level="10.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>10.3</b> Verknüpfung der einzelnen Dateien</a></li>
+<li class="chapter" data-level="10.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>10.4</b> 1. Häufigkeit insgesamt</a></li>
+<li class="chapter" data-level="10.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>10.5</b> 2. Welche d-Form am häufigsten?</a></li>
+<li class="chapter" data-level="10.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>10.6</b> 3. Welche Form als erste?</a></li>
+<li class="chapter" data-level="10.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>10.7</b> 4. Wann alle d-Formen vertreten?</a></li>
+<li class="chapter" data-level="10.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>10.8</b> 5. Bevorzugtes d-Wort von MOT</a></li>
+<li class="chapter" data-level="10.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>10.9</b> 6. Welche Formen hört Rahel nie / kaum?</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>11</b> Textvergleich</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="textvergleich.html"><a href="textvergleich.html#programi-1"><i class="fa fa-check"></i><b>11.1</b> Programi</a></li>
+<li class="chapter" data-level="11.2" data-path="textvergleich.html"><a href="textvergleich.html#preberemo-besedila"><i class="fa fa-check"></i><b>11.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="11.3" data-path="textvergleich.html"><a href="textvergleich.html#ustvarimo-korpus"><i class="fa fa-check"></i><b>11.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="11.4" data-path="textvergleich.html"><a href="textvergleich.html#tokenizacija"><i class="fa fa-check"></i><b>11.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="11.5" data-path="textvergleich.html"><a href="textvergleich.html#čiščenje"><i class="fa fa-check"></i><b>11.5</b> Čiščenje</a></li>
+<li class="chapter" data-level="11.6" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>11.6</b> Kwic</a></li>
+<li class="chapter" data-level="11.7" data-path="textvergleich.html"><a href="textvergleich.html#pogostnost"><i class="fa fa-check"></i><b>11.7</b> Pogostnost</a></li>
+<li class="chapter" data-level="11.8" data-path="textvergleich.html"><a href="textvergleich.html#kolokacije"><i class="fa fa-check"></i><b>11.8</b> Kolokacije</a></li>
+<li class="chapter" data-level="11.9" data-path="textvergleich.html"><a href="textvergleich.html#lematizacija"><i class="fa fa-check"></i><b>11.9</b> Lematizacija</a></li>
+<li class="chapter" data-level="11.10" data-path="textvergleich.html"><a href="textvergleich.html#besedni-oblaček"><i class="fa fa-check"></i><b>11.10</b> Besedni oblaček</a></li>
+<li class="chapter" data-level="11.11" data-path="textvergleich.html"><a href="textvergleich.html#položaj-v-besedilu-xray"><i class="fa fa-check"></i><b>11.11</b> Položaj v besedilu (xray)</a></li>
+<li class="chapter" data-level="11.12" data-path="textvergleich.html"><a href="textvergleich.html#slovarska-raznolikost"><i class="fa fa-check"></i><b>11.12</b> Slovarska raznolikost</a></li>
+<li class="chapter" data-level="11.13" data-path="textvergleich.html"><a href="textvergleich.html#podobnost-besedil"><i class="fa fa-check"></i><b>11.13</b> Podobnost besedil</a></li>
+<li class="chapter" data-level="11.14" data-path="textvergleich.html"><a href="textvergleich.html#ključne-besede"><i class="fa fa-check"></i><b>11.14</b> Ključne besede</a></li>
+<li class="chapter" data-level="11.15" data-path="textvergleich.html"><a href="textvergleich.html#razumljivost-besedil"><i class="fa fa-check"></i><b>11.15</b> Razumljivost besedil</a></li>
+<li class="chapter" data-level="11.16" data-path="textvergleich.html"><a href="textvergleich.html#omrežje-sopojavitev-fcm"><i class="fa fa-check"></i><b>11.16</b> Omrežje sopojavitev (FCM)</a></li>
+<li class="chapter" data-level="11.17" data-path="textvergleich.html"><a href="textvergleich.html#slovnična-analiza"><i class="fa fa-check"></i><b>11.17</b> Slovnična analiza</a>
+<ul>
+<li class="chapter" data-level="11.17.1" data-path="textvergleich.html"><a href="textvergleich.html#priprava"><i class="fa fa-check"></i><b>11.17.1</b> Priprava</a></li>
+<li class="chapter" data-level="11.17.2" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-noun-pron"><i class="fa fa-check"></i><b>11.17.2</b> Primerjava Noun : Pron</a></li>
+<li class="chapter" data-level="11.17.3" data-path="textvergleich.html"><a href="textvergleich.html#primerjava-veznikov"><i class="fa fa-check"></i><b>11.17.3</b> Primerjava veznikov</a></li>
+<li class="chapter" data-level="11.17.4" data-path="textvergleich.html"><a href="textvergleich.html#slovarske-enote"><i class="fa fa-check"></i><b>11.17.4</b> Slovarske enote</a></li>
+<li class="chapter" data-level="11.17.5" data-path="textvergleich.html"><a href="textvergleich.html#korelacija-besed"><i class="fa fa-check"></i><b>11.17.5</b> Korelacija besed</a></li>
+</ul></li>
+<li class="chapter" data-level="11.18" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>11.18</b> Sentiment</a>
+<ul>
+<li class="chapter" data-level="11.18.1" data-path="textvergleich.html"><a href="textvergleich.html#različica-1"><i class="fa fa-check"></i><b>11.18.1</b> Različica 1</a></li>
+<li class="chapter" data-level="11.18.2" data-path="textvergleich.html"><a href="textvergleich.html#različica-2"><i class="fa fa-check"></i><b>11.18.2</b> Različica 2</a></li>
+<li class="chapter" data-level="11.18.3" data-path="textvergleich.html"><a href="textvergleich.html#različica-3"><i class="fa fa-check"></i><b>11.18.3</b> Različica 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html"><i class="fa fa-check"></i><b>12</b> Original und Übersetzung</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#programi-2"><i class="fa fa-check"></i><b>12.1</b> Programi</a></li>
+<li class="chapter" data-level="12.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#preberemo-besedila-1"><i class="fa fa-check"></i><b>12.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="12.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ustvarimo-korpus-1"><i class="fa fa-check"></i><b>12.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="12.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#tokenizacija-1"><i class="fa fa-check"></i><b>12.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="12.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#čiščenje-1"><i class="fa fa-check"></i><b>12.5</b> Čiščenje</a></li>
+<li class="chapter" data-level="12.6" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kwic-1"><i class="fa fa-check"></i><b>12.6</b> Kwic</a></li>
+<li class="chapter" data-level="12.7" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#pogostnost-1"><i class="fa fa-check"></i><b>12.7</b> Pogostnost</a></li>
+<li class="chapter" data-level="12.8" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#kolokacije-1"><i class="fa fa-check"></i><b>12.8</b> Kolokacije</a></li>
+<li class="chapter" data-level="12.9" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lematizacija-1"><i class="fa fa-check"></i><b>12.9</b> Lematizacija</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#lasten-seznam"><i class="fa fa-check"></i><b>12.9.1</b> Lasten seznam</a></li>
+<li class="chapter" data-level="12.9.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#udpipe"><i class="fa fa-check"></i><b>12.9.2</b> Udpipe</a></li>
+</ul></li>
+<li class="chapter" data-level="12.10" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#besedni-oblaček-1"><i class="fa fa-check"></i><b>12.10</b> Besedni oblaček</a></li>
+<li class="chapter" data-level="12.11" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#položaj-v-besedilu-xray-1"><i class="fa fa-check"></i><b>12.11</b> Položaj v besedilu (xray)</a></li>
+<li class="chapter" data-level="12.12" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarska-raznolikost-1"><i class="fa fa-check"></i><b>12.12</b> Slovarska raznolikost</a></li>
+<li class="chapter" data-level="12.13" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podobnost-besedil-1"><i class="fa fa-check"></i><b>12.13</b> Podobnost besedil</a></li>
+<li class="chapter" data-level="12.14" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#ključne-besede-1"><i class="fa fa-check"></i><b>12.14</b> Ključne besede</a></li>
+<li class="chapter" data-level="12.15" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#razumljivost-besedil-1"><i class="fa fa-check"></i><b>12.15</b> Razumljivost besedil</a></li>
+<li class="chapter" data-level="12.16" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#omrežje-sopojavitev-fcm-1"><i class="fa fa-check"></i><b>12.16</b> Omrežje sopojavitev (FCM)</a></li>
+<li class="chapter" data-level="12.17" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovnična-analiza-1"><i class="fa fa-check"></i><b>12.17</b> Slovnična analiza</a>
+<ul>
+<li class="chapter" data-level="12.17.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#podatkovna-niza"><i class="fa fa-check"></i><b>12.17.1</b> Podatkovna niza</a></li>
+<li class="chapter" data-level="12.17.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-noun-pron-1"><i class="fa fa-check"></i><b>12.17.2</b> Primerjava Noun : Pron</a></li>
+<li class="chapter" data-level="12.17.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#primerjava-veznikov-1"><i class="fa fa-check"></i><b>12.17.3</b> Primerjava veznikov</a></li>
+<li class="chapter" data-level="12.17.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#slovarske-enote-1"><i class="fa fa-check"></i><b>12.17.4</b> Slovarske enote</a></li>
+<li class="chapter" data-level="12.17.5" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#korelacija-besed-1"><i class="fa fa-check"></i><b>12.17.5</b> Korelacija besed</a></li>
+</ul></li>
+<li class="chapter" data-level="12.18" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#sentiment-1"><i class="fa fa-check"></i><b>12.18</b> Sentiment</a>
+<ul>
+<li class="chapter" data-level="12.18.1" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-1-1"><i class="fa fa-check"></i><b>12.18.1</b> Različica 1</a></li>
+<li class="chapter" data-level="12.18.2" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-2-1"><i class="fa fa-check"></i><b>12.18.2</b> Različica 2</a></li>
+<li class="chapter" data-level="12.18.3" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#različica-3-1"><i class="fa fa-check"></i><b>12.18.3</b> Različica 3</a></li>
+<li class="chapter" data-level="12.18.4" data-path="original-und-übersetzung.html"><a href="original-und-übersetzung.html#barvno-označevanje-1"><i class="fa fa-check"></i><b>12.18.4</b> Barvno označevanje</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html"><i class="fa fa-check"></i><b>13</b> Regularni izrazi in quanteda</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#programi-3"><i class="fa fa-check"></i><b>13.1</b> Programi</a></li>
+<li class="chapter" data-level="13.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#preberemo-besedila-2"><i class="fa fa-check"></i><b>13.2</b> Preberemo besedila</a></li>
+<li class="chapter" data-level="13.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#ustvarimo-korpus-2"><i class="fa fa-check"></i><b>13.3</b> Ustvarimo korpus</a></li>
+<li class="chapter" data-level="13.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tokenizacija-2"><i class="fa fa-check"></i><b>13.4</b> Tokenizacija</a></li>
+<li class="chapter" data-level="13.5" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#kwic-2"><i class="fa fa-check"></i><b>13.5</b> Kwic</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#frau-mann"><i class="fa fa-check"></i><b>13.5.1</b> Frau, Mann</a></li>
+<li class="chapter" data-level="13.5.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--in"><i class="fa fa-check"></i><b>13.5.2</b> Pripona -in</a></li>
+<li class="chapter" data-level="13.5.3" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--er"><i class="fa fa-check"></i><b>13.5.3</b> Pripona -er</a></li>
+<li class="chapter" data-level="13.5.4" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#pripona--ung"><i class="fa fa-check"></i><b>13.5.4</b> Pripona -ung</a></li>
+</ul></li>
+<li class="chapter" data-level="13.6" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#tidytext"><i class="fa fa-check"></i><b>13.6</b> tidytext</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besede"><i class="fa fa-check"></i><b>13.6.1</b> Besede</a></li>
+<li class="chapter" data-level="13.6.2" data-path="regularni-izrazi-in-quanteda.html"><a href="regularni-izrazi-in-quanteda.html#besedne-zveze"><i class="fa fa-check"></i><b>13.6.2</b> Besedne zveze</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>14</b> Suffixe und Stemming</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>14.1</b> Packages</a></li>
+<li class="chapter" data-level="14.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>14.2</b> Dateien einlesen</a></li>
+<li class="chapter" data-level="14.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung"><i class="fa fa-check"></i><b>14.3</b> Lemmatisierung</a></li>
+<li class="chapter" data-level="14.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>14.4</b> Stemming</a></li>
+<li class="chapter" data-level="14.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>14.5</b> Wortbildungsanalyse</a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>14.5.1</b> Suffix -lich</a></li>
+<li class="chapter" data-level="14.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>14.5.2</b> Mehrere ADJ Suffixe</a></li>
+<li class="chapter" data-level="14.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>14.5.3</b> Nicht verwendete Tabelle</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>15</b> Buchstaben in Romanen</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>15.1</b> Packages</a></li>
+<li class="chapter" data-level="15.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>15.2</b> Datensatz lesen</a></li>
+<li class="chapter" data-level="15.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>15.3</b> Buchstaben extrahieren</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>15.3.1</b> aus Liste</a></li>
+<li class="chapter" data-level="15.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>15.3.2</b> aus Datensatz</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>15.4</b> Buchstaben zählen</a></li>
+<li class="chapter" data-level="15.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>15.5</b> Vokale</a></li>
+<li class="chapter" data-level="15.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>15.6</b> Konsonanten</a></li>
+<li class="chapter" data-level="15.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>15.7</b> Vokal-Konsonant-Verhältnis</a></li>
+<li class="chapter" data-level="15.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>15.8</b> Anzahl der Silben</a></li>
+<li class="chapter" data-level="15.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>15.9</b> Mittlere Wortlänge</a></li>
+<li class="chapter" data-level="15.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>15.10</b> Testen von Mittelwertunterschieden</a>
+<ul>
+<li class="chapter" data-level="15.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>15.10.1</b> t-Test</a></li>
+<li class="chapter" data-level="15.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-2"><i class="fa fa-check"></i><b>15.10.2</b> Lineare Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="15.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>15.11</b> Quanteda-Funktionen</a></li>
+<li class="chapter" data-level="15.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>15.12</b> Konsonantenverbindungen</a></li>
+<li class="chapter" data-level="15.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>15.13</b> Datensatz-Variante</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>16</b> Lesbarkeitsindices</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>16.1</b> Zur theoretischen Begründung</a></li>
+<li class="chapter" data-level="16.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-2"><i class="fa fa-check"></i><b>16.2</b> Programme</a></li>
+<li class="chapter" data-level="16.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>16.3</b> Texte lesen</a></li>
+<li class="chapter" data-level="16.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>16.4</b> Flesch Reading Ease - deutsche Version</a></li>
+<li class="chapter" data-level="16.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>16.5</b> Romane (deutsche oder ins Deutsche übersetzte)</a></li>
+<li class="chapter" data-level="16.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>16.6</b> Zeitungen</a></li>
+<li class="chapter" data-level="16.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>16.7</b> Statistische Tests: News</a></li>
+<li class="chapter" data-level="16.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>16.8</b> Datensätze vereinen</a></li>
+<li class="chapter" data-level="16.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>16.9</b> Zeitungen im Vergleich</a></li>
+<li class="chapter" data-level="16.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>16.10</b> Alle Texte im Vergleich</a></li>
+<li class="chapter" data-level="16.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>16.11</b> Flesch-Kincade Grade Level (USA, GB)</a></li>
+<li class="chapter" data-level="16.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>16.12</b> Wiener Sachtextformel</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>17</b> Untertitel</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>17.1</b> Programme starten</a></li>
+<li class="chapter" data-level="17.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>17.2</b> Daten laden</a></li>
+<li class="chapter" data-level="17.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>17.3</b> Datensätze vorbereiten</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>17.3.1</b> Textspalte vorbereiten</a></li>
+<li class="chapter" data-level="17.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>17.3.2</b> Datensätze verknüpfen</a></li>
+<li class="chapter" data-level="17.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>17.3.3</b> Merkmale hinzufügen</a></li>
+<li class="chapter" data-level="17.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>17.3.4</b> Konkordanzrecherche</a></li>
+<li class="chapter" data-level="17.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>17.3.5</b> Textzerlegung</a></li>
+<li class="chapter" data-level="17.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>17.3.6</b> Zerlegung und Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>17.4</b> Morphologie der Untertitel</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>17.4.1</b> XRay Brother</a></li>
+<li class="chapter" data-level="17.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>17.4.2</b> Substantive im Plural</a></li>
+<li class="chapter" data-level="17.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>17.4.3</b> Adjektive im Komparativ</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>17.5</b> Syntax: Dependenz</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>17.5.1</b> Aktiv und Passiv</a></li>
+<li class="chapter" data-level="17.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>17.5.2</b> Substantive und Pronomen als Satzglieder</a></li>
+<li class="chapter" data-level="17.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.3</b> Subjekt nominal / pronominal</a></li>
+<li class="chapter" data-level="17.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.4</b> Objekt nominal / pronominal</a></li>
+<li class="chapter" data-level="17.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>17.5.5</b> Wortklasse von Subjekt / Objekt</a></li>
+<li class="chapter" data-level="17.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>17.5.6</b> Gattungs- und Eigennamen</a></li>
+<li class="chapter" data-level="17.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>17.5.7</b> Konstituentenfolge</a></li>
+<li class="chapter" data-level="17.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>17.5.8</b> Kontexte von Modifizierern</a></li>
+<li class="chapter" data-level="17.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>17.5.9</b> Greenbergs Universalie 25</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html"><i class="fa fa-check"></i><b>18</b> Modals in Slovene Texts</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#programi-4"><i class="fa fa-check"></i><b>18.1</b> Programi</a></li>
+<li class="chapter" data-level="18.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#branje-besedil"><i class="fa fa-check"></i><b>18.2</b> Branje besedil</a></li>
+<li class="chapter" data-level="18.3" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#korpus"><i class="fa fa-check"></i><b>18.3</b> Korpus</a></li>
+<li class="chapter" data-level="18.4" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#besedne-oblike-in-matrika"><i class="fa fa-check"></i><b>18.4</b> Besedne oblike in matrika</a></li>
+<li class="chapter" data-level="18.5" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#pogostnost-oblik"><i class="fa fa-check"></i><b>18.5</b> Pogostnost oblik</a></li>
+<li class="chapter" data-level="18.6" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#konkordance"><i class="fa fa-check"></i><b>18.6</b> Konkordance</a></li>
+<li class="chapter" data-level="18.7" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#kolokacije-2"><i class="fa fa-check"></i><b>18.7</b> Kolokacije</a></li>
+<li class="chapter" data-level="18.8" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#konkordance-po-povedih"><i class="fa fa-check"></i><b>18.8</b> Konkordance (po povedih)</a></li>
+<li class="chapter" data-level="18.9" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#konkordance-fraze"><i class="fa fa-check"></i><b>18.9</b> Konkordance (fraze)</a>
+<ul>
+<li class="chapter" data-level="18.9.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#časniki"><i class="fa fa-check"></i><b>18.9.1</b> časniki</a></li>
+<li class="chapter" data-level="18.9.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#twitter"><i class="fa fa-check"></i><b>18.9.2</b> twitter</a></li>
+</ul></li>
+<li class="chapter" data-level="18.10" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#deleži-glagolov"><i class="fa fa-check"></i><b>18.10</b> Deleži glagolov</a>
+<ul>
+<li class="chapter" data-level="18.10.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#twitter-1"><i class="fa fa-check"></i><b>18.10.1</b> twitter</a></li>
+<li class="chapter" data-level="18.10.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#časniki-1"><i class="fa fa-check"></i><b>18.10.2</b> časniki</a></li>
+<li class="chapter" data-level="18.10.3" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#vsa-besedila"><i class="fa fa-check"></i><b>18.10.3</b> vsa besedila</a></li>
+<li class="chapter" data-level="18.10.4" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#večkratno-pojavljanje"><i class="fa fa-check"></i><b>18.10.4</b> Večkratno pojavljanje</a></li>
+<li class="chapter" data-level="18.10.5" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#imeti-nedoločnik"><i class="fa fa-check"></i><b>18.10.5</b> imeti + nedoločnik</a></li>
+<li class="chapter" data-level="18.10.6" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#rabiti-nedoločnik"><i class="fa fa-check"></i><b>18.10.6</b> rabiti + nedoločnik</a></li>
+</ul></li>
+<li class="chapter" data-level="18.11" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#udpipe-analiza"><i class="fa fa-check"></i><b>18.11</b> Udpipe analiza</a>
+<ul>
+<li class="chapter" data-level="18.11.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#load-model"><i class="fa fa-check"></i><b>18.11.1</b> Load model</a></li>
+<li class="chapter" data-level="18.11.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#annotate"><i class="fa fa-check"></i><b>18.11.2</b> Annotate</a></li>
+<li class="chapter" data-level="18.11.3" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#clean-tweets"><i class="fa fa-check"></i><b>18.11.3</b> Clean tweets</a></li>
+<li class="chapter" data-level="18.11.4" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#annotate-tweets"><i class="fa fa-check"></i><b>18.11.4</b> Annotate tweets</a></li>
+<li class="chapter" data-level="18.11.5" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#tidytext-1"><i class="fa fa-check"></i><b>18.11.5</b> tidytext</a></li>
+<li class="chapter" data-level="18.11.6" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#dependenca"><i class="fa fa-check"></i><b>18.11.6</b> Dependenca</a></li>
+<li class="chapter" data-level="18.11.7" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#vizualizacija"><i class="fa fa-check"></i><b>18.11.7</b> Vizualizacija</a></li>
+<li class="chapter" data-level="18.11.8" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#predmet-predza-modal"><i class="fa fa-check"></i><b>18.11.8</b> Predmet pred/za modal</a></li>
+</ul></li>
+<li class="chapter" data-level="18.12" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#kwic-udpipe"><i class="fa fa-check"></i><b>18.12</b> Kwic udpipe</a>
+<ul>
+<li class="chapter" data-level="18.12.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#združi"><i class="fa fa-check"></i><b>18.12.1</b> Združi</a></li>
+<li class="chapter" data-level="18.12.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#pregled-napak"><i class="fa fa-check"></i><b>18.12.2</b> Pregled napak</a></li>
+<li class="chapter" data-level="18.12.3" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#obeliks-xml"><i class="fa fa-check"></i><b>18.12.3</b> Obeliks xml</a></li>
+<li class="chapter" data-level="18.12.4" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#združi-kwic-in-obeliks"><i class="fa fa-check"></i><b>18.12.4</b> Združi kwic in obeliks</a></li>
+<li class="chapter" data-level="18.12.5" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#pretvorba-josmsd-slen"><i class="fa fa-check"></i><b>18.12.5</b> Pretvorba josMSD sl&gt;en</a></li>
+<li class="chapter" data-level="18.12.6" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#oblikoslovje-nedoločnikov"><i class="fa fa-check"></i><b>18.12.6</b> Oblikoslovje nedoločnikov</a></li>
+</ul></li>
+<li class="chapter" data-level="18.13" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#slovnična-prožnost"><i class="fa fa-check"></i><b>18.13</b> Slovnična prožnost</a>
+<ul>
+<li class="chapter" data-level="18.13.1" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#konkordanca-dveh-zgradb"><i class="fa fa-check"></i><b>18.13.1</b> konkordanca dveh zgradb</a></li>
+<li class="chapter" data-level="18.13.2" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#oblike-glagolov-types"><i class="fa fa-check"></i><b>18.13.2</b> Oblike glagolov (types)</a></li>
+<li class="chapter" data-level="18.13.3" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#oblike-glagolov-tokens"><i class="fa fa-check"></i><b>18.13.3</b> Oblike glagolov (tokens)</a></li>
+<li class="chapter" data-level="18.13.4" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#značilni-nedoločniki"><i class="fa fa-check"></i><b>18.13.4</b> Značilni nedoločniki</a></li>
+<li class="chapter" data-level="18.13.5" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#hapax-legomena"><i class="fa fa-check"></i><b>18.13.5</b> Hapax legomena</a></li>
+</ul></li>
+<li class="chapter" data-level="18.14" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#disperzijska-analiza"><i class="fa fa-check"></i><b>18.14</b> Disperzijska analiza</a></li>
+<li class="chapter" data-level="18.15" data-path="modals-in-slovene-texts.html"><a href="modals-in-slovene-texts.html#semantika-kompozicijonalnost"><i class="fa fa-check"></i><b>18.15</b> Semantika: kompozicijonalnost</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="konnektoren-1.html"><a href="konnektoren-1.html"><i class="fa fa-check"></i><b>19</b> Konnektoren</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="konnektoren-1.html"><a href="konnektoren-1.html#pakete"><i class="fa fa-check"></i><b>19.1</b> Pakete</a></li>
+<li class="chapter" data-level="19.2" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-einlesen"><i class="fa fa-check"></i><b>19.2</b> Text einlesen</a></li>
+<li class="chapter" data-level="19.3" data-path="konnektoren-1.html"><a href="konnektoren-1.html#udpipe-laden"><i class="fa fa-check"></i><b>19.3</b> UDPipe laden</a></li>
+<li class="chapter" data-level="19.4" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-annotieren"><i class="fa fa-check"></i><b>19.4</b> Text annotieren</a></li>
+<li class="chapter" data-level="19.5" data-path="konnektoren-1.html"><a href="konnektoren-1.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>19.5</b> Wortklassen und Konnektoren</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>20</b> Rolling Stones auf Twitter</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>20.1</b> Der Tod von Charlie Watts</a></li>
+<li class="chapter" data-level="20.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-3"><i class="fa fa-check"></i><b>20.2</b> Programme</a></li>
+<li class="chapter" data-level="20.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>20.3</b> Datenstrom holen</a></li>
+<li class="chapter" data-level="20.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>20.4</b> Tweets holen</a></li>
+<li class="chapter" data-level="20.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>20.5</b> Datensatz erstellen</a></li>
+<li class="chapter" data-level="20.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>20.6</b> Datensatz speichern</a></li>
+<li class="chapter" data-level="20.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>20.7</b> Datensatz laden</a></li>
+<li class="chapter" data-level="20.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>20.8</b> Verfasser der Tweets</a></li>
+<li class="chapter" data-level="20.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>20.9</b> Timeplot</a></li>
+<li class="chapter" data-level="20.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>20.10</b> User-Informationen</a></li>
+<li class="chapter" data-level="20.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>20.11</b> Geographische Verteilung</a></li>
+<li class="chapter" data-level="20.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>20.12</b> Speichern des erweiterten Datensatzes</a></li>
+<li class="chapter" data-level="20.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>20.13</b> Laden des erweiterten Datensatzes</a></li>
+<li class="chapter" data-level="20.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>20.14</b> Zeitlicher geographischer Verlauf</a></li>
+<li class="chapter" data-level="20.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>20.15</b> Lange Wörter</a></li>
+<li class="chapter" data-level="20.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>20.16</b> Topwörter</a></li>
+<li class="chapter" data-level="20.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>20.17</b> Netzwerke</a></li>
+<li class="chapter" data-level="20.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>20.18</b> Sentiment &amp; Emotion</a></li>
+<li class="chapter" data-level="20.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>20.19</b> Sentiment (Animation)</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html"><i class="fa fa-check"></i><b>21</b> Taliban in Afghanistan</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#fetch-stream"><i class="fa fa-check"></i><b>21.1</b> Fetch Stream</a></li>
+<li class="chapter" data-level="21.2" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#fetch-tweets"><i class="fa fa-check"></i><b>21.2</b> Fetch tweets</a></li>
+<li class="chapter" data-level="21.3" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#gather-tweets"><i class="fa fa-check"></i><b>21.3</b> Gather tweets</a></li>
+<li class="chapter" data-level="21.4" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#save-tweets-1"><i class="fa fa-check"></i><b>21.4</b> Save tweets</a></li>
+<li class="chapter" data-level="21.5" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#load-tweets"><i class="fa fa-check"></i><b>21.5</b> Load tweets</a></li>
+<li class="chapter" data-level="21.6" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#who-wrote-about"><i class="fa fa-check"></i><b>21.6</b> Who wrote about</a></li>
+<li class="chapter" data-level="21.7" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#timeplot-1"><i class="fa fa-check"></i><b>21.7</b> Timeplot</a></li>
+<li class="chapter" data-level="21.8" data-path="taliban-in-afghanistan.html"><a href="taliban-in-afghanistan.html#reactable-table"><i class="fa fa-check"></i><b>21.8</b> Reactable table</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="slovenska-imena.html"><a href="slovenska-imena.html"><i class="fa fa-check"></i><b>22</b> Slovenska imena</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="slovenska-imena.html"><a href="slovenska-imena.html#podatkovna-niza-1"><i class="fa fa-check"></i><b>22.1</b> Podatkovna niza</a></li>
+<li class="chapter" data-level="22.2" data-path="slovenska-imena.html"><a href="slovenska-imena.html#priprava-1"><i class="fa fa-check"></i><b>22.2</b> Priprava</a></li>
+<li class="chapter" data-level="22.3" data-path="slovenska-imena.html"><a href="slovenska-imena.html#najpopularnejša-imena-2008"><i class="fa fa-check"></i><b>22.3</b> Najpopularnejša imena 2008</a></li>
+<li class="chapter" data-level="22.4" data-path="slovenska-imena.html"><a href="slovenska-imena.html#najpopularnejša-imena-2020"><i class="fa fa-check"></i><b>22.4</b> Najpopularnejša imena 2020</a></li>
+<li class="chapter" data-level="22.5" data-path="slovenska-imena.html"><a href="slovenska-imena.html#skupna-imena"><i class="fa fa-check"></i><b>22.5</b> Skupna imena</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>23</b> Deutsche Zungenbrecher</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-1"><i class="fa fa-check"></i><b>23.1</b> Programme laden</a></li>
+<li class="chapter" data-level="23.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>23.2</b> Tabelle laden</a></li>
+<li class="chapter" data-level="23.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>23.3</b> EDA</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>24</b> Komplexe Äußerungen</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>24.1</b> Packages</a></li>
+<li class="chapter" data-level="24.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-laden"><i class="fa fa-check"></i><b>24.2</b> Text laden</a></li>
+<li class="chapter" data-level="24.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-zerlegen"><i class="fa fa-check"></i><b>24.3</b> Text zerlegen</a></li>
+<li class="chapter" data-level="24.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>24.4</b> Texttabelle erstellen</a></li>
+<li class="chapter" data-level="24.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>24.5</b> Speichern der Tabelle</a></li>
+<li class="chapter" data-level="24.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>24.6</b> Auswahl nach Länge</a></li>
+<li class="chapter" data-level="24.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>24.7</b> Durchschnittslänge</a></li>
+<li class="chapter" data-level="24.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>24.8</b> Auswahl nach Konnektoren</a></li>
+<li class="chapter" data-level="24.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>24.9</b> Welche Konnektoren?</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="appendix-a.html"><a href="appendix-a.html"><i class="fa fa-check"></i><b>25</b> Appendix A</a></li>
+<li class="chapter" data-level="26" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html"><i class="fa fa-check"></i><b>26</b> Rmarkdown Math</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="rmarkdown-math.html"><a href="rmarkdown-math.html#math-example"><i class="fa fa-check"></i><b>26.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html"><i class="fa fa-check"></i><b>27</b> Demonstration chapters</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-one"><i class="fa fa-check"></i><b>27.1</b> Example one</a></li>
+<li class="chapter" data-level="27.2" data-path="demonstration-chapters.html"><a href="demonstration-chapters.html#example-two"><i class="fa fa-check"></i><b>27.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>28</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RAJ 2022 Introduction Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="konnektoren-1" class="section level1" number="19">
+<h1><span class="header-section-number">Kapitel 19</span> Konnektoren</h1>
+<div id="pakete" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> Pakete</h2>
+<div class="sourceCode" id="cb1516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1516-1"><a href="konnektoren-1.html#cb1516-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1516-2"><a href="konnektoren-1.html#cb1516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1516-3"><a href="konnektoren-1.html#cb1516-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1516-4"><a href="konnektoren-1.html#cb1516-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readtext)</span>
+<span id="cb1516-5"><a href="konnektoren-1.html#cb1516-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb1516-6"><a href="konnektoren-1.html#cb1516-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb1516-7"><a href="konnektoren-1.html#cb1516-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textstats)</span>
+<span id="cb1516-8"><a href="konnektoren-1.html#cb1516-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb1516-9"><a href="konnektoren-1.html#cb1516-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1516-10"><a href="konnektoren-1.html#cb1516-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1516-11"><a href="konnektoren-1.html#cb1516-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb1516-12"><a href="konnektoren-1.html#cb1516-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span></code></pre></div>
+</div>
+<div id="text-einlesen" class="section level2" number="19.2">
+<h2><span class="header-section-number">19.2</span> Text einlesen</h2>
+<div class="sourceCode" id="cb1517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1517-1"><a href="konnektoren-1.html#cb1517-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">=</span> <span class="fu">readtext</span>(<span class="st">&quot;data/books/*.txt&quot;</span>, <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb1517-2"><a href="konnektoren-1.html#cb1517-2" aria-hidden="true" tabindex="-1"></a>txt</span></code></pre></div>
+<pre><code>## readtext object consisting of 2 documents and 0 docvars.
+## # Description: df [2 x 2]
+##   doc_id      text               
+##   &lt;chr&gt;       &lt;chr&gt;              
+## 1 prozess.txt &quot;\&quot;Der Prozes\&quot;...&quot;
+## 2 tom.txt     &quot;\&quot;Tom Sawyer\&quot;...&quot;</code></pre>
+</div>
+<div id="udpipe-laden" class="section level2" number="19.3">
+<h2><span class="header-section-number">19.3</span> UDPipe laden</h2>
+<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="konnektoren-1.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(udpipe)</span>
+<span id="cb1519-2"><a href="konnektoren-1.html#cb1519-2" aria-hidden="true" tabindex="-1"></a>destfile <span class="ot">=</span> <span class="st">&quot;german-gsd-ud-2.5-191206.udpipe&quot;</span></span>
+<span id="cb1519-3"><a href="konnektoren-1.html#cb1519-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1519-4"><a href="konnektoren-1.html#cb1519-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(destfile)){</span>
+<span id="cb1519-5"><a href="konnektoren-1.html#cb1519-5" aria-hidden="true" tabindex="-1"></a>   sprachmodell <span class="ot">&lt;-</span> <span class="fu">udpipe_download_model</span>(<span class="at">language =</span> <span class="st">&quot;german&quot;</span>)</span>
+<span id="cb1519-6"><a href="konnektoren-1.html#cb1519-6" aria-hidden="true" tabindex="-1"></a>   udmodel_de <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(sprachmodell<span class="sc">$</span>file_model)</span>
+<span id="cb1519-7"><a href="konnektoren-1.html#cb1519-7" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
+<span id="cb1519-8"><a href="konnektoren-1.html#cb1519-8" aria-hidden="true" tabindex="-1"></a>  file_model <span class="ot">=</span> destfile</span>
+<span id="cb1519-9"><a href="konnektoren-1.html#cb1519-9" aria-hidden="true" tabindex="-1"></a>  udmodel_de <span class="ot">&lt;-</span> <span class="fu">udpipe_load_model</span>(file_model)</span>
+<span id="cb1519-10"><a href="konnektoren-1.html#cb1519-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="text-annotieren" class="section level2" number="19.4">
+<h2><span class="header-section-number">19.4</span> Text annotieren</h2>
+<p><a href="https://universaldependencies.org/" class="uri">https://universaldependencies.org/</a></p>
+<div class="sourceCode" id="cb1520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1520-1"><a href="konnektoren-1.html#cb1520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Na začetku je readtext prebral besedila, shranili smo jih v spremenljivki &quot;txt&quot;.</span></span>
+<span id="cb1520-2"><a href="konnektoren-1.html#cb1520-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">udpipe_annotate</span>(udmodel_de, <span class="at">x =</span> txt<span class="sc">$</span>text, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 2021-11-20 02:26:16 Annotating text fragment 1/2
+## 2021-11-20 02:28:53 Annotating text fragment 2/2</code></pre>
+<div class="sourceCode" id="cb1522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1522-1"><a href="konnektoren-1.html#cb1522-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # samo prvo besedilo:</span></span>
+<span id="cb1522-2"><a href="konnektoren-1.html#cb1522-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x &lt;- udpipe_annotate(udmodel_de, x = txt$text[1], trace = TRUE)</span></span>
+<span id="cb1522-3"><a href="konnektoren-1.html#cb1522-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1522-4"><a href="konnektoren-1.html#cb1522-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="konnektoren-1.html#cb1523-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(x, &quot;data/prozess_tom_udpiped.rds&quot;)</span></span>
+<span id="cb1523-2"><a href="konnektoren-1.html#cb1523-2" aria-hidden="true" tabindex="-1"></a><span class="co"># x = read_rds(&quot;data/prozess_tom_udpiped.rds&quot;)</span></span></code></pre></div>
+</div>
+<div id="wortklassen-und-konnektoren" class="section level2" number="19.5">
+<h2><span class="header-section-number">19.5</span> Wortklassen und Konnektoren</h2>
+<div class="sourceCode" id="cb1524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1524-1"><a href="konnektoren-1.html#cb1524-1" aria-hidden="true" tabindex="-1"></a>tabela <span class="ot">=</span> x <span class="sc">%&gt;%</span> </span>
+<span id="cb1524-2"><a href="konnektoren-1.html#cb1524-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb1524-3"><a href="konnektoren-1.html#cb1524-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(upos) <span class="sc">%&gt;%</span> </span>
+<span id="cb1524-4"><a href="konnektoren-1.html#cb1524-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(upos),</span>
+<span id="cb1524-5"><a href="konnektoren-1.html#cb1524-5" aria-hidden="true" tabindex="-1"></a>         upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>)</span>
+<span id="cb1524-6"><a href="konnektoren-1.html#cb1524-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tabela) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["doc_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["upos"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"doc1","2":"ADJ","3":"5284"},{"1":"doc1","2":"ADP","3":"6350"},{"1":"doc1","2":"ADV","3":"8387"},{"1":"doc1","2":"AUX","3":"4390"},{"1":"doc1","2":"CCONJ","3":"2425"},{"1":"doc1","2":"DET","3":"8050"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb1525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1525-1"><a href="konnektoren-1.html#cb1525-1" aria-hidden="true" tabindex="-1"></a>vezniki <span class="ot">=</span> tabela <span class="sc">%&gt;%</span> </span>
+<span id="cb1525-2"><a href="konnektoren-1.html#cb1525-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;CCONJ&quot;</span>, <span class="st">&quot;SCONJ&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1525-3"><a href="konnektoren-1.html#cb1525-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prozent =</span> n<span class="sc">/</span><span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1525-4"><a href="konnektoren-1.html#cb1525-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> upos, </span>
+<span id="cb1525-5"><a href="konnektoren-1.html#cb1525-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> doc_id, <span class="at">values_from =</span> n<span class="sc">:</span>prozent)</span>
+<span id="cb1525-6"><a href="konnektoren-1.html#cb1525-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vezniki) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["upos"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n_doc1"],"name":[2],"type":["int"],"align":["right"]},{"label":["n_doc2"],"name":[3],"type":["int"],"align":["right"]},{"label":["prozent_doc1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["prozent_doc2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"CCONJ","2":"2425","3":"3270","4":"0.5897374","5":"0.7161629"},{"1":"SCONJ","2":"1687","3":"1296","4":"0.4102626","5":"0.2838371"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb1526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1526-1"><a href="konnektoren-1.html#cb1526-1" aria-hidden="true" tabindex="-1"></a>konnektoren <span class="ot">=</span> x <span class="sc">%&gt;%</span> </span>
+<span id="cb1526-2"><a href="konnektoren-1.html#cb1526-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">token =</span> <span class="fu">str_to_lower</span>(token)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1526-3"><a href="konnektoren-1.html#cb1526-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(doc_id, token) <span class="sc">%&gt;%</span> </span>
+<span id="cb1526-4"><a href="konnektoren-1.html#cb1526-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(upos),</span>
+<span id="cb1526-5"><a href="konnektoren-1.html#cb1526-5" aria-hidden="true" tabindex="-1"></a>         upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1526-6"><a href="konnektoren-1.html#cb1526-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;CCONJ&quot;</span>, <span class="st">&quot;SCONJ&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1526-7"><a href="konnektoren-1.html#cb1526-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(upos, <span class="at">sort =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1527-1"><a href="konnektoren-1.html#cb1527-1" aria-hidden="true" tabindex="-1"></a>connectors <span class="ot">=</span> x <span class="sc">%&gt;%</span> </span>
+<span id="cb1527-2"><a href="konnektoren-1.html#cb1527-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">token =</span> <span class="fu">str_to_lower</span>(token)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1527-3"><a href="konnektoren-1.html#cb1527-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(token) <span class="sc">%&gt;%</span> </span>
+<span id="cb1527-4"><a href="konnektoren-1.html#cb1527-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(upos),</span>
+<span id="cb1527-5"><a href="konnektoren-1.html#cb1527-5" aria-hidden="true" tabindex="-1"></a>         upos <span class="sc">!=</span> <span class="st">&quot;PUNCT&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1527-6"><a href="konnektoren-1.html#cb1527-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(upos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;CCONJ&quot;</span>, <span class="st">&quot;SCONJ&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1527-7"><a href="konnektoren-1.html#cb1527-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(upos, <span class="at">sort =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb1528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1528-1"><a href="konnektoren-1.html#cb1528-1" aria-hidden="true" tabindex="-1"></a>connectors <span class="sc">%&gt;%</span> <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;CCONJ&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(token) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">50</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;und&quot;                 &quot;aber&quot;                &quot;oder&quot;               
+##  [4] &quot;denn&quot;                &quot;sondern&quot;             &quot;wie&quot;                
+##  [7] &quot;als&quot;                 &quot;weder&quot;               &quot;doch&quot;               
+## [10] &quot;noch&quot;                &quot;schrie&quot;              &quot;kroch&quot;              
+## [13] &quot;desto&quot;               &quot;um&quot;                  &quot;woher&quot;              
+## [16] &quot;du&quot;                  &quot;entweder&quot;            &quot;hatte&quot;              
+## [19] &quot;sowie&quot;               &quot;statt&quot;               &quot;,aber&quot;              
+## [22] &quot;,und&quot;                &quot;sowohl&quot;              &quot;irgendwie&quot;          
+## [25] &quot;unnötigerweise&quot;      &quot;,denn&quot;               &quot;,nun&quot;               
+## [28] &quot;aschfahl&quot;            &quot;aß&quot;                  &quot;ausnahmsweise&quot;      
+## [31] &quot;besinn&quot;              &quot;brauch&quot;              &quot;daß&quot;                
+## [34] &quot;dazu&quot;                &quot;dennoch&quot;             &quot;genau&quot;              
+## [37] &quot;hoch&quot;                &quot;insbesondere&quot;        &quot;kund&quot;               
+## [40] &quot;laß&quot;                 &quot;manch&quot;               &quot;ob&quot;                 
+## [43] &quot;sinn&quot;                &quot;stahl&quot;               &quot;such&quot;               
+## [46] &quot;unvorsichtigerweise&quot; &quot;verzeih&quot;             &quot;wieder&quot;             
+## [49] &quot;wozu&quot;</code></pre>
+<div class="sourceCode" id="cb1530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1530-1"><a href="konnektoren-1.html#cb1530-1" aria-hidden="true" tabindex="-1"></a>connectors <span class="sc">%&gt;%</span> <span class="fu">filter</span>(upos <span class="sc">==</span> <span class="st">&quot;SCONJ&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(token) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">50</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;daß&quot;         &quot;wenn&quot;        &quot;als&quot;         &quot;wie&quot;         &quot;da&quot;         
+##  [6] &quot;denn&quot;        &quot;während&quot;     &quot;ob&quot;          &quot;bis&quot;         &quot;weil&quot;       
+## [11] &quot;obwohl&quot;      &quot;indem&quot;       &quot;laß&quot;         &quot;nachdem&quot;     &quot;damit&quot;      
+## [16] &quot;sobald&quot;      &quot;ehe&quot;         &quot;ohne&quot;        &quot;solange&quot;     &quot;soweit&quot;     
+## [21] &quot;bevor&quot;       &quot;das&quot;         &quot;aber&quot;        &quot;seit&quot;        &quot;seitdem&quot;    
+## [26] &quot;strich&quot;      &quot;gleich&quot;      &quot;begann&quot;      &quot;falls&quot;       &quot;vergaß&quot;     
+## [31] &quot;worum&quot;       &quot;halb&quot;        &quot;hätt&quot;        &quot;maß&quot;         &quot;sehe&quot;       
+## [36] &quot;statt&quot;       &quot;warum&quot;       &quot;wohl&quot;        &quot;,das&quot;        &quot;,denn&quot;      
+## [41] &quot;,ich&quot;        &quot;befahl&quot;      &quot;bestrich&quot;    &quot;dann&quot;        &quot;dasaß&quot;      
+## [46] &quot;dass&quot;        &quot;fern&quot;        &quot;fortwährend&quot; &quot;fühl&quot;        &quot;gebührend&quot;</code></pre>
+<p>Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien).</p>
+<p>Potem jih lahko natančneje preštejemo
+case_when
+str_detect(seznam_prirednih_konektorjev, “…|…|…”)
+str_detect(seznam_podrednih_konektorjev, “…|…|…”)
+str_detect(seznam_prislovnih_konektorjev, “…|…|…”)</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modals-in-slovene-texts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rolling-stones-auf-twitter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/23-connectors.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/23-connectors.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

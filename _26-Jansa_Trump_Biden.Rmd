@@ -1,0 +1,324 @@
+# Jansa supports Trump and demotes Biden
+
+
+```{r message=FALSE, warning=FALSE}
+library(rtweet)
+library(tidyverse)
+library(glue)
+library(reactable)
+
+```
+
+### Get timelines
+
+Get the most recent 3,200 tweets from tweeters.
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+tmls_vasle1 <- get_timelines(c("vinkovasle1"), n = 3200, retryonratelimit = TRUE)
+library(writexl)
+write_xlsx(tmls_vasle1, "data/vinkovasle1_timelines.xlsx")
+
+```
+### Funny video with Mask
+Vasle (2020-10-23 20:59:09): Inovator. https://t.co/0zx4K8yNgD
+
+
+
+Janez Janša tweet in which he supports Trump over Biden and reaction on Mike Carpenter's comment.
+
+```{r eval=FALSE, include=FALSE}
+tmls_jj <- get_timelines(c("jjansasds"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tmls_jaja <- get_timelines(c("jjansasds"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+
+```{r eval=FALSE, include=FALSE}
+tmls_rdt <- get_timelines(c("realDonaldTrump"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tmls_jb <- get_timelines(c("JoeBiden"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tmls_mc <- get_timelines(c("mikercarpenter"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tmls_vv <- get_timelines(c("ViviVacca"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+```{r eval=FALSE, include=FALSE}
+tmls_dfazl <- get_timelines(c("FazlicDamir"), n = 3200, retryonratelimit = TRUE)
+
+```
+
+
+```{r eval=FALSE, include=FALSE}
+tmls_all5 <- rbind(tmls_jaja, tmls_rdt, tmls_jb, tmls_mc, tmls_vv, tmls_dfazl)
+
+```
+
+
+## Save dataset
+
+```{r eval=FALSE, include=FALSE}
+library(writexl)
+write_xlsx(tmls_all5, "data/jansa-supports-trump_timelines.xlsx")
+
+```
+
+
+## Open dataset
+
+```{r eval=FALSE, include=FALSE}
+library(readxl)
+tmls_all5 <- read_xlsx("data/jansa-supports-trump_timelines.xlsx")
+
+```
+
+
+## Timeline Graph
+
+```{r message=FALSE, warning=FALSE}
+## plot the frequency of tweets for each user over time
+tmls_all5 %>%
+  dplyr::filter(created_at > "2016-01-01") %>%
+  dplyr::group_by(screen_name) %>%
+  ts_plot("days", trim = 1L) +
+  ggplot2::geom_point() +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    legend.title = ggplot2::element_blank(),
+    legend.position = "bottom",
+    plot.title = ggplot2::element_text(face = "bold")) +
+  ggplot2::labs(
+    x = NULL, y = NULL,
+    title = "Frequency of Twitter statuses posted by politicians and others",
+    subtitle = "Twitter status (tweet) counts aggregated by day from January 2016",
+    caption = "\nSource: Data collected from Twitter's REST API via rtweet"
+  )
+
+```
+
+
+![Plot 8](pictures/janezjansa_urskabacovnikjansa.jpg)
+
+## Lookup Features
+
+Jansa's tweet, Carpenter's reaction and Fazlic commenting on Carpenter's reaction
+
+```{r message=FALSE, warning=FALSE}
+# status_id = "1319567043218296833" (Jansa's suport from Trump)
+status = "1320064582170398722" # Comment on Carpenter's tweet by Damir Fazlić
+tw1 <- lookup_statuses(status)
+tw1
+
+```
+
+Janša's provocative tweet
+
+```{r message=FALSE, warning=FALSE}
+# status_id = "1319567043218296833" (Jansa's suport from Trump)
+status = "1319567043218296833"
+tw <- lookup_statuses(status)
+tw
+
+```
+
+Search tweets
+
+```{r message=FALSE, warning=FALSE}
+# status_id = "1319567043218296833" (Jansa's suport from Trump)
+tweets_replies_jj_support <- search_tweets(q = "1319567043218296833", 
+                        n = 18000,
+                        include_rts = FALSE,
+                        `-filter` = "replies",
+                        lang = "en")
+
+```
+
+Save replies
+
+```{r message=FALSE, warning=FALSE}
+library(writexl)
+write_xlsx(tweets_replies_jj_support, "data/jansa-supports-trump_replies.xlsx")
+
+```
+
+Search tweets
+
+```{r message=FALSE, warning=FALSE}
+# status_id = "1319567043218296833" (Jansa's suport from Trump)
+tweets_replies_jj_support_other <- search_tweets(q = "1319567043218296833", 
+                        n = 18000,
+                        include_rts = FALSE,
+                        `-filter` = "replies")
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
+# status_id = "1319567043218296833" (Jansa's suport from Trump)
+tweets_replies_jj_support_more <- search_tweets(q = "1319567043218296833", 
+                        n = 18000,
+                        include_rts = FALSE)
+
+```
+
+Save replies
+
+```{r message=FALSE, warning=FALSE}
+library(writexl)
+write_xlsx(tweets_replies_jj_support_more, "data/jansa-supports-trump_replies_morelang.xlsx")
+
+
+```
+
+Open replies
+
+```{r message=FALSE, warning=FALSE}
+library(readxl)
+tweets_replies_jj_support_more <- 
+  read_xlsx(("data/jansa-supports-trump_replies_morelang.xlsx"))
+```
+
+
+## Show table
+
+```{r message=FALSE, warning=FALSE}
+tweet_table_data <- select(tweets_replies_jj_support_more, -user_id, -status_id)
+library(reactable)
+reactable(tweet_table_data)
+
+```
+
+
+## Reactable table
+
+```{r message=FALSE, warning=FALSE}
+reactable(tweet_table_data, 
+          filterable = TRUE, searchable = TRUE, bordered = TRUE, 
+          striped = TRUE, highlight = TRUE,
+          defaultPageSize = 25, showPageSizeOptions = TRUE, 
+          showSortable = TRUE, pageSizeOptions = c(25, 50, 75, 100, 200), defaultSortOrder = "desc",
+            columns = list(
+            created_at = colDef(defaultSortOrder = "asc"),
+            screen_name = colDef(defaultSortOrder = "asc"),
+            text = colDef(html = TRUE, minWidth = 190, resizable = TRUE),
+            favorite_count = colDef(filterable = FALSE),
+            retweet_count = colDef(filterable =  FALSE),
+            urls_expanded_url = colDef(html = TRUE)
+          )
+) 
+
+```
+
+Configure your reactable data table 
+
+In the code chunk above, the filterable = TRUE argument added search filters below each column header, and searchable added the overall table search box at the top right. Turning on bordered, striped, and highlight does what you might expect: Adds a table border, adds alternating-row color “stripes,” and highlights a row if you put a cursor on it.
+
+I set my defaultPageSize to 25. The showPageSizeOptions argument lets me change the page length interactively, and then I define page size options that will show up in a drop-down menu below the table (not visible in the screen shot). The showSortable argument adds little arrow icons next to column names so users know they can click to sort. And I set each column’s defaultSortOrder to descending instead of ascending. So if I click on the column of number of retweets or likes, I will see that as most to least, not least to most.
+
+Finally, there is the columns argument. That’s a list containing a column definition for each column. Look at the reactable help files for more details on other available options. In this example, I set the created_at and screen_name columns to have a default sort order of ascending. For the text column, I set it to display HTML as HTML so I can add clickable links. I also set a minimum column width of 190 pixels and made the column resizable — so users can click and drag to make it wider or narrower.
+
+I also turned off the filter boxes for favorite_count and reply_count. That’s because, unfortunately, reactable filters don’t understand when columns are numbers and will filter them as character strings. While reactable sorts number columns properly, the filter boxes are problematic. That’s the major drawback to reactable vs. the DT package: DT understands column types and filters accordingly. But sorting numerically is enough for me for this purpose. 
+
+You can check out the video at the top of this article to see what it looks like when you sort a column or make the tweet text column wider and narrower.
+
+
+Make your data table more useful
+
+A couple of things will make this table more useful. This code doesn’t display images or videos included in tweets. That’s fine, because my purpose here is to scan text, not re-create a Twitter application. But that means it will sometimes be helpful to see the original tweet in order to view photos, videos, or comments.
+
+I think it’s convenient to add a small clickable something at the end of each tweet’s text that you can click to see the actual tweet on Twitter. I decided on >> although it could be any character or characters.
+
+To construct a URL, I need to know the format of a tweet, which if you look at any tweet on the Twitter website, you can see is https://twitter.com/username/status/tweetID. 
+
+Using the glue package, that would be rendered like this: 
+
+```{r message=FALSE, warning=FALSE}
+library(glue)
+#glue::glue("https://twitter.com/{screen_name}/status/{status_id}")
+
+```
+
+My full code to create a column with a clickable link to the tweet after the tweet text:
+
+```{r message=FALSE, warning=FALSE}
+#Tweet = glue::glue("{text} <a href='https://twitter.com/{screen_name}/status/{status_id}'>>> </a>")
+
+```
+
+And the code to create a data frame for an interactive table:
+
+```{r message=FALSE, warning=FALSE}
+tweet_table_data <- tweets_replies_jj_support_more %>%
+  select(user_id, status_id, created_at, screen_name, text, favorite_count, retweet_count, urls_expanded_url) %>%
+  mutate(
+    Tweet = glue::glue("{text} <a href='https://twitter.com/{screen_name}/status/{status_id}'>>> </a>") 
+    )%>%
+  select(DateTime = created_at, User = screen_name, Tweet, Likes = favorite_count, RTs = retweet_count, URLs = urls_expanded_url)
+
+```
+
+I'd also like to make clickable links from the URL column, which is now just text. This is a bit complicated, because the URL column is a list column because some tweets include more than one URL.
+
+I’m sure there is a more elegant way to create clickable links from a list column of plain-text URLs, but the code below works. First I create a function to generate the HTML if there are no URLs, one URL, or two or more:
+
+```{r message=FALSE, warning=FALSE}
+make_url_html <- function(url) {
+  if(length(url) < 2) {
+    if(!is.na(url)) {
+      as.character(glue("<a title = {url} target = '_new' href = '{url}'>{url}</a>") )
+    } else {
+      ""
+    }
+  } else {
+    paste0(purrr::map_chr(url, ~ paste0("<a title = '", .x, "' target = '_new' href = '", .x, "'>", .x, "</a>", collapse = ", ")), collapse = ", ")
+  }
+}
+
+```
+
+I run purrr::map_chr() on the URL value if there are two or more URLs so that each URL gets its own HTML; then I paste them together and collapse them into a single character string to appear in the table.
+
+Once my function works, I use purrr::map_chr() again to iterate over each item in the column:
+
+```{r message=FALSE, warning=FALSE}
+tweet_table_data$URLs <- purrr::map_chr(tweet_table_data$URLs, make_url_html)
+
+```
+
+Don’t worry if you don’t understand this part, since it’s really more about purrr and list columns than rtweet and reactable. And it’s not necessary to search and sort the tweets; you can always click to the original tweet and see clickable links there.
+
+Finally, I can run my customized reactable() code on the new tweet table data: 
+
+```{r message=FALSE, warning=FALSE}
+reactable(tweet_table_data, 
+          filterable = TRUE, searchable = TRUE, bordered = TRUE, striped = TRUE, highlight = TRUE,
+          showSortable = TRUE, defaultSortOrder = "desc", defaultPageSize = 25, showPageSizeOptions = TRUE, pageSizeOptions = c(25, 50, 75, 100, 200), 
+          columns = list(
+            DateTime = colDef(defaultSortOrder = "asc"),
+            User = colDef(defaultSortOrder = "asc"),
+            Tweet = colDef(html = TRUE, minWidth = 190, resizable = TRUE),
+            Likes = colDef(filterable = FALSE, format = colFormat(separators = TRUE)),
+            RTs = colDef(filterable =  FALSE, format = colFormat(separators = TRUE)),
+            URLs = colDef(html = TRUE)
+          )
+) 
+
+```
+
+If you’ve been following along, you should have your own interactive table that can search, sort, and filter conference or topic tweets.
+
+

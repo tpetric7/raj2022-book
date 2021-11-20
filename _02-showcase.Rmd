@@ -1,0 +1,4 @@
+# Showcase
+
+Einige Beispiele, was man mit den Funktionen in der Programmiersprache _R_ machen kann.
+
