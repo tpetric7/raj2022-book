@@ -1,0 +1,187 @@
+# Odzadnji slovar
+
+Sestaviti želimo odzadnji slovar za nemški jezik in ga izvoziti v obliki preglednice `Excel`, tako da bo na razpolago uporabnikom, ki programskega jezika `R` ne uporabljajo. 
+
+## Knjjižnice 
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(stringi)
+library(writexl)
+library(quanteda)
+opt <- quanteda_options()
+# Parallel computing of 10 processor cores
+opt$threads = 10
+```
+
+## Branje podatkovnega niza
+
+Uporabljamo zbirko člankov iz nemškega časnika *Der Spiegel*. Zbirka je shranjena v obliki `rds`. Datoteko odpremo s funkcijo `readRDS()` ali `read_rds()`. Slednja je na razpolago, če smo prej zagnali knjižnico `library(tidyverse)`. 
+
+```{r message=FALSE, warning=FALSE}
+ausland2 <- readRDS("data/spiegel_politik_deutschland2.rds")
+```
+
+## Ustvarjanje jezikovnega gradiva
+
+Ustvarimo jezikovno gradivo s funkcijo `corpus()`, ki je sestavni del knjižnice `quanteda`. Ime novega korpus naj bo *aus2*.
+
+```{r message=FALSE, warning=FALSE}
+aus2 <- corpus(ausland2)
+```
+
+## Seznam pojavnic
+
+Korpus je osnova za sestavo seznama pojavnic. Za to nalogo imamo v knjižnici `quanteda` funkcijo `tokens()`. S to funkcijo lahko odstranimo tudi sestavne dele besedil, ki jih za sestavo slovarja ne potrebujemo, in sicer s funkcijami `remove_...`.
+
+```{r message=FALSE, warning=FALSE}
+toks.aus2 <- tokens(aus2, remove_punct = T, remove_numbers = T, remove_symbols = T, remove_url = T,
+                    remove_separators = T)
+```
+
+## Besedilno besedna matrika
+
+Iz besedilno besedne matrike (`dfm` - document feature matrix iz knjižnice `quanteda`) bomo naredili podatkovni niz. S funkcijo `t()` (tj. transponirati, angl. *transpose*) obrnemo matriko in jo zatem pretvorimo v podatkovni niz (`data.frame`). Knjižnica `tidyverse` ima namreč veliko funkcij za prilagajanje tabel. 
+
+```{r message=FALSE, warning=FALSE}
+dfmaus <- dfm(toks.aus2, remove = c("zzzschh", "zzzrrrk", "zz"))
+dfmaust <- t(dfmaus)
+dfmaust <- convert(dfmaust[,1], to = "data.frame") %>% 
+  rename(Tokens = doc_id, Text = text1)
+```
+
+Če bi želeli v programskem okolju `R` poizvedovati po soglasniških sklopih na koncu besed, bi to lahko opravili z *regularnimi izrazi* (*regular expressions*. 
+
+V spodnjem zgledu iščemo končni soglasniški sklop *nf*. Izhodišče je tabela, ki vsebuje besede v stolpcu *Tokens*. Želimo priklicati le besede brez ponavljanja, kar določimo s funkcijo `distinct()`. Sledi izbor besed po gornjem merilu. Zato potrebujemo funkciji `filter()` in `str_detect()`. V oklepajih funkcije `str_detect()` navedemo v narekovajih regularni izraz. V tem primeru sledi iskanemu soglasniškemu sklopu znak `$`, kar označuje konec znakovnega niza v stolpcu `Tokens`.
+
+```{r message=FALSE, warning=FALSE}
+consclust <- dfmaust %>% 
+  distinct(Tokens) %>% 
+  filter(str_detect(Tokens, "nd$|nt$|nz$|ns$|nsch$|nf$"))
+
+consclust %>% slice_sample(n = 10) %>% pull()
+```
+
+Še ena možnost bi bilo dodajanje stolpca, v katerem je naveden končni soglaniški sklop besedne oblike. 
+
+```{r message=FALSE, warning=FALSE}
+consclust <- dfmaust %>% 
+  distinct(Tokens) %>% 
+  mutate(final_cluster = str_extract(Tokens, 
+                         "[bdfghklmnprstz][bdfghklmnprstz]$")) %>% 
+  filter(!is.na(final_cluster))
+
+library(DT)
+consclust %>% 
+  # DT::datatable(fillContainer = TRUE, filter = "top",
+  #               options = list(pageLength = 6))
+  DT::datatable(filter = "top", fillContainer = TRUE, 
+                extensions = 'Buttons', "ColReorder", 
+                options = 
+                  list(pageLength = 8, colReorder = TRUE, 
+                       dom = 'Bfrtip', 
+                       buttons = 
+                         c('colvis','copy', 'csv', 
+                           'excel', 'pdf', 'print'))) %>% 
+  formatStyle("Tokens", target = 'row', 
+              backgroundColor = 
+                styleEqual(c(0, 1), c('gray30', 'lightblue')))
+```
+
+Pridobljene besede s končnimi soglasniškimi sklopi bi lahko shranili v obliki tabele ali seznama na disk. 
+
+```{r}
+library(writexl)
+write_xlsx(consclust, "data/words_final_consonant_clusters.xlsx")
+```
+
+Vendar glede na naš zgoraj navedeni cilj, da naj bo odzadnji slovar dostopen zunaj programskega okolja `R`, nadaljujemo prilagajanje tabele. 
+
+S funkcijo `distinct()` poskrbimo za to, da v tabeli ni podvojenih izrazov, in s funkcijo `arrange(desc())` razvrščamo pojavnice padajoče. Nazadnje pa v oglatih oklepajih *dfmaust*`[, 1]` določimo, da želimo obržati le stolpec s pojavnicami.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+dfmaust <- dfmaust %>% 
+  distinct() %>% 
+  arrange(desc(Tokens))
+dfmaust <- dfmaust[,1]
+dfmaust[1:10]
+
+```
+
+## Obračanje pojavnic
+
+Knjižnica `stringi` ima funkcijo `stri_reverse()`, s katero obrnemo pojavnice. 
+
+Funkcijo `proc.time()` v tem primeru ni nujno potrebna, uporabljamo jo le za ponazorilo, kako lahko izvemo, koliko časa nek postopek traja.
+
+```{r message=FALSE, warning=FALSE}
+library(stringi)
+
+start <- proc.time()
+final_result <- stri_reverse(dfmaust)
+end <- proc.time()
+
+print(end - start)
+```
+
+## Sestava slovarja
+
+Poglejmo, kaj že imamo! Seznam navadnih pojavnic in seznam obrnjenih pojavnic. 
+
+```{r}
+head(dfmaust)
+head(final_result)
+```
+
+Za sestavo slovarja, ki ga lahko izvozimo v obliki Excelove tabele, pa nadaljujemo: najprej seznam obrnjenih in neobrnjenih pojavnic povežemo s funkcijo `cbind()` in `as_tibble()` v novo tabelo z imenom *dict_rev*. 
+
+Novo tabelo lahko izvozimo v obliki Excelove preglednice (gl. spodaj), če to želimo. 
+
+```{r message=FALSE, warning=FALSE}
+dict_rev <- cbind(dfmaust, final_result)
+dict_rev <- as_tibble(dict_rev)
+head(dict_rev) %>% rmarkdown::paged_table()
+```
+
+## Iskanje po slovarju
+
+Naredili bomo še eno tabelo, ki pa vsebuje samo določene soglasniške sklope na koncu besed. To tabelo bomo kasneje tudi izvozili. 
+
+Poizvedovanje opravimo s funkcijo `kwic()` iz knjižnice `quanteda`. Seznam pojavnic z zaželenimi končnimi soglasniškimi sklopi poimenujemo *reversed*. Ta seznam pretvorimo s funkcijo `as_tibble()` v tabelo, tako da dobi vsak stolpec svoje ime, npr. `keyword` je iskana beseda, `pattern` pa iskani soglasniški sklop. 
+
+Izberemo stolpec `reversed$keyword` in s funkcijo `stri_reverse()` obrnemo besede, tako da imamo tudi stolpec normalno obrnjenih besed. 
+
+Oba stolpca povežemo s funkcijo `cbind()` v tabelo, v kateri so besede z zgoraj izbranimi končnimi soglasniškimi sklopi. Tabela dobi ime *dict_both*. 
+
+Tabelo še malo oblikujemo, kar v tem primeru najhitreje opravimo z oglatimi oklepaji, v katere zapišemo zaželeni vrstni red izbranih stolpcev tabele: `dict_both[, c(2,1,6,8)]`. 
+
+Tabelo razvrstimo po vzorcu soglasniških sklopov: `arrange(desc(pattern))`. 
+
+```{r message=FALSE, warning=FALSE}
+reversed <- kwic(final_result, pattern = c("tn*", "dn*", "zn*", "sn*", "fn*", "schn*"))
+
+reversed <- as_tibble(reversed)
+nonreversed <- stri_reverse(reversed$keyword)
+
+dict_both <- cbind(nonreversed, reversed)
+dict_both <- dict_both[, c(2,1,6,8)] %>% 
+  arrange(desc(pattern))
+
+head(dict_both) %>% rmarkdown::paged_table()
+
+```
+
+## Izvoz slovarja
+
+Obe obliki slovarja izvozimo s knjižnico `writexl`, tako da ju lahko odpremo v `Excelu` ali drugem tabelarnem programu. 
+
+```{r message=FALSE, warning=FALSE}
+library(writexl)
+
+write_xlsx(dict_rev, "data/odzadnji_slovar_ruecklaeufiges_woerterbuch1.xlsx")
+
+write_xlsx(dict_both, "data/odzadnji_slovar_ruecklaeufiges_woerterbuch2.xlsx")
+
+```
+
