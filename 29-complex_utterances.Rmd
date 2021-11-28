@@ -2,31 +2,37 @@
 
 ## Packages
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
+library(scales)
 library(tidytext)
+library(ggtext)
 library(readtext)
 library(quanteda)
 library(quanteda.textstats)
 library(quanteda.textplots)
 library(udpipe)
-library(scales)
+library(ggstatsplot)
+library(patchwork)
 ```
 
 
-## Text laden
+## Texte laden
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas <- read_lines(
   "data/books/kleist/Kleist_Kohlhaas_Projekt_Gutenberg.txt")
+steppenwolf <- read_lines(
+  "data/books/hesse/Hermann Hesse Der Steppenwolf.txt")
+ausland2 <- readRDS("data/spiegel_politik_deutschland2.rds")
 ```
 
 
-## Text zerlegen
+## Text 1 zerlegen
 
-Wir erstellen ein Korpus, das aus einzelnen Äußerungen besteht. 
+Zunächst erstellen wir mit der `quanteda`-Funktion `corpus()` ein Korpus, das nach Dokumenten organisiert ist. Danach wird das Korpus mit der Funktion `corpus_reshape()` umgewandelt, so dass jede Einheit aus nur einer Äußerung besteht. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlcrp <- corpus(kohlhaas)
 kohlcorp <- corpus_reshape(kohlcrp, to = "sentences")
 ```
@@ -36,7 +42,7 @@ kohlcorp <- corpus_reshape(kohlcrp, to = "sentences")
 
 Das Äußerungskorpus wird in eine Tabelle umgewandelt. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohltxt <- kohlcorp %>% 
   as_tibble(rownames = "doc_id") %>% 
   rename(text = value) %>% 
@@ -45,7 +51,7 @@ kohltxt <- kohlcorp %>%
 
 Die Äußerungstatistik erhält ebenfalls Tabellenform. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlstats <- summary(kohlcorp, n = 803) %>% 
   as_tibble() %>% 
   rename(doc_id = Text)
@@ -53,7 +59,7 @@ kohlstats <- summary(kohlcorp, n = 803) %>%
 
 Nun können wir die beiden Tabellen vereinen, und zwar mit Hilfe der gemeinsamen Spalte "doc_id", die wir vorher in beiden Einzeltabellen vorbereitet und entsprechend benannt haben. Außerdem filtern wir auch die leeren Zeilen (d.h. jene ohne Tokens) heraus. Von den 803 Zeilen bleiben 767 Zeilen übrig. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohltab <- kohlstats %>% 
   full_join(kohltxt, by = "doc_id") %>% 
   filter(Tokens > 0)
@@ -62,7 +68,7 @@ kohltab <- kohlstats %>%
 
 ## Speichern der Tabelle
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 write_csv(kohltab, "data/kohlhaas_tabelle.csv")
 ```
 
@@ -71,7 +77,7 @@ write_csv(kohltab, "data/kohlhaas_tabelle.csv")
 
 Die Tabelle wird zunächst mit der Funktion `arrange()` sortiert. Dann können wir die längsten Äußerungen auswählen und speichern. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohltab %>% arrange(-Tokens) %>% 
   select(-Sentences) %>% 
   rmarkdown::paged_table()
@@ -79,7 +85,7 @@ kohltab %>% arrange(-Tokens) %>%
 
 Die längste Äußerung enthält 437 Tokens (Interpunktionszeichen sind inbegriffen). Schauen wir uns mal diese Äußerung genauer an! Derartige Äußerungen mit mehreren Satzverbindungen vielen ineinander verschachtelten Nebensätzen nennt man eine *Periode*. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_periode1 <- kohltab %>% 
   filter(doc_id == "text64.9") %>% 
   pull(text)
@@ -92,7 +98,7 @@ Die zweitlängste Äußerung in der Novelle Michael Kohlhaas ist ...
 
 Noch eine Periode.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_periode2 <- kohltab %>% 
   filter(doc_id == "text62.16") %>% 
   pull(text)
@@ -103,7 +109,7 @@ write_lines(
 
 Perioden über Perioden. Hier sind eigentlich zwei zu sehen. Unser Programm hat die Interpunktionsfolge Punkt + Bindestrich wahrscheinlich nicht als Ende der ersten Äußerung gewertet. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_periode3 <- kohltab %>% 
   filter(doc_id == "text22.11") %>% 
   pull(text)
@@ -114,7 +120,7 @@ write_lines(
 
 Das ist eine der mittellangen Äußerungen im Kohlhaas. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_periode4 <- kohltab %>% 
   filter(doc_id == "text22.18") %>% 
   pull(text)
@@ -125,7 +131,7 @@ write_lines(
 
 Suchen wir mal die mittellangen Äußerungen heraus! Zu diesem Zweck verändern wir unsere Filtermethode. Wir wählen alle Äußerungen, die 50 bis 60 Tokens lang sind. Unser Programm hat 70 Äußerungen von dieser Länge gefunden. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_utterances_50_60 <- kohltab %>% 
   filter(Tokens > 49 & Tokens < 61) %>% 
   pull(text)
@@ -136,7 +142,7 @@ write_lines(
 
 Äußerungen mit 20 bis 30 Tokens.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_utterances_20_30 <- kohltab %>% 
   filter(Tokens > 19 & Tokens < 31) %>% 
   pull(text)
@@ -147,7 +153,7 @@ write_lines(
 
 Äußerungen mit 30 bis 40 Tokens.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_utterances_30_40 <- kohltab %>% 
   filter(Tokens > 29 & Tokens < 41) %>% 
   pull(text)
@@ -161,7 +167,7 @@ write_lines(
 
 Wie lang sind die Äußerungen im Durchschnitt? - Etwa 54,76 Tokens pro Äußerung. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohl_mean <- kohltab %>% 
   summarise(median_laenge = median(Tokens) %>% round(2), 
             mittlere_laenge = mean(Tokens) %>% round(2), 
@@ -173,9 +179,9 @@ Ist das viel? Das kann uns eigentlich nur ein Vergleich mit anderen Texten sagen
 
 Das Histogramm zeigt die Spannbreite und welche Äußerungslängen für die Novelle charakteristisch sind. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(ggtext)
-kohltab %>% 
+ggk <- kohltab %>% 
   ggplot(aes(Tokens)) +
   geom_histogram(aes(y=..density..), binwidth = 20,
                  fill = "darkgreen", alpha = 0.8, color = "black") +
@@ -194,8 +200,7 @@ kohltab %>%
              color = "red", lty = 3, size = 1) +
   labs(title = 
          "Äußerungslänge in _Kleists_ Novelle _Michael Kohlhaas_",
-       caption = 
-         "red = **mean** +/- **st.deviation**; blue = **median**") +
+       caption = '<span style="color:red;">**-.-.-. MEAN**</span> +/- <span style="color:red;">**..... st. deviation**</span> ; <span style="color:blue;">**-.-.-. MEDIAN**</span>') +
   theme_bw() + 
   theme(plot.title=element_markdown(size=18, color = "darkred"),
         plot.caption = element_markdown(color = "darkgreen"),
@@ -205,12 +210,13 @@ kohltab %>%
         axis.text.x=element_text(size = 10),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
+ggk
 ```
 
 
 ## Auswahl nach Konnektoren
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 kohlhaas_utterances_aber1 <- kohltab %>% 
   filter(str_detect(text, "aber")) %>% 
   # filter(Tokens > 29 & Tokens < 41) %>% 
@@ -256,17 +262,18 @@ k %>%
   rmarkdown::paged_table()
 ```
 
-In der Spalte *xpos* interessieren uns nur die Kategorien *CCONJ* (Junktoren) und *SCONJ* (Subjunktoren). Deshalb filtern wir alle anderen Kategorien heraus. 
+In der Spalte *upos* interessieren uns nur die Kategorien *CCONJ* (Junktoren) und *SCONJ* (Subjunktoren). Deshalb filtern wir alle anderen Kategorien heraus. 
 
 ```{r message=FALSE, warning=FALSE}
 k %>% 
   filter(upos == "CCONJ" | upos == "SCONJ") %>% 
-  count(upos, sort = TRUE)
+  count(upos, sort = TRUE) %>% 
+  mutate(pct = round(100*n/sum(n), 2))
 ```
 
 Die Anzahl der Junktoren und Subjunktoren ist ziemlich ausgeglichen. Der Anteil der Nebensätze in Kleists Novelle scheint demnach höher zu sein in alltagssprachlichen Texten oder in modernen Zeitungstexten. 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 tabelle_cconj_sconj <- k %>% 
   filter(upos == "CCONJ" | upos == "SCONJ") %>% 
   mutate(lemma = str_remove(lemma, "[:PUNCT:]"), 
@@ -276,3 +283,705 @@ tabelle_cconj_sconj <- k %>%
 tabelle_cconj_sconj %>% rmarkdown::paged_table()
 ```
 
+
+
+Steppenwolf von Hermann Hesse
+
+## Text 2 zerlegen
+
+Die einzelnen Textparapgraphen werden in einen einzigen vereint. 
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf <- steppenwolf %>% paste(collapse = " ") %>% str_squish()
+str_sub(steppenwolf, start = 1, end = 227)
+```
+
+Wir erstellen nun ein Korpus, das aus einzelnen Äußerungen besteht, und zwar mit dem Namen *stepcorp*.
+
+```{r message=FALSE, warning=FALSE}
+stepcrp <- corpus(steppenwolf)
+stepcorp <- corpus_reshape(stepcrp, to = "sentences")
+```
+
+
+## Texttabelle erstellen
+
+Das Äußerungskorpus wird in eine Tabelle umgewandelt. 
+
+```{r message=FALSE, warning=FALSE}
+steptxt <- stepcorp %>% 
+  as_tibble(rownames = "doc_id") %>% 
+  rename(text = value) %>% 
+  mutate(text = as.character(text) %>% str_squish())
+```
+
+Die Äußerungstatistik erhält ebenfalls Tabellenform. 
+
+```{r message=FALSE, warning=FALSE}
+stepstats <- summary(stepcorp, n = 3142) %>% 
+  as_tibble() %>% 
+  rename(doc_id = Text)
+```
+
+Nun können wir die beiden Tabellen vereinen, und zwar mit Hilfe der gemeinsamen Spalte "doc_id", die wir vorher in beiden Einzeltabellen vorbereitet und entsprechend benannt haben. Außerdem filtern wir auch die leeren Zeilen (d.h. jene ohne Tokens) heraus. 
+
+```{r message=FALSE, warning=FALSE}
+steptab <- stepstats %>% 
+  full_join(steptxt, by = "doc_id") %>% 
+  filter(Tokens > 0)
+```
+
+
+## Speichern der Tabelle
+
+```{r message=FALSE, warning=FALSE}
+write_csv(steptab, "data/steppenwolf_tabelle.csv")
+```
+
+
+## Auswahl nach Länge
+
+Die Tabelle wird zunächst mit der Funktion `arrange()` sortiert. Dann können wir die längsten Äußerungen auswählen und speichern. 
+
+```{r message=FALSE, warning=FALSE}
+steptab %>% arrange(-Tokens) %>% 
+  select(-Sentences) %>% 
+  rmarkdown::paged_table()
+```
+
+Die längste Äußerung enthält 157 Tokens (Interpunktionszeichen sind inbegriffen). Schauen wir uns mal diese Äußerung genauer an! Derartige Äußerungen mit mehreren Satzverbindungen vielen ineinander verschachtelten Nebensätzen nennt man eine *Periode*. 
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_periode1 <- steptab %>% 
+  filter(doc_id == "text1.232") %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_periode1, "data/steppenwolf_periode1.txt")
+```
+
+Die zweitlängste Äußerung in der Novelle Michael Kohlhaas ist ... 
+
+Noch eine Periode.
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_periode2 <- steptab %>% 
+  filter(doc_id == "text1.230") %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_periode2, "data/steppenwolf_periode2.txt")
+```
+
+Perioden über Perioden. Hier sind eigentlich zwei zu sehen. Unser Programm hat die Interpunktionsfolge Punkt + Bindestrich wahrscheinlich nicht als Ende der ersten Äußerung gewertet. 
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_periode3 <- steptab %>% 
+  filter(doc_id == "text1.231") %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_periode3, "data/steppenwolf_periode3.txt")
+```
+
+Das ist eine der mittellangen Äußerungen im Kohlhaas. 
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_periode4 <- steptab %>% 
+  filter(doc_id == "text1.3037") %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_periode4, "data/steppenwolf_periode4.txt")
+```
+
+Suchen wir mal die mittellangen Äußerungen heraus! Zu diesem Zweck verändern wir unsere Filtermethode. Wir wählen alle Äußerungen, die 50 bis 60 Tokens lang sind. Unser Programm hat 70 Äußerungen von dieser Länge gefunden. 
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_utterances_50_60 <- steptab %>% 
+  filter(Tokens > 49 & Tokens < 61) %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_utterances_50_60, "data/steppenwolf_utterances_50_60.txt")
+```
+
+Äußerungen mit 20 bis 30 Tokens.
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_utterances_20_30 <- steptab %>% 
+  filter(Tokens > 19 & Tokens < 31) %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_utterances_20_30, "data/steppenwolf_utterances_20_30.txt")
+```
+
+Äußerungen mit 30 bis 40 Tokens.
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_utterances_30_40 <- steptab %>% 
+  filter(Tokens > 29 & Tokens < 41) %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_utterances_30_40, "data/steppenwolf_utterances_30_40.txt")
+```
+
+
+## Durchschnittslänge
+
+Wie lang sind die Äußerungen im Durchschnitt? - Etwa 25,58 Tokens pro Äußerung. Vergleichen Sie mit Kleists Kohlhaas: 54,76 Tokens pro Äußerung. 
+
+```{r message=FALSE, warning=FALSE}
+step_mean <- steptab %>% 
+  summarise(median_laenge = median(Tokens) %>% round(2), 
+            mittlere_laenge = mean(Tokens) %>% round(2), 
+            sd_laenge = sd(Tokens) %>% round(2))
+step_mean
+```
+
+Das Histogramm zeigt die Spannbreite und welche Äußerungslängen für die Novelle charakteristisch sind. 
+
+```{r message=FALSE, warning=FALSE}
+library(ggtext)
+ggs <- steptab %>% 
+  ggplot(aes(Tokens)) +
+  geom_histogram(aes(y=..density..), binwidth = 20,
+                 fill = "darkgreen", alpha = 0.8, color = "black") +
+  scale_x_continuous(breaks = seq(0,500,20)) +
+  # geom_freqpoly(binwidth = 20) +
+  geom_density(fill = "cyan", alpha = 0.4, size = 1) +
+  geom_vline(xintercept = step_mean$median_laenge, 
+             color = "blue", lty = 4, size = 1.3) +
+  geom_vline(xintercept = step_mean$mittlere_laenge, 
+             color = "red", lty = 2, size = 1) +
+  geom_vline(xintercept = 
+               step_mean$mittlere_laenge + step_mean$sd_laenge, 
+             color = "red", lty = 3, size = 1) +
+  geom_vline(xintercept = 
+               step_mean$mittlere_laenge - step_mean$sd_laenge, 
+             color = "red", lty = 3, size = 1) +
+  labs(title = 
+         "Äußerungslänge in _Hesses_ Roman _Steppenwolf_",
+       caption = '<span style="color:red;">**-.-.-. MEAN**</span> +/- <span style="color:red;">**..... st. deviation**</span> ; <span style="color:blue;">**-.-.-. MEDIAN**</span>') +
+  theme_bw() + 
+  theme(plot.title=element_markdown(size=18, color = "darkred"),
+        plot.caption = element_markdown(color = "darkgreen"),
+        axis.title.y=element_text(size = 12, vjust=+0.2),
+        axis.title.x=element_text(size = 12, vjust=-0.2),
+        axis.text.y=element_text(size = 10),
+        axis.text.x=element_text(size = 10),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+ggs
+```
+
+
+## Auswahl nach Konnektoren
+
+```{r message=FALSE, warning=FALSE}
+steppenwolf_utterances_aber1 <- steptab %>% 
+  filter(str_detect(text, "aber")) %>% 
+  # filter(Tokens > 29 & Tokens < 41) %>% 
+  pull(text)
+
+write_lines(
+  steppenwolf_utterances_aber1, "data/steppenwolf_utterances_aber1.txt")
+```
+
+
+## Welche Konnektoren?
+
+Die grammatische Analyse führen wir mit `udpipe` durch. Zuerst laden wir ein entsprechendes Sprachmodell.
+
+```{r message=FALSE, warning=FALSE}
+library(udpipe)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   sprachmodell <- udpipe_download_model(language = "german")
+   udmodel_de <- udpipe_load_model(sprachmodell$file_model)
+   } else {
+  file_model = destfile
+  udmodel_de <- udpipe_load_model(file_model)
+}
+
+```
+
+Das Programm `udpipe` annotiert den Text mit Hilfe des Sprachmodells.
+
+```{r message=FALSE, warning=FALSE}
+x <- udpipe_annotate(udmodel_de, x = steppenwolf, trace = FALSE)
+s <- as.data.frame(x) %>% 
+  mutate(doc_id = "hesse_steppenwolf")
+```
+
+Nun sind wir in der Lage, Wortklassen zu zählen, die `udpipe` identifiziert hat. Dazu verwenden wir die Funktion `count()`. Gezählt werden die Kategorien in der Spalte *upos*.
+
+```{r message=FALSE, warning=FALSE}
+s %>% 
+  group_by(doc_id) %>% 
+  count(upos, sort = TRUE) %>% 
+  rmarkdown::paged_table()
+```
+
+In der Spalte *xpos* interessieren uns nur die Kategorien *CCONJ* (Junktoren) und *SCONJ* (Subjunktoren). Deshalb filtern wir alle anderen Kategorien heraus. 
+
+```{r message=FALSE, warning=FALSE}
+s %>% 
+  filter(upos == "CCONJ" | upos == "SCONJ") %>% 
+  count(upos, sort = TRUE) %>% 
+  mutate(pct = round(100*n/sum(n), 2))
+```
+
+Der Anteil der Junktoren beträgt fast vier Fünftel, der der Subjunktoren dagegen nur ein Fünftel. Der Anteil der Nebensätze in Kleists Novelle scheint höher zu sein als in Hesses Roman, einem Text aus dem 20. Jahrhundert. 
+
+```{r message=FALSE, warning=FALSE}
+tabelle_cconj_sconj <- s %>% 
+  filter(upos == "CCONJ" | upos == "SCONJ") %>% 
+  mutate(lemma = str_remove(lemma, "[:PUNCT:]"), 
+         lemma = str_to_lower(lemma),
+         token = str_remove(token, "[:PUNCT:]")) %>% 
+  count(lemma, sort = TRUE)
+tabelle_cconj_sconj %>% rmarkdown::paged_table()
+```
+
+Signifikanter Unterschied zwischen den durchschnittlichen Äußerungslängen im Kohlhaas und im Steppenwolf. 
+
+```{r message=FALSE, warning=FALSE}
+step_tokens <- steptab[,3] %>% rename(step_tokens = Tokens)
+kohl_tokens <- kohltab[,3] %>% rename(kohl_tokens = Tokens)
+t.test(kohl_tokens, step_tokens, var.equal = FALSE)
+```
+
+Nur Äußerungen mit weniger als 200 Tokens. 
+
+```{r message=FALSE, warning=FALSE}
+kohltab_200 <- kohltab %>% filter(Tokens < 200)
+steptab_200 <- steptab %>% filter(Tokens < 200)
+
+ggks <- ggplot() +
+  geom_density(aes(Tokens, fill = "kohltab_200"), 
+               alpha = .4, data = kohltab_200) +
+  geom_density(aes(Tokens, fill = "steptab_200"), 
+               alpha = .4, data = steptab_200) +
+  expand_limits(x = c(1,200), y = c(0, 0.03)) +
+  scale_fill_manual(name = "Texte", 
+                    labels = c("Kohlhaas", "Steppenwolf"), 
+                    values = c(kohltab_200 = "darkred", 
+                               steptab_200 = "darkgreen")) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_x_continuous(breaks = 
+                       c(1,5,10,20,30,40,50,75,100,125,150,175,200)) +
+  coord_cartesian(expand = FALSE, 
+                  clip = "off") + # don't expand margin + no clipping
+  geom_vline(xintercept = step_mean$median_laenge, 
+             color = "darkgreen", lty = 4, size = 1.3) +
+  geom_vline(xintercept = kohl_mean$median_laenge, 
+             color = "darkred", lty = 4, size = 1.3) +
+  labs(x = "Tokens (Wörter + Interpunktionszeichen)", 
+       y = "Anteil", 
+       title = 
+         "Äußerungslänge in _Kohlhaas_ und _Steppenwolf_",
+       caption = 
+         "red = **mean** +/- **st.deviation**; blue = **median**") +
+  theme_light() +
+  theme(legend.position = "top", 
+        plot.margin = margin(10, 10, 5, 10),
+        plot.title=element_markdown(size=18, color = "darkred"),
+        plot.title.position = "panel",
+        plot.caption = element_markdown(color = "darkgreen"),
+        axis.title.y=element_text(size = 12, vjust=+0.2),
+        axis.title.x=element_text(size = 12, vjust=-0.2),
+        axis.text.y=element_text(size = 10),
+        axis.text.x=element_text(size = 10)#,
+        # panel.grid.major = element_blank(),
+        # panel.grid.minor = element_blank()
+        )
+ggsave("pictures/kohlhaas_steppenwolf_utterance_length.png")
+ggks
+```
+
+Mit `library(patchwork)` alle Äußerungen. 
+
+```{r message=FALSE, warning=FALSE}
+library(patchwork)
+p1 <- ggk / ggs
+ggsave("pictures/patch1_utterances_kohlhaas_steppenwolf.png")
+p1
+```
+
+
+## Text 3 zerlegen
+
+Wir erstellen ein Korpus, das aus einzelnen Äußerungen besteht, und zwar mit dem Namen *spiegelcorp*.
+
+```{r message=FALSE, warning=FALSE}
+spiegelcrp <- corpus(ausland2, text_field = "text")
+spiegelcorp <- corpus_reshape(spiegelcrp, to = "sentences")
+```
+
+
+## Texttabelle erstellen
+
+Das Äußerungskorpus wird in eine Tabelle umgewandelt. 
+
+```{r message=FALSE, warning=FALSE}
+spiegeltxt <- spiegelcorp %>% 
+  as_tibble(rownames = "doc_id") %>% 
+  rename(text = value) %>% 
+  mutate(text = as.character(text) %>% str_squish())
+```
+
+Die Äußerungstatistik erhält ebenfalls Tabellenform. 
+
+```{r message=FALSE, warning=FALSE}
+spiegelstats <- summary(spiegelcorp, n = 430041) %>% 
+  as_tibble() %>% 
+  rename(doc_id = Text)
+```
+
+Nun können wir die beiden Tabellen vereinen, und zwar mit Hilfe der gemeinsamen Spalte "doc_id", die wir vorher in beiden Einzeltabellen vorbereitet und entsprechend benannt haben. Außerdem filtern wir auch die leeren Zeilen (d.h. jene ohne Tokens) heraus. 
+
+```{r message=FALSE, warning=FALSE}
+spiegeltab <- spiegelstats %>% 
+  full_join(spiegeltxt, by = "doc_id") %>% 
+  filter(Tokens > 0)
+```
+
+
+## Speichern der Tabelle
+
+```{r message=FALSE, warning=FALSE}
+write_csv(spiegeltab, "data/spiegel_ausland2_tabelle.csv")
+# write_rds(spiegeltab, "data/spiegel_ausland2_tabelle.rds")
+```
+
+
+## Auswahl nach Länge
+
+Die Tabelle wird zunächst mit der Funktion `arrange()` sortiert. Dann können wir die längsten Äußerungen auswählen und speichern. 
+
+```{r message=FALSE, warning=FALSE}
+spiegeltab %>% arrange(-Tokens) %>% 
+  select(-Sentences) %>% 
+  head(10) %>% 
+  rmarkdown::paged_table()
+```
+
+Die längsten Äußerungen in den Spiegel-Artikeln enthalten lange Aufzählungen von Personen, Orten und Titeln (möglicherweise in Tabellenform). Sie sind eigentlich nicht repräsentativ für den Schreibstil in Spiegel-Artikeln zum Thema Auslandspolitik. 
+
+Die längste Äußerung enthält 589 Tokens (Interpunktionszeichen sind inbegriffen). Mit dem Befehl `cat(spiegel_periode1)` können wir sie uns ansehen. 
+
+```{r message=FALSE, warning=FALSE}
+spiegel_periode1 <- spiegeltab %>% 
+  filter(doc_id == "text930.21") %>% 
+  pull(text)
+
+write_lines(
+  spiegel_periode1, "data/spiegel_periode1.txt")
+```
+
+Suchen wir mal mittellange Äußerungen in den Spiegel-Artikeln heraus! Zu diesem Zweck verändern wir unsere Filtermethode. Wir wählen alle Äußerungen, die 50 bis 60 Tokens lang sind. Unser Programm hat mehr als 1000 Äußerungen von dieser Länge gefunden. 
+
+```{r message=FALSE, warning=FALSE}
+spiegel_utterances_50_60 <- spiegeltab %>% 
+  filter(Tokens > 49 & Tokens < 61) %>% 
+  pull(text)
+
+write_lines(
+  spiegel_utterances_50_60, "data/spiegel_utterances_50_60.txt")
+
+cat(spiegel_utterances_50_60[25])
+```
+
+
+## Durchschnittslänge
+
+Wie lang sind die Äußerungen im Durchschnitt? - Etwa 19,71 Tokens pro Äußerung. Im Vergleich mit *Hermann Hesses Steppenwolf* (25,58 Tokens) und *Kleists Kohlhaas* (54,76 Tokens) deutlich weniger. 
+
+```{r message=FALSE, warning=FALSE}
+spiegel_mean <- spiegeltab %>% 
+  summarise(median_laenge = median(Tokens) %>% round(2), 
+            mittlere_laenge = mean(Tokens) %>% round(2), 
+            sd_laenge = sd(Tokens) %>% round(2))
+spiegel_mean
+```
+
+Das Histogramm zeigt die Spannbreite und welche Äußerungslängen für die Novelle charakteristisch sind. 
+
+```{r message=FALSE, warning=FALSE}
+library(ggtext)
+ggsp <- spiegeltab %>% 
+  ggplot(aes(Tokens)) +
+  geom_histogram(aes(y=..density..), binwidth = 20,
+                 fill = "darkgreen", alpha = 0.8, color = "black") +
+  scale_x_continuous(breaks = c(0,20,40,60,80,100,250,500,600)) +
+  # geom_freqpoly(binwidth = 20) +
+  geom_density(fill = "cyan", alpha = 0.4, size = 1) +
+  geom_vline(xintercept = step_mean$median_laenge, 
+             color = "blue", lty = 4, size = 1.3) +
+  geom_vline(xintercept = step_mean$mittlere_laenge, 
+             color = "red", lty = 2, size = 1) +
+  geom_vline(xintercept = 
+               step_mean$mittlere_laenge + step_mean$sd_laenge, 
+             color = "red", lty = 3, size = 1) +
+  geom_vline(xintercept = 
+               step_mean$mittlere_laenge - step_mean$sd_laenge, 
+             color = "red", lty = 3, size = 1) +
+  labs(title = 
+         "Äußerungslänge in _Spiegel_-Artikeln über _Auslandspolitik_",
+       caption = '<span style="color:red;">**-.-.-. MEAN**</span> +/- <span style="color:red;">**..... st. deviation**</span> ; <span style="color:blue;">**-.-.-. MEDIAN**</span>') +
+  theme_bw() + 
+  theme(plot.title=element_markdown(size=18, color = "darkred"),
+        plot.caption = element_markdown(color = "darkgreen"),
+        axis.title.y=element_text(size = 12, vjust=+0.2),
+        axis.title.x=element_text(size = 12, vjust=-0.2),
+        axis.text.y=element_text(size = 10),
+        axis.text.x=element_text(size = 10),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+ggsp
+```
+
+
+## Auswahl nach Konnektoren
+
+```{r message=FALSE, warning=FALSE}
+spiegel_utterances_aber1 <- spiegeltab %>% 
+  filter(str_detect(text, "aber")) %>% 
+  # filter(Tokens > 29 & Tokens < 41) %>% 
+  pull(text)
+
+write_lines(
+  spiegel_utterances_aber1, "data/spiegel_utterances_aber1.txt")
+
+cat(spiegel_utterances_aber1[1])
+```
+
+
+## Welche Konnektoren?
+
+Die grammatische Analyse führen wir mit `udpipe` durch. Zuerst laden wir ein entsprechendes Sprachmodell (falls es noch nicht geladen ist).
+
+```{r message=FALSE, warning=FALSE}
+library(udpipe)
+destfile = "german-gsd-ud-2.5-191206.udpipe"
+
+if(!file.exists(destfile)){
+   sprachmodell <- udpipe_download_model(language = "german")
+   udmodel_de <- udpipe_load_model(sprachmodell$file_model)
+   } else {
+  file_model = destfile
+  udmodel_de <- udpipe_load_model(file_model)
+}
+
+```
+
+Das Programm `udpipe` annotiert die Texte mit Hilfe des Sprachmodells. Da es sich um Abertausende von Artikeln handelt, dauert das auf handelsüblichen Computern im Jahr 2021 mehr als 10 Minuten. Falls man nicht so lange warten möchte, nimmt man nur eine Stichprobe. Zu Demonstrationszwecken sollen 100 Artikel mal genug sein. 
+
+```{r message=FALSE, warning=FALSE}
+set.seed(2020)
+spiegel_sample <- slice_sample(ausland2, n = 100)
+
+x <- udpipe_annotate(udmodel_de, 
+                     x = as.character(spiegel_sample$text), 
+                     trace = FALSE)
+sp <- as.data.frame(x) %>% 
+  mutate(doc_id = "spiegel_auslandspolitik")
+```
+
+Nun sind wir in der Lage, Wortklassen zu zählen, die `udpipe` identifiziert hat. Dazu verwenden wir die Funktion `count()`. Gezählt werden die Kategorien in der Spalte *upos*.
+
+```{r message=FALSE, warning=FALSE}
+sp %>% 
+  group_by(doc_id) %>% 
+  count(upos, sort = TRUE) %>% 
+  rmarkdown::paged_table()
+```
+
+In der Spalte *upos* interessieren uns nur die Kategorien *CCONJ* (Junktoren) und *SCONJ* (Subjunktoren). Deshalb filtern wir alle anderen Kategorien heraus. 
+
+```{r message=FALSE, warning=FALSE}
+sp %>% 
+  filter(upos == "CCONJ" | upos == "SCONJ") %>% 
+  count(upos, sort = TRUE) %>% 
+  mutate(pct = round(100*n/sum(n), 2))
+```
+
+Der Anteil der Junktoren beträgt fast drei Viertel, der der Subjunktoren mehr als ein Viertel. Der Anteil der Nebensätze in Kleists Novelle scheint höher zu sein in modernen Zeitungstexten. 
+
+```{r message=FALSE, warning=FALSE}
+tabelle_cconj_sconj <- sp %>% 
+  filter(upos == "CCONJ" | upos == "SCONJ") %>% 
+  mutate(lemma = str_remove(lemma, "[:PUNCT:]"), 
+         lemma = str_to_lower(lemma),
+         token = str_remove(token, "[:PUNCT:]")) %>% 
+  count(lemma, sort = TRUE)
+tabelle_cconj_sconj %>% rmarkdown::paged_table()
+```
+
+
+## Vergleich der Äußerungslängen 
+
+Wir prüfen das noch mit einem parametrischen Test, einer *Anova*, und einem nicht-parametrischen Test, einem *Kruskal-Wallis-Test*, ob sich die durchschnittlichen Äußerungslängen voneinander signifikant unterscheiden. Zu diesem Zweck vereinen wir die drei Datensätze in den Datensatz *utter_length*.
+
+Eine **Anova** mit einer einzigen unabhängigen Variable (hier: *doc_id*) und einer numerischen abhängigen Variable (hier: *Tokens*) kann man in `R` mit Hilfe der Funktion `oneway.test()` durchführen, einen entsprechenden nicht-parametrischen Test, den **Kruskal-Wallis-Test**, mit der Funktion `kruskal.test()`. 
+
+```{r message=FALSE, warning=FALSE}
+step_tokens <- steptab[,3] %>% 
+  mutate(doc_id = "steppenwolf")
+kohl_tokens <- kohltab[,3] %>% 
+  mutate(doc_id = "kohlhaas")
+spiegel_tokens <- spiegeltab[,3] %>% 
+  mutate(doc_id = "spiegel")
+
+utter_length <- rbind(kohl_tokens, step_tokens, spiegel_tokens)
+
+# parametric test (One-Way Anova)
+anova1 <- oneway.test(Tokens ~ doc_id, data = utter_length)
+anova1
+# non-parametric test (Kruskal-Wallis-Test)
+kruskal1 <- kruskal.test(Tokens ~ doc_id, data = utter_length)
+kruskal1
+```
+
+Sowohl der parametrische als auch der nicht-parametrische Test bestätigen signifikante Unterschiede. Die Signifikanz der Unterschiede zwischen den Gruppen (*Kohlhaas, Steppenwolf, Spiegel*) lässt sich mit einem **Post-hoc-Test** bestätigen, hier mit den Funktionen `aov()` und `TukeyHSD()`. 
+
+```{r message=FALSE, warning=FALSE}
+anova2 <- aov(Tokens ~ doc_id, data = utter_length)
+TukeyHSD(anova2, which = "doc_id")
+```
+
+Mit dem Package `ggstatsplot` kann man gleichzeitig einen statistischen Test und eine graphische Darstellung ausgeben lassen. 
+
+```{r message=FALSE, warning=FALSE}
+library(ggstatsplot)
+set.seed(2020)
+plot1 <- utter_length %>% 
+  ggbetweenstats(x = doc_id, y = Tokens, type = "parametric",
+                 pairwise.comparisons = TRUE,
+                 p.adjust.method = "holm", bf.message = FALSE,
+                 var.equal = FALSE)
+plot1
+```
+
+In der folgenden graphischen Darstellung werden nur Äußerungen mit weniger als 200 Tokens berücksichtigt. 
+
+```{r message=FALSE, warning=FALSE}
+kohltab_200 <- kohltab %>% filter(Tokens < 200)
+steptab_200 <- steptab %>% filter(Tokens < 200)
+spiegeltab_200 <- spiegeltab %>% filter(Tokens < 200)
+
+# Normal distribution with Spiegel data
+x <- seq(from = 1, to = 100, length.out = 300)
+x <- spiegeltab_200$Tokens
+dens <- data.frame(x = x, y = dnorm(x, mean = 19.71, sd = 11.76))
+
+mycaption <- '<span style="color:black;">**MEDIAN**:</span> : <span style="color:darkred;">**-.-.- _Kohlhaas_**</span> ; <span style="color:darkgreen;">**-.-.- _Steppenwolf_**</span> ; <span style="color:magenta;">**-.-.- _Spiegel_**</span>'
+
+ggksp <- ggplot() +
+  geom_density(aes(Tokens, fill = "kohltab_200"), 
+               alpha = .4, data = kohltab_200) +
+  geom_density(aes(Tokens, fill = "steptab_200"), 
+               alpha = .4, data = steptab_200) +
+  geom_density(aes(Tokens, fill = "spiegeltab_200"), 
+               alpha = .2, data = spiegeltab_200) +
+  # normal distribution with Spiegel mean and sd values
+  geom_line(aes(x,y, color = "red"), size = 2,
+               alpha = .6, data = dens) +
+  expand_limits(x = c(1,200), y = c(0, 0.03)) +
+  scale_color_manual(name = "Normalverteilung (theoretisch)", 
+                     labels = "Spiegel",
+                     values = "red") +
+  scale_fill_manual(name = "Texte", 
+                    labels = c("Kohlhaas", "Steppenwolf", "Spiegel"), 
+                    values = c(kohltab_200 = "darkred", 
+                               steptab_200 = "darkgreen",
+                               spiegeltab_200 = "magenta")) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_x_continuous(breaks = 
+                       c(1,5,10,20,30,40,50,75,100,125,150,175,200)) +
+  coord_cartesian(expand = FALSE, 
+                  clip = "off") + # don't expand margin + no clipping
+  geom_vline(xintercept = kohl_mean$median_laenge, 
+             color = "darkred", lty = 4, size = 1.3) +
+  geom_vline(xintercept = step_mean$median_laenge, 
+             color = "darkgreen", lty = 4, size = 1.3) +
+  geom_vline(xintercept = spiegel_mean$median_laenge, 
+             color = "magenta", lty = 4, size = 1.3) +
+  labs(x = "Tokens (Wörter + Interpunktionszeichen)", 
+       y = "Anteil", 
+       title = "Äußerungslänge in _Kohlhaas_, _Steppenwolf_ und _Spiegel_-Artikeln",
+       subtitle = "Normalverteilung mit Spiegel-Werten für _mean_ und _sd_ in roter Farbe",
+       caption = mycaption
+       ) +
+  theme_light() +
+  theme(legend.position = "top", 
+        plot.margin = margin(10, 10, 5, 10),
+        plot.title=element_markdown(size=18, color = "darkred"),
+        plot.title.position = "plot",
+        plot.caption = element_markdown(color = "darkgreen"),
+        axis.title.y=element_text(size = 12, vjust=+0.2),
+        axis.title.x=element_text(size = 12, vjust=-0.2),
+        axis.text.y=element_text(size = 10),
+        axis.text.x=element_text(size = 10)#,
+        # panel.grid.major = element_blank(),
+        # panel.grid.minor = element_blank()
+        )
+ggsave("pictures/kohlhaas_steppenwolf_spiegel_utterance_length.png")
+ggksp
+```
+
+Mit logarithmierter x-Achsenskala (bei Verwendung des Datensatzes *utter_length*). 
+
+```{r message=FALSE, warning=FALSE}
+ggksp2 <- utter_length %>% 
+  filter(Tokens < 200 & Tokens > 0) %>% 
+  ggplot() +
+  geom_density(aes(Tokens, fill = doc_id), alpha = .4) +
+  scale_fill_manual(name = "Texte",
+                    labels = c("Kohlhaas", "Steppenwolf", "Spiegel"),
+                    values = c("darkred", "darkgreen", "magenta")) +
+  scale_x_log10(breaks = breaks_log(n = 10, base = 10)) +
+  # scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  # expand_limits(x = c(1,200), y = c(0, 0.03)) +
+  coord_cartesian(expand = FALSE, 
+                  clip = "off") + # don't expand margin + no clipping
+  geom_vline(xintercept = kohl_mean$median_laenge, 
+             color = "darkred", lty = 4, size = 1.3) +
+  geom_vline(xintercept = step_mean$median_laenge, 
+             color = "darkgreen", lty = 4, size = 1.3) +
+  geom_vline(xintercept = spiegel_mean$median_laenge, 
+             color = "magenta", lty = 4, size = 1.3) +
+  labs(x = "Tokens (Wörter + Interpunktionszeichen)", 
+       y = "Anteil", 
+       title = "Äußerungslänge in _Kohlhaas_, _Steppenwolf_ und _Spiegel_-Artikeln",
+       caption = mycaption) +
+  theme_light() +
+  theme(legend.position = "top", 
+        plot.margin = margin(10, 10, 5, 10),
+        plot.title=element_markdown(size=18, color = "darkred"),
+        plot.title.position = "plot",
+        plot.caption = element_markdown(color = "darkgreen"),
+        axis.title.y=element_text(size = 12, vjust=+0.2),
+        axis.title.x=element_text(size = 12, vjust=-0.2),
+        axis.text.y=element_text(size = 10),
+        axis.text.x=element_text(size = 10)#,
+        # panel.grid.major = element_blank(),
+        # panel.grid.minor = element_blank()
+        )
+ggsave("pictures/kohlhaas_steppenwolf_spiegel_utterance_length2.png")
+ggksp2
+```
+
+
+Mit dem Package `(patchwork)` kann man eine Collage der graphischen Darstellungen zusammenstellen. 
+
+```{r message=FALSE, warning=FALSE}
+library(patchwork)
+p2 <- (ggk+labs(x = "", caption = "")) / (ggs+labs(x = "", caption = "")) / ggsp
+ggsave("pictures/patch1_utterances_kohlhaas_steppenwolf.png")
+p2
+```

@@ -16,7 +16,7 @@ opt$threads = 10
 
 ## Branje podatkovnega niza
 
-Uporabljamo zbirko člankov iz nemškega časnika *Der Spiegel*. Zbirka je shranjena v obliki `rds`. Datoteko odpremo s funkcijo `readRDS()` ali `read_rds()`. Slednja je na razpolago, če smo prej zagnali knjižnico `library(tidyverse)`. 
+Uporabljamo zbirko člankov iz nemškega časnika *Der Spiegel*. Zbirka je shranjena v obliki `rds`. Datoteko odpremo s funkcijo `readRDS()` ali `read_rds()`. Slednja je na razpolago, če smo prej zagnali knjižnico `(tidyverse)`. 
 
 ```{r message=FALSE, warning=FALSE}
 ausland2 <- readRDS("data/spiegel_politik_deutschland2.rds")
@@ -24,7 +24,7 @@ ausland2 <- readRDS("data/spiegel_politik_deutschland2.rds")
 
 ## Ustvarjanje jezikovnega gradiva
 
-Ustvarimo jezikovno gradivo s funkcijo `corpus()`, ki je sestavni del knjižnice `quanteda`. Ime novega korpus naj bo *aus2*.
+Ustvarimo jezikovno gradivo s funkcijo `corpus()`, ki je sestavni del knjižnice `quanteda`. Ime novega korpusa naj bo *aus2*.
 
 ```{r message=FALSE, warning=FALSE}
 aus2 <- corpus(ausland2)
@@ -34,9 +34,16 @@ aus2 <- corpus(ausland2)
 
 Korpus je osnova za sestavo seznama pojavnic. Za to nalogo imamo v knjižnici `quanteda` funkcijo `tokens()`. S to funkcijo lahko odstranimo tudi sestavne dele besedil, ki jih za sestavo slovarja ne potrebujemo, in sicer s funkcijami `remove_...`.
 
+Funkcija `proc.time()` ni nujno potrebna, uporabljamo jo le za ponazorilo, kako lahko izmerimo trajanje postopka.
+
 ```{r message=FALSE, warning=FALSE}
+start <- proc.time()
+
 toks.aus2 <- tokens(aus2, remove_punct = T, remove_numbers = T, remove_symbols = T, remove_url = T,
                     remove_separators = T)
+
+end <- proc.time()
+print(end - start)
 ```
 
 ## Besedilno besedna matrika
@@ -62,11 +69,14 @@ consclust <- dfmaust %>%
 consclust %>% slice_sample(n = 10) %>% pull()
 ```
 
-Še ena možnost bi bilo dodajanje stolpca, v katerem je naveden končni soglaniški sklop besedne oblike. 
+V naslednjem koraku bomo povečali število končnih soglasniških sklopov. S pomočjo **regularnega izraza** bomo dodali bomo stolpec s končnim soglasniškim sklopom besedne oblike. Regularni izraz je sestavljen iz dveh parov oglatih oklepajev, v katerih so nanizani soglasniki, ki so programu na izbiro za sestavo sklopa, in znakom za dolar `$`, ki označuje konec znakovnega niza. Dodajamo tudi stolpec, ki vsebuje obrnjene besedne oblike. 
+
+Podatkovni niz conclust prikazujemo s funkcijo `datatable()` knjižnice `DT`, ki omogoča filtriranje in shranjevanje tabele. 
 
 ```{r message=FALSE, warning=FALSE}
 consclust <- dfmaust %>% 
   distinct(Tokens) %>% 
+  mutate(Reversed = stri_reverse(Tokens)) %>% 
   mutate(final_cluster = str_extract(Tokens, 
                          "[bdfghklmnprstz][bdfghklmnprstz]$")) %>% 
   filter(!is.na(final_cluster))
@@ -88,14 +98,24 @@ consclust %>%
                 styleEqual(c(0, 1), c('gray30', 'lightblue')))
 ```
 
-Pridobljene besede s končnimi soglasniškimi sklopi bi lahko shranili v obliki tabele ali seznama na disk. 
+Če bi v odzadnjem slovarju želeli zbrati le slovarske enote (leme) namesto besednih oblik, potem bi potrebovali knjižnico `udpipe` ali `spacyr` za lematizacijo besednih oblik. 
+
+
+## Izvoz odzadnjega slovarja
+
+Pridobljene besede s končnimi soglasniškimi sklopi shranimo v obliki tabele ali seznama na disk. 
 
 ```{r}
 library(writexl)
 write_xlsx(consclust, "data/words_final_consonant_clusters.xlsx")
 ```
 
-Vendar glede na naš zgoraj navedeni cilj, da naj bo odzadnji slovar dostopen zunaj programskega okolja `R`, nadaljujemo prilagajanje tabele. 
+S tem so pridobili odzadnji slovar. V nadaljevanju je prikazan postopek z uporobo funkcije `kwic()` iz knjižnice `quanteda`.
+
+
+## Odzadnji slovar KWIC
+
+Nadaljujemo z besedilno besedno matriko (dfm), ki smo jo že sestavili. 
 
 S funkcijo `distinct()` poskrbimo za to, da v tabeli ni podvojenih izrazov, in s funkcijo `arrange(desc())` razvrščamo pojavnice padajoče. Nazadnje pa v oglatih oklepajih *dfmaust*`[, 1]` določimo, da želimo obržati le stolpec s pojavnicami.
 
@@ -105,25 +125,18 @@ dfmaust <- dfmaust %>%
   distinct() %>% 
   arrange(desc(Tokens))
 dfmaust <- dfmaust[,1]
-dfmaust[1:10]
-
 ```
+
 
 ## Obračanje pojavnic
 
 Knjižnica `stringi` ima funkcijo `stri_reverse()`, s katero obrnemo pojavnice. 
 
-Funkcijo `proc.time()` v tem primeru ni nujno potrebna, uporabljamo jo le za ponazorilo, kako lahko izvemo, koliko časa nek postopek traja.
-
 ```{r message=FALSE, warning=FALSE}
 library(stringi)
-
-start <- proc.time()
 final_result <- stri_reverse(dfmaust)
-end <- proc.time()
-
-print(end - start)
 ```
+
 
 ## Sestava slovarja
 
@@ -143,6 +156,7 @@ dict_rev <- cbind(dfmaust, final_result)
 dict_rev <- as_tibble(dict_rev)
 head(dict_rev) %>% rmarkdown::paged_table()
 ```
+
 
 ## Iskanje po slovarju
 
@@ -169,10 +183,12 @@ dict_both <- dict_both[, c(2,1,6,8)] %>%
   arrange(desc(pattern))
 
 head(dict_both) %>% rmarkdown::paged_table()
-
 ```
 
-## Izvoz slovarja
+Kwic slovar vsebuje tudi stolpec *docname* z navedbo besedila, iz katerega je vzeta besedna oblika s končnim soglasniškim sklopom. 
+
+
+## Izvoz kwic slovarja
 
 Obe obliki slovarja izvozimo s knjižnico `writexl`, tako da ju lahko odpremo v `Excelu` ali drugem tabelarnem programu. 
 
