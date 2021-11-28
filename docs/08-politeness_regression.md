@@ -84,13 +84,6 @@ Und noch eine Übersicht, die uns noch mehr zeigt, z.B. ob bestimmte Datenzellen
 
 ```r
 library(skimr)
-```
-
-```
-## Warning: package 'skimr' was built under R version 4.1.1
-```
-
-```r
 skim(politeness)
 ```
 

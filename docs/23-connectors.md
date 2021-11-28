@@ -62,8 +62,8 @@ x <- udpipe_annotate(udmodel_de, x = txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-11-20 02:26:16 Annotating text fragment 1/2
-## 2021-11-20 02:28:53 Annotating text fragment 2/2
+## 2021-11-28 22:04:35 Annotating text fragment 1/2
+## 2021-11-28 22:06:39 Annotating text fragment 2/2
 ```
 
 ```r

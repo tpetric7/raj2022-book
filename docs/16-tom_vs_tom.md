@@ -689,7 +689,7 @@ x <- udpipe_annotate(ud_en, # jezikovni model
 ```
 
 ```
-## 2021-11-20 00:33:39 Annotating text fragment 1/1
+## 2021-11-28 20:22:28 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -778,7 +778,7 @@ x <- udpipe_annotate(ud_de, # jezikovni model
 ```
 
 ```
-## 2021-11-20 00:34:59 Annotating text fragment 1/1
+## 2021-11-28 20:23:43 Annotating text fragment 1/1
 ```
 
 Pretvorba seznama v podatkovni niz s funkcijo *as.data.frame()*:
@@ -870,13 +870,6 @@ Izris in shranjevanje oblačka:
 ```r
 #install webshot
 library(webshot)
-```
-
-```
-## Warning: package 'webshot' was built under R version 4.1.1
-```
-
-```r
 # webshot::install_phantomjs()
 
 # Make the graph
@@ -891,13 +884,6 @@ my_graph = wordcloud2(topfeat_en)
 #                       color='random-light', backgroundColor="black") 
 # save it in html
 library(htmlwidgets)
-```
-
-```
-## Warning: package 'htmlwidgets' was built under R version 4.1.1
-```
-
-```r
 saveWidget(my_graph,"tmp.html",selfcontained = F)
 
 # png and pdf
@@ -1096,8 +1082,8 @@ textstat_lexdiv(matrika, measure = "all")
 
 ```
 ##     document       TTR         C        R     CTTR        U         S        K
-## 1 tom_de.txt 0.3120153 0.8878880 56.24243 39.76940 40.24348 0.9210789 10.44913
-## 2 tom_en.txt 0.2452145 0.8645934 44.02472 31.13018 33.29454 0.9033840 13.22338
+## 1 tom_de.txt 0.3120153 0.8878880 56.24243 39.76940 40.24348 0.9210789 10.14136
+## 2 tom_en.txt 0.2452145 0.8645934 44.02472 31.13018 33.29454 0.9033840 12.91314
 ##          I           D         Vm      Maas     lgV0    lgeV0
 ## 1 94.03320 0.001014167 0.03076157 0.1576348 8.707463 20.04968
 ## 2 45.73572 0.001291354 0.03458063 0.1733060 7.757339 17.86193
@@ -1112,8 +1098,8 @@ textstat_lexdiv(matrika_lem_de_en, measure = "all")
 
 ```
 ##   document       TTR         C        R     CTTR        U         S        K
-## 1   tom_de 0.2384871 0.8616471 42.39104 29.97499 32.52277 0.9009906 15.49656
-## 2   tom_en 0.1810230 0.8353586 32.50308 22.98315 27.38304 0.8805434 20.84018
+## 1   tom_de 0.2384871 0.8616471 42.39104 29.97499 32.52277 0.9009906 15.18006
+## 2   tom_en 0.1810230 0.8353586 32.50308 22.98315 27.38304 0.8805434 20.53000
 ##          I           D         Vm      Maas     lgV0    lgeV0
 ## 1 36.88205 0.001518054 0.03764229 0.1753502 7.639455 17.59049
 ## 2 15.76658 0.002053064 0.04373406 0.1910993 6.851152 15.77536

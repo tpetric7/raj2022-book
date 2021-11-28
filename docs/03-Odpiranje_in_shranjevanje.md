@@ -139,10 +139,6 @@ library(rvest)
 ```
 
 ```
-## Warning: package 'rvest' was built under R version 4.1.1
-```
-
-```
 ## 
 ## Attaching package: 'rvest'
 ```
@@ -269,7 +265,13 @@ url <-
 car_dataset <- read_delim(url, delim = ";",
                          # c = character, n = number
                          col_types = "cnnnnnnnn")
+```
 
+```
+## Warning: One or more parsing issues, see `problems()` for details
+```
+
+```r
 car_dataset <- read_csv2(url, 
                          # c = character, n = number
                          col_types = "cnnnnnnnn")
@@ -279,13 +281,13 @@ car_dataset <- read_csv2(url,
 ## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
 ```
 
+```
+## Warning: One or more parsing issues, see `problems()` for details
+```
+
 ```r
 car_dataset <- car_dataset[-1,] # remove first row after column name
 head(car_dataset)
-```
-
-```
-## Warning: One or more parsing issues, see `problems()` for details
 ```
 
 ```
@@ -478,17 +480,18 @@ seznam
 ```
 
 ```
-##  [1] "data/books/kleist/Kleist_Kohlhaas_Projekt_Gutenberg.txt"
-##  [2] "data/books/kleist/Michael_Kohlhaas_english.txt"         
-##  [3] "data/books/prozess.txt"                                 
-##  [4] "data/books/tom.txt"                                     
-##  [5] "data/books/translations/metamorph/metamorphosis.txt"    
-##  [6] "data/books/translations/metamorph/verwandlung.txt"      
-##  [7] "data/books/translations/prozess/prozess.txt"            
-##  [8] "data/books/translations/prozess/trial.txt"              
-##  [9] "data/books/translations/sawyer/tom_de.txt"              
-## [10] "data/books/translations/sawyer/tom_en.txt"              
-## [11] "data/books/verwandlung/verwandlung.txt"
+##  [1] "data/books/hesse/Hermann Hesse Der Steppenwolf.txt"     
+##  [2] "data/books/kleist/Kleist_Kohlhaas_Projekt_Gutenberg.txt"
+##  [3] "data/books/kleist/Michael_Kohlhaas_english.txt"         
+##  [4] "data/books/prozess.txt"                                 
+##  [5] "data/books/tom.txt"                                     
+##  [6] "data/books/translations/metamorph/metamorphosis.txt"    
+##  [7] "data/books/translations/metamorph/verwandlung.txt"      
+##  [8] "data/books/translations/prozess/prozess.txt"            
+##  [9] "data/books/translations/prozess/trial.txt"              
+## [10] "data/books/translations/sawyer/tom_de.txt"              
+## [11] "data/books/translations/sawyer/tom_en.txt"              
+## [12] "data/books/verwandlung/verwandlung.txt"
 ```
 
 
@@ -514,7 +517,7 @@ substr(alltxt[1], 1, 50)
 ```
 
 ```
-## [1] "c(\"Heinrich von Kleist\", \"Michael Kohlhaas\", \"Aus "
+## [1] "c(\"Hermann Hesse \", \"Der Steppenwolf \", \"\", \"Erzäh"
 ```
 
 ```r
@@ -522,7 +525,7 @@ substr(alltxt[2], 1, 70)
 ```
 
 ```
-## [1] "c(\"Michael Kohlhaas\", \"\", \"\", \"\\t\\t\\t\\t\\tHeinrich von Kleist\", \"\", \"\","
+## [1] "c(\"Heinrich von Kleist\", \"Michael Kohlhaas\", \"Aus einer alten Chronik\""
 ```
 
 ### Base R:
@@ -537,7 +540,7 @@ substr(alltxt[1], 1, 50)
 ```
 
 ```
-## [1] "c(\"Heinrich von Kleist\", \"Michael Kohlhaas\", \"Aus "
+## [1] "c(\"Hermann Hesse \", \"Der Steppenwolf \", \"\", \"ErzĂ¤"
 ```
 
 ```r
@@ -545,7 +548,7 @@ substr(alltxt[2], 1, 70)
 ```
 
 ```
-## [1] "c(\"Michael Kohlhaas\", \"\", \"\", \"\\t\\t\\t\\t\\tHeinrich von Kleist\", \"\", \"\","
+## [1] "c(\"Heinrich von Kleist\", \"Michael Kohlhaas\", \"Aus einer alten Chronik\""
 ```
 
 ## Pretvorba kodne strani

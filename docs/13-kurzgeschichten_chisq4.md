@@ -455,16 +455,16 @@ kurzstats %>% slice_sample(n = 10)
 ## # A tibble: 10 x 4
 ##    Text        Types Tokens Sentences
 ##    <chr>       <int>  <int>     <int>
-##  1 borchert.74     6      6         1
-##  2 morgner.59      8      8         1
-##  3 borchert.40     9      9         1
-##  4 borchert.64     5      5         1
-##  5 borchert.67     6      6         1
-##  6 morgner.84     23     28         1
-##  7 morgner.27      8      8         1
-##  8 borchert.12    13     13         1
-##  9 borchert.38    11     11         1
-## 10 morgner.3      13     13         1
+##  1 morgner.9      18     24         1
+##  2 morgner.6       9      9         1
+##  3 borchert.35     7      7         1
+##  4 borchert.79     9      9         1
+##  5 morgner.8      11     11         1
+##  6 borchert.75    21     22         1
+##  7 borchert.63     7      7         1
+##  8 morgner.97      9      9         1
+##  9 morgner.51      2      2         1
+## 10 morgner.39     19     20         1
 ```
 
 Daraus kann man die durchschnittliche Äußerungslänge der beiden Texte berechnen. Eine ähnliche `quanteda`-Funktion ist `textstat_summary()`.
@@ -476,12 +476,12 @@ textstat_summary(kurzkorp) %>% slice_sample(n = 6)
 
 ```
 ##      document chars sents tokens types puncts numbers symbols urls tags emojis
-## 1 borchert.84    22     1      6     6      1       0       0    0    0      0
-## 2  morgner.76    39     1      9     9      2       0       0    0    0      0
-## 3  morgner.23    21     1      7     7      4       0       0    0    0      0
-## 4  morgner.62    29     1      6     6      1       0       0    0    0      0
-## 5  morgner.51     6     1      2     2      1       0       0    0    0      0
-## 6 borchert.67    20     1      6     6      2       0       0    0    0      0
+## 1 borchert.89    39     1      9     9      2       0       0    0    0      0
+## 2 borchert.67    20     1      6     6      2       0       0    0    0      0
+## 3  morgner.12    64     1     17    16      5       0       0    0    0      0
+## 4  morgner.16    43     1     12    11      4       0       0    0    0      0
+## 5  morgner.46    43     1      5     5      1       0       0    0    0      0
+## 6 borchert.70    29     1      7     7      1       0       0    0    0      0
 ```
 
 Um einen t-Test durchzuführen, berechnen wir auch die Standardabweichung (also eine Größe, die Auskunft darüber gibt, wie stark die einzelnen Äußerungslängen vom Durchschnitt abweichen). Die statistische Funktion `t.test()` erledigt das für uns.
@@ -500,12 +500,12 @@ kurzstats %>% slice_sample(n = 6)
 ## # A tibble: 6 x 5
 ##   doc_id   number Types Tokens Sentences
 ##   <chr>    <chr>  <int>  <int>     <int>
-## 1 borchert 48         6      6         1
-## 2 morgner  25         3      3         1
-## 3 borchert 23        10     10         1
-## 4 morgner  82        26     28         1
-## 5 morgner  1          7      7         1
-## 6 borchert 2         19     22         1
+## 1 borchert 34        20     20         1
+## 2 morgner  99        27     34         1
+## 3 borchert 48         6      6         1
+## 4 morgner  12        16     17         1
+## 5 morgner  28         4      4         1
+## 6 morgner  97         9      9         1
 ```
 
 Wir führen einen *t-Test* mit zwei *unabhängigen Stichproben* (d.h. unseren beiden Kurzgeschichten) durch. 
