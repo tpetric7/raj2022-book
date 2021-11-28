@@ -654,7 +654,7 @@ spiegeltab <- spiegelstats %>%
 ## Speichern der Tabelle
 
 ```{r message=FALSE, warning=FALSE}
-write_csv(spiegeltab, "data/spiegel_ausland2_tabelle.csv")
+# write_csv(spiegeltab, "data/spiegel_ausland2_tabelle.csv")
 # write_rds(spiegeltab, "data/spiegel_ausland2_tabelle.rds")
 ```
 
