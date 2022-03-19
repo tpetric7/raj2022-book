@@ -1,5 +1,5 @@
 ---
-title: "Computergestütze Textanalyse mit R"
+title: "Computergestützte Textanalyse mit R"
 author: "Teodor Petrič"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

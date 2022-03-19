@@ -46,7 +46,9 @@ wd <- getwd()
 wdd <- paste0(wd,"/data/szagun/")
 setwd(wdd)
 
-data.files = list.files(pattern = "*.xlsx", recursive = FALSE) # TRUE if subdirectories included
+data.files = list.files(path = wdd, pattern = "\\.xlsx", 
+                        full.names = TRUE,
+                        recursive = FALSE) # TRUE if subdirectories included
 data <- lapply(data.files, readxl::read_excel, skip = 3)
 # data
 
@@ -72,12 +74,12 @@ szagun <- data.frame()
 for(i in 1:length(data)){
   f <- data[i] %>% 
     as.data.frame() %>% as_tibble() %>% clean_names() %>%
-    select(-c(language, corpus, sex, group, race, ses, role, 
+    dplyr::select(-c(language, corpus, sex, group, race, ses, role, 
               education, custom_field)) %>%
     rename(utterances = starts_with("x_")) %>% 
     # mutate(des = ifelse("des" %in% names(.), des, NA)) %>% # add missing column "des" (but this doesn't work)
     separate(file, into = c("id", "location"), sep = ",") %>%
-    select(-location) %>%
+    dplyr::select(-location) %>%
     rename(ageof = age) %>%
     separate(id, into = c("id", "age"), sep = "_")
   
@@ -90,6 +92,12 @@ for(i in 1:length(data)){
 
 szagun <- szagun %>% 
   mutate(ttr = as.numeric(ttr))
+
+szagun <- szagun %>% 
+  rename(age1 = age, age = ageof) %>% 
+  mutate(age = age1) %>% 
+  mutate(age = paste0(str_sub(age, 1, 1), ";",  
+         str_sub(age, 2, 3), ".", str_sub(age, 4, 5)))
 ```
 
 Die gemeinsamen Spalten in Datensätzen (hier: *f*) kann man übrigens mit der Funktion `intersect()` herausfinden.
@@ -105,21 +113,27 @@ Hier ist nun die gesamte Tabelle (mit 6 Kindern und 6 Erwachsenen) für den von 
 ```{r message=FALSE, warning=FALSE}
 library(DT)
 szagun %>% 
-  # DT::datatable(slcas_stat, fillContainer = TRUE, filter = "top",
-  #               options = list(pageLength = 4))
-  DT::datatable(
-    filter = "top", fillContainer = TRUE, 
-    extensions = 'Buttons', "ColReorder", 
-    options = list(pageLength = 10, 
-                   colReorder = TRUE, 
-                   dom = 'Bfrtip', 
-                   buttons = c(
-                     'colvis','copy', 'csv', 'excel', 
-                     'pdf', 'print'))) %>% 
-  formatStyle("id", 
-              target = 'row',
-              backgroundColor = styleEqual(
-                c(0, 1), c('gray30', 'lightblue')))
+  DT::datatable(filter = "top", fillContainer = T,
+              extensions = c('Buttons', "ColReorder", "RowReorder",
+                             'FixedColumns', "KeyTable", "Scroller"),
+              options = list(pageLength = 10, 
+                             autowidth = TRUE,
+                             colReorder = TRUE, 
+                             rowReorder = TRUE, order = list(c(0, 'asc')),
+                             keys = TRUE,
+                             deferRender = TRUE,
+                             scrollY = 600, scroller = TRUE,
+                             scrollX = TRUE,
+                             fixedColumns = 
+                               list(leftColumns = 2, rightColumns = 1),
+                             dom = 'Bfrtip', # Bfrtip or t
+    buttons = c('colvis','copy', 'csv', 'excel', 'pdf', 'print')
+  )) %>%
+  formatStyle("id",
+  target = 'row',
+  backgroundColor = styleEqual(c(0, 1), c('gray30', 'lightblue')))
+
+writexl::write_xlsx(szagun, "data/Kapitel 9 Spracherwerbsdaten Computergestütze Textanalyse mit R.xlsx")
 ```
 
 In der Gesamttabelle haben wir einen Fehler, den wir noch berichtigen müssen. Für die Mütter stehen uns nicht für jeden Monat Zahlen zur Verfügung. Dieser Zuordnungsfehler (MOT-Daten bei CHI zugeordnet) ist in der Graphik mit `plotly` (s.u.) bemerkbar. Außerdem gibt es auch kleinere monatliche Unterschiede bei den Kindern. Die Altersangaben müssen wir demnach vereinfachen (nur Jahr und Monat, eventuell auch bestimmte Monate zusammenfassen).
@@ -129,42 +143,90 @@ Das lassen wir im Augenblick noch außer Acht.
 ## 1. Häufigkeit insgesamt
 
 ```{r message=FALSE, warning=FALSE}
-(gesamt <- szagun %>% 
-   pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
-   group_by(age, code, d_wort) %>% 
-   summarise(avg_freq = mean(freq/utterances)) %>% 
-   ggplot(aes(age, avg_freq, group = code, fill = d_wort)) +
-   geom_col() +
-   geom_smooth(se = F) +
-   scale_y_continuous(labels = label_percent(accuracy = 1)) +
-   theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
-   facet_wrap(~ code, dir = "v")
- )
-ggsave(plot = gesamt, filename ="pictures/szagun_gesamtfrequenz.jpg", dpi = 300)
-    
+children <- szagun %>% 
+  filter(code == "CHI") %>% 
+  pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
+  group_by(age, code, d_wort) %>% 
+  summarise(avg_freq = mean(freq/utterances)) %>% 
+  ggplot(aes(age, avg_freq, group = code, fill = d_wort)) +
+  geom_col() +
+  geom_smooth(se = F) +
+  scale_y_continuous(labels = label_percent(accuracy = 1)) +
+  labs(y = "mean frequency") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) 
+
+ggsave(plot = children, 
+       filename ="pictures/szagun_gesamtfrequenz_kinder.jpg", 
+       dpi = 300)
+children
+
+library(plotly)
+ggplotly(children)
 ```
 
 ```{r message=FALSE, warning=FALSE}
+mothers <- szagun %>% 
+  filter(code != "CHI") %>% 
+  pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
+  group_by(age, code, d_wort) %>% 
+  summarise(avg_freq = mean(freq/utterances)) %>% 
+  ggplot(aes(age, avg_freq, group = code, fill = d_wort)) +
+  geom_col() +
+  geom_smooth(se = F) +
+  scale_y_continuous(labels = label_percent(accuracy = 1)) +
+  labs(y = "mean frequency") +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+ggsave(plot = mothers, 
+       filename ="pictures/szagun_gesamtfrequenz_muetter.jpg", 
+       dpi = 300)
+mothers
+
 library(plotly)
-ggplotly(gesamt)
+ggplotly(mothers)
 ```
+
+
+
+```{r message=FALSE, warning=FALSE}
+library(patchwork)
+gesamt1 <- (children + theme(legend.position = "top", 
+                  axis.ticks.x = element_blank(),
+                  axis.text.x = element_blank(), 
+                  axis.title.x = element_blank()) +
+    guides(fill = guide_legend(nrow = 1))) / 
+  (mothers + theme(legend.position = "none"))
+
+ggsave(plot = gesamt1, filename ="pictures/szagun_gesamtfrequenz.jpg", dpi = 300)
+
+gesamt1    
+```
+
 
 ## 2. Welche d-Form am häufigsten?
 
 ```{r message=FALSE, warning=FALSE}
-(topn <- szagun %>% 
+topn <- szagun %>% 
   pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
   group_by(code, d_wort) %>% 
-  add_count(d_wort) %>% 
-  summarise(pct = sum(freq) / n) %>% 
+  add_count(code) %>% 
+  summarise(freqsum = sum(freq)) %>% 
+  mutate(pct = freqsum/sum(freqsum)) %>% 
   mutate(d_wort = fct_reorder(d_wort, pct)) %>% 
-  ggplot(aes(pct, code, fill = d_wort)) +
-  geom_col(position = "fill") +
-  scale_x_continuous(labels = label_percent())
-)
+  ggplot(aes(pct, d_wort, color = code)) +
+  # geom_col(position = "dodge", color = "black") +
+  geom_segment(aes(yend = d_wort, xend = 0), size = 2) +
+  geom_point(size = 6) +
+  geom_point(size = 2, color = "black") +
+  scale_x_continuous(labels = label_percent()) +
+  # guides(fill = guide_legend(nrow = 1)) +
+  theme(legend.position = "none") +
+  # labs(fill = "d-Wort: ") +
+  facet_wrap(~ code, dir = "v")
 
 ggsave(plot = topn, filename ="pictures/szagun_frequenzverteilung.jpg", dpi = 300)
 
+topn
 ```
 
 
@@ -172,8 +234,8 @@ ggsave(plot = topn, filename ="pictures/szagun_frequenzverteilung.jpg", dpi = 30
 d <- szagun %>% 
   pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
   group_by(code, d_wort) %>% 
-  summarise(pct = sum(freq)) %>% 
-  pivot_wider(names_from = code, values_from = pct)
+  summarise(freqsum = sum(freq)) %>% 
+  pivot_wider(names_from = code, values_from = freqsum)
 
 d %>% 
   arrange(-CHI) %>% 
@@ -181,10 +243,23 @@ d %>%
 ```
 Sowohl bei den Kindern (CHI) als auch bei den Müttern (MOT) ergibt sich fast dieselbe Reihenfolge der Häufigkeiten. Der auffälligste Unterschied ist der zwischen den Häufigkeiten von *des* und *dem*. 
 
+```{r message=FALSE, warning=FALSE}
+d_dem <- szagun %>% 
+  pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
+  group_by(code, d_wort) %>% 
+  summarise(freqsum = sum(freq)) %>% 
+  mutate(d_wort = ifelse(d_wort == "dem", "dem", "andere")) %>% 
+  group_by(code, d_wort) %>% 
+  summarise(freqsum = sum(freqsum)) %>% 
+  pivot_wider(names_from = code, values_from = freqsum)
+d_dem
+```
+
+
 Mit dem $\chi^2$-Quadrat-Test kann man prüfen, ob die beiden Stichproben statistisch signifikant unterschiedlich sind.
 
 ```{r message=FALSE, warning=FALSE}
-chires <- chisq.test(d[,-1], B = 2000) # B: mit Monte Carlo test
+chires <- chisq.test(d_dem[,-1], B = 2000) # B: mit Monte Carlo test
 chires
 ```
 
@@ -194,7 +269,7 @@ observed <- chires$observed %>% as_tibble() %>% round(0) %>%
 expected <- chires$expected %>% as_tibble() %>% round(0) %>% 
   rename(CHI_exp = CHI, MOT_exp = MOT)
 
-frequenztabelle <- bind_cols(d[,1], observed, expected)
+frequenztabelle <- bind_cols(d_dem[,1], observed, expected)
 
 frequenztabelle %>% 
   arrange(-CHI_obs) %>% 
@@ -208,8 +283,11 @@ szagun %>%
   filter(id == "Rahel") %>% 
   pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
   group_by(code, d_wort) %>% 
-  summarise(freqs = sum(freq)) %>% 
-  pivot_wider(names_from = code, values_from = freqs) %>% 
+  summarise(freqsum = sum(freq)) %>% 
+  mutate(d_wort = ifelse(d_wort == "dem", "dem", "andere")) %>% 
+  group_by(code, d_wort) %>% 
+  summarise(freqsum = sum(freqsum)) %>% 
+  pivot_wider(names_from = code, values_from = freqsum) %>% 
   select(-d_wort) %>% 
   chisq.test(.)
 
@@ -222,8 +300,8 @@ szagun %>%
   filter(id == "Soeren") %>% 
   pivot_longer(das:die, names_to = "d_wort", values_to = "freq") %>% 
   group_by(code, d_wort) %>% 
-  summarise(freqs = sum(freq)) %>% 
-  pivot_wider(names_from = code, values_from = freqs)
+  summarise(freqsum = sum(freq)) %>% 
+  pivot_wider(names_from = code, values_from = freqsum)
 
 ```
 
