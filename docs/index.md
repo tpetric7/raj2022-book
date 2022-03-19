@@ -1,5 +1,5 @@
 ---
-title: "Computergestütze Textanalyse mit R"
+title: "Computergestützte Textanalyse mit R"
 author: "Teodor Petrič"
 date: "2022-03-19"
 site: bookdown::bookdown_site

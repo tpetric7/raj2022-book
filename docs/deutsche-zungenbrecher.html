@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 17 Deutsche Zungenbrecher | Computergestütze Textanalyse mit R</title>
-  <meta name="description" content="Kapitel 17 Deutsche Zungenbrecher | Computergestütze Textanalyse mit R" />
+  <title>Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R</title>
+  <meta name="description" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestütze Textanalyse mit R" />
+  <meta property="og:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestütze Textanalyse mit R" />
+  <meta name="twitter:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
   
   
   <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
@@ -80,6 +80,16 @@
 <script src="libs/dt-ext-buttons-1.11.3/js/buttons.html5.min.js"></script>
 <script src="libs/dt-ext-buttons-1.11.3/js/buttons.colVis.min.js"></script>
 <script src="libs/dt-ext-buttons-1.11.3/js/buttons.print.min.js"></script>
+<link href="libs/dt-ext-colreorder-1.11.3/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-colreorder-1.11.3/js/dataTables.colReorder.min.js"></script>
+<link href="libs/dt-ext-rowreorder-1.11.3/css/rowReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-rowreorder-1.11.3/js/dataTables.rowReorder.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.11.3/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.11.3/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/dt-ext-keytable-1.11.3/css/keyTable.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-keytable-1.11.3/js/dataTables.keyTable.min.js"></script>
+<link href="libs/dt-ext-scroller-1.11.3/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-scroller-1.11.3/js/dataTables.scroller.min.js"></script>
 <link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
 <script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
 <script src="libs/wordcloud2-0.0.1/hover.js"></script>
@@ -551,7 +561,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestütze Textanalyse mit R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestützte Textanalyse mit R</a>
           </h1>
         </div>
 
@@ -566,138 +576,138 @@ div.csl-indent {
 - Webadresse: <a href="https://www.youtube.com/watch?v=wuK_znJRKhU" class="uri">https://www.youtube.com/watch?v=wuK_znJRKhU</a></p>
 <div id="programme-laden-3" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> Programme laden<a href="deutsche-zungenbrecher.html#programme-laden-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="deutsche-zungenbrecher.html#cb1240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1240-2"><a href="deutsche-zungenbrecher.html#cb1240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1240-3"><a href="deutsche-zungenbrecher.html#cb1240-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1240-4"><a href="deutsche-zungenbrecher.html#cb1240-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1240-5"><a href="deutsche-zungenbrecher.html#cb1240-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code></pre></div>
+<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="deutsche-zungenbrecher.html#cb1244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1244-2"><a href="deutsche-zungenbrecher.html#cb1244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1244-3"><a href="deutsche-zungenbrecher.html#cb1244-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1244-4"><a href="deutsche-zungenbrecher.html#cb1244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1244-5"><a href="deutsche-zungenbrecher.html#cb1244-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code></pre></div>
 </div>
 <div id="tabelle-laden" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Tabelle laden<a href="deutsche-zungenbrecher.html#tabelle-laden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wir laden die gemeinsame Google-Tabelle:</p>
-<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="deutsche-zungenbrecher.html#cb1241-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/Zungenbrecher.xlsx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1241-2"><a href="deutsche-zungenbrecher.html#cb1241-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
-<span id="cb1241-3"><a href="deutsche-zungenbrecher.html#cb1241-3" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, <span class="fu">as.numeric</span>(.))))</span></code></pre></div>
+<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="deutsche-zungenbrecher.html#cb1245-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/Zungenbrecher.xlsx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1245-2"><a href="deutsche-zungenbrecher.html#cb1245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb1245-3"><a href="deutsche-zungenbrecher.html#cb1245-3" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, <span class="fu">as.numeric</span>(.))))</span></code></pre></div>
 </div>
 <div id="eda" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> EDA<a href="deutsche-zungenbrecher.html#eda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="deutsche-zungenbrecher.html#cb1242-1" aria-hidden="true" tabindex="-1"></a>tabelle1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1242-2"><a href="deutsche-zungenbrecher.html#cb1242-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1242-3"><a href="deutsche-zungenbrecher.html#cb1242-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1242-4"><a href="deutsche-zungenbrecher.html#cb1242-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1242-5"><a href="deutsche-zungenbrecher.html#cb1242-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1242-6"><a href="deutsche-zungenbrecher.html#cb1242-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote))</span>
-<span id="cb1242-7"><a href="deutsche-zungenbrecher.html#cb1242-7" aria-hidden="true" tabindex="-1"></a>tabelle1</span></code></pre></div>
+<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="deutsche-zungenbrecher.html#cb1246-1" aria-hidden="true" tabindex="-1"></a>tabelle1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1246-2"><a href="deutsche-zungenbrecher.html#cb1246-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1246-3"><a href="deutsche-zungenbrecher.html#cb1246-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb1246-4"><a href="deutsche-zungenbrecher.html#cb1246-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb1246-5"><a href="deutsche-zungenbrecher.html#cb1246-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb1246-6"><a href="deutsche-zungenbrecher.html#cb1246-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote))</span>
+<span id="cb1246-7"><a href="deutsche-zungenbrecher.html#cb1246-7" aria-hidden="true" tabindex="-1"></a>tabelle1</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##   Fehler Fehlerzeit Fehler_sd Fehlerzeit_sd
 ##    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
 ## 1   1.11      4826.      1.10         2058.</code></pre>
 <p>Im Durchschnitt etwa <code>{Fehler}</code> Versprecher pro Zungenbrecher.
 Im Durchschnitt alle <code>{Fehlerzeit}</code> Millisekunden ein Versprecher.</p>
-<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="deutsche-zungenbrecher.html#cb1244-1" aria-hidden="true" tabindex="-1"></a>Fehler_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler</span>
-<span id="cb1244-2"><a href="deutsche-zungenbrecher.html#cb1244-2" aria-hidden="true" tabindex="-1"></a>Fehler_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler_sd</span>
-<span id="cb1244-3"><a href="deutsche-zungenbrecher.html#cb1244-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1244-4"><a href="deutsche-zungenbrecher.html#cb1244-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-5"><a href="deutsche-zungenbrecher.html#cb1244-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-6"><a href="deutsche-zungenbrecher.html#cb1244-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-7"><a href="deutsche-zungenbrecher.html#cb1244-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1244-8"><a href="deutsche-zungenbrecher.html#cb1244-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1244-9"><a href="deutsche-zungenbrecher.html#cb1244-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1244-10"><a href="deutsche-zungenbrecher.html#cb1244-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
-<span id="cb1244-11"><a href="deutsche-zungenbrecher.html#cb1244-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-12"><a href="deutsche-zungenbrecher.html#cb1244-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehler, ZungenbrNummer)) <span class="sc">+</span></span>
-<span id="cb1244-13"><a href="deutsche-zungenbrecher.html#cb1244-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehler <span class="sc">-</span> Fehler_sd,</span>
-<span id="cb1244-14"><a href="deutsche-zungenbrecher.html#cb1244-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehler <span class="sc">+</span> Fehler_sd)) <span class="sc">+</span></span>
-<span id="cb1244-15"><a href="deutsche-zungenbrecher.html#cb1244-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1244-16"><a href="deutsche-zungenbrecher.html#cb1244-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">+</span> Fehler_sd_insgesamt, </span>
-<span id="cb1244-17"><a href="deutsche-zungenbrecher.html#cb1244-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1244-18"><a href="deutsche-zungenbrecher.html#cb1244-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">-</span> Fehler_sd_insgesamt, </span>
-<span id="cb1244-19"><a href="deutsche-zungenbrecher.html#cb1244-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1244-20"><a href="deutsche-zungenbrecher.html#cb1244-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1244-21"><a href="deutsche-zungenbrecher.html#cb1244-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1244-22"><a href="deutsche-zungenbrecher.html#cb1244-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1244-23"><a href="deutsche-zungenbrecher.html#cb1244-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span>
-<span id="cb1244-24"><a href="deutsche-zungenbrecher.html#cb1244-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl.png&quot;</span>)</span>
-<span id="cb1244-25"><a href="deutsche-zungenbrecher.html#cb1244-25" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="deutsche-zungenbrecher.html#cb1248-1" aria-hidden="true" tabindex="-1"></a>Fehler_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler</span>
+<span id="cb1248-2"><a href="deutsche-zungenbrecher.html#cb1248-2" aria-hidden="true" tabindex="-1"></a>Fehler_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler_sd</span>
+<span id="cb1248-3"><a href="deutsche-zungenbrecher.html#cb1248-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1248-4"><a href="deutsche-zungenbrecher.html#cb1248-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1248-5"><a href="deutsche-zungenbrecher.html#cb1248-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb1248-6"><a href="deutsche-zungenbrecher.html#cb1248-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1248-7"><a href="deutsche-zungenbrecher.html#cb1248-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb1248-8"><a href="deutsche-zungenbrecher.html#cb1248-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb1248-9"><a href="deutsche-zungenbrecher.html#cb1248-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb1248-10"><a href="deutsche-zungenbrecher.html#cb1248-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
+<span id="cb1248-11"><a href="deutsche-zungenbrecher.html#cb1248-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1248-12"><a href="deutsche-zungenbrecher.html#cb1248-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehler, ZungenbrNummer)) <span class="sc">+</span></span>
+<span id="cb1248-13"><a href="deutsche-zungenbrecher.html#cb1248-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehler <span class="sc">-</span> Fehler_sd,</span>
+<span id="cb1248-14"><a href="deutsche-zungenbrecher.html#cb1248-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehler <span class="sc">+</span> Fehler_sd)) <span class="sc">+</span></span>
+<span id="cb1248-15"><a href="deutsche-zungenbrecher.html#cb1248-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1248-16"><a href="deutsche-zungenbrecher.html#cb1248-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">+</span> Fehler_sd_insgesamt, </span>
+<span id="cb1248-17"><a href="deutsche-zungenbrecher.html#cb1248-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1248-18"><a href="deutsche-zungenbrecher.html#cb1248-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">-</span> Fehler_sd_insgesamt, </span>
+<span id="cb1248-19"><a href="deutsche-zungenbrecher.html#cb1248-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1248-20"><a href="deutsche-zungenbrecher.html#cb1248-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1248-21"><a href="deutsche-zungenbrecher.html#cb1248-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1248-22"><a href="deutsche-zungenbrecher.html#cb1248-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1248-23"><a href="deutsche-zungenbrecher.html#cb1248-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span>
+<span id="cb1248-24"><a href="deutsche-zungenbrecher.html#cb1248-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl.png&quot;</span>)</span>
+<span id="cb1248-25"><a href="deutsche-zungenbrecher.html#cb1248-25" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
 <p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="deutsche-zungenbrecher.html#cb1245-1" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit</span>
-<span id="cb1245-2"><a href="deutsche-zungenbrecher.html#cb1245-2" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit_sd</span>
-<span id="cb1245-3"><a href="deutsche-zungenbrecher.html#cb1245-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1245-4"><a href="deutsche-zungenbrecher.html#cb1245-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-5"><a href="deutsche-zungenbrecher.html#cb1245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-6"><a href="deutsche-zungenbrecher.html#cb1245-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-7"><a href="deutsche-zungenbrecher.html#cb1245-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1245-8"><a href="deutsche-zungenbrecher.html#cb1245-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1245-9"><a href="deutsche-zungenbrecher.html#cb1245-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1245-10"><a href="deutsche-zungenbrecher.html#cb1245-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
-<span id="cb1245-11"><a href="deutsche-zungenbrecher.html#cb1245-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-12"><a href="deutsche-zungenbrecher.html#cb1245-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerzeit, ZungenbrNummer)) <span class="sc">+</span></span>
-<span id="cb1245-13"><a href="deutsche-zungenbrecher.html#cb1245-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehlerzeit <span class="sc">-</span> Fehlerzeit_sd,</span>
-<span id="cb1245-14"><a href="deutsche-zungenbrecher.html#cb1245-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehlerzeit <span class="sc">+</span> Fehlerzeit_sd)) <span class="sc">+</span></span>
-<span id="cb1245-15"><a href="deutsche-zungenbrecher.html#cb1245-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1245-16"><a href="deutsche-zungenbrecher.html#cb1245-16" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1245-17"><a href="deutsche-zungenbrecher.html#cb1245-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1245-18"><a href="deutsche-zungenbrecher.html#cb1245-18" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">+</span> Fehlerzeit_sd_insgesamt, </span>
-<span id="cb1245-19"><a href="deutsche-zungenbrecher.html#cb1245-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1245-20"><a href="deutsche-zungenbrecher.html#cb1245-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1245-21"><a href="deutsche-zungenbrecher.html#cb1245-21" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">-</span> Fehlerzeit_sd_insgesamt, </span>
-<span id="cb1245-22"><a href="deutsche-zungenbrecher.html#cb1245-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1245-23"><a href="deutsche-zungenbrecher.html#cb1245-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1245-24"><a href="deutsche-zungenbrecher.html#cb1245-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1245-25"><a href="deutsche-zungenbrecher.html#cb1245-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1245-26"><a href="deutsche-zungenbrecher.html#cb1245-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher&quot;</span>)</span>
-<span id="cb1245-27"><a href="deutsche-zungenbrecher.html#cb1245-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit.png&quot;</span>)</span>
-<span id="cb1245-28"><a href="deutsche-zungenbrecher.html#cb1245-28" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="deutsche-zungenbrecher.html#cb1249-1" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit</span>
+<span id="cb1249-2"><a href="deutsche-zungenbrecher.html#cb1249-2" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit_sd</span>
+<span id="cb1249-3"><a href="deutsche-zungenbrecher.html#cb1249-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1249-4"><a href="deutsche-zungenbrecher.html#cb1249-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1249-5"><a href="deutsche-zungenbrecher.html#cb1249-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb1249-6"><a href="deutsche-zungenbrecher.html#cb1249-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1249-7"><a href="deutsche-zungenbrecher.html#cb1249-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb1249-8"><a href="deutsche-zungenbrecher.html#cb1249-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb1249-9"><a href="deutsche-zungenbrecher.html#cb1249-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb1249-10"><a href="deutsche-zungenbrecher.html#cb1249-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
+<span id="cb1249-11"><a href="deutsche-zungenbrecher.html#cb1249-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1249-12"><a href="deutsche-zungenbrecher.html#cb1249-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerzeit, ZungenbrNummer)) <span class="sc">+</span></span>
+<span id="cb1249-13"><a href="deutsche-zungenbrecher.html#cb1249-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehlerzeit <span class="sc">-</span> Fehlerzeit_sd,</span>
+<span id="cb1249-14"><a href="deutsche-zungenbrecher.html#cb1249-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehlerzeit <span class="sc">+</span> Fehlerzeit_sd)) <span class="sc">+</span></span>
+<span id="cb1249-15"><a href="deutsche-zungenbrecher.html#cb1249-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb1249-16"><a href="deutsche-zungenbrecher.html#cb1249-16" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1249-17"><a href="deutsche-zungenbrecher.html#cb1249-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb1249-18"><a href="deutsche-zungenbrecher.html#cb1249-18" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">+</span> Fehlerzeit_sd_insgesamt, </span>
+<span id="cb1249-19"><a href="deutsche-zungenbrecher.html#cb1249-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1249-20"><a href="deutsche-zungenbrecher.html#cb1249-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb1249-21"><a href="deutsche-zungenbrecher.html#cb1249-21" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">-</span> Fehlerzeit_sd_insgesamt, </span>
+<span id="cb1249-22"><a href="deutsche-zungenbrecher.html#cb1249-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1249-23"><a href="deutsche-zungenbrecher.html#cb1249-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb1249-24"><a href="deutsche-zungenbrecher.html#cb1249-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1249-25"><a href="deutsche-zungenbrecher.html#cb1249-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1249-26"><a href="deutsche-zungenbrecher.html#cb1249-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher&quot;</span>)</span>
+<span id="cb1249-27"><a href="deutsche-zungenbrecher.html#cb1249-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit.png&quot;</span>)</span>
+<span id="cb1249-28"><a href="deutsche-zungenbrecher.html#cb1249-28" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
 <p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="deutsche-zungenbrecher.html#cb1246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1246-2"><a href="deutsche-zungenbrecher.html#cb1246-2" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div>
+<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="deutsche-zungenbrecher.html#cb1250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1250-2"><a href="deutsche-zungenbrecher.html#cb1250-2" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div>
 <p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1247-1"><a href="deutsche-zungenbrecher.html#cb1247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_patch1.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="deutsche-zungenbrecher.html#cb1248-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1248-2"><a href="deutsche-zungenbrecher.html#cb1248-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1248-3"><a href="deutsche-zungenbrecher.html#cb1248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1248-4"><a href="deutsche-zungenbrecher.html#cb1248-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb1248-5"><a href="deutsche-zungenbrecher.html#cb1248-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1248-6"><a href="deutsche-zungenbrecher.html#cb1248-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="deutsche-zungenbrecher.html#cb1251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_patch1.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="deutsche-zungenbrecher.html#cb1252-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1252-2"><a href="deutsche-zungenbrecher.html#cb1252-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1252-3"><a href="deutsche-zungenbrecher.html#cb1252-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb1252-4"><a href="deutsche-zungenbrecher.html#cb1252-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb1252-5"><a href="deutsche-zungenbrecher.html#cb1252-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1252-6"><a href="deutsche-zungenbrecher.html#cb1252-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
 <p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="deutsche-zungenbrecher.html#cb1249-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-2"><a href="deutsche-zungenbrecher.html#cb1249-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-3"><a href="deutsche-zungenbrecher.html#cb1249-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1249-4"><a href="deutsche-zungenbrecher.html#cb1249-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb1249-5"><a href="deutsche-zungenbrecher.html#cb1249-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1249-6"><a href="deutsche-zungenbrecher.html#cb1249-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="deutsche-zungenbrecher.html#cb1250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_histogram.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="deutsche-zungenbrecher.html#cb1251-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-2"><a href="deutsche-zungenbrecher.html#cb1251-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-3"><a href="deutsche-zungenbrecher.html#cb1251-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, Versuchsperson, </span>
-<span id="cb1251-4"><a href="deutsche-zungenbrecher.html#cb1251-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(ZungenbrNummer))) <span class="sc">+</span></span>
-<span id="cb1251-5"><a href="deutsche-zungenbrecher.html#cb1251-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
-<span id="cb1251-6"><a href="deutsche-zungenbrecher.html#cb1251-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1251-7"><a href="deutsche-zungenbrecher.html#cb1251-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1251-8"><a href="deutsche-zungenbrecher.html#cb1251-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1252-1"><a href="deutsche-zungenbrecher.html#cb1252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="deutsche-zungenbrecher.html#cb1253-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1253-2"><a href="deutsche-zungenbrecher.html#cb1253-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1253-3"><a href="deutsche-zungenbrecher.html#cb1253-3" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1253-4"><a href="deutsche-zungenbrecher.html#cb1253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, ZungenbrNummer, <span class="at">color =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1253-5"><a href="deutsche-zungenbrecher.html#cb1253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
-<span id="cb1253-6"><a href="deutsche-zungenbrecher.html#cb1253-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1253-7"><a href="deutsche-zungenbrecher.html#cb1253-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1253-8"><a href="deutsche-zungenbrecher.html#cb1253-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1253-9"><a href="deutsche-zungenbrecher.html#cb1253-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="deutsche-zungenbrecher.html#cb1254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1255-1"><a href="deutsche-zungenbrecher.html#cb1255-1" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1253-2"><a href="deutsche-zungenbrecher.html#cb1253-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1253-3"><a href="deutsche-zungenbrecher.html#cb1253-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb1253-4"><a href="deutsche-zungenbrecher.html#cb1253-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1253-5"><a href="deutsche-zungenbrecher.html#cb1253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1253-6"><a href="deutsche-zungenbrecher.html#cb1253-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="deutsche-zungenbrecher.html#cb1254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_histogram.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1255-1"><a href="deutsche-zungenbrecher.html#cb1255-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
 <span id="cb1255-2"><a href="deutsche-zungenbrecher.html#cb1255-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1255-3"><a href="deutsche-zungenbrecher.html#cb1255-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Addition<span class="sc">:</span>Kontamination, </span>
-<span id="cb1255-4"><a href="deutsche-zungenbrecher.html#cb1255-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Versprechertyp&quot;</span>, </span>
-<span id="cb1255-5"><a href="deutsche-zungenbrecher.html#cb1255-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehlerzahl&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1255-6"><a href="deutsche-zungenbrecher.html#cb1255-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Versprechertyp) <span class="sc">%&gt;%</span> </span>
-<span id="cb1255-7"><a href="deutsche-zungenbrecher.html#cb1255-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Versprecherzahl =</span> <span class="fu">mean</span>(Fehlerzahl),</span>
-<span id="cb1255-8"><a href="deutsche-zungenbrecher.html#cb1255-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Versprecherzahl_sd =</span> <span class="fu">sd</span>(Fehlerzahl))</span>
-<span id="cb1255-9"><a href="deutsche-zungenbrecher.html#cb1255-9" aria-hidden="true" tabindex="-1"></a>tabelle2</span></code></pre></div>
+<span id="cb1255-3"><a href="deutsche-zungenbrecher.html#cb1255-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, Versuchsperson, </span>
+<span id="cb1255-4"><a href="deutsche-zungenbrecher.html#cb1255-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(ZungenbrNummer))) <span class="sc">+</span></span>
+<span id="cb1255-5"><a href="deutsche-zungenbrecher.html#cb1255-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
+<span id="cb1255-6"><a href="deutsche-zungenbrecher.html#cb1255-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb1255-7"><a href="deutsche-zungenbrecher.html#cb1255-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1255-8"><a href="deutsche-zungenbrecher.html#cb1255-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
+<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb1256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1256-1"><a href="deutsche-zungenbrecher.html#cb1256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="deutsche-zungenbrecher.html#cb1257-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-2"><a href="deutsche-zungenbrecher.html#cb1257-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-3"><a href="deutsche-zungenbrecher.html#cb1257-3" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1257-4"><a href="deutsche-zungenbrecher.html#cb1257-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, ZungenbrNummer, <span class="at">color =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb1257-5"><a href="deutsche-zungenbrecher.html#cb1257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
+<span id="cb1257-6"><a href="deutsche-zungenbrecher.html#cb1257-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb1257-7"><a href="deutsche-zungenbrecher.html#cb1257-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1257-8"><a href="deutsche-zungenbrecher.html#cb1257-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1257-9"><a href="deutsche-zungenbrecher.html#cb1257-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
+<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="deutsche-zungenbrecher.html#cb1258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1259-1"><a href="deutsche-zungenbrecher.html#cb1259-1" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-2"><a href="deutsche-zungenbrecher.html#cb1259-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-3"><a href="deutsche-zungenbrecher.html#cb1259-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Addition<span class="sc">:</span>Kontamination, </span>
+<span id="cb1259-4"><a href="deutsche-zungenbrecher.html#cb1259-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Versprechertyp&quot;</span>, </span>
+<span id="cb1259-5"><a href="deutsche-zungenbrecher.html#cb1259-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehlerzahl&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-6"><a href="deutsche-zungenbrecher.html#cb1259-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Versprechertyp) <span class="sc">%&gt;%</span> </span>
+<span id="cb1259-7"><a href="deutsche-zungenbrecher.html#cb1259-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Versprecherzahl =</span> <span class="fu">mean</span>(Fehlerzahl),</span>
+<span id="cb1259-8"><a href="deutsche-zungenbrecher.html#cb1259-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Versprecherzahl_sd =</span> <span class="fu">sd</span>(Fehlerzahl))</span>
+<span id="cb1259-9"><a href="deutsche-zungenbrecher.html#cb1259-9" aria-hidden="true" tabindex="-1"></a>tabelle2</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   Versprechertyp Versprecherzahl Versprecherzahl_sd
 ##   &lt;chr&gt;                    &lt;dbl&gt;              &lt;dbl&gt;
@@ -705,28 +715,28 @@ Im Durchschnitt alle <code>{Fehlerzeit}</code> Millisekunden ein Versprecher.</p
 ## 2 Deletion                 0.235              0.427
 ## 3 Kontamination            0.106              0.310
 ## 4 Substitution             0.376              0.756</code></pre>
-<div class="sourceCode" id="cb1257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1257-1"><a href="deutsche-zungenbrecher.html#cb1257-1" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl)</span>
-<span id="cb1257-2"><a href="deutsche-zungenbrecher.html#cb1257-2" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_sd_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl_sd)</span>
-<span id="cb1257-3"><a href="deutsche-zungenbrecher.html#cb1257-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1257-4"><a href="deutsche-zungenbrecher.html#cb1257-4" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="sc">%&gt;%</span> </span>
-<span id="cb1257-5"><a href="deutsche-zungenbrecher.html#cb1257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Versprecherzahl, Versprechertyp, </span>
-<span id="cb1257-6"><a href="deutsche-zungenbrecher.html#cb1257-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> Versprechertyp)) <span class="sc">+</span></span>
-<span id="cb1257-7"><a href="deutsche-zungenbrecher.html#cb1257-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Versprecherzahl <span class="sc">-</span> Versprecherzahl_sd,</span>
-<span id="cb1257-8"><a href="deutsche-zungenbrecher.html#cb1257-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Versprecherzahl <span class="sc">+</span> Versprecherzahl_sd)) <span class="sc">+</span></span>
-<span id="cb1257-9"><a href="deutsche-zungenbrecher.html#cb1257-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1257-10"><a href="deutsche-zungenbrecher.html#cb1257-10" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1257-11"><a href="deutsche-zungenbrecher.html#cb1257-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">+</span></span>
-<span id="cb1257-12"><a href="deutsche-zungenbrecher.html#cb1257-12" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
-<span id="cb1257-13"><a href="deutsche-zungenbrecher.html#cb1257-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1257-14"><a href="deutsche-zungenbrecher.html#cb1257-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">-</span> </span>
-<span id="cb1257-15"><a href="deutsche-zungenbrecher.html#cb1257-15" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
-<span id="cb1257-16"><a href="deutsche-zungenbrecher.html#cb1257-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1257-17"><a href="deutsche-zungenbrecher.html#cb1257-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.2</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
-<span id="cb1257-18"><a href="deutsche-zungenbrecher.html#cb1257-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(breaks = seq(0, 11, 1)) +</span></span>
-<span id="cb1257-19"><a href="deutsche-zungenbrecher.html#cb1257-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1257-20"><a href="deutsche-zungenbrecher.html#cb1257-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1261-1"><a href="deutsche-zungenbrecher.html#cb1261-1" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl)</span>
+<span id="cb1261-2"><a href="deutsche-zungenbrecher.html#cb1261-2" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_sd_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl_sd)</span>
+<span id="cb1261-3"><a href="deutsche-zungenbrecher.html#cb1261-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1261-4"><a href="deutsche-zungenbrecher.html#cb1261-4" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="sc">%&gt;%</span> </span>
+<span id="cb1261-5"><a href="deutsche-zungenbrecher.html#cb1261-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Versprecherzahl, Versprechertyp, </span>
+<span id="cb1261-6"><a href="deutsche-zungenbrecher.html#cb1261-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> Versprechertyp)) <span class="sc">+</span></span>
+<span id="cb1261-7"><a href="deutsche-zungenbrecher.html#cb1261-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Versprecherzahl <span class="sc">-</span> Versprecherzahl_sd,</span>
+<span id="cb1261-8"><a href="deutsche-zungenbrecher.html#cb1261-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Versprecherzahl <span class="sc">+</span> Versprecherzahl_sd)) <span class="sc">+</span></span>
+<span id="cb1261-9"><a href="deutsche-zungenbrecher.html#cb1261-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb1261-10"><a href="deutsche-zungenbrecher.html#cb1261-10" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1261-11"><a href="deutsche-zungenbrecher.html#cb1261-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">+</span></span>
+<span id="cb1261-12"><a href="deutsche-zungenbrecher.html#cb1261-12" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
+<span id="cb1261-13"><a href="deutsche-zungenbrecher.html#cb1261-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1261-14"><a href="deutsche-zungenbrecher.html#cb1261-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">-</span> </span>
+<span id="cb1261-15"><a href="deutsche-zungenbrecher.html#cb1261-15" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
+<span id="cb1261-16"><a href="deutsche-zungenbrecher.html#cb1261-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1261-17"><a href="deutsche-zungenbrecher.html#cb1261-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.2</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb1261-18"><a href="deutsche-zungenbrecher.html#cb1261-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(breaks = seq(0, 11, 1)) +</span></span>
+<span id="cb1261-19"><a href="deutsche-zungenbrecher.html#cb1261-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1261-20"><a href="deutsche-zungenbrecher.html#cb1261-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span></code></pre></div>
 <p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1258-1"><a href="deutsche-zungenbrecher.html#cb1258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_errortype.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1262-1"><a href="deutsche-zungenbrecher.html#cb1262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_errortype.png&quot;</span>)</span></code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
 
 </div>
