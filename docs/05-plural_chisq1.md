@@ -1,6 +1,6 @@
 ### Plural von Kunstwörtern
 
-#### Naložimo programe
+#### Programme laden
 
 
 ```r
@@ -9,7 +9,9 @@ library(scales)
 library(kableExtra)
 ```
 
-#### Preberemo podatkovni niz z diska
+#### Dateien laden
+
+Für die Durchführung eines $\chi^2$-Tests solle eine Tabelle geladen werden, die Ergebnisse eines Experiments mit deutschen Kunstwörtern enthält, von denen slowenische Studierende der Germanistik den Plural bilden sollten. 
 
 
 ```r
@@ -106,17 +108,19 @@ head(plural_subj1) %>% knitr::kable()
 </tbody>
 </table>
 
-#### Povzetek in Hi-kvadrat test
+#### Datensatz-Aggregation und Test
 
-Podatkovni niz preoblikujemo in povzemamo (agregacija). Za preizkus ustvarimo tabelo 2 x 2 z opazovanimi pogostnostmi (frekvencami). Program izračuna pričakovane pogstnosti in zatem še ocenjuje, ali je razlika med vzorcema statistično značilna.
+Zuerst müssen wir die Rohdaten in eine Tabelle umformen, so dass ein $\chi^2$-Test durchgeführt werden kann. Eine derartige Transformation eines Datensatzes wird oft als Aggregation bezeichnet (also eine Art von Zusammenfassung). In der neu gebildeten 2x2-Tabelle sind die Beobachtungsdaten (d.h. die Häufigkeiten oder Frequenzen) zu finden. Das Programm berechnet für uns die erwarteten Häufigkeiten (theoretischen Frequenzen) und bewertet dann, ob die Differenz zwischen den Stichproben statistisch signifikant ist.
 
--   H0: Preizkusne osebe uporabljajo množinske pripone ne glede na besedni tip (Rhyme / Non-Rhyme).
+Die statistischen Annahmen können folgendermaßen formuliert werden:   
+- $H_0$: Die Versuchspersonen verwenden sowohl für Reimwörter als auch für Nicht-Reimwörter dieselben deutschen Pluralmarker. Der Worttyp hat demnach keinen Einfluss auf die Auswahl des Pluralmarkers.   
+- $H_1$: Die Versuchspersonen verwenden für Reimwörter nicht dieselben deutschen Pluralmarker wie für Nicht-Reimwörterverschieden für die beiden Worttypen (Reimwort vs. Nicht-Reimwort). Der Worttyp hat demnach Einfluss auf die Auswahl des Pluralmarkers.   
 
--   H1: Preizkusne osebe uporabljajo množinske pripone z ozirom na besedni tip (Rhyme / Non-Rhyme).
+Wenn der beim statistischen Test erhaltene p-Wert \< 0,05 ist (d.h. bei einer Fehlerwahrscheinlichkeit von weniger als 5%), dann gilt die alternative Hypothese $H_1$: die Differenz zwischen den beobachteten und den theoretisch erwarteten Häufigkeiten ist in diesem Fall statistisch signifikant, d.h. die Differenz ist nicht zufällig und bei 5% Fehlerwahrscheinlichkeit hinreichend groß.
 
-Če je p-vrednost \< 0,05 (tj. 5%), potem obvelja H1: razlika med opazovanimi in pričakovanimi pogostnostmi je statistično značilna (tj. da ni naključna in dovolj velika ob upoštevanju napake).
+Wenn der p-Wert jedoch p \> 0,05 ist, dann wird die Nullhypothese $H_0$ beibehalten. In diesem Fall wäre die Differenz nicht hinreichend groß und daher vermutlich zufällig entstanden (z.B. durch die geringe Größe der Stichproben oder die Auswahl der Stichprobendaten).
 
-Če p \> 0,05, potem obdržimo H0: razlika med opazovanimi pogostnostmi je naključna.
+Im ersten statischen Test vergleichen wir die Häufigkeiten der Pluralmarker *--e* und *--s* miteinander.   
 
 
 ```r
@@ -125,7 +129,8 @@ Podatkovni niz preoblikujemo in povzemamo (agregacija). Za preizkus ustvarimo ta
 p = plural_subj1 %>% 
   group_by(WordType) %>% 
   summarise(Sigstark = mean(Sigstark),
-            En = sum(En), E = sum(E), Er = sum(Er), S = sum(S), Z = sum(Z)) 
+            En = sum(En), E = sum(E), Er = sum(Er), 
+            S = sum(S), Z = sum(Z)) 
 
 # izpis tabele
 knitr::kable(p)
@@ -183,6 +188,9 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 #### Naslednji preizkus(i)
 
+Wir machen noch einen $\chi^2$-Test mit einer 2x2-Tabelle, und zwar
+mit den Pluralmarkern *--e* und *--er* durchgeführt.   
+
 
 ```r
 # Izberemo tri stolpce za naslednji preizkus
@@ -202,7 +210,9 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 #### Tabela 2 x 3
 
-Možno je tudi testiranje treh ali več vzorcev, vendar nam test ne pove, kateri vzorec je različen od drugega.
+Der $\chi^2$-Test kann auch mit größeren Tabellen durchgeführt werden, z.B. mit einer 2x3-Tabelle. Dies ermöglicht den Vergleich von mehr als zwei Stichproben.   
+
+Der $\chi^2$-Test kann statistisch signifikante Unterschiede zwischen Stichproben melden, kann aber leider nicht darüber Auskunft oben, welche Stichprobe sich von den übrigen unterscheidet.   
 
 
 ```r
@@ -223,7 +233,8 @@ chisq.test(q[,-1]) # prvi stolpec naj se ne upošteva, zato [, -1]
 
 #### Zweite Version
 
-Ergebnisse summieren:
+Es gibt verschiedene Wege, um die Rohdaten in eine Tabelle umzuformen, die für die Durchführung eines $\chi^2$-Tests geeignet ist. Hier folgt eine weitere Aggregationsvariante mit Hilfe von `tidyverse`-Funktionen. 
+Zuerst gruppieren wir die Rohdaten nach der Spalte, in der die Versuchspersonen eingetragen sind. Dann lassen wir die Summe der ausgewählten Pluralmarker berechnen:
 
 
 ```r
@@ -241,7 +252,7 @@ Ergebnisse summieren:
 ## 2 Rhyme     1425  2172
 ```
 
-Chi-Quadrat-Test Falls p \< 0,05: es gilt H1 (Stichproben unterscheiden sich). Falls p \> 0,05: es gilt H0 (kein Unterschied zwischen Stichproben).
+Falls p \< 0,05 ist, gilt $H_1$ (die Stichproben unterscheiden sich). Falls p \> 0,05 ist, gilt $H_0$ (kein signifikanter Unterschied zwischen Stichproben).   
 
 
 ```r
@@ -257,7 +268,7 @@ Chi-Quadrat-Test Falls p \< 0,05: es gilt H1 (Stichproben unterscheiden sich). F
 ## X-squared = 2.1535, df = 1, p-value = 0.1422
 ```
 
-Beobachtete vs. erwartete Werte:
+Zum Schluss werfen wir noch einen Blick auf beobachtete und erwartete Häufigkeiten: 
 
 
 ```r

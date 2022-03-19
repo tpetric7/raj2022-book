@@ -1,81 +1,82 @@
-# Namestitev
+# Installation
 
-## Osnovni programi
+## Grundlegende Programme
 
-Za računalniško podprto delo z jezikovnim gradivom uporabljamo brezplačna programska orodja, tj. programski jezik `R`. za udobnejše programiranje grafični vmesnik `RStudio` in za nameščanje razvojnih programskih različic v okenskem okolju tudi `RTools` (slednji ni obvezen, vendar priporočljiv za naprednejše uporabnike).
+Für die computergestützte Arbeit mit Sprachmaterial verwenden wir freie Softwaretools, d.h. die Programmiersprache `R`, die grafische Oberfläche `RStudio` für komfortableres Programmieren und `RTools` für die Installation von Entwicklungsversionen in einer `Windows`-Umgebung (letztere ist optional, aber für fortgeschrittene Benutzer empfohlen).
 
-Programe `R` (4.1.1 ali novejšo), `RStudio` (2021.09.0 ali novejšo) in RTools (4.0.0 ali novejšo) prenesemo z naslednjih spletnih naslovov:
+Die Programme `R` (4.1.2 oder höher), `RStudio` (2022.02.0+443 oder höher) und `RTools` (4.0.0 oder höher) können von den folgenden Webadressen heruntergeladen werden (wir führen nur die Installationspakete für die Operationssysteme `Windows` und `MacOS` an, für Linux bitte selber nachschlagen):
 
-- za Windows https://cloud.r-project.org/bin/windows/base/, za MacOS https://cloud.r-project.org/bin/macosx/
+- für `Windows` https://cloud.r-project.org/bin/windows/base/, für `MacOS` https://cloud.r-project.org/bin/macosx/ 
 
-- https://www.rstudio.com/products/rstudio/download/ (Windows ali MacOS)
+- https://www.rstudio.com/products/rstudio/download/ (`Windows` oder `MacOS`)
 
-- za naprednejše uporabnike, ki želijo dostopati do razvojnih različicah programov na portalu `github` in nekaterih drugih storitvah https://cran.r-project.org/bin/windows/Rtools/.
+- für fortgeschrittene Benutzer, die auf die Entwicklungsversionen der Programme auf `github` und einige andere Dienste zugreifen möchten https://cran.r-project.org/bin/windows/Rtools/.
 
-Na novejših računalnikih tečejo večinoma 64-bitni operacijski sistemi (Windows, macOS, Linux). Zato je priporočljivo izbrati 64-bitne različice programov. Na 32-bitnem operacijskem sistemu (če še uporabljate starejši računalnik) potrebujete 32-bitne programske različice.
-
-
-## Dodatni programi
-
-Po namestitvi programov `R` in `RStudio` je mnogo funkcij že na voljo. Na strežnikih CRAN je mogoče dobiti dodatne programske funkcije. Vse so brezplačne. Vedno ko želimo dodati programske funkcije ali knjižnice (`library`), jih najprej namestimo s strežnikov za programski jezik `CRAN`. V programskem okolju `RStudio` to lahko dosežemo na več načinov:
-
-- Začetnikom se bo zdelo najlažje v RStudiu klikniti zavihek `Packages`, potem `Install` in v novem pogovornem oknu vpisati ime zaželenega programa ali paketa (`package`). Pozor, programski jezik `R` razlikuje velike in male črke (v nasprotju s programom `Excel`).
-
-- Hitreje namestitev novih programskih funkcij opravimo z vpisom ukaza `install.packages("ime-zazelenega-paketa")` v konzolo (`console`). Ime paketa mora podati v navednicah.
-
-Programske funkcije, ki niso sestavni del osnovega programskega paketa (`base R`), je treba naložiti v pomnilnik računalnika. To storimo z vpisom `library(ime-paketa)` (navednice tu niso potrebne) v dokument, v katerem shranjujemo zaporedje ukazov za analizo, tj. v programski skript (privzeta pripona datoteke: `R`) ali `Rmarkdown` dokument (privzeta pripona datoteke: `Rmd`). 
-
-Možno je tudi zagnati knjižnico (`library`) z vpisom v konzolo, vendar se vpis tega ukaza ne shranjuje v dokumentu.
-
-Med pomembnejšimi dodatnimi knjižnicami (paketi, programi, zbirkami programskih funkcij) za računalniško podprto delo z jezikovnim gradivom in statistično analizo bomo uporabljali:
+Auf neueren Computern laufen meist 64-Bit-Betriebssysteme (`Windows`, `macOS`, `Linux`). Es ist daher ratsam, 64-Bit-Versionen der `R`-Programme (*package, library*) zu wählen. Auf einem 32-Bit-Betriebssystem (wenn Sie noch einen älteren Computer verwenden) benötigen Sie 32-Bit-Versionen der Software.
 
 
+## Zusätzliche Programme
 
-Začetnikom bodo nemara privlačni programski dodatki, ki omogočajo izbiranje ukazov z miško in več že vnaprej pripravljenih delovnih postopkov. Taki dodatki za statistično analizo so npr.
+Nach der Installation von `R` und `RStudio` sind viele Funktionen bereits verfügbar. Zusätzliche Softwarefunktionen können über die `CRAN`-Server bezogen werden. Alle diese Angebote sind kostenlos. Wenn Sie Programmfunktionen oder Bibliotheken (`library`) hinzufügen wollen, installieren Sie diese zuerst von den `CRAN` Programmiersprachenservern. In der Programmierumgebung `RStudio` kann dies auf mehrere Arten erreicht werden:   
 
-- RCommander: `library(Rcmdr)`
+- Für Anfänger ist es am einfachsten, in `RStudio` auf die Registerkarte (Reiter) *Packages* ("Pakete") zu klicken, dann auf *Installieren*, und dann den Namen des gewünschten Programms oder Pakets in das neue Dialogfeld einzugeben. Beachten Sie, dass in der Programmiersprache `R` zwischen Groß- und Kleinschreibung unterschieden wird (im Gegensatz zu `Excel`).   
 
-- Rattle: `library(rattle)`.
+- Ein schnellerer Weg, neue Programmfunktionen zu installieren, ist die Eingabe des Befehls `install.packages("package-name")` in der `Console` (*Konsole*). Der Paketname muss in Anführungszeichen angegeben werden.   
 
-Taki dodatki ne zahtevajo, da bi si morali že kar v prvih tednih ali mesecih dela morali zapomniti imena knjižnic ali ukazov, ki jih potrebujemo za analizo v programskem jeziku `R`. `RCommander` vam zaporedje ukazov tudi izpiše, tako da se lažje naučite sestaviti programski skript ali `rmarkdown` dokument.
+Programmfunktionen, die nicht Teil des Basis-Softwarepakets (`Base R`) sind, müssen vom Benutzer in den Speicher des Computers geladen werden. Dies geschieht, indem man `library(Paketname)` (Anführungszeichen werden hier nicht benötigt) in das Programmskript oder in die Konsole einträgt. 
 
+Im Programmskript speichert der Benutzer die Programmbefehle für seine Datenanalyse, insbesondere solche, die wiederverwendet und/oder automatisch ausgeführt werden sollen. Programmskripte kann der Benutzer entweder als `R`-Skript (Standard-Dateierweiterung: `R`) oder als `Rmarkdown`-Dokument (Standard-Dateierweiterung: `Rmd`) speichern.  
 
-## Pomoč
+Man kann Programme bzw. Bibliotheken (`library`) ausführen, indem man sie lediglich in der Konsole eingibt, aber dies wird nicht im Programmskript gespeichert. 
 
-`RStudio` ima tudi vgrajeno skrbno dodelano pomoč (`Help`), ki jo dosežemo na več načinov:
-
-- Izberemo zavihek `Help` in v okence "Search" vpišemo poizvedbeni niz (npr. ime ukaza ali funkcije, o kateri želimo izvedeti podrobnosti). Potem se preklikamo do zaželene strani pomoči.
-
-- Druga možnost pa je večinoma priročnejša, če smo neko knjižnico (paket) že naložili v pomnilnik računalnika, tj. z miško pomaknemo kazalec na ime ukaza in pritisnemo funkcijsko tipko `F1` za pomoč (Windows). Na ta način priletimo večinoma na relevantno stran.
+Für die computergestützte Arbeit mit Sprachmaterial und die statistische Analyse werden wir in den folgenden Kapiteln die folgenden zusätzlichen Bibliotheken (Pakete, Programme, Sammlungen von Softwarefunktionen) verwenden (für weitere spezielle Analysen und Darstellungen aber noch eine ganze Reihe weiterer Programme):
 
 
-## Druga orodja
 
-Poleg programa za preglednice in grafikone (npr. `Microsoft Excel` ali brezplačne različice kot `OpenOffice` ali `LibreOffice`) nam lahko pride prav brezplačen program za statistično analizo, če nekega analitičnega postopka v programskem jeziku `R` še ne znamo izpeljati: npr.
+Für Anfänger sind sicher auch Software-Add-ons interessant, die die Auswahl von Befehlen mit der Maus und mehrere vordefinierte Arbeitsabläufe ermöglichen, wie z. B. die folgenden *Add-ons* für statistische Analysen:   
+- *RCommander*: `library(Rcmdr)`   
+- *Rattle*: `library(Rattle)`.   
 
-- `jamovi` (https://www.jamovi.org/download.html), ki `pod pokrovom` dela s programskim jezikom `R` in zna pripraviti lepa statistična poročila in prikaze;
-
-- `Jasp` (https://jasp-stats.org/download/), ki ima podobno kot `jamovi` več čarovnikov za pripravo statističnih poročil in prikazov, vendar glede programskih funkcij zaostaja za prvo imenovanim programom.
-
-Za hitro in nekomplicirano analizo besedila (ali manjšega števila besedil) je zelo priročno spletno orodje `Voyant Tools` (https://voyant-tools.org/). Z računalnika naložite besedilo (ali s kopiranjem v pogovorno okno), kliknete "Anzeigen" (Show) in že po nekaj sekundah vam program pripravi celo paleto diagramov in preglednic o lastnostih besednih oblik v besedilu. 
-
-V primeru večjega števila besedil, ki jih je treba ločeno analizirati, postane delo s tem orodjem neudobno, in je lažje delati v okolju `RStudio` s programskim jezikom `R` (ali z drugimi programskimi jeziki, npr. priljubljen je tudi `Python`). Druga prednost programskega jezika `R` in `Rmarkdown` je tudi možnost izdelave poročila, članka, bloga ali knjige, ki vsebuje celoten postopek, rezultate analize in spremno besedilo.
+Solche Add-Ons erfordern nicht, dass man sich schon in den ersten Wochen oder Monaten die Namen von Bibliotheken oder Befehlen merken muss, die für die Analyse in der Programmiersprache `R` benötigt werden. `RCommander` druckt auch die Reihenfolge der Befehle für Sie aus, so dass es einfacher ist zu lernen, wie man ein Programmskript oder ein `Rmarkdown`-Dokument erstellt.
 
 
-## Oblačne storitve
+## Hilfe
 
-Za naprednejše uporabnike velja omeniti portal `github` (https://github.com/), ki je za zdaj še vedno brezplačen (čeprav ga je kupil `Microsoft`). Omogoča hrambo analiznih postopkov, programskih knjižnic, objavo delovnega gradiva in sodelovanje med programerji in uporabniki. Tudi knjiga, ki jo berete, ima svoj dom na portalu `github`.
+In `RStudio` ist auch eine sorgfältig ausgearbeitete `Hilfe` eingebaut, die auf verschiedene Weise erreicht werden kann: 
 
-Omeniti velja, da lahko programski jezik R in RStudio uporabljamo tudi v **oblačnih storitvah**, ne da bi bilo potrebno namestiti `R` in `RStudio`, npr. 
+- Wählen Sie die Registerkarte *Help* (Hilfe) und geben Sie in das Feld *Search* (Suchen) einen Suchbegriff ein (z.B. den Namen des Befehls oder der Funktion, über die Sie Einzelheiten erfahren möchten). Klicken Sie sich dann zur gewünschten Hilfeseite durch.   
+
+- Wenn Sie bereits eine Bibliothek (Paket) in den Speicher Ihres Computers geladen haben, ist es aber meist bequemer, (a) die Maus über eine Programmfunktion im Skript zu halten, um einen Hinweis zu erhalten oder (b) mit der Maus den Befehlsnamen anzuklicken und die Funktionstaste `F1` (in `Windows`) für kontextsensitive Hilfe zu drücken. Auf diese Weise landen wir meist auf der entsprechenden Hilfeseite.
+
+
+## Andere Werkzeuge
+
+Zusätzlich zu Tabellenkalkulations- und Diagrammsoftware (z.B. `Microsoft Excel` oder kostenfreie Programmbündel wie `OpenOffice` oder `LibreOffice`) kann ein freies statistisches Analyseprogramm nützlich sein, insbesonderer wenn man noch nicht in der Lage ist, ein analytisches Verfahren in der Programmiersprache `R` durchzuführen: z.B.
+
+- `Jamovi` (https://www.jamovi.org/download.html), das unter der Haube mit der Programmiersprache `R` arbeitet und ansprechende statistische Berichte und tabellarische oder graphische Darstellungen erstellen kann;
+
+- `Jasp` (https://jasp-stats.org/download/), das wie `Jamovi` mehrere Assistenten für die Erstellung von statistischen Berichten und Darstellungen bietet, aber in Bezug auf die durchführbaren Programmierfunktionen hinter dem ersten zurückbleibt.
+
+Für eine schnelle und unkomplizierte Analyse eines Textes (oder einer kleinen Anzahl von Texten) ist das webbasierte Tool `Voyant Tools` (https://voyant-tools.org/) sehr praktisch. Laden Sie den Text von Ihrem Computer (oder kopieren Sie ihn in ein Dialogfeld), klicken Sie auf `Anzeigen` und nach einigen Sekunden erzeugt das Programm eine ganze Reihe von Diagrammen und Tabellen zu den Eigenschaften der Wortformen im Text. 
+
+Wenn Sie mit einer großen Anzahl von Texten zu tun haben, die sogar separat analysiert werden sollen, wird es unbequem, mit diesem Werkzeug zu arbeiten, und es ist einfacher, in der `RStudio`-Umgebung mit der Programmiersprache `R` zu arbeiten (oder mit anderen Programmiersprachen, z.B. mit dem ebenfalls beliebten `Python`). Ein weiterer Vorteil der Programmiersprache `R` und `Rmarkdown`-Dokumenten ist die Möglichkeit, einen Bericht, Artikel, Blog oder ein Buch zu erstellen, in dem sowohl der Datensatz, das komplette Analyseverfahren, die Ergebnisse der Analyse in tabellarischer und graphischer Form als auch der begleitende Text enthalten ist. Ein Beispiel dafür ist dieses Buch, das Sie im Augenblick verwenden. 
+
+
+## Cloud-Dienste
+
+Für fortgeschrittene Benutzer ist das Portal `github` (https://github.com/) vorläufig noch kostenlos (obwohl es von `Microsoft` aufgekauft wurde). Es ermöglicht die Speicherung von Analyseverfahren, Softwarebibliotheken, die Veröffentlichung von Arbeitsmaterial und die Zusammenarbeit zwischen Programmierern und Benutzern. Das Buch, das Sie gerade lesen, hat auch ein Zuhause auf `github`.
+
+Es ist erwähnenswert, dass die Programmiersprache `R` und die Programmierumgebung `RStudio` auch in **Cloud-Diensten** verwendet werden können, ohne dass `R` und `RStudio` auf dem eigenen Computer installiert werden müssen, z. B. 
 
 - *RStudio cloud*: https://rstudio.cloud/
 
-- *Google Colaboratory* (https://colab.research.google.com)
+- *Google Collaboratory* (https://colab.research.google.com)
 
 - *Kaggle* (https://www.kaggle.com/).
 
-Te storitve zahtevajo, da ustvarite račun in se za vsakokratno delo prijavte v spletni portal. Te storitve lahko uporabljate brezplačno.
+Für diese Dienste müssen Sie ein Konto anlegen und sich beim entsprechenden Webportal anmelden. Die Nutzung dieser Dienste ist kostenlos.
 
-Prednost je, da se vaša analiza izvaja na zmogljivem strežniku v oblaku, izognete se morebitnim programskim sporom in nezaželenim spremembam operacijskega sistema in obremenitvam lastnega računalnika. 
+Der Vorteil ist, dass Ihre Analyse auf einem leistungsstarken Cloud-Server ausgeführt wird, womit potenzielle Softwarekonflikte und unerwünschte Änderungen am Betriebssystem sowie Belastungen für Ihren eigenen Computer vermieden werden. 
 
-Slabost brezplačne uporabe storitve `RStudio.cloud` je, da vam v primeru večje besedilne zbirke dokaj hitro zmanjka pomnilnika, tako da ne morete več delati naprej in izgubite že pridobljene rezultate. `Google Colab` je namenjen predvsem programerjem, ki delajo v programskem jeziku `Python`. Če delate v programskem jeziku `R`, morate računati s tem, da določenih programskih funkcij ne bo (npr. knjižnice `readtext` za lahkotno branje besedilne zbirke).
+Der Nachteil der kostenlosen Nutzung von `RStudio.cloud` ist, dass der kostenfreie Speicherplatz bei großen Textsammlungen schnell erschöpft ist, so dass man nicht weiterarbeiten kann und die bereits erzielten Ergebnisse verloren gehen. `Google Colab` ist in erster Linie für Programmierer gedacht, die in der Programmiersprache `Python` arbeiten. Wenn Sie mit der Programmiersprache `R` arbeiten, sollten Sie damit rechnen, dass bestimmte Programmierfunktionen nicht zur Verfügung stehen (z.B. die `readtext`-Bibliothek zum unkomplizierten Öffnen einer Textsammlung).
+

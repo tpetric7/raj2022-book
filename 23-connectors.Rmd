@@ -113,9 +113,11 @@ connectors %>% filter(upos == "CCONJ") %>% pull(token) %>% head(50)
 connectors %>% filter(upos == "SCONJ") %>% pull(token) %>% head(50)
 ```
 
-Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien).
+Wir können auch Listen mit neben- und unterordnenden Konjunktionen sowie Konjunktionaladverbien aus dem Internet abrufen. Dann können wir sie genauer zählen. 
 
-Potem jih lahko natančneje preštejemo
+<!-- Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien). -->
+<!-- Potem jih lahko natančneje preštejemo -->
+
 case_when
 str_detect(seznam_prirednih_konektorjev, "...|...|...")
 str_detect(seznam_podrednih_konektorjev, "...|...|...")

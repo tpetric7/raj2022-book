@@ -12,6 +12,38 @@ library(rmarkdown)
 # library(quanteda) # nsyllable(tokens(txt))
 ```
 
+Im *Wikipedia*-Artikel zum Thema [Buchstabenhäufigkeit](https://de.wikipedia.org/wiki/Buchstabenh%C3%A4ufigkeit) gibt die folgende Tabelle Auskunft über die Häufigkeit von Buchstaben in einer Stichprobe von deutschen Texten. Die Umlaute werden in dieser Tabelle als jeweils zwei Monophthonge gezählt. 
+
+```{r message=FALSE, warning=FALSE}
+library(readxl)
+buchstabenhaeufigkeit <- 
+  read_xlsx("data/wikipedia_buchstabenhaeufigkeit_deutsch.xlsx")
+buchstabenhaeufigkeit %>% rmarkdown::paged_table()
+```
+
+Die ersten fünf Buchstaben haben einen Anteil von etwa der Hälfte, die häufigsten zehn Buchstaben decken etwa drei Viertel der relativen Buchstabenhäufigkeit in deutschen Texten ab. 
+
+Eine weitere Tabelle zeigt die Häufigkeit der Buchstaben in Texten aus einem Briefkorpus (Briefe aus den Jahren 1996-2004). In diesem Fall sind auch die Frequenzen der Umlaute erhoben worden. Die zehn häufigsten Buchstaben im Briefkorpus decken sich zum großen Teil mit denen im vorher gezeigten. 
+
+```{r message=FALSE, warning=FALSE}
+library(readxl)
+buchstabenhaeufigkeit_briefe <- 
+  read_xlsx("data/wikipedia_buchstabenhaeufigkeit_briefkorpus.xlsx")
+buchstabenhaeufigkeit_briefe %>% rmarkdown::paged_table()
+```
+
+In einem anderen *Wikipedia*-Artikel mit dem Titel [Frekvence črk](https://sl.wikipedia.org/wiki/Frekvence_%C4%8Drk) werden die relativen Häufigkeiten der Buchstaben in slowenischen belletristischen Texten tabellarisch dargestellt und einigen anderen Sprachen gegenübergestellt. In dieser Tabelle fällt auf, dass die Graphme der Vollvokale *a* und *o* einen deutliche höheren Rang einnehmen als in den beiden Tabellen für deutsche Texte. Ähnlich wie in den Tabellen für die deutschen Texte ist wiederum, dass die Vokalgrapheme *e* und *i* zu den häufigsten gehören. Unter den Konsonantgraphemen sind auch hier *n, s, r* und *t* stark vertreten. 
+
+```{r message=FALSE, warning=FALSE}
+library(readxl)
+buchstabenhaeufigkeit_slov <- 
+  read_xlsx("data/wikipedia_frekvence_crk.xlsx")
+buchstabenhaeufigkeit_slov %>% rmarkdown::paged_table()
+```
+
+
+Wir stellen uns die Aufgabe, die Buchstabenhäufigkeit in von uns ausgewählten Texten literarischer Prosa tabellarisch zusammenzustellen und mit denen im Wikipedia-Artikel zu vergleichen. In den folgenden Abschnitten beschäftigen wir uns mit der Häufigkeit von Vokalgraphemen, Konsonantengraphemen, Konsonantenverbindungen und Silben in tabellarischer und graphischer Form. 
+
 
 ## Datensatz lesen
 
@@ -90,7 +122,7 @@ novels_character %>%
 
 Ein paar Zeichen, die nicht zum deutschen Alphabet gehören und mit dem vorherigen Programm-Schritt nicht herausfiltern konnten, werden im nächsten Schritt ebenfalls herausgefiltert.
 
-Wir speichern das Ergebnis als neue Tabelle mit dem Namen "char_freq".
+Wir speichern das Ergebnis als neue Tabelle mit dem Namen *char_freq*. Die zehn häufigsten Buchstaben in dieser Tabelle decken sich mit denen in den beiden eingangs gezeigten Tabellen aus dem Wikipedia-Artikel über Buchstabenhäufigkeit, insbesondere mit der, die auf einem Briefkorpus beruhte. 
 
 ```{r message=FALSE, warning=FALSE}
 char_freq = novels_character %>% 
@@ -98,8 +130,9 @@ char_freq = novels_character %>%
   filter(!str_detect(character, "é|á")) %>% 
   count(character, sort = T)
 
+library(DT)
 char_freq %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
+    DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 10))
 ```
 
@@ -148,7 +181,8 @@ novels_character %>%
   group_by(doc_id) %>% 
   count(character, sort = TRUE) %>% 
   pivot_wider(names_from = doc_id, values_from = n) %>% 
-  paged_table()
+  DT::datatable(fillContainer = FALSE, filter = "top",
+                options = list(pageLength = 10))
 
 ```
 
@@ -255,8 +289,9 @@ ggplot(bs_ratio, aes(x = "", y = Prozent, fill = buchstabe)) +
         axis.ticks = element_blank()) +
   labs(y = "", x = "Anteil % in Romanen") +
   scale_x_discrete(NULL, expand = c(0, 0)) +
-  scale_y_continuous(labels = percent_format(accuracy = 1),
-                     breaks = seq(0, 1, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent_format(accuracy = 1), 
+    breaks = seq(0, 1, 0.1)) # Prozent-Format und Einheiten
 ```
 
 Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche. 
@@ -275,7 +310,7 @@ novels_words = novels %>%
   mutate(letters = nchar(word))
   
 novels_words %>% head(100) %>% 
-  DT::datatable(fillContainer = TRUE, filter = "top",
+  DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 6))
 
 
@@ -299,7 +334,9 @@ novels_words %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(x = "Silben") +
-  scale_y_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent, 
+    breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
 
 ```
 
@@ -314,7 +351,9 @@ novels_words %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(x = "Silben") +
-  scale_y_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent, 
+    breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
 
 ```
 
@@ -345,7 +384,6 @@ novels_words %>%
             Stdev_Buchstaben = sd(letters, na.rm = TRUE)) %>% 
     DT::datatable(fillContainer = TRUE, filter = "top",
                 options = list(pageLength = 4))
-
 ```
 
 Die durchschnittliche Anzahl der Silben und Buchstaben pro Wortform (Token), bei Berücksichtigung von Wortwiederholungen in den Romanen, ist in der folgenden Tabelle zu sehen. 
@@ -379,7 +417,7 @@ syls = novels_words %>%
   dplyr::select(title, word, syllables) %>% 
   pivot_wider(names_from = title, values_from = syllables)
 
-t.test(syls$prozess, syls$tom) # significant
+t.test(syls$prozess, syls$tom, var.equal = TRUE) # significant
 
 ```
 
@@ -388,8 +426,7 @@ Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test
 Schnelle Form des t-Tests:
 
 ```{r message=FALSE, warning=FALSE}
-t.test(syllables ~ title, data = novels_words)
-
+t.test(syllables ~ title, data = novels_words, var.equal = TRUE)
 ```
 
 Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:
@@ -404,7 +441,7 @@ tom_syl <- novels_words %>%
   dplyr::select(syllables) %>% 
   rename(prozess = syllables)
   
-t.test(prozess_syl, tom_syl) # significant
+t.test(prozess_syl, tom_syl, var.equal = T) # significant
 
 ```
 
@@ -419,7 +456,7 @@ lets = novels_words %>%
   dplyr::select(title, word, letters) %>% 
   pivot_wider(names_from = title, values_from = letters)
 
-t.test(lets$prozess, lets$tom) # significant
+t.test(lets$prozess, lets$tom, var.equal = T) # significant
 
 ```
 
@@ -428,8 +465,7 @@ Wenn die Wiederholung von Wortformen berücksichtigt wird, bestätigt der t-Test
 Schnelle Form des t-Tests:
 
 ```{r message=FALSE, warning=FALSE}
-t.test(letters ~ title, data = novels_words)
-
+t.test(letters ~ title, data = novels_words, var.equal = TRUE)
 ```
 
 Dasselbe Ergebnis, aber aufwendiger zu programmieren, um den Datensatz in die entsprechende Form zu bringen:
@@ -444,7 +480,7 @@ tom_let <- novels_words %>%
   dplyr::select(letters) %>% 
   rename(prozess = letters)
   
-t.test(prozess_let, tom_let) # significant
+t.test(prozess_let, tom_let, var.equal = TRUE) # significant
 
 ```
 
@@ -478,7 +514,7 @@ Ergebnisse in Tabellenform:
 
 ```{r message=FALSE, warning=FALSE}
 summary(lm(syllables ~ title, data = novels_words)) %>% 
-  tidy() %>% 
+  broom::tidy() %>% 
     DT::datatable(fillContainer = TRUE, filter = "top",
                 options = list(pageLength = 4))
 ```
@@ -571,7 +607,7 @@ ngrams_char = ngrams_ch %>%
 ngrams_char %>% 
   count(cluster, sort = TRUE) %>% 
   head(10) %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
+    DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 10))
 
 

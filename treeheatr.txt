@@ -1,0 +1,9 @@
+Darstellung mit Entscheidungsbäumen (decision tree) und Heatmaps: 
+
+```{r}
+# install.packages("treeheatr")
+library(treeheatr)
+polite <- na.omit(politeness)
+heat_tree(polite, target_lab = "attitude")
+```
+

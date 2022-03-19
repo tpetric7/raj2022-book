@@ -62,8 +62,8 @@ x <- udpipe_annotate(udmodel_de, x = txt$text, trace = TRUE)
 ```
 
 ```
-## 2021-11-28 22:04:35 Annotating text fragment 1/2
-## 2021-11-28 22:06:39 Annotating text fragment 2/2
+## 2022-03-19 01:30:00 Annotating text fragment 1/2
+## 2022-03-19 01:32:24 Annotating text fragment 2/2
 ```
 
 ```r
@@ -181,9 +181,11 @@ connectors %>% filter(upos == "SCONJ") %>% pull(token) %>% head(50)
 ## [46] "dass"        "fern"        "fortwährend" "fühl"        "gebührend"
 ```
 
-Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien).
+Wir können auch Listen mit neben- und unterordnenden Konjunktionen sowie Konjunktionaladverbien aus dem Internet abrufen. Dann können wir sie genauer zählen. 
 
-Potem jih lahko natančneje preštejemo
+<!-- Z medmrežja lahko tudi potegnemo sezname prirednih in podrednih veznikov ter vezniških prislovov (Konjunktionaladverbien). -->
+<!-- Potem jih lahko natančneje preštejemo -->
+
 case_when
 str_detect(seznam_prirednih_konektorjev, "...|...|...")
 str_detect(seznam_podrednih_konektorjev, "...|...|...")

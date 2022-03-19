@@ -1,4 +1,6 @@
-### Modalkonstruktionen (morati vs. treba)
+### Modalkonstruktionen 
+
+In diesem Abschnitt wird die Vorkommenshäufigkeit (token frequency) der slowenischen Modalkonstruktionen *morati + Infinitiv* und *biti + treba + Infinitiv* in einer Auswahl von slowenischen Texten miteinander verglichen. Der statistische Vergleich wird mit dem $\chi^2$-Test durchgeführt. 
 
 #### Packages
 
@@ -12,11 +14,11 @@ library(readxl)
 
 #### Datei laden
 
-Gigafida: Gebrauchsfrequenzen (Tokenfrequenzen) der Modalkonstruktionen
+Bei Recherchen auf dem slowenischen *Gigafida*-Portal wurden Gebrauchsfrequenzen (Tokenfrequenzen) von zwei Modalkonstruktionen ermittelt, und zwar:   
+- *morati + Infinitiv* und   
+- *biti + treba + Infinitive*.   
 
--   "morati + Infinitiv" und
-
--   "biti + treba + Infinitive".
+Die erste Tabelle mit den Gebrauchsfrequenzen laden wir von der Festplatte: 
 
 
 ```r
@@ -53,7 +55,7 @@ naklonska2
 ## 5 Leposlovje        13355   54931
 ```
 
-Die Modalkonstruktion "morati + Infinitiv" wird ca. dreimal so häufig verwendet wie "biti + treba + Infinitiv".
+Die Modalkonstruktion *morati + Infinitiv* wird ca. dreimal so häufig verwendet wie *biti + treba + Infinitiv*.
 
 #### Graphische Darstellung
 
@@ -73,7 +75,7 @@ naklonska %>%
 
 <img src="06-Modalkonstruktionen_chisq3_files/figure-html/unnamed-chunk-4-1.svg" width="672" />
 
-Die Modalkonstruktion "morati + Infinitiv" scheint in den alltagssprachlich näherstehenden Funktionalstilen Belletristik (leposlovje), Internet und Sachtexten (stvarna besedila) etwas häufiger belegt zu sein als die Modalkonstruktion "biti + treba + Infinitiv", dafür aber in Zeitungen (Časopisi) etwas seltener.
+Die Modalkonstruktion *morati + Infinitiv* scheint in den alltagssprachlich näherstehenden Funktionalstilen Belletristik (leposlovje), Internet und Sachtexten (stvarna besedila) etwas häufiger belegt zu sein als die Modalkonstruktion *biti + treba + Infinitiv*, dafür aber in Zeitungen (Časopisi) etwas seltener.
 
 
 ```r
@@ -91,9 +93,17 @@ naklonska2 %>%
 
 #### Chi-Quadrat-Test
 
-Annahme: Die Modalkonstruktion "morati + Infinitiv" ist weniger markiert als die Modalkonstruktion "biti + treba + Infinitiv". Formael und semantische Begründungen: ... H0: Die beiden Modalkonstruktionen kommen in denselben Funktionalstilen vor. H1: Die beiden Modalkonstruktionen kommen nicht in denselben Funktionalstilen vor.
+Linguistische Annahme: Die Modalkonstruktion *morati + Infinitiv* ist weniger markiert (natürlicher) als die Modalkonstruktion *biti + treba + Infinitiv*.    
 
-Der erste Chi-Quadrat-Test zeigt, dass die beiden Stichproben (morati vs. treba) unabhängig voneinander sind (p \< 0,001). Damit können wir die Nullhypothese (H0) verwerfen und die alternative Hypothese (H1) akzeptieren. Die beiden Modalkonstruktionen kommen demnach nicht im gleichen Maße in denselben Funktionalstilen vor.
+Formale Begründung: Die erste Konstruktion ist kürzer und daher ökonomischer als die zweite.   
+Semantische Begründung: Die erste Konstruktion ist semantisch weniger spezifisch als die zweite.   
+Dies sollte dazu führen, dass die erste Konstruktion in einer größeren Anzahl von Kontexten erscheint als die zweite.   
+
+Die statistischen Annahmen lassen sich folgendermaßen formulieren:    
+$H_0$: Die beiden Modalkonstruktionen kommen in denselben Funktionalstilen vor.    
+$H_1$: Die beiden Modalkonstruktionen kommen nicht in denselben Funktionalstilen vor.
+
+Der erste $\chi^2$-Test zeigt, dass die beiden Stichproben (*morati* vs. *treba*) unabhängig voneinander sind. Dies bestätigt der geringe p-Wert (p \< 0,001), der unterhalb dem Grenzwert von p = 0,05 (5%) liegt. Damit können wir die Nullhypothese ($H_0$) verwerfen und die alternative Hypothese ($H_1$) akzeptieren. Die beiden Modalkonstruktionen kommen demnach nicht im gleichen Maße in denselben Funktionalstilen vor.
 
 
 ```r
@@ -108,7 +118,7 @@ chisq.test(naklonska[ , -1])
 ## X-squared = 1862.9, df = 1, p-value < 2.2e-16
 ```
 
-Der zweite Chi-Quadrat bestätigt Hypothese H1. Die Distribution der beiden Modalkonstruktionen unterscheidet sich. Die graphische Darstellung deutet an, dass dies vor allem am vergleichsweise selteneren Gebrauch der Modalkonstruktion "morati + Infinitiv" in publizistischen Texten liegen könnte. Nach unser Annahme wird die Modalkonstruktion "biti + treba + Infinitiv" häufiger in Texten mit dem Merkmal [+Distanz] eingesetzt.
+Der zweite $@chi³2$-Test, der mit den Zahlenwerten der zweiten Tabelle durchgeführt wird, bestätigt Hypothese $H_1$. Die Distribution der beiden Modalkonstruktionen unterscheidet sich. Die graphische Darstellung deutet an, dass dies vor allem am vergleichsweise selteneren Gebrauch der (natürlicheren) Modalkonstruktion *morati + Infinitiv* in publizistischen Texten liegen könnte. Nach unser Annahme wird die (weniger natürliche) Modalkonstruktion *biti + treba + Infinitiv* häufiger in weniger natürlichen Textsorten mit dem Merkmal [+Distanz] eingesetzt.
 
 
 ```r

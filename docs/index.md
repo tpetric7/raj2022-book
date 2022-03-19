@@ -1,7 +1,7 @@
 ---
-title: "RAJ 2022 Introduction Course"
+title: "Computergestütze Textanalyse mit R"
 author: "Teodor Petrič"
-date: "2021-11-28"
+date: "2022-03-19"
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
 bibio-style: "apalike"
@@ -13,7 +13,7 @@ cover-image: "pictures/hayiti__wcloud_lemmas.png"
 resources:
 - name: featuredImage
   params:
-    description: "Text linguistics in R"
+    description: "Computer assisted linguistics in R"
   src: "pictures/hayiti__wcloud_lemmas.png" 
 editor_options:
   markdown:

@@ -1,0 +1,17 @@
+"VRSTA PRIREDITEV","VRSTA ENOTE","2016","2017","2018","2019","2020"
+"Skupaj prireditve v ustanovah","Ustanove - skupaj",23239,22025,25109,24914,11222
+"Skupaj prireditve v ustanovah","Kulturni dom, center za kulturo",18005,17000,18604,18191,8482
+"Skupaj prireditve v ustanovah","Gledališèe, opera",4966,4751,6204,6551,2650
+"Skupaj prireditve v ustanovah","Glasbene ustanove",268,275,301,173,89
+"..prireditve lastne produkcije (vkljuèno s koprodukcijo)","Ustanove - skupaj",11959,11274,11567,12495,6033
+"..prireditve lastne produkcije (vkljuèno s koprodukcijo)","Kulturni dom, center za kulturo",7955,7478,7704,7803,3982
+"..prireditve lastne produkcije (vkljuèno s koprodukcijo)","Gledališèe, opera",3819,3581,3747,4651,1976
+"..prireditve lastne produkcije (vkljuèno s koprodukcijo)","Glasbene ustanove",186,216,116,41,75
+"..gostujoèe prireditve","Ustanove - skupaj",11279,10751,13542,12420,5188
+"..gostujoèe prireditve","Kulturni dom, center za kulturo",10050,9522,10900,10388,4500
+"..gostujoèe prireditve","Gledališèe, opera",1147,1170,2457,1900,674
+"..gostujoèe prireditve","Glasbene ustanove",82,58,185,132,15
+"Virtualne prireditve","Ustanove - skupaj",-,-,-,-,3974
+"Virtualne prireditve","Kulturni dom, center za kulturo",-,-,-,-,2219
+"Virtualne prireditve","Gledališèe, opera",-,-,-,-,1596
+"Virtualne prireditve","Glasbene ustanove",-,-,-,-,160

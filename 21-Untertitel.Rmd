@@ -570,12 +570,13 @@ avatar_words_udpiped %>%
 
 ```{r message=FALSE, warning=FALSE}
 avatar_words_udpiped %>% 
-  select(language, token, lemma, upos, morph_number) %>% 
+  dplyr::select(language, token, lemma, upos, morph_number) %>% 
   group_by(language) %>% 
   filter(upos == "NOUN") %>% 
   count(morph_number) %>% 
   pivot_wider(names_from = language, values_from = n) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   mutate(morph_number = 
            str_replace(morph_number, "0", "Unknown")) %>% 
   mutate(morph_number = 
@@ -618,7 +619,8 @@ avatar_words_udpiped %>%
   count(morph_degree, sort = TRUE) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   mutate(morph_degree = 
            str_replace(morph_degree, "0", "Unknown")) %>% 
   mutate(morph_degree = 
@@ -652,7 +654,8 @@ avatar_words_udpiped %>%
   count(dep_rel, sort = TRUE) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   mutate(dep_rel = 
            str_replace(dep_rel, "0", "Unknown")) %>% 
   rmarkdown::paged_table()
@@ -807,7 +810,8 @@ avatar_words_udpiped %>%
   count(dep_rel, sort = TRUE) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   mutate(dep_rel = 
            str_replace(dep_rel, "0", "Unknown")) %>% 
   rmarkdown::paged_table()
@@ -898,7 +902,8 @@ avatar_words_udpiped %>%
   count(upos, dep_rel) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   arrange(upos) %>% 
   rmarkdown::paged_table()
 
@@ -927,7 +932,8 @@ avatar_words_udpiped %>%
   count(upos, dep_rel) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   arrange(upos) %>% 
   rmarkdown::paged_table()
 
@@ -938,13 +944,14 @@ Treten Pronomen genau so häufig als Passiv-Subjekte auf wie Substantive? Die ob
 ```{r message=FALSE, warning=FALSE}
 pivot_by_nsubj <- function(tbl) {
   tbl %>% 
-  filter(upos == "NOUN" | upos == "PRON") %>% 
-  filter(str_detect(dep_rel, "nsubj")) %>% 
-  count(upos, dep_rel) %>% 
-  group_by(upos) %>% 
-  mutate(pct = round(100*n/sum(n),2)) %>% 
-  pivot_wider(names_from = upos, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0)))
+    filter(upos == "NOUN" | upos == "PRON") %>% 
+    filter(str_detect(dep_rel, "nsubj")) %>% 
+    count(upos, dep_rel) %>% 
+    group_by(upos) %>% 
+    mutate(pct = round(100*n/sum(n),2)) %>% 
+    pivot_wider(names_from = upos, values_from = c(n, pct)) %>% 
+    mutate_if(is.numeric, ~ replace_na(.x, 0))
+    # mutate(across(everything(), ~ replace_na(.x, 0))) 
 }
 
 
@@ -1015,7 +1022,8 @@ x = avatar_words_udpiped %>%
   count(upos, dep_rel) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   arrange(upos)
 
 x %>% rmarkdown::paged_table()
@@ -1046,7 +1054,8 @@ avatar_words_udpiped %>%
   # group_by(upos) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   arrange(upos) %>% 
   rmarkdown::paged_table()
 
@@ -1063,7 +1072,8 @@ pivot_by_obj <- function(tbl) {
     group_by(upos) %>%
     mutate(pct = round(100*n/sum(n),2)) %>% 
     pivot_wider(names_from = upos, values_from = c(n, pct)) %>% 
-    mutate(across(everything(), ~ replace_na(.x, 0)))
+    mutate_if(is.numeric, ~ replace_na(.x, 0))
+    # mutate(across(everything(), ~ replace_na(.x, 0)))
 }
 
 x = avatar_words_udpiped %>% 
@@ -1113,7 +1123,8 @@ pivot_by_propn <- function(tbl) {
     group_by(upos) %>%
     mutate(pct = round(100*n/sum(n),2)) %>% 
     pivot_wider(names_from = upos, values_from = c(n, pct)) %>% 
-    mutate(across(everything(), ~ replace_na(.x, 0)))
+    mutate_if(is.numeric, ~ replace_na(.x, 0))
+    # mutate(across(everything(), ~ replace_na(.x, 0)))
 }
 
 x = avatar_words_udpiped %>% 
@@ -1167,7 +1178,8 @@ avatar_words_udpiped %>%
   count(dep_rel, word_order) %>% 
   mutate(pct = round(100*n/sum(n),2)) %>% 
   pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
   mutate(dep_rel = 
            str_replace(dep_rel, "0", "Unknown")) %>% 
   select(-dep_rel) %>% 
@@ -1235,16 +1247,17 @@ Zuerst wollen wir direkte Objekte (im Deutschen und Slowenischen auch als Akkusa
 ```{r message=FALSE, warning=FALSE}
 pivot_by_verb_obj = function(tbl){
   tbl %>% 
-      mutate(word_order = ifelse(token_id > head_token_id, 
-                             "VO", 
-                             "OV")) %>% 
-  count(dep_rel, word_order) %>% 
-  mutate(pct = round(100*n/sum(n),2)) %>% 
-  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
-  mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
-  mutate(dep_rel = 
-           str_replace(dep_rel, "0", "Unknown")) %>% 
-  select(-dep_rel)
+    mutate(word_order = ifelse(token_id > head_token_id, 
+                               "VO", 
+                               "OV")) %>% 
+    count(dep_rel, word_order) %>% 
+    mutate(pct = round(100*n/sum(n),2)) %>% 
+    pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+    # mutate(across(everything(), ~ replace_na(.x, 0))) %>% 
+    mutate_if(is.numeric, ~ replace_na(.x, 0)) %>% 
+    mutate(dep_rel = 
+             str_replace(dep_rel, "0", "Unknown")) %>% 
+    select(-dep_rel)
 }
 
 vo_nominal = avatar_words_udpiped %>% 
@@ -1275,6 +1288,8 @@ verb_object = bind_rows(vo_nominal, vo_pronominal) %>%
 verb_object %>% rmarkdown::paged_table()
 ```
 
+Unsere erste Abbildung der Verhältnisse in den sechs Sprachen. 
+
 ```{r message=FALSE, warning=FALSE}
 verb_object %>% 
   select(word_class, word_order, pct_deu:pct_tur) %>% 
@@ -1287,6 +1302,8 @@ verb_object %>%
   theme(legend.position = "top")
 ggsave("pictures/barplot_avatar_VO-OV_NN_PRON.png")
 ```
+
+Die nächste Abbildung zeigt die Entfernung bzw. Ähnlichkeit der Sprachen ähnlich wie auf einer Landkarte an. 
 
 ```{r message=FALSE, warning=FALSE}
 verb_object %>% 
@@ -1308,6 +1325,427 @@ verb_object %>%
        y = "OV-Anteil bei Pronomen")
 ggsave("pictures/koord_avatar_VO-OV_NN_PRON.png")  
 ```
+
+
+### Subjekt-vor-Objekt-Präferenz
+
+#### SO-/OS-Anteil 
+
+Den Anteil der Subjekte und Objekte, nominal und pronominal ausgedrückt, kann man mit der folgenden Funktion berechnen. 
+
+```{r message=FALSE, warning=FALSE}
+pivot_by_obj <- function(tbl) {
+  tbl %>% 
+    filter(upos == "NOUN" | upos == "PRON") %>% 
+    filter(dep_rel == "nsubj" | dep_rel == "obj") %>% 
+    count(upos, dep_rel) %>% 
+    group_by(upos) %>%
+    mutate(pct = round(100*n/sum(n),2)) %>% 
+    pivot_wider(names_from = upos, values_from = c(n, pct)) %>% 
+    mutate_if(is.numeric, ~ replace_na(.x, 0))
+    # mutate(across(everything(), ~ replace_na(.x, 0)))
+}
+
+x = avatar_words_udpiped %>% 
+  filter(language == "eng") %>% 
+  pivot_by_obj()
+
+```
+
+Die nächste Funktion prüft, in welcher Reihenfolge Subjekt, Objekt und Verb auftreten. Unterschieden werden sechs verschiedene Konstituentenfolgen:   
+- SVO, SOV, VSO, OVS, OSV und VOS.    
+
+Eine eingebaute Filterfunktion vereinfacht die Klassifizierung auf drei Klassen: SO (subjektinitialer Satz), OS (objektinitialer Satz) und "other", da ähnliche graphische Darstellungen entstehen sollen wie oben im Zusammenhang mit der Verb-Objekt-Abfolge. 
+
+```{r message=FALSE, warning=FALSE}
+pivot_by_subj_verb_obj <- function(tbl) {
+  tbl %>% 
+  filter(dep_rel %in% c("nsubj", "obj")) %>% 
+  mutate(token_id_nsubj = ifelse(dep_rel %in% c("nsubj"), token_id, NA), 
+         token_id_obj = ifelse(dep_rel %in% c("obj"), token_id, NA)) %>% 
+  pivot_wider(c(doc_id:sentence, language, head_token_id), 
+              names_from = dep_rel, 
+              values_from = c(token_id),
+              values_fn = mean) %>% 
+  mutate(word_order = case_when(
+    nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "SVO",
+    nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "SOV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VSO",
+    nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "OVS",
+    nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "OSV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VOS",
+    TRUE ~ "other"
+  )) %>% 
+  # optional removal of "V" and other
+  mutate(word_order = str_remove(word_order, "V")) %>% 
+  filter(word_order != "other") %>% 
+  group_by(language) %>% 
+  # no dep_rel anymore
+  # count(dep_rel, word_order) %>%
+  count(word_order) %>%
+  mutate(pct = round(100*n/sum(n),2)) %>% 
+  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+    mutate_if(is.numeric, ~ replace_na(.x, 0))
+  # mutate(across(everything(), ~ replace_na(.x, 0))) #%>% 
+  # mutate(dep_rel =
+  #          str_replace(dep_rel, "0", "Unknown")) %>%
+  # select(-dep_rel)
+}
+```
+
+Berechnung der Anteile der beiden interessierenden Konstituentenfolgen (SO und OS) bei nominaler und pronominaler Ausdrucksweise: 
+
+```{r message=FALSE, warning=FALSE}
+svo_nominal = avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_subj_verb_obj() %>% 
+  mutate(word_class = "NOUN")
+
+svo_pronominal = avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("PRON")) %>% 
+  pivot_by_subj_verb_obj() %>% 
+  mutate(word_class = "PRON")
+
+so_nom_pron = avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("NOUN", "PROPN", "PRON")) %>% 
+  pivot_by_subj_verb_obj() %>% 
+  mutate(word_class = "NOUN")
+
+```
+
+Beide Tabellen werden zu einer vereint. 
+
+```{r message=FALSE, warning=FALSE}
+subject_object = bind_rows(svo_nominal, svo_pronominal) %>% 
+  select(word_class, word_order:pct_tur)
+subject_object %>% rmarkdown::paged_table()
+
+```
+
+In der ersten Abbildung verwenden wir liegende Säulendiagramme. Die relativ geringen Unterschiede zwischen den Sprachen waren zu erwarten, da nur SO-Sprachen ins Sample aufgenommen wurden. 
+
+```{r message=FALSE, warning=FALSE}
+subject_object %>% 
+  filter(word_order == "SO" | word_order == "OS") %>% 
+  select(word_class, word_order, pct_deu:pct_tur) %>% 
+  pivot_longer(pct_deu:pct_tur, 
+               names_to = "language", values_to = "pct") %>% 
+  mutate(language = str_replace(language, "pct_", "")) %>% 
+  ggplot(aes(pct, word_class, fill = word_order)) +
+  geom_col(position = "fill") +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  labs(x = "") +
+  facet_wrap(~ language) +
+  theme(legend.position = "top")
+ggsave("pictures/barplot_avatar_SO-OS_NN_PRON.png")
+```
+
+Im zweiten Vergleich wählen wir wiederum eine landkartenähnliche Darstellungsweise. Da es sich um sechs Sprachen mit Subjekt-zuerst-Präferenz handelt, sind die Unterschiede relativ klein auf der Landkarte (besser zu sehen, wenn der Nullpunkt des Koordinaatensystems in die graphische Darstellung einbezogen ist - `expand_limits()`). 
+
+```{r message=FALSE, warning=FALSE}
+subject_object %>% 
+  select(word_class, word_order, n_deu:n_tur) %>% 
+  filter(word_order == "SO" | word_order == "OS") %>% 
+  pivot_longer(n_deu:n_tur, 
+               names_to = "language", values_to = "n") %>% 
+  mutate(language = str_replace(language, "n_", "")) %>% 
+  pivot_wider(names_from = c(word_order, word_class), 
+              values_from = n) %>% 
+  group_by(language) %>% 
+  summarise(so_nouns_prop = SO_NOUN/(SO_NOUN + OS_NOUN),
+            so_prons_prop = SO_PRON/(SO_PRON + OS_PRON)) %>% 
+  ggplot(aes(so_nouns_prop, so_prons_prop, 
+             fill = language, group = language)) +
+  # geom_text(aes(label = language, check.overlap = TRUE)) +
+  geom_label(aes(label = language, check.overlap = TRUE)) +
+  theme(legend.position = "none") +
+  # expand_limits(x = 0, y = 0) +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  labs(x = "SO-Anteil bei Substantiven", 
+       y = "SO-Anteil bei Pronomen")
+ggsave("pictures/koord_avatar_SO-SO_NN_PRON.png")  
+```
+
+
+#### Belege für OS-Abfolgen
+
+Wir wandeln die oben stehende Funktion `pivot_by_subj_verb_obj()` ein wenig ab, um zu erfahren, in welchen Sätzen OS-Abfolgen gemäß der automatischen Klassifizierung erscheinen. 
+
+```{r message=FALSE, warning=FALSE}
+pivot_by_subj_verb_obj_which <- function(tbl){
+  tbl %>% 
+    filter(dep_rel %in% c("nsubj", "obj")) %>% 
+    mutate(token_id_nsubj = ifelse(dep_rel %in% c("nsubj"), token_id, NA), 
+           token_id_obj = ifelse(dep_rel %in% c("obj"), token_id, NA)) %>% 
+    pivot_wider(c(doc_id:sentence, language, head_token_id), 
+                names_from = dep_rel, 
+                values_from = c(token_id),
+                values_fn = mean) %>% 
+    mutate(word_order = case_when(
+      nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "SVO",
+      nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "SOV",
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VSO",
+      nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "OVS",
+      nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "OSV",
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VOS",
+      TRUE ~ "other"
+    )) %>% 
+    # optional removal of "V" and other
+    mutate(word_order = str_remove(word_order, "V")) %>% 
+    filter(word_order != "other") %>% 
+    group_by(language)
+}
+```
+
+Deutsch: OS-Abfolge mit Nomen oder Pronomen   
+Eine Reihe von Fehlanzeigen!   
+Sätze mit zwei NPs im Nominativ (z.B. *Die Starken jagen die Schwachen*) sind morphosyntaktisch nicht eindeutig bestimmbar. Menschen würden in den meisten Fällen die NP *die Starken* als Subjekt bestimmen, weil es zuerst genannt wird und weil unsere Erfahrungen das für wahrscheinlicher halten.   
+Sätze wie *wenn ihr die Maske verliert*, d.h. mit angesprochenem Subjekt (*ihr*), scheinen auch für Probleme zu sorgen.    
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  # filter(upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "deu") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+Slowenisch: OS-Abfolge mit Nomen oder Pronomen   
+Geringerer Fehleranteil als in den deutschen Belegen.    
+Das Gentivobjekt *naših navad* wurde als Subjekt klassifiziert, das Subjekt *moja hči* übersehen.    
+Das negierte Subjekt *nihče* wurde nicht erkannt.    
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  # filter(upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "slv") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+
+Deutsch: OS-Abfolge mit Nomen   
+Hier erweist sich, dass Udpipe die Satzglieder nicht einwandfrei identifizieren konnte. Fehler! 
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "deu") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+Deutsch: OS-Abfolge mit Pronomen   
+Besser. Aber einige Fehler in der Analyse. 
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("PRON")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "deu") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+
+Slowenisch: OS-Abfolge mit Nomen   
+Fehler in beiden Belegen!   
+Im ersten Beleg: *Moja hči* ist das Subjekt, das klitisierte Pronomen *te* das Objekt. Fälschlicherweise wird das Genitivobjekt *naših navad* als Subjekt analysiert.   
+Im zweiten Beleg ist das Subjekt nur (implizit) in der finiten Verbform *rečemo* enthalten. Das Dativobjekt *tem drevesom* steht vor der finiten Verbform. Fälschlicherweise wird die Phrase *Utraya Mokri* (x nennt man so. Wie nennt man x ?) als Subjekt klassifiziert statt als Prädikativ oder Adverbialbestimmung.   
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("NOUN", "PROPN")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "slv") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+Slowenisch: OS-Abfolge mit Pronomen   
+Besser. Aber einige Fehler in der Analyse. 
+
+```{r message=FALSE, warning=FALSE}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel == "nsubj" | dep_rel == "obj") %>%
+  filter(upos %in% c("PRON")) %>% 
+  pivot_by_subj_verb_obj_which() %>% 
+  filter(language == "slv") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order == "OS")
+```
+
+
+### Mehrere Konstituenten
+
+```{r}
+# avatar_words_udpiped %>% filter(language == "deu")
+```
+
+
+```{r}
+pivot_by_constituents <- function(tbl) {
+  tbl %>% 
+  filter(dep_rel %in% c("nsubj", "obj", "advmod", 
+                        "aux", "cop", "root")) %>% 
+  mutate(token_id_nsubj = ifelse(dep_rel %in% c("nsubj"), token_id, NA), 
+         token_id_obj = ifelse(dep_rel %in% c("obj"), token_id, NA),
+         token_id_advmod = ifelse(dep_rel %in% c("advmod"), token_id, NA),
+         token_id_cop = ifelse(dep_rel %in% c("cop"), token_id, NA),
+         token_id_root = ifelse(dep_rel %in% c("root"), token_id, NA),
+         token_id_aux = ifelse(dep_rel %in% c("aux"), token_id, NA)) %>% 
+  pivot_wider(c(doc_id:sentence, language, head_token_id), 
+              names_from = dep_rel, 
+              values_from = c(token_id),
+              values_fn = mean) %>% 
+  mutate(word_order = case_when(
+    advmod < aux & aux < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "AaSVO",
+    advmod < aux & aux < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "AaSOV",
+    
+    advmod < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "ASVO",
+    advmod < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "ASOV",
+    advmod < head_token_id & 
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "AVSO",
+    advmod < obj & 
+      nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "AOVS",
+    advmod < obj & 
+      nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "AOSV",
+    advmod < head_token_id & 
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "AVOS",
+    
+    nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "SVO",
+    nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "SOV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VSO",
+    nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "OVS",
+    nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "OSV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VOS",
+    TRUE ~ "other"
+  )) %>% 
+  # optional removal of "V" and other
+  # mutate(word_order = str_remove(word_order, "V")) %>% 
+  filter(word_order != "other") %>% 
+  group_by(language) %>% 
+  # no dep_rel anymore
+  # count(dep_rel, word_order) %>%
+  count(word_order) %>%
+  mutate(pct = round(100*n/sum(n),2)) %>% 
+  pivot_wider(names_from = language, values_from = c(n, pct)) %>% 
+  mutate_if(is.numeric, ~ replace_na(.x, 0))
+    # mutate(across(everything(), ~ replace_na(.x, 0))) #%>% 
+  # mutate(dep_rel =
+  #          str_replace(dep_rel, "0", "Unknown")) %>%
+  # select(-dep_rel)
+}
+```
+
+```{r}
+asvo_nom_pron <- avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel %in% c("nsubj", "obj", "advmod", "aux", "cop", "root")) %>%
+  filter(upos %in% c("NOUN", "PROPN", "PRON", "ADV", "AUX")) %>% 
+  pivot_by_constituents() %>% 
+  mutate(word_class = "differs")
+asvo_nom_pron
+```
+
+
+```{r}
+pivot_by_constituents_which <- function(tbl){
+  tbl %>% 
+  filter(dep_rel %in% c("nsubj", "obj", "advmod", 
+                        "aux", "cop", "root")) %>% 
+  mutate(token_id_nsubj = ifelse(dep_rel %in% c("nsubj"), token_id, NA), 
+         token_id_obj = ifelse(dep_rel %in% c("obj"), token_id, NA),
+         token_id_advmod = ifelse(dep_rel %in% c("advmod"), token_id, NA),
+         token_id_cop = ifelse(dep_rel %in% c("cop"), token_id, NA),
+         token_id_root = ifelse(dep_rel %in% c("root"), token_id, NA),
+         token_id_aux = ifelse(dep_rel %in% c("aux"), token_id, NA)) %>% 
+  pivot_wider(c(doc_id:sentence, language, head_token_id), 
+              names_from = dep_rel, 
+              values_from = c(token_id),
+              values_fn = mean) %>% 
+  mutate(word_order = case_when(
+    advmod < aux & aux < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "AaSVO",
+    advmod < aux & aux < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "AaSOV",
+    
+    advmod < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "ASVO",
+    advmod < nsubj & 
+      nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "ASOV",
+    advmod < head_token_id & 
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "AVSO",
+    advmod < obj & 
+      nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "AOVS",
+    advmod < obj & 
+      nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "AOSV",
+    advmod < head_token_id & 
+      nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "AVOS",
+    
+    nsubj < obj & nsubj < head_token_id & obj > head_token_id ~ "SVO",
+    nsubj < obj & nsubj < head_token_id & obj < head_token_id ~ "SOV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VSO",
+    nsubj > obj & nsubj > head_token_id & obj < head_token_id ~ "OVS",
+    nsubj > obj & nsubj < head_token_id & obj < head_token_id ~ "OSV",
+    nsubj < obj & nsubj > head_token_id & obj > head_token_id ~ "VOS",
+    TRUE ~ "other"
+  )) %>% 
+  # optional removal of "V" and other
+  # mutate(word_order = str_remove(word_order, "V")) %>% 
+  filter(word_order != "other") %>% 
+    group_by(language)
+}
+```
+
+
+```{r}
+avatar_words_udpiped %>% 
+  group_by(language) %>% 
+  filter(dep_rel %in% c("nsubj", "obj", "advmod", "aux", "cop", "root")) %>%
+  filter(upos %in% c("PRON", "NOUN", "ADV", "VERB", "AUX")) %>% 
+  pivot_by_constituents_which() %>% 
+  filter(language == "deu") %>% 
+  ungroup() %>% 
+  select(sentence, obj, nsubj, word_order, -language) %>% 
+  filter(word_order %in% c("AaSOV", "AaSVO", "ASVO", "ASOV", "AVSO"))
+
+```
+
+
+
+#### Zusätzliche graphische Darstellungen 
 
 Übersichtsgraphik mit Korrelationsberechnung:
 

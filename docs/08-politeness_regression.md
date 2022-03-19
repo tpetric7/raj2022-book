@@ -138,7 +138,7 @@ politeness %>%
 ## 6      M7 14
 ```
 
-Versuchspersonen: je 3 sind weiblich bzw. männlich.
+Versuchspersonen: 3 weibliche und 3 männliche.
 
 
 ```r
@@ -156,7 +156,7 @@ politeness %>%
 ## 6      M7      M 14
 ```
 
-Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten folgende) Hypothese zu überprüfen.
+Pro Verhaltensweise (attitude) stehen uns 42 Messpunkte zur Verfügung, um unsere (unten folgende) Hypothese zu überprüfen.
 
 
 ```r
@@ -182,7 +182,9 @@ politeness %>%
 ## [1] NA
 ```
 
-`NA`: Hoppla! In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche Frequenz mit `mean()` zu berechnen. Entfernen der leeren Datenzelle (NA) ist die einfachste Lösung.
+`NA`: Hoppla! In unserer Datenreihe fehlt eine Frequenz. In solch einem Fall haben wir zwei Möglichkeiten: entweder entfernen wir diese Datenzeile aus unserer Berechnung oder wir lassen unser Programm eine Schätzung des Wertes vornehmen, die aber an der Datendistribution und am Mittelwert nichts verändert. Letzteres machen wir mit einer *impute*-Funktion, die beispielsweise den Medianwert für den fehlend Datenpunkt einsetzt.
+
+Entfernen der leeren Datenzelle (`NA`) ist die einfachste Lösung, um die durchschnittliche Frequenz mit `mean()` berechnen zu können. Das erledigen wir mit der `tidyverse`-Funktion `drop_na()`.
 
 
 ```r
@@ -196,7 +198,20 @@ politeness %>%
 ## 1 193.5819
 ```
 
-Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet. Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
+Eine andere Möglichkeit, eine leere Datenzeile aus der Mittelwertberechnung zu entfernen,  ist die Option `na.rm = TRUE` zur `mean()`-Funktion hinzuzufügen. 
+
+
+```r
+politeness %>% 
+  summarise(av_freq = mean(frequency, na.rm = TRUE))
+```
+
+```
+##    av_freq
+## 1 193.5819
+```
+
+Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet. Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen! Zu diesem Zweck müssen wir vor der Mittelwertberechnung die Daten mit der `group_by()`-Funktion gruppieren. 
 
 
 ```r
@@ -214,9 +229,9 @@ politeness %>%
 ## 2 M         139.
 ```
 
-Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern: Frauen haben meist eine höhere Stimme als Männer.
+Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern: Frauen haben ja meist eine höhere Stimme als Männer.
 
-Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise: In unserer Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59 - 184,36.
+Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise: In unserer Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59 - 184,36. Um zu diesem Ergebnis zu gelangen, haben wir vor der `summarise()`-Funktion die `group_by()`-Funktion entsprechend angewandt.  
 
 
 ```r
@@ -263,7 +278,7 @@ Gemäß Hypothese $H_1$ ist der Unterschied nicht zufällig entstanden, sondern 
 
 Nicht so gemäß Hypothese $H_0$: Der Mittelwertunterschied zwischen den Stichproben kann zufällig entstanden sein, denn wenn wir eine andere Stichprobe genommen hätten, wäre der Unterschied vielleicht gleich Null gewesen.
 
-Mit statistischen Tests können wir diese beiden Hypothesen überprüfen. Einer davon ist der t-Test.
+Mit statistischen Tests können wir diese beiden Hypothesen überprüfen. Einer davon ist der *t-Test*.
 
 
 ```r
@@ -406,11 +421,11 @@ summary(m)
 Wie *liest* man die **Regressionsergebnisse**?^[https://moderndive.com/6-multiple-regression.html#model4interactiontable]    
 Beginnen wir am Ende! Die *F-Statistik* am Ende besagt, dass das Regressionsmodell insgesamt gesehen einen signifikanten Beitrag zur Erklärung des Frequenzverlaufs leistet, denn der sehr kleine p-Wert (p-value: < 2.2e-16) liegt deutlich unter dem 5% Signifikanzniveau.   
 
-Die vorletzte Zeile gibt den $R^2$-Wert (*Bestimmtheitsmaß*) an, also wie viel Prozent der gesamten Varianz vom Modell erklärt wird (hier: 0,71, demnach 71 % bzw. mit *adjusted* $R^2$ mehr als 70%, wenn die Korrektur berücksichtigt wird, die bei Einbezug mehr als einer unabhängigen Variable gilt).   
+Die vorletzte Zeile gibt den $R^2$-Wert (*Bestimmtheitsmaß*) an, also wie viel Prozent der gesamten Varianz der abhängigen Variable (frequency) vom Modell erklärt wird (hier: 0,71, demnach 71 % bzw. mit *adjusted* $R^2$ mehr als 70%, wenn die Korrektur berücksichtigt wird, die bei Einbezug mehr als einer unabhängigen Variable gilt und immer etwas niedriger ist).   
 
-Der *Intercept* ist die Stelle, an der die Frequenzkurve die y-Achse schneidet (also die Oordinate). In diesem Fall beträgt der Wert etwa 257 Hz. Der Intercept-Wert ist meistens nicht sinnvoll interpretierbar (auch hier nicht). Aber wenn wir das folgende Diagramm *gender effect plot* betrachten und in Gedanken die Linie von dem Punkt für die weiblichen Versuchspersonen (*F*) in Richtung y-Achse verlängern, dann können wir uns vorstellen, dass die Linie etwa beim Wert 257 die y-Achse schneidet. Der Intercept ist somit der (mathematisch festgelegte) Basiswert für die weiblichen Versuchspersonen (weil das Programm alphabetisch vorgeht und *F* im Alphabet vor *M* erscheint). 
+Der *Intercept* oder Konstante ist die Stelle, an der die Frequenzkurve die y-Achse schneidet (also die Ordinate). In diesem Fall beträgt der Wert etwa 257 Hz. Der Intercept-Wert ist meistens nicht sinnvoll interpretierbar (auch hier nicht). Aber wenn wir das unten folgende Diagramm *gender effect plot* betrachten und in Gedanken die Linie von dem Punkt für die weiblichen Versuchspersonen (*F*) in Richtung y-Achse verlängern, dann können wir uns vorstellen, dass die Linie etwa beim Wert 257 die y-Achse schneidet. Der Intercept ist somit der (mathematisch festgelegte) Basiswert für die weiblichen Versuchspersonen. Die weiblichen Versuchspersonen werden als Basis verwendet, weil das Programm alphabetisch vorgeht und *F* im Alphabet vor *M* erscheint. 
 
-Der Koeffizient für *genderM* zeigt an, dass bei männlichen Versuchspersonen 108,35 Hz vom Basiswert der weiblichen Versuchspersonen (256,762) subtrahiert werden müssen. Das ist der Intercept für die männlichen Versuchspersonen. Der p-Wert ist erwartungsgemäß hochsignifikant (p < 2e-16).    
+Der Koeffizient für *genderM* zeigt an, dass bei männlichen Versuchspersonen 108,35 Hz vom Basiswert der weiblichen Versuchspersonen (256,762) subtrahiert werden müssen. Das ist der Intercept für die männlichen Versuchspersonen. Der p-Wert ist erwartungsgemäß hochsignifikant (p < 2e-16), denn die meisten Männer haben eine tiefere Stimme als Frauen.    
 
 In der nächsten Zeile folgt der Koeffizient für *attitudepol* (polite). Der Koeffizient (-19,553) ist negativ und muss daher vom Basiswert, dem Intercept für die weiblichen Versuchspersonen (256,762), subtrahiert werden. Demnach ist die Tonlage beim höflichen Sprechverhalten (attitudepol) um 19,55 Hz tiefer als beim informellen Sprechverhalten. Der p-Wert ist signifikant (p = 0,0146).  
 
@@ -424,16 +439,17 @@ Grundfrequenz für *Männer* bei *informellem* Sprechen:
 Grundfrequenz für *Männer* bei *höflichem* Sprechen:    
 256.762 + (-108.349)\*1 + (-19.553)\*1 = 128.86 Hz
 
-*Durchschnittliche* Grundfrequenz bei *informellem* Sprechen:   
+*Durchschnittliche* Grundfrequenz bei *informellem* Sprechen (Frauen + Männer):   
 (256.762 + 148.413)/2 = 202.5875 Hz. 
-*Durchschnittliche* Grundfrequenz bei *höflichem* Sprechen:    
+*Durchschnittliche* Grundfrequenz bei *höflichem* Sprechen: (Frauen + Männer):    
 (237.209 + 128.86)/2 = 183.0345 Hz. 
 
 Das lineare Regressionsmodell **bestätigt** somit die Hypothese $H_1$: F(2;80 = 98,38; p \< 0,001). Die Versuchspersonen sprechen demnach in einer tieferen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p = 0,0146).
 
-Außerdem bestätigt das Regressionsmodell (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. 
+Außerdem bestätigt das Regressionsmodell (erwartungsgemäß) auch, dass die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um durchschnittlich 108 Hz. Aber da uns das bereits aus unserer Alltagserfahrung bekannt ist, interessiert uns dieses Ergebnis nicht.
 
-Der $R^2$-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird. Das ist ein guter Wert in den Sozialwissenschaften.
+
+Das Bestimmtheitmaß, d.h. der $R^2$-Wert, beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der Variabilität unserer abhängigen Variable (frequency) erklärt wird. Das ist ein guter Wert in den Sozialwissenschaften.
 
 Das Regressionsmodell wollen wir auch mit Hilfe Programms `effects` graphisch veranschaulichen. 
 
@@ -461,7 +477,7 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE, confint=list(style="bars"), x.var = "gender")
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-19-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-20-1.svg" width="672" />
 
 Man kann Regressionsmodelle auch mit `tidyverse`-Funktionen formulieren (der "." bedeutet, dass der Datensatz "politeness" aus der vorherigen Zeile übernommen werden soll). Die `tidy(()`-Funktion des `broom`-Pakets sorgt für die Umformung in eine Tabelle. 
 
@@ -501,7 +517,7 @@ politeness %>%
   facet_wrap(~ gender)
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-21-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
 
 Der *rote Stern* markiert den *Durchschnittswert* der jeweiligen Gruppe, der *schwarze Balken* den *Median* (d.h. den Wert, der genau in der Mitte aller Daten der jeweiligen Gruppe liegt). Im *Kasten* eines **Boxplots** liegen 50% aller Werte, darunter liegen 25% und darüber ebenfalls 25%. Bei den Männern (M) ist zu sehen, dass der Median (der schwarze Balken) und das arithmetische Mittel (der rote Stern) nicht übereinstimmen. Das deutet auf extremere Unterschiede zwischen den männlichen Versuchspersonen (Schiefe oder Asymmetrie). 
 
@@ -519,7 +535,7 @@ politeness %>%
 ## Warning: Removed 1 rows containing non-finite values (stat_density).
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-23-1.svg" width="672" />
 
 ```r
 politeness %>% 
@@ -533,7 +549,7 @@ politeness %>%
 ## Warning: Removed 1 rows containing non-finite values (stat_bin).
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-22-2.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-23-2.svg" width="672" />
 
 ```r
 politeness %>% 
@@ -552,7 +568,7 @@ politeness %>%
     size = 2)
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-22-3.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-23-3.svg" width="672" />
 
 ```r
 politeness %>% 
@@ -575,7 +591,7 @@ politeness %>%
 ## Warning: Removed 1 rows containing non-finite values (stat_bin).
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-22-4.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-23-4.svg" width="672" />
 
 
 Wird das Sprechverhalten (attitude) durch das Geschlecht (gender) modifiziert (z.B. verändern Frauen ihre Tonlage beim höflichem Sprechen, Männer dagegen nicht oder kaum)? Das kann man durch *Hinzufügung eines Interaktionsterms* prüfen. Eine Interaktion kennzeichnet man in der Regressionsgleichung mit einem Stern zwischen den beteiligten Variablen (also wie beim Multiplizieren). Hier prüfen wir die **Interaktion** zwischen den beiden unabhängigen Variablen *Geschlecht* (gender) und *Verhalten* (attitude). 
@@ -656,12 +672,9 @@ allEffects(m)
 plot(allEffects(m), multiline=TRUE, grid=TRUE, rug=FALSE, as.table=TRUE, confint=list(style="bars"), x.var = "gender")
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
 
 Die sich überschneidenden Konfidenzintervalle im Diagramm zeigen, dass die Durchschnittswerte keinen signifikanten Unterschied aufweisen. Außerdem gilt sowohl für die weiblichen als auch die männlichen Versuchspersonen, dass Frequenzwerte beim höflichen Sprechverhalten geringer sind. Die Interaktion liefert somit keinen signifikanten Erklärungsbeitrag. Es ist sinnvoll, nur die beiden Haupteffekte beizubehalten und die Interaktion aus dem Regressionsmodell herauszunehmen. 
-
-
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
 Das nächste Diagramm bestätigt, dass die Variablen Geschlecht (gender) und Verhalten (attitude) mit statistischer Signifikanz die Höhe des Grundfrequnezverlaufs (frequency) beeinflussen, nicht jedoch die Interaktion beider Variablen (deren Konfidenzintervall überschreitet im Diagramm die Null-Linie).
 
@@ -674,7 +687,7 @@ p1 = plot(parameters(m)) +
 p1
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
 
 Das nächste Diagramm bestätigt, dass die Residuen (d.h. die jeweiligen Abweichungen der einzelnen Werte vom Durchschnitt) normalverteilt sind (p = 0.396, also größer als der Grenzwert 0.05). Damit ist eine der erforderlichen Bedingungen für die Durchführung einer linearen Regression erfüllt. 
 
@@ -695,7 +708,7 @@ p2 = plot(check, type = "qq")
 p2
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
 
 
 
@@ -715,7 +728,7 @@ p2a = plot(check, type = "pp")
 p2a
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-29-1.svg" width="672" />
 
 $Omega^2$ ist eine alternative Größe zu $R^2$, womit ebenfalls die erklärte Varianz eines linearen Regressionsmodells angegeben wird. Im Diagramm ist zu sehen, dass die Variable *Geschlecht* (gender) den größten Beitrag leistet (fast 70%), die Variable *Verhalten* (attitude) ca. 5%, während die Interaktion beider Variablen keinen signifikanten Beitrag zu Erklärung der Varianz leistet (Wert liegt bei 0%).
 
@@ -730,9 +743,9 @@ p3 = plot(omega_squared(m))
 p3
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-29-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-30-1.svg" width="672" />
 
-Das nächste Diagramm zeigt die Verteilung der Daten.
+Das nächste Diagramm zeigt die Verteilung der Daten für die beiden Geschlechter.
 
 
 ```r
@@ -742,9 +755,9 @@ p4 = ggplot(politeness, aes(x = attitude, y = frequency, color = gender)) +
 p4
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-30-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-31-1.svg" width="672" />
 
-Weitere Darstellungen der Datendistribution:
+Weitere Darstellungsmöglichkeiten der Datendistribution:
 
 
 ```r
@@ -757,7 +770,7 @@ p4 = ggplot(politeness,
 p4
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-31-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-32-1.svg" width="672" />
 
 
 ```r
@@ -770,9 +783,9 @@ p5 = ggplot(politeness,
 p5
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-32-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-33-1.svg" width="672" />
 
-Bedingungen für die Durchführung einer linearen Regression mit einem Befehl. Hier wählen wir das Modell ohne Interaktion (da diese nicht signifikant war).
+Ob die Bedingungen für die Durchführung einer linearen Regression erfüllt sind, kann man mit einem Befehl ausführen, und zwar mit Hilfe des Programms `performance`. Hier wählen wir die Funktion `check_model()` mit dem Modell ohne Interaktion (da diese nicht signifikant war). 
 
 
 ```r
@@ -811,9 +824,9 @@ p6 = plot(check)
 p6
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-33-1.svg" width="100%" height="100%" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-34-1.svg" width="100%" height="100%" />
 
-Collage mehrerer der oben einzeln gezeigten Diagramme:
+Collage mehrerer der oben einzeln gezeigten Diagramme mit Hilfe der `plots()`-Funktion im Programm `performance`:
 
 
 ```r
@@ -822,7 +835,9 @@ plots(p1,p2,p3,p4,
       tags = paste0("B", 1:4))
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-34-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
+
+Eine Bayesianische Regressionsberechnung erlauben die Programmen `bayestestR` und `rstanarm`. Mit dem Programm `see` können wir die Datendistribution sichtbar machen. 
 
 
 ```r
@@ -837,7 +852,8 @@ result <- hdi(m, ci = c(0.5, 0.75, 0.89, 0.95))
 plot(result)
 ```
 
-<img src="08-politeness_regression_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
+<img src="08-politeness_regression_files/figure-html/unnamed-chunk-36-1.svg" width="672" />
+
 
 #### Schluss
 
@@ -852,7 +868,8 @@ politeness %>%
 ```
 
 ```
-## `summarise()` has grouped output by 'gender'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'gender'. You can override using the
+## `.groups` argument.
 ```
 
 ```

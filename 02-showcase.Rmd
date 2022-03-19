@@ -1,5 +1,9 @@
 # Showcase
 
+Einige Beispiele von Wolf Riepl (https://github.com/fjodor).
+
+https://github.com/fjodor/dataviz_ideas
+
 ---
 output:
   flexdashboard::flex_dashboard:
@@ -9,6 +13,34 @@ output:
     source_code: embed
     fontsize: 17pt
 ---
+
+### ggplot with emojis
+
+```{r}
+# https://github.com/dill/emoGG
+# devtools::install_github("dill/emoGG")
+library(ggplot2)
+library(emoGG)
+
+emoji_search("tulip")
+
+# tulips
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+  geom_emoji(emoji="1f337")
+
+# cars
+ggplot(mtcars, aes(wt, mpg))+ geom_emoji(emoji="1f697")
+
+# random 
+posx <- runif(50, 0, 10)
+posy <- runif(50, 0, 10)
+ggplot(data.frame(x = posx, y = posy), aes(x, y)) + geom_emoji(emoji="1f63b")
+
+# big emoji in background
+qplot(x=Sepal.Length, y=Sepal.Width, data=iris, geom="point") + add_emoji(emoji="1f337")
+
+```
+
 
 ### Data Preparation<br><br>We're using data from **Chart2000.com**:<br>Music Charts 2000 - 2020 {data-commentary-width="500"}
 

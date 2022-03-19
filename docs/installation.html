@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kapitel 2 Installation | Computergestütze Textanalyse mit R</title>
+  <meta name="description" content="Kapitel 2 Installation | Computergestütze Textanalyse mit R" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kapitel 2 Installation | Computergestütze Textanalyse mit R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kapitel 2 Installation | Computergestütze Textanalyse mit R" />
+  
+  
+  <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
+
+<meta name="author" content="Teodor Petrič" />
+
+
+<meta name="date" content="2022-03-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="showcase.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.21/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/jszip-1.11.3/jszip.min.js"></script>
+<script src="libs/pdfmake-1.11.3/pdfmake.js"></script>
+<script src="libs/pdfmake-1.11.3/vfs_fonts.js"></script>
+<link href="libs/dt-ext-buttons-1.11.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.11.3/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.11.3/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.11.3/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.11.3/js/buttons.print.min.js"></script>
+<link href="libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+<script src="libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+<script src="libs/wordcloud2-0.0.1/hover.js"></script>
+<script src="libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.1.0/leaflet.js"></script>
+<link href="libs/leaflet-measure-2.1.7/leaflet-measure.css" rel="stylesheet" />
+<script src="libs/leaflet-measure-2.1.7/leaflet-measure.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="TMwR.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Textanalyse mit R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung<span></span></a></li>
+<li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#grundlegende-programme"><i class="fa fa-check"></i><b>2.1</b> Grundlegende Programme<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="installation.html"><a href="installation.html#zusätzliche-programme"><i class="fa fa-check"></i><b>2.2</b> Zusätzliche Programme<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#hilfe"><i class="fa fa-check"></i><b>2.3</b> Hilfe<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#andere-werkzeuge"><i class="fa fa-check"></i><b>2.4</b> Andere Werkzeuge<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#cloud-dienste"><i class="fa fa-check"></i><b>2.5</b> Cloud-Dienste<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="showcase.html"><a href="showcase.html"><i class="fa fa-check"></i><b>3</b> Showcase<span></span></a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="showcase.html"><a href="showcase.html#ggplot-with-emojis"><i class="fa fa-check"></i><b>3.0.1</b> ggplot with emojis<span></span></a></li>
+<li class="chapter" data-level="3.0.2" data-path="showcase.html"><a href="showcase.html#data-preparation-were-using-data-from-chart2000.com-music-charts-2000---2020"><i class="fa fa-check"></i><b>3.0.2</b> Data Preparation<br><br>We’re using data from <strong>Chart2000.com</strong>:<br>Music Charts 2000 - 2020<span></span></a></li>
+<li class="chapter" data-level="3.0.3" data-path="showcase.html"><a href="showcase.html#first-boxplot-some-tweaks-to-a-basic-ggplot2-chart-using-ggthemes-by-jeffrey-b.-arnold"><i class="fa fa-check"></i><b>3.0.3</b> First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using <strong>ggthemes</strong> by <strong>Jeffrey B. Arnold</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.4" data-path="showcase.html"><a href="showcase.html#show-ns-visually-by-specifying-varwidth-true"><i class="fa fa-check"></i><b>3.0.4</b> 1. Show Ns Visually<br><br>by specifying <strong>varwidth = TRUE</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.5" data-path="showcase.html"><a href="showcase.html#show-ns-numerically-using-envstatsstat_n_text-by-steven-millard-and-alexander-kowarik"><i class="fa fa-check"></i><b>3.0.5</b> 2. Show Ns Numerically <br><br>using <strong>EnvStats::stat_n_text()</strong> by <strong>Steven Millard</strong> and <strong>Alexander Kowarik</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.6" data-path="showcase.html"><a href="showcase.html#show-summary-statistics-on-hover-mouse-over-using-plotly-by-carson-sievert"><i class="fa fa-check"></i><b>3.0.6</b> 3. Show Summary Statistics on Hover (Mouse-Over)<br><br>using <strong>plotly</strong> by <strong>Carson Sievert</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.7" data-path="showcase.html"><a href="showcase.html#label-outliers-via-a-user-defined-function-and-geom_text"><i class="fa fa-check"></i><b>3.0.7</b> 4. Label Outliers<br><br>via a <strong>user-defined function</strong> and <strong>geom_text()</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.8" data-path="showcase.html"><a href="showcase.html#display-individual-data-points-using-geom_jitter"><i class="fa fa-check"></i><b>3.0.8</b> 5. Display Individual Data Points<br><br>using <strong>geom_jitter()</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.9" data-path="showcase.html"><a href="showcase.html#use-aesthetics-to-include-information-on-another-variable-combining-shape-and-color-using-rcolorbrewer-by-erich-neuwirth"><i class="fa fa-check"></i><b>3.0.9</b> 6. Use Aesthetics to Include Information on Another Variable<br><br>Combining <strong>shape</strong> and <strong>color</strong>, using <strong>RColorBrewer</strong> by <strong>Erich Neuwirth</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.10" data-path="showcase.html"><a href="showcase.html#add-means-for-comparison-to-medians"><i class="fa fa-check"></i><b>3.0.10</b> 7. Add Means<br><br>for comparison to medians<span></span></a></li>
+<li class="chapter" data-level="3.0.11" data-path="showcase.html"><a href="showcase.html#calculate-and-display-statistical-tests-for-group-differences-using-ggstatsplot-by-indrajeet-patil"><i class="fa fa-check"></i><b>3.0.11</b> 8. Calculate and Display Statistical Tests for Group Differences<br><br>using <strong>ggstatsplot</strong> by <strong>Indrajeet Patil</strong><span></span></a></li>
+<li class="chapter" data-level="3.0.12" data-path="showcase.html"><a href="showcase.html#group-differences-example-for-a-significant-test"><i class="fa fa-check"></i><b>3.0.12</b> 9. Group Differences:<br><br>Example for a significant test<span></span></a></li>
+<li class="chapter" data-level="3.0.13" data-path="showcase.html"><a href="showcase.html#use-images-as-labels-via-ggtext-by-claus-wilke"><i class="fa fa-check"></i><b>3.0.13</b> 10. Use Images as Labels<br><br>via <strong>ggtext</strong> by <strong>Claus Wilke</strong><span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>4</b> R &amp; RStudio<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="r-rstudio.html"><a href="r-rstudio.html#programme"><i class="fa fa-check"></i><b>4.1</b> Programme<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="r-rstudio.html"><a href="r-rstudio.html#textdatei-öffnen"><i class="fa fa-check"></i><b>4.2</b> Textdatei öffnen<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="r-rstudio.html"><a href="r-rstudio.html#öffnen-mehrerer-texte"><i class="fa fa-check"></i><b>4.3</b> Öffnen mehrerer Texte<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="r-rstudio.html"><a href="r-rstudio.html#öffnen-von-tabellen"><i class="fa fa-check"></i><b>4.4</b> Öffnen von Tabellen<span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="r-rstudio.html"><a href="r-rstudio.html#öffnen-einer-excel-tabelle"><i class="fa fa-check"></i><b>4.5</b> Öffnen einer Excel-Tabelle<span></span></a></li>
+<li class="chapter" data-level="4.6" data-path="r-rstudio.html"><a href="r-rstudio.html#datei-speichern"><i class="fa fa-check"></i><b>4.6</b> Datei speichern<span></span></a></li>
+<li class="chapter" data-level="4.7" data-path="r-rstudio.html"><a href="r-rstudio.html#download-von-zip-dateien"><i class="fa fa-check"></i><b>4.7</b> Download von Zip-Dateien<span></span></a></li>
+<li class="chapter" data-level="4.8" data-path="r-rstudio.html"><a href="r-rstudio.html#verzeichnisse"><i class="fa fa-check"></i><b>4.8</b> Verzeichnisse<span></span></a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="r-rstudio.html"><a href="r-rstudio.html#existenz-eines-verzeichnisses-prüfen"><i class="fa fa-check"></i><b>4.8.1</b> Existenz eines Verzeichnisses prüfen<span></span></a></li>
+<li class="chapter" data-level="4.8.2" data-path="r-rstudio.html"><a href="r-rstudio.html#verzeichnis-anlegen"><i class="fa fa-check"></i><b>4.8.2</b> Verzeichnis anlegen<span></span></a></li>
+<li class="chapter" data-level="4.8.3" data-path="r-rstudio.html"><a href="r-rstudio.html#unterverzeichnisse-anlegen"><i class="fa fa-check"></i><b>4.8.3</b> Unterverzeichnisse anlegen<span></span></a></li>
+<li class="chapter" data-level="4.8.4" data-path="r-rstudio.html"><a href="r-rstudio.html#verzeichnis-entfernen"><i class="fa fa-check"></i><b>4.8.4</b> Verzeichnis entfernen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="r-rstudio.html"><a href="r-rstudio.html#zip-dateien-entpacken-und-löschen"><i class="fa fa-check"></i><b>4.9</b> Zip-Dateien entpacken und löschen<span></span></a></li>
+<li class="chapter" data-level="4.10" data-path="r-rstudio.html"><a href="r-rstudio.html#dateilisten-anzeigen"><i class="fa fa-check"></i><b>4.10</b> Dateilisten anzeigen<span></span></a></li>
+<li class="chapter" data-level="4.11" data-path="r-rstudio.html"><a href="r-rstudio.html#mehrere-dateien-öffnen"><i class="fa fa-check"></i><b>4.11</b> Mehrere Dateien öffnen<span></span></a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="r-rstudio.html"><a href="r-rstudio.html#quanteda"><i class="fa fa-check"></i><b>4.11.1</b> quanteda:<span></span></a></li>
+<li class="chapter" data-level="4.11.2" data-path="r-rstudio.html"><a href="r-rstudio.html#tidyverse"><i class="fa fa-check"></i><b>4.11.2</b> tidyverse:<span></span></a></li>
+<li class="chapter" data-level="4.11.3" data-path="r-rstudio.html"><a href="r-rstudio.html#base-r"><i class="fa fa-check"></i><b>4.11.3</b> Base R:<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="r-rstudio.html"><a href="r-rstudio.html#zeichensatz-konvertieren"><i class="fa fa-check"></i><b>4.12</b> Zeichensatz konvertieren<span></span></a></li>
+<li class="chapter" data-level="4.13" data-path="r-rstudio.html"><a href="r-rstudio.html#datensatz-vorbereiten"><i class="fa fa-check"></i><b>4.13</b> Datensatz vorbereiten<span></span></a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="r-rstudio.html"><a href="r-rstudio.html#select"><i class="fa fa-check"></i><b>4.13.1</b> select()<span></span></a></li>
+<li class="chapter" data-level="4.13.2" data-path="r-rstudio.html"><a href="r-rstudio.html#filter"><i class="fa fa-check"></i><b>4.13.2</b> filter()<span></span></a></li>
+<li class="chapter" data-level="4.13.3" data-path="r-rstudio.html"><a href="r-rstudio.html#group_by"><i class="fa fa-check"></i><b>4.13.3</b> group_by()<span></span></a></li>
+<li class="chapter" data-level="4.13.4" data-path="r-rstudio.html"><a href="r-rstudio.html#mutate"><i class="fa fa-check"></i><b>4.13.4</b> mutate()<span></span></a></li>
+<li class="chapter" data-level="4.13.5" data-path="r-rstudio.html"><a href="r-rstudio.html#count"><i class="fa fa-check"></i><b>4.13.5</b> count()<span></span></a></li>
+<li class="chapter" data-level="4.13.6" data-path="r-rstudio.html"><a href="r-rstudio.html#summarise"><i class="fa fa-check"></i><b>4.13.6</b> summarise()<span></span></a></li>
+<li class="chapter" data-level="4.13.7" data-path="r-rstudio.html"><a href="r-rstudio.html#round"><i class="fa fa-check"></i><b>4.13.7</b> round()<span></span></a></li>
+<li class="chapter" data-level="4.13.8" data-path="r-rstudio.html"><a href="r-rstudio.html#arrange"><i class="fa fa-check"></i><b>4.13.8</b> arrange()<span></span></a></li>
+<li class="chapter" data-level="4.13.9" data-path="r-rstudio.html"><a href="r-rstudio.html#distinct"><i class="fa fa-check"></i><b>4.13.9</b> distinct()<span></span></a></li>
+<li class="chapter" data-level="4.13.10" data-path="r-rstudio.html"><a href="r-rstudio.html#str_to_lower"><i class="fa fa-check"></i><b>4.13.10</b> str_to_lower()<span></span></a></li>
+<li class="chapter" data-level="4.13.11" data-path="r-rstudio.html"><a href="r-rstudio.html#str_replace"><i class="fa fa-check"></i><b>4.13.11</b> str_replace()<span></span></a></li>
+<li class="chapter" data-level="4.13.12" data-path="r-rstudio.html"><a href="r-rstudio.html#separate-und-unite"><i class="fa fa-check"></i><b>4.13.12</b> separate() und unite()<span></span></a></li>
+<li class="chapter" data-level="4.13.13" data-path="r-rstudio.html"><a href="r-rstudio.html#pivot_wider"><i class="fa fa-check"></i><b>4.13.13</b> pivot_wider()<span></span></a></li>
+<li class="chapter" data-level="4.13.14" data-path="r-rstudio.html"><a href="r-rstudio.html#pivot_longer"><i class="fa fa-check"></i><b>4.13.14</b> pivot_longer()<span></span></a></li>
+<li class="chapter" data-level="4.13.15" data-path="r-rstudio.html"><a href="r-rstudio.html#datumsfunktionen"><i class="fa fa-check"></i><b>4.13.15</b> Datumsfunktionen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.14" data-path="r-rstudio.html"><a href="r-rstudio.html#umwandlung-eines-r-skripts"><i class="fa fa-check"></i><b>4.14</b> Umwandlung eines R-Skripts<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="stichprobentests.html"><a href="stichprobentests.html"><i class="fa fa-check"></i><b>5</b> Stichprobentests<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="stichprobentests.html"><a href="stichprobentests.html#nominalskalierte-größen"><i class="fa fa-check"></i><b>5.1</b> Nominalskalierte Größen<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="stichprobentests.html"><a href="stichprobentests.html#lange-und-kurze-kommentare"><i class="fa fa-check"></i><b>5.1.1</b> Lange und kurze Kommentare<span></span></a></li>
+<li class="chapter" data-level="5.1.2" data-path="stichprobentests.html"><a href="stichprobentests.html#plural-von-kunstwörtern"><i class="fa fa-check"></i><b>5.1.2</b> Plural von Kunstwörtern<span></span></a></li>
+<li class="chapter" data-level="5.1.3" data-path="stichprobentests.html"><a href="stichprobentests.html#modalkonstruktionen"><i class="fa fa-check"></i><b>5.1.3</b> Modalkonstruktionen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="stichprobentests.html"><a href="stichprobentests.html#intervallskalierte-größen"><i class="fa fa-check"></i><b>5.2</b> Intervallskalierte Größen<span></span></a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="stichprobentests.html"><a href="stichprobentests.html#äußerungslänge-in-einer-kurzgeschichte"><i class="fa fa-check"></i><b>5.2.1</b> Äußerungslänge in einer Kurzgeschichte<span></span></a></li>
+<li class="chapter" data-level="5.2.2" data-path="stichprobentests.html"><a href="stichprobentests.html#wirkung-von-unterrichtsmethoden"><i class="fa fa-check"></i><b>5.2.2</b> Wirkung von Unterrichtsmethoden<span></span></a></li>
+<li class="chapter" data-level="5.2.3" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>5.2.3</b> Höflichkeit und Grundfrequenz<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>6</b> Vokalformanten im Deutschen als Fremdsprache<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>6.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>6.2</b> Daten laden &amp; anpassen<span></span></a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>6.2.1</b> Datensatz 1<span></span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>6.2.2</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>6.2.3</b> Datensatz 3<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>6.3</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>6.4</b> Vergleich der Vokalformanten<span></span></a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>6.4.1</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="6.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>6.4.2</b> Datensatz 3<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>6.5</b> Aggregierter Datensatz<span></span></a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>6.5.1</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="6.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>6.5.2</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="6.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>6.5.3</b> Datensatz 1 mit aggregierten Daten<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>6.6</b> Abbildungen mit <code>phonR</code><span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>7</b> Textzerlegung<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>7.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>7.2</b> Text öffnen<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>7.3</b> Zerlegung des Textes<span></span></a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>7.3.1</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="7.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>7.3.2</b> Äußerungen<span></span></a></li>
+<li class="chapter" data-level="7.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>7.3.3</b> Wörter<span></span></a></li>
+<li class="chapter" data-level="7.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>7.3.4</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="7.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>7.3.5</b> Ziffern umwandeln<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>7.4</b> Tabelle speichern<span></span></a></li>
+<li class="chapter" data-level="7.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>7.5</b> Tabelle öffnen<span></span></a></li>
+<li class="chapter" data-level="7.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>7.6</b> Zählen<span></span></a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>7.6.1</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="7.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>7.6.2</b> Worthäufigkeiten<span></span></a></li>
+<li class="chapter" data-level="7.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>7.6.3</b> Wortschatzdichte<span></span></a></li>
+<li class="chapter" data-level="7.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>7.6.4</b> Äußerungslänge<span></span></a></li>
+<li class="chapter" data-level="7.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>7.6.5</b> Vergleich mit quanteda<span></span></a></li>
+<li class="chapter" data-level="7.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>7.6.6</b> Vergleich mit Voyant Tools<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>8</b> Kurzgeschichten im Vergleich<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden-1"><i class="fa fa-check"></i><b>8.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>8.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>8.3</b> Textzerlegung und Annotation<span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>8.4</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>8.5</b> Wortklassen zählen<span></span></a></li>
+<li class="chapter" data-level="8.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>8.6</b> Nicht-parametrischer Test<span></span></a></li>
+<li class="chapter" data-level="8.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren"><i class="fa fa-check"></i><b>8.7</b> Konnektoren<span></span></a></li>
+<li class="chapter" data-level="8.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>8.8</b> Äußerungslänge vergleichen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>9</b> Spracherwerbsdaten<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-2"><i class="fa fa-check"></i><b>9.1</b> Programme<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>9.2</b> Daten lesen<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>9.3</b> Verknüpfung der einzelnen Dateien<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>9.4</b> 1. Häufigkeit insgesamt<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>9.5</b> 2. Welche d-Form am häufigsten?<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>9.6</b> 3. Welche Form als erste?<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>9.7</b> 4. Wann alle d-Formen vertreten?<span></span></a></li>
+<li class="chapter" data-level="9.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>9.8</b> 5. Bevorzugtes d-Wort von MOT<span></span></a></li>
+<li class="chapter" data-level="9.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>9.9</b> 6. Welche Formen hört Rahel nie / kaum?<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>10</b> Textvergleich<span></span></a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="textvergleich.html"><a href="textvergleich.html#programme-installieren"><i class="fa fa-check"></i><b>10.1</b> Programme installieren<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="textvergleich.html"><a href="textvergleich.html#programme-laden-2"><i class="fa fa-check"></i><b>10.2</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="textvergleich.html"><a href="textvergleich.html#texte-öffnen"><i class="fa fa-check"></i><b>10.3</b> Texte öffnen<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="textvergleich.html"><a href="textvergleich.html#korpus-anlegen"><i class="fa fa-check"></i><b>10.4</b> Korpus anlegen<span></span></a></li>
+<li class="chapter" data-level="10.5" data-path="textvergleich.html"><a href="textvergleich.html#tokenisierung"><i class="fa fa-check"></i><b>10.5</b> Tokenisierung<span></span></a></li>
+<li class="chapter" data-level="10.6" data-path="textvergleich.html"><a href="textvergleich.html#tokenliste-säubern"><i class="fa fa-check"></i><b>10.6</b> Tokenliste säubern<span></span></a></li>
+<li class="chapter" data-level="10.7" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>10.7</b> Kwic<span></span></a></li>
+<li class="chapter" data-level="10.8" data-path="textvergleich.html"><a href="textvergleich.html#häufigkeit"><i class="fa fa-check"></i><b>10.8</b> Häufigkeit<span></span></a></li>
+<li class="chapter" data-level="10.9" data-path="textvergleich.html"><a href="textvergleich.html#kollokationen"><i class="fa fa-check"></i><b>10.9</b> Kollokationen<span></span></a></li>
+<li class="chapter" data-level="10.10" data-path="textvergleich.html"><a href="textvergleich.html#lemmatisierung"><i class="fa fa-check"></i><b>10.10</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="10.11" data-path="textvergleich.html"><a href="textvergleich.html#wortwolken"><i class="fa fa-check"></i><b>10.11</b> Wortwolken<span></span></a></li>
+<li class="chapter" data-level="10.12" data-path="textvergleich.html"><a href="textvergleich.html#position-im-text-xray"><i class="fa fa-check"></i><b>10.12</b> Position im Text (xray)<span></span></a></li>
+<li class="chapter" data-level="10.13" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-vielfalt"><i class="fa fa-check"></i><b>10.13</b> Lexikalische Vielfalt<span></span></a></li>
+<li class="chapter" data-level="10.14" data-path="textvergleich.html"><a href="textvergleich.html#textähnlichkeit"><i class="fa fa-check"></i><b>10.14</b> Textähnlichkeit<span></span></a></li>
+<li class="chapter" data-level="10.15" data-path="textvergleich.html"><a href="textvergleich.html#schlüsselwörter-keywords"><i class="fa fa-check"></i><b>10.15</b> Schlüsselwörter (keywords)<span></span></a></li>
+<li class="chapter" data-level="10.16" data-path="textvergleich.html"><a href="textvergleich.html#lesbarkeit-des-textes"><i class="fa fa-check"></i><b>10.16</b> Lesbarkeit des Textes<span></span></a></li>
+<li class="chapter" data-level="10.17" data-path="textvergleich.html"><a href="textvergleich.html#kookurrenz-netzwerk-fcm"><i class="fa fa-check"></i><b>10.17</b> Kookurrenz-Netzwerk (FCM)<span></span></a></li>
+<li class="chapter" data-level="10.18" data-path="textvergleich.html"><a href="textvergleich.html#grammatische-analyse"><i class="fa fa-check"></i><b>10.18</b> Grammatische Analyse<span></span></a>
+<ul>
+<li class="chapter" data-level="10.18.1" data-path="textvergleich.html"><a href="textvergleich.html#vorbereitung"><i class="fa fa-check"></i><b>10.18.1</b> Vorbereitung<span></span></a></li>
+<li class="chapter" data-level="10.18.2" data-path="textvergleich.html"><a href="textvergleich.html#vergleich-nomen-pronomen"><i class="fa fa-check"></i><b>10.18.2</b> Vergleich Nomen : Pronomen<span></span></a></li>
+<li class="chapter" data-level="10.18.3" data-path="textvergleich.html"><a href="textvergleich.html#konjunktionen-im-vergleich"><i class="fa fa-check"></i><b>10.18.3</b> Konjunktionen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="10.18.4" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-einheiten"><i class="fa fa-check"></i><b>10.18.4</b> Lexikalische Einheiten<span></span></a></li>
+<li class="chapter" data-level="10.18.5" data-path="textvergleich.html"><a href="textvergleich.html#wortkorrelationen"><i class="fa fa-check"></i><b>10.18.5</b> Wortkorrelationen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="10.19" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>10.19</b> Sentiment<span></span></a>
+<ul>
+<li class="chapter" data-level="10.19.1" data-path="textvergleich.html"><a href="textvergleich.html#version-1"><i class="fa fa-check"></i><b>10.19.1</b> Version 1<span></span></a></li>
+<li class="chapter" data-level="10.19.2" data-path="textvergleich.html"><a href="textvergleich.html#variante-2"><i class="fa fa-check"></i><b>10.19.2</b> Variante 2<span></span></a></li>
+<li class="chapter" data-level="10.19.3" data-path="textvergleich.html"><a href="textvergleich.html#variante-3"><i class="fa fa-check"></i><b>10.19.3</b> Variante 3<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>11</b> Suffixe und Stemming<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>11.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>11.2</b> Dateien einlesen<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung-1"><i class="fa fa-check"></i><b>11.3</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="11.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>11.4</b> Stemming<span></span></a></li>
+<li class="chapter" data-level="11.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>11.5</b> Wortbildungsanalyse<span></span></a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>11.5.1</b> Suffix -lich<span></span></a></li>
+<li class="chapter" data-level="11.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>11.5.2</b> Mehrere ADJ Suffixe<span></span></a></li>
+<li class="chapter" data-level="11.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>11.5.3</b> Nicht verwendete Tabelle<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>12</b> Buchstaben in Romanen<span></span></a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>12.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>12.2</b> Datensatz lesen<span></span></a></li>
+<li class="chapter" data-level="12.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>12.3</b> Buchstaben extrahieren<span></span></a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>12.3.1</b> aus Liste<span></span></a></li>
+<li class="chapter" data-level="12.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>12.3.2</b> aus Datensatz<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>12.4</b> Buchstaben zählen<span></span></a></li>
+<li class="chapter" data-level="12.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>12.5</b> Vokale<span></span></a></li>
+<li class="chapter" data-level="12.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>12.6</b> Konsonanten<span></span></a></li>
+<li class="chapter" data-level="12.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>12.7</b> Vokal-Konsonant-Verhältnis<span></span></a></li>
+<li class="chapter" data-level="12.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>12.8</b> Anzahl der Silben<span></span></a></li>
+<li class="chapter" data-level="12.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>12.9</b> Mittlere Wortlänge<span></span></a></li>
+<li class="chapter" data-level="12.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>12.10</b> Testen von Mittelwertunterschieden<span></span></a>
+<ul>
+<li class="chapter" data-level="12.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>12.10.1</b> t-Test<span></span></a></li>
+<li class="chapter" data-level="12.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-3"><i class="fa fa-check"></i><b>12.10.2</b> Lineare Regression<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>12.11</b> Quanteda-Funktionen<span></span></a></li>
+<li class="chapter" data-level="12.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>12.12</b> Konsonantenverbindungen<span></span></a></li>
+<li class="chapter" data-level="12.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>12.13</b> Datensatz-Variante<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>13</b> Lesbarkeitsindices<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>13.1</b> Zur theoretischen Begründung<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-3"><i class="fa fa-check"></i><b>13.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>13.3</b> Texte lesen<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>13.4</b> Flesch Reading Ease - deutsche Version<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>13.5</b> Romane (deutsche oder ins Deutsche übersetzte)<span></span></a></li>
+<li class="chapter" data-level="13.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>13.6</b> Zeitungen<span></span></a></li>
+<li class="chapter" data-level="13.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>13.7</b> Statistische Tests: News<span></span></a></li>
+<li class="chapter" data-level="13.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>13.8</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="13.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>13.9</b> Zeitungen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="13.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>13.10</b> Alle Texte im Vergleich<span></span></a></li>
+<li class="chapter" data-level="13.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>13.11</b> Flesch-Kincade Grade Level (USA, GB)<span></span></a></li>
+<li class="chapter" data-level="13.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>13.12</b> Wiener Sachtextformel<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>14</b> Untertitel<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>14.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="14.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>14.2</b> Daten laden<span></span></a></li>
+<li class="chapter" data-level="14.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>14.3</b> Datensätze vorbereiten<span></span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>14.3.1</b> Textspalte vorbereiten<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>14.3.2</b> Datensätze verknüpfen<span></span></a></li>
+<li class="chapter" data-level="14.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>14.3.3</b> Merkmale hinzufügen<span></span></a></li>
+<li class="chapter" data-level="14.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>14.3.4</b> Konkordanzrecherche<span></span></a></li>
+<li class="chapter" data-level="14.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>14.3.5</b> Textzerlegung<span></span></a></li>
+<li class="chapter" data-level="14.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>14.3.6</b> Zerlegung und Annotation<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>14.4</b> Morphologie der Untertitel<span></span></a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>14.4.1</b> XRay Brother<span></span></a></li>
+<li class="chapter" data-level="14.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>14.4.2</b> Substantive im Plural<span></span></a></li>
+<li class="chapter" data-level="14.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>14.4.3</b> Adjektive im Komparativ<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>14.5</b> Syntax: Dependenz<span></span></a>
+<ul>
+<li class="chapter" data-level="14.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>14.5.1</b> Aktiv und Passiv<span></span></a></li>
+<li class="chapter" data-level="14.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>14.5.2</b> Substantive und Pronomen als Satzglieder<span></span></a></li>
+<li class="chapter" data-level="14.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.3</b> Subjekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="14.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.4</b> Objekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="14.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>14.5.5</b> Wortklasse von Subjekt / Objekt<span></span></a></li>
+<li class="chapter" data-level="14.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>14.5.6</b> Gattungs- und Eigennamen<span></span></a></li>
+<li class="chapter" data-level="14.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>14.5.7</b> Konstituentenfolge<span></span></a></li>
+<li class="chapter" data-level="14.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>14.5.8</b> Kontexte von Modifizierern<span></span></a></li>
+<li class="chapter" data-level="14.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>14.5.9</b> Greenbergs Universalie 25<span></span></a></li>
+<li class="chapter" data-level="14.5.10" data-path="untertitel.html"><a href="untertitel.html#subjekt-vor-objekt-präferenz"><i class="fa fa-check"></i><b>14.5.10</b> Subjekt-vor-Objekt-Präferenz<span></span></a></li>
+<li class="chapter" data-level="14.5.11" data-path="untertitel.html"><a href="untertitel.html#mehrere-konstituenten"><i class="fa fa-check"></i><b>14.5.11</b> Mehrere Konstituenten<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="konnektoren-1.html"><a href="konnektoren-1.html"><i class="fa fa-check"></i><b>15</b> Konnektoren<span></span></a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="konnektoren-1.html"><a href="konnektoren-1.html#pakete"><i class="fa fa-check"></i><b>15.1</b> Pakete<span></span></a></li>
+<li class="chapter" data-level="15.2" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-einlesen"><i class="fa fa-check"></i><b>15.2</b> Text einlesen<span></span></a></li>
+<li class="chapter" data-level="15.3" data-path="konnektoren-1.html"><a href="konnektoren-1.html#udpipe-laden"><i class="fa fa-check"></i><b>15.3</b> UDPipe laden<span></span></a></li>
+<li class="chapter" data-level="15.4" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-annotieren"><i class="fa fa-check"></i><b>15.4</b> Text annotieren<span></span></a></li>
+<li class="chapter" data-level="15.5" data-path="konnektoren-1.html"><a href="konnektoren-1.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>15.5</b> Wortklassen und Konnektoren<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>16</b> Rolling Stones auf Twitter<span></span></a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>16.1</b> Der Tod von Charlie Watts<span></span></a></li>
+<li class="chapter" data-level="16.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-4"><i class="fa fa-check"></i><b>16.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="16.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>16.3</b> Datenstrom holen<span></span></a></li>
+<li class="chapter" data-level="16.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>16.4</b> Tweets holen<span></span></a></li>
+<li class="chapter" data-level="16.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>16.5</b> Datensatz erstellen<span></span></a></li>
+<li class="chapter" data-level="16.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>16.6</b> Datensatz speichern<span></span></a></li>
+<li class="chapter" data-level="16.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>16.7</b> Datensatz laden<span></span></a></li>
+<li class="chapter" data-level="16.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>16.8</b> Verfasser der Tweets<span></span></a></li>
+<li class="chapter" data-level="16.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>16.9</b> Timeplot<span></span></a></li>
+<li class="chapter" data-level="16.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>16.10</b> User-Informationen<span></span></a></li>
+<li class="chapter" data-level="16.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>16.11</b> Geographische Verteilung<span></span></a></li>
+<li class="chapter" data-level="16.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.12</b> Speichern des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="16.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.13</b> Laden des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="16.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>16.14</b> Zeitlicher geographischer Verlauf<span></span></a></li>
+<li class="chapter" data-level="16.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>16.15</b> Lange Wörter<span></span></a></li>
+<li class="chapter" data-level="16.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>16.16</b> Topwörter<span></span></a></li>
+<li class="chapter" data-level="16.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>16.17</b> Netzwerke<span></span></a></li>
+<li class="chapter" data-level="16.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>16.18</b> Sentiment &amp; Emotion<span></span></a></li>
+<li class="chapter" data-level="16.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>16.19</b> Sentiment (Animation)<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>17</b> Deutsche Zungenbrecher<span></span></a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-3"><i class="fa fa-check"></i><b>17.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="17.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>17.2</b> Tabelle laden<span></span></a></li>
+<li class="chapter" data-level="17.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>17.3</b> EDA<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>18</b> Komplexe Äußerungen<span></span></a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>18.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="18.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texte-laden-1"><i class="fa fa-check"></i><b>18.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="18.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-1-zerlegen"><i class="fa fa-check"></i><b>18.3</b> Text 1 zerlegen<span></span></a></li>
+<li class="chapter" data-level="18.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>18.4</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="18.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>18.5</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="18.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>18.6</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="18.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>18.7</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="18.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>18.8</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="18.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>18.9</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="18.10" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-2-zerlegen"><i class="fa fa-check"></i><b>18.10</b> Text 2 zerlegen<span></span></a></li>
+<li class="chapter" data-level="18.11" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-1"><i class="fa fa-check"></i><b>18.11</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="18.12" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-1"><i class="fa fa-check"></i><b>18.12</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="18.13" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-1"><i class="fa fa-check"></i><b>18.13</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="18.14" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-1"><i class="fa fa-check"></i><b>18.14</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="18.15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-1"><i class="fa fa-check"></i><b>18.15</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="18.16" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-1"><i class="fa fa-check"></i><b>18.16</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="18.17" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-3-zerlegen"><i class="fa fa-check"></i><b>18.17</b> Text 3 zerlegen<span></span></a></li>
+<li class="chapter" data-level="18.18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-2"><i class="fa fa-check"></i><b>18.18</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="18.19" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-2"><i class="fa fa-check"></i><b>18.19</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="18.20" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-2"><i class="fa fa-check"></i><b>18.20</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="18.21" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-2"><i class="fa fa-check"></i><b>18.21</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="18.22" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-2"><i class="fa fa-check"></i><b>18.22</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="18.23" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-2"><i class="fa fa-check"></i><b>18.23</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="18.24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#vergleich-der-äußerungslängen"><i class="fa fa-check"></i><b>18.24</b> Vergleich der Äußerungslängen<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestütze Textanalyse mit R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="installation" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Kapitel 2</span> Installation<a href="installation.html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="grundlegende-programme" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Grundlegende Programme<a href="installation.html#grundlegende-programme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Für die computergestützte Arbeit mit Sprachmaterial verwenden wir freie Softwaretools, d.h. die Programmiersprache <code>R</code>, die grafische Oberfläche <code>RStudio</code> für komfortableres Programmieren und <code>RTools</code> für die Installation von Entwicklungsversionen in einer <code>Windows</code>-Umgebung (letztere ist optional, aber für fortgeschrittene Benutzer empfohlen).</p>
+<p>Die Programme <code>R</code> (4.1.2 oder höher), <code>RStudio</code> (2022.02.0+443 oder höher) und <code>RTools</code> (4.0.0 oder höher) können von den folgenden Webadressen heruntergeladen werden (wir führen nur die Installationspakete für die Operationssysteme <code>Windows</code> und <code>MacOS</code> an, für Linux bitte selber nachschlagen):</p>
+<ul>
+<li><p>für <code>Windows</code> <a href="https://cloud.r-project.org/bin/windows/base/" class="uri">https://cloud.r-project.org/bin/windows/base/</a>, für <code>MacOS</code> <a href="https://cloud.r-project.org/bin/macosx/" class="uri">https://cloud.r-project.org/bin/macosx/</a></p></li>
+<li><p><a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a> (<code>Windows</code> oder <code>MacOS</code>)</p></li>
+<li><p>für fortgeschrittene Benutzer, die auf die Entwicklungsversionen der Programme auf <code>github</code> und einige andere Dienste zugreifen möchten <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a>.</p></li>
+</ul>
+<p>Auf neueren Computern laufen meist 64-Bit-Betriebssysteme (<code>Windows</code>, <code>macOS</code>, <code>Linux</code>). Es ist daher ratsam, 64-Bit-Versionen der <code>R</code>-Programme (<em>package, library</em>) zu wählen. Auf einem 32-Bit-Betriebssystem (wenn Sie noch einen älteren Computer verwenden) benötigen Sie 32-Bit-Versionen der Software.</p>
+</div>
+<div id="zusätzliche-programme" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Zusätzliche Programme<a href="installation.html#zusätzliche-programme" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nach der Installation von <code>R</code> und <code>RStudio</code> sind viele Funktionen bereits verfügbar. Zusätzliche Softwarefunktionen können über die <code>CRAN</code>-Server bezogen werden. Alle diese Angebote sind kostenlos. Wenn Sie Programmfunktionen oder Bibliotheken (<code>library</code>) hinzufügen wollen, installieren Sie diese zuerst von den <code>CRAN</code> Programmiersprachenservern. In der Programmierumgebung <code>RStudio</code> kann dies auf mehrere Arten erreicht werden:</p>
+<ul>
+<li><p>Für Anfänger ist es am einfachsten, in <code>RStudio</code> auf die Registerkarte (Reiter) <em>Packages</em> (“Pakete”) zu klicken, dann auf <em>Installieren</em>, und dann den Namen des gewünschten Programms oder Pakets in das neue Dialogfeld einzugeben. Beachten Sie, dass in der Programmiersprache <code>R</code> zwischen Groß- und Kleinschreibung unterschieden wird (im Gegensatz zu <code>Excel</code>).</p></li>
+<li><p>Ein schnellerer Weg, neue Programmfunktionen zu installieren, ist die Eingabe des Befehls <code>install.packages("package-name")</code> in der <code>Console</code> (<em>Konsole</em>). Der Paketname muss in Anführungszeichen angegeben werden.</p></li>
+</ul>
+<p>Programmfunktionen, die nicht Teil des Basis-Softwarepakets (<code>Base R</code>) sind, müssen vom Benutzer in den Speicher des Computers geladen werden. Dies geschieht, indem man <code>library(Paketname)</code> (Anführungszeichen werden hier nicht benötigt) in das Programmskript oder in die Konsole einträgt.</p>
+<p>Im Programmskript speichert der Benutzer die Programmbefehle für seine Datenanalyse, insbesondere solche, die wiederverwendet und/oder automatisch ausgeführt werden sollen. Programmskripte kann der Benutzer entweder als <code>R</code>-Skript (Standard-Dateierweiterung: <code>R</code>) oder als <code>Rmarkdown</code>-Dokument (Standard-Dateierweiterung: <code>Rmd</code>) speichern.</p>
+<p>Man kann Programme bzw. Bibliotheken (<code>library</code>) ausführen, indem man sie lediglich in der Konsole eingibt, aber dies wird nicht im Programmskript gespeichert.</p>
+<p>Für die computergestützte Arbeit mit Sprachmaterial und die statistische Analyse werden wir in den folgenden Kapiteln die folgenden zusätzlichen Bibliotheken (Pakete, Programme, Sammlungen von Softwarefunktionen) verwenden (für weitere spezielle Analysen und Darstellungen aber noch eine ganze Reihe weiterer Programme):</p>
+<p>Für Anfänger sind sicher auch Software-Add-ons interessant, die die Auswahl von Befehlen mit der Maus und mehrere vordefinierte Arbeitsabläufe ermöglichen, wie z. B. die folgenden <em>Add-ons</em> für statistische Analysen:<br />
+- <em>RCommander</em>: <code>library(Rcmdr)</code><br />
+- <em>Rattle</em>: <code>library(Rattle)</code>.</p>
+<p>Solche Add-Ons erfordern nicht, dass man sich schon in den ersten Wochen oder Monaten die Namen von Bibliotheken oder Befehlen merken muss, die für die Analyse in der Programmiersprache <code>R</code> benötigt werden. <code>RCommander</code> druckt auch die Reihenfolge der Befehle für Sie aus, so dass es einfacher ist zu lernen, wie man ein Programmskript oder ein <code>Rmarkdown</code>-Dokument erstellt.</p>
+</div>
+<div id="hilfe" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Hilfe<a href="installation.html#hilfe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In <code>RStudio</code> ist auch eine sorgfältig ausgearbeitete <code>Hilfe</code> eingebaut, die auf verschiedene Weise erreicht werden kann:</p>
+<ul>
+<li><p>Wählen Sie die Registerkarte <em>Help</em> (Hilfe) und geben Sie in das Feld <em>Search</em> (Suchen) einen Suchbegriff ein (z.B. den Namen des Befehls oder der Funktion, über die Sie Einzelheiten erfahren möchten). Klicken Sie sich dann zur gewünschten Hilfeseite durch.</p></li>
+<li><p>Wenn Sie bereits eine Bibliothek (Paket) in den Speicher Ihres Computers geladen haben, ist es aber meist bequemer, (a) die Maus über eine Programmfunktion im Skript zu halten, um einen Hinweis zu erhalten oder (b) mit der Maus den Befehlsnamen anzuklicken und die Funktionstaste <code>F1</code> (in <code>Windows</code>) für kontextsensitive Hilfe zu drücken. Auf diese Weise landen wir meist auf der entsprechenden Hilfeseite.</p></li>
+</ul>
+</div>
+<div id="andere-werkzeuge" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Andere Werkzeuge<a href="installation.html#andere-werkzeuge" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Zusätzlich zu Tabellenkalkulations- und Diagrammsoftware (z.B. <code>Microsoft Excel</code> oder kostenfreie Programmbündel wie <code>OpenOffice</code> oder <code>LibreOffice</code>) kann ein freies statistisches Analyseprogramm nützlich sein, insbesonderer wenn man noch nicht in der Lage ist, ein analytisches Verfahren in der Programmiersprache <code>R</code> durchzuführen: z.B.</p>
+<ul>
+<li><p><code>Jamovi</code> (<a href="https://www.jamovi.org/download.html" class="uri">https://www.jamovi.org/download.html</a>), das unter der Haube mit der Programmiersprache <code>R</code> arbeitet und ansprechende statistische Berichte und tabellarische oder graphische Darstellungen erstellen kann;</p></li>
+<li><p><code>Jasp</code> (<a href="https://jasp-stats.org/download/" class="uri">https://jasp-stats.org/download/</a>), das wie <code>Jamovi</code> mehrere Assistenten für die Erstellung von statistischen Berichten und Darstellungen bietet, aber in Bezug auf die durchführbaren Programmierfunktionen hinter dem ersten zurückbleibt.</p></li>
+</ul>
+<p>Für eine schnelle und unkomplizierte Analyse eines Textes (oder einer kleinen Anzahl von Texten) ist das webbasierte Tool <code>Voyant Tools</code> (<a href="https://voyant-tools.org/" class="uri">https://voyant-tools.org/</a>) sehr praktisch. Laden Sie den Text von Ihrem Computer (oder kopieren Sie ihn in ein Dialogfeld), klicken Sie auf <code>Anzeigen</code> und nach einigen Sekunden erzeugt das Programm eine ganze Reihe von Diagrammen und Tabellen zu den Eigenschaften der Wortformen im Text.</p>
+<p>Wenn Sie mit einer großen Anzahl von Texten zu tun haben, die sogar separat analysiert werden sollen, wird es unbequem, mit diesem Werkzeug zu arbeiten, und es ist einfacher, in der <code>RStudio</code>-Umgebung mit der Programmiersprache <code>R</code> zu arbeiten (oder mit anderen Programmiersprachen, z.B. mit dem ebenfalls beliebten <code>Python</code>). Ein weiterer Vorteil der Programmiersprache <code>R</code> und <code>Rmarkdown</code>-Dokumenten ist die Möglichkeit, einen Bericht, Artikel, Blog oder ein Buch zu erstellen, in dem sowohl der Datensatz, das komplette Analyseverfahren, die Ergebnisse der Analyse in tabellarischer und graphischer Form als auch der begleitende Text enthalten ist. Ein Beispiel dafür ist dieses Buch, das Sie im Augenblick verwenden.</p>
+</div>
+<div id="cloud-dienste" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Cloud-Dienste<a href="installation.html#cloud-dienste" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Für fortgeschrittene Benutzer ist das Portal <code>github</code> (<a href="https://github.com/" class="uri">https://github.com/</a>) vorläufig noch kostenlos (obwohl es von <code>Microsoft</code> aufgekauft wurde). Es ermöglicht die Speicherung von Analyseverfahren, Softwarebibliotheken, die Veröffentlichung von Arbeitsmaterial und die Zusammenarbeit zwischen Programmierern und Benutzern. Das Buch, das Sie gerade lesen, hat auch ein Zuhause auf <code>github</code>.</p>
+<p>Es ist erwähnenswert, dass die Programmiersprache <code>R</code> und die Programmierumgebung <code>RStudio</code> auch in <strong>Cloud-Diensten</strong> verwendet werden können, ohne dass <code>R</code> und <code>RStudio</code> auf dem eigenen Computer installiert werden müssen, z. B.</p>
+<ul>
+<li><p><em>RStudio cloud</em>: <a href="https://rstudio.cloud/" class="uri">https://rstudio.cloud/</a></p></li>
+<li><p><em>Google Collaboratory</em> (<a href="https://colab.research.google.com" class="uri">https://colab.research.google.com</a>)</p></li>
+<li><p><em>Kaggle</em> (<a href="https://www.kaggle.com/" class="uri">https://www.kaggle.com/</a>).</p></li>
+</ul>
+<p>Für diese Dienste müssen Sie ein Konto anlegen und sich beim entsprechenden Webportal anmelden. Die Nutzung dieser Dienste ist kostenlos.</p>
+<p>Der Vorteil ist, dass Ihre Analyse auf einem leistungsstarken Cloud-Server ausgeführt wird, womit potenzielle Softwarekonflikte und unerwünschte Änderungen am Betriebssystem sowie Belastungen für Ihren eigenen Computer vermieden werden.</p>
+<p>Der Nachteil der kostenlosen Nutzung von <code>RStudio.cloud</code> ist, dass der kostenfreie Speicherplatz bei großen Textsammlungen schnell erschöpft ist, so dass man nicht weiterarbeiten kann und die bereits erzielten Ergebnisse verloren gehen. <code>Google Colab</code> ist in erster Linie für Programmierer gedacht, die in der Programmiersprache <code>Python</code> arbeiten. Wenn Sie mit der Programmiersprache <code>R</code> arbeiten, sollten Sie damit rechnen, dass bestimmte Programmierfunktionen nicht zur Verfügung stehen (z.B. die <code>readtext</code>-Bibliothek zum unkomplizierten Öffnen einer Textsammlung).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="showcase.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-install.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/01-install.Rmd",
+"text": null
+},
+"download": ["bookdownproj.pdf", "bookdownproj.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

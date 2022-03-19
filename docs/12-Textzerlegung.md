@@ -158,14 +158,14 @@ head(novels_words)
 
 ```
 ## # A tibble: 6 x 4
-##   sentence                                           sentence_id word    word_id
-##   <chr>                                                    <int> <chr>     <int>
-## 1 Die meisten der hier erzählten Abenteuer haben si~           1 die           1
-## 2 Die meisten der hier erzählten Abenteuer haben si~           1 meisten       2
-## 3 Die meisten der hier erzählten Abenteuer haben si~           1 der           3
-## 4 Die meisten der hier erzählten Abenteuer haben si~           1 hier          4
-## 5 Die meisten der hier erzählten Abenteuer haben si~           1 erzähl~       5
-## 6 Die meisten der hier erzählten Abenteuer haben si~           1 abente~       6
+##   sentence                                             sentence_id word  word_id
+##   <chr>                                                      <int> <chr>   <int>
+## 1 Die meisten der hier erzählten Abenteuer haben sich~           1 die         1
+## 2 Die meisten der hier erzählten Abenteuer haben sich~           1 meis~       2
+## 3 Die meisten der hier erzählten Abenteuer haben sich~           1 der         3
+## 4 Die meisten der hier erzählten Abenteuer haben sich~           1 hier        4
+## 5 Die meisten der hier erzählten Abenteuer haben sich~           1 erzä~       5
+## 6 Die meisten der hier erzählten Abenteuer haben sich~           1 aben~       6
 ```
 
 ### Buchstaben

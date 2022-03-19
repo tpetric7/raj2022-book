@@ -1,10 +1,10 @@
 # R & RStudio
 
-Eno izmed prvih vprašanj po namestitvi programov `R` in `RStudio` zadeva odpiranje, shranjevanje in urejanje datotek, ki jih imamo na svojem disku ali so dostopni v medmrežju.   
+Eine der ersten Fragen nach der Installation von `R` und `RStudio` betrifft das Öffnen, Speichern und Bearbeiten von Dateien, die sich auf Ihrer Festplatte befinden oder im Internet zugänglich sind.   
 
-## Knjižnice
+## Programme
 
-V tem poglavju uporabljamo tele knjižnice in zbirke knjžnic: 
+In diesem Abschnitt verwenden wir die folgenden Programme (libraries) und Programmsammlungen: 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse) # zbirka knjižnic za delo s tabelami
@@ -15,34 +15,34 @@ library(rmarkdown) # tu: za lepši izgled tabel
 library(kableExtra) # za lepši izgled tabel
 ```
 
-Načinov za odpiranje in shranjevanje datotek je veliko. Tule bom pokazal nekaj najbolj razširjenih:
+Es gibt viele Möglichkeiten, Dateien zu öffnen und zu speichern. Im Folgenden stelle ich Ihnen einige der häufigsten vor:
 
 
 ## Textdatei öffnen
 
-Odpreti in prebrati želimo besedilo, kasneje pa analizirati. Ena izmed možnosti za odpiranje in ohranjanje besedila v pomnilniku je kombinacija dveh ukazov ali funkcij:    
-- `read_lines()` za odpiranje in branje datoteke;   
-- `file.choose()` za izbiranje datoteke z miško. 
+Wir wollen einen Text öffnen und einlesen und ihn anschließend analysieren. Eine Möglichkeit, einen Text in den Arbeitsspeicher zu laden, ist die Kombination der beiden folgenden Befehle oder Funktionen:    
+- `read_lines()` zum Öffnen und Lesen einer Datei;   
+- `file.choose()`, um eine Datei mit der Maus auszuwählen. 
 
-Odpre se pogovorno okno in tako kot v urejevalniku besedil (npr. Word, Open Office, ...) ali pregledničnem programu (Excel, Calc) je treba poiskati mapo z zaželeno datoteko. V tem primeru je to besedilna datoteka *tom.txt* v mapi *.../data/books*). 
+Es öffnet sich ein Dialogfenster und wie in einem Textverarbeitungsprogramm (z.B. Word, Open Office, ...) oder einem Tabellenkalkulationsprogramm (Excel, Calc) müssen Sie den Ordner ausfindig machen, der die gewünschte Datei enthält. In diesem Fall ist dies die Textdatei *tom.txt* im Ordner *.../data/books*). 
 
-Vsebino besedilne datoteke shranimo v spremenljivko *besedilo*. 
+Der Inhalt der Textdatei wird in der (von uns bestimmten) Variablen *text* gespeichert. 
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 besedilo = read_lines(file = file.choose())
 ```
 
-Po navadi želimo ta postopek avtomatizirati in v programski skript zapišemo pot do datoteke (torej skozi katere mape se moramo prebiti) in ime datoteke, ki nas zanima. Uporabniki operacijskega sistema `Windows` se morajo navadati, da je treba namesto poševnice "\" uporabljati poševnico "/" (tako kot v operacijskem `Unix` ali `MacOS`). 
+Normalerweise wollen wir diesen Prozess automatisieren. Daher tragen wir den Pfad zur Datei (d.h. in welchem Ordner sich die Datei befindet) und den Namen der Datei, an der wir interessiert sind, in ein Programmskript. Benutzer des Betriebssystems `Windows` sollten sich bei der Pfadangabe daran gewöhnen, den Schrägstrich "/" anstelle des Schrägstrichs "\" zu verwenden (wie das in den Operationssystem `Unix` oder `MacOS` üblich ist). 
 
-Navesti je treba pot do zaželene besedilne datoteke. Če besedila ne odpiramo v okviru RStudio projekta, moramo napisati celotno pot do ciljne datoteke.   
+Wenn der Text nicht innerhalb eines RStudio-Projekts geöffnet wird, muss der vollständige Pfad zur Zieldatei angegeben werden. 
 
-Če smo v `RStudiu` ustvarili projekt (*New project* v menuju *File*), potem ni potrebno napisati celotne poti do datoteke. Zadostuje navedba tistih map, ki so podrejene delovni mapi (*working directory*). 
+Wenn ein Projekt in `RStudio` erstellt wurde (*New Project* im Menü *File*), dann ist es nicht notwendig, den vollständigen Pfad zur Datei anzugeben. Es reicht aus, die Ordner anzugeben, die dem Arbeitsverzeichnis (*working directory*) untergeordnet sind. 
 
-Kako izvemo **pot do delovne mape**?   
-- Napišemo ukaz `getwd()`. Izpisano pot lahko prekopiramo, lahko pa jo tudi shranimo v obliki konstante (ali spremenljivke). 
-- V datotečnem upravitelju ali raziskovalcu, ki ga v `RStudiu` privzeto najdemo na desni strani, lahko z miško kliknemo opcijo *More* in nato izberemo opcijo *Copy Folder Path to Clipboard*. 
+Wie kann ich den **Pfad zum Arbeitsverzeichnis** herausfinden?   
+- Schreiben Sie den Befehl `getwd()` in die Konsole (Console) oder ins Programmskript. Der Pfad kann kopiert oder als Konstante (oder Variable) gespeichert werden.    
+- Im Dateimanager oder Explorer, der sich standardmäßig auf der rechten Seite von "RStudio" befindet, können wir mit der Maus auf *Mehr* (*More*) klicken und dann die Option *Pfad des Arbeitsverzeichnisses in die Zwischenablage kopieren* wählen (*Copy Folder Path to Clipboard*). 
 
-V menuju *More* najdemo tudi opcijo za spremembo delovne mape *Set as Working Directory* (kar v `RStudio` *projektu* po navadi ni potrebno). Nastavljanje delovne mape opravimo tudi s funkcijo `setwd()`.
+Im Menü *Mehr* (*More*) finden wir auch eine Option zum Ändern des Arbeitsverzeichnisses *Als Arbeitsverzeichnis festlegen* (*Set as Working Directory*), was aber in einem *RStudio*-Projekt normalerweise nicht notwendig ist. Das Setzen des Arbeitsverzeichnisses wird ebenfalls mit der Funktion `setwd()` durchgeführt.
 
 ```{r}
 getwd()
@@ -51,9 +51,9 @@ mein_arbeitsverzeichnis <- getwd()
 my_working_directory <- getwd()
 ```
 
-V našem primeru je pot do delovne mape: "D:/Users/teodo/Documents/R/raj2022-book". 
+In unserem Beispiel lautet der Pfad zum Arbeitsordner "D:/Users/teodo/Documents/R/raj2022-book". 
 
-Zaželena besedilna datoteka *tom.txt* je v podmapi *.../data/books*). Če smo prej ustvarili `RStudio` *project*, zadostuje zapis podrejenih map in dodano ime ciljne datoteke - vse med narekovaji. 
+Die gewünschte Textdatei *tom.txt* befindet sich im Unterordner *.../data/books*). Wenn wir vorher ein`RStudio`-*project* erstellt haben, genügt die Angabe des Unterordners und die Hinzufügung des Zieldateinamens -- alles in Anführungszeichen. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -61,7 +61,7 @@ library(tidyverse)
 besedilo = read_lines("data/books/tom.txt")
 ```
 
-Celo pot do ciljne datoteke lahko prekopiramo in prilepimo. Da se izognemo pisnim napakam, je bolje sestaviti programske skripte v okvriu `RStudio` *projekta*, saj ni treba toliko pisati. 
+Der gesamte Pfad zur Zieldatei kann kopiert und eingefügt werden. Um Schreibfehler zu vermeiden und um sich wiederholtes Schreiben zu ersparen, ist es besser, Programmskripte im Rahmen von `RStudio`- *Projekten* anzulegen und dann entweder als R- oder Rmarkdown-Datei zu speichern. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -69,9 +69,9 @@ library(tidyverse)
 besedilo <- read_lines("D:/Users/teodo/Documents/R/raj2022-book/data/books/tom.txt")
 ```
 
-Še ena možnost je **lepljenje** naslovov ali poti do datoteke s funkcijo `paste()` ali `paste0()`. Prva funkcija lepi s presledkom med posameznimi lepljenimi deli poti, druga pa lepi brez presledka.  
+Eine weitere Möglichkeit ist das **Einfügen** von Adressen oder Pfaden in eine Datei mit `paste()` oder `paste0()`. Die erste Funktion fügt ein Leerzeichen zwischen jedem eingefügten Teil des Pfades ein, während die zweite Funktion Pfadteile (oder beliebige Textteile) ohne Leerzeichen zusammenklebt.  
 
-V spodnjih dveh primerih lepimo tri sestavne dele oz. dva dela. 
+In den beiden folgenden Beispielen werden drei Komponenten bzw. zwei Bestandteile eines Dateipfades zusammengeklebt. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -83,9 +83,9 @@ besedilo <- read_lines(paste0(moja_delovna_mapa,
                               "/data/books/tom.txt"))
 ```
 
-Poleg funkcij `paste()` in `paste0()` uporabljamo za lepljenje tudi druge knjižnice, npr. `glue` in `here`. 
+Zusätzlich zu `paste()` und `paste0()` verwenden wir andere Bibliotheken zum Einfügen, z.B. `glue` und `here`. 
 
-Za lepljenje sestavnih delov datotečne poti je priljubljena knjižnica `here`. Funkcija `here()` sama ugotavlja trenutno delovno mapo. Sestavne dele poti povezujemo na isti način kot s funkcijo `paste()` ali kar z vejicami. Prednost funkcije `here()` je potemtakem izogibanje poševnicam v datotečni poti. Uporabniki operacijskega sistema `Windows` bodo te funkcije še posebej veseli, saj sprva pogosto spregledajo, da uporabljajo napačno obrnjene poševnice v datotečni poti. 
+Die Bibliothek (*library*) `here` ist sehr beliebt für das Einfügen von Dateipfadkomponenten. Die Funktion `here()` selbst bestimmt das aktuelle Arbeitsverzeichnis. Pfadkomponenten werden auf die gleiche Weise wie bei der Funktion `paste()` oder einfach mit Kommas verkettet. Der Vorteil der Funktion `here()` besteht also darin, dass Schrägstriche im Dateipfad vermieden werden. Benutzer des Betriebssystems `Windows` werden sich über diese Funktion besonders freuen, da sie anfangs oft übersehen, dass sie im Dateipfad die falschen Schrägstriche ("\" statt "/") eingefügt haben. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -97,7 +97,7 @@ besedilo <- read_lines(here("data", "books", "tom.txt"))
 here("data", "books", "tom.txt")
 ```
 
-Odpiranje besedila s spletnega naslova (*url*) je tudi možno, vendar je večinoma dodaten zaplet potreba po odstranjevanju html kode. 
+Das Öffnen eines Textes von einer Webadresse (*url*) ist ebenfalls möglich, aber meist ist es notwendig, den HTML-Code zu entfernen. 
 
 ```{r}
 url <- 
@@ -106,7 +106,7 @@ teachsam_kuechenuhr <- read_lines(url)
 head(teachsam_kuechenuhr)
 ```
 
-"Čiščenje" spletne strani je vsekakor lažje z drugimi programi (npr. s knjižnico `rvest`). Pridobivanje besedila ali preglednice s spletnih strani (*webscraping*) je tehnika za naprednejše uporabnike. 
+Es ist wesentlich einfacher, eine Webseite mit Programmen wie z.B. der `rvest`-Bibliothek den HTML-Code zu entfernen und auf diese Weise einen sauberen Text von einer Webseite herunterzuladen. Das Extrahieren von Text oder Tabellen aus Webseiten (*Webscraping*) ist eine Technik für fortgeschrittene Benutzer. 
 
 ```{r}
 library(rvest)
@@ -119,25 +119,25 @@ text <- html_document %>%
   html_text(trim = T)
 ```
 
-Besedilo, ki smo ga pridobili s knjižnico `rvest` s spletne strani, še očistimo s funkcijo `str_squish()`, ki odstrani nezaželene presledke. Besedilo si ogledamo s funkcijo `str_sub()`. V spodnjem primeru prikazujemo le prvih 200 znakov besedila. Ni priporočljivo, da zahtevate izpis celotnega besedila na ekran, ker to lahko traja precej časa in zaseda pomnilnik, ki ga potrebujete za analizo. 
+In dem Text, der von der Bibliothek `rvest` von der Webseite abgerufen wurde, entfernt die Funktion `str_squish()` unerwünschte Leerstellen. Der Text wird mit der Funktion `str_sub()` angezeigt. Im folgenden Beispiel werden nur die ersten 200 Zeichen des Textes angezeigt. Es wird nicht empfohlen, den gesamten Text auf dem Bildschirm ausgeben zu lassen, da dies sehr viel Zeit in Anspruch nehmen kann und den für die Analyse benötigten Arbeitsspeicher belegt. 
 
 ```{r}
 teachsam_kuechenuhr_rvest <- text %>% str_squish()
 str_sub(teachsam_kuechenuhr_rvest, start = 1, end = 200)
 ```
 
-Dokler gre le za vsebino ene spletne strani,  programiranje v programskem jeziku `R` ni nujno potrebno. Besedilo bi seveda lahko prekopirali s spletne strani v beležko (`Notepad`) ali urejevalnik besedil in potem shranili v datoteko. Vendar je *webscraping* s knjižnico `rvest` mnogo učinkovitejša tehnika, saj je v zelo kratkem času mogoče potegniti več tisoč besedil (npr. časopisne članke) s spletnih strani na računalniški disk. 
+Solange es sich nur um den Inhalt einer einzigen Webseite handelt, ist eine Programmierung in der Programmiersprache `R` (oder irgend einer anderen Programmiersprache) nicht unbedingt erforderlich. Der Text kann natürlich von der Webseite in einen Notizblock (`Notepad`) oder ein Textverarbeitungsprogramm (z.B. `Word`, `Libre Office`) kopiert und dann in einer Datei gespeichert werden. Das *Webscraping* mit der `rvest`-Bibliothek ist jedoch eine viel effizientere Technik, da es möglich ist, Tausende von Texten (z.B. Zeitungsartikel) von Webseiten in sehr kurzer Zeit herunterzuladen und auf einer Festplatte zu speichern. 
 
 
-## Odpiranje več besedil
+## Öffnen mehrerer Texte
 
-Uporaba funkcije `readtext()` je preprosta za odpiranje več besedil z diska. 
+Mit der Funktion `readtext()`, die mit dem Programm `library(readtext)` geladen wird, lassen sich leicht mehrere Texte von der Festplatte öffnen. 
 
-Če namesto imena datotek navedemo samo zvezdico + pripono datotek (npr. \*.txt) v izbrani mapi (npr. "data/books/"), potem bo program odprl vse besedilne datoteke s to pripono in to zbirko shranil v spremenljivki (npr. "besedila"). Program ustvari tabelo prebranih besedil.
+Wenn Sie statt des Dateinamens nur ein Sternchen und die Dateierweiterung (z.B. \*.txt) im ausgewählten Verzeichnis (z.B. "data/books/") angeben, dann öffnet das Programm alle Textdateien mit dieser Erweiterung und speichert diese Sammlung in einer vom Benutzer bestimmten Variablen (z.B. "texts"). Das Programm erstellt eine Tabelle mit den gelesenen Texten und Metadaten dieser Texte.
 
-`readtext()` odpira besedila z različnimi priponami: *txt, csv, docx, pdf, xml, ...*. 
+Die Funktion `readtext()` öffnet Texte mit verschiedenen Dateisuffixen: *txt, csv, docx, pdf, xml, ...*. 
 
-Z opcijo `encoding` seznanimo program s kodno stranjo besedil. Privzeta je po navadi kodna stran "*UTF-8*". V narekovajih lahko določimo tudi drugo kodno stran, npr. "*latin1*" za zahodnoevropsko kodno stran. 
+Die Option `encoding` (*Kodierung*) ermöglicht die Angabe des Zeichensatzes (*code page*), in dem die Texte gespeichert wurden. Vorgegeben ist in der Regel die Codepage `*UTF-8*`, die die meisten Sonderzeichen von verschiedenen Sprachen (auch Deutsch und Slowenisch) enthält. Sie können auch irgend einen anderen Zeichensatz angeben, und zwar immer eingerahmt in Anführungszeichen, z. B. "*latin1*" für einen westeuropäischen Zeichensatz oder "*latin2*" für einen mittel- und osteuropäischen Zeichensatz. 
 
 ```{r message=FALSE, warning=FALSE}
 library(readtext)
@@ -145,7 +145,7 @@ besedila = readtext("data/books/*.txt", encoding = "UTF-8")
 besedila
 ```
 
-Tudi odpiranje besedila s spletnega naslova (`url`) je mogoče, npr. PDF datoteke. Besedilo se shranjuje v obliki tabele, ki ima hkrati lastnosti podatkovnega niza (`data.frame`) in seznama (`list`). 
+Auch das Öffnen eines Textes von einer Webadresse (`url`) ist möglich, z.B. *PDF*-Dateien. Der Text wird mitsamt Metadaten in einer Tabelle gespeichert, die sowohl Eigenschaften eines Datensatzes (`data.frame`) als auch die einer Liste (`list`) aufweist. 
 
 ```{r message=FALSE, warning=FALSE}
 library(readtext)
@@ -156,25 +156,25 @@ pdf_readtext
 ```
 
 
-## Odpiranje preglednice
+## Öffnen von Tabellen
 
-Funkcija `read_csv()` ali `read_csv2()` sta le dve izmed številnih funkcij za odpiranje preglednice s pripono *csv*. 
+Es gibt eine Vielzahl von Programmfunktionen, mit denen man Tabellen in verschiedenen Formaten öffnen kann. Die Funktionen `read_csv()` oder `read_csv2()` sind nur zwei der Funktionen zum Öffnen einer Tabelle mit der Endung *csv* (diese lassen sich übrigens auch mit `Excel` oder `Calc` öffnen). 
 
-Začetnikom se bo zdel privlačen uvoz tabele s pomočjo menuja in miške (*File > Import Dataset > ...*).
+Für Anfänger ist es sicher attraktiv, eine Tabelle über das Menü und mit Maus zu importieren *File > Import Dataset > ...* (*Datei > Datensatz importieren > ...*).
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("pictures/rstudio_import_dataset.png")
 ```
 
-Potem se odpre pogovorno okno s čarovnikom za uvoz tabele ali podatkovnega niza, podobno kot v statističnem programu `IBM SPSS`, ki omogoča opredeljevanje oblike. 
+Dann öffnet sich -- ähnlich wie beim Statistikprogramm `IBM SPSS` -- ein Dialogfeld mit einem Assistenten zum Importieren einer Tabelle oder eines Datensatzes, so dass das entsprechende Format festgelegt werden kann. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 knitr::include_graphics("pictures/rstudio_import_dataset_dialog.png")
 ```
 
-Poleg tega vam RStudio tudi pokaže, kateri programski ukaz za odpiranje tabele bi lahko vstavili v programski skript. Tako se lahko naučite potrebnih programskih korakov za odpiranje tabel. 
+Außerdem zeigt `RStudio` an, welcher Programmierbefehl zum Öffnen der Tabelle in das Programmskript eingefügt werden kann. Auf diese Weise können Sie die notwendigen Programmierschritte zum Öffnen von Tabellen erlernen. 
 
-Za samodejno izvajanje programskega skripta pa je najboljše, da sestavimo ukazno vrstico za prebiranje tabele in (neobvezno) njen prikaz: 
+Für die automatische Ausführung des Programmskripts ist es jedoch am besten, eine Befehlszeile zu verfassen, um die Tabelle einzulesen und (optional) anzuzeigen: 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -187,9 +187,9 @@ head(tabela) %>%
 
 ```
 
-RStudio omogoča tudi uvoz podatkovnih niz iz nekaterih drugih statističnih programov (npr. `SPSS`, `STATA`) in pregledničnih programov (`Excel`). Z dodatnimi programskimi funkcijami pridobimo še več uvoznih možnosti (npr. s knjižnico `readxl` za uvoz Excelovih tabel). 
+`RStudio` ermöglicht auch den Import von Datensätzen aus einigen anderen Statistikprogrammen (z.B. `SPSS`, `STATA`) und Tabellenkalkulationsprogrammen (`Excel`). Zusätzlich installierbare Softwarefunktionen bieten noch mehr Importmöglichkeiten (z.B. die `readxl`-Bibliothek für den Import von Excel-Tabellen). 
 
-Odpiranje tabele s spletnega naslova (`url`) je prav tako mogoče, bodisi s funkcijo `read_csv()` oz. `read_csv2()` bodisi s funkcijo `read_delim()`.
+Das Öffnen einer Tabelle von einer Webadresse (`url`) ist ebenfalls möglich, z.B. entweder mit den Funktionen `read_csv()` oder `read_csv2()` oder mit der Funktion `read_delim()`.
 
 ```{r}
 url <- 
@@ -207,12 +207,12 @@ car_dataset <- car_dataset[-1,] # remove first row after column name
 head(car_dataset)
 ```
 
-Z opcijo *col_types* poskrbimo za ustrezen podatkovni format (črkovni niz, decimalno število, ...).
+Die Option *col_types* stellt sicher, dass beim Aufrufen der Datei ein angemessenes Datenformat (alphanumerische Zeichenkette, Dezimalzahl usw.) verwendet wird.
 
 
-## Odpiranje Excelove tabele
+## Öffnen einer Excel-Tabelle
 
-Funkcija `read_xlsx()` ali `read_excel()` omogoča odpiranje Excelove preglednice s pripono *xlsx*.
+`Excel` von `Microsoft` ist ein beliebtes Tabellenprogramm. Daher gibt es auch in der Programmiersprache `R` mehrere Programme, die das Öffnen von `Excel`-Dateien (Suffix *xlsx*) erlauben, z.B. die Funktion `read_xlsx()` oder `read_excel()` des Programms `readxl`.
 
 ```{r message=FALSE, warning=FALSE}
 library(readxl)
@@ -223,9 +223,13 @@ head(excel) %>%
 ```
 
 
-## Shranjevanje datotek
+## Datei speichern
 
-Privzeto spodnje programske funkcije shranjujejo podatkovni niz po kodni strani (codepage), ki omogoča tudi posebne jezikovne in druge simoble, tj. `encoding = "UTF-8"` / `fileEncoding = "UTF-8"`.
+Standardmäßig speichern die meisten Softwarefunktionen Datensätze gemäß der heutzutage bevorzugten Unicode-Zeichensatztabelle, die auch sprachspezifische und andere spezielle Symbole zulässt. 
+
+Bei bestimmten Programmfunktionen muss dies eventuell angegeben werden, z.B. `encoding="UTF-8"` bzw. `fileEncoding="UTF-8"`.
+
+Im Falle der nachfolgenden `tidyverse`-Funktionen gilt jedoch, dass standardmäßig im UTF-8-Format gespeichert wird, falls keine gegenteilige Angabe gemacht wird. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -249,14 +253,18 @@ write_xlsx(tabela, "moja_tabela.xlsx")
 ```
 
 
-Basic operations in R: \* Download (zip) files \* Extract compressed files to a folder \* Check & Create a folder or subfolders \* List & Read files in a folder
+Nun folgen weitere grundlegende Datei-Operationen in `R`: z.B.    
+- Download von Zip-Dateien (zip files);   
+- Extrahieren von komprimierten Dateien in ein Verzeichnis (extract compressed files to a folder);   
+- Überprüfen und Anlegen eines oder mehrer Verzeichnisse (check & create a folder or subfolders);    
+- Durchsuchen und Lesen von Dateien in einem Verzeichnis (list & read files in a folder).   
 
 
-## Nalaganje s spleta
+## Download von Zip-Dateien
 
-Programska funkcija za nalaganje datoteke z medmrežja, in sicer s funkcijo `download.file()`, ki zahteva *url* in *pot* (*location*) za shranjevanje datoteke. 
+Eine Softwarefunktion zum Herunterladen einer Datei aus dem Internet, unter Verwendung der Funktion `download.file()`, die die Angabe der Webadresse (*url*) und den Pfad (*location*, *pot*) zum Speichern der Datei benötigt. 
 
-V spodnjem primeru bomo stisnjeno datoteko shranili v *delovni mapi* tega `R` *projekta*. Da ne bi bilo treba toliko pisati, si spet pomagamo s funkcijo `here()`.
+Im folgenden Beispiel wird die komprimierte Datei im *Arbeitsverzeichnis* dieses *R*-Projekts gespeichert. Um uns etwas Schreibarbeit zu ersparen, verwenden wir wieder die Funktion `here()`.
 
 ```{r message=FALSE, warning=FALSE}
 url <- "https://github.com/tpetric7/tpetric7.github.io/archive/refs/heads/main.zip"
@@ -267,13 +275,13 @@ download.file(url, location)
 ```
 
 
-## Mape
+## Verzeichnisse
 
-### Preveri obstoj mape 
+### Existenz eines Verzeichnisses prüfen 
 
-Ali mapa že obstaja? To preverimo s funkcijo `dir.exists()`, ki zahteva navedbo datotečne poti. Tudi tu si za navajanje datotečne poti pomagamo s funkcijo `here()`. 
+Ist ein Verzeichnis bereits vorhanden? Wir überprüfen dies mit der Funktion `dir.exists()`, die nach dem Dateipfad fragt. Auch hier verwenden wir die Funktion `here()`, um den Dateipfad anzugeben. 
 
-Izpis `TRUE` pomeni, da mapa obstaja, izpis `FALSE`, da je še ni. 
+Eine `TRUE`-Ausgabe bedeutet, dass der Ordner existiert, eine `FALSE`-Ausgabe bedeutet, dass er noch nicht angelegt ist. 
 
 ```{r message=FALSE, warning=FALSE}
 # pot <- "d:/Users/teodo/Downloads/tpetric7-master"
@@ -284,9 +292,11 @@ exist
 ```
 
 
-### Ustvari mapo 
+### Verzeichnis anlegen 
 
-Če mapa ne obstaja, jo ustvari! Če mapa že obstaja, seznani uporabnika! Ustvarjanje nove mape opravimo s funkcijo `dir.create()`, ki zahteva ime poti nove mape. Ta programski ukaz pogosto združujemo s pogojnim stavkom `ifelse()`. Pogojni stavek začnemo s pogojem. V spodnjem primeru je to *exist == FALSE*. Če je pogoj izpolnjen (tj. da mape še ni), potem program izpiše `TRUE` in ustvari mapo z imenom po naši želji. To opravimo s funkcijo `dir.create()`. Če pogoj ni izpolnjen (tj. da mapa z navedenim imenom že obstaja), potem izpiši "*directory already exists*". 
+Wenn ein Verzeichnis noch nicht existiert, können wir es erstellen. Ist es bereits angelegt ist, können wir Auskunft darüber erhalten. 
+
+Das *Erstellen* eines neuen Verzeichnisses erfolgt mit der Funktion `dir.create()`, die nach dem Pfadnamen des neuen Ordners fragt. Dieser Programmierbefehl wird oft mit der bedingten Anweisung `ifelse()` kombiniert. Der Bedingungssatz beginnt mit einer Bedingung. Im folgenden Beispiel ist dies *exist == FALSE*. Wenn die Bedingung erfüllt ist (d.h. dass der Ordner noch nicht existiert), dann gibt das Programm `TRUE` aus und erstellt einen Ordner mit einem Namen nach unserer Wahl. Wenn die Bedingung nicht erfüllt ist (d.h. dass der Ordner mit dem angegebenen Namen bereits existiert ), dann wird *directory already exists* (*Verzeichnis existiert bereits*) ausgegeben. 
 
 ```{r message=FALSE, warning=FALSE}
 ifelse(exist == FALSE, 
@@ -295,15 +305,15 @@ ifelse(exist == FALSE,
 ```
 
 
-### Ustvari podrejene mape
+### Unterverzeichnisse anlegen
 
-Ustvariti želimo več map.    
-- Najprej določimo vektor z njihovimi imeni. Ime vektorja subfolder_names bomo potrebovali v programski zanki.    
-- Uporabljamo programsko zanko `for(){}`, ki se izvaja, dokler program ne dodeli vsaki mapi ime.    
-- Kolikokrat se zanka izvaja, določimo s številko. Zapisali bi lahko številko 4, ker smo prej določili štiri imena za nove mape. Elegantnejša metoda je uporaba funkcije `length()`, ki programu pove zadnji člen zaporedja, tj. konec zanke. Števec *i* je najprej enak ena, po vsakem prehodu zanke pa se mu prišteje ena. Glede na to, da imamo v vektorja štiri imena, se izvajanje programske zanke konča po četrtem prehodu.    
-- V zanki izvedemo funkcijo `dir.create()`. Rezultat zapišemo v spremenljivko z imenom *folder*. 
+Wir wollen mehrere Verzeichnisse anlegen.    
+- Definieren wir zunächst einen Vektor mit Namen der Verzeichnisse. In der Programmschleife benötigen wir den Namen des Vektors *subfolder_names*.    
+- Wir verwenden die Programmschleife `for(){}`, die so lange läuft, bis die Programmfunktion jedem Verzeichnis einen Namen zugewiesen hat.    
+- Wie oft die Schleife ausgeführt wird, wird durch eine Zahl angegeben. Wir könnten die Zahl 4 angeben, da wir zuvor vier Namen für die neuen Ordner definiert haben. Eine elegantere Methode ist die Verwendung der Funktion `length()` (*Länge* des Vektors), die dem Programm das letzte Glied der Sequenz mitteilt, d.h. das Ende der Schleife. Der Zähler *i* ist anfangs gleich eins und wird nach jedem Schleifendurchlauf um eins erhöht. Da der Vektor vier Namen enthält, endet die Ausführung der Programmschleife nach dem vierten Durchlauf.    
+- In der Schleife führen wir am Schluss die Funktion `dir.create()` aus. Das Ergebnis speichern wir in einer Variable namens *folder* (*Ordner*). 
 
-V spodnjem primeru bo program ustvaril podmape v mapi (spremenljivka ima ime *pot*), ki smo zgoraj ustvarili. 
+Im folgenden Beispiel erstellt das Programm Unterordner in dem Ordner (die Variable heißt *pot*, dt. "Pfad"), den wir oben erstellt haben. 
 
 ```{r message=FALSE, warning=FALSE}
 subfolder_names <- c("a","b","c","d") 
@@ -314,19 +324,19 @@ for (i in 1:length(subfolder_names)){
 ```
 
 
-### Odstrani mape
+### Verzeichnis entfernen
 
-Program lahko tudi odstrani mape, in sicer s funkcijo `unlink()`. V spodnjem primeru bomo odstrani štiri (prazne) mape, ki smo jih malo prej ustvarili (imena map gl. zgoraj!). 
+Das Programm kann die Verknüpfung mit Ordnern mit der Funktion `unlink()` aufheben. Im folgenden Beispiel werden wir vier (leere) Verzeichnisse entfernen, die wir kurz zuvor erstellt haben (siehe oben die dafür verwendeten Ordnernamen!). 
 
-Odstranjujemo eno mapo. 
+Wir entfernen zuerst nur einen Ordner. 
 
 ```{r}
 unlink(here(pot, "a"), recursive = TRUE)
 ```
 
-Odstranimo lahko tudi več map hkrati. V tem primeru potrebujemo programsko zanko. 
+Sie können auch mehrere Verzeichnis mit einem Befehl entfernen. In diesem Fall brauchen wir eine Programmschleife. 
 
-V spodnjem primeru odstranjujemo preostale tri podrejene mape (zato se števec *i* začne z 2 in konča s 4, kar je določeno z `length()`). Opcija *recursive = TRUE* pomeni, da program zbriše tudi vse podrejene mape v navedenih mapah. 
+Im folgenden Beispiel werden die verbleibenden drei Unterordner entfernt: der Zähler *i* beginnt also mit 2 und endet mit 4, was durch `length()` angegeben wird. Die Option *recursive = TRUE* bedeutet, dass das Programm auch alle Unterverzeichnisse in diesen Ordnern löscht. 
 
 ```{r message=FALSE, warning=FALSE}
 for (i in 2:length(subfolder_names)){
@@ -335,18 +345,18 @@ for (i in 2:length(subfolder_names)){
 ```
 
 
-## Stisnjene datoteke
+## Zip-Dateien entpacken und löschen
 
-Stisnjeno datoteko raztegnemo s funkcijo `unzip()`, pot ali kraj raztegnjene datoteke pa določimo z opcijo *exdir*. 
+Die komprimierte Datei wird mit der Funktion `unzip()` entpackt, und der Pfad oder Ort der entpackten Datei wird mit der Option *exdir* angegeben. 
 
-V spodnjem primeru je predpostavljeno, da ste zgoraj že naložili stistnjeno datoteko na disk, in sicer v delovno mapo. 
+Im folgenden Beispiel wird davon ausgegangen, dass Sie die gezippte Datei bereits auf die Festplatte heruntergeladen haben, und zwar in das Arbeitsverzeichnis. 
 
 ```{r message=FALSE, warning=FALSE}
 # unzip("d:/Users/teodo/Downloads/tpetric7-master.zip", exdir = pot)
 unzip("tpetric7-master.zip", exdir = pot)
 ```
 
-Mape in stisnjene datoteke ne potrebujemo več. V nasdlednjih dveh programskih vsticah bomo oboje in vse, kar je v njih, spet odstranili. 
+Das Verzeichnis und die komprimierte Datei werden nicht mehr benötigt. In den nächsten beiden Schritten werden wir beide und alles, was sich darin befindet, wieder entfernen. 
 
 ```{r}
 unlink(pot, recursive = TRUE)
@@ -354,9 +364,9 @@ unlink("tpetric7-master.zip", recursive = TRUE)
 ```
 
 
-## Pregledovanje datotek
+## Dateilisten anzeigen
 
-Seznam datotek v mapi ali več mapah na računalniškem disku prikazujemo s funkcijo `list.files()`. 
+Die Liste der Dateien in einem oder mehreren Verzeichnissen auf der Festplatte eines Computers wird mit der Funktion `list.files()` angezeigt. 
 
 ```{r message=FALSE, warning=FALSE}
 seznam <- list.files("data/books", pattern = "\\.txt$", recursive = TRUE, full.names = TRUE)
@@ -365,18 +375,19 @@ seznam
 ```
 
 
-## Prebiranje datotek
+## Mehrere Dateien öffnen
 
-Funkcija `readtext()` zna prebrati več datotek v eni ali več mapah. Če te funkcije ne moremo uporabiti, imamo še druge možnosti. 
+### quanteda: 
 
+Die oben bereits besprochene Funktion `readtext()` kann mehrere Dateien in einem oder mehreren Verzeichnissen öffnen. Wenn diese Funktion mal nicht verwendet werden kann, gibt es mehrere andere Möglichkeiten. 
 
 ### tidyverse:
 
-V zbirki `tidyverse` je na voljo knjižnica `purrr` s funkcijo `map()`, ki nadomešča klasično programsko zanko `for(){}`. 
+Im `tidyverse`-Programmpaket ist das Programm `purrr` mit der Funktion `map()` verfügbar, die die klassische `for(){}`-Schleife effizient zu ersetzen vermag. 
 
-V spodnjem primeru s funkcijo `read_lines()` odpremo besedilo s seznama, ki smo ga prej ustvarili s funkcijo `list.files()`. Funkcija `map()` pa ima isti namen kot `for()`-zanka, je pa krajša. Na ta način shranjujemo vsa besedila z datottečnega seznama v pomnilniku računalnika. 
+Im folgenden Beispiel verwenden wir die Funktion `read_lines()`, um den Text aus einer Liste zu öffnen, die wir zuvor mit der Funktion `list.files()` erstellt haben. Die Funktion `map()` hingegen hat den gleichen Zweck wie die `for()`-Schleife, ist aber kürzer. Auf diese Weise wird der gesamte Text der Dateiliste in den Arbeitsspeicher des Computers geladen und in einer beliebig benannten Variable gespeichert.    
 
-S funkcijo `substr()` pa si lahko ogledamo besedilo oz. po navadi le del besedila. Podobno funkcijo smo uporabili tudi zgoraj, tj. `str_sub()`. V spodnjem primeru si želimo ogledati vsebino prve datoteke [1] in druge datoteke [2] na seznamu. Ne želimo izpisati celotnih besedil, temveč le prvih 50 oz. 70 znakov. 
+Die Funktion `substr()` hingegen ermöglicht es uns, den gesamten Text oder normalerweise nur einen Teil des Textes anzuzeigen. Wir haben oben eine ähnliche Funktion verwendet, `str_sub()`. Im folgenden Beispiel wollen wir den Inhalt der ersten Datei [1] und der zweiten Datei [2] in der Liste sehen. Wir wollen nicht den gesamten Text drucken, sondern nur die ersten 50 oder 70 Zeichen. 
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -389,7 +400,7 @@ substr(alltxt[2], 1, 70)
 
 ### Base R:
 
-V osnovnem funkcijskem naboru programskega jezika `R` ima funkcija `lapply()` podobno funkcijo kot `map()` ali `for()`-zanka. Funkcija `map()` ima več naprednejših možnosti. 
+Im Grundfunktionssatz der Programmiersprache `R` hat der `lapply()`-Befehl eine ähnliche Funktion wie der `map()`-Befehl oder die `for()`-Schleife. Die Funktion `map()` verfügt jedoch über weitere fortgeschrittene Optionen, die wir hier nicht ausschöpfen. 
 
 ```{r message=FALSE, warning=FALSE}
 alltxt <- lapply(seznam, readLines)
@@ -399,11 +410,11 @@ substr(alltxt[2], 1, 70)
 
 ```
 
-## Pretvorba kodne strani
+## Zeichensatz konvertieren
 
-Kodno stran lahko zamenjamo s funkciojo `iconv()`. V sledeči programski vrstici pretvarjamo besedilo *tom.txt* (gl. zgoraj) iz kodne strani "UTF-8" v kodno stran "latin1". 
+Die Zeichensatztabelle (*code page*) kann durch die Funktion `iconv()` ersetzt werden. Die unten folgende Programmzeile wandelt den Text *tom.txt* (siehe oben) von der Codepage "*UTF-8*" in die Codepage "*latin1*" um. 
 
-S funkcijo `Encoding()` izvemo *kodno stran* besedila (*codepage*), funkcijo `str_sub()` za ogled besedilnega odlomka pa smo spoznali že zgoraj. 
+Die Funktion `Encoding()` ermittelt die Zeichensatztabelle (*Code page*) eines Textes. Die Funktion `str_sub()`, die zur Anzeige eines Textausschnitts dient, wurde bereits oben eingeführt. 
 
 ```{r}
 alltxt1_converted <- iconv(besedilo, from = "UTF-8", to = "latin1")
@@ -412,9 +423,9 @@ str_sub(alltxt1_converted, 4800, 4900)
 ```
 
 
-## Priprava podatkovnega niza
+## Datensatz vorbereiten
 
-Pogosto moramo podatkovni niz ali tabelo preoblikovati, da se dokopljemo do odgovora na raziskovalno vprašanje. Preoblikovanje podatkov v angleščini pogosto imenujejo *Data Wrangling* ("podatkovna rokoborba ali ravsanje"). V nadaljevanju se bomo seznanili z nekaj izmed pogostejših funkcij iz zbirke `tidyverse` za pripravo podatkovnega niza ali tabele:   
+Oft müssen wir einen Datensatz oder eine Tabelle umwandeln, um die Antwort auf eine Forschungsfrage zu finden. Die Datenumwandlung wird oft im Englischen als *Data Wrangling* ("Datenringen, Datenraufen") bezeichnet. Im Folgenden werden wir uns einige der gebräuchlichsten `Tidyverse`-Funktionen zur Vorbereitung eines Datensatzes oder einer Tabelle ansehen:   
 - `select()`   
 - `group_by()`   
 - `filter()`   
@@ -426,24 +437,32 @@ Pogosto moramo podatkovni niz ali tabelo preoblikovati, da se dokopljemo do odgo
 - `unite()`   
 - `pivot_longer()`   
 - `pivot_wider()`   
-- `pull(`)   
+- `pull()`   
 - `Date()`.
 
-Delovanje posameznih programskih funkcij ponazarjamo s podatkovnim nizom *tweets_rollingstones.rds*. 
+Die Funktionsweise der einzelnen Programmfunktionen wird anhand des Datensatzes *tweets_rollingstones.rds* veranschaulicht, den wir zunächst mit `read_rds()` öffnen. 
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones <- read_rds("data/tweets_rollingstones.rds")
 ```
 
-Če imenu podatkovnega niza dodamo znak `$` se nam prikažejo spremenljivke (stolpci tabele). Operator `%>%` (bližnjica: *Crtl+Shift+M*) povezuje posamezne programske korake ali vrstice med seboj: (a) koraki se izvajajo v časovnem zaporedju in (b) sledeči koraki prevzemajo predmet (object) iz prvega programskega koraka (tj. podatkovni niz). S funkcijo `head()` omejujemo število izpisanih vrstic.   
+Wenn wir dem Namen des Datensatzes das Zeichen `$` hinzufügen, werden die Variablen (Spalten der Tabelle) angezeigt: z.B. *tweets_rollingstones$user_id*, *tweets_rollingstones$text* usw. 
+
+Der Operator `%>%%` (Tastenkürzel: *Crtl+Shift+M*) verbindet die Programmschritte bzw. Zeilen miteinander:    
+(a) die Schritte werden in zeitlicher Reihenfolge ausgeführt, und    
+(b) die folgenden Schritte übernehmen das Objekt aus dem ersten Programmschritt (d.h. den Datensatz).    
+Dies verkürzt die einzelnen Programmschritte.   
+In vielen Fällen kann man stattdessen auch den Operator `|>` (Base-`R`-Funktion) einsetzen.   
+
+Die Funktion `head()` begrenzt die Anzahl der auszugebenden Datenzeilen.   
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones$created_at %>% head(3)
 ```
 
-Drugi načini za izpis imena spremenljivk (stolpcev) v tabeli so npr. `names()` ali `colnames()`. Uporabljamo lahko tudi funkciji `glimpse()` ali `skim()` knjižnice `skim`. 
+Andere Möglichkeiten, die Namen von Variablen (Spalten) in einer Tabelle anzuzeigen, sind z.B. `names()` oder `colnames()`. Sie können auch die Funktionen `glimpse()` oder `skim()` des Programms `skim` verwenden, die ausführlichere Auskunft über die Struktur und Variablennamen im Datensatz geben. Eine ähnliche Funktion hat auch die `summary()`-Funktion, die zu den Grundfunktionen der `R`-Programmiersprache gehört. 
 
-Izpis v sledečem izpisu je s omejen na 10 imen. To omogoča funkcija `head()`.
+Die folgende Datenausgabe ist auf 10 Namen begrenzt. Ermöglicht wird dies durch die Funktion `head()`.
 
 ```{r message=FALSE, warning=FALSE}
 names(tweets_rollingstones) %>% head(10)
@@ -455,13 +474,13 @@ names(tweets_rollingstones) %>% head(10)
 
 ### select()
 
-Funkcija `select()` omogoča izbiranje stolpcev v preglednici. Načinov izbiranja je več. Izberemo lahko samo en stolpec. 
+Mit der Funktion `select()` können Sie Spalten in einer Tabelle auswählen. Es gibt mehrere Auswahlmöglichkeiten. Im folgenden Beispiel wird nur eine Spalte (Variable) ausgewählt und die drei ersten Zeilen davon angezeigt. 
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% select(screen_name) %>% head(3)
 ```
 
-Z dvopičjem med imeni spremenljivk (stolpcev v tabeli) lahko izberemo več zaporednih stolpcev. Vejico uporabljamo za spremenljivko, ki se ne pojavlja neposredno za ali pred že navedeno spremenljivko. V spodnjem primeru bomo izbrali štiri stolpce, slednji trije se pojavljajo zaporedno, zato uporabljamo dvopičje med spremenljivko *created_at* in *text*. Za prvim stolpcem *user_id* stoji vejica, saj je med njim in stolpcem *created_at* še en stolpec, ki ga pa nismo izbrali.
+Sie können mehrere aufeinanderfolgende Spalten auswählen, indem Sie einen Doppelpunkt zwischen die Namen der äußeren Variablen (Spalten in der Tabelle) setzen. Ein Komma wird zwischen zwei Variablen gesetzt, die im Datensatz nicht unmittelbar nacheinander auftreten. Im folgenden Beispiel werden vier Spalten ausgewählt, von denen die letzten drei nacheinander erscheinen, daher wird ein Doppelpunkt zwischen den Variablen *created_at* und *text* verwendet. Auf die erste Spalte *user_id* folgt ein Komma, weil zwischen ihr und *created_at* eine weitere Spalte liegt, die wir nicht ausgewählt haben.
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
@@ -470,7 +489,7 @@ tweets_rollingstones %>%
   rmarkdown::paged_table() # prettier table
 ```
 
-Predznak *minus* pred imenom stolpca pomeni, da želimo stolpec izločiti. Več stolpcev hkrati izločimo z znakom `c()`, ki mu predpostavimo predznak *minus*.
+Das *Minus* vor dem Spaltennamen bedeutet, dass Sie die Spalte ausschließen möchten. Mehrere Spalten können gleichzeitig eliminiert werden, indem das Zeichen `c()` mit vorangestelltem *Minus* verwendet wird.
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
@@ -486,11 +505,11 @@ tweets_rollingstones %>%
 
 ### filter()
 
-Medtem ko s funkcijo `select()` izberemo ali izločimo stolpce (spremenljivke), imamo funkcijo `filter()` za omejevanje števila vrstic. Navesti je treba en ali več pogojev. Pri tem je treba paziti na uporabo logičnih operatorjev (kot npr. *dvojini enačaj*: *==*). 
+Während die Funktion `select()` Spalten (Variablen) auswählt oder eliminiert, können wir mit der Funktion `filter()` die Anzahl der Zeilen begrenzen, die wir im Verlauf der Analyse verwenden möchten. Es muss zumindest eine Bedingung angegeben werden, es können jedoch auch mehrere (komplexe) Bedingungen sein. Vorsicht ist geboten bei der Verwendung logischer Operatoren (z. B. *Doppelgleichheitszeichen*: *==* statt einfachem Gleichheitszeichen: *=*). 
 
-V spodnjem primeru je prikazano enostavno filtriranje podaktovnega niza. V kasnejših poglavjih bomo večkrat potrebovali bolj zapletene oblike, ki vključujejo tudi funkcije kot npr. `str_detect()` in poznavanje *regularnih izrazov* (*regular expressions*). 
+Das folgende Beispiel zeigt eine einfache Filterung eines Datensatzes. In späteren Kapiteln werden wir oft komplexere Filtermuster benötigen, die Funktionen wie `str_detect()` und Kenntnisse über *reguläre Ausdrücke* (*regular expressions*) verlangen. 
 
-Filtrirni pogoj je izbor čivkov v slovenščini, tj. v stolpcu *lang* mora biti znakovni niz "*sl*". Vrstice, ki tega pogoja ne izpolnjujejo, bodo odstranjene iz prikazane tabele. 
+Die Filterbedingung ist die Auswahl von slowenischen Tweets, d.h. die Spalte *lang* ("language, Sprache") muss die Zeichenkette "*sl*" enthalten. Zeilen, die diese Bedingung nicht erfüllen, werden in der gefilterten Tabelle nicht angezeigt. 
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
@@ -500,12 +519,11 @@ tweets_rollingstones %>%
   rmarkdown::paged_table() # prettier table
 ```
 
-Dokler tega rezultata ne shranimo (npr. pod imenom *tweets_rollingstones_slovenski*), ostane podatkovni niz nespremenjen. Enako velja tudi za vse ostale funkcije za prilagajanje tabele, ki smo jih navedli. Obliko ali rezultat, ki ga želimo obdržati, moramo shraniti pod nekim imenom. 
+Solange dieses Ergebnis nicht gespeichert wird (z. B. als *tweets_rollingstones_slovenski*), bleibt der Datensatz unverändert. Das Gleiche gilt für alle anderen erwähnten Funktionen zur Anpassung von Tabellen. Das Format oder Ergebnis, das wir behalten wollen, muss unter einem (neuen) Namen gespeichert werden. 
 
+Es können mehrere Bedingungen verwendet werden. Um Bedingungen miteinander zu verknüpfen, verwenden wir einen logischen Operator: Anstelle des *Plus (+)*-Zeichens fügen wir `&` (d.h. *ampersand*) ein, und um eine alternative Bedingung aufzurufen, verwenden wir den logischen Operator `|` (d.h. *oder*). Der logische Operator `&` bedeutet, dass beide Bedingungen erfüllt sein müssen. Wenn wir den logischen Operator `|` einfügen würden, wäre es ausreichend, wenn mindestens eine dieser Bedingungen erfüllt wäre, und es wäre zulässig, wenn beide erfüllt wären. 
 
-Uporaba več pogojev je mogoča. Pogoje med seboj povežemo z logičnim operatorjem: namesto znaka *plus (+)* vstavimo `&` (tj. *ampersand*), za uveljavitev alternativnega pogoja pa logični operator `|` (tj. *ali*). Logični operator `&` pomeni, da mora biti oba pogoja izpolnjena. Če bi vstavili logični operator `|`, bi zadostovalo, da je vsaj eden izmed navedenih pogojev izpolnjen, dopustno pa tudi bilo, če bi bila oba izpolnjena. 
-
-V spodnjem primeru uporabljamo dva pogoja. čivk mora biti v slovenščini (stolpec *lang == "sl"*) in stolpec *location* ne sme biti prazen (*location != ""*). Prvi pogoj vsebuje logični operator `==` (dva enačaja!), drugi pogoj pa vsebuje logični operator `!=` (klicaj enačaj). S klicajem pred enačajem torej zanikamo enakost. 
+Im folgenden Beispiel werden zwei Bedingungen verwendet: Der Tweet muss auf Slowenisch sein (Spalte *lang == "sl"*) und die Spalte *location* (*Ort*) darf nicht leer sein (*location != ""*). Die erste Bedingung enthält den logischen Operator `==` (zwei Gleichheitszeichen!), und die zweite Bedingung enthält den logischen Operator `!=` (Ausrufezeichen + Gleichheitszeichen). Mit dem Ausrufezeichen wird das Gleichheitszeichen negiert. 
 
 ```{r message=FALSE, warning=FALSE}
 tweets_rollingstones %>% 
@@ -516,29 +534,226 @@ tweets_rollingstones %>%
 ```
 
 
-
 ### group_by()
+
+Die `group_by()`-Funktion ermöglicht das Gruppieren aller Datensatzspalten nach einer Spalte oder nach mehreren Spalten. Die Gruppierung der Spalte(n) ist oft erwünscht im Zusammenhang mit anderen Funktionen, die den Datensatz zusammenfassen (aggregieren), wie z.B. bei Verwendung der `summarise()`-Funktion.  
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  select(lang, user_id, location, created_at:text) %>% # which columns?
+  group_by(lang) %>% 
+  tail(3) %>% # 3 last rows only
+  rmarkdown::paged_table() # prettier table
+```
 
 
 ### mutate()
 
+Mit der `mutate()`-Funktion bilden wir neue Tabellenspalten (Variablen) oder verändern bereits bestehende. 
+
+Im folgenden Beispiel bilden wir die Spalte *tweet_length*, die mit Hilfe der Funktion `nchar()` die Anzahl der Zeichen in der Tabellenspalte *text* auszählt. 
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  select(lang, text) %>% # which columns?
+  # how many characters does each tweet have? - nchar()
+  mutate(tweet_length = nchar(text)) %>% # new column
+  select(lang, tweet_length, text) %>%  # re-ordering of columns
+  head(5) %>% # show only first five rows
+  rmarkdown::paged_table() # prettier table
+```
+
 
 ### count()
+
+Mit der `count()`-Funktion kann man die Anzahl von Kategorienwerten ermitteln. Beim Auszählen ist der `group_by()`-Befehl nicht notwendig, da der `count()`-Befehl die Daten vor dem Auszählen gruppiert. 
+
+Im folgenden Beispiel wird ausgezählt, wie viele Tweets in jeder der drei Sprachen (englisch, deutsch, slowenisch) im Datensatz vorkommen. Es ist ersichtlich, dass dieser Datensatz vor allem englische Tweets enthält. 
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  select(lang, user_id, location, created_at:text) %>% # which columns?
+  count(lang) %>% 
+  rmarkdown::paged_table() # prettier table
+```
 
 
 ### summarise()
 
+Die `summarise()`- oder `summarize()`-Funktion dient der Zusammenfassung (Aggregation) von Datenwerten. 
+
+Im folgenden Beispiel wird die Auswahl des Datensatzes nach den der Spalte für die Sprachen (*lang*) gruppiert. Daher berechnet der folgende `summarise()`-Befehl die durchschnittliche Länge der Tweets (`mean(nchar(text))`) pro Sprache (*de, en, sl*).  
+
+Ohne den `group_by()`-Befehl erhielte man mit dem summarise()-Befehl den Durchschnittswert für alle Tweets (ohne Sprachen zu unterscheiden).
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  group_by(lang) %>% 
+  summarise(tweet_length = mean(nchar(text))) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+
+### round()
+
+Mit der `round()`-Funktion kann man Dezimalzahlen auf- oder abrunden. Im folgenden Beispiel machen wir das in einem speziellen Schritt, damit die Syntax der Funktion besser zu sehen ist. 
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  group_by(lang) %>% 
+  summarise(tweet_length = mean(nchar(text))) %>% 
+  mutate(tweet_length = round(tweet_length, 0)) %>% # no decimal values
+  rmarkdown::paged_table() # prettier table
+```
+
 
 ### arrange()
 
+Der `arrange()`-Befehl ist eine Sortierfunktion. Im folgenden Beispiel wird das Ergebnis nach Länge der Tweets aufsteigend sortiert. 
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  select(lang, user_id, location, created_at:text) %>% # which columns?
+  group_by(lang) %>% 
+  summarise(tweet_length = mean(nchar(text))) %>% 
+  arrange(tweet_length) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+Will man die Reihenfolge der Sortierung umkehren, muss man vor dem Spaltennamen ein Minuszeichen setzen (z.B. `arrange(-tweet_length)` oder `desc` für *descending* (absteigend, z.B. `arrange(desc(tweet_length))`). 
 
 
+### distinct()
 
-## Pretvorba R skripta
+Die `distinct()`-Funktion entfernt doppelt oder mehrfach auftretende Werte aus einer Tabellenspalte (oder mehreren Spalten). Eine ähnliche Funktion ist `unique()`.    
 
-Programski skript ali zapis s pripono `R` lahko pretvorimo v `Rmarkdown` dokument (s pripono `Rmd`), in sicer če izvedemo:      
+Zu beachten ist, dass `R` im Gegensatz zu `Excel` Groß- und Kleinschreibung unterscheidet. Deshalb sind z.B. *Slovenija* und *slovenija* keine verdoppelten Datenzeilen.    
 
--   `[Ctrl + Shift + K]` ali   
--   `knitr::spin("t_preskus.R")`.   
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  distinct(location) %>%
+  head(10) %>% 
+  rmarkdown::paged_table() # prettier table
+```
 
-V obeh primerih gre za besedilni format, tako da je pretvorba v razne druge formate razmeroma preprosta. 
+
+### str_to_lower()
+
+Groß- und Kleinschreibung von Buchstaben kann man mit einer Reihe von Funktionen vereinheitlichen, z.B. mit `str_to_lower()` (nur Kleinbuchstaben), `str_to_upper()` (nur Großbuchstaben), `str_to_sentence()` (erstes Wort mit großem Anfangsbuchstaben - wie im Satz), `str_to_title()` (alle Wörter mit großen Anfangsbuchstaben - wie in englischen Titeln üblich).
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  mutate(location = str_to_title(location)) %>%  
+  distinct(location) %>%
+  head(10) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+
+### str_replace()
+
+Die Funktion `str_replace()` ermöglicht es, einzelne oder mehrere Zeichen in einer Spalte durch ein anderes (andere) zu ersetzen. Zum mehrmaligen Zeichenaustausch in einer Tabellenspalte dient `str_replace_all()`. Beide Funktionen wirken nur in alphabetisch gekennzeichneten Tabellenspalten (`chr` - character). Für den Austausch von Zahlenwerten in numerisch gekennzeichneten Spalten (`dbl` / `int` - double / integer) verwendet man `replace()` bzw. `replace_all()`. Der `gsub()`-Befehl funktioniert in beiden Fällen, erwartet aber, dass der Name der Tabellenspalte zuletzt angegeben wird.   
+
+In Tabellen werden die angeführten Ersatz-Befehle gewöhnlich mit dem mutate()-Befehl verknüpft.   
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  mutate(location = str_replace(location, # which column?
+                                pattern = "Istra,", # search for
+                                "")) %>% # replace with empty string
+  distinct(location) %>% 
+  head(10) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+
+### separate() und unite()
+
+Mit der `separate()`-Funktion kann man eine bestehende Tabellenspalte in zwei oder mehrere neue Tabellenspalten zerlegen. Der `unite()`-Befehl bewirkt das Gegenteil.   
+
+Im Beispiel wollen wir die Spalte *location* in die Spalten *city* und *country* zerlegen. In vielen Tabellenspalten sehen wir, dass zwischen angegebenem Ort und Land ein Komma steht. Wir nutzen das Komma als Trennzeichen, um zwei neue Spalten zu bilden. Wie gut das funktioniert, hängt natürlich davon ab, wie konsequent die Angaben in der Spalte sind.   
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  separate(location, into = c("city", "country"), sep = ",",
+           remove = FALSE) %>% # keep the location column
+  distinct(city, country) %>% 
+  head(10) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+Ein Beispiel mit der `unite()`-Funktion:   
+
+```{r message=FALSE, warning=FALSE}
+tweets_rollingstones %>% 
+  unite(user, c(screen_name, user_id), sep = "_") %>% # keep the location column
+  distinct(user) %>%
+  head() %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+
+### pivot_wider()
+
+Mit der `pivot_wider()`-Funktion können wir eine Tabelle, die im langen Datenformat vorliegt, in eine weite Tabelle umwandeln. 
+
+```{r message=FALSE, warning=FALSE}
+tweet_length_wide <- tweets_rollingstones %>% 
+  group_by(lang) %>% 
+  summarise(tweet_length = mean(nchar(text), na.rm = TRUE)) %>% 
+  pivot_wider(names_from = lang, values_from = tweet_length)
+
+tweet_length_wide %>% rmarkdown::paged_table() # prettier table
+```
+
+
+### pivot_longer()
+
+In vielen Fällen benötigen wir eine Tabelle im langen Datenformat (z.B. um Diagramme mit `ggplot()` darzustellen). Das lässt sich mit der `pivot_longer()`-Funktion bewerkstelligen.   
+
+```{r message=FALSE, warning=FALSE}
+tweet_length_wide %>% # data in wide format
+  pivot_longer(de:sl, # which columns?
+               names_to = "Sprachen", # new categorical column
+               values_to = "Tweetlänge") %>% # new numerical column
+  rmarkdown::paged_table() # prettier table
+
+```
+
+
+### Datumsfunktionen
+
+Es gibt eine ganze Reihe von Datums- und Zeitfunktionen. Im folgenden Beispiel zerlegen wir die Datums- und Zeitangabe, die im speziellen `POSIXct`-Format vorliegt, in mehrere Tabellenspalten (Jahr, Monat, Tag, Uhrzeit).   
+
+Die Datumsspalte kann man entweder mit der oben vorgeführten `separate()`-Funktion zerlegen oder mit Funktionen des Programms `lubridate`. 
+
+Im Beispiel verwenden wir die `lubridate`-Funktionen `year()`, `month()` und `day()`. Durch die Umwandlung erhalten wir drei numerische Tabellenspalten (*Jahr, Monat, Tag*). Mit dem Programm `hms` und der Funktion `as_hms()` extrahieren wir die Uhrzeit aus der Spalte *created_at* im `hms`-Format. Dieses Format eignet sich beispielsweise für die Berechnung von zeitlichen Abständen (Dauer). Braucht man die Uhrzeit dagegen im alphabetischen Format, kann man die `lubdridate`-Funktion `ymd_hms()` und die Base-`R`-Funktion `format()` nutzen. 
+
+```{r message=FALSE, warning=FALSE}
+library(lubridate)
+library(hms)
+tweets_rollingstones %>% 
+  select(screen_name, created_at) %>% 
+  mutate(Jahr = year(created_at),
+         Monat = month(created_at),
+         Tag = day(created_at),
+         Uhrzeit = as_hms(created_at),
+         Zeit = ymd_hms(created_at),
+         Zeit = format(Zeit, format = "%H:%M:%S")) %>% 
+  select(-created_at) %>% 
+  rmarkdown::paged_table() # prettier table
+```
+
+
+Es gibt noch viele weitere Funktionen zur Datenmanipulation. Im Internet sind zahlreiche Portale zu finden (z.B. *stackoverflow*), wo man nach entsprechenden Lösungen für sein eigenes Programmskript suchen kann. 
+
+
+## Umwandlung eines R-Skripts
+
+Ein Programmskript oder ein Datensatz mit dem Suffix "R" kann in ein "Rmarkdown"-Dokument (mit dem Suffix "Rmd") umgewandelt werden, indem man dies tut:      
+
+- [Strg + Umschalt + K]` oder   
+- `knitr::spin("t_preskus.R")`.   
+
+In beiden Fällen handelt es sich um ein Textformat, so dass die Umwandlung in verschiedene andere Formate relativ einfach ist. 
+

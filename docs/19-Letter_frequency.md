@@ -13,6 +13,59 @@ library(rmarkdown)
 # library(quanteda) # nsyllable(tokens(txt))
 ```
 
+Im *Wikipedia*-Artikel zum Thema [Buchstabenhäufigkeit](https://de.wikipedia.org/wiki/Buchstabenh%C3%A4ufigkeit) gibt die folgende Tabelle Auskunft über die Häufigkeit von Buchstaben in einer Stichprobe von deutschen Texten. Die Umlaute werden in dieser Tabelle als jeweils zwei Monophthonge gezählt. 
+
+
+```r
+library(readxl)
+buchstabenhaeufigkeit <- 
+  read_xlsx("data/wikipedia_buchstabenhaeufigkeit_deutsch.xlsx")
+buchstabenhaeufigkeit %>% rmarkdown::paged_table()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Platz"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Buchstabe"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Relative Häufigkeit"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"1.","2":"E","3":"17,40 %"},{"1":"2.","2":"N","3":"9,78 %"},{"1":"3.","2":"I","3":"7,55 %"},{"1":"4.","2":"S","3":"7,27 %"},{"1":"5.","2":"R","3":"7,00 %"},{"1":"6.","2":"A","3":"6,51 %"},{"1":"7.","2":"T","3":"6,15 %"},{"1":"8.","2":"D","3":"5,08 %"},{"1":"9.","2":"H","3":"4,76 %"},{"1":"10.","2":"U","3":"4,35 %"},{"1":"11.","2":"L","3":"3,44 %"},{"1":"12.","2":"C","3":"3,06 %"},{"1":"13.","2":"G","3":"3,01 %"},{"1":"14.","2":"M","3":"2,53 %"},{"1":"15.","2":"O","3":"2,51 %"},{"1":"16.","2":"B","3":"1,89 %"},{"1":"17.","2":"W","3":"1,89 %"},{"1":"18.","2":"F","3":"1,66 %"},{"1":"19.","2":"K","3":"1,21 %"},{"1":"20.","2":"Z","3":"1,13 %"},{"1":"21.","2":"P","3":"0,79 %"},{"1":"22.","2":"V","3":"0,67 %"},{"1":"23.","2":"<U+1E9E>","3":"0,31 %"},{"1":"24.","2":"J","3":"0,27 %"},{"1":"25.","2":"Y","3":"0,04 %"},{"1":"26.","2":"X","3":"0,03 %"},{"1":"27.","2":"Q","3":"0,02 %"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Die ersten fünf Buchstaben haben einen Anteil von etwa der Hälfte, die häufigsten zehn Buchstaben decken etwa drei Viertel der relativen Buchstabenhäufigkeit in deutschen Texten ab. 
+
+Eine weitere Tabelle zeigt die Häufigkeit der Buchstaben in Texten aus einem Briefkorpus (Briefe aus den Jahren 1996-2004). In diesem Fall sind auch die Frequenzen der Umlaute erhoben worden. Die zehn häufigsten Buchstaben im Briefkorpus decken sich zum großen Teil mit denen im vorher gezeigten. 
+
+
+```r
+library(readxl)
+buchstabenhaeufigkeit_briefe <- 
+  read_xlsx("data/wikipedia_buchstabenhaeufigkeit_briefkorpus.xlsx")
+buchstabenhaeufigkeit_briefe %>% rmarkdown::paged_table()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Platz"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Buchstabe"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Absolute Häufigkeit"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Relative Häufigkeit"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"1.","2":"E","3":"16040","4":"16,11 %"},{"1":"2.","2":"N","3":"10288","4":"10,33 %"},{"1":"3.","2":"I","3":"9011","4":"9,05 %"},{"1":"4.","2":"R","3":"6693","4":"6,72 %"},{"1":"5.","2":"T","3":"6312","4":"6,34 %"},{"1":"6.","2":"S","3":"6203","4":"6,23 %"},{"1":"7.","2":"A","3":"5577","4":"5,60 %"},{"1":"8.","2":"H","3":"5177","4":"5,20 %"},{"1":"9.","2":"D","3":"4156","4":"4,17 %"},{"1":"10.","2":"U","3":"3680","4":"3,70 %"},{"1":"11.","2":"C","3":"3384","4":"3,40 %"},{"1":"12.","2":"L","3":"3226","4":"3,24 %"},{"1":"13.","2":"G","3":"2924","4":"2,94 %"},{"1":"14.","2":"M","3":"2784","4":"2,80 %"},{"1":"15.","2":"O","3":"2312","4":"2,32 %"},{"1":"16.","2":"B","3":"2176","4":"2,19 %"},{"1":"17.","2":"F","3":"1701","4":"1,71 %"},{"1":"18.","2":"W","3":"1383","4":"1,39 %"},{"1":"19.","2":"Z","3":"1351","4":"1,36 %"},{"1":"20.","2":"K","3":"1329","4":"1,33 %"},{"1":"21.","2":"V","3":"912","4":"0,92 %"},{"1":"22.","2":"P","3":"841","4":"0,84 %"},{"1":"23.","2":"Ü","3":"636","4":"0,64 %"},{"1":"24.","2":"Ä","3":"511","4":"0,51 %"},{"1":"25.","2":"Ö","3":"363","4":"0,36 %"},{"1":"26.","2":"<U+1E9E>","3":"189","4":"0,19 %"},{"1":"27.","2":"J","3":"186","4":"0,19 %"},{"1":"28.","2":"X","3":"112","4":"0,11 %"},{"1":"29.","2":"Q","3":"73","4":"0,07 %"},{"1":"30.","2":"Y","3":"56","4":"0,06 %"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+In einem anderen *Wikipedia*-Artikel mit dem Titel [Frekvence črk](https://sl.wikipedia.org/wiki/Frekvence_%C4%8Drk) werden die relativen Häufigkeiten der Buchstaben in slowenischen belletristischen Texten tabellarisch dargestellt und einigen anderen Sprachen gegenübergestellt. In dieser Tabelle fällt auf, dass die Graphme der Vollvokale *a* und *o* einen deutliche höheren Rang einnehmen als in den beiden Tabellen für deutsche Texte. Ähnlich wie in den Tabellen für die deutschen Texte ist wiederum, dass die Vokalgrapheme *e* und *i* zu den häufigsten gehören. Unter den Konsonantgraphemen sind auch hier *n, s, r* und *t* stark vertreten. 
+
+
+```r
+library(readxl)
+buchstabenhaeufigkeit_slov <- 
+  read_xlsx("data/wikipedia_frekvence_crk.xlsx")
+buchstabenhaeufigkeit_slov %>% rmarkdown::paged_table()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["črka"],"name":[1],"type":["chr"],"align":["left"]},{"label":["relativna frekvenca v slo. leposlovju"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"e","2":"10,707 %"},{"1":"a","2":"10,466 %"},{"1":"o","2":"9,084 %"},{"1":"i","2":"9,042 %"},{"1":"n","2":"6,328 %"},{"1":"l","2":"5,266 %"},{"1":"s","2":"5,053 %"},{"1":"r","2":"5,010 %"},{"1":"j","2":"4,675 %"},{"1":"t","2":"4,329 %"},{"1":"v","2":"3,764 %"},{"1":"k","2":"3,704 %"},{"1":"d","2":"3,390 %"},{"1":"p","2":"3,374 %"},{"1":"m","2":"3,305 %"},{"1":"z","2":"2,103 %"},{"1":"b","2":"1,939 %"},{"1":"u","2":"1,879 %"},{"1":"g","2":"1,638 %"},{"1":"č","2":"1,483 %"},{"1":"h","2":"1,047 %"},{"1":"š","2":"0,996 %"},{"1":"c","2":"0,662 %"},{"1":"ž","2":"0,646 %"},{"1":"f","2":"0,110 %"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+Wir stellen uns die Aufgabe, die Buchstabenhäufigkeit in von uns ausgewählten Texten literarischer Prosa tabellarisch zusammenzustellen und mit denen im Wikipedia-Artikel zu vergleichen. In den folgenden Abschnitten beschäftigen wir uns mit der Häufigkeit von Vokalgraphemen, Konsonantengraphemen, Konsonantenverbindungen und Silben in tabellarischer und graphischer Form. 
+
 
 ## Datensatz lesen
 
@@ -136,7 +189,7 @@ novels_character %>%
 
 Ein paar Zeichen, die nicht zum deutschen Alphabet gehören und mit dem vorherigen Programm-Schritt nicht herausfiltern konnten, werden im nächsten Schritt ebenfalls herausgefiltert.
 
-Wir speichern das Ergebnis als neue Tabelle mit dem Namen "char_freq".
+Wir speichern das Ergebnis als neue Tabelle mit dem Namen *char_freq*. Die zehn häufigsten Buchstaben in dieser Tabelle decken sich mit denen in den beiden eingangs gezeigten Tabellen aus dem Wikipedia-Artikel über Buchstabenhäufigkeit, insbesondere mit der, die auf einem Briefkorpus beruhte. 
 
 
 ```r
@@ -145,14 +198,15 @@ char_freq = novels_character %>%
   filter(!str_detect(character, "é|á")) %>% 
   count(character, sort = T)
 
+library(DT)
 char_freq %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
+    DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 10))
 ```
 
 ```{=html}
-<div id="htmlwidget-1d68ffd6c65eb17c9e23" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1d68ffd6c65eb17c9e23">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"44\" data-max=\"114769\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],["e","n","i","r","s","t","a","h","d","u","c","l","g","m","o","b","w","f","k","z","ü","v","ä","ß","p","ö","j","y","q","x"],[114769,70151,52767,47937,42610,42057,39825,38600,33683,26309,24770,24434,21247,18532,15270,13261,13068,11021,10054,8725,5224,5003,3801,3594,3584,2045,1757,347,67,44]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>character<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f4b55f7723a1a8f60543" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f4b55f7723a1a8f60543">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"44\" data-max=\"114769\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],["e","n","i","r","s","t","a","h","d","u","c","l","g","m","o","b","w","f","k","z","ü","v","ä","ß","p","ö","j","y","q","x"],[114769,70151,52767,47937,42610,42057,39825,38600,33683,26309,24770,24434,21247,18532,15270,13261,13068,11021,10054,8725,5224,5003,3801,3594,3584,2045,1757,347,67,44]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>character<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 ```
 
 Insgesamt haben wir 30 Buchstaben des deutschen Alphabets in den Romanen unterschieden.
@@ -183,7 +237,7 @@ char_freq %>%
   theme(legend.position = "none")
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-10-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-13-1.svg" width="10" height="8" />
 
 Eine bessere Vorstellung von den Zahlenverhältnissen erhalten wir, wenn wir die mehrstelligen Zahlenwerte in Prozente umwandeln.
 
@@ -201,7 +255,7 @@ char_freq %>%
     decimal.mark = ",", accuracy = 1)) # Prozent-Format
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-11-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-14-1.svg" width="10" height="8" />
 
 Getrennte tabellarische Darstellung für die Texte:
 
@@ -211,14 +265,14 @@ novels_character %>%
   group_by(doc_id) %>% 
   count(character, sort = TRUE) %>% 
   pivot_wider(names_from = doc_id, values_from = n) %>% 
-  paged_table()
+  DT::datatable(fillContainer = FALSE, filter = "top",
+                options = list(pageLength = 10))
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["character"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prozess.txt"],"name":[2],"type":["int"],"align":["right"]},{"label":["tom.txt"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"e","2":"60978","3":"53791"},{"1":"n","2":"36237","3":"33914"},{"1":"i","2":"28426","3":"24341"},{"1":"r","2":"25884","3":"22053"},{"1":"t","2":"21751","3":"20306"},{"1":"s","2":"21690","3":"20920"},{"1":"a","2":"20817","3":"19008"},{"1":"h","2":"20095","3":"18505"},{"1":"d","2":"17247","3":"16436"},{"1":"u","2":"12636","3":"13673"},{"1":"c","2":"12691","3":"12079"},{"1":"l","2":"12463","3":"11971"},{"1":"g","2":"11563","3":"9684"},{"1":"m","2":"9252","3":"9280"},{"1":"o","2":"7426","3":"7844"},{"1":"b","2":"6936","3":"6325"},{"1":"w","2":"6398","3":"6670"},{"1":"f","2":"5882","3":"5139"},{"1":"k","2":"5576","3":"4478"},{"1":"z","2":"4552","3":"4173"},{"1":"ü","2":"2983","3":"2241"},{"1":"v","2":"2862","3":"2141"},{"1":"ä","2":"2119","3":"1682"},{"1":"p","2":"1635","3":"1949"},{"1":"ß","2":"1894","3":"1700"},{"1":"ö","2":"1009","3":"1036"},{"1":"j","2":"734","3":"1023"},{"1":"y","2":"8","3":"339"},{"1":"q","2":"26","3":"41"},{"1":"x","2":"6","3":"38"},{"1":"0","2":"1","3":"3"},{"1":"1","2":"2","3":"3"},{"1":"4","2":"1","3":"3"},{"1":"7","2":"1","3":"3"},{"1":"2","2":"1","3":"2"},{"1":"5","2":"1","3":"2"},{"1":"3","2":"1","3":"NA"},{"1":"6","2":"1","3":"1"},{"1":"8","2":"1","3":"1"},{"1":"9","2":"1","3":"NA"},{"1":"é","2":"1","3":"1"},{"1":"á","2":"NA","3":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
+```{=html}
+<div id="htmlwidget-c788a78ce45501bb689a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c788a78ce45501bb689a">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"60978\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"53791\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42"],["e","n","i","r","t","s","a","h","d","u","c","l","g","m","o","b","w","f","k","z","ü","v","ä","p","ß","ö","j","y","q","x","0","1","4","7","2","5","3","6","8","9","é","á"],[60978,36237,28426,25884,21751,21690,20817,20095,17247,12636,12691,12463,11563,9252,7426,6936,6398,5882,5576,4552,2983,2862,2119,1635,1894,1009,734,8,26,6,1,2,1,1,1,1,1,1,1,1,1,null],[53791,33914,24341,22053,20306,20920,19008,18505,16436,13673,12079,11971,9684,9280,7844,6325,6670,5139,4478,4173,2241,2141,1682,1949,1700,1036,1023,339,41,38,3,3,3,3,2,2,null,1,1,null,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>character<\/th>\n      <th>prozess.txt<\/th>\n      <th>tom.txt<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+```
 
 Getrennte graphische Darstellung für die Texte:
 
@@ -239,7 +293,7 @@ novels_character %>%
   facet_wrap(~ doc_id, scales = "free")
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-13-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-16-1.svg" width="10" height="8" />
 
 ```r
   scale_x_continuous(labels = percent) # Prozent-Format
@@ -280,7 +334,7 @@ char_freq %>%
                      breaks = seq(0, 0.50, 0.05)) # Prozent-Format
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-15-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-18-1.svg" width="10" height="8" />
 
 Am häufigsten kommt der Buchstabe "e" in den Romanen vor (fast 45%-iger Anteil unter den Vokalen!), am seltensten "y", welches im Wesentlichen in Fremd- und Lehnwörtern auftritt.
 
@@ -305,7 +359,7 @@ char_freq %>%
   scale_x_continuous(labels = percent_format(accuracy = 1), breaks = seq(0, 0.50, 0.02)) # Prozent-Format und Einheiten
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-16-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-19-1.svg" width="10" height="8" />
 
 Der Buchstabe "n" kommt in den Romanen am häufigsten vor, gefolgt von den Buchstaben: "r, s, t, h, d".
 Selten sind die Buchstaben: "x, q, p, ß, v".
@@ -347,11 +401,12 @@ ggplot(bs_ratio, aes(x = "", y = Prozent, fill = buchstabe)) +
         axis.ticks = element_blank()) +
   labs(y = "", x = "Anteil % in Romanen") +
   scale_x_discrete(NULL, expand = c(0, 0)) +
-  scale_y_continuous(labels = percent_format(accuracy = 1),
-                     breaks = seq(0, 1, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent_format(accuracy = 1), 
+    breaks = seq(0, 1, 0.1)) # Prozent-Format und Einheiten
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-18-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-21-1.svg" width="10" height="8" />
 
 Diese Zahlenwerte und -verhältnisse bilden einen möglichen Ausgangspunkt für intra- oder interlinguale Vergleiche. 
 
@@ -370,13 +425,13 @@ novels_words = novels %>%
   mutate(letters = nchar(word))
   
 novels_words %>% head(100) %>% 
-  DT::datatable(fillContainer = TRUE, filter = "top",
+  DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 6))
 ```
 
 ```{=html}
-<div id="htmlwidget-60aa1248ce7ef5f8100b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60aa1248ce7ef5f8100b">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"6\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"17\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"],["prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt"],["prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess"],["der","prozess","by","franz","kafka","aligned","by","bilingual","texts.com","fully","reviewed","der","prozess","franz","kafka","1","verhaftung","gespräch","mit","frau","grubach","dann","fräulein","brüstner","jemand","mußte","josef","k","verleumdet","haben","denn","ohne","daß","er","etwas","böses","getan","hätte","wurde","er","eines","morgens","verhaftet","die","köchin","der","frau","grubach","seiner","zimmervermieterin","die","ihm","jeden","tag","gegen","acht","uhr","früh","das","frühstück","brachte","kam","diesmal","nicht","das","war","noch","niemals","geschehen","k","wartete","noch","ein","weilchen","sah","von","seinem","kopfkissen","aus","die","alte","frau","die","ihm","gegenüber","wohnte","und","die","ihn","mit","einer","an","ihr","ganz","ungewöhnlichen","neugierde","beobachtete","dann","aber","gleichzeitig"],[1,2,1,1,2,2,1,3,2,2,2,1,2,1,2,null,3,1,3,1,2,1,2,1,2,2,2,1,3,2,1,2,1,1,2,1,2,1,2,1,2,2,3,1,1,1,1,2,2,6,1,1,2,1,2,1,1,null,1,null,2,1,2,1,1,1,1,2,3,1,3,1,1,2,1,1,2,3,1,1,2,1,1,1,3,2,1,1,1,3,2,1,1,1,4,3,4,1,2,3],[3,7,2,5,5,7,2,9,9,5,8,3,7,5,5,1,10,8,3,4,7,4,8,8,6,5,5,1,10,5,4,4,3,2,5,5,5,5,5,2,5,7,9,3,6,3,4,7,6,17,3,3,5,3,5,4,3,4,3,9,7,3,7,5,3,3,4,7,9,1,7,4,3,8,3,3,6,10,3,3,4,4,3,3,9,6,3,3,3,3,5,2,3,4,14,9,11,4,4,12]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>doc_id<\/th>\n      <th>title<\/th>\n      <th>word<\/th>\n      <th>syllables<\/th>\n      <th>letters<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"columnDefs":[{"className":"dt-right","targets":[4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c2a87616e6d698077889" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c2a87616e6d698077889">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"disabled\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"6\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1\" data-max=\"17\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"],["prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt","prozess.txt"],["prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess","prozess"],["der","prozess","by","franz","kafka","aligned","by","bilingual","texts.com","fully","reviewed","der","prozess","franz","kafka","1","verhaftung","gespräch","mit","frau","grubach","dann","fräulein","brüstner","jemand","mußte","josef","k","verleumdet","haben","denn","ohne","daß","er","etwas","böses","getan","hätte","wurde","er","eines","morgens","verhaftet","die","köchin","der","frau","grubach","seiner","zimmervermieterin","die","ihm","jeden","tag","gegen","acht","uhr","früh","das","frühstück","brachte","kam","diesmal","nicht","das","war","noch","niemals","geschehen","k","wartete","noch","ein","weilchen","sah","von","seinem","kopfkissen","aus","die","alte","frau","die","ihm","gegenüber","wohnte","und","die","ihn","mit","einer","an","ihr","ganz","ungewöhnlichen","neugierde","beobachtete","dann","aber","gleichzeitig"],[1,2,1,1,2,2,1,3,2,2,2,1,2,1,2,null,3,1,3,1,2,1,2,1,2,2,2,1,3,2,1,2,1,1,2,1,2,1,2,1,2,2,3,1,1,1,1,2,2,6,1,1,2,1,2,1,1,null,1,null,2,1,2,1,1,1,1,2,3,1,3,1,1,2,1,1,2,3,1,1,2,1,1,1,3,2,1,1,1,3,2,1,1,1,4,3,4,1,2,3],[3,7,2,5,5,7,2,9,9,5,8,3,7,5,5,1,10,8,3,4,7,4,8,8,6,5,5,1,10,5,4,4,3,2,5,5,5,5,5,2,5,7,9,3,6,3,4,7,6,17,3,3,5,3,5,4,3,4,3,9,7,3,7,5,3,3,4,7,9,1,7,4,3,8,3,3,6,10,3,3,4,4,3,3,9,6,3,3,3,3,5,2,3,4,14,9,11,4,4,12]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>doc_id<\/th>\n      <th>title<\/th>\n      <th>word<\/th>\n      <th>syllables<\/th>\n      <th>letters<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":6,"columnDefs":[{"className":"dt-right","targets":[4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 Insgesamt (d.h. kumulativ gesehen) fast 139 Tausend Silben in den Romanen. Diese Zahl bietet einen möglichen Ausgangspunkt für Textvergleiche.
 
@@ -403,14 +458,16 @@ novels_words %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(x = "Silben") +
-  scale_y_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent, 
+    breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
 ```
 
 ```
 ## Warning: Removed 1 rows containing missing values (position_stack).
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-21-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-24-1.svg" width="10" height="8" />
 
 Berücksichtig man lediglich distinktive Wortformen (also keine Wortwiederholungen), dann ergibt sich die folgende Verteilung, in der die Zweisilber (mehr als 30%) und Dreisilber (fast 30%) den größten Anteil haben.
 
@@ -424,14 +481,16 @@ novels_words %>%
   geom_col() +
   theme(legend.position = "none") +
   labs(x = "Silben") +
-  scale_y_continuous(labels = percent, breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
+  scale_y_continuous(
+    labels = percent, 
+    breaks = seq(0, 0.75, 0.1)) # Prozent-Format und Einheiten
 ```
 
 ```
 ## Warning: Removed 1 rows containing missing values (position_stack).
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-22-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-25-1.svg" width="10" height="8" />
 
 
 ## Mittlere Wortlänge
@@ -464,8 +523,8 @@ novels_words %>%
 ```
 
 ```{=html}
-<div id="htmlwidget-f2d3c18286deec2a90fa" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f2d3c18286deec2a90fa">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2.44014808720691\" data-max=\"2.59895301327886\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1.07231896430153\" data-max=\"1.11520707077877\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.32560032560032\" data-max=\"8.75313648460272\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"3.03924466546716\" data-max=\"3.16598504848814\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["prozess","tom"],[2.59895301327886,2.44014808720691],[1.11520707077877,1.07231896430153],[8.75313648460271,8.32560032560033],[3.16598504848814,3.03924466546716]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>title<\/th>\n      <th>Avg_Silben<\/th>\n      <th>Stdev_Silben<\/th>\n      <th>Avg_Buchstaben<\/th>\n      <th>Stdev_Buchstaben<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cc502a23cfbb4c1c7784" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cc502a23cfbb4c1c7784">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2.44014808720691\" data-max=\"2.59895301327886\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1.07231896430153\" data-max=\"1.11520707077877\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8.32560032560032\" data-max=\"8.75313648460272\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"3.03924466546716\" data-max=\"3.16598504848814\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["prozess","tom"],[2.59895301327886,2.44014808720691],[1.11520707077877,1.07231896430153],[8.75313648460271,8.32560032560033],[3.16598504848814,3.03924466546716]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>title<\/th>\n      <th>Avg_Silben<\/th>\n      <th>Stdev_Silben<\/th>\n      <th>Avg_Buchstaben<\/th>\n      <th>Stdev_Buchstaben<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 Die durchschnittliche Anzahl der Silben und Buchstaben pro Wortform (Token), bei Berücksichtigung von Wortwiederholungen in den Romanen, ist in der folgenden Tabelle zu sehen. 
@@ -483,8 +542,8 @@ novels_words %>%
 ```
 
 ```{=html}
-<div id="htmlwidget-b36561bb8e1b2b0015fe" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b36561bb8e1b2b0015fe">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1.56130740985975\" data-max=\"1.61334968218398\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.817606898423074\" data-max=\"0.875273866110269\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"4.97530422866676\" data-max=\"5.04886011663923\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2.6346514838852\" data-max=\"2.81831861481201\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["prozess","tom"],[1.61334968218398,1.56130740985975],[0.875273866110269,0.817606898423074],[5.04886011663923,4.97530422866676],[2.81831861481201,2.6346514838852]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>title<\/th>\n      <th>Avg_Silben<\/th>\n      <th>Stdev_Silben<\/th>\n      <th>Avg_Buchstaben<\/th>\n      <th>Stdev_Buchstaben<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9844942399160d3b0e58" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9844942399160d3b0e58">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1.56130740985975\" data-max=\"1.61334968218398\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.817606898423074\" data-max=\"0.875273866110269\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"4.97530422866676\" data-max=\"5.04886011663923\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"2.6346514838852\" data-max=\"2.81831861481201\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["prozess","tom"],[1.61334968218398,1.56130740985975],[0.875273866110269,0.817606898423074],[5.04886011663923,4.97530422866676],[2.81831861481201,2.6346514838852]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>title<\/th>\n      <th>Avg_Silben<\/th>\n      <th>Stdev_Silben<\/th>\n      <th>Avg_Buchstaben<\/th>\n      <th>Stdev_Buchstaben<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 ## Testen von Mittelwertunterschieden
@@ -504,18 +563,18 @@ syls = novels_words %>%
   dplyr::select(title, word, syllables) %>% 
   pivot_wider(names_from = title, values_from = syllables)
 
-t.test(syls$prozess, syls$tom) # significant
+t.test(syls$prozess, syls$tom, var.equal = TRUE) # significant
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  syls$prozess and syls$tom
-## t = 9.5409, df = 16477, p-value < 2.2e-16
+## t = 9.5813, df = 17554, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  0.1261795 0.1914303
+##  0.1263172 0.1912927
 ## sample estimates:
 ## mean of x mean of y 
 ##  2.598953  2.440148
@@ -527,18 +586,18 @@ Schnelle Form des t-Tests:
 
 
 ```r
-t.test(syllables ~ title, data = novels_words)
+t.test(syllables ~ title, data = novels_words, var.equal = TRUE)
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  syllables by title
-## t = 11.395, df = 137402, p-value < 2.2e-16
+## t = 11.37, df = 137403, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means between group prozess and group tom is not equal to 0
 ## 95 percent confidence interval:
-##  0.04309115 0.06099339
+##  0.04307118 0.06101337
 ## sample estimates:
 ## mean in group prozess     mean in group tom 
 ##              1.613350              1.561307
@@ -557,18 +616,18 @@ tom_syl <- novels_words %>%
   dplyr::select(syllables) %>% 
   rename(prozess = syllables)
   
-t.test(prozess_syl, tom_syl) # significant
+t.test(prozess_syl, tom_syl, var.equal = T) # significant
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  prozess_syl and tom_syl
-## t = 11.395, df = 137402, p-value < 2.2e-16
+## t = 11.37, df = 137403, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  0.04309115 0.06099339
+##  0.04307118 0.06101337
 ## sample estimates:
 ## mean of x mean of y 
 ##  1.613350  1.561307
@@ -586,18 +645,18 @@ lets = novels_words %>%
   dplyr::select(title, word, letters) %>% 
   pivot_wider(names_from = title, values_from = letters)
 
-t.test(lets$prozess, lets$tom) # significant
+t.test(lets$prozess, lets$tom, var.equal = T) # significant
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  lets$prozess and lets$tom
-## t = 8.993, df = 16472, p-value < 2.2e-16
+## t = 9.0317, df = 17554, p-value < 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  0.3306128 0.5148998
+##  0.3310081 0.5145045
 ## sample estimates:
 ## mean of x mean of y 
 ##  8.785878  8.363122
@@ -609,18 +668,18 @@ Schnelle Form des t-Tests:
 
 
 ```r
-t.test(letters ~ title, data = novels_words)
+t.test(letters ~ title, data = novels_words, var.equal = TRUE)
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  letters by title
-## t = 5.0257, df = 138808, p-value = 5.022e-07
+## t = 5.0147, df = 138809, p-value = 5.319e-07
 ## alternative hypothesis: true difference in means between group prozess and group tom is not equal to 0
 ## 95 percent confidence interval:
-##  0.04486967 0.10224210
+##  0.04480651 0.10230526
 ## sample estimates:
 ## mean in group prozess     mean in group tom 
 ##              5.048860              4.975304
@@ -639,18 +698,18 @@ tom_let <- novels_words %>%
   dplyr::select(letters) %>% 
   rename(prozess = letters)
   
-t.test(prozess_let, tom_let) # significant
+t.test(prozess_let, tom_let, var.equal = TRUE) # significant
 ```
 
 ```
 ## 
-## 	Welch Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  prozess_let and tom_let
-## t = 5.0257, df = 138808, p-value = 5.022e-07
+## t = 5.0147, df = 138809, p-value = 5.319e-07
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  0.04486967 0.10224210
+##  0.04480651 0.10230526
 ## sample estimates:
 ## mean of x mean of y 
 ##  5.048860  4.975304
@@ -742,21 +801,21 @@ allEffects(m)
 plot(allEffects(m))
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-32-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-35-1.svg" width="10" height="8" />
 
 Ergebnisse in Tabellenform:
 
 
 ```r
 summary(lm(syllables ~ title, data = novels_words)) %>% 
-  tidy() %>% 
+  broom::tidy() %>% 
     DT::datatable(fillContainer = TRUE, filter = "top",
                 options = list(pageLength = 4))
 ```
 
 ```{=html}
-<div id="htmlwidget-191b94e0e4cabb0c58e9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-191b94e0e4cabb0c58e9">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-0.0520422723243\" data-max=\"1.61334968218468\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.003183071080932\" data-max=\"0.004577133472566\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-11.3700578399633\" data-max=\"506.8531745487\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"1e-15\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["(Intercept)","titletom"],[1.61334968218468,-0.0520422723242994],[0.00318307108093227,0.0045771334725653],[506.8531745487,-11.3700578399633],[0,6.07958976922604e-30]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-547bdffcc2553337830b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-547bdffcc2553337830b">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-0.0520422723243\" data-max=\"1.61334968218468\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.003183071080932\" data-max=\"0.004577133472566\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"-11.3700578399633\" data-max=\"506.8531745487\" data-scale=\"14\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"1e-15\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2"],["(Intercept)","titletom"],[1.61334968218468,-0.0520422723242994],[0.00318307108093227,0.0045771334725653],[506.8531745487,-11.3700578399633],[0,6.07958976922604e-30]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>term<\/th>\n      <th>estimate<\/th>\n      <th>std.error<\/th>\n      <th>statistic<\/th>\n      <th>p.value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 Boxplot mit Jitterplot anhand des vollen Datensatzes: der Mittelwert ist hier der Median *median()* (d.h. ein Wert, der genau in der Mitte jeder Stichprobe liegt), das arithmetische Mittel / der Durchschnitt wird hier mit einem roten Quadrat symbolisiert. Der Median liegt in beiden Stichproben beim Wert 1, also weit unter dem jeweiligen Durchschnittswert. Dies zeigt, dass die Wortlängen nicht normalverteilt sind. Der Jitterplot veranschaulicht, dass der "Prozess" über mehr Wortformen mit 6, 7 oder 8 Silben verfügt.
@@ -795,7 +854,7 @@ novels_words %>%
 ## Warning: Removed 2 rows containing missing values (geom_segment).
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-34-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-37-1.svg" width="10" height="8" />
 
 Boxplot anhand der zusammengefassten Daten (Durchschnitt, Standardabweichung):
 
@@ -815,7 +874,7 @@ df %>% ggplot(aes(title, Avg_Silben, fill = title, group = title)) +
   labs(y = "Mittlere Wortlänge (in Silben)")
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-35-1.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-38-1.svg" width="10" height="8" />
 
 ```r
 df %>% ggplot(aes(title, fill = title, group = title)) +
@@ -827,7 +886,7 @@ df %>% ggplot(aes(title, fill = title, group = title)) +
   labs(y = "Mittlere Wortlänge (in Silben)")
 ```
 
-<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-35-2.svg" width="10" height="8" />
+<img src="19-Letter_frequency_files/figure-html/unnamed-chunk-38-2.svg" width="10" height="8" />
 
 ## Quanteda-Funktionen
 
@@ -890,13 +949,13 @@ ngrams_char = ngrams_ch %>%
 ngrams_char %>% 
   count(cluster, sort = TRUE) %>% 
   head(10) %>% 
-    DT::datatable(fillContainer = TRUE, filter = "top",
+    DT::datatable(fillContainer = FALSE, filter = "top",
                 options = list(pageLength = 10))
 ```
 
 ```{=html}
-<div id="htmlwidget-fb8b742785fc4921b93c" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fb8b742785fc4921b93c">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"10119\" data-max=\"26084\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],["en","er","ch","te","ei","nd","de","ie","in","ic"],[26084,23737,22570,15489,14106,12972,12831,11753,11525,10119]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9fcaeec83937097e8564" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9fcaeec83937097e8564">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"10119\" data-max=\"26084\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","fillContainer":false,"data":[["1","2","3","4","5","6","7","8","9","10"],["en","er","ch","te","ei","nd","de","ie","in","ic"],[26084,23737,22570,15489,14106,12972,12831,11753,11525,10119]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>cluster<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
