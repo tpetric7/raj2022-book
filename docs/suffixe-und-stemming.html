@@ -611,8 +611,8 @@ div.csl-indent {
 <span id="cb821-10"><a href="suffixe-und-stemming.html#cb821-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Die Annotation der Wortformen kann mehrere Minuten dauern, falls es sich um längere Texte handelt.</p>
 <div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="suffixe-und-stemming.html#cb822-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">udpipe_annotate</span>(demodel, novels_txt<span class="sc">$</span>text, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 2022-03-20 18:27:18 Annotating text fragment 1/2
-## 2022-03-20 18:32:15 Annotating text fragment 2/2</code></pre>
+<pre><code>## 2022-03-20 21:19:49 Annotating text fragment 1/2
+## 2022-03-20 21:21:46 Annotating text fragment 2/2</code></pre>
 <div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="suffixe-und-stemming.html#cb824-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">as.data.frame</span>(x)</span></code></pre></div>
 <p>Wir filtern Interpunktionszeichen heraus, die für unser Ziel nicht relevant sind. Die Spalte “upos” enthält die dafür relevante Kategorie (“PUNCT”).</p>
 <p>In einem weiteren Schritt fügen wir mit <em>mutate</em> eine neue Spalte (“word”) hinzu, welche die tokens der Texte enthält, aber kleingeschrieben gewerden sollen, was mit <em>tolower()</em> erreicht werden kann.</p>

@@ -762,7 +762,7 @@ Die *Alternativhypothese* ($H_1$) besagt dagegen, dass das arithmetische Mittel 
 Der t-Test wird auf folgende Weise berechnet:   
 
 $$
-t = \frac{m - \mu}{{s}/{\sqrt{n}}}
+t = \frac{m - \mu}{s/{\sqrt{n}}}
 $$
 - *m* ist der arithmetische Mittelwert der Stichprobe;   
 - $\mu$ ist der arithmetische Mittelwert für literarische Prosa;   
