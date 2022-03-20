@@ -1,20 +1,13 @@
 # Showcase
 
-Einige Beispiele von Wolf Riepl (https://github.com/fjodor).
+Einige Beispiele, was man mit den Funktionen in der Programmiersprache _R_ machen kann.
+
+Graphische Darstellungen von Wolf Riepl (https://github.com/fjodor).
 
 https://github.com/fjodor/dataviz_ideas
 
----
-output:
-  flexdashboard::flex_dashboard:
-    storyboard: true
-    vertical_layout: fill
-    theme: spacelab
-    source_code: embed
-    fontsize: 17pt
----
 
-### ggplot with emojis
+## ggplot with emojis
 
 ```{r}
 # https://github.com/dill/emoGG
@@ -42,7 +35,7 @@ qplot(x=Sepal.Length, y=Sepal.Width, data=iris, geom="point") + add_emoji(emoji=
 ```
 
 
-### Data Preparation<br><br>We're using data from **Chart2000.com**:<br>Music Charts 2000 - 2020 {data-commentary-width="500"}
+## Data Preparation<br><br>We're using data from **Chart2000.com**:<br>Music Charts 2000 - 2020 {data-commentary-width="500"}
 
 ```{r setup}
 
@@ -93,7 +86,6 @@ datatable(songs, filter = "top")
 
 ```
 
-------------------------------------------------------------------------
 
 From the site [**https://chart2000.com/about.htm\#fairuse**](https://chart2000.com/about.htm#fairuse){.uri} we downloaded the file *chart2000-songyear-0-3-0062*, which you can also find on my github profile at <https://github.com/fjodor/dataviz_ideas>. It contains the top 100 songs for each year from 2000 to 2020.
 
@@ -105,7 +97,7 @@ First we filter out the most successful artists: The Top 5 in terms of total sco
 ```{r notes-data-prep, ref.label = 'data-prep', eval = FALSE, echo = TRUE}
 ```
 
-### First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using **ggthemes** by **Jeffrey B. Arnold** {data-commentary-width="600"}
+## First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using **ggthemes** by **Jeffrey B. Arnold** {data-commentary-width="600"}
 
 ```{r basic-boxplot}
 
@@ -118,7 +110,6 @@ ggplot(songs, aes(x = artist, y = indicativerevenue)) +
 
 ```
 
-------------------------------------------------------------------------
 
 This is our first attempt at summarizing indicative revenue of the Top 10 artists.
 
@@ -137,7 +128,7 @@ What we have already done:
 ```{r notes-basic-boxplot, ref.label = 'basic-boxplot', eval = FALSE, echo = TRUE}
 ```
 
-### 1. Show Ns Visually<br><br>by specifying **varwidth = TRUE** {data-commentary-width="600"}
+## Show Ns Visually<br><br>by specifying **varwidth = TRUE** {data-commentary-width="600"}
 
 ```{r Ns-visually}
 
@@ -150,14 +141,13 @@ ggplot(songs, aes(x = artist, y = indicativerevenue)) +
 
 ```
 
-------------------------------------------------------------------------
 
 The "trick" here is simply the *varwidth = TRUE* argument in the geom_boxplot() call.
 
 ```{r notes-Ns-visually, ref.label = 'Ns-visually', eval = FALSE, echo = TRUE}
 ```
 
-### 2. Show Ns Numerically <br><br>using **EnvStats::stat_n_text()** by **Steven Millard** and **Alexander Kowarik** {data-commentary-width="600"}
+## Show Ns Numerically <br><br>using **EnvStats::stat_n_text()** by **Steven Millard** and **Alexander Kowarik** {data-commentary-width="600"}
 
 ```{r Ns-numerically}
 
@@ -171,14 +161,13 @@ ggplot(songs, aes(x = artist, y = indicativerevenue)) +
 
 ```
 
-------------------------------------------------------------------------
 
 We could, of course, calculate Ns and display them using *geom_text()* or *geom_label()*, but we'll use the convencience function *stat_n_text()* from the **EnvStats** package by **Steven Millard** and **Alexander Kowarik** instead.
 
 ```{r notes-Ns-numerically, ref.label = 'Ns-numerically', eval = FALSE, echo = TRUE}
 ```
 
-### 3. Show Summary Statistics on Hover (Mouse-Over)<br><br>using **plotly** by **Carson Sievert** {data-commentary-width="600"}
+## Show Summary Statistics on Hover (Mouse-Over)<br><br>using **plotly** by **Carson Sievert** {data-commentary-width="600"}
 
 ```{r plotly}
 
@@ -196,7 +185,7 @@ Note that **plotly** uses a different calculation method, e. g. a different defi
 ```
 
 
-### 4. Label Outliers<br><br>via a **user-defined function** and **geom_text()** {data-commentary-width="600"}
+## Label Outliers<br><br>via a **user-defined function** and **geom_text()** {data-commentary-width="600"}
 
 ```{r label-outliers}
 
@@ -228,7 +217,7 @@ Introducing color for a clearer group distinction. In this case we suppress the 
 ```
 
 
-### 5. Display Individual Data Points<br><br>using **geom_jitter()** {data-commentary-width="600"}
+## Display Individual Data Points<br><br>using **geom_jitter()** {data-commentary-width="600"}
 
 ```{r individual-data-points}
 
@@ -244,7 +233,6 @@ ggplot(songs, aes(x = artist, y = indicativerevenue, color = artist)) +
 
 ```
 
-------------------------------------------------------------------------
 
 You can get the same boxplot for different distributions, e. g. a normal distribution (most data points around the mean) vs. a u-shaped distribution (two peaks: one below and one above the mean, with very few data points near the mean).
 
@@ -258,7 +246,7 @@ Note the use of *alpha* (opacity), *width* and *height* in **geom_jitter()**, wh
 You could use *plotly* here again to display information about songs on hover. At the moment, a hack is needed to remove outliers from the boxplot - maybe support for that will improve in a future version of *plotly*. Plotly's way seems to be to display the data points side-by-side to the boxplot, not overlay it.
 
 
-### 6. Use Aesthetics to Include Information on Another Variable<br><br>Combining **shape** and **color**, using **RColorBrewer** by **Erich Neuwirth** {data-commentary-width="600"}
+## Use Aesthetics to Include Information on Another Variable<br><br>Combining **shape** and **color**, using **RColorBrewer** by **Erich Neuwirth** {data-commentary-width="600"}
 
 ```{r another-variable, fig.width = 8}
 
@@ -290,7 +278,7 @@ songs %>%
 ```
 
 
-### 7. Add Means<br><br>for comparison to medians {data-commentary-width="600"}
+## Add Means<br><br>for comparison to medians {data-commentary-width="600"}
 
 ```{r means}
 
@@ -317,7 +305,7 @@ Here I'd rather not show the individual data points to avoid information overflo
 ```
 
 
-### 8. Calculate and Display Statistical Tests for Group Differences<br><br>using **ggstatsplot** by **Indrajeet Patil** {data-commentary-width="600"}
+## Calculate and Display Statistical Tests for Group Differences<br><br>using **ggstatsplot** by **Indrajeet Patil** {data-commentary-width="600"}
 
 
 ```{r ggstatsplot}
@@ -349,7 +337,7 @@ See *?ggbetweenstats()* and [Website Documentation](https://indrajeetpatil.githu
 ```
 
 
-### 9. Group Differences:<br><br>Example for a significant test {data-commentary-width="600"}
+## Group Differences:<br><br>Example for a significant test {data-commentary-width="600"}
 
 ```{r ggstatsplot2}
 
@@ -377,7 +365,7 @@ While **Ed Sheeran** reached the highest average indicative revenue, he also rec
 ```
 
 
-### 10. Use Images as Labels<br><br>via **ggtext** by **Claus Wilke** {data-commentary-width="600"}
+## Use Images as Labels<br><br>via **ggtext** by **Claus Wilke** {data-commentary-width="600"}
 
 ```{r ggtext-imagelabels, fig.width = 11, fig.height = 7}
 

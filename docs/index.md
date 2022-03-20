@@ -1,7 +1,7 @@
 ---
 title: "Computergestützte Textanalyse mit R"
 author: "Teodor Petrič"
-date: "2022-03-19"
+date: "2022-03-20"
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
 bibio-style: "apalike"

@@ -1,4 +1,4 @@
-tab:unnamed-chunk-5
+tab:unnamed-chunk-52
 einführung
 installation
 grundlegende-programme
@@ -99,7 +99,7 @@ kennenlernen-der-daten-und-säubern
 hypothesen
 t-test
 lineare-regression-1
-schluss
+ergebnis
 lineare-regression-2
 regression-mit-gemischten-effekten
 vokalformanten-im-deutschen-als-fremdsprache

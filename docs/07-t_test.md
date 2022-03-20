@@ -75,8 +75,8 @@ Zuerst muss der Text geöffnet und dann in Äußerungen zerlegt werden. Dann kan
 library(quanteda)
 library(quanteda.textstats)
 # open the text file
-borchert_kuechenuhr <- 
-  read_lines("data/borchert/borchert_kuechenuhr.txt")
+borchert_kuechenuhr <- read_lines(
+  "data/borchert/borchert_kuechenuhr.txt")
 # create corpus
 borchert_corp_basic <- corpus (borchert_kuechenuhr)
 # corpus reshaped by utterances
