@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R</title>
-  <meta name="description" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
+  <title>Kapitel 7 Deutsche Zungenbrecher | Computergestützte Text- und Korpusanalyse mit R</title>
+  <meta name="description" content="Kapitel 7 Deutsche Zungenbrecher | Computergestützte Text- und Korpusanalyse mit R" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
+  <meta property="og:title" content="Kapitel 7 Deutsche Zungenbrecher | Computergestützte Text- und Korpusanalyse mit R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
@@ -16,23 +16,21 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 17 Deutsche Zungenbrecher | Computergestützte Textanalyse mit R" />
+  <meta name="twitter:title" content="Kapitel 7 Deutsche Zungenbrecher | Computergestützte Text- und Korpusanalyse mit R" />
   
   
   <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
 
-<meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2022-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rolling-stones-auf-twitter.html"/>
-<link rel="next" href="komplexe-äußerungen.html"/>
+<link rel="prev" href="spracherwerbsdaten.html"/>
+<link rel="next" href="buchstaben-in-romanen.html"/>
 <script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -210,7 +208,8 @@ div.csl-indent {
 <li><a href="./">Textanalyse mit R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung<span></span></a></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="1" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>1</b> Einführung<span></span></a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation<span></span></a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#grundlegende-programme"><i class="fa fa-check"></i><b>2.1</b> Grundlegende Programme<span></span></a></li>
@@ -218,22 +217,23 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#hilfe"><i class="fa fa-check"></i><b>2.3</b> Hilfe<span></span></a></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#andere-werkzeuge"><i class="fa fa-check"></i><b>2.4</b> Andere Werkzeuge<span></span></a></li>
 <li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#cloud-dienste"><i class="fa fa-check"></i><b>2.5</b> Cloud-Dienste<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#repositorien-und-youtube"><i class="fa fa-check"></i><b>2.6</b> Repositorien und YouTube<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="showcase.html"><a href="showcase.html"><i class="fa fa-check"></i><b>3</b> Showcase<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="showcase.html"><a href="showcase.html#ggplot-with-emojis"><i class="fa fa-check"></i><b>3.1</b> ggplot with emojis<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="showcase.html"><a href="showcase.html#data-preparation-were-using-data-from-chart2000.com-music-charts-2000---2020"><i class="fa fa-check"></i><b>3.2</b> Data Preparation<br><br>We’re using data from <strong>Chart2000.com</strong>:<br>Music Charts 2000 - 2020<span></span></a></li>
-<li class="chapter" data-level="3.3" data-path="showcase.html"><a href="showcase.html#first-boxplot-some-tweaks-to-a-basic-ggplot2-chart-using-ggthemes-by-jeffrey-b.-arnold"><i class="fa fa-check"></i><b>3.3</b> First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using <strong>ggthemes</strong> by <strong>Jeffrey B. Arnold</strong><span></span></a></li>
-<li class="chapter" data-level="3.4" data-path="showcase.html"><a href="showcase.html#show-ns-visually-by-specifying-varwidth-true"><i class="fa fa-check"></i><b>3.4</b> Show Ns Visually<br><br>by specifying <strong>varwidth = TRUE</strong><span></span></a></li>
-<li class="chapter" data-level="3.5" data-path="showcase.html"><a href="showcase.html#show-ns-numerically-using-envstatsstat_n_text-by-steven-millard-and-alexander-kowarik"><i class="fa fa-check"></i><b>3.5</b> Show Ns Numerically <br><br>using <strong>EnvStats::stat_n_text()</strong> by <strong>Steven Millard</strong> and <strong>Alexander Kowarik</strong><span></span></a></li>
-<li class="chapter" data-level="3.6" data-path="showcase.html"><a href="showcase.html#show-summary-statistics-on-hover-mouse-over-using-plotly-by-carson-sievert"><i class="fa fa-check"></i><b>3.6</b> Show Summary Statistics on Hover (Mouse-Over)<br><br>using <strong>plotly</strong> by <strong>Carson Sievert</strong><span></span></a></li>
-<li class="chapter" data-level="3.7" data-path="showcase.html"><a href="showcase.html#label-outliers-via-a-user-defined-function-and-geom_text"><i class="fa fa-check"></i><b>3.7</b> Label Outliers<br><br>via a <strong>user-defined function</strong> and <strong>geom_text()</strong><span></span></a></li>
-<li class="chapter" data-level="3.8" data-path="showcase.html"><a href="showcase.html#display-individual-data-points-using-geom_jitter"><i class="fa fa-check"></i><b>3.8</b> Display Individual Data Points<br><br>using <strong>geom_jitter()</strong><span></span></a></li>
-<li class="chapter" data-level="3.9" data-path="showcase.html"><a href="showcase.html#use-aesthetics-to-include-information-on-another-variable-combining-shape-and-color-using-rcolorbrewer-by-erich-neuwirth"><i class="fa fa-check"></i><b>3.9</b> Use Aesthetics to Include Information on Another Variable<br><br>Combining <strong>shape</strong> and <strong>color</strong>, using <strong>RColorBrewer</strong> by <strong>Erich Neuwirth</strong><span></span></a></li>
-<li class="chapter" data-level="3.10" data-path="showcase.html"><a href="showcase.html#add-means-for-comparison-to-medians"><i class="fa fa-check"></i><b>3.10</b> Add Means<br><br>for comparison to medians<span></span></a></li>
-<li class="chapter" data-level="3.11" data-path="showcase.html"><a href="showcase.html#calculate-and-display-statistical-tests-for-group-differences-using-ggstatsplot-by-indrajeet-patil"><i class="fa fa-check"></i><b>3.11</b> Calculate and Display Statistical Tests for Group Differences<br><br>using <strong>ggstatsplot</strong> by <strong>Indrajeet Patil</strong><span></span></a></li>
-<li class="chapter" data-level="3.12" data-path="showcase.html"><a href="showcase.html#group-differences-example-for-a-significant-test"><i class="fa fa-check"></i><b>3.12</b> Group Differences:<br><br>Example for a significant test<span></span></a></li>
-<li class="chapter" data-level="3.13" data-path="showcase.html"><a href="showcase.html#use-images-as-labels-via-ggtext-by-claus-wilke"><i class="fa fa-check"></i><b>3.13</b> Use Images as Labels<br><br>via <strong>ggtext</strong> by <strong>Claus Wilke</strong><span></span></a></li>
+<li class="chapter" data-level="3.1" data-path="showcase.html"><a href="showcase.html#ggplot-mit-emojis"><i class="fa fa-check"></i><b>3.1</b> ggplot mit emojis<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="showcase.html"><a href="showcase.html#datenvorbereitung"><i class="fa fa-check"></i><b>3.2</b> Datenvorbereitung<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="showcase.html"><a href="showcase.html#erster-boxplot"><i class="fa fa-check"></i><b>3.3</b> Erster Boxplot<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="showcase.html"><a href="showcase.html#visuelle-darstellung-ns"><i class="fa fa-check"></i><b>3.4</b> Visuelle Darstellung Ns<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="showcase.html"><a href="showcase.html#numerische-darstellung-ns"><i class="fa fa-check"></i><b>3.5</b> Numerische Darstellung Ns<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="showcase.html"><a href="showcase.html#zusammenfassende-statistiken-mouse-over"><i class="fa fa-check"></i><b>3.6</b> Zusammenfassende Statistiken (Mouse-Over)<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="showcase.html"><a href="showcase.html#ausreißer-markieren"><i class="fa fa-check"></i><b>3.7</b> Ausreißer markieren<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="showcase.html"><a href="showcase.html#individuelle-datenwerte-anzeigen"><i class="fa fa-check"></i><b>3.8</b> Individuelle Datenwerte anzeigen<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="showcase.html"><a href="showcase.html#ggplot-aesthetics-verwenden"><i class="fa fa-check"></i><b>3.9</b> ggplot Aesthetics verwenden<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="showcase.html"><a href="showcase.html#mittelwerte-hinzufügen"><i class="fa fa-check"></i><b>3.10</b> Mittelwerte hinzufügen<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="showcase.html"><a href="showcase.html#statistische-tests-anzeigen"><i class="fa fa-check"></i><b>3.11</b> Statistische Tests anzeigen<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="showcase.html"><a href="showcase.html#gruppendifferenzen"><i class="fa fa-check"></i><b>3.12</b> Gruppendifferenzen<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="showcase.html"><a href="showcase.html#bilder-als-labels"><i class="fa fa-check"></i><b>3.13</b> Bilder als Labels<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>4</b> R &amp; RStudio<span></span></a>
 <ul>
@@ -295,258 +295,258 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.3" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>5.2.3</b> Höflichkeit und Grundfrequenz<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>6</b> Vokalformanten im Deutschen als Fremdsprache<span></span></a>
+<li class="chapter" data-level="6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>6</b> Spracherwerbsdaten<span></span></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>6.1</b> Programme starten<span></span></a></li>
-<li class="chapter" data-level="6.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>6.2</b> Daten laden &amp; anpassen<span></span></a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>6.2.1</b> Datensatz 1<span></span></a></li>
-<li class="chapter" data-level="6.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>6.2.2</b> Datensatz 2<span></span></a></li>
-<li class="chapter" data-level="6.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>6.2.3</b> Datensatz 3<span></span></a></li>
+<li class="chapter" data-level="6.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-2"><i class="fa fa-check"></i><b>6.1</b> Programme<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>6.2</b> Daten lesen<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>6.3</b> Verknüpfung der einzelnen Dateien<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>6.4</b> 1. Häufigkeit insgesamt<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>6.5</b> 2. Welche d-Form am häufigsten?<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>6.6</b> 3. Welche Form als erste?<span></span></a></li>
+<li class="chapter" data-level="6.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>6.7</b> 4. Wann alle d-Formen vertreten?<span></span></a></li>
+<li class="chapter" data-level="6.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>6.8</b> 5. Bevorzugtes d-Wort von MOT<span></span></a></li>
+<li class="chapter" data-level="6.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>6.9</b> 6. Welche Formen hört Rahel nie / kaum?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>6.3</b> IPA syms<span></span></a></li>
-<li class="chapter" data-level="6.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>6.4</b> Vergleich der Vokalformanten<span></span></a>
+<li class="chapter" data-level="7" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>7</b> Deutsche Zungenbrecher<span></span></a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>6.4.1</b> Datensatz 2<span></span></a></li>
-<li class="chapter" data-level="6.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>6.4.2</b> Datensatz 3<span></span></a></li>
+<li class="chapter" data-level="7.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-1"><i class="fa fa-check"></i><b>7.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>7.2</b> Tabelle laden<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>7.3</b> EDA<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>6.5</b> Aggregierter Datensatz<span></span></a>
+<li class="chapter" data-level="8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>8</b> Buchstaben in Romanen<span></span></a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>6.5.1</b> IPA syms<span></span></a></li>
-<li class="chapter" data-level="6.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>6.5.2</b> Tabelle<span></span></a></li>
-<li class="chapter" data-level="6.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>6.5.3</b> Datensatz 1 mit aggregierten Daten<span></span></a></li>
+<li class="chapter" data-level="8.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-1"><i class="fa fa-check"></i><b>8.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>8.2</b> Datensatz lesen<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>8.3</b> Buchstaben extrahieren<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>8.3.1</b> aus Liste<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>8.3.2</b> aus Datensatz<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>6.6</b> Abbildungen mit <code>phonR</code><span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>8.4</b> Buchstaben zählen<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>8.5</b> Vokale<span></span></a></li>
+<li class="chapter" data-level="8.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>8.6</b> Konsonanten<span></span></a></li>
+<li class="chapter" data-level="8.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>8.7</b> Vokal-Konsonant-Verhältnis<span></span></a></li>
+<li class="chapter" data-level="8.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>8.8</b> Anzahl der Silben<span></span></a></li>
+<li class="chapter" data-level="8.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>8.9</b> Mittlere Wortlänge<span></span></a></li>
+<li class="chapter" data-level="8.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>8.10</b> Testen von Mittelwertunterschieden<span></span></a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>8.10.1</b> t-Test<span></span></a></li>
+<li class="chapter" data-level="8.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-3"><i class="fa fa-check"></i><b>8.10.2</b> Lineare Regression<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>7</b> Textzerlegung<span></span></a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>7.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="7.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>7.2</b> Text öffnen<span></span></a></li>
-<li class="chapter" data-level="7.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>7.3</b> Zerlegung des Textes<span></span></a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>7.3.1</b> Tabelle<span></span></a></li>
-<li class="chapter" data-level="7.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>7.3.2</b> Äußerungen<span></span></a></li>
-<li class="chapter" data-level="7.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>7.3.3</b> Wörter<span></span></a></li>
-<li class="chapter" data-level="7.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>7.3.4</b> Buchstaben<span></span></a></li>
-<li class="chapter" data-level="7.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>7.3.5</b> Ziffern umwandeln<span></span></a></li>
+<li class="chapter" data-level="8.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>8.11</b> Quanteda-Funktionen<span></span></a></li>
+<li class="chapter" data-level="8.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>8.12</b> Konsonantenverbindungen<span></span></a></li>
+<li class="chapter" data-level="8.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>8.13</b> Datensatz-Variante<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>7.4</b> Tabelle speichern<span></span></a></li>
-<li class="chapter" data-level="7.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>7.5</b> Tabelle öffnen<span></span></a></li>
-<li class="chapter" data-level="7.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>7.6</b> Zählen<span></span></a>
+<li class="chapter" data-level="9" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>9</b> Vokalformanten im Deutschen als Fremdsprache<span></span></a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>7.6.1</b> Buchstaben<span></span></a></li>
-<li class="chapter" data-level="7.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>7.6.2</b> Worthäufigkeiten<span></span></a></li>
-<li class="chapter" data-level="7.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>7.6.3</b> Wortschatzdichte<span></span></a></li>
-<li class="chapter" data-level="7.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>7.6.4</b> Äußerungslänge<span></span></a></li>
-<li class="chapter" data-level="7.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>7.6.5</b> Vergleich mit quanteda<span></span></a></li>
-<li class="chapter" data-level="7.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>7.6.6</b> Vergleich mit Voyant Tools<span></span></a></li>
+<li class="chapter" data-level="9.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>9.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>9.2</b> Daten laden &amp; anpassen<span></span></a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>9.2.1</b> Datensatz 1<span></span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>9.2.2</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>9.2.3</b> Datensatz 3<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>9.3</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>9.4</b> Vergleich der Vokalformanten<span></span></a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>9.4.1</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="9.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>9.4.2</b> Datensatz 3<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>8</b> Kurzgeschichten im Vergleich<span></span></a>
+<li class="chapter" data-level="9.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>9.5</b> Aggregierter Datensatz<span></span></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden-1"><i class="fa fa-check"></i><b>8.1</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="8.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>8.2</b> Texte laden<span></span></a></li>
-<li class="chapter" data-level="8.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>8.3</b> Textzerlegung und Annotation<span></span></a></li>
-<li class="chapter" data-level="8.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>8.4</b> Datensätze vereinen<span></span></a></li>
-<li class="chapter" data-level="8.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>8.5</b> Wortklassen zählen<span></span></a></li>
-<li class="chapter" data-level="8.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>8.6</b> Nicht-parametrischer Test<span></span></a></li>
-<li class="chapter" data-level="8.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren"><i class="fa fa-check"></i><b>8.7</b> Konnektoren<span></span></a></li>
-<li class="chapter" data-level="8.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>8.8</b> Äußerungslänge vergleichen<span></span></a></li>
+<li class="chapter" data-level="9.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>9.5.1</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="9.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>9.5.2</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="9.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>9.5.3</b> Datensatz 1 mit aggregierten Daten<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>9</b> Spracherwerbsdaten<span></span></a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-2"><i class="fa fa-check"></i><b>9.1</b> Programme<span></span></a></li>
-<li class="chapter" data-level="9.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>9.2</b> Daten lesen<span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>9.3</b> Verknüpfung der einzelnen Dateien<span></span></a></li>
-<li class="chapter" data-level="9.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>9.4</b> 1. Häufigkeit insgesamt<span></span></a></li>
-<li class="chapter" data-level="9.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>9.5</b> 2. Welche d-Form am häufigsten?<span></span></a></li>
-<li class="chapter" data-level="9.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>9.6</b> 3. Welche Form als erste?<span></span></a></li>
-<li class="chapter" data-level="9.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>9.7</b> 4. Wann alle d-Formen vertreten?<span></span></a></li>
-<li class="chapter" data-level="9.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>9.8</b> 5. Bevorzugtes d-Wort von MOT<span></span></a></li>
-<li class="chapter" data-level="9.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>9.9</b> 6. Welche Formen hört Rahel nie / kaum?<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>9.6</b> Abbildungen mit <code>phonR</code><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>10</b> Textvergleich<span></span></a>
+<li class="chapter" data-level="10" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>10</b> Suffixe und Stemming<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="textvergleich.html"><a href="textvergleich.html#programme-installieren"><i class="fa fa-check"></i><b>10.1</b> Programme installieren<span></span></a></li>
-<li class="chapter" data-level="10.2" data-path="textvergleich.html"><a href="textvergleich.html#programme-laden-2"><i class="fa fa-check"></i><b>10.2</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="10.3" data-path="textvergleich.html"><a href="textvergleich.html#texte-öffnen"><i class="fa fa-check"></i><b>10.3</b> Texte öffnen<span></span></a></li>
-<li class="chapter" data-level="10.4" data-path="textvergleich.html"><a href="textvergleich.html#korpus-anlegen"><i class="fa fa-check"></i><b>10.4</b> Korpus anlegen<span></span></a></li>
-<li class="chapter" data-level="10.5" data-path="textvergleich.html"><a href="textvergleich.html#tokenisierung"><i class="fa fa-check"></i><b>10.5</b> Tokenisierung<span></span></a></li>
-<li class="chapter" data-level="10.6" data-path="textvergleich.html"><a href="textvergleich.html#tokenliste-säubern"><i class="fa fa-check"></i><b>10.6</b> Tokenliste säubern<span></span></a></li>
-<li class="chapter" data-level="10.7" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>10.7</b> Kwic<span></span></a></li>
-<li class="chapter" data-level="10.8" data-path="textvergleich.html"><a href="textvergleich.html#häufigkeit"><i class="fa fa-check"></i><b>10.8</b> Häufigkeit<span></span></a></li>
-<li class="chapter" data-level="10.9" data-path="textvergleich.html"><a href="textvergleich.html#kollokationen"><i class="fa fa-check"></i><b>10.9</b> Kollokationen<span></span></a></li>
-<li class="chapter" data-level="10.10" data-path="textvergleich.html"><a href="textvergleich.html#lemmatisierung"><i class="fa fa-check"></i><b>10.10</b> Lemmatisierung<span></span></a></li>
-<li class="chapter" data-level="10.11" data-path="textvergleich.html"><a href="textvergleich.html#wortwolken"><i class="fa fa-check"></i><b>10.11</b> Wortwolken<span></span></a></li>
-<li class="chapter" data-level="10.12" data-path="textvergleich.html"><a href="textvergleich.html#position-im-text-xray"><i class="fa fa-check"></i><b>10.12</b> Position im Text (xray)<span></span></a></li>
-<li class="chapter" data-level="10.13" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-vielfalt"><i class="fa fa-check"></i><b>10.13</b> Lexikalische Vielfalt<span></span></a></li>
-<li class="chapter" data-level="10.14" data-path="textvergleich.html"><a href="textvergleich.html#textähnlichkeit"><i class="fa fa-check"></i><b>10.14</b> Textähnlichkeit<span></span></a></li>
-<li class="chapter" data-level="10.15" data-path="textvergleich.html"><a href="textvergleich.html#schlüsselwörter-keywords"><i class="fa fa-check"></i><b>10.15</b> Schlüsselwörter (keywords)<span></span></a></li>
-<li class="chapter" data-level="10.16" data-path="textvergleich.html"><a href="textvergleich.html#lesbarkeit-des-textes"><i class="fa fa-check"></i><b>10.16</b> Lesbarkeit des Textes<span></span></a></li>
-<li class="chapter" data-level="10.17" data-path="textvergleich.html"><a href="textvergleich.html#kookurrenz-netzwerk-fcm"><i class="fa fa-check"></i><b>10.17</b> Kookurrenz-Netzwerk (FCM)<span></span></a></li>
-<li class="chapter" data-level="10.18" data-path="textvergleich.html"><a href="textvergleich.html#grammatische-analyse"><i class="fa fa-check"></i><b>10.18</b> Grammatische Analyse<span></span></a>
+<li class="chapter" data-level="10.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>10.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>10.2</b> Dateien einlesen<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung"><i class="fa fa-check"></i><b>10.3</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>10.4</b> Stemming<span></span></a></li>
+<li class="chapter" data-level="10.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>10.5</b> Wortbildungsanalyse<span></span></a>
 <ul>
-<li class="chapter" data-level="10.18.1" data-path="textvergleich.html"><a href="textvergleich.html#vorbereitung"><i class="fa fa-check"></i><b>10.18.1</b> Vorbereitung<span></span></a></li>
-<li class="chapter" data-level="10.18.2" data-path="textvergleich.html"><a href="textvergleich.html#vergleich-nomen-pronomen"><i class="fa fa-check"></i><b>10.18.2</b> Vergleich Nomen : Pronomen<span></span></a></li>
-<li class="chapter" data-level="10.18.3" data-path="textvergleich.html"><a href="textvergleich.html#konjunktionen-im-vergleich"><i class="fa fa-check"></i><b>10.18.3</b> Konjunktionen im Vergleich<span></span></a></li>
-<li class="chapter" data-level="10.18.4" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-einheiten"><i class="fa fa-check"></i><b>10.18.4</b> Lexikalische Einheiten<span></span></a></li>
-<li class="chapter" data-level="10.18.5" data-path="textvergleich.html"><a href="textvergleich.html#wortkorrelationen"><i class="fa fa-check"></i><b>10.18.5</b> Wortkorrelationen<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="10.19" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>10.19</b> Sentiment<span></span></a>
-<ul>
-<li class="chapter" data-level="10.19.1" data-path="textvergleich.html"><a href="textvergleich.html#version-1"><i class="fa fa-check"></i><b>10.19.1</b> Version 1<span></span></a></li>
-<li class="chapter" data-level="10.19.2" data-path="textvergleich.html"><a href="textvergleich.html#variante-2"><i class="fa fa-check"></i><b>10.19.2</b> Variante 2<span></span></a></li>
-<li class="chapter" data-level="10.19.3" data-path="textvergleich.html"><a href="textvergleich.html#variante-3"><i class="fa fa-check"></i><b>10.19.3</b> Variante 3<span></span></a></li>
+<li class="chapter" data-level="10.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>10.5.1</b> Suffix -lich<span></span></a></li>
+<li class="chapter" data-level="10.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>10.5.2</b> Mehrere ADJ Suffixe<span></span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>10.5.3</b> Nicht verwendete Tabelle<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>11</b> Suffixe und Stemming<span></span></a>
+<li class="chapter" data-level="11" data-path="konnektoren.html"><a href="konnektoren.html"><i class="fa fa-check"></i><b>11</b> Konnektoren<span></span></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>11.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="11.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>11.2</b> Dateien einlesen<span></span></a></li>
-<li class="chapter" data-level="11.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung-1"><i class="fa fa-check"></i><b>11.3</b> Lemmatisierung<span></span></a></li>
-<li class="chapter" data-level="11.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>11.4</b> Stemming<span></span></a></li>
-<li class="chapter" data-level="11.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>11.5</b> Wortbildungsanalyse<span></span></a>
+<li class="chapter" data-level="11.1" data-path="konnektoren.html"><a href="konnektoren.html#pakete"><i class="fa fa-check"></i><b>11.1</b> Pakete<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="konnektoren.html"><a href="konnektoren.html#text-einlesen"><i class="fa fa-check"></i><b>11.2</b> Text einlesen<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="konnektoren.html"><a href="konnektoren.html#udpipe-laden"><i class="fa fa-check"></i><b>11.3</b> UDPipe laden<span></span></a></li>
+<li class="chapter" data-level="11.4" data-path="konnektoren.html"><a href="konnektoren.html#text-annotieren"><i class="fa fa-check"></i><b>11.4</b> Text annotieren<span></span></a></li>
+<li class="chapter" data-level="11.5" data-path="konnektoren.html"><a href="konnektoren.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>11.5</b> Wortklassen und Konnektoren<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>12</b> Kurzgeschichten im Vergleich<span></span></a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>11.5.1</b> Suffix -lich<span></span></a></li>
-<li class="chapter" data-level="11.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>11.5.2</b> Mehrere ADJ Suffixe<span></span></a></li>
-<li class="chapter" data-level="11.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>11.5.3</b> Nicht verwendete Tabelle<span></span></a></li>
+<li class="chapter" data-level="12.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden-2"><i class="fa fa-check"></i><b>12.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>12.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="12.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>12.3</b> Textzerlegung und Annotation<span></span></a></li>
+<li class="chapter" data-level="12.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>12.4</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="12.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>12.5</b> Wortklassen zählen<span></span></a></li>
+<li class="chapter" data-level="12.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>12.6</b> Nicht-parametrischer Test<span></span></a></li>
+<li class="chapter" data-level="12.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren-1"><i class="fa fa-check"></i><b>12.7</b> Konnektoren<span></span></a></li>
+<li class="chapter" data-level="12.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>12.8</b> Äußerungslänge vergleichen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>13</b> Textzerlegung<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-3"><i class="fa fa-check"></i><b>13.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>13.2</b> Text öffnen<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>13.3</b> Zerlegung des Textes<span></span></a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>13.3.1</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>13.3.2</b> Äußerungen<span></span></a></li>
+<li class="chapter" data-level="13.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>13.3.3</b> Wörter<span></span></a></li>
+<li class="chapter" data-level="13.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>13.3.4</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="13.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>13.3.5</b> Ziffern umwandeln<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>13.5</b> Tabelle öffnen<span></span></a></li>
+<li class="chapter" data-level="13.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>13.6</b> Zählen<span></span></a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>13.6.1</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="13.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>13.6.2</b> Worthäufigkeiten<span></span></a></li>
+<li class="chapter" data-level="13.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>13.6.3</b> Wortschatzdichte<span></span></a></li>
+<li class="chapter" data-level="13.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>13.6.4</b> Äußerungslänge<span></span></a></li>
+<li class="chapter" data-level="13.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>13.6.5</b> Vergleich mit quanteda<span></span></a></li>
+<li class="chapter" data-level="13.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>13.6.6</b> Vergleich mit Voyant Tools<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>12</b> Buchstaben in Romanen<span></span></a>
+<li class="chapter" data-level="14" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>14</b> Textvergleich<span></span></a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>12.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="12.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>12.2</b> Datensatz lesen<span></span></a></li>
-<li class="chapter" data-level="12.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>12.3</b> Buchstaben extrahieren<span></span></a>
+<li class="chapter" data-level="14.1" data-path="textvergleich.html"><a href="textvergleich.html#programme-installieren"><i class="fa fa-check"></i><b>14.1</b> Programme installieren<span></span></a></li>
+<li class="chapter" data-level="14.2" data-path="textvergleich.html"><a href="textvergleich.html#programme-laden-3"><i class="fa fa-check"></i><b>14.2</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="14.3" data-path="textvergleich.html"><a href="textvergleich.html#texte-öffnen"><i class="fa fa-check"></i><b>14.3</b> Texte öffnen<span></span></a></li>
+<li class="chapter" data-level="14.4" data-path="textvergleich.html"><a href="textvergleich.html#korpus-anlegen"><i class="fa fa-check"></i><b>14.4</b> Korpus anlegen<span></span></a></li>
+<li class="chapter" data-level="14.5" data-path="textvergleich.html"><a href="textvergleich.html#tokenisierung"><i class="fa fa-check"></i><b>14.5</b> Tokenisierung<span></span></a></li>
+<li class="chapter" data-level="14.6" data-path="textvergleich.html"><a href="textvergleich.html#tokenliste-säubern"><i class="fa fa-check"></i><b>14.6</b> Tokenliste säubern<span></span></a></li>
+<li class="chapter" data-level="14.7" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>14.7</b> Kwic<span></span></a></li>
+<li class="chapter" data-level="14.8" data-path="textvergleich.html"><a href="textvergleich.html#häufigkeit"><i class="fa fa-check"></i><b>14.8</b> Häufigkeit<span></span></a></li>
+<li class="chapter" data-level="14.9" data-path="textvergleich.html"><a href="textvergleich.html#kollokationen"><i class="fa fa-check"></i><b>14.9</b> Kollokationen<span></span></a></li>
+<li class="chapter" data-level="14.10" data-path="textvergleich.html"><a href="textvergleich.html#lemmatisierung-1"><i class="fa fa-check"></i><b>14.10</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="14.11" data-path="textvergleich.html"><a href="textvergleich.html#wortwolken"><i class="fa fa-check"></i><b>14.11</b> Wortwolken<span></span></a></li>
+<li class="chapter" data-level="14.12" data-path="textvergleich.html"><a href="textvergleich.html#position-im-text-xray"><i class="fa fa-check"></i><b>14.12</b> Position im Text (xray)<span></span></a></li>
+<li class="chapter" data-level="14.13" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-vielfalt"><i class="fa fa-check"></i><b>14.13</b> Lexikalische Vielfalt<span></span></a></li>
+<li class="chapter" data-level="14.14" data-path="textvergleich.html"><a href="textvergleich.html#textähnlichkeit"><i class="fa fa-check"></i><b>14.14</b> Textähnlichkeit<span></span></a></li>
+<li class="chapter" data-level="14.15" data-path="textvergleich.html"><a href="textvergleich.html#schlüsselwörter-keywords"><i class="fa fa-check"></i><b>14.15</b> Schlüsselwörter (keywords)<span></span></a></li>
+<li class="chapter" data-level="14.16" data-path="textvergleich.html"><a href="textvergleich.html#lesbarkeit-des-textes"><i class="fa fa-check"></i><b>14.16</b> Lesbarkeit des Textes<span></span></a></li>
+<li class="chapter" data-level="14.17" data-path="textvergleich.html"><a href="textvergleich.html#kookurrenz-netzwerk-fcm"><i class="fa fa-check"></i><b>14.17</b> Kookurrenz-Netzwerk (FCM)<span></span></a></li>
+<li class="chapter" data-level="14.18" data-path="textvergleich.html"><a href="textvergleich.html#grammatische-analyse"><i class="fa fa-check"></i><b>14.18</b> Grammatische Analyse<span></span></a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>12.3.1</b> aus Liste<span></span></a></li>
-<li class="chapter" data-level="12.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>12.3.2</b> aus Datensatz<span></span></a></li>
+<li class="chapter" data-level="14.18.1" data-path="textvergleich.html"><a href="textvergleich.html#vorbereitung"><i class="fa fa-check"></i><b>14.18.1</b> Vorbereitung<span></span></a></li>
+<li class="chapter" data-level="14.18.2" data-path="textvergleich.html"><a href="textvergleich.html#vergleich-nomen-pronomen"><i class="fa fa-check"></i><b>14.18.2</b> Vergleich Nomen : Pronomen<span></span></a></li>
+<li class="chapter" data-level="14.18.3" data-path="textvergleich.html"><a href="textvergleich.html#konjunktionen-im-vergleich"><i class="fa fa-check"></i><b>14.18.3</b> Konjunktionen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="14.18.4" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-einheiten"><i class="fa fa-check"></i><b>14.18.4</b> Lexikalische Einheiten<span></span></a></li>
+<li class="chapter" data-level="14.18.5" data-path="textvergleich.html"><a href="textvergleich.html#wortkorrelationen"><i class="fa fa-check"></i><b>14.18.5</b> Wortkorrelationen<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>12.4</b> Buchstaben zählen<span></span></a></li>
-<li class="chapter" data-level="12.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>12.5</b> Vokale<span></span></a></li>
-<li class="chapter" data-level="12.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>12.6</b> Konsonanten<span></span></a></li>
-<li class="chapter" data-level="12.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>12.7</b> Vokal-Konsonant-Verhältnis<span></span></a></li>
-<li class="chapter" data-level="12.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>12.8</b> Anzahl der Silben<span></span></a></li>
-<li class="chapter" data-level="12.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>12.9</b> Mittlere Wortlänge<span></span></a></li>
-<li class="chapter" data-level="12.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>12.10</b> Testen von Mittelwertunterschieden<span></span></a>
+<li class="chapter" data-level="14.19" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>14.19</b> Sentiment<span></span></a>
 <ul>
-<li class="chapter" data-level="12.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>12.10.1</b> t-Test<span></span></a></li>
-<li class="chapter" data-level="12.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-3"><i class="fa fa-check"></i><b>12.10.2</b> Lineare Regression<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="12.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>12.11</b> Quanteda-Funktionen<span></span></a></li>
-<li class="chapter" data-level="12.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>12.12</b> Konsonantenverbindungen<span></span></a></li>
-<li class="chapter" data-level="12.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>12.13</b> Datensatz-Variante<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>13</b> Lesbarkeitsindices<span></span></a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>13.1</b> Zur theoretischen Begründung<span></span></a></li>
-<li class="chapter" data-level="13.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-3"><i class="fa fa-check"></i><b>13.2</b> Programme<span></span></a></li>
-<li class="chapter" data-level="13.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>13.3</b> Texte lesen<span></span></a></li>
-<li class="chapter" data-level="13.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>13.4</b> Flesch Reading Ease - deutsche Version<span></span></a></li>
-<li class="chapter" data-level="13.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>13.5</b> Romane (deutsche oder ins Deutsche übersetzte)<span></span></a></li>
-<li class="chapter" data-level="13.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>13.6</b> Zeitungen<span></span></a></li>
-<li class="chapter" data-level="13.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>13.7</b> Statistische Tests: News<span></span></a></li>
-<li class="chapter" data-level="13.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>13.8</b> Datensätze vereinen<span></span></a></li>
-<li class="chapter" data-level="13.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>13.9</b> Zeitungen im Vergleich<span></span></a></li>
-<li class="chapter" data-level="13.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>13.10</b> Alle Texte im Vergleich<span></span></a></li>
-<li class="chapter" data-level="13.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>13.11</b> Flesch-Kincade Grade Level (USA, GB)<span></span></a></li>
-<li class="chapter" data-level="13.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>13.12</b> Wiener Sachtextformel<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>14</b> Untertitel<span></span></a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>14.1</b> Programme starten<span></span></a></li>
-<li class="chapter" data-level="14.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>14.2</b> Daten laden<span></span></a></li>
-<li class="chapter" data-level="14.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>14.3</b> Datensätze vorbereiten<span></span></a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>14.3.1</b> Textspalte vorbereiten<span></span></a></li>
-<li class="chapter" data-level="14.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>14.3.2</b> Datensätze verknüpfen<span></span></a></li>
-<li class="chapter" data-level="14.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>14.3.3</b> Merkmale hinzufügen<span></span></a></li>
-<li class="chapter" data-level="14.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>14.3.4</b> Konkordanzrecherche<span></span></a></li>
-<li class="chapter" data-level="14.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>14.3.5</b> Textzerlegung<span></span></a></li>
-<li class="chapter" data-level="14.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>14.3.6</b> Zerlegung und Annotation<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>14.4</b> Morphologie der Untertitel<span></span></a>
-<ul>
-<li class="chapter" data-level="14.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>14.4.1</b> XRay Brother<span></span></a></li>
-<li class="chapter" data-level="14.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>14.4.2</b> Substantive im Plural<span></span></a></li>
-<li class="chapter" data-level="14.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>14.4.3</b> Adjektive im Komparativ<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>14.5</b> Syntax: Dependenz<span></span></a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>14.5.1</b> Aktiv und Passiv<span></span></a></li>
-<li class="chapter" data-level="14.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>14.5.2</b> Substantive und Pronomen als Satzglieder<span></span></a></li>
-<li class="chapter" data-level="14.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.3</b> Subjekt nominal / pronominal<span></span></a></li>
-<li class="chapter" data-level="14.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.4</b> Objekt nominal / pronominal<span></span></a></li>
-<li class="chapter" data-level="14.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>14.5.5</b> Wortklasse von Subjekt / Objekt<span></span></a></li>
-<li class="chapter" data-level="14.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>14.5.6</b> Gattungs- und Eigennamen<span></span></a></li>
-<li class="chapter" data-level="14.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>14.5.7</b> Konstituentenfolge<span></span></a></li>
-<li class="chapter" data-level="14.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>14.5.8</b> Kontexte von Modifizierern<span></span></a></li>
-<li class="chapter" data-level="14.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>14.5.9</b> Greenbergs Universalie 25<span></span></a></li>
-<li class="chapter" data-level="14.5.10" data-path="untertitel.html"><a href="untertitel.html#subjekt-vor-objekt-präferenz"><i class="fa fa-check"></i><b>14.5.10</b> Subjekt-vor-Objekt-Präferenz<span></span></a></li>
-<li class="chapter" data-level="14.5.11" data-path="untertitel.html"><a href="untertitel.html#mehrere-konstituenten"><i class="fa fa-check"></i><b>14.5.11</b> Mehrere Konstituenten<span></span></a></li>
+<li class="chapter" data-level="14.19.1" data-path="textvergleich.html"><a href="textvergleich.html#version-1"><i class="fa fa-check"></i><b>14.19.1</b> Version 1<span></span></a></li>
+<li class="chapter" data-level="14.19.2" data-path="textvergleich.html"><a href="textvergleich.html#variante-2"><i class="fa fa-check"></i><b>14.19.2</b> Variante 2<span></span></a></li>
+<li class="chapter" data-level="14.19.3" data-path="textvergleich.html"><a href="textvergleich.html#variante-3"><i class="fa fa-check"></i><b>14.19.3</b> Variante 3<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="konnektoren-1.html"><a href="konnektoren-1.html"><i class="fa fa-check"></i><b>15</b> Konnektoren<span></span></a>
+<li class="chapter" data-level="15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>15</b> Komplexe Äußerungen<span></span></a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="konnektoren-1.html"><a href="konnektoren-1.html#pakete"><i class="fa fa-check"></i><b>15.1</b> Pakete<span></span></a></li>
-<li class="chapter" data-level="15.2" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-einlesen"><i class="fa fa-check"></i><b>15.2</b> Text einlesen<span></span></a></li>
-<li class="chapter" data-level="15.3" data-path="konnektoren-1.html"><a href="konnektoren-1.html#udpipe-laden"><i class="fa fa-check"></i><b>15.3</b> UDPipe laden<span></span></a></li>
-<li class="chapter" data-level="15.4" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-annotieren"><i class="fa fa-check"></i><b>15.4</b> Text annotieren<span></span></a></li>
-<li class="chapter" data-level="15.5" data-path="konnektoren-1.html"><a href="konnektoren-1.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>15.5</b> Wortklassen und Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>15.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="15.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texte-laden-1"><i class="fa fa-check"></i><b>15.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="15.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-1-zerlegen"><i class="fa fa-check"></i><b>15.3</b> Text 1 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>15.4</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>15.5</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>15.6</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>15.7</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>15.8</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>15.9</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.10" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-2-zerlegen"><i class="fa fa-check"></i><b>15.10</b> Text 2 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.11" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-1"><i class="fa fa-check"></i><b>15.11</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.12" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-1"><i class="fa fa-check"></i><b>15.12</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.13" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-1"><i class="fa fa-check"></i><b>15.13</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.14" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-1"><i class="fa fa-check"></i><b>15.14</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-1"><i class="fa fa-check"></i><b>15.15</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.16" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-1"><i class="fa fa-check"></i><b>15.16</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.17" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-3-zerlegen"><i class="fa fa-check"></i><b>15.17</b> Text 3 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-2"><i class="fa fa-check"></i><b>15.18</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.19" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-2"><i class="fa fa-check"></i><b>15.19</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.20" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-2"><i class="fa fa-check"></i><b>15.20</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.21" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-2"><i class="fa fa-check"></i><b>15.21</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.22" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-2"><i class="fa fa-check"></i><b>15.22</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.23" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-2"><i class="fa fa-check"></i><b>15.23</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#vergleich-der-äußerungslängen"><i class="fa fa-check"></i><b>15.24</b> Vergleich der Äußerungslängen<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>16</b> Rolling Stones auf Twitter<span></span></a>
+<li class="chapter" data-level="16" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>16</b> Lesbarkeitsindices<span></span></a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>16.1</b> Der Tod von Charlie Watts<span></span></a></li>
-<li class="chapter" data-level="16.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-4"><i class="fa fa-check"></i><b>16.2</b> Programme<span></span></a></li>
-<li class="chapter" data-level="16.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>16.3</b> Datenstrom holen<span></span></a></li>
-<li class="chapter" data-level="16.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>16.4</b> Tweets holen<span></span></a></li>
-<li class="chapter" data-level="16.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>16.5</b> Datensatz erstellen<span></span></a></li>
-<li class="chapter" data-level="16.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>16.6</b> Datensatz speichern<span></span></a></li>
-<li class="chapter" data-level="16.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>16.7</b> Datensatz laden<span></span></a></li>
-<li class="chapter" data-level="16.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>16.8</b> Verfasser der Tweets<span></span></a></li>
-<li class="chapter" data-level="16.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>16.9</b> Timeplot<span></span></a></li>
-<li class="chapter" data-level="16.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>16.10</b> User-Informationen<span></span></a></li>
-<li class="chapter" data-level="16.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>16.11</b> Geographische Verteilung<span></span></a></li>
-<li class="chapter" data-level="16.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.12</b> Speichern des erweiterten Datensatzes<span></span></a></li>
-<li class="chapter" data-level="16.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.13</b> Laden des erweiterten Datensatzes<span></span></a></li>
-<li class="chapter" data-level="16.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>16.14</b> Zeitlicher geographischer Verlauf<span></span></a></li>
-<li class="chapter" data-level="16.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>16.15</b> Lange Wörter<span></span></a></li>
-<li class="chapter" data-level="16.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>16.16</b> Topwörter<span></span></a></li>
-<li class="chapter" data-level="16.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>16.17</b> Netzwerke<span></span></a></li>
-<li class="chapter" data-level="16.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>16.18</b> Sentiment &amp; Emotion<span></span></a></li>
-<li class="chapter" data-level="16.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>16.19</b> Sentiment (Animation)<span></span></a></li>
+<li class="chapter" data-level="16.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>16.1</b> Zur theoretischen Begründung<span></span></a></li>
+<li class="chapter" data-level="16.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-3"><i class="fa fa-check"></i><b>16.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="16.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>16.3</b> Texte lesen<span></span></a></li>
+<li class="chapter" data-level="16.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>16.4</b> Flesch Reading Ease - deutsche Version<span></span></a></li>
+<li class="chapter" data-level="16.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>16.5</b> Romane (deutsche oder ins Deutsche übersetzte)<span></span></a></li>
+<li class="chapter" data-level="16.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>16.6</b> Zeitungen<span></span></a></li>
+<li class="chapter" data-level="16.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>16.7</b> Statistische Tests: News<span></span></a></li>
+<li class="chapter" data-level="16.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>16.8</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="16.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>16.9</b> Zeitungen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="16.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>16.10</b> Alle Texte im Vergleich<span></span></a></li>
+<li class="chapter" data-level="16.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>16.11</b> Flesch-Kincade Grade Level (USA, GB)<span></span></a></li>
+<li class="chapter" data-level="16.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>16.12</b> Wiener Sachtextformel<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>17</b> Deutsche Zungenbrecher<span></span></a>
+<li class="chapter" data-level="17" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>17</b> Untertitel<span></span></a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-3"><i class="fa fa-check"></i><b>17.1</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="17.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>17.2</b> Tabelle laden<span></span></a></li>
-<li class="chapter" data-level="17.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>17.3</b> EDA<span></span></a></li>
+<li class="chapter" data-level="17.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>17.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="17.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>17.2</b> Daten laden<span></span></a></li>
+<li class="chapter" data-level="17.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>17.3</b> Datensätze vorbereiten<span></span></a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>17.3.1</b> Textspalte vorbereiten<span></span></a></li>
+<li class="chapter" data-level="17.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>17.3.2</b> Datensätze verknüpfen<span></span></a></li>
+<li class="chapter" data-level="17.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>17.3.3</b> Merkmale hinzufügen<span></span></a></li>
+<li class="chapter" data-level="17.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>17.3.4</b> Konkordanzrecherche<span></span></a></li>
+<li class="chapter" data-level="17.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>17.3.5</b> Textzerlegung<span></span></a></li>
+<li class="chapter" data-level="17.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>17.3.6</b> Zerlegung und Annotation<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>18</b> Komplexe Äußerungen<span></span></a>
+<li class="chapter" data-level="17.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>17.4</b> Morphologie der Untertitel<span></span></a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>18.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="18.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texte-laden-1"><i class="fa fa-check"></i><b>18.2</b> Texte laden<span></span></a></li>
-<li class="chapter" data-level="18.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-1-zerlegen"><i class="fa fa-check"></i><b>18.3</b> Text 1 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>18.4</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>18.5</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>18.6</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>18.7</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>18.8</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>18.9</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.10" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-2-zerlegen"><i class="fa fa-check"></i><b>18.10</b> Text 2 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.11" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-1"><i class="fa fa-check"></i><b>18.11</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.12" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-1"><i class="fa fa-check"></i><b>18.12</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.13" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-1"><i class="fa fa-check"></i><b>18.13</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.14" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-1"><i class="fa fa-check"></i><b>18.14</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-1"><i class="fa fa-check"></i><b>18.15</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.16" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-1"><i class="fa fa-check"></i><b>18.16</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.17" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-3-zerlegen"><i class="fa fa-check"></i><b>18.17</b> Text 3 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-2"><i class="fa fa-check"></i><b>18.18</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.19" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-2"><i class="fa fa-check"></i><b>18.19</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.20" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-2"><i class="fa fa-check"></i><b>18.20</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.21" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-2"><i class="fa fa-check"></i><b>18.21</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.22" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-2"><i class="fa fa-check"></i><b>18.22</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.23" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-2"><i class="fa fa-check"></i><b>18.23</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#vergleich-der-äußerungslängen"><i class="fa fa-check"></i><b>18.24</b> Vergleich der Äußerungslängen<span></span></a></li>
+<li class="chapter" data-level="17.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>17.4.1</b> XRay Brother<span></span></a></li>
+<li class="chapter" data-level="17.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>17.4.2</b> Substantive im Plural<span></span></a></li>
+<li class="chapter" data-level="17.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>17.4.3</b> Adjektive im Komparativ<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>17.5</b> Syntax: Dependenz<span></span></a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>17.5.1</b> Aktiv und Passiv<span></span></a></li>
+<li class="chapter" data-level="17.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>17.5.2</b> Substantive und Pronomen als Satzglieder<span></span></a></li>
+<li class="chapter" data-level="17.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.3</b> Subjekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="17.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.4</b> Objekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="17.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>17.5.5</b> Wortklasse von Subjekt / Objekt<span></span></a></li>
+<li class="chapter" data-level="17.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>17.5.6</b> Gattungs- und Eigennamen<span></span></a></li>
+<li class="chapter" data-level="17.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>17.5.7</b> Konstituentenfolge<span></span></a></li>
+<li class="chapter" data-level="17.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>17.5.8</b> Kontexte von Modifizierern<span></span></a></li>
+<li class="chapter" data-level="17.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>17.5.9</b> Greenbergs Universalie 25<span></span></a></li>
+<li class="chapter" data-level="17.5.10" data-path="untertitel.html"><a href="untertitel.html#subjekt-vor-objekt-präferenz"><i class="fa fa-check"></i><b>17.5.10</b> Subjekt-vor-Objekt-Präferenz<span></span></a></li>
+<li class="chapter" data-level="17.5.11" data-path="untertitel.html"><a href="untertitel.html#mehrere-konstituenten"><i class="fa fa-check"></i><b>17.5.11</b> Mehrere Konstituenten<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>18</b> Rolling Stones auf Twitter<span></span></a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>18.1</b> Der Tod von Charlie Watts<span></span></a></li>
+<li class="chapter" data-level="18.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-4"><i class="fa fa-check"></i><b>18.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="18.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>18.3</b> Datenstrom holen<span></span></a></li>
+<li class="chapter" data-level="18.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>18.4</b> Tweets holen<span></span></a></li>
+<li class="chapter" data-level="18.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>18.5</b> Datensatz erstellen<span></span></a></li>
+<li class="chapter" data-level="18.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>18.6</b> Datensatz speichern<span></span></a></li>
+<li class="chapter" data-level="18.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>18.7</b> Datensatz laden<span></span></a></li>
+<li class="chapter" data-level="18.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>18.8</b> Verfasser der Tweets<span></span></a></li>
+<li class="chapter" data-level="18.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>18.9</b> Timeplot<span></span></a></li>
+<li class="chapter" data-level="18.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>18.10</b> User-Informationen<span></span></a></li>
+<li class="chapter" data-level="18.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>18.11</b> Geographische Verteilung<span></span></a></li>
+<li class="chapter" data-level="18.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>18.12</b> Speichern des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="18.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>18.13</b> Laden des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="18.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>18.14</b> Zeitlicher geographischer Verlauf<span></span></a></li>
+<li class="chapter" data-level="18.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>18.15</b> Lange Wörter<span></span></a></li>
+<li class="chapter" data-level="18.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>18.16</b> Topwörter<span></span></a></li>
+<li class="chapter" data-level="18.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>18.17</b> Netzwerke<span></span></a></li>
+<li class="chapter" data-level="18.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>18.18</b> Sentiment &amp; Emotion<span></span></a></li>
+<li class="chapter" data-level="18.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>18.19</b> Sentiment (Animation)<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -561,7 +561,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestützte Textanalyse mit R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestützte Text- und Korpusanalyse mit R</a>
           </h1>
         </div>
 
@@ -569,145 +569,145 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="deutsche-zungenbrecher" class="section level1 hasAnchor" number="17">
-<h1><span class="header-section-number">Kapitel 17</span> Deutsche Zungenbrecher<a href="deutsche-zungenbrecher.html#deutsche-zungenbrecher" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="deutsche-zungenbrecher" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Kapitel 7</span> Deutsche Zungenbrecher<a href="deutsche-zungenbrecher.html#deutsche-zungenbrecher" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Ein Experiment mit Studierenden der Germanistik in Maribor:<br />
 - 11 deutsche Zungenbrecher (tongue twisters, lomilci jezika, besedna zavozlanka)<br />
 - Webadresse: <a href="https://www.youtube.com/watch?v=wuK_znJRKhU" class="uri">https://www.youtube.com/watch?v=wuK_znJRKhU</a></p>
-<div id="programme-laden-3" class="section level2 hasAnchor" number="17.1">
-<h2><span class="header-section-number">17.1</span> Programme laden<a href="deutsche-zungenbrecher.html#programme-laden-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1236-1"><a href="deutsche-zungenbrecher.html#cb1236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1236-2"><a href="deutsche-zungenbrecher.html#cb1236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1236-3"><a href="deutsche-zungenbrecher.html#cb1236-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1236-4"><a href="deutsche-zungenbrecher.html#cb1236-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1236-5"><a href="deutsche-zungenbrecher.html#cb1236-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code></pre></div>
+<div id="programme-laden-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Programme laden<a href="deutsche-zungenbrecher.html#programme-laden-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="deutsche-zungenbrecher.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb479-2"><a href="deutsche-zungenbrecher.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb479-3"><a href="deutsche-zungenbrecher.html#cb479-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb479-4"><a href="deutsche-zungenbrecher.html#cb479-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb479-5"><a href="deutsche-zungenbrecher.html#cb479-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code></pre></div>
 </div>
-<div id="tabelle-laden" class="section level2 hasAnchor" number="17.2">
-<h2><span class="header-section-number">17.2</span> Tabelle laden<a href="deutsche-zungenbrecher.html#tabelle-laden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tabelle-laden" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Tabelle laden<a href="deutsche-zungenbrecher.html#tabelle-laden" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Wir laden die gemeinsame Google-Tabelle:</p>
-<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1237-1"><a href="deutsche-zungenbrecher.html#cb1237-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/Zungenbrecher.xlsx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1237-2"><a href="deutsche-zungenbrecher.html#cb1237-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
-<span id="cb1237-3"><a href="deutsche-zungenbrecher.html#cb1237-3" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, <span class="fu">as.numeric</span>(.))))</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="deutsche-zungenbrecher.html#cb480-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="ot">=</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;data/Zungenbrecher.xlsx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb480-2"><a href="deutsche-zungenbrecher.html#cb480-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), </span>
+<span id="cb480-3"><a href="deutsche-zungenbrecher.html#cb480-3" aria-hidden="true" tabindex="-1"></a>                <span class="sc">~</span> <span class="fu">if_else</span>(<span class="fu">is.na</span>(.), <span class="dv">0</span>, <span class="fu">as.numeric</span>(.))))</span></code></pre></div>
 </div>
-<div id="eda" class="section level2 hasAnchor" number="17.3">
-<h2><span class="header-section-number">17.3</span> EDA<a href="deutsche-zungenbrecher.html#eda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1238-1"><a href="deutsche-zungenbrecher.html#cb1238-1" aria-hidden="true" tabindex="-1"></a>tabelle1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1238-2"><a href="deutsche-zungenbrecher.html#cb1238-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1238-3"><a href="deutsche-zungenbrecher.html#cb1238-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1238-4"><a href="deutsche-zungenbrecher.html#cb1238-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1238-5"><a href="deutsche-zungenbrecher.html#cb1238-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1238-6"><a href="deutsche-zungenbrecher.html#cb1238-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote))</span>
-<span id="cb1238-7"><a href="deutsche-zungenbrecher.html#cb1238-7" aria-hidden="true" tabindex="-1"></a>tabelle1</span></code></pre></div>
+<div id="eda" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> EDA<a href="deutsche-zungenbrecher.html#eda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="deutsche-zungenbrecher.html#cb481-1" aria-hidden="true" tabindex="-1"></a>tabelle1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb481-2"><a href="deutsche-zungenbrecher.html#cb481-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb481-3"><a href="deutsche-zungenbrecher.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb481-4"><a href="deutsche-zungenbrecher.html#cb481-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb481-5"><a href="deutsche-zungenbrecher.html#cb481-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb481-6"><a href="deutsche-zungenbrecher.html#cb481-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote))</span>
+<span id="cb481-7"><a href="deutsche-zungenbrecher.html#cb481-7" aria-hidden="true" tabindex="-1"></a>tabelle1</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##   Fehler Fehlerzeit Fehler_sd Fehlerzeit_sd
 ##    &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
 ## 1   1.11      4826.      1.10         2058.</code></pre>
 <p>Im Durchschnitt etwa <code>{Fehler}</code> Versprecher pro Zungenbrecher.
 Im Durchschnitt alle <code>{Fehlerzeit}</code> Millisekunden ein Versprecher.</p>
-<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1240-1"><a href="deutsche-zungenbrecher.html#cb1240-1" aria-hidden="true" tabindex="-1"></a>Fehler_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler</span>
-<span id="cb1240-2"><a href="deutsche-zungenbrecher.html#cb1240-2" aria-hidden="true" tabindex="-1"></a>Fehler_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler_sd</span>
-<span id="cb1240-3"><a href="deutsche-zungenbrecher.html#cb1240-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1240-4"><a href="deutsche-zungenbrecher.html#cb1240-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1240-5"><a href="deutsche-zungenbrecher.html#cb1240-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1240-6"><a href="deutsche-zungenbrecher.html#cb1240-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1240-7"><a href="deutsche-zungenbrecher.html#cb1240-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1240-8"><a href="deutsche-zungenbrecher.html#cb1240-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1240-9"><a href="deutsche-zungenbrecher.html#cb1240-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1240-10"><a href="deutsche-zungenbrecher.html#cb1240-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
-<span id="cb1240-11"><a href="deutsche-zungenbrecher.html#cb1240-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1240-12"><a href="deutsche-zungenbrecher.html#cb1240-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehler, ZungenbrNummer)) <span class="sc">+</span></span>
-<span id="cb1240-13"><a href="deutsche-zungenbrecher.html#cb1240-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehler <span class="sc">-</span> Fehler_sd,</span>
-<span id="cb1240-14"><a href="deutsche-zungenbrecher.html#cb1240-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehler <span class="sc">+</span> Fehler_sd)) <span class="sc">+</span></span>
-<span id="cb1240-15"><a href="deutsche-zungenbrecher.html#cb1240-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1240-16"><a href="deutsche-zungenbrecher.html#cb1240-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">+</span> Fehler_sd_insgesamt, </span>
-<span id="cb1240-17"><a href="deutsche-zungenbrecher.html#cb1240-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1240-18"><a href="deutsche-zungenbrecher.html#cb1240-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">-</span> Fehler_sd_insgesamt, </span>
-<span id="cb1240-19"><a href="deutsche-zungenbrecher.html#cb1240-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1240-20"><a href="deutsche-zungenbrecher.html#cb1240-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1240-21"><a href="deutsche-zungenbrecher.html#cb1240-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1240-22"><a href="deutsche-zungenbrecher.html#cb1240-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1240-23"><a href="deutsche-zungenbrecher.html#cb1240-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span>
-<span id="cb1240-24"><a href="deutsche-zungenbrecher.html#cb1240-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl.png&quot;</span>)</span>
-<span id="cb1240-25"><a href="deutsche-zungenbrecher.html#cb1240-25" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1241-1"><a href="deutsche-zungenbrecher.html#cb1241-1" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit</span>
-<span id="cb1241-2"><a href="deutsche-zungenbrecher.html#cb1241-2" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit_sd</span>
-<span id="cb1241-3"><a href="deutsche-zungenbrecher.html#cb1241-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1241-4"><a href="deutsche-zungenbrecher.html#cb1241-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1241-5"><a href="deutsche-zungenbrecher.html#cb1241-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1241-6"><a href="deutsche-zungenbrecher.html#cb1241-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1241-7"><a href="deutsche-zungenbrecher.html#cb1241-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
-<span id="cb1241-8"><a href="deutsche-zungenbrecher.html#cb1241-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
-<span id="cb1241-9"><a href="deutsche-zungenbrecher.html#cb1241-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
-<span id="cb1241-10"><a href="deutsche-zungenbrecher.html#cb1241-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
-<span id="cb1241-11"><a href="deutsche-zungenbrecher.html#cb1241-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1241-12"><a href="deutsche-zungenbrecher.html#cb1241-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerzeit, ZungenbrNummer)) <span class="sc">+</span></span>
-<span id="cb1241-13"><a href="deutsche-zungenbrecher.html#cb1241-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehlerzeit <span class="sc">-</span> Fehlerzeit_sd,</span>
-<span id="cb1241-14"><a href="deutsche-zungenbrecher.html#cb1241-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehlerzeit <span class="sc">+</span> Fehlerzeit_sd)) <span class="sc">+</span></span>
-<span id="cb1241-15"><a href="deutsche-zungenbrecher.html#cb1241-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1241-16"><a href="deutsche-zungenbrecher.html#cb1241-16" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1241-17"><a href="deutsche-zungenbrecher.html#cb1241-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1241-18"><a href="deutsche-zungenbrecher.html#cb1241-18" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">+</span> Fehlerzeit_sd_insgesamt, </span>
-<span id="cb1241-19"><a href="deutsche-zungenbrecher.html#cb1241-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1241-20"><a href="deutsche-zungenbrecher.html#cb1241-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1241-21"><a href="deutsche-zungenbrecher.html#cb1241-21" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">-</span> Fehlerzeit_sd_insgesamt, </span>
-<span id="cb1241-22"><a href="deutsche-zungenbrecher.html#cb1241-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1241-23"><a href="deutsche-zungenbrecher.html#cb1241-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1241-24"><a href="deutsche-zungenbrecher.html#cb1241-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1241-25"><a href="deutsche-zungenbrecher.html#cb1241-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1241-26"><a href="deutsche-zungenbrecher.html#cb1241-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher&quot;</span>)</span>
-<span id="cb1241-27"><a href="deutsche-zungenbrecher.html#cb1241-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit.png&quot;</span>)</span>
-<span id="cb1241-28"><a href="deutsche-zungenbrecher.html#cb1241-28" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1242-1"><a href="deutsche-zungenbrecher.html#cb1242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1242-2"><a href="deutsche-zungenbrecher.html#cb1242-2" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1243-1"><a href="deutsche-zungenbrecher.html#cb1243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_patch1.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="deutsche-zungenbrecher.html#cb1244-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-2"><a href="deutsche-zungenbrecher.html#cb1244-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1244-3"><a href="deutsche-zungenbrecher.html#cb1244-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1244-4"><a href="deutsche-zungenbrecher.html#cb1244-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb1244-5"><a href="deutsche-zungenbrecher.html#cb1244-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1244-6"><a href="deutsche-zungenbrecher.html#cb1244-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1245-1"><a href="deutsche-zungenbrecher.html#cb1245-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-2"><a href="deutsche-zungenbrecher.html#cb1245-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1245-3"><a href="deutsche-zungenbrecher.html#cb1245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1245-4"><a href="deutsche-zungenbrecher.html#cb1245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb1245-5"><a href="deutsche-zungenbrecher.html#cb1245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1245-6"><a href="deutsche-zungenbrecher.html#cb1245-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="deutsche-zungenbrecher.html#cb1246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_histogram.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1247-1"><a href="deutsche-zungenbrecher.html#cb1247-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1247-2"><a href="deutsche-zungenbrecher.html#cb1247-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1247-3"><a href="deutsche-zungenbrecher.html#cb1247-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, Versuchsperson, </span>
-<span id="cb1247-4"><a href="deutsche-zungenbrecher.html#cb1247-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(ZungenbrNummer))) <span class="sc">+</span></span>
-<span id="cb1247-5"><a href="deutsche-zungenbrecher.html#cb1247-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
-<span id="cb1247-6"><a href="deutsche-zungenbrecher.html#cb1247-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1247-7"><a href="deutsche-zungenbrecher.html#cb1247-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1247-8"><a href="deutsche-zungenbrecher.html#cb1247-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1248-1"><a href="deutsche-zungenbrecher.html#cb1248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1249-1"><a href="deutsche-zungenbrecher.html#cb1249-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-2"><a href="deutsche-zungenbrecher.html#cb1249-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-3"><a href="deutsche-zungenbrecher.html#cb1249-3" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1249-4"><a href="deutsche-zungenbrecher.html#cb1249-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, ZungenbrNummer, <span class="at">color =</span> Versuchsperson)) <span class="sc">+</span></span>
-<span id="cb1249-5"><a href="deutsche-zungenbrecher.html#cb1249-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
-<span id="cb1249-6"><a href="deutsche-zungenbrecher.html#cb1249-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
-<span id="cb1249-7"><a href="deutsche-zungenbrecher.html#cb1249-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb1249-8"><a href="deutsche-zungenbrecher.html#cb1249-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1249-9"><a href="deutsche-zungenbrecher.html#cb1249-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1250-1"><a href="deutsche-zungenbrecher.html#cb1250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1251-1"><a href="deutsche-zungenbrecher.html#cb1251-1" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-2"><a href="deutsche-zungenbrecher.html#cb1251-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-3"><a href="deutsche-zungenbrecher.html#cb1251-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Addition<span class="sc">:</span>Kontamination, </span>
-<span id="cb1251-4"><a href="deutsche-zungenbrecher.html#cb1251-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Versprechertyp&quot;</span>, </span>
-<span id="cb1251-5"><a href="deutsche-zungenbrecher.html#cb1251-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehlerzahl&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-6"><a href="deutsche-zungenbrecher.html#cb1251-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Versprechertyp) <span class="sc">%&gt;%</span> </span>
-<span id="cb1251-7"><a href="deutsche-zungenbrecher.html#cb1251-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Versprecherzahl =</span> <span class="fu">mean</span>(Fehlerzahl),</span>
-<span id="cb1251-8"><a href="deutsche-zungenbrecher.html#cb1251-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Versprecherzahl_sd =</span> <span class="fu">sd</span>(Fehlerzahl))</span>
-<span id="cb1251-9"><a href="deutsche-zungenbrecher.html#cb1251-9" aria-hidden="true" tabindex="-1"></a>tabelle2</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="deutsche-zungenbrecher.html#cb483-1" aria-hidden="true" tabindex="-1"></a>Fehler_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler</span>
+<span id="cb483-2"><a href="deutsche-zungenbrecher.html#cb483-2" aria-hidden="true" tabindex="-1"></a>Fehler_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehler_sd</span>
+<span id="cb483-3"><a href="deutsche-zungenbrecher.html#cb483-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb483-4"><a href="deutsche-zungenbrecher.html#cb483-4" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb483-5"><a href="deutsche-zungenbrecher.html#cb483-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb483-6"><a href="deutsche-zungenbrecher.html#cb483-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb483-7"><a href="deutsche-zungenbrecher.html#cb483-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb483-8"><a href="deutsche-zungenbrecher.html#cb483-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb483-9"><a href="deutsche-zungenbrecher.html#cb483-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb483-10"><a href="deutsche-zungenbrecher.html#cb483-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
+<span id="cb483-11"><a href="deutsche-zungenbrecher.html#cb483-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb483-12"><a href="deutsche-zungenbrecher.html#cb483-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehler, ZungenbrNummer)) <span class="sc">+</span></span>
+<span id="cb483-13"><a href="deutsche-zungenbrecher.html#cb483-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehler <span class="sc">-</span> Fehler_sd,</span>
+<span id="cb483-14"><a href="deutsche-zungenbrecher.html#cb483-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehler <span class="sc">+</span> Fehler_sd)) <span class="sc">+</span></span>
+<span id="cb483-15"><a href="deutsche-zungenbrecher.html#cb483-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-16"><a href="deutsche-zungenbrecher.html#cb483-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">+</span> Fehler_sd_insgesamt, </span>
+<span id="cb483-17"><a href="deutsche-zungenbrecher.html#cb483-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-18"><a href="deutsche-zungenbrecher.html#cb483-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Fehler_insgesamt <span class="sc">-</span> Fehler_sd_insgesamt, </span>
+<span id="cb483-19"><a href="deutsche-zungenbrecher.html#cb483-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-20"><a href="deutsche-zungenbrecher.html#cb483-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb483-21"><a href="deutsche-zungenbrecher.html#cb483-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb483-22"><a href="deutsche-zungenbrecher.html#cb483-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-23"><a href="deutsche-zungenbrecher.html#cb483-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span>
+<span id="cb483-24"><a href="deutsche-zungenbrecher.html#cb483-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl.png&quot;</span>)</span>
+<span id="cb483-25"><a href="deutsche-zungenbrecher.html#cb483-25" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-4-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="deutsche-zungenbrecher.html#cb484-1" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit</span>
+<span id="cb484-2"><a href="deutsche-zungenbrecher.html#cb484-2" aria-hidden="true" tabindex="-1"></a>Fehlerzeit_sd_insgesamt <span class="ot">=</span> tabelle1<span class="sc">$</span>Fehlerzeit_sd</span>
+<span id="cb484-3"><a href="deutsche-zungenbrecher.html#cb484-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-4"><a href="deutsche-zungenbrecher.html#cb484-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb484-5"><a href="deutsche-zungenbrecher.html#cb484-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb484-6"><a href="deutsche-zungenbrecher.html#cb484-6" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb484-7"><a href="deutsche-zungenbrecher.html#cb484-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Fehler =</span> <span class="fu">mean</span>(Fehlersumme),</span>
+<span id="cb484-8"><a href="deutsche-zungenbrecher.html#cb484-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit =</span> <span class="fu">mean</span>(Fehlerquote),</span>
+<span id="cb484-9"><a href="deutsche-zungenbrecher.html#cb484-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehler_sd =</span> <span class="fu">sd</span>(Fehlersumme),</span>
+<span id="cb484-10"><a href="deutsche-zungenbrecher.html#cb484-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">Fehlerzeit_sd =</span> <span class="fu">sd</span>(Fehlerquote),</span>
+<span id="cb484-11"><a href="deutsche-zungenbrecher.html#cb484-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;keep&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb484-12"><a href="deutsche-zungenbrecher.html#cb484-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerzeit, ZungenbrNummer)) <span class="sc">+</span></span>
+<span id="cb484-13"><a href="deutsche-zungenbrecher.html#cb484-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Fehlerzeit <span class="sc">-</span> Fehlerzeit_sd,</span>
+<span id="cb484-14"><a href="deutsche-zungenbrecher.html#cb484-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Fehlerzeit <span class="sc">+</span> Fehlerzeit_sd)) <span class="sc">+</span></span>
+<span id="cb484-15"><a href="deutsche-zungenbrecher.html#cb484-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb484-16"><a href="deutsche-zungenbrecher.html#cb484-16" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb484-17"><a href="deutsche-zungenbrecher.html#cb484-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb484-18"><a href="deutsche-zungenbrecher.html#cb484-18" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">+</span> Fehlerzeit_sd_insgesamt, </span>
+<span id="cb484-19"><a href="deutsche-zungenbrecher.html#cb484-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb484-20"><a href="deutsche-zungenbrecher.html#cb484-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb484-21"><a href="deutsche-zungenbrecher.html#cb484-21" aria-hidden="true" tabindex="-1"></a>               Fehlerzeit_insgesamt <span class="sc">-</span> Fehlerzeit_sd_insgesamt, </span>
+<span id="cb484-22"><a href="deutsche-zungenbrecher.html#cb484-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb484-23"><a href="deutsche-zungenbrecher.html#cb484-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb484-24"><a href="deutsche-zungenbrecher.html#cb484-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb484-25"><a href="deutsche-zungenbrecher.html#cb484-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb484-26"><a href="deutsche-zungenbrecher.html#cb484-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher&quot;</span>)</span>
+<span id="cb484-27"><a href="deutsche-zungenbrecher.html#cb484-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit.png&quot;</span>)</span>
+<span id="cb484-28"><a href="deutsche-zungenbrecher.html#cb484-28" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-5-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="deutsche-zungenbrecher.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb485-2"><a href="deutsche-zungenbrecher.html#cb485-2" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="deutsche-zungenbrecher.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_patch1.png&quot;</span>, <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="deutsche-zungenbrecher.html#cb487-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb487-2"><a href="deutsche-zungenbrecher.html#cb487-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb487-3"><a href="deutsche-zungenbrecher.html#cb487-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb487-4"><a href="deutsche-zungenbrecher.html#cb487-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb487-5"><a href="deutsche-zungenbrecher.html#cb487-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb487-6"><a href="deutsche-zungenbrecher.html#cb487-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="deutsche-zungenbrecher.html#cb488-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb488-2"><a href="deutsche-zungenbrecher.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb488-3"><a href="deutsche-zungenbrecher.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlersumme, <span class="at">fill =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb488-4"><a href="deutsche-zungenbrecher.html#cb488-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb488-5"><a href="deutsche-zungenbrecher.html#cb488-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb488-6"><a href="deutsche-zungenbrecher.html#cb488-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Anzahl der Fehler pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="deutsche-zungenbrecher.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_histogram.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="deutsche-zungenbrecher.html#cb490-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb490-2"><a href="deutsche-zungenbrecher.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb490-3"><a href="deutsche-zungenbrecher.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, Versuchsperson, </span>
+<span id="cb490-4"><a href="deutsche-zungenbrecher.html#cb490-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="fu">factor</span>(ZungenbrNummer))) <span class="sc">+</span></span>
+<span id="cb490-5"><a href="deutsche-zungenbrecher.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
+<span id="cb490-6"><a href="deutsche-zungenbrecher.html#cb490-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb490-7"><a href="deutsche-zungenbrecher.html#cb490-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb490-8"><a href="deutsche-zungenbrecher.html#cb490-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="deutsche-zungenbrecher.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="deutsche-zungenbrecher.html#cb492-1" aria-hidden="true" tabindex="-1"></a>zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb492-2"><a href="deutsche-zungenbrecher.html#cb492-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ZungenbrNummer) <span class="sc">%&gt;%</span> </span>
+<span id="cb492-3"><a href="deutsche-zungenbrecher.html#cb492-3" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb492-4"><a href="deutsche-zungenbrecher.html#cb492-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Fehlerquote, ZungenbrNummer, <span class="at">color =</span> Versuchsperson)) <span class="sc">+</span></span>
+<span id="cb492-5"><a href="deutsche-zungenbrecher.html#cb492-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">12000</span>) <span class="sc">+</span></span>
+<span id="cb492-6"><a href="deutsche-zungenbrecher.html#cb492-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12000</span>, <span class="dv">1000</span>)) <span class="sc">+</span></span>
+<span id="cb492-7"><a href="deutsche-zungenbrecher.html#cb492-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb492-8"><a href="deutsche-zungenbrecher.html#cb492-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb492-9"><a href="deutsche-zungenbrecher.html#cb492-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzeit pro Zungenbrecher bei Versuchspersonen&quot;</span>)</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="deutsche-zungenbrecher.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzeit_personen.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="deutsche-zungenbrecher.html#cb494-1" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="ot">=</span> zungenbrecher <span class="sc">%&gt;%</span> </span>
+<span id="cb494-2"><a href="deutsche-zungenbrecher.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  drop_na <span class="sc">%&gt;%</span> </span>
+<span id="cb494-3"><a href="deutsche-zungenbrecher.html#cb494-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(Addition<span class="sc">:</span>Kontamination, </span>
+<span id="cb494-4"><a href="deutsche-zungenbrecher.html#cb494-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Versprechertyp&quot;</span>, </span>
+<span id="cb494-5"><a href="deutsche-zungenbrecher.html#cb494-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;Fehlerzahl&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb494-6"><a href="deutsche-zungenbrecher.html#cb494-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Versprechertyp) <span class="sc">%&gt;%</span> </span>
+<span id="cb494-7"><a href="deutsche-zungenbrecher.html#cb494-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Versprecherzahl =</span> <span class="fu">mean</span>(Fehlerzahl),</span>
+<span id="cb494-8"><a href="deutsche-zungenbrecher.html#cb494-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">Versprecherzahl_sd =</span> <span class="fu">sd</span>(Fehlerzahl))</span>
+<span id="cb494-9"><a href="deutsche-zungenbrecher.html#cb494-9" aria-hidden="true" tabindex="-1"></a>tabelle2</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   Versprechertyp Versprecherzahl Versprecherzahl_sd
 ##   &lt;chr&gt;                    &lt;dbl&gt;              &lt;dbl&gt;
@@ -715,28 +715,28 @@ Im Durchschnitt alle <code>{Fehlerzeit}</code> Millisekunden ein Versprecher.</p
 ## 2 Deletion                 0.235              0.427
 ## 3 Kontamination            0.106              0.310
 ## 4 Substitution             0.376              0.756</code></pre>
-<div class="sourceCode" id="cb1253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1253-1"><a href="deutsche-zungenbrecher.html#cb1253-1" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl)</span>
-<span id="cb1253-2"><a href="deutsche-zungenbrecher.html#cb1253-2" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_sd_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl_sd)</span>
-<span id="cb1253-3"><a href="deutsche-zungenbrecher.html#cb1253-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1253-4"><a href="deutsche-zungenbrecher.html#cb1253-4" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="sc">%&gt;%</span> </span>
-<span id="cb1253-5"><a href="deutsche-zungenbrecher.html#cb1253-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Versprecherzahl, Versprechertyp, </span>
-<span id="cb1253-6"><a href="deutsche-zungenbrecher.html#cb1253-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> Versprechertyp)) <span class="sc">+</span></span>
-<span id="cb1253-7"><a href="deutsche-zungenbrecher.html#cb1253-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Versprecherzahl <span class="sc">-</span> Versprecherzahl_sd,</span>
-<span id="cb1253-8"><a href="deutsche-zungenbrecher.html#cb1253-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Versprecherzahl <span class="sc">+</span> Versprecherzahl_sd)) <span class="sc">+</span></span>
-<span id="cb1253-9"><a href="deutsche-zungenbrecher.html#cb1253-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
-<span id="cb1253-10"><a href="deutsche-zungenbrecher.html#cb1253-10" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1253-11"><a href="deutsche-zungenbrecher.html#cb1253-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">+</span></span>
-<span id="cb1253-12"><a href="deutsche-zungenbrecher.html#cb1253-12" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
-<span id="cb1253-13"><a href="deutsche-zungenbrecher.html#cb1253-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1253-14"><a href="deutsche-zungenbrecher.html#cb1253-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">-</span> </span>
-<span id="cb1253-15"><a href="deutsche-zungenbrecher.html#cb1253-15" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
-<span id="cb1253-16"><a href="deutsche-zungenbrecher.html#cb1253-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1253-17"><a href="deutsche-zungenbrecher.html#cb1253-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.2</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
-<span id="cb1253-18"><a href="deutsche-zungenbrecher.html#cb1253-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(breaks = seq(0, 11, 1)) +</span></span>
-<span id="cb1253-19"><a href="deutsche-zungenbrecher.html#cb1253-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb1253-20"><a href="deutsche-zungenbrecher.html#cb1253-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span></code></pre></div>
-<p><img src="28-Zungenbrecher_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
-<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1254-1"><a href="deutsche-zungenbrecher.html#cb1254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_errortype.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="deutsche-zungenbrecher.html#cb496-1" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl)</span>
+<span id="cb496-2"><a href="deutsche-zungenbrecher.html#cb496-2" aria-hidden="true" tabindex="-1"></a>Versprecherzahl_sd_insgesamt <span class="ot">=</span> <span class="fu">mean</span>(tabelle2<span class="sc">$</span>Versprecherzahl_sd)</span>
+<span id="cb496-3"><a href="deutsche-zungenbrecher.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-4"><a href="deutsche-zungenbrecher.html#cb496-4" aria-hidden="true" tabindex="-1"></a>tabelle2 <span class="sc">%&gt;%</span> </span>
+<span id="cb496-5"><a href="deutsche-zungenbrecher.html#cb496-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Versprecherzahl, Versprechertyp, </span>
+<span id="cb496-6"><a href="deutsche-zungenbrecher.html#cb496-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> Versprechertyp)) <span class="sc">+</span></span>
+<span id="cb496-7"><a href="deutsche-zungenbrecher.html#cb496-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Versprecherzahl <span class="sc">-</span> Versprecherzahl_sd,</span>
+<span id="cb496-8"><a href="deutsche-zungenbrecher.html#cb496-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">xmax =</span> Versprecherzahl <span class="sc">+</span> Versprecherzahl_sd)) <span class="sc">+</span></span>
+<span id="cb496-9"><a href="deutsche-zungenbrecher.html#cb496-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> </span>
+<span id="cb496-10"><a href="deutsche-zungenbrecher.html#cb496-10" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_insgesamt, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb496-11"><a href="deutsche-zungenbrecher.html#cb496-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">+</span></span>
+<span id="cb496-12"><a href="deutsche-zungenbrecher.html#cb496-12" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
+<span id="cb496-13"><a href="deutsche-zungenbrecher.html#cb496-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb496-14"><a href="deutsche-zungenbrecher.html#cb496-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Versprecherzahl_insgesamt <span class="sc">-</span> </span>
+<span id="cb496-15"><a href="deutsche-zungenbrecher.html#cb496-15" aria-hidden="true" tabindex="-1"></a>               Versprecherzahl_sd_insgesamt, </span>
+<span id="cb496-16"><a href="deutsche-zungenbrecher.html#cb496-16" aria-hidden="true" tabindex="-1"></a>             <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb496-17"><a href="deutsche-zungenbrecher.html#cb496-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.2</span>, <span class="fl">0.2</span>)) <span class="sc">+</span></span>
+<span id="cb496-18"><a href="deutsche-zungenbrecher.html#cb496-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(breaks = seq(0, 11, 1)) +</span></span>
+<span id="cb496-19"><a href="deutsche-zungenbrecher.html#cb496-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb496-20"><a href="deutsche-zungenbrecher.html#cb496-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Mittlere Fehlerzahl pro Zungenbrecher&quot;</span>)</span></code></pre></div>
+<p><img src="07-Zungenbrecher_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="deutsche-zungenbrecher.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;pictures/zungenbrecher_versprecherzahl_errortype.png&quot;</span>)</span></code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
 
 </div>
@@ -746,8 +746,8 @@ Im Durchschnitt alle <code>{Fehlerzeit}</code> Millisekunden ein Versprecher.</p
           </div>
         </div>
       </div>
-<a href="rolling-stones-auf-twitter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="komplexe-äußerungen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spracherwerbsdaten.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="buchstaben-in-romanen.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -778,7 +778,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/28-Zungenbrecher.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-Zungenbrecher.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -786,7 +786,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/tpetric7/raj2022-book/blob/master/28-Zungenbrecher.Rmd",
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/07-Zungenbrecher.Rmd",
 "text": null
 },
 "download": ["bookdownproj.pdf", "bookdownproj.epub"],

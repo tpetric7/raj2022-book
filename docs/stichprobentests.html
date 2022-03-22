@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 5 Stichprobentests | Computergestützte Textanalyse mit R</title>
-  <meta name="description" content="Kapitel 5 Stichprobentests | Computergestützte Textanalyse mit R" />
+  <title>Kapitel 5 Stichprobentests | Computergestützte Text- und Korpusanalyse mit R</title>
+  <meta name="description" content="Kapitel 5 Stichprobentests | Computergestützte Text- und Korpusanalyse mit R" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 5 Stichprobentests | Computergestützte Textanalyse mit R" />
+  <meta property="og:title" content="Kapitel 5 Stichprobentests | Computergestützte Text- und Korpusanalyse mit R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="/pictures/hayiti__wcloud_lemmas.png" />
@@ -16,15 +16,13 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 5 Stichprobentests | Computergestützte Textanalyse mit R" />
+  <meta name="twitter:title" content="Kapitel 5 Stichprobentests | Computergestützte Text- und Korpusanalyse mit R" />
   
   
   <meta name="twitter:image" content="/pictures/hayiti__wcloud_lemmas.png" />
 
-<meta name="author" content="Teodor Petrič" />
 
 
-<meta name="date" content="2022-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +30,7 @@
   
   
 <link rel="prev" href="r-rstudio.html"/>
-<link rel="next" href="vokalformanten-im-deutschen-als-fremdsprache.html"/>
+<link rel="next" href="spracherwerbsdaten.html"/>
 <script src="libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -210,7 +208,8 @@ div.csl-indent {
 <li><a href="./">Textanalyse mit R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung<span></span></a></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="1" data-path="einführung.html"><a href="einführung.html"><i class="fa fa-check"></i><b>1</b> Einführung<span></span></a></li>
 <li class="chapter" data-level="2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>2</b> Installation<span></span></a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="installation.html"><a href="installation.html#grundlegende-programme"><i class="fa fa-check"></i><b>2.1</b> Grundlegende Programme<span></span></a></li>
@@ -218,22 +217,23 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="installation.html"><a href="installation.html#hilfe"><i class="fa fa-check"></i><b>2.3</b> Hilfe<span></span></a></li>
 <li class="chapter" data-level="2.4" data-path="installation.html"><a href="installation.html#andere-werkzeuge"><i class="fa fa-check"></i><b>2.4</b> Andere Werkzeuge<span></span></a></li>
 <li class="chapter" data-level="2.5" data-path="installation.html"><a href="installation.html#cloud-dienste"><i class="fa fa-check"></i><b>2.5</b> Cloud-Dienste<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="installation.html"><a href="installation.html#repositorien-und-youtube"><i class="fa fa-check"></i><b>2.6</b> Repositorien und YouTube<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="showcase.html"><a href="showcase.html"><i class="fa fa-check"></i><b>3</b> Showcase<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="showcase.html"><a href="showcase.html#ggplot-with-emojis"><i class="fa fa-check"></i><b>3.1</b> ggplot with emojis<span></span></a></li>
-<li class="chapter" data-level="3.2" data-path="showcase.html"><a href="showcase.html#data-preparation-were-using-data-from-chart2000.com-music-charts-2000---2020"><i class="fa fa-check"></i><b>3.2</b> Data Preparation<br><br>We’re using data from <strong>Chart2000.com</strong>:<br>Music Charts 2000 - 2020<span></span></a></li>
-<li class="chapter" data-level="3.3" data-path="showcase.html"><a href="showcase.html#first-boxplot-some-tweaks-to-a-basic-ggplot2-chart-using-ggthemes-by-jeffrey-b.-arnold"><i class="fa fa-check"></i><b>3.3</b> First Boxplot: <br>Some tweaks to a basic ggplot2 chart<br><br>using <strong>ggthemes</strong> by <strong>Jeffrey B. Arnold</strong><span></span></a></li>
-<li class="chapter" data-level="3.4" data-path="showcase.html"><a href="showcase.html#show-ns-visually-by-specifying-varwidth-true"><i class="fa fa-check"></i><b>3.4</b> Show Ns Visually<br><br>by specifying <strong>varwidth = TRUE</strong><span></span></a></li>
-<li class="chapter" data-level="3.5" data-path="showcase.html"><a href="showcase.html#show-ns-numerically-using-envstatsstat_n_text-by-steven-millard-and-alexander-kowarik"><i class="fa fa-check"></i><b>3.5</b> Show Ns Numerically <br><br>using <strong>EnvStats::stat_n_text()</strong> by <strong>Steven Millard</strong> and <strong>Alexander Kowarik</strong><span></span></a></li>
-<li class="chapter" data-level="3.6" data-path="showcase.html"><a href="showcase.html#show-summary-statistics-on-hover-mouse-over-using-plotly-by-carson-sievert"><i class="fa fa-check"></i><b>3.6</b> Show Summary Statistics on Hover (Mouse-Over)<br><br>using <strong>plotly</strong> by <strong>Carson Sievert</strong><span></span></a></li>
-<li class="chapter" data-level="3.7" data-path="showcase.html"><a href="showcase.html#label-outliers-via-a-user-defined-function-and-geom_text"><i class="fa fa-check"></i><b>3.7</b> Label Outliers<br><br>via a <strong>user-defined function</strong> and <strong>geom_text()</strong><span></span></a></li>
-<li class="chapter" data-level="3.8" data-path="showcase.html"><a href="showcase.html#display-individual-data-points-using-geom_jitter"><i class="fa fa-check"></i><b>3.8</b> Display Individual Data Points<br><br>using <strong>geom_jitter()</strong><span></span></a></li>
-<li class="chapter" data-level="3.9" data-path="showcase.html"><a href="showcase.html#use-aesthetics-to-include-information-on-another-variable-combining-shape-and-color-using-rcolorbrewer-by-erich-neuwirth"><i class="fa fa-check"></i><b>3.9</b> Use Aesthetics to Include Information on Another Variable<br><br>Combining <strong>shape</strong> and <strong>color</strong>, using <strong>RColorBrewer</strong> by <strong>Erich Neuwirth</strong><span></span></a></li>
-<li class="chapter" data-level="3.10" data-path="showcase.html"><a href="showcase.html#add-means-for-comparison-to-medians"><i class="fa fa-check"></i><b>3.10</b> Add Means<br><br>for comparison to medians<span></span></a></li>
-<li class="chapter" data-level="3.11" data-path="showcase.html"><a href="showcase.html#calculate-and-display-statistical-tests-for-group-differences-using-ggstatsplot-by-indrajeet-patil"><i class="fa fa-check"></i><b>3.11</b> Calculate and Display Statistical Tests for Group Differences<br><br>using <strong>ggstatsplot</strong> by <strong>Indrajeet Patil</strong><span></span></a></li>
-<li class="chapter" data-level="3.12" data-path="showcase.html"><a href="showcase.html#group-differences-example-for-a-significant-test"><i class="fa fa-check"></i><b>3.12</b> Group Differences:<br><br>Example for a significant test<span></span></a></li>
-<li class="chapter" data-level="3.13" data-path="showcase.html"><a href="showcase.html#use-images-as-labels-via-ggtext-by-claus-wilke"><i class="fa fa-check"></i><b>3.13</b> Use Images as Labels<br><br>via <strong>ggtext</strong> by <strong>Claus Wilke</strong><span></span></a></li>
+<li class="chapter" data-level="3.1" data-path="showcase.html"><a href="showcase.html#ggplot-mit-emojis"><i class="fa fa-check"></i><b>3.1</b> ggplot mit emojis<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="showcase.html"><a href="showcase.html#datenvorbereitung"><i class="fa fa-check"></i><b>3.2</b> Datenvorbereitung<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="showcase.html"><a href="showcase.html#erster-boxplot"><i class="fa fa-check"></i><b>3.3</b> Erster Boxplot<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="showcase.html"><a href="showcase.html#visuelle-darstellung-ns"><i class="fa fa-check"></i><b>3.4</b> Visuelle Darstellung Ns<span></span></a></li>
+<li class="chapter" data-level="3.5" data-path="showcase.html"><a href="showcase.html#numerische-darstellung-ns"><i class="fa fa-check"></i><b>3.5</b> Numerische Darstellung Ns<span></span></a></li>
+<li class="chapter" data-level="3.6" data-path="showcase.html"><a href="showcase.html#zusammenfassende-statistiken-mouse-over"><i class="fa fa-check"></i><b>3.6</b> Zusammenfassende Statistiken (Mouse-Over)<span></span></a></li>
+<li class="chapter" data-level="3.7" data-path="showcase.html"><a href="showcase.html#ausreißer-markieren"><i class="fa fa-check"></i><b>3.7</b> Ausreißer markieren<span></span></a></li>
+<li class="chapter" data-level="3.8" data-path="showcase.html"><a href="showcase.html#individuelle-datenwerte-anzeigen"><i class="fa fa-check"></i><b>3.8</b> Individuelle Datenwerte anzeigen<span></span></a></li>
+<li class="chapter" data-level="3.9" data-path="showcase.html"><a href="showcase.html#ggplot-aesthetics-verwenden"><i class="fa fa-check"></i><b>3.9</b> ggplot Aesthetics verwenden<span></span></a></li>
+<li class="chapter" data-level="3.10" data-path="showcase.html"><a href="showcase.html#mittelwerte-hinzufügen"><i class="fa fa-check"></i><b>3.10</b> Mittelwerte hinzufügen<span></span></a></li>
+<li class="chapter" data-level="3.11" data-path="showcase.html"><a href="showcase.html#statistische-tests-anzeigen"><i class="fa fa-check"></i><b>3.11</b> Statistische Tests anzeigen<span></span></a></li>
+<li class="chapter" data-level="3.12" data-path="showcase.html"><a href="showcase.html#gruppendifferenzen"><i class="fa fa-check"></i><b>3.12</b> Gruppendifferenzen<span></span></a></li>
+<li class="chapter" data-level="3.13" data-path="showcase.html"><a href="showcase.html#bilder-als-labels"><i class="fa fa-check"></i><b>3.13</b> Bilder als Labels<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="r-rstudio.html"><a href="r-rstudio.html"><i class="fa fa-check"></i><b>4</b> R &amp; RStudio<span></span></a>
 <ul>
@@ -295,258 +295,258 @@ div.csl-indent {
 <li class="chapter" data-level="5.2.3" data-path="stichprobentests.html"><a href="stichprobentests.html#höflichkeit-und-grundfrequenz"><i class="fa fa-check"></i><b>5.2.3</b> Höflichkeit und Grundfrequenz<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>6</b> Vokalformanten im Deutschen als Fremdsprache<span></span></a>
+<li class="chapter" data-level="6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>6</b> Spracherwerbsdaten<span></span></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>6.1</b> Programme starten<span></span></a></li>
-<li class="chapter" data-level="6.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>6.2</b> Daten laden &amp; anpassen<span></span></a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>6.2.1</b> Datensatz 1<span></span></a></li>
-<li class="chapter" data-level="6.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>6.2.2</b> Datensatz 2<span></span></a></li>
-<li class="chapter" data-level="6.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>6.2.3</b> Datensatz 3<span></span></a></li>
+<li class="chapter" data-level="6.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-2"><i class="fa fa-check"></i><b>6.1</b> Programme<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>6.2</b> Daten lesen<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>6.3</b> Verknüpfung der einzelnen Dateien<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>6.4</b> 1. Häufigkeit insgesamt<span></span></a></li>
+<li class="chapter" data-level="6.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>6.5</b> 2. Welche d-Form am häufigsten?<span></span></a></li>
+<li class="chapter" data-level="6.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>6.6</b> 3. Welche Form als erste?<span></span></a></li>
+<li class="chapter" data-level="6.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>6.7</b> 4. Wann alle d-Formen vertreten?<span></span></a></li>
+<li class="chapter" data-level="6.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>6.8</b> 5. Bevorzugtes d-Wort von MOT<span></span></a></li>
+<li class="chapter" data-level="6.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>6.9</b> 6. Welche Formen hört Rahel nie / kaum?<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>6.3</b> IPA syms<span></span></a></li>
-<li class="chapter" data-level="6.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>6.4</b> Vergleich der Vokalformanten<span></span></a>
+<li class="chapter" data-level="7" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>7</b> Deutsche Zungenbrecher<span></span></a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>6.4.1</b> Datensatz 2<span></span></a></li>
-<li class="chapter" data-level="6.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>6.4.2</b> Datensatz 3<span></span></a></li>
+<li class="chapter" data-level="7.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-1"><i class="fa fa-check"></i><b>7.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>7.2</b> Tabelle laden<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>7.3</b> EDA<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>6.5</b> Aggregierter Datensatz<span></span></a>
+<li class="chapter" data-level="8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>8</b> Buchstaben in Romanen<span></span></a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>6.5.1</b> IPA syms<span></span></a></li>
-<li class="chapter" data-level="6.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>6.5.2</b> Tabelle<span></span></a></li>
-<li class="chapter" data-level="6.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>6.5.3</b> Datensatz 1 mit aggregierten Daten<span></span></a></li>
+<li class="chapter" data-level="8.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-1"><i class="fa fa-check"></i><b>8.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>8.2</b> Datensatz lesen<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>8.3</b> Buchstaben extrahieren<span></span></a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>8.3.1</b> aus Liste<span></span></a></li>
+<li class="chapter" data-level="8.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>8.3.2</b> aus Datensatz<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>6.6</b> Abbildungen mit <code>phonR</code><span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>8.4</b> Buchstaben zählen<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>8.5</b> Vokale<span></span></a></li>
+<li class="chapter" data-level="8.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>8.6</b> Konsonanten<span></span></a></li>
+<li class="chapter" data-level="8.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>8.7</b> Vokal-Konsonant-Verhältnis<span></span></a></li>
+<li class="chapter" data-level="8.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>8.8</b> Anzahl der Silben<span></span></a></li>
+<li class="chapter" data-level="8.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>8.9</b> Mittlere Wortlänge<span></span></a></li>
+<li class="chapter" data-level="8.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>8.10</b> Testen von Mittelwertunterschieden<span></span></a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>8.10.1</b> t-Test<span></span></a></li>
+<li class="chapter" data-level="8.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-3"><i class="fa fa-check"></i><b>8.10.2</b> Lineare Regression<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>7</b> Textzerlegung<span></span></a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-1"><i class="fa fa-check"></i><b>7.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="7.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>7.2</b> Text öffnen<span></span></a></li>
-<li class="chapter" data-level="7.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>7.3</b> Zerlegung des Textes<span></span></a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>7.3.1</b> Tabelle<span></span></a></li>
-<li class="chapter" data-level="7.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>7.3.2</b> Äußerungen<span></span></a></li>
-<li class="chapter" data-level="7.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>7.3.3</b> Wörter<span></span></a></li>
-<li class="chapter" data-level="7.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>7.3.4</b> Buchstaben<span></span></a></li>
-<li class="chapter" data-level="7.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>7.3.5</b> Ziffern umwandeln<span></span></a></li>
+<li class="chapter" data-level="8.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>8.11</b> Quanteda-Funktionen<span></span></a></li>
+<li class="chapter" data-level="8.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>8.12</b> Konsonantenverbindungen<span></span></a></li>
+<li class="chapter" data-level="8.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>8.13</b> Datensatz-Variante<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>7.4</b> Tabelle speichern<span></span></a></li>
-<li class="chapter" data-level="7.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>7.5</b> Tabelle öffnen<span></span></a></li>
-<li class="chapter" data-level="7.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>7.6</b> Zählen<span></span></a>
+<li class="chapter" data-level="9" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html"><i class="fa fa-check"></i><b>9</b> Vokalformanten im Deutschen als Fremdsprache<span></span></a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>7.6.1</b> Buchstaben<span></span></a></li>
-<li class="chapter" data-level="7.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>7.6.2</b> Worthäufigkeiten<span></span></a></li>
-<li class="chapter" data-level="7.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>7.6.3</b> Wortschatzdichte<span></span></a></li>
-<li class="chapter" data-level="7.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>7.6.4</b> Äußerungslänge<span></span></a></li>
-<li class="chapter" data-level="7.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>7.6.5</b> Vergleich mit quanteda<span></span></a></li>
-<li class="chapter" data-level="7.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>7.6.6</b> Vergleich mit Voyant Tools<span></span></a></li>
+<li class="chapter" data-level="9.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#programme-starten"><i class="fa fa-check"></i><b>9.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#daten-laden-anpassen"><i class="fa fa-check"></i><b>9.2</b> Daten laden &amp; anpassen<span></span></a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1"><i class="fa fa-check"></i><b>9.2.1</b> Datensatz 1<span></span></a></li>
+<li class="chapter" data-level="9.2.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2"><i class="fa fa-check"></i><b>9.2.2</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="9.2.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3"><i class="fa fa-check"></i><b>9.2.3</b> Datensatz 3<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="9.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms"><i class="fa fa-check"></i><b>9.3</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#vergleich-der-vokalformanten"><i class="fa fa-check"></i><b>9.4</b> Vergleich der Vokalformanten<span></span></a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-2-1"><i class="fa fa-check"></i><b>9.4.1</b> Datensatz 2<span></span></a></li>
+<li class="chapter" data-level="9.4.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-3-1"><i class="fa fa-check"></i><b>9.4.2</b> Datensatz 3<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>8</b> Kurzgeschichten im Vergleich<span></span></a>
+<li class="chapter" data-level="9.5" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#aggregierter-datensatz"><i class="fa fa-check"></i><b>9.5</b> Aggregierter Datensatz<span></span></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden-1"><i class="fa fa-check"></i><b>8.1</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="8.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>8.2</b> Texte laden<span></span></a></li>
-<li class="chapter" data-level="8.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>8.3</b> Textzerlegung und Annotation<span></span></a></li>
-<li class="chapter" data-level="8.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>8.4</b> Datensätze vereinen<span></span></a></li>
-<li class="chapter" data-level="8.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>8.5</b> Wortklassen zählen<span></span></a></li>
-<li class="chapter" data-level="8.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>8.6</b> Nicht-parametrischer Test<span></span></a></li>
-<li class="chapter" data-level="8.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren"><i class="fa fa-check"></i><b>8.7</b> Konnektoren<span></span></a></li>
-<li class="chapter" data-level="8.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>8.8</b> Äußerungslänge vergleichen<span></span></a></li>
+<li class="chapter" data-level="9.5.1" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#ipa-syms-1"><i class="fa fa-check"></i><b>9.5.1</b> IPA syms<span></span></a></li>
+<li class="chapter" data-level="9.5.2" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#tabelle"><i class="fa fa-check"></i><b>9.5.2</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="9.5.3" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#datensatz-1-mit-aggregierten-daten"><i class="fa fa-check"></i><b>9.5.3</b> Datensatz 1 mit aggregierten Daten<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html"><i class="fa fa-check"></i><b>9</b> Spracherwerbsdaten<span></span></a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#programme-2"><i class="fa fa-check"></i><b>9.1</b> Programme<span></span></a></li>
-<li class="chapter" data-level="9.2" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#daten-lesen"><i class="fa fa-check"></i><b>9.2</b> Daten lesen<span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#verknüpfung-der-einzelnen-dateien"><i class="fa fa-check"></i><b>9.3</b> Verknüpfung der einzelnen Dateien<span></span></a></li>
-<li class="chapter" data-level="9.4" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#häufigkeit-insgesamt"><i class="fa fa-check"></i><b>9.4</b> 1. Häufigkeit insgesamt<span></span></a></li>
-<li class="chapter" data-level="9.5" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-d-form-am-häufigsten"><i class="fa fa-check"></i><b>9.5</b> 2. Welche d-Form am häufigsten?<span></span></a></li>
-<li class="chapter" data-level="9.6" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-form-als-erste"><i class="fa fa-check"></i><b>9.6</b> 3. Welche Form als erste?<span></span></a></li>
-<li class="chapter" data-level="9.7" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#wann-alle-d-formen-vertreten"><i class="fa fa-check"></i><b>9.7</b> 4. Wann alle d-Formen vertreten?<span></span></a></li>
-<li class="chapter" data-level="9.8" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#bevorzugtes-d-wort-von-mot"><i class="fa fa-check"></i><b>9.8</b> 5. Bevorzugtes d-Wort von MOT<span></span></a></li>
-<li class="chapter" data-level="9.9" data-path="spracherwerbsdaten.html"><a href="spracherwerbsdaten.html#welche-formen-hört-rahel-nie-kaum"><i class="fa fa-check"></i><b>9.9</b> 6. Welche Formen hört Rahel nie / kaum?<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="vokalformanten-im-deutschen-als-fremdsprache.html"><a href="vokalformanten-im-deutschen-als-fremdsprache.html#abbildungen-mit-phonr"><i class="fa fa-check"></i><b>9.6</b> Abbildungen mit <code>phonR</code><span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>10</b> Textvergleich<span></span></a>
+<li class="chapter" data-level="10" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>10</b> Suffixe und Stemming<span></span></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="textvergleich.html"><a href="textvergleich.html#programme-installieren"><i class="fa fa-check"></i><b>10.1</b> Programme installieren<span></span></a></li>
-<li class="chapter" data-level="10.2" data-path="textvergleich.html"><a href="textvergleich.html#programme-laden-2"><i class="fa fa-check"></i><b>10.2</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="10.3" data-path="textvergleich.html"><a href="textvergleich.html#texte-öffnen"><i class="fa fa-check"></i><b>10.3</b> Texte öffnen<span></span></a></li>
-<li class="chapter" data-level="10.4" data-path="textvergleich.html"><a href="textvergleich.html#korpus-anlegen"><i class="fa fa-check"></i><b>10.4</b> Korpus anlegen<span></span></a></li>
-<li class="chapter" data-level="10.5" data-path="textvergleich.html"><a href="textvergleich.html#tokenisierung"><i class="fa fa-check"></i><b>10.5</b> Tokenisierung<span></span></a></li>
-<li class="chapter" data-level="10.6" data-path="textvergleich.html"><a href="textvergleich.html#tokenliste-säubern"><i class="fa fa-check"></i><b>10.6</b> Tokenliste säubern<span></span></a></li>
-<li class="chapter" data-level="10.7" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>10.7</b> Kwic<span></span></a></li>
-<li class="chapter" data-level="10.8" data-path="textvergleich.html"><a href="textvergleich.html#häufigkeit"><i class="fa fa-check"></i><b>10.8</b> Häufigkeit<span></span></a></li>
-<li class="chapter" data-level="10.9" data-path="textvergleich.html"><a href="textvergleich.html#kollokationen"><i class="fa fa-check"></i><b>10.9</b> Kollokationen<span></span></a></li>
-<li class="chapter" data-level="10.10" data-path="textvergleich.html"><a href="textvergleich.html#lemmatisierung"><i class="fa fa-check"></i><b>10.10</b> Lemmatisierung<span></span></a></li>
-<li class="chapter" data-level="10.11" data-path="textvergleich.html"><a href="textvergleich.html#wortwolken"><i class="fa fa-check"></i><b>10.11</b> Wortwolken<span></span></a></li>
-<li class="chapter" data-level="10.12" data-path="textvergleich.html"><a href="textvergleich.html#position-im-text-xray"><i class="fa fa-check"></i><b>10.12</b> Position im Text (xray)<span></span></a></li>
-<li class="chapter" data-level="10.13" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-vielfalt"><i class="fa fa-check"></i><b>10.13</b> Lexikalische Vielfalt<span></span></a></li>
-<li class="chapter" data-level="10.14" data-path="textvergleich.html"><a href="textvergleich.html#textähnlichkeit"><i class="fa fa-check"></i><b>10.14</b> Textähnlichkeit<span></span></a></li>
-<li class="chapter" data-level="10.15" data-path="textvergleich.html"><a href="textvergleich.html#schlüsselwörter-keywords"><i class="fa fa-check"></i><b>10.15</b> Schlüsselwörter (keywords)<span></span></a></li>
-<li class="chapter" data-level="10.16" data-path="textvergleich.html"><a href="textvergleich.html#lesbarkeit-des-textes"><i class="fa fa-check"></i><b>10.16</b> Lesbarkeit des Textes<span></span></a></li>
-<li class="chapter" data-level="10.17" data-path="textvergleich.html"><a href="textvergleich.html#kookurrenz-netzwerk-fcm"><i class="fa fa-check"></i><b>10.17</b> Kookurrenz-Netzwerk (FCM)<span></span></a></li>
-<li class="chapter" data-level="10.18" data-path="textvergleich.html"><a href="textvergleich.html#grammatische-analyse"><i class="fa fa-check"></i><b>10.18</b> Grammatische Analyse<span></span></a>
+<li class="chapter" data-level="10.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>10.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="10.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>10.2</b> Dateien einlesen<span></span></a></li>
+<li class="chapter" data-level="10.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung"><i class="fa fa-check"></i><b>10.3</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="10.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>10.4</b> Stemming<span></span></a></li>
+<li class="chapter" data-level="10.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>10.5</b> Wortbildungsanalyse<span></span></a>
 <ul>
-<li class="chapter" data-level="10.18.1" data-path="textvergleich.html"><a href="textvergleich.html#vorbereitung"><i class="fa fa-check"></i><b>10.18.1</b> Vorbereitung<span></span></a></li>
-<li class="chapter" data-level="10.18.2" data-path="textvergleich.html"><a href="textvergleich.html#vergleich-nomen-pronomen"><i class="fa fa-check"></i><b>10.18.2</b> Vergleich Nomen : Pronomen<span></span></a></li>
-<li class="chapter" data-level="10.18.3" data-path="textvergleich.html"><a href="textvergleich.html#konjunktionen-im-vergleich"><i class="fa fa-check"></i><b>10.18.3</b> Konjunktionen im Vergleich<span></span></a></li>
-<li class="chapter" data-level="10.18.4" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-einheiten"><i class="fa fa-check"></i><b>10.18.4</b> Lexikalische Einheiten<span></span></a></li>
-<li class="chapter" data-level="10.18.5" data-path="textvergleich.html"><a href="textvergleich.html#wortkorrelationen"><i class="fa fa-check"></i><b>10.18.5</b> Wortkorrelationen<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="10.19" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>10.19</b> Sentiment<span></span></a>
-<ul>
-<li class="chapter" data-level="10.19.1" data-path="textvergleich.html"><a href="textvergleich.html#version-1"><i class="fa fa-check"></i><b>10.19.1</b> Version 1<span></span></a></li>
-<li class="chapter" data-level="10.19.2" data-path="textvergleich.html"><a href="textvergleich.html#variante-2"><i class="fa fa-check"></i><b>10.19.2</b> Variante 2<span></span></a></li>
-<li class="chapter" data-level="10.19.3" data-path="textvergleich.html"><a href="textvergleich.html#variante-3"><i class="fa fa-check"></i><b>10.19.3</b> Variante 3<span></span></a></li>
+<li class="chapter" data-level="10.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>10.5.1</b> Suffix -lich<span></span></a></li>
+<li class="chapter" data-level="10.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>10.5.2</b> Mehrere ADJ Suffixe<span></span></a></li>
+<li class="chapter" data-level="10.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>10.5.3</b> Nicht verwendete Tabelle<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html"><i class="fa fa-check"></i><b>11</b> Suffixe und Stemming<span></span></a>
+<li class="chapter" data-level="11" data-path="konnektoren.html"><a href="konnektoren.html"><i class="fa fa-check"></i><b>11</b> Konnektoren<span></span></a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#packages-2"><i class="fa fa-check"></i><b>11.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="11.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#dateien-einlesen"><i class="fa fa-check"></i><b>11.2</b> Dateien einlesen<span></span></a></li>
-<li class="chapter" data-level="11.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#lemmatisierung-1"><i class="fa fa-check"></i><b>11.3</b> Lemmatisierung<span></span></a></li>
-<li class="chapter" data-level="11.4" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#stemming"><i class="fa fa-check"></i><b>11.4</b> Stemming<span></span></a></li>
-<li class="chapter" data-level="11.5" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#wortbildungsanalyse"><i class="fa fa-check"></i><b>11.5</b> Wortbildungsanalyse<span></span></a>
+<li class="chapter" data-level="11.1" data-path="konnektoren.html"><a href="konnektoren.html#pakete"><i class="fa fa-check"></i><b>11.1</b> Pakete<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="konnektoren.html"><a href="konnektoren.html#text-einlesen"><i class="fa fa-check"></i><b>11.2</b> Text einlesen<span></span></a></li>
+<li class="chapter" data-level="11.3" data-path="konnektoren.html"><a href="konnektoren.html#udpipe-laden"><i class="fa fa-check"></i><b>11.3</b> UDPipe laden<span></span></a></li>
+<li class="chapter" data-level="11.4" data-path="konnektoren.html"><a href="konnektoren.html#text-annotieren"><i class="fa fa-check"></i><b>11.4</b> Text annotieren<span></span></a></li>
+<li class="chapter" data-level="11.5" data-path="konnektoren.html"><a href="konnektoren.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>11.5</b> Wortklassen und Konnektoren<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html"><i class="fa fa-check"></i><b>12</b> Kurzgeschichten im Vergleich<span></span></a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#suffix--lich"><i class="fa fa-check"></i><b>11.5.1</b> Suffix -lich<span></span></a></li>
-<li class="chapter" data-level="11.5.2" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#mehrere-adj-suffixe"><i class="fa fa-check"></i><b>11.5.2</b> Mehrere ADJ Suffixe<span></span></a></li>
-<li class="chapter" data-level="11.5.3" data-path="suffixe-und-stemming.html"><a href="suffixe-und-stemming.html#nicht-verwendete-tabelle"><i class="fa fa-check"></i><b>11.5.3</b> Nicht verwendete Tabelle<span></span></a></li>
+<li class="chapter" data-level="12.1" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#programme-laden-2"><i class="fa fa-check"></i><b>12.1</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="12.2" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#texte-laden"><i class="fa fa-check"></i><b>12.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="12.3" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#textzerlegung-und-annotation"><i class="fa fa-check"></i><b>12.3</b> Textzerlegung und Annotation<span></span></a></li>
+<li class="chapter" data-level="12.4" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#datensätze-vereinen"><i class="fa fa-check"></i><b>12.4</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="12.5" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#wortklassen-zählen"><i class="fa fa-check"></i><b>12.5</b> Wortklassen zählen<span></span></a></li>
+<li class="chapter" data-level="12.6" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#nicht-parametrischer-test"><i class="fa fa-check"></i><b>12.6</b> Nicht-parametrischer Test<span></span></a></li>
+<li class="chapter" data-level="12.7" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#konnektoren-1"><i class="fa fa-check"></i><b>12.7</b> Konnektoren<span></span></a></li>
+<li class="chapter" data-level="12.8" data-path="kurzgeschichten-im-vergleich.html"><a href="kurzgeschichten-im-vergleich.html#äußerungslänge-vergleichen"><i class="fa fa-check"></i><b>12.8</b> Äußerungslänge vergleichen<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="textzerlegung.html"><a href="textzerlegung.html"><i class="fa fa-check"></i><b>13</b> Textzerlegung<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="textzerlegung.html"><a href="textzerlegung.html#packages-3"><i class="fa fa-check"></i><b>13.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="textzerlegung.html"><a href="textzerlegung.html#text-öffnen"><i class="fa fa-check"></i><b>13.2</b> Text öffnen<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="textzerlegung.html"><a href="textzerlegung.html#zerlegung-des-textes"><i class="fa fa-check"></i><b>13.3</b> Zerlegung des Textes<span></span></a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-1"><i class="fa fa-check"></i><b>13.3.1</b> Tabelle<span></span></a></li>
+<li class="chapter" data-level="13.3.2" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungen"><i class="fa fa-check"></i><b>13.3.2</b> Äußerungen<span></span></a></li>
+<li class="chapter" data-level="13.3.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wörter"><i class="fa fa-check"></i><b>13.3.3</b> Wörter<span></span></a></li>
+<li class="chapter" data-level="13.3.4" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben"><i class="fa fa-check"></i><b>13.3.4</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="13.3.5" data-path="textzerlegung.html"><a href="textzerlegung.html#ziffern-umwandeln"><i class="fa fa-check"></i><b>13.3.5</b> Ziffern umwandeln<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-speichern"><i class="fa fa-check"></i><b>13.4</b> Tabelle speichern<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="textzerlegung.html"><a href="textzerlegung.html#tabelle-öffnen"><i class="fa fa-check"></i><b>13.5</b> Tabelle öffnen<span></span></a></li>
+<li class="chapter" data-level="13.6" data-path="textzerlegung.html"><a href="textzerlegung.html#zählen"><i class="fa fa-check"></i><b>13.6</b> Zählen<span></span></a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="textzerlegung.html"><a href="textzerlegung.html#buchstaben-1"><i class="fa fa-check"></i><b>13.6.1</b> Buchstaben<span></span></a></li>
+<li class="chapter" data-level="13.6.2" data-path="textzerlegung.html"><a href="textzerlegung.html#worthäufigkeiten"><i class="fa fa-check"></i><b>13.6.2</b> Worthäufigkeiten<span></span></a></li>
+<li class="chapter" data-level="13.6.3" data-path="textzerlegung.html"><a href="textzerlegung.html#wortschatzdichte"><i class="fa fa-check"></i><b>13.6.3</b> Wortschatzdichte<span></span></a></li>
+<li class="chapter" data-level="13.6.4" data-path="textzerlegung.html"><a href="textzerlegung.html#äußerungslänge"><i class="fa fa-check"></i><b>13.6.4</b> Äußerungslänge<span></span></a></li>
+<li class="chapter" data-level="13.6.5" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-quanteda"><i class="fa fa-check"></i><b>13.6.5</b> Vergleich mit quanteda<span></span></a></li>
+<li class="chapter" data-level="13.6.6" data-path="textzerlegung.html"><a href="textzerlegung.html#vergleich-mit-voyant-tools"><i class="fa fa-check"></i><b>13.6.6</b> Vergleich mit Voyant Tools<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html"><i class="fa fa-check"></i><b>12</b> Buchstaben in Romanen<span></span></a>
+<li class="chapter" data-level="14" data-path="textvergleich.html"><a href="textvergleich.html"><i class="fa fa-check"></i><b>14</b> Textvergleich<span></span></a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#packages-3"><i class="fa fa-check"></i><b>12.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="12.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-lesen"><i class="fa fa-check"></i><b>12.2</b> Datensatz lesen<span></span></a></li>
-<li class="chapter" data-level="12.3" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-extrahieren"><i class="fa fa-check"></i><b>12.3</b> Buchstaben extrahieren<span></span></a>
+<li class="chapter" data-level="14.1" data-path="textvergleich.html"><a href="textvergleich.html#programme-installieren"><i class="fa fa-check"></i><b>14.1</b> Programme installieren<span></span></a></li>
+<li class="chapter" data-level="14.2" data-path="textvergleich.html"><a href="textvergleich.html#programme-laden-3"><i class="fa fa-check"></i><b>14.2</b> Programme laden<span></span></a></li>
+<li class="chapter" data-level="14.3" data-path="textvergleich.html"><a href="textvergleich.html#texte-öffnen"><i class="fa fa-check"></i><b>14.3</b> Texte öffnen<span></span></a></li>
+<li class="chapter" data-level="14.4" data-path="textvergleich.html"><a href="textvergleich.html#korpus-anlegen"><i class="fa fa-check"></i><b>14.4</b> Korpus anlegen<span></span></a></li>
+<li class="chapter" data-level="14.5" data-path="textvergleich.html"><a href="textvergleich.html#tokenisierung"><i class="fa fa-check"></i><b>14.5</b> Tokenisierung<span></span></a></li>
+<li class="chapter" data-level="14.6" data-path="textvergleich.html"><a href="textvergleich.html#tokenliste-säubern"><i class="fa fa-check"></i><b>14.6</b> Tokenliste säubern<span></span></a></li>
+<li class="chapter" data-level="14.7" data-path="textvergleich.html"><a href="textvergleich.html#kwic"><i class="fa fa-check"></i><b>14.7</b> Kwic<span></span></a></li>
+<li class="chapter" data-level="14.8" data-path="textvergleich.html"><a href="textvergleich.html#häufigkeit"><i class="fa fa-check"></i><b>14.8</b> Häufigkeit<span></span></a></li>
+<li class="chapter" data-level="14.9" data-path="textvergleich.html"><a href="textvergleich.html#kollokationen"><i class="fa fa-check"></i><b>14.9</b> Kollokationen<span></span></a></li>
+<li class="chapter" data-level="14.10" data-path="textvergleich.html"><a href="textvergleich.html#lemmatisierung-1"><i class="fa fa-check"></i><b>14.10</b> Lemmatisierung<span></span></a></li>
+<li class="chapter" data-level="14.11" data-path="textvergleich.html"><a href="textvergleich.html#wortwolken"><i class="fa fa-check"></i><b>14.11</b> Wortwolken<span></span></a></li>
+<li class="chapter" data-level="14.12" data-path="textvergleich.html"><a href="textvergleich.html#position-im-text-xray"><i class="fa fa-check"></i><b>14.12</b> Position im Text (xray)<span></span></a></li>
+<li class="chapter" data-level="14.13" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-vielfalt"><i class="fa fa-check"></i><b>14.13</b> Lexikalische Vielfalt<span></span></a></li>
+<li class="chapter" data-level="14.14" data-path="textvergleich.html"><a href="textvergleich.html#textähnlichkeit"><i class="fa fa-check"></i><b>14.14</b> Textähnlichkeit<span></span></a></li>
+<li class="chapter" data-level="14.15" data-path="textvergleich.html"><a href="textvergleich.html#schlüsselwörter-keywords"><i class="fa fa-check"></i><b>14.15</b> Schlüsselwörter (keywords)<span></span></a></li>
+<li class="chapter" data-level="14.16" data-path="textvergleich.html"><a href="textvergleich.html#lesbarkeit-des-textes"><i class="fa fa-check"></i><b>14.16</b> Lesbarkeit des Textes<span></span></a></li>
+<li class="chapter" data-level="14.17" data-path="textvergleich.html"><a href="textvergleich.html#kookurrenz-netzwerk-fcm"><i class="fa fa-check"></i><b>14.17</b> Kookurrenz-Netzwerk (FCM)<span></span></a></li>
+<li class="chapter" data-level="14.18" data-path="textvergleich.html"><a href="textvergleich.html#grammatische-analyse"><i class="fa fa-check"></i><b>14.18</b> Grammatische Analyse<span></span></a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-liste"><i class="fa fa-check"></i><b>12.3.1</b> aus Liste<span></span></a></li>
-<li class="chapter" data-level="12.3.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#aus-datensatz"><i class="fa fa-check"></i><b>12.3.2</b> aus Datensatz<span></span></a></li>
+<li class="chapter" data-level="14.18.1" data-path="textvergleich.html"><a href="textvergleich.html#vorbereitung"><i class="fa fa-check"></i><b>14.18.1</b> Vorbereitung<span></span></a></li>
+<li class="chapter" data-level="14.18.2" data-path="textvergleich.html"><a href="textvergleich.html#vergleich-nomen-pronomen"><i class="fa fa-check"></i><b>14.18.2</b> Vergleich Nomen : Pronomen<span></span></a></li>
+<li class="chapter" data-level="14.18.3" data-path="textvergleich.html"><a href="textvergleich.html#konjunktionen-im-vergleich"><i class="fa fa-check"></i><b>14.18.3</b> Konjunktionen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="14.18.4" data-path="textvergleich.html"><a href="textvergleich.html#lexikalische-einheiten"><i class="fa fa-check"></i><b>14.18.4</b> Lexikalische Einheiten<span></span></a></li>
+<li class="chapter" data-level="14.18.5" data-path="textvergleich.html"><a href="textvergleich.html#wortkorrelationen"><i class="fa fa-check"></i><b>14.18.5</b> Wortkorrelationen<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#buchstaben-zählen"><i class="fa fa-check"></i><b>12.4</b> Buchstaben zählen<span></span></a></li>
-<li class="chapter" data-level="12.5" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokale"><i class="fa fa-check"></i><b>12.5</b> Vokale<span></span></a></li>
-<li class="chapter" data-level="12.6" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonanten"><i class="fa fa-check"></i><b>12.6</b> Konsonanten<span></span></a></li>
-<li class="chapter" data-level="12.7" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#vokal-konsonant-verhältnis"><i class="fa fa-check"></i><b>12.7</b> Vokal-Konsonant-Verhältnis<span></span></a></li>
-<li class="chapter" data-level="12.8" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#anzahl-der-silben"><i class="fa fa-check"></i><b>12.8</b> Anzahl der Silben<span></span></a></li>
-<li class="chapter" data-level="12.9" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#mittlere-wortlänge"><i class="fa fa-check"></i><b>12.9</b> Mittlere Wortlänge<span></span></a></li>
-<li class="chapter" data-level="12.10" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#testen-von-mittelwertunterschieden"><i class="fa fa-check"></i><b>12.10</b> Testen von Mittelwertunterschieden<span></span></a>
+<li class="chapter" data-level="14.19" data-path="textvergleich.html"><a href="textvergleich.html#sentiment"><i class="fa fa-check"></i><b>14.19</b> Sentiment<span></span></a>
 <ul>
-<li class="chapter" data-level="12.10.1" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#t-test-1"><i class="fa fa-check"></i><b>12.10.1</b> t-Test<span></span></a></li>
-<li class="chapter" data-level="12.10.2" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#lineare-regression-3"><i class="fa fa-check"></i><b>12.10.2</b> Lineare Regression<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="12.11" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#quanteda-funktionen"><i class="fa fa-check"></i><b>12.11</b> Quanteda-Funktionen<span></span></a></li>
-<li class="chapter" data-level="12.12" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#konsonantenverbindungen"><i class="fa fa-check"></i><b>12.12</b> Konsonantenverbindungen<span></span></a></li>
-<li class="chapter" data-level="12.13" data-path="buchstaben-in-romanen.html"><a href="buchstaben-in-romanen.html#datensatz-variante"><i class="fa fa-check"></i><b>12.13</b> Datensatz-Variante<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>13</b> Lesbarkeitsindices<span></span></a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>13.1</b> Zur theoretischen Begründung<span></span></a></li>
-<li class="chapter" data-level="13.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-3"><i class="fa fa-check"></i><b>13.2</b> Programme<span></span></a></li>
-<li class="chapter" data-level="13.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>13.3</b> Texte lesen<span></span></a></li>
-<li class="chapter" data-level="13.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>13.4</b> Flesch Reading Ease - deutsche Version<span></span></a></li>
-<li class="chapter" data-level="13.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>13.5</b> Romane (deutsche oder ins Deutsche übersetzte)<span></span></a></li>
-<li class="chapter" data-level="13.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>13.6</b> Zeitungen<span></span></a></li>
-<li class="chapter" data-level="13.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>13.7</b> Statistische Tests: News<span></span></a></li>
-<li class="chapter" data-level="13.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>13.8</b> Datensätze vereinen<span></span></a></li>
-<li class="chapter" data-level="13.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>13.9</b> Zeitungen im Vergleich<span></span></a></li>
-<li class="chapter" data-level="13.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>13.10</b> Alle Texte im Vergleich<span></span></a></li>
-<li class="chapter" data-level="13.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>13.11</b> Flesch-Kincade Grade Level (USA, GB)<span></span></a></li>
-<li class="chapter" data-level="13.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>13.12</b> Wiener Sachtextformel<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>14</b> Untertitel<span></span></a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>14.1</b> Programme starten<span></span></a></li>
-<li class="chapter" data-level="14.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>14.2</b> Daten laden<span></span></a></li>
-<li class="chapter" data-level="14.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>14.3</b> Datensätze vorbereiten<span></span></a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>14.3.1</b> Textspalte vorbereiten<span></span></a></li>
-<li class="chapter" data-level="14.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>14.3.2</b> Datensätze verknüpfen<span></span></a></li>
-<li class="chapter" data-level="14.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>14.3.3</b> Merkmale hinzufügen<span></span></a></li>
-<li class="chapter" data-level="14.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>14.3.4</b> Konkordanzrecherche<span></span></a></li>
-<li class="chapter" data-level="14.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>14.3.5</b> Textzerlegung<span></span></a></li>
-<li class="chapter" data-level="14.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>14.3.6</b> Zerlegung und Annotation<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>14.4</b> Morphologie der Untertitel<span></span></a>
-<ul>
-<li class="chapter" data-level="14.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>14.4.1</b> XRay Brother<span></span></a></li>
-<li class="chapter" data-level="14.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>14.4.2</b> Substantive im Plural<span></span></a></li>
-<li class="chapter" data-level="14.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>14.4.3</b> Adjektive im Komparativ<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="14.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>14.5</b> Syntax: Dependenz<span></span></a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>14.5.1</b> Aktiv und Passiv<span></span></a></li>
-<li class="chapter" data-level="14.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>14.5.2</b> Substantive und Pronomen als Satzglieder<span></span></a></li>
-<li class="chapter" data-level="14.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.3</b> Subjekt nominal / pronominal<span></span></a></li>
-<li class="chapter" data-level="14.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>14.5.4</b> Objekt nominal / pronominal<span></span></a></li>
-<li class="chapter" data-level="14.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>14.5.5</b> Wortklasse von Subjekt / Objekt<span></span></a></li>
-<li class="chapter" data-level="14.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>14.5.6</b> Gattungs- und Eigennamen<span></span></a></li>
-<li class="chapter" data-level="14.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>14.5.7</b> Konstituentenfolge<span></span></a></li>
-<li class="chapter" data-level="14.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>14.5.8</b> Kontexte von Modifizierern<span></span></a></li>
-<li class="chapter" data-level="14.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>14.5.9</b> Greenbergs Universalie 25<span></span></a></li>
-<li class="chapter" data-level="14.5.10" data-path="untertitel.html"><a href="untertitel.html#subjekt-vor-objekt-präferenz"><i class="fa fa-check"></i><b>14.5.10</b> Subjekt-vor-Objekt-Präferenz<span></span></a></li>
-<li class="chapter" data-level="14.5.11" data-path="untertitel.html"><a href="untertitel.html#mehrere-konstituenten"><i class="fa fa-check"></i><b>14.5.11</b> Mehrere Konstituenten<span></span></a></li>
+<li class="chapter" data-level="14.19.1" data-path="textvergleich.html"><a href="textvergleich.html#version-1"><i class="fa fa-check"></i><b>14.19.1</b> Version 1<span></span></a></li>
+<li class="chapter" data-level="14.19.2" data-path="textvergleich.html"><a href="textvergleich.html#variante-2"><i class="fa fa-check"></i><b>14.19.2</b> Variante 2<span></span></a></li>
+<li class="chapter" data-level="14.19.3" data-path="textvergleich.html"><a href="textvergleich.html#variante-3"><i class="fa fa-check"></i><b>14.19.3</b> Variante 3<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="konnektoren-1.html"><a href="konnektoren-1.html"><i class="fa fa-check"></i><b>15</b> Konnektoren<span></span></a>
+<li class="chapter" data-level="15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>15</b> Komplexe Äußerungen<span></span></a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="konnektoren-1.html"><a href="konnektoren-1.html#pakete"><i class="fa fa-check"></i><b>15.1</b> Pakete<span></span></a></li>
-<li class="chapter" data-level="15.2" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-einlesen"><i class="fa fa-check"></i><b>15.2</b> Text einlesen<span></span></a></li>
-<li class="chapter" data-level="15.3" data-path="konnektoren-1.html"><a href="konnektoren-1.html#udpipe-laden"><i class="fa fa-check"></i><b>15.3</b> UDPipe laden<span></span></a></li>
-<li class="chapter" data-level="15.4" data-path="konnektoren-1.html"><a href="konnektoren-1.html#text-annotieren"><i class="fa fa-check"></i><b>15.4</b> Text annotieren<span></span></a></li>
-<li class="chapter" data-level="15.5" data-path="konnektoren-1.html"><a href="konnektoren-1.html#wortklassen-und-konnektoren"><i class="fa fa-check"></i><b>15.5</b> Wortklassen und Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>15.1</b> Packages<span></span></a></li>
+<li class="chapter" data-level="15.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texte-laden-1"><i class="fa fa-check"></i><b>15.2</b> Texte laden<span></span></a></li>
+<li class="chapter" data-level="15.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-1-zerlegen"><i class="fa fa-check"></i><b>15.3</b> Text 1 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>15.4</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>15.5</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>15.6</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>15.7</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>15.8</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>15.9</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.10" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-2-zerlegen"><i class="fa fa-check"></i><b>15.10</b> Text 2 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.11" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-1"><i class="fa fa-check"></i><b>15.11</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.12" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-1"><i class="fa fa-check"></i><b>15.12</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.13" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-1"><i class="fa fa-check"></i><b>15.13</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.14" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-1"><i class="fa fa-check"></i><b>15.14</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-1"><i class="fa fa-check"></i><b>15.15</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.16" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-1"><i class="fa fa-check"></i><b>15.16</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.17" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-3-zerlegen"><i class="fa fa-check"></i><b>15.17</b> Text 3 zerlegen<span></span></a></li>
+<li class="chapter" data-level="15.18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-2"><i class="fa fa-check"></i><b>15.18</b> Texttabelle erstellen<span></span></a></li>
+<li class="chapter" data-level="15.19" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-2"><i class="fa fa-check"></i><b>15.19</b> Speichern der Tabelle<span></span></a></li>
+<li class="chapter" data-level="15.20" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-2"><i class="fa fa-check"></i><b>15.20</b> Auswahl nach Länge<span></span></a></li>
+<li class="chapter" data-level="15.21" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-2"><i class="fa fa-check"></i><b>15.21</b> Durchschnittslänge<span></span></a></li>
+<li class="chapter" data-level="15.22" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-2"><i class="fa fa-check"></i><b>15.22</b> Auswahl nach Konnektoren<span></span></a></li>
+<li class="chapter" data-level="15.23" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-2"><i class="fa fa-check"></i><b>15.23</b> Welche Konnektoren?<span></span></a></li>
+<li class="chapter" data-level="15.24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#vergleich-der-äußerungslängen"><i class="fa fa-check"></i><b>15.24</b> Vergleich der Äußerungslängen<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>16</b> Rolling Stones auf Twitter<span></span></a>
+<li class="chapter" data-level="16" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html"><i class="fa fa-check"></i><b>16</b> Lesbarkeitsindices<span></span></a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>16.1</b> Der Tod von Charlie Watts<span></span></a></li>
-<li class="chapter" data-level="16.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-4"><i class="fa fa-check"></i><b>16.2</b> Programme<span></span></a></li>
-<li class="chapter" data-level="16.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>16.3</b> Datenstrom holen<span></span></a></li>
-<li class="chapter" data-level="16.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>16.4</b> Tweets holen<span></span></a></li>
-<li class="chapter" data-level="16.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>16.5</b> Datensatz erstellen<span></span></a></li>
-<li class="chapter" data-level="16.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>16.6</b> Datensatz speichern<span></span></a></li>
-<li class="chapter" data-level="16.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>16.7</b> Datensatz laden<span></span></a></li>
-<li class="chapter" data-level="16.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>16.8</b> Verfasser der Tweets<span></span></a></li>
-<li class="chapter" data-level="16.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>16.9</b> Timeplot<span></span></a></li>
-<li class="chapter" data-level="16.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>16.10</b> User-Informationen<span></span></a></li>
-<li class="chapter" data-level="16.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>16.11</b> Geographische Verteilung<span></span></a></li>
-<li class="chapter" data-level="16.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.12</b> Speichern des erweiterten Datensatzes<span></span></a></li>
-<li class="chapter" data-level="16.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>16.13</b> Laden des erweiterten Datensatzes<span></span></a></li>
-<li class="chapter" data-level="16.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>16.14</b> Zeitlicher geographischer Verlauf<span></span></a></li>
-<li class="chapter" data-level="16.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>16.15</b> Lange Wörter<span></span></a></li>
-<li class="chapter" data-level="16.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>16.16</b> Topwörter<span></span></a></li>
-<li class="chapter" data-level="16.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>16.17</b> Netzwerke<span></span></a></li>
-<li class="chapter" data-level="16.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>16.18</b> Sentiment &amp; Emotion<span></span></a></li>
-<li class="chapter" data-level="16.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>16.19</b> Sentiment (Animation)<span></span></a></li>
+<li class="chapter" data-level="16.1" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zur-theoretischen-begründung"><i class="fa fa-check"></i><b>16.1</b> Zur theoretischen Begründung<span></span></a></li>
+<li class="chapter" data-level="16.2" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#programme-3"><i class="fa fa-check"></i><b>16.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="16.3" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#texte-lesen"><i class="fa fa-check"></i><b>16.3</b> Texte lesen<span></span></a></li>
+<li class="chapter" data-level="16.4" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-reading-ease---deutsche-version"><i class="fa fa-check"></i><b>16.4</b> Flesch Reading Ease - deutsche Version<span></span></a></li>
+<li class="chapter" data-level="16.5" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#romane-deutsche-oder-ins-deutsche-übersetzte"><i class="fa fa-check"></i><b>16.5</b> Romane (deutsche oder ins Deutsche übersetzte)<span></span></a></li>
+<li class="chapter" data-level="16.6" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen"><i class="fa fa-check"></i><b>16.6</b> Zeitungen<span></span></a></li>
+<li class="chapter" data-level="16.7" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#statistische-tests-news"><i class="fa fa-check"></i><b>16.7</b> Statistische Tests: News<span></span></a></li>
+<li class="chapter" data-level="16.8" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#datensätze-vereinen-1"><i class="fa fa-check"></i><b>16.8</b> Datensätze vereinen<span></span></a></li>
+<li class="chapter" data-level="16.9" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#zeitungen-im-vergleich"><i class="fa fa-check"></i><b>16.9</b> Zeitungen im Vergleich<span></span></a></li>
+<li class="chapter" data-level="16.10" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#alle-texte-im-vergleich"><i class="fa fa-check"></i><b>16.10</b> Alle Texte im Vergleich<span></span></a></li>
+<li class="chapter" data-level="16.11" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#flesch-kincade-grade-level-usa-gb"><i class="fa fa-check"></i><b>16.11</b> Flesch-Kincade Grade Level (USA, GB)<span></span></a></li>
+<li class="chapter" data-level="16.12" data-path="lesbarkeitsindices.html"><a href="lesbarkeitsindices.html#wiener-sachtextformel"><i class="fa fa-check"></i><b>16.12</b> Wiener Sachtextformel<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html"><i class="fa fa-check"></i><b>17</b> Deutsche Zungenbrecher<span></span></a>
+<li class="chapter" data-level="17" data-path="untertitel.html"><a href="untertitel.html"><i class="fa fa-check"></i><b>17</b> Untertitel<span></span></a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#programme-laden-3"><i class="fa fa-check"></i><b>17.1</b> Programme laden<span></span></a></li>
-<li class="chapter" data-level="17.2" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#tabelle-laden"><i class="fa fa-check"></i><b>17.2</b> Tabelle laden<span></span></a></li>
-<li class="chapter" data-level="17.3" data-path="deutsche-zungenbrecher.html"><a href="deutsche-zungenbrecher.html#eda"><i class="fa fa-check"></i><b>17.3</b> EDA<span></span></a></li>
+<li class="chapter" data-level="17.1" data-path="untertitel.html"><a href="untertitel.html#programme-starten-1"><i class="fa fa-check"></i><b>17.1</b> Programme starten<span></span></a></li>
+<li class="chapter" data-level="17.2" data-path="untertitel.html"><a href="untertitel.html#daten-laden"><i class="fa fa-check"></i><b>17.2</b> Daten laden<span></span></a></li>
+<li class="chapter" data-level="17.3" data-path="untertitel.html"><a href="untertitel.html#datensätze-vorbereiten"><i class="fa fa-check"></i><b>17.3</b> Datensätze vorbereiten<span></span></a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="untertitel.html"><a href="untertitel.html#textspalte-vorbereiten"><i class="fa fa-check"></i><b>17.3.1</b> Textspalte vorbereiten<span></span></a></li>
+<li class="chapter" data-level="17.3.2" data-path="untertitel.html"><a href="untertitel.html#datensätze-verknüpfen"><i class="fa fa-check"></i><b>17.3.2</b> Datensätze verknüpfen<span></span></a></li>
+<li class="chapter" data-level="17.3.3" data-path="untertitel.html"><a href="untertitel.html#merkmale-hinzufügen"><i class="fa fa-check"></i><b>17.3.3</b> Merkmale hinzufügen<span></span></a></li>
+<li class="chapter" data-level="17.3.4" data-path="untertitel.html"><a href="untertitel.html#konkordanzrecherche"><i class="fa fa-check"></i><b>17.3.4</b> Konkordanzrecherche<span></span></a></li>
+<li class="chapter" data-level="17.3.5" data-path="untertitel.html"><a href="untertitel.html#textzerlegung-1"><i class="fa fa-check"></i><b>17.3.5</b> Textzerlegung<span></span></a></li>
+<li class="chapter" data-level="17.3.6" data-path="untertitel.html"><a href="untertitel.html#zerlegung-und-annotation"><i class="fa fa-check"></i><b>17.3.6</b> Zerlegung und Annotation<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html"><i class="fa fa-check"></i><b>18</b> Komplexe Äußerungen<span></span></a>
+<li class="chapter" data-level="17.4" data-path="untertitel.html"><a href="untertitel.html#morphologie-der-untertitel"><i class="fa fa-check"></i><b>17.4</b> Morphologie der Untertitel<span></span></a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#packages-4"><i class="fa fa-check"></i><b>18.1</b> Packages<span></span></a></li>
-<li class="chapter" data-level="18.2" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texte-laden-1"><i class="fa fa-check"></i><b>18.2</b> Texte laden<span></span></a></li>
-<li class="chapter" data-level="18.3" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-1-zerlegen"><i class="fa fa-check"></i><b>18.3</b> Text 1 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.4" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen"><i class="fa fa-check"></i><b>18.4</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.5" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle"><i class="fa fa-check"></i><b>18.5</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.6" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge"><i class="fa fa-check"></i><b>18.6</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.7" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge"><i class="fa fa-check"></i><b>18.7</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.8" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren"><i class="fa fa-check"></i><b>18.8</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.9" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren"><i class="fa fa-check"></i><b>18.9</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.10" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-2-zerlegen"><i class="fa fa-check"></i><b>18.10</b> Text 2 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.11" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-1"><i class="fa fa-check"></i><b>18.11</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.12" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-1"><i class="fa fa-check"></i><b>18.12</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.13" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-1"><i class="fa fa-check"></i><b>18.13</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.14" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-1"><i class="fa fa-check"></i><b>18.14</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.15" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-1"><i class="fa fa-check"></i><b>18.15</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.16" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-1"><i class="fa fa-check"></i><b>18.16</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.17" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#text-3-zerlegen"><i class="fa fa-check"></i><b>18.17</b> Text 3 zerlegen<span></span></a></li>
-<li class="chapter" data-level="18.18" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#texttabelle-erstellen-2"><i class="fa fa-check"></i><b>18.18</b> Texttabelle erstellen<span></span></a></li>
-<li class="chapter" data-level="18.19" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#speichern-der-tabelle-2"><i class="fa fa-check"></i><b>18.19</b> Speichern der Tabelle<span></span></a></li>
-<li class="chapter" data-level="18.20" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-länge-2"><i class="fa fa-check"></i><b>18.20</b> Auswahl nach Länge<span></span></a></li>
-<li class="chapter" data-level="18.21" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#durchschnittslänge-2"><i class="fa fa-check"></i><b>18.21</b> Durchschnittslänge<span></span></a></li>
-<li class="chapter" data-level="18.22" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#auswahl-nach-konnektoren-2"><i class="fa fa-check"></i><b>18.22</b> Auswahl nach Konnektoren<span></span></a></li>
-<li class="chapter" data-level="18.23" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#welche-konnektoren-2"><i class="fa fa-check"></i><b>18.23</b> Welche Konnektoren?<span></span></a></li>
-<li class="chapter" data-level="18.24" data-path="komplexe-äußerungen.html"><a href="komplexe-äußerungen.html#vergleich-der-äußerungslängen"><i class="fa fa-check"></i><b>18.24</b> Vergleich der Äußerungslängen<span></span></a></li>
+<li class="chapter" data-level="17.4.1" data-path="untertitel.html"><a href="untertitel.html#xray-brother"><i class="fa fa-check"></i><b>17.4.1</b> XRay Brother<span></span></a></li>
+<li class="chapter" data-level="17.4.2" data-path="untertitel.html"><a href="untertitel.html#substantive-im-plural"><i class="fa fa-check"></i><b>17.4.2</b> Substantive im Plural<span></span></a></li>
+<li class="chapter" data-level="17.4.3" data-path="untertitel.html"><a href="untertitel.html#adjektive-im-komparativ"><i class="fa fa-check"></i><b>17.4.3</b> Adjektive im Komparativ<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="untertitel.html"><a href="untertitel.html#syntax-dependenz"><i class="fa fa-check"></i><b>17.5</b> Syntax: Dependenz<span></span></a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="untertitel.html"><a href="untertitel.html#aktiv-und-passiv"><i class="fa fa-check"></i><b>17.5.1</b> Aktiv und Passiv<span></span></a></li>
+<li class="chapter" data-level="17.5.2" data-path="untertitel.html"><a href="untertitel.html#substantive-und-pronomen-als-satzglieder"><i class="fa fa-check"></i><b>17.5.2</b> Substantive und Pronomen als Satzglieder<span></span></a></li>
+<li class="chapter" data-level="17.5.3" data-path="untertitel.html"><a href="untertitel.html#subjekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.3</b> Subjekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="17.5.4" data-path="untertitel.html"><a href="untertitel.html#objekt-nominal-pronominal"><i class="fa fa-check"></i><b>17.5.4</b> Objekt nominal / pronominal<span></span></a></li>
+<li class="chapter" data-level="17.5.5" data-path="untertitel.html"><a href="untertitel.html#wortklasse-von-subjekt-objekt"><i class="fa fa-check"></i><b>17.5.5</b> Wortklasse von Subjekt / Objekt<span></span></a></li>
+<li class="chapter" data-level="17.5.6" data-path="untertitel.html"><a href="untertitel.html#gattungs--und-eigennamen"><i class="fa fa-check"></i><b>17.5.6</b> Gattungs- und Eigennamen<span></span></a></li>
+<li class="chapter" data-level="17.5.7" data-path="untertitel.html"><a href="untertitel.html#konstituentenfolge"><i class="fa fa-check"></i><b>17.5.7</b> Konstituentenfolge<span></span></a></li>
+<li class="chapter" data-level="17.5.8" data-path="untertitel.html"><a href="untertitel.html#kontexte-von-modifizierern"><i class="fa fa-check"></i><b>17.5.8</b> Kontexte von Modifizierern<span></span></a></li>
+<li class="chapter" data-level="17.5.9" data-path="untertitel.html"><a href="untertitel.html#greenbergs-universalie-25"><i class="fa fa-check"></i><b>17.5.9</b> Greenbergs Universalie 25<span></span></a></li>
+<li class="chapter" data-level="17.5.10" data-path="untertitel.html"><a href="untertitel.html#subjekt-vor-objekt-präferenz"><i class="fa fa-check"></i><b>17.5.10</b> Subjekt-vor-Objekt-Präferenz<span></span></a></li>
+<li class="chapter" data-level="17.5.11" data-path="untertitel.html"><a href="untertitel.html#mehrere-konstituenten"><i class="fa fa-check"></i><b>17.5.11</b> Mehrere Konstituenten<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html"><i class="fa fa-check"></i><b>18</b> Rolling Stones auf Twitter<span></span></a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#der-tod-von-charlie-watts"><i class="fa fa-check"></i><b>18.1</b> Der Tod von Charlie Watts<span></span></a></li>
+<li class="chapter" data-level="18.2" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#programme-4"><i class="fa fa-check"></i><b>18.2</b> Programme<span></span></a></li>
+<li class="chapter" data-level="18.3" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datenstrom-holen"><i class="fa fa-check"></i><b>18.3</b> Datenstrom holen<span></span></a></li>
+<li class="chapter" data-level="18.4" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#tweets-holen"><i class="fa fa-check"></i><b>18.4</b> Tweets holen<span></span></a></li>
+<li class="chapter" data-level="18.5" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-erstellen"><i class="fa fa-check"></i><b>18.5</b> Datensatz erstellen<span></span></a></li>
+<li class="chapter" data-level="18.6" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-speichern"><i class="fa fa-check"></i><b>18.6</b> Datensatz speichern<span></span></a></li>
+<li class="chapter" data-level="18.7" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#datensatz-laden"><i class="fa fa-check"></i><b>18.7</b> Datensatz laden<span></span></a></li>
+<li class="chapter" data-level="18.8" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#verfasser-der-tweets"><i class="fa fa-check"></i><b>18.8</b> Verfasser der Tweets<span></span></a></li>
+<li class="chapter" data-level="18.9" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#timeplot"><i class="fa fa-check"></i><b>18.9</b> Timeplot<span></span></a></li>
+<li class="chapter" data-level="18.10" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#user-informationen"><i class="fa fa-check"></i><b>18.10</b> User-Informationen<span></span></a></li>
+<li class="chapter" data-level="18.11" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#geographische-verteilung"><i class="fa fa-check"></i><b>18.11</b> Geographische Verteilung<span></span></a></li>
+<li class="chapter" data-level="18.12" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#speichern-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>18.12</b> Speichern des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="18.13" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#laden-des-erweiterten-datensatzes"><i class="fa fa-check"></i><b>18.13</b> Laden des erweiterten Datensatzes<span></span></a></li>
+<li class="chapter" data-level="18.14" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#zeitlicher-geographischer-verlauf"><i class="fa fa-check"></i><b>18.14</b> Zeitlicher geographischer Verlauf<span></span></a></li>
+<li class="chapter" data-level="18.15" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#lange-wörter"><i class="fa fa-check"></i><b>18.15</b> Lange Wörter<span></span></a></li>
+<li class="chapter" data-level="18.16" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#topwörter"><i class="fa fa-check"></i><b>18.16</b> Topwörter<span></span></a></li>
+<li class="chapter" data-level="18.17" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#netzwerke"><i class="fa fa-check"></i><b>18.17</b> Netzwerke<span></span></a></li>
+<li class="chapter" data-level="18.18" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-emotion"><i class="fa fa-check"></i><b>18.18</b> Sentiment &amp; Emotion<span></span></a></li>
+<li class="chapter" data-level="18.19" data-path="rolling-stones-auf-twitter.html"><a href="rolling-stones-auf-twitter.html#sentiment-animation"><i class="fa fa-check"></i><b>18.19</b> Sentiment (Animation)<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -561,7 +561,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestützte Textanalyse mit R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computergestützte Text- und Korpusanalyse mit R</a>
           </h1>
         </div>
 
@@ -867,7 +867,7 @@ ausfuhrlicher_kommentar
 <span id="cb131-3"><a href="stichprobentests.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb131-4"><a href="stichprobentests.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Neugeschriebener Satz&quot;</span>, <span class="at">y =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb131-5"><a href="stichprobentests.html#cb131-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Wirksamkeit kurzer und langer Kommentare&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
 </div>
 </div>
 </div>
@@ -1324,7 +1324,7 @@ Zuerst gruppieren wir die Rohdaten nach der Spalte, in der die Versuchspersonen 
 <span id="cb151-6"><a href="stichprobentests.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb151-7"><a href="stichprobentests.html#cb151-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Modalkonstruktion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Gebrauchsfrequenz&quot;</span>, </span>
 <span id="cb151-8"><a href="stichprobentests.html#cb151-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Vrsta besedila&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
 <p>Die Modalkonstruktion <em>morati + Infinitiv</em> scheint in den alltagssprachlich näherstehenden Funktionalstilen Belletristik (leposlovje), Internet und Sachtexten (stvarna besedila) etwas häufiger belegt zu sein als die Modalkonstruktion <em>biti + treba + Infinitiv</em>, dafür aber in Zeitungen (Časopisi) etwas seltener.</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="stichprobentests.html#cb152-1" aria-hidden="true" tabindex="-1"></a>naklonska2 <span class="sc">%&gt;%</span></span>
 <span id="cb152-2"><a href="stichprobentests.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(treba<span class="sc">:</span>morati, <span class="at">names_to =</span> <span class="st">&quot;konstruktion&quot;</span>, </span>
@@ -1334,7 +1334,7 @@ Zuerst gruppieren wir die Rohdaten nach der Spalte, in der die Versuchspersonen 
 <span id="cb152-6"><a href="stichprobentests.html#cb152-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">percent_format</span>()) <span class="sc">+</span></span>
 <span id="cb152-7"><a href="stichprobentests.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Modalkonstruktion&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Gebrauchsfrequenz&quot;</span>, </span>
 <span id="cb152-8"><a href="stichprobentests.html#cb152-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Vrsta besedila&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 </div>
 <div id="chi-quadrat-test-1" class="section level4 hasAnchor" number="5.1.3.4">
 <h4><span class="header-section-number">5.1.3.4</span> Chi-Quadrat-Test<a href="stichprobentests.html#chi-quadrat-test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1490,7 +1490,7 @@ t = \frac{m - \mu}{s/{\sqrt{n}}}
 <span id="cb164-4"><a href="stichprobentests.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">19.62</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb164-5"><a href="stichprobentests.html#cb164-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">7.08</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, </span>
 <span id="cb164-6"><a href="stichprobentests.html#cb164-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
 </div>
 </div>
 <div id="wirkung-von-unterrichtsmethoden" class="section level3 hasAnchor" number="5.2.2">
@@ -1524,14 +1524,14 @@ t = \frac{m - \mu}{s/{\sqrt{n}}}
 ## 9.906271 7.897201</code></pre>
 <p>Graphische Darstellung</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="stichprobentests.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">tapply</span>(Resultat, <span class="fu">list</span>(Methode), mean), <span class="at">col=</span><span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
 <p>Flexiblere Gestaltung mit dem Programm <code>ggplot2</code>.</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="stichprobentests.html#cb172-1" aria-hidden="true" tabindex="-1"></a>metode <span class="sc">%&gt;%</span> </span>
 <span id="cb172-2"><a href="stichprobentests.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Methode, Resultat, <span class="at">fill =</span> Methode)) <span class="sc">+</span></span>
 <span id="cb172-3"><a href="stichprobentests.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb172-4"><a href="stichprobentests.html#cb172-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb172-5"><a href="stichprobentests.html#cb172-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-32-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-32-1.svg" width="672" /></p>
 </div>
 <div id="zwei-stichproben-t--test" class="section level4 hasAnchor" number="5.2.2.3">
 <h4><span class="header-section-number">5.2.2.3</span> Zwei-Stichproben t- Test<a href="stichprobentests.html#zwei-stichproben-t--test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1585,13 +1585,13 @@ Alternativhypothese <span class="math inline">\(H_1\)</span>: Die Ergebnisse bei
 <span id="cb179-3"><a href="stichprobentests.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Resultat)) <span class="sc">+</span> </span>
 <span id="cb179-4"><a href="stichprobentests.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb179-5"><a href="stichprobentests.html#cb179-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">31</span>) <span class="co"># median</span></span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-36-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-36-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="stichprobentests.html#cb180-1" aria-hidden="true" tabindex="-1"></a>metode <span class="sc">%&gt;%</span> </span>
 <span id="cb180-2"><a href="stichprobentests.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Methode <span class="sc">==</span> <span class="st">&quot;B&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb180-3"><a href="stichprobentests.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Resultat)) <span class="sc">+</span> </span>
 <span id="cb180-4"><a href="stichprobentests.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb180-5"><a href="stichprobentests.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">31</span>) <span class="co"># median</span></span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-36-2.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-36-2.svg" width="672" /></p>
 <p>Stellt man nun fest, dass die geprüfte Variable nicht normalverteilt ist, kann man auf nicht-parametrische Tests zurückgreifen, z.B. den <em>Mann-Whitney-Wilcoxon-Test</em> (auch: <strong>Mann-Whitney U-Test</strong>, <strong>Wilcoxon Rangsummentest</strong>) für zwei abhängige Stichproben (paired = TRUE) bzw. für zwei unabhängige Stichproben (paired = FALSE.</p>
 </div>
 <div id="vergleich-von-medianwerten" class="section level4 hasAnchor" number="5.2.2.4">
@@ -1733,7 +1733,7 @@ d = \frac{mean_1 - mean_2}{\sqrt{(n_1-1)s_1^2 + (n_2-1)s_2^2}/{(n_1+n_2-2)}}
 <p>Das Diagramm zeigt deutlich, dass kein signifikanter Unterschied zwischen den Mittelwerten der Methoden A und B vorliegt: Die Konfidenzintervalle für beide arithmetische Mittelwerte überschneidet sich fast völlig und schließen damit den jeweiligen Mittelwert der anderen Methode ein.</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="stichprobentests.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, </span>
 <span id="cb204-2"><a href="stichprobentests.html#cb204-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-46-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-46-1.svg" width="672" /></p>
 <p>Zum Abschluss dieses Kapitels:</p>
 <p>Zur unkomplizierten Visualisierung von Datensatzvariablen, ohne programmieren zu müssen, eignet sich die <code>library(esquisse)</code>. Das Programm ermöglicht die Auswahl von Variablen mit der Maus.</p>
 </div>
@@ -2275,7 +2275,7 @@ frequency
 ##   (1 observation deleted due to missingness)
 ## Multiple R-squared:  0.7109, Adjusted R-squared:  0.7037 
 ## F-statistic: 98.38 on 2 and 80 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Wie <em>liest</em> man die <strong>Regressionsergebnisse</strong>?<a href="references.html#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a><br />
+<p>Wie <em>liest</em> man die <strong>Regressionsergebnisse</strong>?<a href="references.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a><br />
 Beginnen wir am Ende! Die <em>F-Statistik</em> am Ende besagt, dass das Regressionsmodell insgesamt gesehen einen signifikanten Beitrag zur Erklärung des Frequenzverlaufs leistet, denn der sehr kleine p-Wert (p-value: &lt; 2.2e-16) liegt deutlich unter dem 5% Signifikanzniveau.</p>
 <p>Die vorletzte Zeile gibt den <span class="math inline">\(R^2\)</span>-Wert (<em>Bestimmtheitsmaß</em>) an, also wie viel Prozent der gesamten Varianz der abhängigen Variable (frequency) vom Modell erklärt wird (hier: 0,71, demnach 71 % bzw. mit <em>adjusted</em> <span class="math inline">\(R^2\)</span> mehr als 70%, wenn die Korrektur berücksichtigt wird, die bei Einbezug mehr als einer unabhängigen Variable gilt und immer etwas niedriger ist).</p>
 <p>Der <em>Intercept</em> oder Konstante ist die Stelle, an der die Frequenzkurve die y-Achse schneidet (also die Ordinate). In diesem Fall beträgt der Wert etwa 257 Hz. Der Intercept-Wert ist meistens nicht sinnvoll interpretierbar (auch hier nicht). Aber wenn wir das unten folgende Diagramm <em>gender effect plot</em> betrachten und in Gedanken die Linie von dem Punkt für die weiblichen Versuchspersonen (<em>F</em>) in Richtung y-Achse verlängern, dann können wir uns vorstellen, dass die Linie etwa beim Wert 257 die y-Achse schneidet. Der Intercept ist somit der (mathematisch festgelegte) Basiswert für die weiblichen Versuchspersonen. Die weiblichen Versuchspersonen werden als Basis verwendet, weil das Programm alphabetisch vorgeht und <em>F</em> im Alphabet vor <em>M</em> erscheint.</p>
@@ -2311,7 +2311,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 ##      inf      pol 
 ## 203.2408 183.6875</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="stichprobentests.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>, <span class="at">confint=</span><span class="fu">list</span>(<span class="at">style=</span><span class="st">&quot;bars&quot;</span>), <span class="at">x.var =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-67-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-67-1.svg" width="672" /></p>
 <p>Man kann Regressionsmodelle auch mit <code>tidyverse</code>-Funktionen formulieren (der “.” bedeutet, dass der Datensatz “politeness” aus der vorherigen Zeile übernommen werden soll). Die <code>tidy(()</code>-Funktion des <code>broom</code>-Pakets sorgt für die Umformung in eine Tabelle.</p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="stichprobentests.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
 <span id="cb242-2"><a href="stichprobentests.html#cb242-2" aria-hidden="true" tabindex="-1"></a>politeness <span class="sc">%&gt;%</span> </span>
@@ -2337,20 +2337,20 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb244-10"><a href="stichprobentests.html#cb244-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_hline(yintercept = c(184.3), </span></span>
 <span id="cb244-11"><a href="stichprobentests.html#cb244-11" aria-hidden="true" tabindex="-1"></a>             <span class="co"># lty = 2, col = &quot;darkgreen&quot;) + # Informal-Mittelwert</span></span>
 <span id="cb244-12"><a href="stichprobentests.html#cb244-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gender)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-69-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-69-1.svg" width="672" /></p>
 <p>Der <em>rote Stern</em> markiert den <em>Durchschnittswert</em> der jeweiligen Gruppe, der <em>schwarze Balken</em> den <em>Median</em> (d.h. den Wert, der genau in der Mitte aller Daten der jeweiligen Gruppe liegt). Im <em>Kasten</em> eines <strong>Boxplots</strong> liegen 50% aller Werte, darunter liegen 25% und darüber ebenfalls 25%. Bei den Männern (M) ist zu sehen, dass der Median (der schwarze Balken) und das arithmetische Mittel (der rote Stern) nicht übereinstimmen. Das deutet auf extremere Unterschiede zwischen den männlichen Versuchspersonen (Schiefe oder Asymmetrie).</p>
 <p>Die <em>Schiefe</em> (engl. <em>skewness</em>) oder Asymmetrie der Frequenzverteilung (Distribution) kann man in einem <strong>Histogramm</strong> oder Dichte-Diagramm (density) veranschaulichen. Das Histogram der weiblichen Versuchspersonen ist der Normalverteilung (einer Glockenform, mit den meisten Frequenzwerten in der Mitte) ähnlich, während das der männlichen deutlich schief ist.</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="stichprobentests.html#cb245-1" aria-hidden="true" tabindex="-1"></a>politeness <span class="sc">%&gt;%</span> </span>
 <span id="cb245-2"><a href="stichprobentests.html#cb245-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(frequency, <span class="at">fill =</span> attitude)) <span class="sc">+</span></span>
 <span id="cb245-3"><a href="stichprobentests.html#cb245-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
 <span id="cb245-4"><a href="stichprobentests.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gender)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-70-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-70-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="stichprobentests.html#cb246-1" aria-hidden="true" tabindex="-1"></a>politeness <span class="sc">%&gt;%</span> </span>
 <span id="cb246-2"><a href="stichprobentests.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(frequency, <span class="at">fill =</span> attitude)) <span class="sc">+</span></span>
 <span id="cb246-3"><a href="stichprobentests.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..count..), <span class="co"># density</span></span>
 <span id="cb246-4"><a href="stichprobentests.html#cb246-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">50</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb246-5"><a href="stichprobentests.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> gender)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-70-2.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-70-2.svg" width="672" /></p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="stichprobentests.html#cb247-1" aria-hidden="true" tabindex="-1"></a>politeness <span class="sc">%&gt;%</span> </span>
 <span id="cb247-2"><a href="stichprobentests.html#cb247-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;F&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb247-3"><a href="stichprobentests.html#cb247-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(frequency)) <span class="sc">+</span></span>
@@ -2365,7 +2365,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb247-12"><a href="stichprobentests.html#cb247-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">na.rm =</span> T)), </span>
 <span id="cb247-13"><a href="stichprobentests.html#cb247-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;#1b98e0&quot;</span>, </span>
 <span id="cb247-14"><a href="stichprobentests.html#cb247-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-70-3.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-70-3.svg" width="672" /></p>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="stichprobentests.html#cb248-1" aria-hidden="true" tabindex="-1"></a>politeness <span class="sc">%&gt;%</span> </span>
 <span id="cb248-2"><a href="stichprobentests.html#cb248-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">&quot;M&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb248-3"><a href="stichprobentests.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(frequency)) <span class="sc">+</span></span>
@@ -2380,7 +2380,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb248-12"><a href="stichprobentests.html#cb248-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">na.rm =</span> T)), </span>
 <span id="cb248-13"><a href="stichprobentests.html#cb248-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;#1b98e0&quot;</span>, </span>
 <span id="cb248-14"><a href="stichprobentests.html#cb248-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-70-4.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-70-4.svg" width="672" /></p>
 <p>Wird das Sprechverhalten (attitude) durch das Geschlecht (gender) modifiziert (z.B. verändern Frauen ihre Tonlage beim höflichem Sprechen, Männer dagegen nicht oder kaum)? Das kann man durch <em>Hinzufügung eines Interaktionsterms</em> prüfen. Eine Interaktion kennzeichnet man in der Regressionsgleichung mit einem Stern zwischen den beteiligten Variablen (also wie beim Multiplizieren). Hier prüfen wir die <strong>Interaktion</strong> zwischen den beiden unabhängigen Variablen <em>Geschlecht</em> (gender) und <em>Verhalten</em> (attitude).</p>
 <p>Die <em>Indikatorterme</em> <em>attitude</em> (informal vs. polite) und <em>gender</em> (female vs. male), beide also mit zwei Stufen oder levels, sind vergleichbar mit An-/Aus-Schaltern. Sie zeigen an, um welchen Wert die Frequenzkurve nach unten (bei negativem Koeffizient) oder oben (bei positivem Koeffizient) verschoben wird. Der <em>Interaktionsterm</em> der beiden Indikatorterme zeigt an, um welchen <em>zusätzlichen</em> Wert der Frequenzverlauf verändert wird. Wäre eine kontinuierliche Variable (z.B. Zeit) in der Interaktion einbezogen, dann würde der Koeffizient der Interaktion die zusätzliche Steigung (slope) der abhängigen Variable anzeigen.</p>
 <div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="stichprobentests.html#cb249-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, <span class="at">data =</span> politeness)</span>
@@ -2429,7 +2429,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 ##      inf 260.6857 144.4905
 ##      pol 233.2857 132.9800</code></pre>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="stichprobentests.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>, <span class="at">confint=</span><span class="fu">list</span>(<span class="at">style=</span><span class="st">&quot;bars&quot;</span>), <span class="at">x.var =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-73-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-73-1.svg" width="672" /></p>
 <p>Die sich überschneidenden Konfidenzintervalle im Diagramm zeigen, dass die Durchschnittswerte keinen signifikanten Unterschied aufweisen. Außerdem gilt sowohl für die weiblichen als auch die männlichen Versuchspersonen, dass Frequenzwerte beim höflichen Sprechverhalten geringer sind. Die Interaktion liefert somit keinen signifikanten Erklärungsbeitrag. Es ist sinnvoll, nur die beiden Haupteffekte beizubehalten und die Interaktion aus dem Regressionsmodell herauszunehmen.</p>
 <p>Das nächste Diagramm bestätigt, dass die Variablen Geschlecht (gender) und Verhalten (attitude) mit statistischer Signifikanz die Höhe des Grundfrequnezverlaufs (frequency) beeinflussen, nicht jedoch die Interaktion beider Variablen (deren Konfidenzintervall überschreitet im Diagramm die Null-Linie).</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="stichprobentests.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
@@ -2437,7 +2437,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb256-3"><a href="stichprobentests.html#cb256-3" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">plot</span>(<span class="fu">parameters</span>(m)) <span class="sc">+</span></span>
 <span id="cb256-4"><a href="stichprobentests.html#cb256-4" aria-hidden="true" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;A Dot-and-Whisker Plot&quot;</span>)</span>
 <span id="cb256-5"><a href="stichprobentests.html#cb256-5" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-74-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-74-1.svg" width="672" /></p>
 <p>Das nächste Diagramm bestätigt, dass die Residuen (d.h. die jeweiligen Abweichungen der einzelnen Werte vom Durchschnitt) normalverteilt sind (p = 0.396, also größer als der Grenzwert 0.05). Damit ist eine der erforderlichen Bedingungen für die Durchführung einer linearen Regression erfüllt.</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="stichprobentests.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
 <span id="cb257-2"><a href="stichprobentests.html#cb257-2" aria-hidden="true" tabindex="-1"></a>check <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(m)</span></code></pre></div>
@@ -2446,7 +2446,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb259-2"><a href="stichprobentests.html#cb259-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb259-3"><a href="stichprobentests.html#cb259-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">plot</span>(check, <span class="at">type =</span> <span class="st">&quot;qq&quot;</span>)</span>
 <span id="cb259-4"><a href="stichprobentests.html#cb259-4" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-75-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-75-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="stichprobentests.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
 <span id="cb260-2"><a href="stichprobentests.html#cb260-2" aria-hidden="true" tabindex="-1"></a>check <span class="ot">&lt;-</span> <span class="fu">check_normality</span>(m, <span class="at">effects =</span> <span class="st">&quot;fixed&quot;</span>)</span></code></pre></div>
 <pre><code>## OK: residuals appear as normally distributed (p = 0.396).</code></pre>
@@ -2454,7 +2454,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb262-2"><a href="stichprobentests.html#cb262-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb262-3"><a href="stichprobentests.html#cb262-3" aria-hidden="true" tabindex="-1"></a>p2a <span class="ot">=</span> <span class="fu">plot</span>(check, <span class="at">type =</span> <span class="st">&quot;pp&quot;</span>)</span>
 <span id="cb262-4"><a href="stichprobentests.html#cb262-4" aria-hidden="true" tabindex="-1"></a>p2a</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-76-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-76-1.svg" width="672" /></p>
 <p><span class="math inline">\(Omega^2\)</span> ist eine alternative Größe zu <span class="math inline">\(R^2\)</span>, womit ebenfalls die erklärte Varianz eines linearen Regressionsmodells angegeben wird. Im Diagramm ist zu sehen, dass die Variable <em>Geschlecht</em> (gender) den größten Beitrag leistet (fast 70%), die Variable <em>Verhalten</em> (attitude) ca. 5%, während die Interaktion beider Variablen keinen signifikanten Beitrag zu Erklärung der Varianz leistet (Wert liegt bei 0%).</p>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="stichprobentests.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span>
 <span id="cb263-2"><a href="stichprobentests.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(see)</span>
@@ -2463,13 +2463,13 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb263-5"><a href="stichprobentests.html#cb263-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb263-6"><a href="stichprobentests.html#cb263-6" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">=</span> <span class="fu">plot</span>(<span class="fu">omega_squared</span>(m))</span>
 <span id="cb263-7"><a href="stichprobentests.html#cb263-7" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-77-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-77-1.svg" width="672" /></p>
 <p>Das nächste Diagramm zeigt die Verteilung der Daten für die beiden Geschlechter.</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="stichprobentests.html#cb264-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
 <span id="cb264-2"><a href="stichprobentests.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point2</span>() <span class="sc">+</span></span>
 <span id="cb264-3"><a href="stichprobentests.html#cb264-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_modern</span>()</span>
 <span id="cb264-4"><a href="stichprobentests.html#cb264-4" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-78-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-78-1.svg" width="672" /></p>
 <p>Weitere Darstellungsmöglichkeiten der Datendistribution:</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="stichprobentests.html#cb265-1" aria-hidden="true" tabindex="-1"></a>p4 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, </span>
 <span id="cb265-2"><a href="stichprobentests.html#cb265-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
@@ -2478,7 +2478,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb265-5"><a href="stichprobentests.html#cb265-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_material_d</span>(<span class="at">palette =</span> <span class="st">&quot;ice&quot;</span>)</span>
 <span id="cb265-6"><a href="stichprobentests.html#cb265-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb265-7"><a href="stichprobentests.html#cb265-7" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-79-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-79-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="stichprobentests.html#cb266-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">=</span> <span class="fu">ggplot</span>(politeness, </span>
 <span id="cb266-2"><a href="stichprobentests.html#cb266-2" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> attitude, <span class="at">y =</span> frequency, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
 <span id="cb266-3"><a href="stichprobentests.html#cb266-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violindot</span>(<span class="at">fill_dots =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
@@ -2486,7 +2486,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb266-5"><a href="stichprobentests.html#cb266-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_modern</span>() <span class="sc">+</span></span>
 <span id="cb266-6"><a href="stichprobentests.html#cb266-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_material_d</span>()</span>
 <span id="cb266-7"><a href="stichprobentests.html#cb266-7" aria-hidden="true" tabindex="-1"></a>p5</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-80-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-80-1.svg" width="672" /></p>
 <p>Ob die Bedingungen für die Durchführung einer linearen Regression erfüllt sind, kann man mit einem Befehl ausführen, und zwar mit Hilfe des Programms <code>performance</code>. Hier wählen wir die Funktion <code>check_model()</code> mit dem Modell ohne Interaktion (da diese nicht signifikant war).</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="stichprobentests.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
 <span id="cb267-2"><a href="stichprobentests.html#cb267-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(frequency <span class="sc">~</span> attitude <span class="sc">+</span> gender, <span class="at">data =</span> politeness)</span>
@@ -2515,12 +2515,12 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb269-2"><a href="stichprobentests.html#cb269-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb269-3"><a href="stichprobentests.html#cb269-3" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">=</span> <span class="fu">plot</span>(check)</span>
 <span id="cb269-4"><a href="stichprobentests.html#cb269-4" aria-hidden="true" tabindex="-1"></a>p6</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-81-1.svg" width="100%" height="100%" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-81-1.svg" width="100%" height="100%" /></p>
 <p>Collage mehrerer der oben einzeln gezeigten Diagramme mit Hilfe der <code>plots()</code>-Funktion im Programm <code>performance</code>:</p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="stichprobentests.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plots</span>(p1,p2,p3,p4, </span>
 <span id="cb270-2"><a href="stichprobentests.html#cb270-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">n_columns =</span> <span class="dv">2</span>, </span>
 <span id="cb270-3"><a href="stichprobentests.html#cb270-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">tags =</span> <span class="fu">paste0</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>))</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-82-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-82-1.svg" width="672" /></p>
 <p>Eine Bayesianische Regressionsberechnung erlauben die Programmen <code>bayestestR</code> und <code>rstanarm</code>. Mit dem Programm <code>see</code> können wir die Datendistribution sichtbar machen.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="stichprobentests.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayestestR)</span>
 <span id="cb271-2"><a href="stichprobentests.html#cb271-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstanarm)</span>
@@ -2531,7 +2531,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb271-7"><a href="stichprobentests.html#cb271-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> politeness, <span class="at">refresh =</span> <span class="dv">0</span>)</span>
 <span id="cb271-8"><a href="stichprobentests.html#cb271-8" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">hdi</span>(m, <span class="at">ci =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.89</span>, <span class="fl">0.95</span>))</span>
 <span id="cb271-9"><a href="stichprobentests.html#cb271-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(result)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-83-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-83-1.svg" width="672" /></p>
 </div>
 <div id="ergebnis" class="section level4 hasAnchor" number="5.2.3.6">
 <h4><span class="header-section-number">5.2.3.6</span> Ergebnis<a href="stichprobentests.html#ergebnis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2576,7 +2576,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <p>Einfacher Boxplot:</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="stichprobentests.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(frequency <span class="sc">~</span> attitude<span class="sc">*</span>gender, </span>
 <span id="cb280-2"><a href="stichprobentests.html#cb280-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>), <span class="at">data =</span> polite)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-90-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-90-1.svg" width="672" /></p>
 <p>Bild speichern:<br />
 - z.B. im <em>jpg</em>-Format oder<br />
 - im <em>pdf</em>-Format.</p>
@@ -2602,7 +2602,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <p>Beziehungen zwischen Variablenpaaren anzeigen:</p>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="stichprobentests.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb285-2"><a href="stichprobentests.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(polite[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>)])</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-93-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-93-1.svg" width="672" /></p>
 <p>Lineare Regression mit mehreren unabhängigen Variablen und einer abhängigen Variable, im Englischen auch als <em>Ordinary Least Squares Regression (OLS)</em> bekannt.</p>
 <p>Mit allen unabhängigen Variablen:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="stichprobentests.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model 1</span></span>
@@ -2680,7 +2680,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 ## 203.2408 183.6875</code></pre>
 <p>Visuelle Darstellung der Regressionsergebnisse:</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="stichprobentests.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-97-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-97-1.svg" width="672" /></p>
 <p>Bild sichern:</p>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="stichprobentests.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
 <span id="cb293-2"><a href="stichprobentests.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
@@ -2729,7 +2729,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 ##      M 144.4905 132.9800</code></pre>
 <p>Visuelle Darstellung der Regressionsergebnisse:</p>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="stichprobentests.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-101-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-101-1.svg" width="672" /></p>
 <p>Bild als <em>jpg</em>-Datei sichern:</p>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="stichprobentests.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot of the effects to disk</span></span>
 <span id="cb300-2"><a href="stichprobentests.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Open jpeg file</span></span>
@@ -2759,7 +2759,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb304-6"><a href="stichprobentests.html#cb304-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">4</span>) <span class="co"># Cook&#39;s distance (outliers / influencing data points?)</span></span>
 <span id="cb304-7"><a href="stichprobentests.html#cb304-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">5</span>) <span class="co"># Leverage vs. standardized variance of residuals</span></span>
 <span id="cb304-8"><a href="stichprobentests.html#cb304-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m, <span class="at">which =</span> <span class="dv">6</span>) <span class="co"># Cook&#39;s distance vs. Leverage</span></span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-104-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-104-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="stichprobentests.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <p>Entfernung eines Datenpunktes und die dabei entstehende Veränderung des Koeffizienten:</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="stichprobentests.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change of estimates if one datapoint is removed from the model</span></span>
@@ -2776,7 +2776,7 @@ Grundfrequenz für <em>Männer</em> bei <em>höflichem</em> Sprechen:<br />
 <span id="cb307-3"><a href="stichprobentests.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">1</span>], <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>)</span>
 <span id="cb307-4"><a href="stichprobentests.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb307-5"><a href="stichprobentests.html#cb307-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(d[,<span class="dv">3</span>], <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-106-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-106-1.svg" width="672" /></p>
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="stichprobentests.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 </div>
 <div id="regression-mit-gemischten-effekten" class="section level4 hasAnchor" number="5.2.3.8">
@@ -3449,7 +3449,7 @@ subject
 ## 203.2420 183.4873</code></pre>
 <p>Visuelle Darstellung der Regressionsergebnisse:</p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="stichprobentests.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(m), <span class="at">multiline=</span><span class="cn">TRUE</span>, <span class="at">grid=</span><span class="cn">TRUE</span>, <span class="at">rug=</span><span class="cn">FALSE</span>, <span class="at">as.table=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-124-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-124-1.svg" width="672" /></p>
 <p>Das volle Regressionsmodell mit zwei individuell variierenden Intercepts und einem individuell variierenden Steigungskoeffizienten sowie einer Interaktion zweier kategorieller Prädiktoren:</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="stichprobentests.html#cb342-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lmer</span>(frequency <span class="sc">~</span> gender<span class="sc">*</span>attitude <span class="sc">+</span> </span>
 <span id="cb342-2"><a href="stichprobentests.html#cb342-2" aria-hidden="true" tabindex="-1"></a>            (<span class="dv">1</span><span class="sc">|</span>subject) <span class="sc">+</span> (attitude <span class="sc">+</span> <span class="dv">1</span><span class="sc">|</span>scenario), </span>
@@ -3877,7 +3877,7 @@ Das Modell m02 (mit Interaktion) ist nicht signifikant besser als Modell m01 (oh
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="stichprobentests.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LMERConvenienceFunctions)</span>
 <span id="cb352-2"><a href="stichprobentests.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check model asumptions</span></span>
 <span id="cb352-3"><a href="stichprobentests.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-130-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-130-1.svg" width="672" /></p>
 <p>Das Programm <code>library(performance)</code> hat ebenfalls mehrere Funktionen, um zu überprüfen, ob die Bedingungen für die Durchführung der linearen Regression erfüllt sind:</p>
 <div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="stichprobentests.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
 <span id="cb353-2"><a href="stichprobentests.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(m)</span></code></pre></div>
@@ -4281,7 +4281,7 @@ subject
 <p>Erneute Überprüfung der Varianzhomoskedastizität (Gleichförmigkeit der Varianz) und Normalität der Residuen (Abweichungen vom Mittelwert):</p>
 <div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="stichprobentests.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-Check model asumptions</span></span>
 <span id="cb385-2"><a href="stichprobentests.html#cb385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mcp.fnc</span>(m)</span></code></pre></div>
-<p><img src="04-samples_files/figure-html/unnamed-chunk-142-1.svg" width="672" /></p>
+<p><img src="05-samples_files/figure-html/unnamed-chunk-142-1.svg" width="672" /></p>
 <p>Andere Varianztests (vor allem für Regression ohne gemischte Effekte geeignet):</p>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="stichprobentests.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fligner.test</span>(frequency <span class="sc">~</span> attitude, freqout)</span></code></pre></div>
 <pre><code>## 
@@ -4314,6 +4314,16 @@ subject
 ## 2 F      pol       233.
 ## 3 M      inf       144.
 ## 4 M      pol       133.</code></pre>
+<p>Digitale Studienmaterialien für statistische Methoden (R oder SPSS:<br />
+- <span class="citation">(<a href="#ref-tominc2021statistivcna" role="doc-biblioref">Tominc and Rožman 2021a</a>)</span> (slowenisch);<br />
+- <span class="citation">(<a href="#ref-tominc2021statistika" role="doc-biblioref">Tominc and Rožman 2021b</a>)</span> (slowenisch);<br />
+- <span class="citation">(<a href="#ref-tominc2018zbirka" role="doc-biblioref">Tominc, Čančer, and Rožman 2018</a>)</span> (slowenisch);<br />
+- <span class="citation">(<a href="#ref-ziberna2016osnovna" role="doc-biblioref">Žiberna 2018</a>)</span> (slowenisch);<br />
+- <span class="citation">(<a href="#ref-strakl2008vecnivojska" role="doc-biblioref">Štrakl 2008</a>)</span> (slowenisch);<br />
+- <span class="citation">(<a href="#ref-larson2015guide" role="doc-biblioref">Larson-Hall 2015</a>)</span> (englisch);<br />
+- <span class="citation">(<a href="#ref-crawley2012r" role="doc-biblioref">Crawley 2012</a>)</span> (englisch);<br />
+- <span class="citation">(<a href="#ref-crawley2014statistics" role="doc-biblioref">Crawley 2014</a>)</span> (englisch);<br />
+- <span class="citation">(<a href="#ref-baayen2008practical" role="doc-biblioref">Baayen 2008</a>)</span> (englisch).</p>
 
 </div>
 </div>
@@ -4321,14 +4331,41 @@ subject
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-baayen2008practical" class="csl-entry">
+Baayen, Harald R. 2008. <em>Analyzing Linguistic Data: A Practical Introduction to Statistics Using r</em>. Cambridge University Press.
+</div>
 <div id="ref-cohen1992power" class="csl-entry">
 Cohen, Jacob. 1992. <span>“A Power Primer.”</span> <em>Psychological Bulletin</em> 112 (1): 155.
+</div>
+<div id="ref-crawley2012r" class="csl-entry">
+Crawley, Michael J. 2012. <em>The r Book</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-crawley2014statistics" class="csl-entry">
+———. 2014. <em>Statistics: An Introduction Using r</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-larson2015guide" class="csl-entry">
+Larson-Hall, Jenifer. 2015. <em>A Guide to Doing Statistics in Second Language Research Using SPSS and r</em>. Routledge.
+</div>
+<div id="ref-strakl2008vecnivojska" class="csl-entry">
+Štrakl, Jana. 2008. <span>“Ve<span>č</span>nivojska Analiza.”</span> Ljubljana: Fakulteta za dru<span>ž</span>bene vede.
+</div>
+<div id="ref-tominc2018zbirka" class="csl-entry">
+Tominc, Polona, Vesna Čančer, and Maja Rožman. 2018. <em>Zbirka Vaj Za Predmet Metode Raziskovanja</em>. Univerzitetna zalo<span>ž</span>ba Univerze.
+</div>
+<div id="ref-tominc2021statistivcna" class="csl-entry">
+Tominc, Polona, and Maja Rožman. 2021a. <em>Statisti<span>č</span>na Poslovna Analiza: Gradiva Za Seminarske in Laboratorijske Vaje</em>. Univerza v Mariboru, Univerzitetna zalo<span>ž</span>ba.
+</div>
+<div id="ref-tominc2021statistika" class="csl-entry">
+———. 2021b. <em>Statistika: Gradiva Za Seminarske Vaje Za 2. Del Predmeta</em>. Univerza v Mariboru, Univerzitetna zalo<span>ž</span>ba.
 </div>
 <div id="ref-winter2013linear" class="csl-entry">
 Winter, Bodo. 2013. <span>“Linear Models and Linear Mixed Effects Models in r with Linguistic Applications.”</span> <em>arXiv Preprint arXiv:1308.5499</em>.
 </div>
 <div id="ref-winter2012phonetic" class="csl-entry">
 Winter, Bodo, and Sven Grawunder. 2012. <span>“The Phonetic Profile of Korean Formal and Informal Speech Registers.”</span> <em>Journal of Phonetics</em> 40 (6): 808–15.
+</div>
+<div id="ref-ziberna2016osnovna" class="csl-entry">
+Žiberna, Aleš. 2018. <em>Osnovna Statisti<span>č</span>na Analiza v r-Ju</em>. Ljubljana: Fakulteta za dru<span>ž</span>bene vede.
 </div>
 </div>
             </section>
@@ -4337,7 +4374,7 @@ Winter, Bodo, and Sven Grawunder. 2012. <span>“The Phonetic Profile of Korean 
         </div>
       </div>
 <a href="r-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vokalformanten-im-deutschen-als-fremdsprache.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="spracherwerbsdaten.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -4368,7 +4405,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-samples.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-samples.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -4376,7 +4413,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/tpetric7/raj2022-book/blob/master/04-samples.Rmd",
+"link": "https://github.com/tpetric7/raj2022-book/blob/master/05-samples.Rmd",
 "text": null
 },
 "download": ["bookdownproj.pdf", "bookdownproj.epub"],
